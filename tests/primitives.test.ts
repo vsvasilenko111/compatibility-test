@@ -12,15 +12,22 @@ describe('weight', () => {
   });
 });
 
+describe('fit — каждое деление разницы снимает 1/6', () => {
+  it('точечный диапазон: 10 и 10 → 1, 10 и 9 → 5/6, 10 и 8 → 2/3, 10 и 4 → 0', () => {
+    const ten = ans(10, 10, 10);
+    expect([10, 9, 8, 7, 6, 5, 4].map((v) => fit(ten, v))).toEqual([1, 5 / 6, 4 / 6, 3 / 6, 2 / 6, 1 / 6, 0].map((x) => expect.closeTo(x, 10)));
+  });
+});
+
 describe('fit', () => {
   const own = ans(2, 0, 4);
   it.each([
-    [0, 1], [4, 1], [5, 2 / 3], [6, 1 / 3], [7, 0], [10, 0],
+    [0, 1], [4, 1], [5, 5 / 6], [6, 4 / 6], [7, 0.5], [9, 1 / 6], [10, 0],
   ])('ответ %i при диапазоне [0,4] → %f', (other, expected) => {
     expect(fit(own, other)).toBeCloseTo(expected, 5);
   });
   it('штраф симметричен слева от диапазона', () => {
-    expect(fit(ans(8, 6, 10), 5)).toBeCloseTo(2 / 3, 5);
+    expect(fit(ans(8, 6, 10), 5)).toBeCloseTo(5 / 6, 5);
   });
 });
 
@@ -37,8 +44,7 @@ describe('strength — эталонная таблица спецификаци�
     expect(strength(ans(a), ans(b))).toBe(0);
   });
 
-  it('умножается на меньший fit', () => {
-    // b=8 вне диапазона a [10,10] на 2 деления → fitA = 1/3
-    expect(strength(ans(10, 10, 10), ans(8))).toBeCloseTo(0.48 / 3, 4);
+  it('не зависит от приемлемого диапазона — только от самих ответов', () => {
+    expect(strength(ans(10, 10, 10), ans(8, 8, 8))).toBeCloseTo(0.48, 4);
   });
 });

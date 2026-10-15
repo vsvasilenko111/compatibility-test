@@ -18,6 +18,8 @@ export interface CompareResult { relationship: ModeResult; friendship: ModeResul
 export const TOP_N = 5;
 const CRITICAL = 50;
 const CARES = 10;
+/** Тема для разговора — расхождение от 3 делений (fit ≤ 0,5); мелкая разница в 1–2 деления темой не считается. */
+const TALK_FIT = 0.5;
 
 interface Pair {
   q: Question; a: Answer; b: Answer;
@@ -60,11 +62,11 @@ function mode(ps: Pair[]): ModeResult {
   const supers = ps.filter((p) => bothCare(p) && p.s >= 0.8).sort(desc(award));
   const strongs = ps.filter((p) => bothCare(p) && p.s >= 0.5 && p.s < 0.8).sort(desc(award));
   const talks = ps
-    .filter((p) => !isRed(p) && ((p.wA >= CARES && p.fitA < 1) || (p.wB >= CARES && p.fitB < 1)))
+    .filter((p) => !isRed(p) && ((p.wA >= CARES && p.fitA <= TALK_FIT) || (p.wB >= CARES && p.fitB <= TALK_FIT)))
     .sort(desc((p) => p.wA * (1 - p.fitA) + p.wB * (1 - p.fitB)));
   const reds = ps.filter(isRed).sort(desc((p) => p.wA + p.wB));
   const flexible = ps.filter(
-    (p) => Math.abs(p.a.value - 5) <= 1 && Math.abs(p.b.value - 5) <= 1 && p.fitA === 1 && p.fitB === 1,
+    (p) => Math.abs(p.a.value - 5) <= 1 && Math.abs(p.b.value - 5) <= 1,
   );
   const sphereIds = [...new Set(ps.map((p) => p.q.sphere))];
 
