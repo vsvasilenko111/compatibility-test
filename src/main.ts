@@ -1,1 +1,4 @@
-document.getElementById('app')!.textContent = 'Тест совместимости';
+import './styles.css';
+import { startApp } from './ui/app';
+
+startApp(document.getElementById('app')!);
