@@ -22,7 +22,7 @@ function modeSection(title: string, m: ModeResult): HTMLElement {
   });
 
   return h('section', { class: 'mode' },
-    h('h2', {}, title, ' ', h('span', { class: 'big' }, fmt(m.percent))),
+    h('h2', {}, title, ' ', h('span', { class: 'big' }, m.percent === null ? 'не принципиально' : fmt(m.percent))),
     m.superCount ? h('p', { class: 'badge' }, `🌟 Супер-совпадений: ${m.superCount}`) : null,
     list('🔴 Красные флаги', m.redFlags, 'red'),
     list('🌟 Супер-совпадения', m.superMatches, 'super'),

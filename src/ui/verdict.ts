@@ -1,6 +1,7 @@
 import type { CompareResult } from '../scoring/compare';
 
 export function verdict(r: CompareResult): string {
+  if (r.relationship.percent === null && r.friendship.percent === null) return 'Для вас обоих эти темы не принципиальны.';
   const rel = r.relationship.percent ?? 100;
   const fr = r.friendship.percent ?? 100;
   if (r.relationship.redFlags.length > 0) return 'Есть принципиальные расхождения — начните разговор с красных флагов.';

@@ -9,7 +9,7 @@
   --card: #ffffff;
   --red: #c62828;
   --green: #2e7d32;
-  --orange: #e67e22;
+  --orange: #a8550f;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -22,6 +22,7 @@
     --cell: #34292d;
     --range: #6b2f42;
     --card: #271f22;
+    --orange: #f0a35e;
   }
 }
 * { box-sizing: border-box; }

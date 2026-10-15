@@ -14,10 +14,13 @@ export interface Store {
   clearProgress(): void;
   loadOwnCode(): string | null;
   saveOwnCode(code: string): void;
+  loadResultFor(inviterCode: string): string | null;
+  saveResultFor(inviterCode: string, code: string): void;
 }
 
 const PROGRESS_KEY = 'compat:v1:progress';
 const OWN_CODE_KEY = 'compat:v1:own-code';
+const RESULTS_KEY = 'compat:v1:results';
 const PROBE_KEY = 'compat:probe';
 
 function isProgress(p: unknown): p is Progress {
@@ -27,6 +30,11 @@ function isProgress(p: unknown): p is Progress {
     && typeof x.index === 'number'
     && typeof x.responses === 'object' && x.responses !== null
     && (x.inviterCode === null || typeof x.inviterCode === 'string');
+}
+
+function isResults(r: unknown): r is Record<string, string> {
+  return typeof r === 'object' && r !== null && !Array.isArray(r)
+    && Object.values(r).every((v) => typeof v === 'string');
 }
 
 function probe(s: Storage): boolean {
@@ -50,6 +58,17 @@ export function createStore(storage: Storage | null): Store {
     try { storage?.removeItem(k); } catch { /* то же */ }
   };
 
+  const loadResults = (): Record<string, string> => {
+    const raw = get(RESULTS_KEY);
+    if (!raw) return {};
+    try {
+      const parsed: unknown = JSON.parse(raw);
+      return isResults(parsed) ? parsed : {};
+    } catch {
+      return {};
+    }
+  };
+
   return {
     available: storage !== null && probe(storage),
     loadProgress() {
@@ -66,6 +85,8 @@ export function createStore(storage: Storage | null): Store {
     clearProgress: () => remove(PROGRESS_KEY),
     loadOwnCode: () => get(OWN_CODE_KEY),
     saveOwnCode: (code) => set(OWN_CODE_KEY, code),
+    loadResultFor: (inviterCode) => Object.hasOwn(loadResults(), inviterCode) ? loadResults()[inviterCode] : null,
+    saveResultFor: (inviterCode, code) => set(RESULTS_KEY, JSON.stringify({ ...loadResults(), [inviterCode]: code })),
   };
 }
 

@@ -39,6 +39,23 @@ describe('storage', () => {
     expect(store.loadOwnCode()).toBe('abc');
   });
 
+  it('хранит результаты по коду пригласившего', () => {
+    const s = new MemoryStorage();
+    const store = createStore(s);
+    expect(store.loadResultFor('A')).toBeNull();
+    store.saveResultFor('A', 'b1');
+    store.saveResultFor('C', 'b2');
+    store.saveResultFor('A', 'b3');
+    expect(store.loadResultFor('A')).toBe('b3');
+    expect(store.loadResultFor('C')).toBe('b2');
+    s.setItem('compat:v1:results', '[1]');
+    expect(createStore(s).loadResultFor('A')).toBeNull();
+    s.setItem('compat:v1:results', '{oops');
+    expect(createStore(s).loadResultFor('A')).toBeNull();
+    s.setItem('compat:v1:results', '{"A":5}');
+    expect(createStore(s).loadResultFor('A')).toBeNull();
+  });
+
   it('повреждённый JSON → null, без исключения', () => {
     const s = new MemoryStorage();
     s.setItem('compat:v1:progress', '{oops');
@@ -53,6 +70,8 @@ describe('storage', () => {
       expect(() => store.saveProgress(progress)).not.toThrow();
       expect(store.loadProgress()).toBeNull();
       expect(store.loadOwnCode()).toBeNull();
+      expect(() => store.saveResultFor('A', 'b')).not.toThrow();
+      expect(store.loadResultFor('A')).toBeNull();
     }
   });
 });

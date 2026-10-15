@@ -4,6 +4,7 @@ import { classifyInvite, inviteUrl, parseHash, resultUrl, type Route } from '../
 import { compare } from '../scoring/compare';
 import { browserStorage, createStore, type Progress } from '../storage';
 import { criticalCount } from './answer-logic';
+import { resumeFor } from './flow';
 import { finishScreen } from './screens/finish';
 import { introScreen } from './screens/intro';
 import { messageScreen } from './screens/message';
@@ -35,6 +36,17 @@ export function startApp(root: HTMLElement): void {
     if (classifyInvite(code, store.loadOwnCode()) === 'own') {
       return show(messageScreen('Это ваша ссылка', 'Отправьте её партнёру — он пройдёт тест и увидит результат.', inviteUrl(base, code)));
     }
+    const done = store.loadResultFor(code);
+    if (done) {
+      return show(messageScreen('Вы уже прошли тест по этой ссылке', 'Можно открыть результат или пройти тест заново.', null, [
+        { label: 'Посмотреть результат', primary: true, onClick: () => { location.hash = `a=${code}&b=${done}`; } },
+        { label: 'Пройти заново', onClick: () => introFor(code) },
+      ]));
+    }
+    introFor(code);
+  }
+
+  function introFor(code: string) {
     try {
       const inviter = decode(code, MANIFEST);
       showIntro({ code, name: inviter.name });
@@ -46,7 +58,7 @@ export function startApp(root: HTMLElement): void {
   function showIntro(inviter: { code: string; name: string } | null) {
     const inviterCode = inviter?.code ?? null;
     const saved = store.loadProgress();
-    const resumable = saved && saved.inviterCode === inviterCode ? saved : null;
+    const resumable = resumeFor(saved, inviterCode, QUESTIONS.length);
     const own = store.loadOwnCode();
     show(introScreen({
       inviterName: inviter ? inviter.name : null,
@@ -76,12 +88,13 @@ export function startApp(root: HTMLElement): void {
 
   function finish(p: Progress) {
     const code = encode({ name: p.name, bankVersion: BANK_VERSION, responses: p.responses }, CURRENT_IDS);
-    store.saveOwnCode(code);
     store.clearProgress();
     if (p.inviterCode) {
+      store.saveResultFor(p.inviterCode, code);
       location.hash = `a=${p.inviterCode}&b=${code}`; // hashchange откроет результат
       return;
     }
+    store.saveOwnCode(code);
     show(finishScreen(inviteUrl(base, code)));
   }
 
