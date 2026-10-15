@@ -13,7 +13,18 @@ export interface QuestionProps {
 
 export function questionScreen(p: QuestionProps): HTMLElement {
   let value: number | null = p.response && p.response !== 'skipped' ? p.response.value : null;
+  const answered = value;
+  let locked = false;
   const root = h('section', { class: 'screen question' });
+
+  /** Тап по числу сразу переходит дальше; короткая пауза показывает выбранное число. */
+  function choose(i: number) {
+    if (locked) return;
+    locked = true;
+    value = i;
+    draw();
+    setTimeout(() => p.onSubmit(answerFor(i)), 180);
+  }
 
   function draw() {
     const q = p.question;
@@ -30,15 +41,15 @@ export function questionScreen(p: QuestionProps): HTMLElement {
             type: 'button',
             class: i === value ? 'cell on' : 'cell',
             'aria-pressed': i === value ? 'true' : 'false',
-            onclick: () => { value = i; draw(); },
+            onclick: () => choose(i),
           }, String(i)))),
       h('div', { class: 'nav' },
         p.onBack ? h('button', { type: 'button', class: 'secondary', onclick: p.onBack }, 'Назад') : null,
         q.optional ? h('button', { type: 'button', class: 'secondary', onclick: () => p.onSubmit('skipped') }, 'Пропустить') : null,
-        h('button', {
-          type: 'button', class: 'primary', disabled: value === null,
-          onclick: () => { if (value !== null) p.onSubmit(answerFor(value)); },
-        }, 'Дальше')),
+        // «Дальше» нужна только при возврате к уже отвеченному вопросу — чтобы оставить ответ как есть.
+        answered !== null
+          ? h('button', { type: 'button', class: 'primary', onclick: () => p.onSubmit(answerFor(answered)) }, 'Дальше')
+          : null),
     ];
     root.replaceChildren(...nodes.filter((n): n is Node => n !== null));
   }
