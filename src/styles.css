@@ -160,6 +160,10 @@ input[type='text'] {
 .eyebrow { margin: 4px 0 6px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
 .tile {
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
   border-radius: 12px;
   padding: 8px 10px 10px;
   display: flex;
@@ -180,3 +184,24 @@ input[type='text'] {
 .tile.tone--1 { background: var(--cell); color: var(--muted); }
 button.secondary { background: var(--cell); color: var(--fg); }
 .block { background: var(--card); border-radius: 12px; padding: 4px 14px 10px; }
+
+.tile[aria-expanded='true'] { outline: 3px solid var(--fg); outline-offset: 2px; }
+.tile:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.map .hint { margin: 0 0 6px; }
+.sphere-detail {
+  margin-top: 10px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+.detail-head { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); }
+.detail-head b { color: var(--fg); }
+.sphere-detail ul { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.sphere-detail li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 8px; align-items: baseline; }
+.sphere-detail .dot { width: 10px; height: 10px; border-radius: 50%; align-self: center; }
+.sphere-detail .lvl { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+.lvl-same .dot { background: var(--tone-5); }
+.lvl-close .dot { background: var(--tone-4); }
+.lvl-apart .dot { background: var(--tone-1); }
+.lvl-opposite .dot { background: var(--tone-0); }

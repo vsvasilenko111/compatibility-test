@@ -1,7 +1,8 @@
 import type { CompareResult } from '../../scoring/compare';
 import type { Profile } from '../../types';
 import { h } from '../dom';
-import { flagsLine, sphereTiles, supportTopics, tileTone } from '../result-view';
+import { flagsLine, sphereDetail, sphereTiles, supportTopics, tileTone, type SphereTile } from '../result-view';
+import { plural } from '../plural';
 import { shareBlock } from '../share';
 import { verdict } from '../verdict';
 
@@ -16,6 +17,59 @@ function score(p: number | null, caption: string, cls: string): HTMLElement {
 function note(kind: string, label: string, topics: string[]): HTMLElement | null {
   if (!topics.length) return null;
   return h('div', { class: `note ${kind}` }, h('div', { class: 'note-label' }, label), h('div', {}, topics.join(' · ')));
+}
+
+/** Карта сфер: нажатие (или наведение мышью) раскрывает под картой темы вопросов сферы со степенью совпадения. */
+function sphereMap(tiles: SphereTile[]): HTMLElement {
+  const panel = h('div', { class: 'sphere-detail', 'aria-live': 'polite' });
+  panel.hidden = true;
+  const buttons: HTMLButtonElement[] = [];
+  let pinned: string | null = null;
+  const canHover = typeof matchMedia === 'function' && matchMedia('(hover: hover)').matches;
+
+  function open(t: SphereTile | null) {
+    buttons.forEach((b) => b.setAttribute('aria-expanded', String(b.dataset.id === t?.id)));
+    if (!t) {
+      panel.hidden = true;
+      return;
+    }
+    const rows = sphereDetail(t.items);
+    panel.replaceChildren(
+      h('div', { class: 'detail-head' },
+        h('b', {}, t.label),
+        h('span', {}, plural(rows.length, ['вопрос', 'вопроса', 'вопросов']))),
+      h('ul', {}, ...rows.map((r) =>
+        h('li', { class: `lvl-${r.level}` }, h('span', { class: 'dot' }), h('span', { class: 'topic' }, r.topic), h('span', { class: 'lvl' }, r.label)))),
+    );
+    panel.hidden = false;
+  }
+
+  const grid = h('div', { class: 'tiles' },
+    ...tiles.map((t) => {
+      const b = h('button', {
+        type: 'button',
+        class: `tile tone-${tileTone(t.percent)}`,
+        'aria-expanded': 'false',
+        title: t.percent === null ? 'Для вас обоих не принципиально' : '',
+        onclick: () => {
+          pinned = pinned === t.id ? null : t.id;
+          open(pinned ? t : null);
+        },
+        onmouseenter: () => { if (canHover && !pinned) open(t); },
+      }, h('b', {}, num(t.percent)), h('span', {}, t.label));
+      b.dataset.id = t.id;
+      buttons.push(b);
+      return b;
+    }));
+
+  return h('section', {
+    class: 'map',
+    onmouseleave: () => { if (canHover && !pinned) open(null); },
+  },
+    h('h3', { class: 'eyebrow' }, 'Карта сфер'),
+    h('p', { class: 'hint' }, canHover ? 'Наведите или нажмите на сферу, чтобы увидеть темы вопросов' : 'Нажмите на сферу, чтобы увидеть темы вопросов'),
+    grid,
+    panel);
 }
 
 export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string): HTMLElement {
@@ -35,13 +89,7 @@ export function resultScreen(a: Profile, b: Profile, result: CompareResult, shar
       note('red', reds.length > 1 ? 'Красные флаги' : 'Красный флаг', reds),
       note('talk', 'Стоит обсудить', rel.talkZones.map((i) => i.topic)),
       note('support', 'Ваша опора', supportTopics(rel))),
-    h('section', { class: 'map' },
-      h('h3', { class: 'eyebrow' }, 'Карта сфер'),
-      h('div', { class: 'tiles' },
-        ...sphereTiles(rel.spheres).map((t) =>
-          h('div', { class: `tile tone-${tileTone(t.percent)}`, title: t.percent === null ? 'Для вас обоих не принципиально' : '' },
-            h('b', {}, num(t.percent)),
-            h('span', {}, t.label))))),
+    sphereMap(sphereTiles(rel.spheres)),
     h('h3', {}, 'Отправить результат партнёру'),
     shareBlock(shareUrl, 'Наш результат совместимости'),
   );

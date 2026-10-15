@@ -50,6 +50,14 @@ describe('compare — пример Ани и Миши', () => {
   it('жильё 4/6 — оба гибкие', () => {
     expect(r.relationship.flexibleCount).toBe(1);
   });
+  it('в каждой сфере — темы её вопросов со степенью совпадения, без ответов', () => {
+    const fr = r.relationship.spheres.find((x) => x.sphere === 'home')!;
+    expect(fr.items).toHaveLength(1);
+    expect(fr.items[0].id).toBe('home');
+    expect(fr.items[0].topic).toBe('topic-home');
+    expect(fr.items[0].match).toBeCloseTo(4 / 6, 10);
+    expect(Object.keys(fr.items[0]).sort()).toEqual(['id', 'match', 'topic']);
+  });
   it('ItemRef несёт topic и сферу, а не ответы', () => {
     expect(r.relationship.talkZones[0]).toEqual({ id: 'conf', topic: 'topic-conf', sphere: 'conflicts' });
   });

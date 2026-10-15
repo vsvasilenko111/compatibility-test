@@ -1,8 +1,8 @@
 import { SPHERES } from '../questions/spheres';
-import type { ModeResult, SphereScore } from '../scoring/compare';
+import type { ModeResult, SphereItem, SphereScore } from '../scoring/compare';
 import { plural } from './plural';
 
-export interface SphereTile { id: string; label: string; percent: number | null }
+export interface SphereTile { id: string; label: string; percent: number | null; items: SphereItem[] }
 
 export const SUPPORT_LIMIT = 5;
 
@@ -11,7 +11,7 @@ export function sphereTiles(spheres: SphereScore[]): SphereTile[] {
   const labels = new Map(SPHERES.map((s) => [s.id, s.label]));
   return spheres
     .filter((s) => labels.has(s.sphere))
-    .map((s) => ({ id: s.sphere, label: labels.get(s.sphere)!, percent: s.percent }))
+    .map((s) => ({ id: s.sphere, label: labels.get(s.sphere)!, percent: s.percent, items: s.items }))
     .sort((x, y) => (y.percent ?? -1) - (x.percent ?? -1));
 }
 
@@ -37,4 +37,31 @@ export function flagsLine(m: ModeResult): string | null {
     m.redFlags.length ? `🔴 ${plural(m.redFlags.length, ['красный флаг', 'красных флага', 'красных флагов'])}` : '',
   ].filter(Boolean);
   return parts.length ? parts.join(' · ') : null;
+}
+
+export type MatchLevel = 'same' | 'close' | 'apart' | 'opposite';
+
+const LEVEL_LABELS: Record<MatchLevel, string> = {
+  same: 'совпадаете',
+  close: 'близко',
+  apart: 'по-разному',
+  opposite: 'противоположно',
+};
+
+/** Совпадение по одному вопросу словами: 1 — совпадаете, разница 1–2 деления — близко, 3–5 — по-разному, 6+ — противоположно. */
+export function matchLevel(match: number): MatchLevel {
+  if (match >= 1) return 'same';
+  if (match >= 4 / 6 - 1e-9) return 'close';
+  if (match > 0) return 'apart';
+  return 'opposite';
+}
+
+/** Раскрытая сфера: сначала расхождения, совпадения в конце. */
+export function sphereDetail(items: SphereItem[]): { topic: string; level: MatchLevel; label: string }[] {
+  return [...items]
+    .sort((x, y) => x.match - y.match)
+    .map((i) => {
+      const level = matchLevel(i.match);
+      return { topic: i.topic, level, label: LEVEL_LABELS[level] };
+    });
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { flagsLine, sphereTiles, supportTopics, tileTone } from '../src/ui/result-view';
+import { flagsLine, matchLevel, sphereDetail, sphereTiles, supportTopics, tileTone } from '../src/ui/result-view';
 import type { ItemRef, ModeResult } from '../src/scoring/compare';
 
 const ref = (id: string): ItemRef => ({ id, topic: `тема ${id}`, sphere: 's' });
@@ -11,11 +11,11 @@ const mode = (over: Partial<ModeResult> = {}): ModeResult => ({
 describe('sphereTiles', () => {
   it('сортирует от лучшей сферы к худшей, «не принципиально» — в конце, неизвестные сферы пропускает', () => {
     const tiles = sphereTiles([
-      { sphere: 'money', percent: 40 }, { sphere: 'kids', percent: null },
-      { sphere: 'humor', percent: 95 }, { sphere: 'nope', percent: 50 },
+      { sphere: 'money', percent: 40, items: [] }, { sphere: 'kids', percent: null, items: [] },
+      { sphere: 'humor', percent: 95, items: [] }, { sphere: 'nope', percent: 50, items: [] },
     ]);
     expect(tiles.map((t) => t.id)).toEqual(['humor', 'money', 'kids']);
-    expect(tiles[0]).toEqual({ id: 'humor', label: 'Юмор и вайб', percent: 95 });
+    expect(tiles[0]).toEqual({ id: 'humor', label: 'Юмор и вайб', percent: 95, items: [] });
   });
 });
 
@@ -38,5 +38,21 @@ describe('flagsLine', () => {
     expect(flagsLine(mode({ superCount: 1 }))).toBe('🌟 1 супер-совпадение');
     expect(flagsLine(mode({ redFlags: [ref('x'), ref('y'), ref('z'), ref('w'), ref('v')] }))).toBe('🔴 5 красных флагов');
     expect(flagsLine(mode())).toBeNull();
+  });
+});
+
+describe('matchLevel', () => {
+  it.each([[1, 'same'], [5 / 6, 'close'], [4 / 6, 'close'], [3 / 6, 'apart'], [1 / 6, 'apart'], [0, 'opposite']])(
+    '%f → %s', (m, level) => expect(matchLevel(m as number)).toBe(level),
+  );
+});
+
+describe('sphereDetail', () => {
+  it('сначала расхождения, совпадения в конце; подписи по-русски', () => {
+    const d = sphereDetail([
+      { id: 'a', topic: 'А', match: 1 }, { id: 'b', topic: 'Б', match: 0 }, { id: 'c', topic: 'В', match: 0.5 },
+    ]);
+    expect(d.map((x) => x.topic)).toEqual(['Б', 'В', 'А']);
+    expect(d.map((x) => x.label)).toEqual(['противоположно', 'по-разному', 'совпадаете']);
   });
 });

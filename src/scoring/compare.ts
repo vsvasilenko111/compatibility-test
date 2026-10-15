@@ -2,7 +2,9 @@ import type { Answer, Profile, Question } from '../types';
 import { fit, strength, weight } from './primitives';
 
 export interface ItemRef { id: string; topic: string; sphere: string }
-export interface SphereScore { sphere: string; percent: number | null }
+/** Тема вопроса и степень совпадения 0..1 — без самих ответов. */
+export interface SphereItem { id: string; topic: string; match: number }
+export interface SphereScore { sphere: string; percent: number | null; items: SphereItem[] }
 export interface ModeResult {
   percent: number | null;
   spheres: SphereScore[];
@@ -72,7 +74,14 @@ function mode(ps: Pair[]): ModeResult {
 
   return {
     percent: percent(ps),
-    spheres: sphereIds.map((sphere) => ({ sphere, percent: percent(ps.filter((p) => p.q.sphere === sphere)) })),
+    spheres: sphereIds.map((sphere) => {
+      const inSphere = ps.filter((p) => p.q.sphere === sphere);
+      return {
+        sphere,
+        percent: percent(inSphere),
+        items: inSphere.map((p) => ({ id: p.q.id, topic: p.q.topic, match: Math.min(p.fitA, p.fitB) })),
+      };
+    }),
     redFlags: reds.map(ref),
     superMatches: supers.slice(0, TOP_N).map(ref),
     strongMatches: strongs.slice(0, TOP_N).map(ref),
