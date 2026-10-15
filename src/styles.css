@@ -188,8 +188,14 @@ button.secondary { background: var(--cell); color: var(--fg); }
 .tile[aria-expanded='true'] { outline: 3px solid var(--fg); outline-offset: 2px; }
 .tile:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .map .hint { margin: 0 0 6px; }
+.map { position: relative; }
 .sphere-detail {
-  margin-top: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+  border: 1px solid var(--cell);
   background: var(--card);
   border-radius: 12px;
   padding: 10px 12px;

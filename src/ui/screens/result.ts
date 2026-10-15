@@ -21,13 +21,13 @@ function note(kind: string, label: string, topics: string[]): HTMLElement | null
 
 /** Карта сфер: нажатие (или наведение мышью) раскрывает под картой темы вопросов сферы со степенью совпадения. */
 function sphereMap(tiles: SphereTile[]): HTMLElement {
-  const panel = h('div', { class: 'sphere-detail', 'aria-live': 'polite' });
+  const panel = h('div', { class: 'sphere-detail', 'aria-live': 'polite', onclick: () => { pinned = null; open(null); } });
   panel.hidden = true;
   const buttons: HTMLButtonElement[] = [];
   let pinned: string | null = null;
   const canHover = typeof matchMedia === 'function' && matchMedia('(hover: hover)').matches;
 
-  function open(t: SphereTile | null) {
+  function open(t: SphereTile | null, anchor?: HTMLElement) {
     buttons.forEach((b) => b.setAttribute('aria-expanded', String(b.dataset.id === t?.id)));
     if (!t) {
       panel.hidden = true;
@@ -42,6 +42,8 @@ function sphereMap(tiles: SphereTile[]): HTMLElement {
         h('li', { class: `lvl-${r.level}` }, h('span', { class: 'dot' }), h('span', { class: 'topic' }, r.topic), h('span', { class: 'lvl' }, r.label)))),
     );
     panel.hidden = false;
+    // Панель всплывает прямо под плиткой, поверх нижних плиток — без сдвига раскладки и всегда в поле зрения.
+    if (anchor) panel.style.top = `${anchor.offsetTop + anchor.offsetHeight + 8}px`;
   }
 
   const grid = h('div', { class: 'tiles' },
@@ -53,9 +55,9 @@ function sphereMap(tiles: SphereTile[]): HTMLElement {
         title: t.percent === null ? 'Для вас обоих не принципиально' : '',
         onclick: () => {
           pinned = pinned === t.id ? null : t.id;
-          open(pinned ? t : null);
+          open(pinned ? t : null, b);
         },
-        onmouseenter: () => { if (canHover && !pinned) open(t); },
+        onmouseenter: () => { if (canHover && !pinned) open(t, b); },
       }, h('b', {}, num(t.percent)), h('span', {}, t.label));
       b.dataset.id = t.id;
       buttons.push(b);
