@@ -1,17 +1,1165 @@
 {
-  "version": 1,
+  "version": 2,
   "questions": [
-    { "id": "humor-01", "block": "friendship", "sphere": "humor", "text": "Близкий человек пошутил над вами при компании — смешно, но немного обидно", "left": "Посмеюсь вместе со всеми", "right": "Потом скажу, что так не надо", "topic": "шутки на грани", "optional": false },
-    { "id": "kids-01", "block": "relationship", "sphere": "kids", "text": "Через пять лет вы скорее видите себя…", "left": "Без детей, со свободой и своими планами", "right": "С ребёнком, даже если планы подвинутся", "topic": "планы на детей", "optional": false },
-    { "id": "money-01", "block": "friendship", "sphere": "money", "text": "Вам неожиданно пришли 50 000 ₽", "left": "Отложу всё до копейки", "right": "Потрачу на впечатления", "topic": "отношение к неожиданным деньгам", "optional": false },
-    { "id": "home-01", "block": "relationship", "sphere": "home", "text": "Выходной, дома беспорядок, а погода отличная", "left": "Гулять, уберёмся когда-нибудь", "right": "Сначала порядок, потом прогулка", "topic": "порядок в доме", "optional": false },
-    { "id": "conflicts-01", "block": "friendship", "sphere": "conflicts", "text": "После ссоры с близким человеком вам нужно…", "left": "Обсудить всё прямо сейчас", "right": "Побыть одному и остыть", "topic": "как выходить из ссоры", "optional": false },
-    { "id": "living-01", "block": "relationship", "sphere": "living", "text": "Предлагают одинаковую зарплату в двух местах", "left": "Мегаполис, где всё под рукой", "right": "Тихий город у моря", "topic": "где жить", "optional": false },
-    { "id": "rhythm-01", "block": "friendship", "sphere": "rhythm", "text": "Близкий человек три дня не отвечал, а потом написал как ни в чём не бывало", "left": "Мне важно знать, что случилось", "right": "Нормально, у всех бывает", "topic": "ритм общения", "optional": false },
-    { "id": "career-01", "block": "relationship", "sphere": "career", "text": "Партнёру предложили работу мечты в другой стране", "left": "Поеду не раздумывая", "right": "Попрошу отказаться", "topic": "переезд ради карьеры партнёра", "optional": false },
-    { "id": "loyalty-01", "block": "friendship", "sphere": "loyalty", "text": "Близкий человек явно неправ в споре с кем-то третьим", "left": "Скажу при всех, что тот неправ", "right": "Поддержу при всех, разберёмся наедине", "topic": "поддержка, когда близкий неправ", "optional": false },
-    { "id": "intimacy-01", "block": "relationship", "sphere": "intimacy", "text": "В интимной жизни вам ближе…", "left": "Привычное и проверенное", "right": "Пробовать новое", "topic": "новизна в интимной жизни", "optional": true },
-    { "id": "values-01", "block": "friendship", "sphere": "values", "text": "Высокая зарплата в компании, чьи ценности вам не близки", "left": "Соглашусь — работа есть работа", "right": "Откажусь, даже если придётся ужаться", "topic": "деньги и принципы", "optional": false },
-    { "id": "space-01", "block": "relationship", "sphere": "space", "text": "Партнёр просит доступ к вашему телефону", "left": "Пожалуйста, мне нечего скрывать", "right": "Телефон — моё личное пространство", "topic": "личное пространство и телефоны", "optional": false }
+    {
+      "id": "humor-01",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "Близкий человек пошутил над вами при компании — смешно, но немного обидно",
+      "left": "Посмеюсь вместе со всеми",
+      "right": "Потом скажу, что так не надо",
+      "topic": "шутки на грани",
+      "optional": false
+    },
+    {
+      "id": "kids-01",
+      "block": "relationship",
+      "sphere": "kids",
+      "text": "Через пять лет вы скорее видите себя…",
+      "left": "Без детей, со свободой и своими планами",
+      "right": "С ребёнком, даже если планы подвинутся",
+      "topic": "планы на детей",
+      "optional": false
+    },
+    {
+      "id": "leisure-01",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Свободная суббота без планов",
+      "left": "Позвать всех и куда-нибудь выбраться",
+      "right": "Плед, сериал и тишина",
+      "topic": "активный или домашний отдых",
+      "optional": false
+    },
+    {
+      "id": "budget-01",
+      "block": "relationship",
+      "sphere": "budget",
+      "text": "Деньги в паре",
+      "left": "Всё общее",
+      "right": "Каждый своё, общие — только на общие расходы",
+      "topic": "общий или раздельный бюджет",
+      "optional": false
+    },
+    {
+      "id": "values-01",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Высокая зарплата в компании, чьи ценности вам не близки",
+      "left": "Соглашусь — работа есть работа",
+      "right": "Откажусь, даже если придётся ужаться",
+      "topic": "деньги и принципы",
+      "optional": false
+    },
+    {
+      "id": "kids-02",
+      "block": "relationship",
+      "sphere": "kids",
+      "text": "Хотите ли вы когда-нибудь детей",
+      "left": "Точно нет",
+      "right": "Точно да",
+      "topic": "желание иметь детей",
+      "optional": false
+    },
+    {
+      "id": "conflicts-01",
+      "block": "friendship",
+      "sphere": "conflicts",
+      "text": "После ссоры с близким человеком вам нужно…",
+      "left": "Обсудить всё прямо сейчас",
+      "right": "Побыть одному и остыть",
+      "topic": "как выходить из ссоры",
+      "optional": false
+    },
+    {
+      "id": "home-01",
+      "block": "relationship",
+      "sphere": "home",
+      "text": "Выходной, дома беспорядок, а погода отличная",
+      "left": "Гулять, уберёмся когда-нибудь",
+      "right": "Сначала порядок, потом прогулка",
+      "topic": "порядок в доме",
+      "optional": false
+    },
+    {
+      "id": "humor-02",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "В разговоре звучит чёрный юмор про болезни и смерть",
+      "left": "Смешно — юмор помогает справляться",
+      "right": "Неприятно, лучше без этого",
+      "topic": "чёрный юмор",
+      "optional": false
+    },
+    {
+      "id": "living-01",
+      "block": "relationship",
+      "sphere": "living",
+      "text": "Предлагают одинаковую зарплату в двух местах",
+      "left": "Мегаполис, где всё под рукой",
+      "right": "Тихий город у моря",
+      "topic": "где жить",
+      "optional": false
+    },
+    {
+      "id": "leisure-02",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Поездка вдвоём с близким человеком",
+      "left": "Маршрут по дням и всё забронировано",
+      "right": "Билет в одну сторону, решаем на месте",
+      "topic": "планирование поездок",
+      "optional": false
+    },
+    {
+      "id": "career-01",
+      "block": "relationship",
+      "sphere": "career",
+      "text": "Партнёру предложили работу мечты в другой стране",
+      "left": "Поеду не раздумывая",
+      "right": "Попрошу отказаться",
+      "topic": "переезд ради карьеры партнёра",
+      "optional": false
+    },
+    {
+      "id": "rhythm-01",
+      "block": "friendship",
+      "sphere": "rhythm",
+      "text": "Близкий человек три дня не отвечал, а потом написал как ни в чём не бывало",
+      "left": "Мне важно знать, что случилось",
+      "right": "Нормально, у всех бывает",
+      "topic": "ритм общения",
+      "optional": false
+    },
+    {
+      "id": "budget-02",
+      "block": "relationship",
+      "sphere": "budget",
+      "text": "Партнёр купил вещь за 30 000 ₽, не посоветовавшись",
+      "left": "Такие покупки обсуждаем",
+      "right": "Нормально, это личные траты",
+      "topic": "крупные покупки",
+      "optional": false
+    },
+    {
+      "id": "loyalty-01",
+      "block": "friendship",
+      "sphere": "loyalty",
+      "text": "Близкий человек явно неправ в споре с кем-то третьим",
+      "left": "Скажу при всех, что тот неправ",
+      "right": "Поддержу при всех, разберёмся наедине",
+      "topic": "поддержка, когда близкий неправ",
+      "optional": false
+    },
+    {
+      "id": "intimacy-01",
+      "block": "relationship",
+      "sphere": "intimacy",
+      "text": "В интимной жизни вам ближе…",
+      "left": "Привычное и проверенное",
+      "right": "Пробовать новое",
+      "topic": "новизна в интимной жизни",
+      "optional": true
+    },
+    {
+      "id": "honesty-01",
+      "block": "friendship",
+      "sphere": "honesty",
+      "text": "Новая стрижка близкого человека вам не нравится",
+      "left": "Скажу честно",
+      "right": "Похвалю — уже не исправить",
+      "topic": "неприятная правда",
+      "optional": false
+    },
+    {
+      "id": "space-01",
+      "block": "relationship",
+      "sphere": "space",
+      "text": "Партнёр просит доступ к вашему телефону",
+      "left": "Пожалуйста, мне нечего скрывать",
+      "right": "Телефон — моё личное пространство",
+      "topic": "личное пространство и телефоны",
+      "optional": false
+    },
+    {
+      "id": "money-01",
+      "block": "friendship",
+      "sphere": "money",
+      "text": "Вам неожиданно пришли 50 000 ₽",
+      "left": "Отложу всё до копейки",
+      "right": "Потрачу на впечатления",
+      "topic": "отношение к неожиданным деньгам",
+      "optional": false
+    },
+    {
+      "id": "relatives-01",
+      "block": "relationship",
+      "sphere": "relatives",
+      "text": "Родители партнёра зовут в гости каждые выходные",
+      "left": "Почему нет, это семья",
+      "right": "Раз в месяц достаточно",
+      "topic": "встречи с родителями",
+      "optional": false
+    },
+    {
+      "id": "values-02",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Разговоры о политике",
+      "left": "Обсуждать важно, даже если спорим",
+      "right": "Лучше обходить эту тему",
+      "topic": "разговоры о политике",
+      "optional": false
+    },
+    {
+      "id": "roles-01",
+      "block": "relationship",
+      "sphere": "roles",
+      "text": "Как вам приятнее всего чувствовать любовь",
+      "left": "Слова и признания",
+      "right": "Поступки и забота",
+      "topic": "слова или дела",
+      "optional": false
+    },
+    {
+      "id": "conflicts-02",
+      "block": "friendship",
+      "sphere": "conflicts",
+      "text": "Во время спора вы скорее…",
+      "left": "Говорю тихо и сдержанно",
+      "right": "Повышаю голос, если задело",
+      "topic": "эмоции в споре",
+      "optional": false
+    },
+    {
+      "id": "kids-03",
+      "block": "relationship",
+      "sphere": "kids",
+      "text": "Сколько детей в идеале",
+      "left": "Один",
+      "right": "Трое и больше",
+      "topic": "количество детей",
+      "optional": false
+    },
+    {
+      "id": "humor-03",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "Вечер вдвоём с близким человеком. Что ценнее?",
+      "left": "Смеяться до слёз над глупостями",
+      "right": "Долгий разговор по душам",
+      "topic": "смех или глубокие разговоры",
+      "optional": false
+    },
+    {
+      "id": "home-02",
+      "block": "relationship",
+      "sphere": "home",
+      "text": "Кто готовит дома",
+      "left": "Тот, кто любит готовить",
+      "right": "Строго по очереди",
+      "topic": "готовка",
+      "optional": false
+    },
+    {
+      "id": "leisure-03",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Большая шумная вечеринка до утра",
+      "left": "Моё, зовите",
+      "right": "Лучше маленькая компания за столом",
+      "topic": "вечеринки",
+      "optional": false
+    },
+    {
+      "id": "living-02",
+      "block": "relationship",
+      "sphere": "living",
+      "text": "Своё жильё в ипотеку или съём",
+      "left": "Ипотека, зато своё",
+      "right": "Аренда и свобода переехать",
+      "topic": "ипотека или аренда",
+      "optional": false
+    },
+    {
+      "id": "rhythm-02",
+      "block": "friendship",
+      "sphere": "rhythm",
+      "text": "Как часто хочется переписываться с близким человеком",
+      "left": "Каждый день, обо всём подряд",
+      "right": "Раз в несколько дней, по делу",
+      "topic": "частота переписки",
+      "optional": false
+    },
+    {
+      "id": "career-02",
+      "block": "relationship",
+      "sphere": "career",
+      "text": "Партнёр работает по вечерам и выходным ради роста",
+      "left": "Мне будет не хватать партнёра",
+      "right": "Поддержу — это вложение в будущее",
+      "topic": "работа по вечерам",
+      "optional": false
+    },
+    {
+      "id": "loyalty-02",
+      "block": "friendship",
+      "sphere": "loyalty",
+      "text": "Три часа ночи, близкий человек просит приехать — что-то случилось",
+      "left": "Еду, не задавая вопросов",
+      "right": "Сначала выясню, насколько это срочно",
+      "topic": "помощь среди ночи",
+      "optional": false
+    },
+    {
+      "id": "budget-03",
+      "block": "relationship",
+      "sphere": "budget",
+      "text": "Финансовая подушка",
+      "left": "Минимум на полгода жизни",
+      "right": "Живём сейчас, накопим потом",
+      "topic": "накопления",
+      "optional": false
+    },
+    {
+      "id": "honesty-02",
+      "block": "friendship",
+      "sphere": "honesty",
+      "text": "Вы видите, что близкий человек совершает ошибку, но совета не просили",
+      "left": "Скажу сразу",
+      "right": "Промолчу, пока не спросят",
+      "topic": "советы без запроса",
+      "optional": false
+    },
+    {
+      "id": "intimacy-02",
+      "block": "relationship",
+      "sphere": "intimacy",
+      "text": "Как часто вам хочется близости",
+      "left": "Пару раз в месяц достаточно",
+      "right": "Почти каждый день",
+      "topic": "частота близости",
+      "optional": true
+    },
+    {
+      "id": "money-02",
+      "block": "friendship",
+      "sphere": "money",
+      "text": "Счёт в ресторане, а вы заказали меньше всех",
+      "left": "Делим поровну, так проще",
+      "right": "Каждый платит за своё",
+      "topic": "как делить счёт",
+      "optional": false
+    },
+    {
+      "id": "space-02",
+      "block": "relationship",
+      "sphere": "space",
+      "text": "Партнёр переписывается с бывшими",
+      "left": "Для меня это недопустимо",
+      "right": "Нормально, если это просто общение",
+      "topic": "общение с бывшими",
+      "optional": false
+    },
+    {
+      "id": "values-03",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Близкий человек придерживается противоположных взглядов на жизнь и общество",
+      "left": "Не мешает близости",
+      "right": "Сложно — это про ценности",
+      "topic": "разные взгляды",
+      "optional": false
+    },
+    {
+      "id": "relatives-02",
+      "block": "relationship",
+      "sphere": "relatives",
+      "text": "Мама партнёра советует, как вам жить",
+      "left": "Мягко, но твёрдо остановлю",
+      "right": "Выслушаю — может пригодиться",
+      "topic": "советы родственников",
+      "optional": false
+    },
+    {
+      "id": "conflicts-03",
+      "block": "friendship",
+      "sphere": "conflicts",
+      "text": "Вас обидели, но потом извинились",
+      "left": "Прощаю и забываю",
+      "right": "Прощаю, но запоминаю",
+      "topic": "прощение",
+      "optional": false
+    },
+    {
+      "id": "roles-02",
+      "block": "relationship",
+      "sphere": "roles",
+      "text": "А если выбирать из этого",
+      "left": "Подарки и сюрпризы",
+      "right": "Время вместе без телефонов",
+      "topic": "подарки или время вместе",
+      "optional": false
+    },
+    {
+      "id": "humor-04",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "Над вами постоянно подтрунивают в общем чате",
+      "left": "Это знак любви, отвечу тем же",
+      "right": "Устаю от постоянных подколов",
+      "topic": "подколы и подтрунивание",
+      "optional": false
+    },
+    {
+      "id": "kids-04",
+      "block": "relationship",
+      "sphere": "kids",
+      "text": "Ребёнок капризничает в магазине",
+      "left": "Мягко договориться",
+      "right": "Строго и сразу",
+      "topic": "строгость в воспитании",
+      "optional": false
+    },
+    {
+      "id": "leisure-04",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Близкий человек зовёт в поход с палатками на неделю",
+      "left": "Соберусь за вечер",
+      "right": "Только если будут душ и кровать",
+      "topic": "походы и комфорт",
+      "optional": false
+    },
+    {
+      "id": "home-03",
+      "block": "relationship",
+      "sphere": "home",
+      "text": "Домашние животные",
+      "left": "Хочу собаку или кошку",
+      "right": "Лучше без животных",
+      "topic": "домашние животные",
+      "optional": false
+    },
+    {
+      "id": "rhythm-03",
+      "block": "friendship",
+      "sphere": "rhythm",
+      "text": "Голосовое сообщение на пять минут",
+      "left": "Удобно, слушаю с удовольствием",
+      "right": "Лучше напиши текстом",
+      "topic": "голосовые сообщения",
+      "optional": false
+    },
+    {
+      "id": "living-03",
+      "block": "relationship",
+      "sphere": "living",
+      "text": "Переезд в другую страну",
+      "left": "Легко — мир большой",
+      "right": "Только в крайнем случае",
+      "topic": "переезд в другую страну",
+      "optional": false
+    },
+    {
+      "id": "loyalty-03",
+      "block": "friendship",
+      "sphere": "loyalty",
+      "text": "Общий знакомый сильно вас обидел",
+      "left": "Близкий человек должен выбрать сторону",
+      "right": "Нормально, если общается с обоими",
+      "topic": "выбор стороны в конфликте",
+      "optional": false
+    },
+    {
+      "id": "career-03",
+      "block": "relationship",
+      "sphere": "career",
+      "text": "Что для вас работа",
+      "left": "Призвание и смысл",
+      "right": "Способ зарабатывать на жизнь",
+      "topic": "роль работы",
+      "optional": false
+    },
+    {
+      "id": "honesty-03",
+      "block": "friendship",
+      "sphere": "honesty",
+      "text": "Вам доверили секрет, а о нём спрашивает ваш партнёр",
+      "left": "Партнёру можно рассказать",
+      "right": "Секрет — значит никому",
+      "topic": "хранение секретов",
+      "optional": false
+    },
+    {
+      "id": "budget-04",
+      "block": "relationship",
+      "sphere": "budget",
+      "text": "Кредит на отпуск или технику",
+      "left": "Только на жильё, остальное копим",
+      "right": "Удобно, почему нет",
+      "topic": "кредиты",
+      "optional": false
+    },
+    {
+      "id": "money-03",
+      "block": "friendship",
+      "sphere": "money",
+      "text": "Близкий человек просит в долг заметную для вас сумму",
+      "left": "Дам, даже если не вернут",
+      "right": "Откажу — деньги портят отношения",
+      "topic": "деньги в долг",
+      "optional": false
+    },
+    {
+      "id": "intimacy-03",
+      "block": "relationship",
+      "sphere": "intimacy",
+      "text": "Говорить о желаниях в постели",
+      "left": "Легко, обсуждаем всё",
+      "right": "Неловко, пусть сложится само",
+      "topic": "разговоры о желаниях",
+      "optional": true
+    },
+    {
+      "id": "values-04",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Вера и религия в вашей жизни",
+      "left": "Важная часть меня",
+      "right": "Не играет роли",
+      "topic": "вера",
+      "optional": false
+    },
+    {
+      "id": "space-03",
+      "block": "relationship",
+      "sphere": "space",
+      "text": "Партнёр встречается один на один с другом противоположного пола",
+      "left": "Нормально, доверяю",
+      "right": "Мне некомфортно",
+      "topic": "дружба с противоположным полом",
+      "optional": false
+    },
+    {
+      "id": "conflicts-04",
+      "block": "friendship",
+      "sphere": "conflicts",
+      "text": "Кто должен первым идти на примирение",
+      "left": "Тот, кто неправ",
+      "right": "Тот, кто сильнее скучает",
+      "topic": "примирение",
+      "optional": false
+    },
+    {
+      "id": "relatives-03",
+      "block": "relationship",
+      "sphere": "relatives",
+      "text": "Пожить первое время с родителями",
+      "left": "Ради экономии — можно",
+      "right": "Ни при каких условиях",
+      "topic": "жизнь с родителями",
+      "optional": false
+    },
+    {
+      "id": "humor-05",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "Ваш юмор чаще…",
+      "left": "Тонкий и ироничный",
+      "right": "Простой и дурашливый",
+      "topic": "стиль юмора",
+      "optional": false
+    },
+    {
+      "id": "roles-03",
+      "block": "relationship",
+      "sphere": "roles",
+      "text": "Кто делает первый шаг: зовёт на свидание, предлагает съехаться",
+      "left": "Кто угодно",
+      "right": "Скорее мужчина",
+      "topic": "традиционные роли",
+      "optional": false
+    },
+    {
+      "id": "leisure-05",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "В 11 вечера звучит «поехали прямо сейчас»",
+      "left": "Это лучшие вечера",
+      "right": "Предпочту договориться заранее",
+      "topic": "спонтанность",
+      "optional": false
+    },
+    {
+      "id": "kids-05",
+      "block": "relationship",
+      "sphere": "kids",
+      "text": "Кто сидит с малышом первый год",
+      "left": "Тот, кто меньше зарабатывает",
+      "right": "Поровну, по очереди",
+      "topic": "декрет",
+      "optional": false
+    },
+    {
+      "id": "rhythm-04",
+      "block": "friendship",
+      "sphere": "rhythm",
+      "text": "Вы не виделись месяц",
+      "left": "Встретимся — как будто вчера расстались",
+      "right": "Начинаю скучать и чувствую дистанцию",
+      "topic": "частота встреч",
+      "optional": false
+    },
+    {
+      "id": "home-04",
+      "block": "relationship",
+      "sphere": "home",
+      "text": "Клининг раз в неделю",
+      "left": "Сами справимся",
+      "right": "Платить, чтобы не тратить время",
+      "topic": "уборка за деньги",
+      "optional": false
+    },
+    {
+      "id": "loyalty-04",
+      "block": "friendship",
+      "sphere": "loyalty",
+      "text": "Просят помочь с переездом в ваш единственный выходной",
+      "left": "Помогу, выходной подождёт",
+      "right": "Откажу — мне тоже нужен отдых",
+      "topic": "помощь в ущерб себе",
+      "optional": false
+    },
+    {
+      "id": "living-04",
+      "block": "relationship",
+      "sphere": "living",
+      "text": "Где вы видите себя через 10 лет",
+      "left": "Квартира в центре",
+      "right": "Свой дом с участком",
+      "topic": "дом или квартира",
+      "optional": false
+    },
+    {
+      "id": "honesty-04",
+      "block": "friendship",
+      "sphere": "honesty",
+      "text": "Близкий человек берёт ваши вещи без спроса",
+      "left": "Пусть берёт — что моё, то твоё",
+      "right": "Хочу, чтобы спрашивали",
+      "topic": "личные вещи и границы",
+      "optional": false
+    },
+    {
+      "id": "career-04",
+      "block": "relationship",
+      "sphere": "career",
+      "text": "Партнёр хочет уйти со стабильной работы в свой проект",
+      "left": "Сначала финансовая подушка",
+      "right": "Вперёд, справимся",
+      "topic": "рискованные карьерные шаги",
+      "optional": false
+    },
+    {
+      "id": "money-04",
+      "block": "friendship",
+      "sphere": "money",
+      "text": "Подарок на день рождения близкому человеку",
+      "left": "Недорогой, но с душой",
+      "right": "Дорогой и продуманный",
+      "topic": "подарки",
+      "optional": false
+    },
+    {
+      "id": "budget-05",
+      "block": "relationship",
+      "sphere": "budget",
+      "text": "Помощь родителям деньгами",
+      "left": "Регулярно и без вопросов",
+      "right": "Только в крайних случаях",
+      "topic": "помощь родителям",
+      "optional": false
+    },
+    {
+      "id": "values-05",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Вы нашли на улице кошелёк с деньгами, но без документов",
+      "left": "Попробую найти владельца, даже если хлопотно",
+      "right": "Ну, повезло",
+      "topic": "честность в мелочах",
+      "optional": false
+    },
+    {
+      "id": "intimacy-04",
+      "block": "relationship",
+      "sphere": "intimacy",
+      "text": "Нежность в течение дня: объятия, прикосновения",
+      "left": "Достаточно иногда",
+      "right": "Постоянно, это важно",
+      "topic": "телесная нежность",
+      "optional": true
+    },
+    {
+      "id": "conflicts-05",
+      "block": "friendship",
+      "sphere": "conflicts",
+      "text": "Мелкое раздражение: опоздание, грязная чашка",
+      "left": "Скажу сразу, пока это мелочь",
+      "right": "Пропущу — не стоит ссоры",
+      "topic": "мелкие претензии",
+      "optional": false
+    },
+    {
+      "id": "space-04",
+      "block": "relationship",
+      "sphere": "space",
+      "text": "Отпуск отдельно, каждый со своими друзьями",
+      "left": "Отпуск — только вместе",
+      "right": "Отлично, это полезно",
+      "topic": "раздельный отдых",
+      "optional": false
+    },
+    {
+      "id": "humor-06",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "Близкий человек расстроен, а вам ситуация кажется скорее смешной",
+      "left": "Попробую разрядить шуткой",
+      "right": "Отложу шутки, пока не отпустит",
+      "topic": "юмор в трудный момент",
+      "optional": false
+    },
+    {
+      "id": "relatives-04",
+      "block": "relationship",
+      "sphere": "relatives",
+      "text": "Вашему окружению не нравится ваш партнёр",
+      "left": "Это мой выбор, не их",
+      "right": "Мне важно их мнение",
+      "topic": "мнение окружения о партнёре",
+      "optional": false
+    },
+    {
+      "id": "leisure-06",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Хобби близкого человека вам совсем не интересно",
+      "left": "Всё равно попробую составить компанию",
+      "right": "Пусть занимается этим с другими",
+      "topic": "общие увлечения",
+      "optional": false
+    },
+    {
+      "id": "roles-04",
+      "block": "relationship",
+      "sphere": "roles",
+      "text": "Починить кран, собрать мебель",
+      "left": "Есть мужские и женские дела",
+      "right": "Тот, кто умеет, — неважно кто",
+      "topic": "«мужские» и «женские» дела",
+      "optional": false
+    },
+    {
+      "id": "rhythm-05",
+      "block": "friendship",
+      "sphere": "rhythm",
+      "text": "Звонок без предупреждения",
+      "left": "Звони когда хочешь",
+      "right": "Сначала напиши, удобно ли",
+      "topic": "звонки без предупреждения",
+      "optional": false
+    },
+    {
+      "id": "kids-06",
+      "block": "relationship",
+      "sphere": "kids",
+      "text": "Если детей не получится завести естественным путём",
+      "left": "Будем пробовать всё: ЭКО, усыновление",
+      "right": "Значит, будем жить вдвоём",
+      "topic": "ЭКО и усыновление",
+      "optional": false
+    },
+    {
+      "id": "loyalty-05",
+      "block": "friendship",
+      "sphere": "loyalty",
+      "text": "Когда вам плохо, от близкого человека нужнее…",
+      "left": "Просто быть рядом",
+      "right": "Помочь найти решение",
+      "topic": "как поддерживать",
+      "optional": false
+    },
+    {
+      "id": "home-05",
+      "block": "relationship",
+      "sphere": "home",
+      "text": "Посуда после ужина",
+      "left": "Сразу, пока не засохла",
+      "right": "Утром или когда наберётся",
+      "topic": "бытовые привычки",
+      "optional": false
+    },
+    {
+      "id": "honesty-05",
+      "block": "friendship",
+      "sphere": "honesty",
+      "text": "Вы узнали об измене в паре вашего близкого человека",
+      "left": "Расскажу сразу",
+      "right": "Не моё дело вмешиваться",
+      "topic": "вмешательство в чужие отношения",
+      "optional": false
+    },
+    {
+      "id": "living-05",
+      "block": "relationship",
+      "sphere": "living",
+      "text": "Съезжаться до свадьбы",
+      "left": "Можно и после свадьбы",
+      "right": "Обязательно — надо проверить быт",
+      "topic": "жизнь вместе до брака",
+      "optional": false
+    },
+    {
+      "id": "money-05",
+      "block": "friendship",
+      "sphere": "money",
+      "text": "Как часто за последний год вы тратили больше, чем планировали?",
+      "left": "Часто — деньги для того и нужны",
+      "right": "Редко — держу бюджет",
+      "topic": "контроль трат",
+      "optional": false
+    },
+    {
+      "id": "career-05",
+      "block": "relationship",
+      "sphere": "career",
+      "text": "Один из вас зарабатывает заметно больше",
+      "left": "Неважно, кто",
+      "right": "Мне важно зарабатывать не меньше",
+      "topic": "доходы в паре",
+      "optional": false
+    },
+    {
+      "id": "values-06",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Что для вас важнее в жизни",
+      "left": "Стабильность и уверенность в завтрашнем дне",
+      "right": "Свобода и новые возможности",
+      "topic": "стабильность или свобода",
+      "optional": false
+    },
+    {
+      "id": "budget-06",
+      "block": "relationship",
+      "sphere": "budget",
+      "text": "Кто ведёт семейные финансы",
+      "left": "Один, кому это нравится",
+      "right": "Вместе, по общей таблице",
+      "topic": "ведение бюджета",
+      "optional": false
+    },
+    {
+      "id": "conflicts-06",
+      "block": "friendship",
+      "sphere": "conflicts",
+      "text": "Выяснять отношения при посторонних",
+      "left": "Если накипело — можно",
+      "right": "Только наедине",
+      "topic": "ссоры при других",
+      "optional": false
+    },
+    {
+      "id": "intimacy-05",
+      "block": "relationship",
+      "sphere": "intimacy",
+      "text": "Нежность на людях",
+      "left": "Держаться за руки и целоваться — нормально",
+      "right": "Нежность — только дома",
+      "topic": "нежность на людях",
+      "optional": true
+    },
+    {
+      "id": "humor-07",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "Мемы и смешные видео в переписке",
+      "left": "Хоть двадцать в день",
+      "right": "Пара в неделю, но в точку",
+      "topic": "мемы в переписке",
+      "optional": false
+    },
+    {
+      "id": "space-05",
+      "block": "relationship",
+      "sphere": "space",
+      "text": "Видеть геолокацию друг друга",
+      "left": "Удобно, почему нет",
+      "right": "Это слежка",
+      "topic": "геолокация",
+      "optional": false
+    },
+    {
+      "id": "leisure-07",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Алкоголь на встречах",
+      "left": "Без него встреча как будто не встреча",
+      "right": "Спокойно обхожусь без него",
+      "topic": "алкоголь на встречах",
+      "optional": false
+    },
+    {
+      "id": "relatives-05",
+      "block": "relationship",
+      "sphere": "relatives",
+      "text": "У вас конфликт с родителем партнёра. Партнёр…",
+      "left": "Должен встать на мою сторону",
+      "right": "Может оставаться нейтральным",
+      "topic": "позиция в семейном конфликте",
+      "optional": false
+    },
+    {
+      "id": "rhythm-06",
+      "block": "friendship",
+      "sphere": "rhythm",
+      "text": "Близкий человек пропал на пару месяцев — новая работа и новые отношения",
+      "left": "Пойму и подожду",
+      "right": "Будет обидно, что про меня забыли",
+      "topic": "исчезновение из-за занятости",
+      "optional": false
+    },
+    {
+      "id": "roles-05",
+      "block": "relationship",
+      "sphere": "roles",
+      "text": "Важные решения в паре",
+      "left": "Только вместе",
+      "right": "Один решает, другой доверяет",
+      "topic": "принятие решений",
+      "optional": false
+    },
+    {
+      "id": "loyalty-06",
+      "block": "friendship",
+      "sphere": "loyalty",
+      "text": "Близкий человек получил то, о чём мечтали вы",
+      "left": "Порадуюсь всей душой",
+      "right": "Порадуюсь, но будет неприятно",
+      "topic": "зависть и радость за другого",
+      "optional": false
+    },
+    {
+      "id": "kids-07",
+      "block": "relationship",
+      "sphere": "kids",
+      "text": "Ребёнок хочет бросить музыкальную школу на середине",
+      "left": "Пусть бросает — это его жизнь",
+      "right": "Надо доучиться",
+      "topic": "свобода ребёнка",
+      "optional": false
+    },
+    {
+      "id": "honesty-06",
+      "block": "friendship",
+      "sphere": "honesty",
+      "text": "Близкий человек почти всегда опаздывает на 20 минут",
+      "left": "Не страшно, привыкну",
+      "right": "Это неуважение — скажу об этом",
+      "topic": "пунктуальность",
+      "optional": false
+    },
+    {
+      "id": "home-06",
+      "block": "relationship",
+      "sphere": "home",
+      "text": "Гости дома",
+      "left": "Пусть заходят хоть каждый день",
+      "right": "Дом — только для нас",
+      "topic": "гости дома",
+      "optional": false
+    },
+    {
+      "id": "money-06",
+      "block": "friendship",
+      "sphere": "money",
+      "text": "Один из вас зарабатывает намного больше",
+      "left": "Пусть чаще угощает, это нормально",
+      "right": "Хочу платить на равных",
+      "topic": "разница в доходах",
+      "optional": false
+    },
+    {
+      "id": "living-06",
+      "block": "relationship",
+      "sphere": "living",
+      "text": "Своя комната или кабинет у каждого",
+      "left": "Обязательно",
+      "right": "Нам хватит общего пространства",
+      "topic": "своё пространство дома",
+      "optional": false
+    },
+    {
+      "id": "values-07",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Мнение окружающих о вас",
+      "left": "Важно, как я выгляжу в глазах других",
+      "right": "Мне почти всё равно",
+      "topic": "мнение окружающих",
+      "optional": false
+    },
+    {
+      "id": "career-06",
+      "block": "relationship",
+      "sphere": "career",
+      "text": "Новая профессия после 30",
+      "left": "Всегда за",
+      "right": "Лучше расти в своём деле",
+      "topic": "смена профессии",
+      "optional": false
+    },
+    {
+      "id": "conflicts-07",
+      "block": "friendship",
+      "sphere": "conflicts",
+      "text": "Ваш последний серьёзный конфликт закончился…",
+      "left": "Громким разговором и примирением",
+      "right": "Тихим отдалением",
+      "topic": "как заканчиваются конфликты",
+      "optional": false
+    },
+    {
+      "id": "budget-07",
+      "block": "relationship",
+      "sphere": "budget",
+      "text": "Отпуск",
+      "left": "Один раз в год, но роскошный",
+      "right": "Чаще, но скромнее",
+      "topic": "траты на отдых",
+      "optional": false
+    },
+    {
+      "id": "humor-08",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "Есть ли темы, над которыми нельзя шутить?",
+      "left": "Шутить можно обо всём",
+      "right": "Есть темы, над которыми не шучу",
+      "topic": "границы в шутках",
+      "optional": false
+    },
+    {
+      "id": "intimacy-06",
+      "block": "relationship",
+      "sphere": "intimacy",
+      "text": "Ваши желания близости не совпали по времени",
+      "left": "Пойду навстречу партнёру",
+      "right": "Не стану через силу",
+      "topic": "несовпадение желаний",
+      "optional": true
+    },
+    {
+      "id": "leisure-08",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Ваше лучшее время суток",
+      "left": "Утро — я жаворонок",
+      "right": "Ночь — я сова",
+      "topic": "жаворонок или сова",
+      "optional": false
+    },
+    {
+      "id": "space-06",
+      "block": "relationship",
+      "sphere": "space",
+      "text": "Вечер в одиночестве, когда партнёр дома",
+      "left": "Почти не нужно",
+      "right": "Нужно регулярно",
+      "topic": "время наедине с собой",
+      "optional": false
+    },
+    {
+      "id": "rhythm-07",
+      "block": "friendship",
+      "sphere": "rhythm",
+      "text": "Кто обычно первым предлагает встретиться",
+      "left": "Чаще я, и меня это устраивает",
+      "right": "Хочу, чтобы инициатива была взаимной",
+      "topic": "инициатива во встречах",
+      "optional": false
+    },
+    {
+      "id": "relatives-06",
+      "block": "relationship",
+      "sphere": "relatives",
+      "text": "Новый год",
+      "left": "С семьями — это традиция",
+      "right": "Вдвоём или с друзьями",
+      "topic": "семейные праздники",
+      "optional": false
+    },
+    {
+      "id": "loyalty-07",
+      "block": "friendship",
+      "sphere": "loyalty",
+      "text": "О близком человеке плохо говорят у него за спиной",
+      "left": "Сразу заступлюсь",
+      "right": "Промолчу, а потом расскажу об этом",
+      "topic": "защита за спиной",
+      "optional": false
+    },
+    {
+      "id": "roles-06",
+      "block": "relationship",
+      "sphere": "roles",
+      "text": "Цветы и свидания после нескольких лет вместе",
+      "left": "Должны оставаться всегда",
+      "right": "С годами это естественно уходит",
+      "topic": "романтика в долгих отношениях",
+      "optional": false
+    },
+    {
+      "id": "honesty-07",
+      "block": "friendship",
+      "sphere": "honesty",
+      "text": "Близкий человек выкладывает ваши общие фото и пишет о вас в соцсетях",
+      "left": "Пожалуйста, мне приятно",
+      "right": "Только с моего согласия",
+      "topic": "личное в соцсетях",
+      "optional": false
+    },
+    {
+      "id": "money-07",
+      "block": "friendship",
+      "sphere": "money",
+      "text": "Близкий человек предлагает вместе вложиться в его идею",
+      "left": "Рискну — доверяю",
+      "right": "Дружба отдельно, деньги отдельно",
+      "topic": "совместные вложения",
+      "optional": false
+    },
+    {
+      "id": "values-08",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Экология в быту: сортировка мусора, меньше пластика",
+      "left": "Стараюсь, это важно",
+      "right": "Не трачу на это силы",
+      "topic": "экологичность",
+      "optional": false
+    },
+    {
+      "id": "conflicts-08",
+      "block": "friendship",
+      "sphere": "conflicts",
+      "text": "Вспомнить старую обиду в новой ссоре",
+      "left": "Бывает, это часть разговора",
+      "right": "Нельзя — что прошло, то прошло",
+      "topic": "старые обиды",
+      "optional": false
+    }
   ]
 }
