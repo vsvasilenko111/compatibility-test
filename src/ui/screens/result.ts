@@ -1,3 +1,4 @@
+import { calibrate, FRIENDSHIP_TABLE, RELATIONSHIP_TABLE } from '../../scoring/calibration';
 import type { CompareResult } from '../../scoring/compare';
 import type { Profile } from '../../types';
 import { h } from '../dom';
@@ -76,6 +77,11 @@ function sphereMap(tiles: SphereTile[]): HTMLElement {
 
 export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string): HTMLElement {
   const rel = result.relationship;
+  // На постере и в вердикте — откалиброванные проценты (50% — типичная случайная пара); карта сфер — по сырым.
+  const shown: CompareResult = {
+    relationship: { ...rel, percent: calibrate(rel.percent, RELATIONSHIP_TABLE) },
+    friendship: { ...result.friendship, percent: calibrate(result.friendship.percent, FRIENDSHIP_TABLE) },
+  };
   const flags = flagsLine(rel);
   const reds = rel.redFlags.map((i) => i.topic);
 
@@ -83,15 +89,15 @@ export function resultScreen(a: Profile, b: Profile, result: CompareResult, shar
     h('div', { class: 'poster' },
       h('p', { class: 'poster-names' }, `${a.name || 'Первый'} × ${b.name || 'Второй'}`),
       h('div', { class: 'poster-scores' },
-        score(rel.percent, 'как пара', 'main'),
-        score(result.friendship.percent, 'как друзья', 'second')),
-      h('p', { class: 'poster-verdict' }, verdict(result)),
+        score(shown.relationship.percent, 'совместимость в отношениях', 'main'),
+        score(shown.friendship.percent, 'совместимость в дружбе', 'second')),
+      h('p', { class: 'poster-verdict' }, verdict(shown)),
       flags ? h('p', { class: 'poster-flags' }, flags) : null),
     h('details', { class: 'explain' },
       h('summary', {}, 'Что значат проценты?'),
-      h('p', {}, '«Как друзья» — по 60 вопросам об общении: юмор, досуг, доверие, ссоры. Насколько вам легко вместе.'),
-      h('p', {}, '«Как пара» — по всем 118 вопросам: к дружбе добавляются дети, быт, деньги, близость, родные. Получится ли общая жизнь.'),
-      h('p', {}, 'Если дружба заметно выше — вам легко вместе, но во взглядах на совместную жизнь есть что обсудить.')),
+      h('p', {}, 'Совместимость в дружбе — по 60 вопросам об общении: юмор, досуг, доверие, ссоры. Насколько вам легко вместе.'),
+      h('p', {}, 'Совместимость в отношениях — по всем 118 вопросам: к дружбе добавляются дети, быт, деньги, близость, родные. Получится ли общая жизнь.'),
+      h('p', {}, '50% — как у двух случайных людей, 75% и выше — заметно лучше большинства пар. Если дружба заметно выше отношений — вам легко вместе, но во взглядах на совместную жизнь есть что обсудить.')),
     h('div', { class: 'notes' },
       note('red', reds.length > 1 ? 'Красные флаги' : 'Красный флаг', reds),
       note('talk', 'Стоит обсудить', rel.talkZones.map((i) => i.topic)),
