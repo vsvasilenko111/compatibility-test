@@ -211,3 +211,7 @@ button.secondary { background: var(--cell); color: var(--fg); }
 .lvl-close .dot { background: var(--tone-4); }
 .lvl-apart .dot { background: var(--tone-1); }
 .lvl-opposite .dot { background: var(--tone-0); }
+
+.explain { background: var(--card); border-radius: 12px; padding: 10px 12px; font-size: 0.9rem; }
+.explain summary { cursor: pointer; font-weight: 600; color: var(--fg); }
+.explain p { margin: 8px 0 0; color: var(--muted); }
