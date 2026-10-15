@@ -96,6 +96,7 @@ input[type='text'] {
 .poles span:last-child { text-align: right; }
 .label { margin: 8px 0 0; font-weight: 600; }
 .hint { margin: 0; font-size: 0.85rem; color: var(--muted); }
+.question .lead { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--card); font-size: 0.9rem; line-height: 1.45; }
 .warn { color: var(--orange); }
 .scale { display: grid; grid-template-columns: repeat(11, 1fr); gap: 3px; }
 .scale .cell { padding: 10px 0; border-radius: 8px; font-size: 0.9rem; min-width: 0; }
@@ -156,6 +157,11 @@ input[type='text'] {
 .note.talk .note-label { color: var(--orange); }
 .note.support { border-left-color: var(--green); }
 .note.support .note-label { color: var(--green); }
+.note.soft .note-label { color: var(--muted); }
+.note p { margin: 4px 0 0; line-height: 1.45; }
+.maturity { margin-top: 20px; }
+.maturity .hint { margin: 0 0 8px; }
+.maturity .notes + .hint { margin: 10px 0 0; }
 
 .eyebrow { margin: 4px 0 6px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }

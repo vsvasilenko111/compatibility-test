@@ -15,6 +15,8 @@ import { resultScreen } from './screens/result';
 const QUICK_COUNT = 5;
 const QUICK_BY_QUERY = new URLSearchParams(location.search).has('quick');
 
+const PAST_LEAD = 'Следующие вопросы — о том, как прошлое влияет на настоящее. Отвечайте только на те, на которые хочется: любой можно пропустить, и партнёр не узнает, что вы что-то пропустили.';
+
 /** Публичный адрес для ссылок-приглашений: на хостинге Artifact страница не видит свой адрес, поэтому он вшивается при сборке. */
 const PUBLIC_BASE: string | undefined = import.meta.env.VITE_PUBLIC_URL;
 
@@ -96,6 +98,7 @@ export function startApp(root: HTMLElement): void {
       index: p.index,
       total: ASKED.length,
       response: p.responses[q.id],
+      lead: q.sphere === 'past' && ASKED[p.index - 1]?.sphere !== 'past' ? PAST_LEAD : undefined,
       onBack: p.index > 0 ? () => runTest({ ...p, index: p.index - 1 }) : null,
       onSubmit: (r) => runTest({ ...p, index: p.index + 1, responses: { ...p.responses, [q.id]: r } }),
     }));

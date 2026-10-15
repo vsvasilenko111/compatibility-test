@@ -6,7 +6,7 @@ const mode = (percent: number | null, reds = 0): ModeResult => ({
   percent, spheres: [], superMatches: [], strongMatches: [], talkZones: [], superCount: 0, flexibleCount: 0,
   redFlags: Array.from({ length: reds }, (_, i) => ({ id: `r${i}`, topic: 't', sphere: 's' })),
 });
-const r = (rel: number | null, fr: number | null, reds = 0): CompareResult => ({
+const r = (rel: number | null, fr: number | null, reds = 0): Omit<CompareResult, 'maturity'> => ({
   relationship: mode(rel, reds), friendship: mode(fr),
 });
 

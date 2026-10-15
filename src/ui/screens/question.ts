@@ -7,6 +7,8 @@ export interface QuestionProps {
   index: number;
   total: number;
   response: Response | undefined;
+  /** Вводная строка над вопросом — перед подблоком. */
+  lead?: string;
   onBack: (() => void) | null;
   onSubmit(r: Response): void;
 }
@@ -33,6 +35,7 @@ export function questionScreen(p: QuestionProps): HTMLElement {
       h('div', { class: 'progress' },
         h('div', { class: 'bar', style: `width:${(p.index / p.total) * 100}%` }),
         h('span', {}, `${p.index + 1} / ${p.total}`)),
+      p.lead ? h('p', { class: 'lead' }, p.lead) : null,
       h('h2', {}, q.text),
       h('div', { class: 'poles' }, h('span', {}, `0 — ${q.left}`), h('span', {}, `10 — ${q.right}`)),
       h('div', { class: 'scale mine', role: 'group' },

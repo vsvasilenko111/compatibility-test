@@ -1,7 +1,7 @@
 import type { CompareResult } from '../scoring/compare';
 
 /** Ожидает откалиброванные проценты: 50 — типичная случайная пара. */
-export function verdict(r: CompareResult): string {
+export function verdict(r: Pick<CompareResult, 'relationship' | 'friendship'>): string {
   if (r.relationship.percent === null && r.friendship.percent === null) return 'Для вас обоих эти темы не принципиальны.';
   const rel = r.relationship.percent ?? 100;
   const fr = r.friendship.percent ?? 100;

@@ -16,34 +16,46 @@ describe('банк вопросов', () => {
   it('манифест содержит текущую версию', () => {
     expect(MANIFEST[BANK_VERSION]).toBe(CURRENT_IDS);
   });
-  it('в банке есть оба блока', () => {
-    expect(new Set(QUESTIONS.map((x) => x.block))).toEqual(new Set(['friendship', 'relationship']));
+  it('в банке есть все три блока', () => {
+    expect(new Set(QUESTIONS.map((x) => x.block))).toEqual(new Set(['friendship', 'relationship', 'maturity']));
   });
-  it('сфер 17: 8 дружбы и 9 отношений', () => {
+  it('сфер 21: 8 дружбы, 9 отношений и 4 зрелости', () => {
     expect(SPHERES.filter((s) => s.block === 'friendship')).toHaveLength(8);
     expect(SPHERES.filter((s) => s.block === 'relationship')).toHaveLength(9);
+    expect(SPHERES.filter((s) => s.block === 'maturity')).toHaveLength(4);
   });
 });
 
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('118 вопросов: 60 дружбы и 58 отношений', () => {
-    expect(QUESTIONS).toHaveLength(118);
+  it('136 вопросов: 60 дружбы, 58 отношений и 18 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(136);
     expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(60);
     expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(58);
+    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(18);
+  });
+
+  it('блок зрелости — в конце, вопросы о прошлом — последними и подряд', () => {
+    expect(QUESTIONS.slice(-18).every((x) => x.block === 'maturity')).toBe(true);
+    expect(QUESTIONS.slice(-6).every((x) => x.sphere === 'past')).toBe(true);
   });
 
   it('в каждой сфере дружбы 7–8 вопросов, в каждой сфере отношений 6–8', () => {
-    for (const s of SPHERES) {
+    for (const s of SPHERES.filter((x) => x.block !== 'maturity')) {
       const [min, max] = s.block === 'friendship' ? [7, 8] : [6, 8];
       expect(count(s.id), s.id).toBeGreaterThanOrEqual(min);
       expect(count(s.id), s.id).toBeLessThanOrEqual(max);
     }
   });
 
-  it('пропускать можно только вопросы о близости, и все они пропускаемые', () => {
-    for (const x of QUESTIONS) expect(x.optional, x.id).toBe(x.sphere === 'intimacy');
+  it('пропускать можно только вопросы о близости и о прошлом опыте, и все они пропускаемые', () => {
+    for (const x of QUESTIONS) expect(x.optional, x.id).toBe(x.sphere === 'intimacy' || x.sphere === 'past');
+  });
+
+  it('манифест v3 не изменился — 118 вопросов, без блока зрелости', () => {
+    expect(MANIFEST[3]).toHaveLength(118);
+    expect(MANIFEST[4].slice(0, 118)).toEqual(MANIFEST[3]);
   });
 
   it('манифест v1 не изменился — старые ссылки открываются', () => {
@@ -53,10 +65,11 @@ describe('полный банк', () => {
     ]);
   });
 
-  it('ссылка на полный банк с именем в 40 байт — не длиннее 140 символов', () => {
+  // 4 бита на вопрос: 136 вопросов + имя в 40 байт → 151 символ.
+  it('ссылка на полный банк с именем в 40 байт — не длиннее 155 символов', () => {
     const responses = Object.fromEntries(CURRENT_IDS.map((id) => [id, { value: 10, lo: 0, hi: 10, importance: 3 as const }]));
     const code = encode({ name: 'Александра-Анастасия', bankVersion: BANK_VERSION, responses }, CURRENT_IDS);
-    expect(code.length).toBeLessThanOrEqual(140);
+    expect(code.length).toBeLessThanOrEqual(155);
   });
 });
 
@@ -76,6 +89,9 @@ describe('validateBank ловит ошибки', () => {
   });
   it('два вопроса одной сферы подряд', () => {
     expect(validateBank([q('a', 'humor'), q('b', 'humor')], ['a', 'b']).join()).toMatch(/подряд/);
+  });
+  it('подряд можно только в сфере-подблоке', () => {
+    expect(validateBank([q('a', 'past', 'maturity'), q('b', 'past', 'maturity')], ['a', 'b'])).toEqual([]);
   });
   it('манифест не совпадает с порядком', () => {
     expect(validateBank(ok, ['b', 'a']).join()).toMatch(/манифест/);

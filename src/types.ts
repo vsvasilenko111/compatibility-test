@@ -1,4 +1,5 @@
-export type Block = 'friendship' | 'relationship';
+/** maturity — вопросы об эмоциях и прошлом опыте: на проценты не влияют, дают только опоры и темы для разговора. */
+export type Block = 'friendship' | 'relationship' | 'maturity';
 
 export interface Question {
   id: string;

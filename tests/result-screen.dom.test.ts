@@ -47,3 +47,28 @@ describe('карта сфер в DOM', () => {
     expect(tiles[1].getAttribute('aria-expanded')).toBe('true');
   });
 });
+
+describe('блок «Эмоции и близость» в DOM', () => {
+  const mq: Question[] = [
+    ...qs,
+    { id: 'regul-03', block: 'maturity', sphere: 'regulation', text: 't', left: 'l', right: 'r', topic: 'если партнёр выходит из спора', optional: false },
+    { id: 'regul-04', block: 'maturity', sphere: 'regulation', text: 't', left: 'l', right: 'r', topic: 'когда спор накаляется', optional: false },
+  ];
+  const mp = (name: string, vals: number[]): Profile => ({
+    name, bankVersion: 4, responses: Object.fromEntries(mq.map((q, i) => [q.id, answerFor(vals[i])])),
+  });
+
+  it('тема «если спор накаляется» с текстом, без имён и баллов', () => {
+    const a = mp('Аня', [10, 0, 10, 9, 2]);
+    const b = mp('Миша', [10, 10, 9, 2, 9]);
+    const section = resultScreen(a, b, compare(mq, a, b), 'https://x/#r.a.b').querySelector('.maturity')!;
+    expect(section.textContent).toContain('Если спор накаляется');
+    expect(section.textContent).not.toMatch(/Аня|Миша|\d+ ?из|\b9\b/);
+  });
+
+  it('у ссылок прошлой версии блока нет', () => {
+    const a = p('Аня', [10, 0, 10]);
+    const b = p('Миша', [10, 10, 9]);
+    expect(resultScreen(a, b, compare(mq, a, b), 'https://x/#r.a.b').querySelector('.maturity')).toBeNull();
+  });
+});

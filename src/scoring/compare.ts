@@ -1,4 +1,5 @@
 import type { Answer, Profile, Question } from '../types';
+import { maturity, type MaturityResult } from './maturity';
 import { fit, strength, weight } from './primitives';
 
 export interface ItemRef { id: string; topic: string; sphere: string }
@@ -15,7 +16,7 @@ export interface ModeResult {
   superCount: number;
   flexibleCount: number;
 }
-export interface CompareResult { relationship: ModeResult; friendship: ModeResult }
+export interface CompareResult { relationship: ModeResult; friendship: ModeResult; maturity: MaturityResult | null }
 
 export const TOP_N = 5;
 const CRITICAL = 50;
@@ -100,9 +101,10 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL): ModeResult {
 
 /** relationshipWeight — вес сферы в «отношениях» (по умолчанию все равны); «дружба» всегда без весов. */
 export function compare(questions: Question[], a: Profile, b: Profile, relationshipWeight: SphereWeight = EQUAL): CompareResult {
-  const all = pairs(questions, a, b);
+  const all = pairs(questions.filter((q) => q.block !== 'maturity'), a, b);
   return {
     relationship: mode(all, relationshipWeight),
     friendship: mode(all.filter((p) => p.q.block === 'friendship')),
+    maturity: maturity(questions, a, b),
   };
 }

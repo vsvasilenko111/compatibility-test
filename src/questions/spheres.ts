@@ -1,6 +1,7 @@
 import type { Block } from '../types';
 
-export interface SphereInfo { id: string; block: Block; label: string }
+/** grouped — вопросы сферы идут подряд отдельным подблоком. */
+export interface SphereInfo { id: string; block: Block; label: string; grouped?: boolean }
 
 export const SPHERES: SphereInfo[] = [
   { id: 'humor', block: 'friendship', label: 'Юмор и вайб' },
@@ -20,6 +21,10 @@ export const SPHERES: SphereInfo[] = [
   { id: 'space', block: 'relationship', label: 'Ревность и личное пространство' },
   { id: 'relatives', block: 'relationship', label: 'Родственники и окружение' },
   { id: 'roles', block: 'relationship', label: 'Роли и языки любви' },
+  { id: 'attachment', block: 'maturity', label: 'Близость и опора' },
+  { id: 'regulation', block: 'maturity', label: 'Эмоции в споре' },
+  { id: 'reflection', block: 'maturity', label: 'Понимание себя и партнёра' },
+  { id: 'past', block: 'maturity', label: 'Прошлый опыт', grouped: true },
 ];
 
 /**

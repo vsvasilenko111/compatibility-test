@@ -1,5 +1,6 @@
 import { calibrate, FRIENDSHIP_TABLE, RELATIONSHIP_TABLE } from '../../scoring/calibration';
 import type { CompareResult } from '../../scoring/compare';
+import type { MaturityResult } from '../../scoring/maturity';
 import type { Profile } from '../../types';
 import { h } from '../dom';
 import { flagsLine, sphereDetail, sphereTiles, supportTopics, tileTone, type SphereTile } from '../result-view';
@@ -75,10 +76,23 @@ function sphereMap(tiles: SphereTile[]): HTMLElement {
     panel);
 }
 
+/** Эмоции и прошлый опыт: опоры и бережные темы для разговора. Чьи это ответы — не показываем никогда. */
+function maturitySection(m: MaturityResult | null): HTMLElement | null {
+  if (!m || (!m.strengths.length && !m.talks.length && !m.softTopics.length)) return null;
+  return h('section', { class: 'maturity' },
+    h('h3', { class: 'eyebrow' }, 'Эмоции и близость'),
+    h('p', { class: 'hint' }, 'На проценты не влияет — это подсказки, о чём поговорить.'),
+    h('div', { class: 'notes' },
+      note('support', 'Опоры пары', m.strengths),
+      ...m.talks.map((t) => h('div', { class: 'note talk' }, h('div', { class: 'note-label' }, t.title), h('p', {}, t.text))),
+      note('soft', 'Можно обсудить', m.softTopics)),
+    h('p', { class: 'hint' }, 'Если какая-то тема отзывается сильно, с этим можно прийти к психологу — вдвоём или по отдельности.'));
+}
+
 export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string): HTMLElement {
   const rel = result.relationship;
   // На постере и в вердикте — откалиброванные проценты (50% — типичная случайная пара); карта сфер — по сырым.
-  const shown: CompareResult = {
+  const shown = {
     relationship: { ...rel, percent: calibrate(rel.percent, RELATIONSHIP_TABLE) },
     friendship: { ...result.friendship, percent: calibrate(result.friendship.percent, FRIENDSHIP_TABLE) },
   };
@@ -97,11 +111,13 @@ export function resultScreen(a: Profile, b: Profile, result: CompareResult, shar
       h('summary', {}, 'Что значат проценты?'),
       h('p', {}, 'Совместимость в дружбе — по 60 вопросам об общении: юмор, досуг, доверие, ссоры. Насколько вам легко вместе.'),
       h('p', {}, 'Совместимость в отношениях — по всем 118 вопросам: к дружбе добавляются дети, быт, деньги, близость, родные. Получится ли общая жизнь.'),
+      h('p', {}, 'Вопросы об эмоциях и прошлом опыте на проценты не влияют — по ним видны опоры пары и темы для разговора.'),
       h('p', {}, '50% — как у двух случайных людей, 75% и выше — заметно лучше большинства пар. Если дружба заметно выше отношений — вам легко вместе, но во взглядах на совместную жизнь есть что обсудить.')),
     h('div', { class: 'notes' },
       note('red', reds.length > 1 ? 'Красные флаги' : 'Красный флаг', reds),
       note('talk', 'Стоит обсудить', rel.talkZones.map((i) => i.topic)),
       note('support', 'Ваша опора', supportTopics(rel))),
+    maturitySection(result.maturity),
     sphereMap(sphereTiles(rel.spheres)),
     h('h3', {}, 'Отправить результат партнёру'),
     shareBlock(shareUrl, 'Наш результат совместимости'),
