@@ -12,3 +12,8 @@
 Основная гипотеза: p = 0.08. Внутри новых задуманных пар (12 пар, 66 сравнений) согласие со средним двух экспертов
 выше, чем у процента без штрафа (p = 0). Дополнительно смотрим p = 0.15 и сам риск отдельно.
 Свежие пары: p47–p58, новый автор персонажей, данные новые; формулу после просмотра не меняем.
+
+**Статус (2026-10-16):** проверка отложена — свежие пары ещё не созданы. Готово: research/synthetic/judge-v-combos.json,
+research/scripts/dump-base.ts, research/scripts/maturity-validate.py. Осталось: персонажи p47–p58 (personas-v.json, bios),
+ответы на 136 вопросов, оценки двух экспертов (judge-v.json, judge-v-b.json), затем
+`npx vite-node research/scripts/dump-base.ts research/synthetic/judge-v-combos.json research/synthetic/base-percent-v.json && python3 research/scripts/maturity-validate.py`.
