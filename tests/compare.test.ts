@@ -30,15 +30,16 @@ const misha = () => profile({
 describe('compare — пример Ани и Миши', () => {
   const r = compare(QS, anya(), misha());
 
-  it('отношения = √((61 + 2·10/3)/81 · 1) ≈ 91,40%', () => {
-    expect(r.relationship.percent).toBeCloseTo(91.40, 1);
+  // fit по разнице ответов: дети 10/9 → 5/6, деньги 2/8 → 0, ссоры 9/3 → 0, быт 4/6 → 2/3, пространство 8/8 → 1
+  it('отношения = √(52⅓/81 · 10/23) ≈ 53,00%', () => {
+    expect(r.relationship.percent).toBeCloseTo(53.00, 1);
   });
-  it('дружба считается только по блоку friendship → √(1/3) ≈ 57,74%', () => {
-    expect(r.friendship.percent).toBeCloseTo(57.74, 1);
+  it('дружба считается только по блоку friendship → 0%', () => {
+    expect(r.friendship.percent).toBeCloseTo(0, 5);
     expect(r.friendship.spheres.map((s) => s.sphere)).toEqual(['money', 'conflicts']);
   });
   it('зоны для разговора — деньги и ссоры, флагов нет', () => {
-    expect(ids(r.relationship.talkZones)).toEqual(['money', 'conf']);
+    expect(ids(r.relationship.talkZones)).toEqual(['conf', 'money']);
     expect(r.relationship.redFlags).toEqual([]);
   });
   it('дети 10/9 при важности 50 и 10 → сильное совпадение', () => {
@@ -50,30 +51,30 @@ describe('compare — пример Ани и Миши', () => {
     expect(r.relationship.flexibleCount).toBe(1);
   });
   it('ItemRef несёт topic и сферу, а не ответы', () => {
-    expect(r.relationship.talkZones[0]).toEqual({ id: 'money', topic: 'topic-money', sphere: 'money' });
+    expect(r.relationship.talkZones[0]).toEqual({ id: 'conf', topic: 'topic-conf', sphere: 'conflicts' });
   });
 });
 
 describe('compare — граничные случаи', () => {
-  it('критичное расхождение → красный флаг и ≈46,70%', () => {
+  it('критичное расхождение → красный флаг и ≈9,77%', () => {
     const m = misha();
     m.responses.kids = ans(0, 0, 10, 2);
     const r = compare(QS, anya(), m);
     expect(ids(r.relationship.redFlags)).toEqual(['kids']);
-    expect(r.relationship.percent).toBeCloseTo(46.70, 1);
+    expect(r.relationship.percent).toBeCloseTo(9.77, 1);
     expect(ids(r.relationship.talkZones)).not.toContain('kids');
   });
 
   it('пропущенный одним вопрос исключается для обоих', () => {
     const m = misha();
     m.responses.money = 'skipped';
-    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(95.19, 1);
+    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(57.88, 1);
   });
 
   it('вопрос, которого нет в коде другого (старая версия банка), исключается', () => {
     const m = misha();
     delete m.responses.space;
-    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(90.12, 1);
+    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(49.39, 1);
   });
 
   it('у обоих все веса 0 → null, и у сфер тоже null', () => {
@@ -85,8 +86,9 @@ describe('compare — граничные случаи', () => {
 
   it('у одного все веса 0 → его S = 1', () => {
     const zero = profile(Object.fromEntries(QS.map((x) => [x.id, ans(5, 0, 10, 0)])));
-    // S_A = 1; S_B = (10+1+10+1+1·5/6)/23 = 137/138 (space: 5 вне [6,10] на 1 деление)
-    expect(compare(QS, zero, misha()).relationship.percent).toBeCloseTo(Math.sqrt(137 / 138) * 100, 5);
+    // S_A = 1; Миша против пятёрок: дети 9 → 2/6, деньги 8 → 3/6, ссоры 3 → 4/6, быт 6 → 5/6, пространство 8 → 3/6
+    // S_B = (10·2/6 + 1·3/6 + 10·4/6 + 1·5/6 + 1·3/6)/23 = (71/6)/23
+    expect(compare(QS, zero, misha()).relationship.percent).toBeCloseTo(Math.sqrt((71 / 6) / 23) * 100, 5);
   });
 
   it('супер-совпадения: считаются все, показываются топ-5 по силе·весу', () => {

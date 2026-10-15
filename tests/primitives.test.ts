@@ -19,15 +19,13 @@ describe('fit — каждое деление разницы снимает 1/6'
   });
 });
 
-describe('fit', () => {
-  const own = ans(2, 0, 4);
-  it.each([
-    [0, 1], [4, 1], [5, 5 / 6], [6, 4 / 6], [7, 0.5], [9, 1 / 6], [10, 0],
-  ])('ответ %i при диапазоне [0,4] → %f', (other, expected) => {
-    expect(fit(own, other)).toBeCloseTo(expected, 5);
+describe('fit — диапазоны из старых ссылок не учитываются', () => {
+  it('0 и 2 при старом диапазоне [0,2] → 2/3, а не 1', () => {
+    expect(fit(ans(0, 0, 2), 2)).toBeCloseTo(4 / 6, 10);
+    expect(fit(ans(8, 6, 10), 10)).toBeCloseTo(4 / 6, 10);
   });
-  it('штраф симметричен слева от диапазона', () => {
-    expect(fit(ans(8, 6, 10), 5)).toBeCloseTo(5 / 6, 5);
+  it('симметрично', () => {
+    expect(fit(ans(3), 7)).toBeCloseTo(fit(ans(7), 3), 10);
   });
 });
 
