@@ -5,8 +5,11 @@ import { compare } from '/Users/arkady.vasilenko/projects/compatibility-test/src
 import { relationshipWeight } from '/Users/arkady.vasilenko/projects/compatibility-test/src/questions/spheres';
 import { answerFor } from '/Users/arkady.vasilenko/projects/compatibility-test/src/answer';
 const D = '/Users/arkady.vasilenko/projects/compatibility-test/research/synthetic';
-const J1 = JSON.parse(fs.readFileSync(`${D}/judge30.json`, 'utf8')).ratings as any[];
-const J2 = JSON.parse(fs.readFileSync(`${D}/judge30b.json`, 'utf8')).ratings as any[];
+// JUDGES=dyn — эксперты, которых явно просили учитывать динамику ссор и привязанность (judge30-dyn.json, judge30b-dyn.json).
+const SUF = process.env.JUDGES ? `-${process.env.JUDGES}` : '';
+const J1 = JSON.parse(fs.readFileSync(`${D}/judge30${SUF}.json`, 'utf8')).ratings as any[];
+const J2 = JSON.parse(fs.readFileSync(`${D}/judge30b${SUF}.json`, 'utf8')).ratings as any[];
+console.log(`эксперты: judge30${SUF}, judge30b${SUF}`);
 const rows = J1.map((a) => ({ man: a.man, woman: a.woman, e1: a.couple, e2: J2.find((b) => b.man === a.man && b.woman === a.woman).couple }));
 const raw = (id: string) => JSON.parse(fs.readFileSync(`${D}/answers/${id}.json`, 'utf8'));
 const mat = (id: string): Record<string, number> => JSON.parse(fs.readFileSync(`${D}/answers-maturity/${id}.json`, 'utf8'));
