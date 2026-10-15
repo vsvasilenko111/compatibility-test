@@ -28,15 +28,15 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('116 вопросов: 60 дружбы и 56 отношений', () => {
-    expect(QUESTIONS).toHaveLength(116);
+  it('118 вопросов: 60 дружбы и 58 отношений', () => {
+    expect(QUESTIONS).toHaveLength(118);
     expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(60);
-    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(56);
+    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(58);
   });
 
-  it('в каждой сфере дружбы 7–8 вопросов, в каждой сфере отношений 6–7', () => {
+  it('в каждой сфере дружбы 7–8 вопросов, в каждой сфере отношений 6–8', () => {
     for (const s of SPHERES) {
-      const [min, max] = s.block === 'friendship' ? [7, 8] : [6, 7];
+      const [min, max] = s.block === 'friendship' ? [7, 8] : [6, 8];
       expect(count(s.id), s.id).toBeGreaterThanOrEqual(min);
       expect(count(s.id), s.id).toBeLessThanOrEqual(max);
     }
