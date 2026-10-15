@@ -1,0 +1,724 @@
+{
+ "ratings": [
+  {
+   "man": "p8m",
+   "woman": "p23w",
+   "couple": 45,
+   "friends": 40
+  },
+  {
+   "man": "p4m",
+   "woman": "p4w",
+   "couple": 85,
+   "friends": 70
+  },
+  {
+   "man": "p17m",
+   "woman": "p28w",
+   "couple": 12,
+   "friends": 25
+  },
+  {
+   "man": "p11m",
+   "woman": "p19w",
+   "couple": 3,
+   "friends": 15
+  },
+  {
+   "man": "p15m",
+   "woman": "p20w",
+   "couple": 10,
+   "friends": 60
+  },
+  {
+   "man": "p6m",
+   "woman": "p14w",
+   "couple": 8,
+   "friends": 45
+  },
+  {
+   "man": "p16m",
+   "woman": "p16w",
+   "couple": 78,
+   "friends": 70
+  },
+  {
+   "man": "p14m",
+   "woman": "p9w",
+   "couple": 5,
+   "friends": 25
+  },
+  {
+   "man": "p16m",
+   "woman": "p15w",
+   "couple": 25,
+   "friends": 45
+  },
+  {
+   "man": "p28m",
+   "woman": "p22w",
+   "couple": 5,
+   "friends": 25
+  },
+  {
+   "man": "p22m",
+   "woman": "p26w",
+   "couple": 22,
+   "friends": 55
+  },
+  {
+   "man": "p17m",
+   "woman": "p19w",
+   "couple": 40,
+   "friends": 25
+  },
+  {
+   "man": "p7m",
+   "woman": "p12w",
+   "couple": 10,
+   "friends": 60
+  },
+  {
+   "man": "p23m",
+   "woman": "p23w",
+   "couple": 10,
+   "friends": 50
+  },
+  {
+   "man": "p10m",
+   "woman": "p20w",
+   "couple": 30,
+   "friends": 60
+  },
+  {
+   "man": "p25m",
+   "woman": "p9w",
+   "couple": 2,
+   "friends": 8
+  },
+  {
+   "man": "p14m",
+   "woman": "p22w",
+   "couple": 25,
+   "friends": 40
+  },
+  {
+   "man": "p9m",
+   "woman": "p30w",
+   "couple": 8,
+   "friends": 20
+  },
+  {
+   "man": "p18m",
+   "woman": "p6w",
+   "couple": 8,
+   "friends": 40
+  },
+  {
+   "man": "p26m",
+   "woman": "p7w",
+   "couple": 25,
+   "friends": 50
+  },
+  {
+   "man": "p13m",
+   "woman": "p10w",
+   "couple": 12,
+   "friends": 35
+  },
+  {
+   "man": "p16m",
+   "woman": "p30w",
+   "couple": 88,
+   "friends": 80
+  },
+  {
+   "man": "p21m",
+   "woman": "p27w",
+   "couple": 8,
+   "friends": 25
+  },
+  {
+   "man": "p18m",
+   "woman": "p15w",
+   "couple": 30,
+   "friends": 45
+  },
+  {
+   "man": "p17m",
+   "woman": "p17w",
+   "couple": 2,
+   "friends": 10
+  },
+  {
+   "man": "p12m",
+   "woman": "p19w",
+   "couple": 5,
+   "friends": 40
+  },
+  {
+   "man": "p10m",
+   "woman": "p4w",
+   "couple": 10,
+   "friends": 45
+  },
+  {
+   "man": "p1m",
+   "woman": "p8w",
+   "couple": 10,
+   "friends": 35
+  },
+  {
+   "man": "p7m",
+   "woman": "p26w",
+   "couple": 5,
+   "friends": 55
+  },
+  {
+   "man": "p29m",
+   "woman": "p29w",
+   "couple": 3,
+   "friends": 10
+  },
+  {
+   "man": "p24m",
+   "woman": "p10w",
+   "couple": 25,
+   "friends": 55
+  },
+  {
+   "man": "p27m",
+   "woman": "p24w",
+   "couple": 8,
+   "friends": 50
+  },
+  {
+   "man": "p5m",
+   "woman": "p5w",
+   "couple": 3,
+   "friends": 15
+  },
+  {
+   "man": "p30m",
+   "woman": "p20w",
+   "couple": 28,
+   "friends": 55
+  },
+  {
+   "man": "p24m",
+   "woman": "p24w",
+   "couple": 82,
+   "friends": 65
+  },
+  {
+   "man": "p5m",
+   "woman": "p19w",
+   "couple": 8,
+   "friends": 30
+  },
+  {
+   "man": "p26m",
+   "woman": "p2w",
+   "couple": 28,
+   "friends": 55
+  },
+  {
+   "man": "p11m",
+   "woman": "p3w",
+   "couple": 8,
+   "friends": 45
+  },
+  {
+   "man": "p24m",
+   "woman": "p27w",
+   "couple": 30,
+   "friends": 55
+  },
+  {
+   "man": "p16m",
+   "woman": "p6w",
+   "couple": 30,
+   "friends": 55
+  },
+  {
+   "man": "p21m",
+   "woman": "p21w",
+   "couple": 5,
+   "friends": 15
+  },
+  {
+   "man": "p19m",
+   "woman": "p22w",
+   "couple": 5,
+   "friends": 35
+  },
+  {
+   "man": "p20m",
+   "woman": "p20w",
+   "couple": 82,
+   "friends": 75
+  },
+  {
+   "man": "p28m",
+   "woman": "p28w",
+   "couple": 88,
+   "friends": 70
+  },
+  {
+   "man": "p20m",
+   "woman": "p5w",
+   "couple": 3,
+   "friends": 15
+  },
+  {
+   "man": "p12m",
+   "woman": "p8w",
+   "couple": 35,
+   "friends": 60
+  },
+  {
+   "man": "p8m",
+   "woman": "p26w",
+   "couple": 30,
+   "friends": 50
+  },
+  {
+   "man": "p1m",
+   "woman": "p1w",
+   "couple": 5,
+   "friends": 50
+  },
+  {
+   "man": "p6m",
+   "woman": "p24w",
+   "couple": 5,
+   "friends": 50
+  },
+  {
+   "man": "p30m",
+   "woman": "p30w",
+   "couple": 88,
+   "friends": 75
+  },
+  {
+   "man": "p26m",
+   "woman": "p21w",
+   "couple": 10,
+   "friends": 40
+  },
+  {
+   "man": "p6m",
+   "woman": "p15w",
+   "couple": 3,
+   "friends": 35
+  },
+  {
+   "man": "p8m",
+   "woman": "p8w",
+   "couple": 85,
+   "friends": 65
+  },
+  {
+   "man": "p22m",
+   "woman": "p22w",
+   "couple": 88,
+   "friends": 65
+  },
+  {
+   "man": "p10m",
+   "woman": "p15w",
+   "couple": 15,
+   "friends": 50
+  },
+  {
+   "man": "p22m",
+   "woman": "p19w",
+   "couple": 8,
+   "friends": 45
+  },
+  {
+   "man": "p7m",
+   "woman": "p7w",
+   "couple": 5,
+   "friends": 60
+  },
+  {
+   "man": "p9m",
+   "woman": "p12w",
+   "couple": 10,
+   "friends": 20
+  },
+  {
+   "man": "p12m",
+   "woman": "p28w",
+   "couple": 3,
+   "friends": 30
+  },
+  {
+   "man": "p18m",
+   "woman": "p13w",
+   "couple": 20,
+   "friends": 45
+  },
+  {
+   "man": "p2m",
+   "woman": "p28w",
+   "couple": 8,
+   "friends": 50
+  },
+  {
+   "man": "p4m",
+   "woman": "p17w",
+   "couple": 5,
+   "friends": 20
+  },
+  {
+   "man": "p14m",
+   "woman": "p5w",
+   "couple": 8,
+   "friends": 25
+  },
+  {
+   "man": "p4m",
+   "woman": "p15w",
+   "couple": 15,
+   "friends": 45
+  },
+  {
+   "man": "p23m",
+   "woman": "p14w",
+   "couple": 3,
+   "friends": 30
+  },
+  {
+   "man": "p3m",
+   "woman": "p30w",
+   "couple": 5,
+   "friends": 50
+  },
+  {
+   "man": "p19m",
+   "woman": "p6w",
+   "couple": 10,
+   "friends": 55
+  },
+  {
+   "man": "p30m",
+   "woman": "p6w",
+   "couple": 32,
+   "friends": 60
+  },
+  {
+   "man": "p29m",
+   "woman": "p13w",
+   "couple": 5,
+   "friends": 25
+  },
+  {
+   "man": "p27m",
+   "woman": "p9w",
+   "couple": 45,
+   "friends": 70
+  },
+  {
+   "man": "p27m",
+   "woman": "p27w",
+   "couple": 3,
+   "friends": 25
+  },
+  {
+   "man": "p29m",
+   "woman": "p10w",
+   "couple": 12,
+   "friends": 40
+  },
+  {
+   "man": "p18m",
+   "woman": "p18w",
+   "couple": 90,
+   "friends": 70
+  },
+  {
+   "man": "p5m",
+   "woman": "p17w",
+   "couple": 10,
+   "friends": 35
+  },
+  {
+   "man": "p15m",
+   "woman": "p27w",
+   "couple": 3,
+   "friends": 25
+  },
+  {
+   "man": "p13m",
+   "woman": "p13w",
+   "couple": 3,
+   "friends": 10
+  },
+  {
+   "man": "p29m",
+   "woman": "p11w",
+   "couple": 5,
+   "friends": 30
+  },
+  {
+   "man": "p23m",
+   "woman": "p15w",
+   "couple": 3,
+   "friends": 35
+  },
+  {
+   "man": "p30m",
+   "woman": "p26w",
+   "couple": 30,
+   "friends": 55
+  },
+  {
+   "man": "p14m",
+   "woman": "p14w",
+   "couple": 88,
+   "friends": 70
+  },
+  {
+   "man": "p23m",
+   "woman": "p24w",
+   "couple": 5,
+   "friends": 50
+  },
+  {
+   "man": "p13m",
+   "woman": "p16w",
+   "couple": 8,
+   "friends": 40
+  },
+  {
+   "man": "p9m",
+   "woman": "p6w",
+   "couple": 12,
+   "friends": 30
+  },
+  {
+   "man": "p15m",
+   "woman": "p12w",
+   "couple": 8,
+   "friends": 60
+  },
+  {
+   "man": "p3m",
+   "woman": "p3w",
+   "couple": 2,
+   "friends": 15
+  },
+  {
+   "man": "p17m",
+   "woman": "p8w",
+   "couple": 3,
+   "friends": 15
+  },
+  {
+   "man": "p8m",
+   "woman": "p3w",
+   "couple": 40,
+   "friends": 60
+  },
+  {
+   "man": "p28m",
+   "woman": "p7w",
+   "couple": 5,
+   "friends": 35
+  },
+  {
+   "man": "p2m",
+   "woman": "p2w",
+   "couple": 88,
+   "friends": 65
+  },
+  {
+   "man": "p3m",
+   "woman": "p12w",
+   "couple": 8,
+   "friends": 50
+  },
+  {
+   "man": "p28m",
+   "woman": "p15w",
+   "couple": 5,
+   "friends": 40
+  },
+  {
+   "man": "p21m",
+   "woman": "p11w",
+   "couple": 5,
+   "friends": 15
+  },
+  {
+   "man": "p11m",
+   "woman": "p24w",
+   "couple": 8,
+   "friends": 50
+  },
+  {
+   "man": "p13m",
+   "woman": "p11w",
+   "couple": 3,
+   "friends": 20
+  },
+  {
+   "man": "p2m",
+   "woman": "p3w",
+   "couple": 35,
+   "friends": 55
+  },
+  {
+   "man": "p11m",
+   "woman": "p11w",
+   "couple": 5,
+   "friends": 55
+  },
+  {
+   "man": "p24m",
+   "woman": "p29w",
+   "couple": 8,
+   "friends": 25
+  },
+  {
+   "man": "p3m",
+   "woman": "p2w",
+   "couple": 5,
+   "friends": 35
+  },
+  {
+   "man": "p21m",
+   "woman": "p23w",
+   "couple": 8,
+   "friends": 35
+  },
+  {
+   "man": "p22m",
+   "woman": "p12w",
+   "couple": 25,
+   "friends": 55
+  },
+  {
+   "man": "p20m",
+   "woman": "p24w",
+   "couple": 20,
+   "friends": 50
+  },
+  {
+   "man": "p19m",
+   "woman": "p19w",
+   "couple": 5,
+   "friends": 50
+  },
+  {
+   "man": "p19m",
+   "woman": "p1w",
+   "couple": 55,
+   "friends": 70
+  },
+  {
+   "man": "p25m",
+   "woman": "p29w",
+   "couple": 12,
+   "friends": 15
+  },
+  {
+   "man": "p10m",
+   "woman": "p10w",
+   "couple": 85,
+   "friends": 65
+  },
+  {
+   "man": "p4m",
+   "woman": "p30w",
+   "couple": 50,
+   "friends": 60
+  },
+  {
+   "man": "p1m",
+   "woman": "p28w",
+   "couple": 5,
+   "friends": 30
+  },
+  {
+   "man": "p27m",
+   "woman": "p23w",
+   "couple": 3,
+   "friends": 40
+  },
+  {
+   "man": "p20m",
+   "woman": "p16w",
+   "couple": 25,
+   "friends": 60
+  },
+  {
+   "man": "p9m",
+   "woman": "p9w",
+   "couple": 1,
+   "friends": 5
+  },
+  {
+   "man": "p26m",
+   "woman": "p26w",
+   "couple": 88,
+   "friends": 70
+  },
+  {
+   "man": "p15m",
+   "woman": "p15w",
+   "couple": 3,
+   "friends": 55
+  },
+  {
+   "man": "p5m",
+   "woman": "p24w",
+   "couple": 15,
+   "friends": 40
+  },
+  {
+   "man": "p2m",
+   "woman": "p26w",
+   "couple": 30,
+   "friends": 55
+  },
+  {
+   "man": "p1m",
+   "woman": "p19w",
+   "couple": 85,
+   "friends": 55
+  },
+  {
+   "man": "p7m",
+   "woman": "p15w",
+   "couple": 5,
+   "friends": 55
+  },
+  {
+   "man": "p25m",
+   "woman": "p25w",
+   "couple": 1,
+   "friends": 5
+  },
+  {
+   "man": "p6m",
+   "woman": "p6w",
+   "couple": 5,
+   "friends": 55
+  },
+  {
+   "man": "p12m",
+   "woman": "p12w",
+   "couple": 88,
+   "friends": 70
+  },
+  {
+   "man": "p25m",
+   "woman": "p7w",
+   "couple": 5,
+   "friends": 20
+  }
+ ]
+}

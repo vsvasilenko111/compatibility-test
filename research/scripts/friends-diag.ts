@@ -1,0 +1,23 @@
+import fs from 'node:fs';
+import { QUESTIONS } from '/Users/arkady.vasilenko/projects/compatibility-test/src/questions';
+const D = '/Users/arkady.vasilenko/projects/compatibility-test/research/synthetic';
+const { pairs } = JSON.parse(fs.readFileSync(`${D}/personas30.json`, 'utf8'));
+const judge = JSON.parse(fs.readFileSync(`${D}/judge30.json`, 'utf8')).ratings;
+const ans: Record<string, Record<string, number>> = {};
+for (const p of pairs) for (const x of [p.man, p.woman]) ans[x.id] = JSON.parse(fs.readFileSync(`${D}/answers/${x.id}.json`, 'utf8'));
+const typeOf = new Map(pairs.map((p: any) => [`${p.man.id}|${p.woman.id}`, p.type]));
+const mean = (v: number[]) => v.reduce((a, b) => a + b, 0) / v.length;
+const corr = (a: number[], b: number[]) => { const ma = mean(a), mb = mean(b); let s = 0, x = 0, y = 0; a.forEach((v, i) => { s += (v - ma) * (b[i] - mb); x += (v - ma) ** 2; y += (b[i] - mb) ** 2; }); return x && y ? s / Math.sqrt(x * y) : 0; };
+const fq = QUESTIONS.filter((q) => q.block === 'friendship');
+const rows = fq.map((q) => {
+  const closeness = judge.map((j: any) => -Math.abs(ans[j.man][q.id] - ans[j.woman][q.id]));
+  const r = corr(closeness, judge.map((j: any) => j.friends));
+  const A = pairs.filter((p: any) => p.type === 'A').map((p: any) => Math.abs(ans[p.man.id][q.id] - ans[p.woman.id][q.id]));
+  return { id: q.id, sphere: q.sphere, r, aDiff: mean(A) };
+});
+const bySphere: Record<string, number[]> = {};
+rows.forEach((x) => (bySphere[x.sphere] ??= []).push(x.r));
+console.log('Связь совпадения с экспертной дружбой, среднее по сфере:', Object.entries(bySphere).map(([s, v]) => `${s} ${mean(v).toFixed(2)}`).join(', '));
+rows.sort((a, b) => b.r - a.r);
+console.log('Лучшие:', rows.slice(0, 12).map((x) => `${x.id} ${x.r.toFixed(2)}`).join(', '));
+console.log('Худшие (≤0.05):', rows.filter((x) => x.r <= 0.05).map((x) => `${x.id} ${x.r.toFixed(2)} (A разн ${x.aDiff.toFixed(1)})`).join(', '));
