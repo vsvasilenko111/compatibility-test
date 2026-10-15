@@ -1,5 +1,5 @@
 import { IMPORTANCE_LABELS, MAX_CRITICAL, type ImportanceLevel, type Question, type Response } from '../../types';
-import { canChooseCritical, draftFrom, setImportance, setValue, tapRange, toAnswer } from '../answer-logic';
+import { canChooseCritical, draftFrom, setImportance, setValue, toAnswer } from '../answer-logic';
 import { h } from '../dom';
 
 export interface QuestionProps {
@@ -30,7 +30,6 @@ export function questionScreen(p: QuestionProps): HTMLElement {
     const q = p.question;
     const critBlocked = !canChooseCritical(p.criticalUsed) && d.importance !== 3;
     const answer = toAnswer(d);
-    const hasValue = d.value !== null;
 
     const nodes: (Node | null)[] = [
       h('div', { class: 'progress' },
@@ -40,9 +39,6 @@ export function questionScreen(p: QuestionProps): HTMLElement {
       h('div', { class: 'poles' }, h('span', {}, `0 — ${q.left}`), h('span', {}, `10 — ${q.right}`)),
       h('p', { class: 'label' }, 'Мой ответ'),
       scale('mine', (i) => i === d.value, (i) => { d = setValue(d, i); }),
-      hasValue ? h('p', { class: 'label' }, 'Приемлемо для партнёра') : null,
-      hasValue ? scale('range', (i) => i >= d.lo && i <= d.hi, (i) => { d = tapRange(d, i); }) : null,
-      hasValue ? h('p', { class: 'hint' }, 'Нажмите левее или правее своего ответа, чтобы сдвинуть границу') : null,
       h('p', { class: 'label' }, 'Насколько это важно'),
       h('div', { class: 'importance' },
         ...IMPORTANCE_LABELS.map((label, i) =>
