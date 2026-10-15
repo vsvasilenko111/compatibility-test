@@ -10,6 +10,11 @@ import { messageScreen } from './screens/message';
 import { questionScreen } from './screens/question';
 import { resultScreen } from './screens/result';
 
+/** `?quick` — короткий режим для проверки подсчёта: первые 5 вопросов (в них есть оба блока). Кодируется всё как обычно. */
+const QUICK = new URLSearchParams(location.search).has('quick');
+const ASKED = QUICK ? QUESTIONS.slice(0, 5) : QUESTIONS;
+const ASKED_IDS = ASKED.map((q) => q.id);
+
 function codecMessage(e: unknown): string {
   if (e instanceof CodecError && e.kind === 'corrupt') return 'Ссылка повреждена — попросите прислать её заново.';
   if (e instanceof CodecError) return 'Ссылка от более новой версии теста — обновите страницу.';
@@ -57,12 +62,12 @@ export function startApp(root: HTMLElement): void {
   function showIntro(inviter: { code: string; name: string } | null) {
     const inviterCode = inviter?.code ?? null;
     const saved = store.loadProgress();
-    const resumable = resumeFor(saved, inviterCode, CURRENT_IDS);
+    const resumable = resumeFor(saved, inviterCode, ASKED_IDS);
     const own = store.loadOwnCode();
     show(introScreen({
       inviterName: inviter ? inviter.name : null,
-      total: QUESTIONS.length,
-      resumeAt: resumable ? Math.min(resumable.index, QUESTIONS.length - 1) + 1 : null,
+      total: ASKED.length,
+      resumeAt: resumable ? Math.min(resumable.index, ASKED.length - 1) + 1 : null,
       storageAvailable: store.available,
       ownUrl: own ? inviteUrl(base, own) : null,
       onStart: (name) => runTest({ name, index: 0, responses: {}, inviterCode }),
@@ -72,15 +77,15 @@ export function startApp(root: HTMLElement): void {
 
   function runTest(p: Progress): void {
     store.saveProgress(p);
-    if (p.index >= QUESTIONS.length) {
-      const gap = firstUnanswered(CURRENT_IDS, p.responses);
-      return gap < QUESTIONS.length ? runTest({ ...p, index: gap }) : finish(p);
+    if (p.index >= ASKED.length) {
+      const gap = firstUnanswered(ASKED_IDS, p.responses);
+      return gap < ASKED.length ? runTest({ ...p, index: gap }) : finish(p);
     }
-    const q = QUESTIONS[p.index];
+    const q = ASKED[p.index];
     show(questionScreen({
       question: q,
       index: p.index,
-      total: QUESTIONS.length,
+      total: ASKED.length,
       response: p.responses[q.id],
       onBack: p.index > 0 ? () => runTest({ ...p, index: p.index - 1 }) : null,
       onSubmit: (r) => runTest({ ...p, index: p.index + 1, responses: { ...p.responses, [q.id]: r } }),
