@@ -1,6 +1,8 @@
 import { calibrate, FRIENDSHIP_TABLE, RELATIONSHIP_TABLE } from '../../scoring/calibration';
 import type { CompareResult } from '../../scoring/compare';
 import type { MaturityResult } from '../../scoring/maturity';
+import type { Question } from '../../types';
+import { bothAnswered, divergences, type AnswerRow } from '../answers-view';
 import type { Profile } from '../../types';
 import { h } from '../dom';
 import { flagsLine, sphereDetail, sphereTiles, supportTopics, tileTone, type SphereTile } from '../result-view';
@@ -89,7 +91,52 @@ function maturitySection(m: MaturityResult | null): HTMLElement | null {
     h('p', { class: 'hint' }, 'Если какая-то тема отзывается сильно, с этим можно прийти к психологу — вдвоём или по отдельности.'));
 }
 
-export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string): HTMLElement {
+/** Кто смотрит и кто уже открыл свои ответы: mine — индекс смотрящего (0 — A, 1 — B), null — смотрит не участник. */
+export interface Reveal {
+  questions: Question[];
+  opened: [boolean, boolean];
+  mine: 0 | 1 | null;
+  onOpen(): void;
+}
+
+function answerItem(r: AnswerRow, na: string, nb: string): HTMLElement {
+  return h('li', { class: r.opposite && r.diff >= 6 ? 'answer far' : 'answer' },
+    h('div', { class: 'answer-q' }, r.text),
+    h('div', { class: 'answer-poles' }, `0 — ${r.left} · 10 — ${r.right}`),
+    h('div', { class: 'answer-vals' }, h('span', {}, `${na}: `, h('b', {}, String(r.a))), h('span', {}, `${nb}: `, h('b', {}, String(r.b)))));
+}
+
+/** Ответы друг друга — только когда свои ответы открыли оба. */
+function answersSection(a: Profile, b: Profile, rv: Reveal | undefined): HTMLElement | null {
+  if (!rv) return null;
+  const na = a.name || 'Первый', nb = b.name || 'Второй';
+  if (rv.opened[0] && rv.opened[1]) {
+    const groups = divergences(rv.questions, a, b);
+    const all = bothAnswered(rv.questions, a, b);
+    return h('section', { class: 'answers' },
+      h('h3', { class: 'eyebrow' }, 'Ответы друг друга'),
+      h('p', { class: 'hint' }, 'Вы оба открыли свои ответы. Здесь вопросы, где ответы расходятся на 3 деления и больше. Пропущенные вопросы не показываются.'),
+      ...groups.map((g) => h('div', { class: 'answer-group' },
+        h('h4', {}, `${g.title} — ${g.rows.length}`),
+        h('ul', {}, ...g.rows.map((r) => answerItem(r, na, nb))))),
+      groups.length ? null : h('p', {}, 'Расхождений на 3 деления и больше нет.'),
+      h('details', { class: 'explain' },
+        h('summary', {}, `Все ответы — ${all.length}`),
+        h('ul', {}, ...all.map((r) => answerItem(r, na, nb)))));
+  }
+  if (rv.mine === null) return null;
+  const mineOpen = rv.opened[rv.mine];
+  return h('section', { class: 'answers' },
+    h('h3', { class: 'eyebrow' }, 'Ответы друг друга'),
+    mineOpen
+      ? h('p', { class: 'hint' }, 'Вы открыли свои ответы. Отправьте ссылку ниже партнёру: когда он тоже откроет свои, вы оба увидите ответы рядом.')
+      : h('p', { class: 'hint' }, rv.opened[1 - rv.mine]
+        ? 'Партнёр уже открыл свои ответы. Откройте свои — и вы оба увидите, где ваши ответы расходятся.'
+        : 'Можно открыть свои ответы партнёру. Он увидит их на все вопросы, кроме пропущенных, — но только когда свои откроете оба.'),
+    mineOpen ? null : h('button', { type: 'button', class: 'secondary', onclick: () => rv.onOpen() }, 'Открыть мои ответы партнёру'));
+}
+
+export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string, reveal?: Reveal): HTMLElement {
   const rel = result.relationship;
   // На постере и в вердикте — откалиброванные проценты (50% — типичная случайная пара); карта сфер — по сырым.
   const shown = {
@@ -118,6 +165,7 @@ export function resultScreen(a: Profile, b: Profile, result: CompareResult, shar
       note('talk', 'Стоит обсудить', rel.talkZones.map((i) => i.topic)),
       note('support', 'Ваша опора', supportTopics(rel))),
     maturitySection(result.maturity),
+    answersSection(a, b, reveal),
     sphereMap(sphereTiles(rel.spheres)),
     h('h3', {}, 'Отправить результат партнёру'),
     shareBlock(shareUrl, 'Наш результат совместимости'),

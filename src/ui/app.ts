@@ -3,6 +3,7 @@ import { BANK_VERSION, CURRENT_IDS, MANIFEST, QUESTIONS } from '../questions';
 import { relationshipWeight } from '../questions/spheres';
 import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
+import { hasOpened, openToken } from '../consent';
 import { browserStorage, createStore, type Progress } from '../storage';
 import { firstUnanswered, resumeFor } from './flow';
 import { finishScreen } from './screens/finish';
@@ -42,7 +43,7 @@ export function startApp(root: HTMLElement): void {
     quick = r.quick || QUICK_BY_QUERY;
     ASKED = quick ? QUESTIONS.slice(0, QUICK_COUNT) : QUESTIONS;
     ASKED_IDS = ASKED.map((q) => q.id);
-    if (r.kind === 'result') return showResult(r.a, r.b);
+    if (r.kind === 'result') return showResult(r.a, r.b, r.open ?? []);
     if (r.kind === 'invite') return showInvite(r.a);
     return showIntro(null);
   }
@@ -124,11 +125,25 @@ export function startApp(root: HTMLElement): void {
     show(finishScreen(inviteUrl(base, code, quick)));
   }
 
-  function showResult(a: string, b: string) {
+  /** Чьи это ответы на этом устройстве: свой код или код, с которым здесь проходили тест по приглашению. */
+  function mineOf(a: string, b: string): 0 | 1 | null {
+    const own = store.loadOwnCode();
+    if (own === a || store.loadResultFor(b) === a) return 0;
+    if (own === b || store.loadResultFor(a) === b) return 1;
+    return null;
+  }
+
+  function showResult(a: string, b: string, open: string[]) {
     try {
       const pa = decode(a, MANIFEST);
       const pb = decode(b, MANIFEST);
-      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight), resultUrl(base, a, b, quick)));
+      const mine = mineOf(a, b);
+      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight), resultUrl(base, a, b, quick, open), {
+        questions: QUESTIONS,
+        opened: [hasOpened(a, open), hasOpened(b, open)],
+        mine,
+        onOpen: () => { if (mine !== null) location.hash = resultHash(a, b, quick, [...open, openToken(mine === 0 ? a : b)]); },
+      }));
     } catch (e) {
       show(messageScreen('Не получилось открыть результат', codecMessage(e)));
     }
