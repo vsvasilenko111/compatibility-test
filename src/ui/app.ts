@@ -58,6 +58,14 @@ export function startApp(root: HTMLElement): void {
         { label: 'Пройти заново', onClick: () => introFor(code) },
       ]));
     }
+    // Оба прошли тест по общей ссылке: открывший чужое приглашение уже имеет свои ответы — проходить заново не нужно.
+    const own = store.loadOwnCode();
+    if (own) {
+      return show(messageScreen('Вы уже прошли тест', 'Можно сразу посмотреть общий результат с вашими ответами или пройти тест заново.', null, [
+        { label: 'Посмотреть результат', primary: true, onClick: () => { store.saveResultFor(code, own); location.hash = resultHash(code, own, quick); } },
+        { label: 'Пройти заново', onClick: () => introFor(code) },
+      ]));
+    }
     introFor(code);
   }
 
