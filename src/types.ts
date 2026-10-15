@@ -13,8 +13,6 @@ export interface Question {
 
 export type ImportanceLevel = 0 | 1 | 2 | 3;
 export const IMPORTANCE_WEIGHTS = [0, 1, 10, 50] as const;
-export const IMPORTANCE_LABELS = ['Не важно', 'Немного', 'Очень', 'Критично'] as const;
-export const MAX_CRITICAL = 12;
 
 export interface Answer {
   value: number; // 0..10

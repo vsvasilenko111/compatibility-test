@@ -3,7 +3,6 @@ import { BANK_VERSION, CURRENT_IDS, MANIFEST, QUESTIONS } from '../questions';
 import { classifyInvite, inviteUrl, parseHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
 import { browserStorage, createStore, type Progress } from '../storage';
-import { criticalCount } from './answer-logic';
 import { firstUnanswered, resumeFor } from './flow';
 import { finishScreen } from './screens/finish';
 import { introScreen } from './screens/intro';
@@ -83,7 +82,6 @@ export function startApp(root: HTMLElement): void {
       index: p.index,
       total: QUESTIONS.length,
       response: p.responses[q.id],
-      criticalUsed: criticalCount(p.responses, q.id),
       onBack: p.index > 0 ? () => runTest({ ...p, index: p.index - 1 }) : null,
       onSubmit: (r) => runTest({ ...p, index: p.index + 1, responses: { ...p.responses, [q.id]: r } }),
     }));
