@@ -21,3 +21,18 @@ export const SPHERES: SphereInfo[] = [
   { id: 'relatives', block: 'relationship', label: 'Родственники и окружение' },
   { id: 'roles', block: 'relationship', label: 'Роли и языки любви' },
 ];
+
+/**
+ * Вес сферы в «совместимости в отношениях» (на «дружбу» не влияет). Подобран по синтетическому прогону:
+ * насколько совпадение в сфере связано с экспертной оценкой пары; проверен на отложенной половине данных
+ * (согласие с экспертом 76% → 82%). Близость поднята до среднего уровня вручную — у синтетических персонажей
+ * она описана слишком деликатно, чтобы данные её оценили.
+ */
+export const RELATIONSHIP_WEIGHTS: Record<string, number> = {
+  kids: 1, living: 1, budget: 1, relatives: 1, space: 1, values: 1, home: 1, career: 1,
+  roles: 0.4, money: 0.4, intimacy: 0.4,
+  leisure: 0.15, rhythm: 0.15, loyalty: 0.15, humor: 0.15,
+  conflicts: 0.05, honesty: 0.05,
+};
+
+export const relationshipWeight = (sphere: string): number => RELATIONSHIP_WEIGHTS[sphere] ?? 1;

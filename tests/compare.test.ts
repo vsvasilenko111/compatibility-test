@@ -108,3 +108,26 @@ describe('compare — граничные случаи', () => {
     expect(ids(r.friendship.superMatches).slice(0, 2)).toEqual(['h0', 'h1']);
   });
 });
+
+describe('compare — веса сфер в «отношениях»', () => {
+  const W = (s: string) => ({ kids: 1, conflicts: 0.05 } as Record<string, number>)[s] ?? 1;
+  const qs = [q('k', 'relationship', 'kids'), q('c', 'friendship', 'conflicts')];
+  const p2 = (k: number, c: number) => profile({ k: ans(k, k, k, k >= 9 || k <= 1 ? 3 : 2), c: ans(c, c, c, c >= 9 || c <= 1 ? 3 : 2) });
+
+  it('расхождение по детям роняет «отношения» сильнее, чем расхождение в стиле ссор', () => {
+    const kidsApart = compare(qs, p2(10, 5), p2(0, 5), W).relationship.percent!;
+    const conflictsApart = compare(qs, p2(5, 10), p2(5, 0), W).relationship.percent!;
+    expect(kidsApart).toBeLessThan(conflictsApart);
+    expect(kidsApart).toBeLessThan(1);
+    expect(conflictsApart).toBeGreaterThan(25);
+  });
+  it('в сферах с весом < 0,4 красного флага нет — только «обсудить»; в «дружбе» флаг остаётся', () => {
+    const r = compare(qs, p2(5, 10), p2(5, 0), W);
+    expect(r.relationship.redFlags).toEqual([]);
+    expect(ids(r.relationship.talkZones)).toEqual(['c']);
+    expect(ids(r.friendship.redFlags)).toEqual(['c']);
+  });
+  it('без весов поведение прежнее', () => {
+    expect(compare(qs, p2(5, 10), p2(5, 0)).relationship.redFlags.map((x) => x.id)).toEqual(['c']);
+  });
+});

@@ -1,5 +1,6 @@
 import { CodecError, decode, encode } from '../codec/codec';
 import { BANK_VERSION, CURRENT_IDS, MANIFEST, QUESTIONS } from '../questions';
+import { relationshipWeight } from '../questions/spheres';
 import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
 import { browserStorage, createStore, type Progress } from '../storage';
@@ -116,7 +117,7 @@ export function startApp(root: HTMLElement): void {
     try {
       const pa = decode(a, MANIFEST);
       const pb = decode(b, MANIFEST);
-      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb), resultUrl(base, a, b, quick)));
+      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight), resultUrl(base, a, b, quick)));
     } catch (e) {
       show(messageScreen('Не получилось открыть результат', codecMessage(e)));
     }

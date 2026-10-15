@@ -20,6 +20,11 @@ export interface CompareResult { relationship: ModeResult; friendship: ModeResul
 export const TOP_N = 5;
 const CRITICAL = 50;
 const CARES = 10;
+/** Красный флаг ставится только в сферах с весом от 0,4 — расхождения в стиле ссор, юморе, досуге идут в «обсудить». */
+const RED_MIN_WEIGHT = 0.4;
+
+export type SphereWeight = (sphere: string) => number;
+const EQUAL: SphereWeight = () => 1;
 /** Тема для разговора — расхождение от 3 делений (fit ≤ 0,5); мелкая разница в 1–2 деления темой не считается. */
 const TALK_FIT = 0.5;
 
@@ -42,11 +47,12 @@ function pairs(questions: Question[], pa: Profile, pb: Profile): Pair[] {
   return out;
 }
 
-function percent(ps: Pair[]): number | null {
+function percent(ps: Pair[], k: SphereWeight = EQUAL): number | null {
   let numA = 0, sumA = 0, numB = 0, sumB = 0;
   for (const p of ps) {
-    numA += p.wA * p.fitA; sumA += p.wA;
-    numB += p.wB * p.fitB; sumB += p.wB;
+    const m = k(p.q.sphere);
+    numA += m * p.wA * p.fitA; sumA += m * p.wA;
+    numB += m * p.wB * p.fitB; sumB += m * p.wB;
   }
   if (sumA === 0 && sumB === 0) return null;
   const sA = sumA === 0 ? 1 : numA / sumA;
@@ -56,11 +62,12 @@ function percent(ps: Pair[]): number | null {
 
 const ref = (p: Pair): ItemRef => ({ id: p.q.id, topic: p.q.topic, sphere: p.q.sphere });
 const desc = (key: (p: Pair) => number) => (x: Pair, y: Pair) => key(y) - key(x);
-const isRed = (p: Pair) => (p.wA === CRITICAL && p.fitA === 0) || (p.wB === CRITICAL && p.fitB === 0);
 const bothCare = (p: Pair) => p.wA >= CARES && p.wB >= CARES;
 const award = (p: Pair) => p.s * (p.wA + p.wB);
 
-function mode(ps: Pair[]): ModeResult {
+function mode(ps: Pair[], k: SphereWeight = EQUAL): ModeResult {
+  const isRed = (p: Pair) => k(p.q.sphere) >= RED_MIN_WEIGHT
+    && ((p.wA === CRITICAL && p.fitA === 0) || (p.wB === CRITICAL && p.fitB === 0));
   const supers = ps.filter((p) => bothCare(p) && p.s >= 0.8).sort(desc(award));
   const strongs = ps.filter((p) => bothCare(p) && p.s >= 0.5 && p.s < 0.8).sort(desc(award));
   const talks = ps
@@ -73,7 +80,7 @@ function mode(ps: Pair[]): ModeResult {
   const sphereIds = [...new Set(ps.map((p) => p.q.sphere))];
 
   return {
-    percent: percent(ps),
+    percent: percent(ps, k),
     spheres: sphereIds.map((sphere) => {
       const inSphere = ps.filter((p) => p.q.sphere === sphere);
       return {
@@ -91,10 +98,11 @@ function mode(ps: Pair[]): ModeResult {
   };
 }
 
-export function compare(questions: Question[], a: Profile, b: Profile): CompareResult {
+/** relationshipWeight — вес сферы в «отношениях» (по умолчанию все равны); «дружба» всегда без весов. */
+export function compare(questions: Question[], a: Profile, b: Profile, relationshipWeight: SphereWeight = EQUAL): CompareResult {
   const all = pairs(questions, a, b);
   return {
-    relationship: mode(all),
+    relationship: mode(all, relationshipWeight),
     friendship: mode(all.filter((p) => p.q.block === 'friendship')),
   };
 }
