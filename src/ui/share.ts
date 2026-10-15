@@ -1,5 +1,8 @@
 import { h } from './dom';
 
+/** В сборке для Artifact Web Share запрещён — там оставляем только «Скопировать». */
+const canShare = 'share' in navigator && !import.meta.env.VITE_PUBLIC_URL;
+
 export function shareBlock(url: string, title: string): HTMLElement {
   const input = h('input', { type: 'text', readonly: true, value: url, class: 'link', 'aria-label': 'Ссылка' });
   const status = h('p', { class: 'hint', 'aria-live': 'polite' });
@@ -24,7 +27,7 @@ export function shareBlock(url: string, title: string): HTMLElement {
   return h('div', { class: 'share' },
     input,
     h('div', { class: 'nav' },
-      'share' in navigator ? h('button', { type: 'button', class: 'primary', onclick: share }, 'Поделиться') : null,
+      canShare ? h('button', { type: 'button', class: 'primary', onclick: share }, 'Поделиться') : null,
       h('button', { type: 'button', class: 'secondary', onclick: copy }, 'Скопировать'),
     ),
     status,

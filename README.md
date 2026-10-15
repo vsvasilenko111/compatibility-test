@@ -22,3 +22,13 @@ npm run build   # сборка в dist/
 - `npm test` проверяет банк: уникальность `id`, поля, сферы, нет двух вопросов одной сферы подряд.
 
 Дизайн: `docs/superpowers/specs/2026-10-15-compatibility-test-design.md`.
+
+## Публикация как claude.ai Artifact
+
+```bash
+VITE_PUBLIC_URL=https://claude.ai/artifact/BpGTGfNFxBMGf5mTa43fue npm run build:artifact
+```
+
+Собирает `dist-artifact/compatibility-test.html` — один файл со встроенными стилями и скриптом.
+`VITE_PUBLIC_URL` нужен, потому что внутри Artifact страница не знает свой публичный адрес, а ссылки-приглашения строятся из него.
+Ссылки имеют вид `#i.<код>` (приглашение), `#r.<код>.<код>` (результат), `#q` — быстрый режим на 5 вопросов.

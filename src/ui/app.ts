@@ -1,6 +1,6 @@
 import { CodecError, decode, encode } from '../codec/codec';
 import { BANK_VERSION, CURRENT_IDS, MANIFEST, QUESTIONS } from '../questions';
-import { classifyInvite, inviteUrl, parseHash, resultUrl, type Route } from '../router';
+import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
 import { browserStorage, createStore, type Progress } from '../storage';
 import { firstUnanswered, resumeFor } from './flow';
@@ -10,10 +10,12 @@ import { messageScreen } from './screens/message';
 import { questionScreen } from './screens/question';
 import { resultScreen } from './screens/result';
 
-/** `?quick` — короткий режим для проверки подсчёта: первые 5 вопросов (в них есть оба блока). Кодируется всё как обычно. */
-const QUICK = new URLSearchParams(location.search).has('quick');
-const ASKED = QUICK ? QUESTIONS.slice(0, 5) : QUESTIONS;
-const ASKED_IDS = ASKED.map((q) => q.id);
+/** Быстрый режим (`#q…` или `?quick`) — первые 5 вопросов для проверки подсчёта (в них есть оба блока). Кодируется всё как обычно. */
+const QUICK_COUNT = 5;
+const QUICK_BY_QUERY = new URLSearchParams(location.search).has('quick');
+
+/** Публичный адрес для ссылок-приглашений: на хостинге Artifact страница не видит свой адрес, поэтому он вшивается при сборке. */
+const PUBLIC_BASE: string | undefined = import.meta.env.VITE_PUBLIC_URL;
 
 function codecMessage(e: unknown): string {
   if (e instanceof CodecError && e.kind === 'corrupt') return 'Ссылка повреждена — попросите прислать её заново.';
@@ -23,7 +25,10 @@ function codecMessage(e: unknown): string {
 
 export function startApp(root: HTMLElement): void {
   const store = createStore(browserStorage());
-  const base = location.href.split('#')[0];
+  const base = PUBLIC_BASE || location.href.split('#')[0];
+  let quick = QUICK_BY_QUERY;
+  let ASKED = QUESTIONS;
+  let ASKED_IDS = CURRENT_IDS;
 
   const show = (node: Node) => {
     root.replaceChildren(node);
@@ -31,6 +36,9 @@ export function startApp(root: HTMLElement): void {
   };
 
   function route(r: Route) {
+    quick = r.quick || QUICK_BY_QUERY;
+    ASKED = quick ? QUESTIONS.slice(0, QUICK_COUNT) : QUESTIONS;
+    ASKED_IDS = ASKED.map((q) => q.id);
     if (r.kind === 'result') return showResult(r.a, r.b);
     if (r.kind === 'invite') return showInvite(r.a);
     return showIntro(null);
@@ -38,12 +46,12 @@ export function startApp(root: HTMLElement): void {
 
   function showInvite(code: string) {
     if (classifyInvite(code, store.loadOwnCode()) === 'own') {
-      return show(messageScreen('Это ваша ссылка', 'Отправьте её партнёру — он пройдёт тест и увидит результат.', inviteUrl(base, code)));
+      return show(messageScreen('Это ваша ссылка', 'Отправьте её партнёру — он пройдёт тест и увидит результат.', inviteUrl(base, code, quick)));
     }
     const done = store.loadResultFor(code);
     if (done) {
       return show(messageScreen('Вы уже прошли тест по этой ссылке', 'Можно открыть результат или пройти тест заново.', null, [
-        { label: 'Посмотреть результат', primary: true, onClick: () => { location.hash = `a=${code}&b=${done}`; } },
+        { label: 'Посмотреть результат', primary: true, onClick: () => { location.hash = resultHash(code, done, quick); } },
         { label: 'Пройти заново', onClick: () => introFor(code) },
       ]));
     }
@@ -69,7 +77,7 @@ export function startApp(root: HTMLElement): void {
       total: ASKED.length,
       resumeAt: resumable ? Math.min(resumable.index, ASKED.length - 1) + 1 : null,
       storageAvailable: store.available,
-      ownUrl: own ? inviteUrl(base, own) : null,
+      ownUrl: own ? inviteUrl(base, own, quick) : null,
       onStart: (name) => runTest({ name, index: 0, responses: {}, inviterCode }),
       onResume: () => { if (resumable) runTest(resumable); },
     }));
@@ -97,18 +105,18 @@ export function startApp(root: HTMLElement): void {
     store.clearProgress();
     if (p.inviterCode) {
       store.saveResultFor(p.inviterCode, code);
-      location.hash = `a=${p.inviterCode}&b=${code}`; // hashchange откроет результат
+      location.hash = resultHash(p.inviterCode, code, quick); // hashchange откроет результат
       return;
     }
     store.saveOwnCode(code);
-    show(finishScreen(inviteUrl(base, code)));
+    show(finishScreen(inviteUrl(base, code, quick)));
   }
 
   function showResult(a: string, b: string) {
     try {
       const pa = decode(a, MANIFEST);
       const pb = decode(b, MANIFEST);
-      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb), resultUrl(base, a, b)));
+      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb), resultUrl(base, a, b, quick)));
     } catch (e) {
       show(messageScreen('Не получилось открыть результат', codecMessage(e)));
     }
