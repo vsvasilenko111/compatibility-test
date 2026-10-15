@@ -37,8 +37,12 @@ describe('процент совместимости по одному вопро
   const qs: Question[] = [{ id: 'q', block: 'friendship', sphere: 'humor', text: 't', left: 'l', right: 'r', topic: 'юмор', optional: false }];
   const p = (v: number): Profile => ({ name: '', bankVersion: 1, responses: { q: answerFor(v) } });
 
-  it.each([[10, 100], [9, 83.33], [8, 66.67], [7, 50], [6, 33.33], [5, 16.67], [4, 0]])('10 и %i → %f%%', (v, pct) => {
+  // По одну сторону от середины разница вдвое мягче; 5 — середина, смягчения нет.
+  it.each([[10, 100], [9, 91.67], [8, 83.33], [7, 75], [6, 66.67], [5, 16.67], [4, 0]])('10 и %i → %f%%', (v, pct) => {
     expect(compare(qs, p(10), p(v)).relationship.percent).toBeCloseTo(pct, 1);
+  });
+  it('10 и 6 — тема для разговора: «стоит обсудить» считается по полной разнице', () => {
+    expect(compare(qs, p(10), p(6)).relationship.talkZones.map((i) => i.id)).toEqual(['q']);
   });
   it('8 и 9 — не тема для разговора (разница меньше 3)', () => {
     expect(compare(qs, p(8), p(9)).relationship.talkZones).toEqual([]);

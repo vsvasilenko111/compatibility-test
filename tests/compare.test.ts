@@ -30,9 +30,9 @@ const misha = () => profile({
 describe('compare — пример Ани и Миши', () => {
   const r = compare(QS, anya(), misha());
 
-  // fit по разнице ответов: дети 10/9 → 5/6, деньги 2/8 → 0, ссоры 9/3 → 0, быт 4/6 → 2/3, пространство 8/8 → 1
-  it('отношения = √(52⅓/81 · 10/23) ≈ 53,00%', () => {
-    expect(r.relationship.percent).toBeCloseTo(53.00, 1);
+  // fit по разнице ответов: дети 10/9 (одна сторона, разница вдвое мягче) → 11/12, деньги 2/8 → 0, ссоры 9/3 → 0, быт 4/6 (разные стороны) → 2/3, пространство 8/8 → 1
+  it('отношения = √(56½/81 · 10⅚/23) ≈ 57,32%', () => {
+    expect(r.relationship.percent).toBeCloseTo(57.32, 1);
   });
   it('дружба считается только по блоку friendship → 0%', () => {
     expect(r.friendship.percent).toBeCloseTo(0, 5);
@@ -76,13 +76,13 @@ describe('compare — граничные случаи', () => {
   it('пропущенный одним вопрос исключается для обоих', () => {
     const m = misha();
     m.responses.money = 'skipped';
-    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(57.88, 1);
+    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(62.60, 1);
   });
 
   it('вопрос, которого нет в коде другого (старая версия банка), исключается', () => {
     const m = misha();
     delete m.responses.space;
-    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(49.39, 1);
+    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(54.10, 1);
   });
 
   it('у обоих все веса 0 → null, и у сфер тоже null', () => {

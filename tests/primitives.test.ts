@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { fit, strength, weight } from '../src/scoring/primitives';
+import { fit, rawFit, strength, weight } from '../src/scoring/primitives';
 import type { Answer, ImportanceLevel } from '../src/types';
 
 const ans = (value: number, lo = 0, hi = 10, importance: ImportanceLevel = 2): Answer => ({
@@ -12,17 +12,27 @@ describe('weight', () => {
   });
 });
 
-describe('fit — каждое деление разницы снимает 1/6', () => {
-  it('точечный диапазон: 10 и 10 → 1, 10 и 9 → 5/6, 10 и 8 → 2/3, 10 и 4 → 0', () => {
+describe('fit — каждое деление разницы снимает 1/6, по одну сторону от середины — 1/12', () => {
+  it('10 и 9 → 11/12, 10 и 6 → 2/3; 5 — середина, смягчения нет: 10 и 5 → 1/6, 10 и 4 → 0', () => {
     const ten = ans(10, 10, 10);
-    expect([10, 9, 8, 7, 6, 5, 4].map((v) => fit(ten, v))).toEqual([1, 5 / 6, 4 / 6, 3 / 6, 2 / 6, 1 / 6, 0].map((x) => expect.closeTo(x, 10)));
+    expect([10, 9, 8, 7, 6, 5, 4].map((v) => fit(ten, v))).toEqual([1, 11 / 12, 10 / 12, 9 / 12, 8 / 12, 1 / 6, 0].map((x) => expect.closeTo(x, 10)));
+  });
+  it('разные стороны — полная разница: 3 и 7 → 1/3', () => {
+    expect(fit(ans(3), 7)).toBeCloseTo(2 / 6, 10);
+  });
+});
+
+describe('rawFit — полная разница без смягчения', () => {
+  it('10 и 9 → 5/6, 10 и 6 → 1/3, 10 и 4 → 0', () => {
+    const ten = ans(10, 10, 10);
+    expect([9, 6, 4].map((v) => rawFit(ten, v))).toEqual([5 / 6, 2 / 6, 0].map((x) => expect.closeTo(x, 10)));
   });
 });
 
 describe('fit — диапазоны из старых ссылок не учитываются', () => {
-  it('0 и 2 при старом диапазоне [0,2] → 2/3, а не 1', () => {
-    expect(fit(ans(0, 0, 2), 2)).toBeCloseTo(4 / 6, 10);
-    expect(fit(ans(8, 6, 10), 10)).toBeCloseTo(4 / 6, 10);
+  it('0 и 2 при старом диапазоне [0,2] → 5/6, а не 1', () => {
+    expect(fit(ans(0, 0, 2), 2)).toBeCloseTo(5 / 6, 10);
+    expect(fit(ans(8, 6, 10), 10)).toBeCloseTo(5 / 6, 10);
   });
   it('симметрично', () => {
     expect(fit(ans(3), 7)).toBeCloseTo(fit(ans(7), 3), 10);
