@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { answerFor, importanceFor } from '../src/ui/answer-logic';
+import { answerFor, importanceFor } from '../src/answer';
 import { compare } from '../src/scoring/compare';
 import type { Profile, Question } from '../src/types';
 

@@ -1,9 +1,12 @@
+import { answerFor } from '../answer';
 import type { Answer, ImportanceLevel, Profile } from '../types';
 import { fromBase64Url, toBase64Url } from './base64url';
 import { BitReader, BitWriter } from './bits';
 import { crc16 } from './crc16';
 
-export const FORMAT_VERSION = 1;
+/** v2 — только ответ, 4 бита на вопрос (диапазон и важность выводятся из ответа). v1 — ответ, диапазон и важность; читается для старых ссылок. */
+export const FORMAT_VERSION = 2;
+const LEGACY_FORMAT = 1;
 export const TEST_TYPE_RELATIONSHIP = 0;
 export const MAX_NAME_BYTES = 40;
 const SKIPPED = 15;
@@ -58,11 +61,7 @@ export function encode(profile: Profile, ids: string[]): string {
   w.writeBytes(name);
   for (const id of ids) {
     const r = profile.responses[id];
-    if (!r || r === 'skipped') {
-      w.write(SKIPPED, 4); w.write(0, 4); w.write(0, 4); w.write(0, 2);
-    } else {
-      w.write(r.value, 4); w.write(r.lo, 4); w.write(r.hi, 4); w.write(r.importance, 2);
-    }
+    w.write(!r || r === 'skipped' ? SKIPPED : r.value, 4);
   }
   return seal(w.finish());
 }
@@ -81,7 +80,8 @@ export function decode(code: string, manifest: Manifest): Profile {
 
   try {
     const r = new BitReader(body);
-    if (r.read(8) !== FORMAT_VERSION) throw new CodecError('unsupported-format');
+    const format = r.read(8);
+    if (format !== FORMAT_VERSION && format !== LEGACY_FORMAT) throw new CodecError('unsupported-format');
     const bankVersion = r.read(8);
     r.read(8); // тип теста — зарезервирован под «Друзья»
     const name = new TextDecoder().decode(r.readBytes(r.read(8)));
@@ -90,11 +90,18 @@ export function decode(code: string, manifest: Manifest): Profile {
 
     const responses: Profile['responses'] = {};
     for (const id of ids) {
-      const value = r.read(4), lo = r.read(4), hi = r.read(4), importance = r.read(2);
-      if (value === SKIPPED) { responses[id] = 'skipped'; continue; }
-      if (value > 10 || lo > 10 || hi > 10 || lo > hi) throw new CodecError('corrupt');
-      const answer: Answer = { value, lo, hi, importance: importance as ImportanceLevel };
-      responses[id] = answer;
+      if (format === LEGACY_FORMAT) {
+        const value = r.read(4), lo = r.read(4), hi = r.read(4), importance = r.read(2);
+        if (value === SKIPPED) { responses[id] = 'skipped'; continue; }
+        if (value > 10 || lo > 10 || hi > 10 || lo > hi) throw new CodecError('corrupt');
+        const answer: Answer = { value, lo, hi, importance: importance as ImportanceLevel };
+        responses[id] = answer;
+      } else {
+        const value = r.read(4);
+        if (value === SKIPPED) { responses[id] = 'skipped'; continue; }
+        if (value > 10) throw new CodecError('corrupt');
+        responses[id] = answerFor(value);
+      }
     }
     return { name, bankVersion, responses };
   } catch (e) {

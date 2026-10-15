@@ -53,10 +53,10 @@ describe('полный банк', () => {
     ]);
   });
 
-  it('ссылка на полный банк с именем в 40 байт — не длиннее 340 символов', () => {
+  it('ссылка на полный банк с именем в 40 байт — не длиннее 140 символов', () => {
     const responses = Object.fromEntries(CURRENT_IDS.map((id) => [id, { value: 10, lo: 0, hi: 10, importance: 3 as const }]));
     const code = encode({ name: 'Александра-Анастасия', bankVersion: BANK_VERSION, responses }, CURRENT_IDS);
-    expect(code.length).toBeLessThanOrEqual(340);
+    expect(code.length).toBeLessThanOrEqual(140);
   });
 });
 

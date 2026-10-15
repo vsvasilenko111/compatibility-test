@@ -1,5 +1,5 @@
 import type { Question, Response } from '../../types';
-import { answerFor } from '../answer-logic';
+import { answerFor } from '../../answer';
 import { h } from '../dom';
 
 export interface QuestionProps {

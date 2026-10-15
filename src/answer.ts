@@ -1,4 +1,4 @@
-import type { Answer, ImportanceLevel } from '../types';
+import type { Answer, ImportanceLevel } from './types';
 
 /** Важность — из удалённости ответа от середины: 0–1 и 9–10 — критично, 2–3 и 7–8 — очень, 4–6 — немного. */
 export function importanceFor(value: number): ImportanceLevel {

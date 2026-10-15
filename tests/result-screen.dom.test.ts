@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import { resultScreen } from '../src/ui/screens/result';
 import { compare } from '../src/scoring/compare';
-import { answerFor } from '../src/ui/answer-logic';
+import { answerFor } from '../src/answer';
 import type { Profile, Question } from '../src/types';
 
 const qs: Question[] = [
