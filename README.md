@@ -26,7 +26,7 @@ npm run build   # сборка в dist/
 ## Публикация как claude.ai Artifact
 
 ```bash
-VITE_PUBLIC_URL=https://claude.ai/artifact/BpGTGfNFxBMGf5mTa43fue npm run build:artifact
+VITE_PUBLIC_URL=<адрес артефакта> npm run build:artifact
 ```
 
 Собирает `dist-artifact/compatibility-test.html` — один файл со встроенными стилями и скриптом.
