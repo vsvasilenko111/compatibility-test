@@ -4,7 +4,7 @@ import { classifyInvite, inviteUrl, parseHash, resultUrl, type Route } from '../
 import { compare } from '../scoring/compare';
 import { browserStorage, createStore, type Progress } from '../storage';
 import { criticalCount } from './answer-logic';
-import { resumeFor } from './flow';
+import { firstUnanswered, resumeFor } from './flow';
 import { finishScreen } from './screens/finish';
 import { introScreen } from './screens/intro';
 import { messageScreen } from './screens/message';
@@ -58,7 +58,7 @@ export function startApp(root: HTMLElement): void {
   function showIntro(inviter: { code: string; name: string } | null) {
     const inviterCode = inviter?.code ?? null;
     const saved = store.loadProgress();
-    const resumable = resumeFor(saved, inviterCode, QUESTIONS.length);
+    const resumable = resumeFor(saved, inviterCode, CURRENT_IDS);
     const own = store.loadOwnCode();
     show(introScreen({
       inviterName: inviter ? inviter.name : null,
@@ -71,9 +71,12 @@ export function startApp(root: HTMLElement): void {
     }));
   }
 
-  function runTest(p: Progress) {
+  function runTest(p: Progress): void {
     store.saveProgress(p);
-    if (p.index >= QUESTIONS.length) return finish(p);
+    if (p.index >= QUESTIONS.length) {
+      const gap = firstUnanswered(CURRENT_IDS, p.responses);
+      return gap < QUESTIONS.length ? runTest({ ...p, index: gap }) : finish(p);
+    }
     const q = QUESTIONS[p.index];
     show(questionScreen({
       question: q,
