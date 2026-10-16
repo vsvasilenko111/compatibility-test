@@ -102,12 +102,17 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL): ModeResult {
   };
 }
 
-/** relationshipWeight — вес сферы в «отношениях» (по умолчанию все равны); «дружба» всегда без весов. */
-export function compare(questions: Question[], a: Profile, b: Profile, relationshipWeight: SphereWeight = EQUAL): CompareResult {
+/**
+ * relationshipWeight — вес сферы в «отношениях», friendshipWeight — в «партнёр как друг» (сфера с весом 0 не входит).
+ * По умолчанию: отношения — все сферы поровну, дружба — только блок дружбы поровну.
+ */
+export function compare(questions: Question[], a: Profile, b: Profile, relationshipWeight: SphereWeight = EQUAL, friendshipWeight?: SphereWeight): CompareResult {
   const all = pairs(questions.filter((q) => q.block !== 'maturity' && q.scored !== false), a, b);
   return {
     relationship: mode(all, relationshipWeight),
-    friendship: mode(all.filter((p) => p.q.block === 'friendship')),
+    friendship: friendshipWeight
+      ? mode(all.filter((p) => friendshipWeight(p.q.sphere) > 0), friendshipWeight)
+      : mode(all.filter((p) => p.q.block === 'friendship')),
     maturity: maturity(questions, a, b),
   };
 }

@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { QUESTIONS } from '/Users/arkady.vasilenko/projects/compatibility-test/src/questions';
 import { compare } from '/Users/arkady.vasilenko/projects/compatibility-test/src/scoring/compare';
-import { relationshipWeight } from '/Users/arkady.vasilenko/projects/compatibility-test/src/questions/spheres';
+import { friendshipWeight, relationshipWeight } from '/Users/arkady.vasilenko/projects/compatibility-test/src/questions/spheres';
 import { answerFor } from '/Users/arkady.vasilenko/projects/compatibility-test/src/answer';
 const D = '/Users/arkady.vasilenko/projects/compatibility-test/research/synthetic';
 const J = (f: string) => JSON.parse(fs.readFileSync(`${D}/${f}`, 'utf8')).ratings as any[];
@@ -10,7 +10,7 @@ const P1 = J('judge30-pf.json'), P2 = J('judge30b-pf.json'), O1 = J('judge30.jso
 const find = (js: any[], r: any) => js.find((x) => x.man === r.man && x.woman === r.woman);
 const prof = (id: string) => { const r = JSON.parse(fs.readFileSync(`${D}/answers/${id}.json`, 'utf8'));
   return { name: id, bankVersion: 6, responses: Object.fromEntries(QUESTIONS.map((q) => [q.id, r[q.id] === undefined || r[q.id] < 0 ? 'skipped' : answerFor(r[q.id])])) }; };
-const rows = P1.map((a) => { const c = compare(QUESTIONS, prof(a.man), prof(a.woman), relationshipWeight);
+const rows = P1.map((a) => { const c = compare(QUESTIONS, prof(a.man), prof(a.woman), relationshipWeight, friendshipWeight);
   return { p1: a.pf, p2: find(P2, a).pf, o: (find(O1, a).friends + find(O2, a).friends) / 2, couple: (find(O1, a).couple + find(O2, a).couple) / 2, fr: c.friendship.percent!, rel: c.relationship.percent! }; });
 type R = (typeof rows)[number];
 const cidx = (s: (r: R) => number, e: (r: R) => number) => { let ok = 0, n = 0;

@@ -41,3 +41,14 @@ export const RELATIONSHIP_WEIGHTS: Record<string, number> = {
 };
 
 export const relationshipWeight = (sphere: string): number => RELATIONSHIP_WEIGHTS[sphere] ?? 1;
+
+/**
+ * Вес сферы в «партнёр как друг»: все сферы блока дружбы, ценности ×3 и повседневные сферы пары — роли, ревность
+ * и пространство, быт, родные. Жизненные планы (дети, жильё, карьера, бюджет) и близость не входят.
+ * Подбор на половине синтетических пар, проверка на другой (research/scripts/pf-cv.ts): 70,0% → 74,2%, лучше в 200 из 200 разбиений.
+ */
+export const FRIENDSHIP_WEIGHTS: Record<string, number> = {
+  humor: 1, leisure: 1, rhythm: 1, loyalty: 1, honesty: 1, money: 1, conflicts: 1, values: 3,
+  roles: 1, space: 1, home: 1, relatives: 1,
+};
+export const friendshipWeight = (sphere: string): number => FRIENDSHIP_WEIGHTS[sphere] ?? 0;

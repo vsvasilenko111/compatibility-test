@@ -143,3 +143,11 @@ describe('compare — вопрос с scored: false', () => {
     expect(ids([...r.relationship.redFlags, ...r.relationship.talkZones])).not.toContain('ambition');
   });
 });
+
+describe('compare — веса «партнёр как друг»', () => {
+  it('сфера с весом 0 не входит, сфера пары с весом входит', () => {
+    const only = (s: string) => (s === 'money' || s === 'space' ? 1 : 0);
+    const r = compare(QS, anya(), misha(), undefined, only);
+    expect(r.friendship.spheres.map((s) => s.sphere).sort()).toEqual(['money', 'space']);
+  });
+});

@@ -1,6 +1,6 @@
 import { CodecError, decode, encode } from '../codec/codec';
 import { BANK_VERSION, CURRENT_IDS, MANIFEST, QUESTIONS } from '../questions';
-import { relationshipWeight } from '../questions/spheres';
+import { friendshipWeight, relationshipWeight } from '../questions/spheres';
 import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
 import { hasOpened, openToken } from '../consent';
@@ -138,7 +138,7 @@ export function startApp(root: HTMLElement): void {
       const pa = decode(a, MANIFEST);
       const pb = decode(b, MANIFEST);
       const mine = mineOf(a, b);
-      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight), resultUrl(base, a, b, quick, open), {
+      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), {
         questions: QUESTIONS,
         opened: [hasOpened(a, open), hasOpened(b, open)],
         mine,

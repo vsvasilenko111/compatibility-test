@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { QUESTIONS } from '/Users/arkady.vasilenko/projects/compatibility-test/src/questions';
 import { compare } from '/Users/arkady.vasilenko/projects/compatibility-test/src/scoring/compare';
-import { relationshipWeight } from '/Users/arkady.vasilenko/projects/compatibility-test/src/questions/spheres';
+import { friendshipWeight, relationshipWeight } from '/Users/arkady.vasilenko/projects/compatibility-test/src/questions/spheres';
 import { answerFor } from '/Users/arkady.vasilenko/projects/compatibility-test/src/answer';
 import type { Profile } from '/Users/arkady.vasilenko/projects/compatibility-test/src/types';
 
@@ -30,7 +30,7 @@ const P = new Map([...men, ...women].map((id) => [id, profile(id)]));
 type Row = { man: string; woman: string; kind: string; rel: number; fr: number };
 const rows: Row[] = [];
 for (const m of men) for (const w of women) {
-  const r = compare(QUESTIONS, P.get(m)!, P.get(w)!, relationshipWeight);
+  const r = compare(QUESTIONS, P.get(m)!, P.get(w)!, relationshipWeight, friendshipWeight);
   rows.push({ man: m, woman: w, kind: typeOf.get(`${m}|${w}`) ?? 'random', rel: r.relationship.percent ?? 100, fr: r.friendship.percent ?? 100 });
 }
 const random = rows.filter((r) => r.kind === 'random');
