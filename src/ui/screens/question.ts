@@ -2,8 +2,8 @@ import type { Question, Response } from '../../types';
 import { answerFor } from '../../answer';
 import { h } from '../dom';
 
-/** О ком вопрос: в блоке дружбы речь о друге, в остальных — о партнёре или о вас самих. */
-export const BLOCK_TAG: Record<Question['block'], string> = { friendship: 'О друзьях', relationship: 'О вас как паре', maturity: 'О вас и ваших чувствах' };
+/** О ком вопрос: тест только для пар; блок дружбы — о партнёре как друге. */
+export const BLOCK_TAG: Record<Question['block'], string> = { friendship: 'Партнёр как друг', relationship: 'О вас как паре', maturity: 'О вас и ваших чувствах' };
 
 export interface QuestionProps {
   question: Question;
