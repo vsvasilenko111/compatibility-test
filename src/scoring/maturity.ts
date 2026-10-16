@@ -25,7 +25,6 @@ const WORKED_THROUGH = ['trauma-02', 'trauma-03', 'trauma-05'];
 const HIGH = 7;
 const STRONG = 3;
 const SOFT = 8;
-const MAX_TALKS = 3;
 const MAX_STRENGTHS = 4;
 const MAX_SOFT = 3;
 
@@ -116,7 +115,7 @@ export function maturity(questions: Question[], pa: Profile, pb: Profile): Matur
   if (polar(a, b, 'reflect-03', 2, 8)) keys.add('feelings');
   if (!keys.has('closeness') && polar(a, b, 'attach-02', 3, 8)) keys.add('dosage');
   // Порядок TEXTS — порядок важности.
-  const talks = Object.keys(TEXTS).filter((k) => keys.has(k)).slice(0, MAX_TALKS).map((key) => ({ key, ...TEXTS[key] }));
+  const talks = Object.keys(TEXTS).filter((k) => keys.has(k)).map((key) => ({ key, ...TEXTS[key] }));
 
   // Темы, уже раскрытые в «стоит обсудить», не повторяем.
   const covered = new Set(talks.flatMap((t) => COVERS[t.key] ?? []));

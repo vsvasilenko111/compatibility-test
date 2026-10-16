@@ -19,7 +19,6 @@ export interface ModeResult {
 }
 export interface CompareResult { relationship: ModeResult; friendship: ModeResult; maturity: MaturityResult | null; resources: Resource[] | null }
 
-export const TOP_N = 5;
 const CARES = 10;
 /**
  * Красный флаг — только по явной отметке «Для меня это не обсуждается»: кто-то из пары её поставил, а ответы расходятся
@@ -107,9 +106,10 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeRes
       };
     }),
     redFlags: reds.map(ref),
-    superMatches: supers.slice(0, TOP_N).map(ref),
-    strongMatches: strongs.slice(0, TOP_N).map(ref),
-    talkZones: talks.slice(0, TOP_N).map(ref),
+    // Показываются все темы, не только первые: порядок — от самых важных.
+    superMatches: supers.map(ref),
+    strongMatches: strongs.map(ref),
+    talkZones: talks.map(ref),
     superCount: supers.length,
     flexibleCount: flexible.length,
   };

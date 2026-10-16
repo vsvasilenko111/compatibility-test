@@ -76,10 +76,10 @@ describe('блок «Эмоциональная зрелость»', () => {
     expect(k).toEqual(expect.arrayContaining(['stress', 'help']));
   });
 
-  it('не больше трёх тем, самые важные первыми', () => {
+  it('все темы, самые важные первыми', () => {
     const a = person({ 'attach-01': 9, 'regul-03': 9, 'regul-05': 0, 'reflect-04': 0 });
     const b = person({ 'attach-02': 9, 'attach-03': 9, 'regul-04': 9, 'regul-05': 9, 'reflect-04': 10 });
-    expect(keys(a, b)).toEqual(['closeness', 'heated', 'stress']);
+    expect(keys(a, b)).toEqual(['closeness', 'heated', 'stress', 'help']);
   });
 
   it('трудно хотя бы одному, но без опасного сочетания — мягкая тема без текста', () => {

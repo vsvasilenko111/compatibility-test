@@ -26,9 +26,9 @@ describe('tileTone', () => {
 });
 
 describe('supportTopics', () => {
-  it('сначала супер-, потом сильные совпадения, без повторов, не больше 5', () => {
+  it('сначала супер-, потом сильные совпадения, без повторов, все', () => {
     const m = mode({ superMatches: [ref('a'), ref('b')], strongMatches: [ref('b'), ref('c'), ref('d'), ref('e'), ref('f')] });
-    expect(supportTopics(m)).toEqual(['тема a', 'тема b', 'тема c', 'тема d', 'тема e']);
+    expect(supportTopics(m)).toEqual(['тема a', 'тема b', 'тема c', 'тема d', 'тема e', 'тема f']);
   });
 });
 

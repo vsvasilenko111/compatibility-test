@@ -116,12 +116,12 @@ describe('compare — граничные случаи', () => {
     expect(compare(QS, zero, misha()).relationship.percent).toBeCloseTo(Math.sqrt((71 / 6) / 23) * 100, 5);
   });
 
-  it('супер-совпадения: считаются все, показываются топ-5 по силе·весу', () => {
+  it('супер-совпадения: показываются все, по силе·весу', () => {
     const qs = Array.from({ length: 7 }, (_, i) => q(`h${i}`, 'friendship', i % 2 ? 'humor' : 'leisure'));
     const a = profile(Object.fromEntries(qs.map((x, i) => [x.id, ans(i < 2 ? 10 : 9, 0, 10, 2)])));
     const r = compare(qs, a, a);
     expect(r.friendship.superCount).toBe(7);
-    expect(r.friendship.superMatches).toHaveLength(5);
+    expect(r.friendship.superMatches).toHaveLength(7);
     expect(ids(r.friendship.superMatches).slice(0, 2)).toEqual(['h0', 'h1']);
   });
 });

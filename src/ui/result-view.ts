@@ -4,8 +4,6 @@ import { plural } from './plural';
 
 export interface SphereTile { id: string; label: string; percent: number | null; items: SphereItem[] }
 
-export const SUPPORT_LIMIT = 5;
-
 /** Плитки карты сфер: от лучшей к худшей, «не принципиально» (null) — в конце. */
 export function sphereTiles(spheres: SphereScore[]): SphereTile[] {
   const labels = new Map(SPHERES.map((s) => [s.id, s.label]));
@@ -27,7 +25,7 @@ export function tileTone(percent: number | null): number {
 /** «Ваша опора»: супер-совпадения, затем сильные, без повторов. */
 export function supportTopics(m: ModeResult): string[] {
   const topics = [...m.superMatches, ...m.strongMatches].map((i) => i.topic);
-  return [...new Set(topics)].slice(0, SUPPORT_LIMIT);
+  return [...new Set(topics)];
 }
 
 /** Строка на постере: «🌟 4 супер-совпадения · 🔴 1 красный флаг»; null, если показать нечего. */
