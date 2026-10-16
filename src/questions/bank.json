@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "questions": [
     {
       "id": "humor-01",
@@ -442,6 +442,16 @@
       "optional": false
     },
     {
+      "id": "humor-11",
+      "block": "friendship",
+      "sphere": "humor",
+      "text": "Ваш собственный юмор чаще…",
+      "left": "Мягкий — без колкостей",
+      "right": "Острый, с сарказмом — могу задеть",
+      "topic": "острый юмор",
+      "optional": false
+    },
+    {
       "id": "loyalty-03",
       "block": "friendship",
       "sphere": "loyalty",
@@ -462,6 +472,16 @@
       "optional": false
     },
     {
+      "id": "rhythm-10",
+      "block": "friendship",
+      "sphere": "rhythm",
+      "text": "Темп вашей жизни",
+      "left": "Быстрый: много планов, всё успеть",
+      "right": "Неспешный: без суеты",
+      "topic": "темп жизни",
+      "optional": false
+    },
+    {
       "id": "honesty-03",
       "block": "friendship",
       "sphere": "honesty",
@@ -479,6 +499,16 @@
       "left": "Легко — мир большой",
       "right": "Только в крайнем случае",
       "topic": "переезд в другую страну",
+      "optional": false
+    },
+    {
+      "id": "leisure-09",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Свободное время вам больше нравится проводить…",
+      "left": "Активно: спорт, походы, движение",
+      "right": "Спокойно: дома, неспешно",
+      "topic": "активный или спокойный отдых",
       "optional": false
     },
     {
@@ -519,6 +549,16 @@
       "left": "Регулярно — так правильно",
       "right": "Только в крайних случаях",
       "topic": "помощь родителям",
+      "optional": false
+    },
+    {
+      "id": "values-10",
+      "block": "friendship",
+      "sphere": "values",
+      "text": "Шутки о религии и вере",
+      "left": "Смешно — ничего святого",
+      "right": "Неприятно — это не тема для шуток",
+      "topic": "шутки о вере",
       "optional": false
     },
     {
@@ -599,6 +639,16 @@
       "left": "Есть мужские и женские дела",
       "right": "Тот, кто умеет, — неважно кто",
       "topic": "«мужские» и «женские» дела",
+      "optional": false
+    },
+    {
+      "id": "leisure-10",
+      "block": "friendship",
+      "sphere": "leisure",
+      "text": "Новые места, занятия, компании",
+      "left": "Постоянно ищу новое",
+      "right": "Люблю привычное и проверенное",
+      "topic": "новое или привычное",
       "optional": false
     },
     {
