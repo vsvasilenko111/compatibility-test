@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { BANK_VERSION, CURRENT_IDS, MANIFEST, QUESTIONS } from '../src/questions';
+import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, QUESTIONS } from '../src/questions';
 import { SPHERES } from '../src/questions/spheres';
 import { validateBank } from '../src/questions/validate';
 import { encode } from '../src/codec/codec';
@@ -29,10 +29,10 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('141 вопрос: 62 о партнёре как друге, 58 отношений и 21 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(141);
-    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(62);
-    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(58);
+  it('145 вопросов: 59 о партнёре как друге, 65 отношений и 21 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(145);
+    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(59);
+    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(65);
     expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(21);
   });
 
@@ -41,16 +41,28 @@ describe('полный банк', () => {
     expect(QUESTIONS.slice(-6).every((x) => x.sphere === 'past')).toBe(true);
   });
 
-  it('в каждой сфере дружбы 5–10 вопросов, в каждой сфере отношений 6–8', () => {
+  it('в каждой сфере 4–10 вопросов', () => {
     for (const s of SPHERES.filter((x) => x.block !== 'maturity')) {
-      const [min, max] = s.block === 'friendship' ? [5, 10] : [6, 8];
+      const [min, max] = [4, 10];
       expect(count(s.id), s.id).toBeGreaterThanOrEqual(min);
       expect(count(s.id), s.id).toBeLessThanOrEqual(max);
     }
   });
 
-  it('пропускать можно только вопросы о близости и о прошлом опыте, и все они пропускаемые', () => {
-    for (const x of QUESTIONS) expect(x.optional, x.id).toBe(x.sphere === 'intimacy' || x.sphere === 'past');
+  it('пропускать можно только вопросы о близости, о прошлом опыте и «когда ребёнок», и все они пропускаемые', () => {
+    for (const x of QUESTIONS) expect(x.optional, x.id).toBe(x.sphere === 'intimacy' || x.sphere === 'past' || x.id === 'kids-08');
+  });
+
+  it('отметка «не обсуждается» — у 10 вопросов, список в коде ссылки совпадает с банком', () => {
+    const firm = QUESTIONS.filter((x) => x.firm).map((x) => x.id);
+    expect(firm).toHaveLength(10);
+    expect(CURRENT_FIRM).toEqual(firm);
+    expect(FIRM[8]).toBeUndefined();
+  });
+
+  it('манифест v8 не изменился — 141 вопрос', () => {
+    expect(MANIFEST[8]).toHaveLength(141);
+    expect(MANIFEST[8]).toContain('humor-10');
   });
 
   it('манифест v3 не изменился — 118 вопросов, без блока зрелости', () => {
@@ -73,11 +85,11 @@ describe('полный банк', () => {
     ]);
   });
 
-  // 4 бита на вопрос: 141 вопрос + имя в 40 байт → 154 символа.
-  it('ссылка на полный банк с именем в 40 байт — не длиннее 155 символов', () => {
-    const responses = Object.fromEntries(CURRENT_IDS.map((id) => [id, { value: 10, lo: 0, hi: 10, importance: 3 as const }]));
-    const code = encode({ name: 'Александра-Анастасия', bankVersion: BANK_VERSION, responses }, CURRENT_IDS);
-    expect(code.length).toBeLessThanOrEqual(155);
+  // 4 бита на вопрос + бит на отметку: 145 вопросов, 10 отметок и имя в 40 байт → 160 символов.
+  it('ссылка на полный банк с именем в 40 байт — не длиннее 160 символов', () => {
+    const responses = Object.fromEntries(CURRENT_IDS.map((id) => [id, { value: 10, lo: 0, hi: 10, importance: 3 as const, firm: true }]));
+    const code = encode({ name: 'Александра-Анастасия', bankVersion: BANK_VERSION, responses }, CURRENT_IDS, CURRENT_FIRM);
+    expect(code.length).toBeLessThanOrEqual(160);
   });
 });
 

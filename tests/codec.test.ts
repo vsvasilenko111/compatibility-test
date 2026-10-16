@@ -74,7 +74,7 @@ describe('codec', () => {
   });
 
   it('неизвестная версия формата → unsupported-format', () => {
-    expect(kindOf(() => decode(seal(Uint8Array.from([3, 1, 0, 0])), MANIFEST))).toBe('unsupported-format');
+    expect(kindOf(() => decode(seal(Uint8Array.from([4, 1, 0, 0])), MANIFEST))).toBe('unsupported-format');
   });
 
   it('неизвестная версия банка → unknown-bank', () => {
@@ -97,6 +97,22 @@ describe('codec', () => {
     expect(d.bankVersion).toBe(2);
     expect(d.responses['humor-01']).toEqual({ value: 2, lo: 0, hi: 4, importance: 2 });
     expect(Object.keys(d.responses)).toHaveLength(118);
+  });
+
+  it('отметка «не обсуждается» сохраняется по списку версии; пропуск отметку не несёт', () => {
+    const firm = ['q1', 'q4', 'q7'];
+    const p: Profile = { name: 'x', bankVersion: 1, responses: { q1: { ...answerFor(9), firm: true }, q4: answerFor(2), q7: 'skipped' } };
+    const d = decode(encode(p, IDS, firm), MANIFEST, { 1: firm });
+    expect(d.responses.q1).toEqual({ ...answerFor(9), firm: true });
+    expect(d.responses.q4).toEqual(answerFor(2));
+    expect(d.responses.q7).toBe('skipped');
+  });
+
+  it('ссылка формата v2 (без отметок) по-прежнему открывается', () => {
+    const v2 = Uint8Array.from([2, 1, 0, 0, ...Array(58).fill(0x55)]);
+    const d = decode(seal(v2), MANIFEST, { 1: ['q0'] });
+    expect(d.responses.q0).toEqual(answerFor(5));
+    expect(Object.keys(d.responses)).toHaveLength(116);
   });
 
   it('важность и диапазон восстанавливаются из ответа', () => {

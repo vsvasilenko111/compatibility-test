@@ -103,7 +103,9 @@ function answerItem(r: AnswerRow, na: string, nb: string): HTMLElement {
   return h('li', { class: r.opposite && r.diff >= 6 ? 'answer far' : 'answer' },
     h('div', { class: 'answer-q' }, r.text),
     h('div', { class: 'answer-poles' }, `0 — ${r.left} · 10 — ${r.right}`),
-    h('div', { class: 'answer-vals' }, h('span', {}, `${na}: `, h('b', {}, String(r.a))), h('span', {}, `${nb}: `, h('b', {}, String(r.b)))));
+    h('div', { class: 'answer-vals' },
+      h('span', {}, `${na}: `, h('b', {}, String(r.a)), r.firmA ? ' · не обсуждается' : null),
+      h('span', {}, `${nb}: `, h('b', {}, String(r.b)), r.firmB ? ' · не обсуждается' : null)));
 }
 
 /** Ответы друг друга — только когда свои ответы открыли оба. */

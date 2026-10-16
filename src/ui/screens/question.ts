@@ -18,17 +18,23 @@ export interface QuestionProps {
 
 export function questionScreen(p: QuestionProps): HTMLElement {
   let value: number | null = p.response && p.response !== 'skipped' ? p.response.value : null;
+  let firm = p.response !== undefined && p.response !== 'skipped' && p.response.firm === true;
   const answered = value;
   let locked = false;
   const root = h('section', { class: 'screen question' });
+  const submit = (i: number) => p.onSubmit(firm ? { ...answerFor(i), firm: true } : answerFor(i));
 
-  /** Тап по числу сразу переходит дальше; короткая пауза показывает выбранное число. */
+  /**
+   * Тап по числу сразу переходит дальше; короткая пауза показывает выбранное число.
+   * У вопроса с отметкой «не обсуждается» — не переходит: сначала можно поставить отметку, потом «Дальше».
+   */
   function choose(i: number) {
     if (locked) return;
-    locked = true;
     value = i;
+    if (p.question.firm) return draw();
+    locked = true;
     draw();
-    setTimeout(() => p.onSubmit(answerFor(i)), 180);
+    setTimeout(() => submit(i), 180);
   }
 
   function draw() {
@@ -50,12 +56,17 @@ export function questionScreen(p: QuestionProps): HTMLElement {
             'aria-pressed': i === value ? 'true' : 'false',
             onclick: () => choose(i),
           }, String(i)))),
+      q.firm
+        ? h('label', { class: 'firm' },
+          h('input', { type: 'checkbox', checked: firm, onchange: (e: Event) => { firm = (e.target as HTMLInputElement).checked; } }),
+          h('span', {}, 'Для меня это не обсуждается'))
+        : null,
       h('div', { class: 'nav' },
         p.onBack ? h('button', { type: 'button', class: 'secondary', onclick: p.onBack }, 'Назад') : null,
         q.optional ? h('button', { type: 'button', class: 'secondary', onclick: () => p.onSubmit('skipped') }, 'Пропустить') : null,
         // «Дальше» нужна только при возврате к уже отвеченному вопросу — чтобы оставить ответ как есть.
-        answered !== null
-          ? h('button', { type: 'button', class: 'primary', onclick: () => p.onSubmit(answerFor(answered)) }, 'Дальше')
+        (q.firm ? value : answered) !== null
+          ? h('button', { type: 'button', class: 'primary', onclick: () => submit((q.firm ? value : answered)!) }, 'Дальше')
           : null),
     ];
     root.replaceChildren(...nodes.filter((n): n is Node => n !== null));

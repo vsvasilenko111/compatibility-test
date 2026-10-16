@@ -17,11 +17,17 @@ describe('answer-logic', () => {
 });
 
 describe('важность из ответа → результат', () => {
-  const qs: Question[] = [{ id: 'q', block: 'relationship', sphere: 'kids', text: 't', left: 'l', right: 'r', topic: 'дети', optional: false }];
-  const p = (v: number): Profile => ({ name: '', bankVersion: 1, responses: { q: answerFor(v) } });
+  const qs: Question[] = [{ id: 'q', block: 'relationship', sphere: 'kids', text: 't', left: 'l', right: 'r', topic: 'дети', optional: false, firm: true }];
+  const p = (v: number, firm = false): Profile => ({ name: '', bankVersion: 1, responses: { q: firm ? { ...answerFor(v), firm } : answerFor(v) } });
 
-  it('10 и 4 (6 делений от края) → красный флаг', () => {
-    expect(compare(qs, p(10), p(4)).relationship.redFlags.map((x) => x.id)).toEqual(['q']);
+  it('10 и 4 без отметки «не обсуждается» → не флаг, а тема для разговора', () => {
+    const r = compare(qs, p(10), p(4)).relationship;
+    expect(r.redFlags).toEqual([]);
+    expect(r.talkZones.map((x) => x.id)).toEqual(['q']);
+  });
+  it('10 с отметкой и 6 (разница 4) → красный флаг; 10 с отметкой и 7 → нет', () => {
+    expect(compare(qs, p(10, true), p(6)).relationship.redFlags.map((x) => x.id)).toEqual(['q']);
+    expect(compare(qs, p(10, true), p(7)).relationship.redFlags).toEqual([]);
   });
   it('10 и 7 → не флаг, а тема для разговора', () => {
     const r = compare(qs, p(10), p(7)).relationship;

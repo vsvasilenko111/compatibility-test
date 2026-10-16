@@ -1,7 +1,9 @@
 import { SPHERES } from '../questions/spheres';
 import type { Profile, Question } from '../types';
 
-export interface AnswerRow { id: string; text: string; left: string; right: string; sphere: string; a: number; b: number; diff: number; opposite: boolean }
+export interface AnswerRow { id: string; text: string; left: string; right: string; sphere: string; a: number; b: number; diff: number; opposite: boolean;
+  /** Отметка «Для меня это не обсуждается» у первого и второго. */
+  firmA: boolean; firmB: boolean }
 export interface AnswerGroup { title: string; rows: AnswerRow[] }
 
 /** Расхождение — от 3 делений, как у «стоит обсудить». */
@@ -18,7 +20,7 @@ export function bothAnswered(questions: Question[], pa: Profile, pb: Profile): A
     const x = pa.responses[q.id], y = pb.responses[q.id];
     if (!x || !y || x === 'skipped' || y === 'skipped') return [];
     return [{ id: q.id, text: q.text, left: q.left, right: q.right, sphere: labels.get(q.sphere) ?? q.sphere,
-      a: x.value, b: y.value, diff: Math.abs(x.value - y.value), opposite: (x.value - 5) * (y.value - 5) < 0 }];
+      a: x.value, b: y.value, firmA: x.firm === true, firmB: y.firm === true, diff: Math.abs(x.value - y.value), opposite: (x.value - 5) * (y.value - 5) < 0 }];
   });
 }
 

@@ -1,5 +1,5 @@
 import { CodecError, decode, encode } from '../codec/codec';
-import { BANK_VERSION, CURRENT_IDS, MANIFEST, QUESTIONS } from '../questions';
+import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, QUESTIONS } from '../questions';
 import { friendshipWeight, relationshipWeight } from '../questions/spheres';
 import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
@@ -114,7 +114,7 @@ export function startApp(root: HTMLElement): void {
   }
 
   function finish(p: Progress) {
-    const code = encode({ name: p.name, bankVersion: BANK_VERSION, responses: p.responses }, CURRENT_IDS);
+    const code = encode({ name: p.name, bankVersion: BANK_VERSION, responses: p.responses }, CURRENT_IDS, CURRENT_FIRM);
     store.clearProgress();
     if (p.inviterCode) {
       store.saveResultFor(p.inviterCode, code);
@@ -135,8 +135,8 @@ export function startApp(root: HTMLElement): void {
 
   function showResult(a: string, b: string, open: string[]) {
     try {
-      const pa = decode(a, MANIFEST);
-      const pb = decode(b, MANIFEST);
+      const pa = decode(a, MANIFEST, FIRM);
+      const pb = decode(b, MANIFEST, FIRM);
       const mine = mineOf(a, b);
       show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), {
         questions: QUESTIONS,

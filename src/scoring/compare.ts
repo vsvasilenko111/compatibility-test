@@ -19,10 +19,18 @@ export interface ModeResult {
 export interface CompareResult { relationship: ModeResult; friendship: ModeResult; maturity: MaturityResult | null }
 
 export const TOP_N = 5;
-const CRITICAL = 50;
 const CARES = 10;
-/** Красный флаг ставится только в сферах с весом от 0,4 — расхождения в стиле ссор, юморе, досуге идут в «обсудить». */
-const RED_MIN_WEIGHT = 0.4;
+/**
+ * Красный флаг — только по явной отметке «Для меня это не обсуждается»: кто-то из пары её поставил, а ответы расходятся
+ * на FIRM_GAP делений и больше. Раньше флаг ставился по крайнему ответу — и выпадал у 82% случайных пар.
+ */
+export const FIRM_GAP = 4;
+/**
+ * Каждый красный флаг умножает «совместимость в отношениях» на FIRM_FACTOR (до калибровки). Сейчас 1 — процент флаг не снижает:
+ * подбор на старых синтетических парах дал оптимум ≈1 (×0,95 — то же 82,8%), а на свежих любой штраф ухудшал согласие
+ * с оценщиками (73,3% → 71,2% при ×0,85). research/scripts/review/v9-eval.ts. Флаг остаётся на экране.
+ */
+export const FIRM_FACTOR = 1;
 
 export type SphereWeight = (sphere: string) => number;
 const EQUAL: SphereWeight = () => 1;
@@ -69,9 +77,11 @@ const desc = (key: (p: Pair) => number) => (x: Pair, y: Pair) => key(y) - key(x)
 const bothCare = (p: Pair) => p.wA >= CARES && p.wB >= CARES;
 const award = (p: Pair) => p.s * (p.wA + p.wB);
 
-function mode(ps: Pair[], k: SphereWeight = EQUAL): ModeResult {
-  const isRed = (p: Pair) => k(p.q.sphere) >= RED_MIN_WEIGHT
-    && ((p.wA === CRITICAL && p.fitA === 0) || (p.wB === CRITICAL && p.fitB === 0));
+const isRed = (p: Pair) => p.q.firm === true && (p.a.firm === true || p.b.firm === true)
+  && Math.abs(p.a.value - p.b.value) >= FIRM_GAP;
+
+/** firmPenalty — снижать ли процент за красные флаги (только «совместимость в отношениях»). */
+function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeResult {
   const supers = ps.filter((p) => bothCare(p) && p.s >= 0.8).sort(desc(award));
   const strongs = ps.filter((p) => bothCare(p) && p.s >= 0.5 && p.s < 0.8).sort(desc(award));
   const talks = ps
@@ -82,9 +92,10 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL): ModeResult {
     (p) => Math.abs(p.a.value - 5) <= 1 && Math.abs(p.b.value - 5) <= 1,
   );
   const sphereIds = [...new Set(ps.map((p) => p.q.sphere))];
+  const base = percent(ps, k);
 
   return {
-    percent: percent(ps, k),
+    percent: base !== null && firmPenalty ? base * FIRM_FACTOR ** reds.length : base,
     spheres: sphereIds.map((sphere) => {
       const inSphere = ps.filter((p) => p.q.sphere === sphere);
       return {
@@ -109,7 +120,7 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL): ModeResult {
 export function compare(questions: Question[], a: Profile, b: Profile, relationshipWeight: SphereWeight = EQUAL, friendshipWeight?: SphereWeight): CompareResult {
   const all = pairs(questions.filter((q) => q.block !== 'maturity' && q.scored !== false), a, b);
   return {
-    relationship: mode(all, relationshipWeight),
+    relationship: mode(all, relationshipWeight, true),
     friendship: friendshipWeight
       ? mode(all.filter((p) => friendshipWeight(p.q.sphere) > 0), friendshipWeight)
       : mode(all.filter((p) => p.q.block === 'friendship')),

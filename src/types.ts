@@ -12,6 +12,8 @@ export interface Question {
   optional: boolean;
   /** false — ответ показывается, но в проценты и темы не идёт: разница здесь не минус (например, амбиции у мужчины и женщины). */
   scored?: boolean;
+  /** Под шкалой — отметка «Для меня это не обсуждается»: красный флаг ставится только по ней. */
+  firm?: boolean;
 }
 
 export type ImportanceLevel = 0 | 1 | 2 | 3;
@@ -22,6 +24,8 @@ export interface Answer {
   lo: number; // 0..10, lo <= hi
   hi: number;
   importance: ImportanceLevel;
+  /** Отметка «Для меня это не обсуждается» — только у вопросов с firm. */
+  firm?: boolean;
 }
 
 export type Response = Answer | 'skipped';

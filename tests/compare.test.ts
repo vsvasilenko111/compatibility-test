@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { compare } from '../src/scoring/compare';
+import { compare, FIRM_FACTOR } from '../src/scoring/compare';
 import type { Answer, ImportanceLevel, Profile, Question } from '../src/types';
 
 const q = (id: string, block: Question['block'], sphere: string): Question => ({
@@ -64,13 +64,30 @@ describe('compare — пример Ани и Миши', () => {
 });
 
 describe('compare — граничные случаи', () => {
-  it('критичное расхождение → красный флаг и ≈9,77%', () => {
+  it('критичное расхождение без отметки → тема для разговора, не флаг; ≈9,77%', () => {
     const m = misha();
     m.responses.kids = ans(0, 0, 10, 2);
     const r = compare(QS, anya(), m);
-    expect(ids(r.relationship.redFlags)).toEqual(['kids']);
+    expect(r.relationship.redFlags).toEqual([]);
     expect(r.relationship.percent).toBeCloseTo(9.77, 1);
+    expect(ids(r.relationship.talkZones)).toContain('kids');
+  });
+
+  it('с отметкой «не обсуждается» → красный флаг, «отношения» × FIRM_FACTOR, «дружба» без штрафа', () => {
+    const qs = QS.map((x) => (x.id === 'kids' ? { ...x, firm: true } : x));
+    const a = anya(), m = misha();
+    m.responses.kids = { ...ans(0, 0, 10, 2), firm: true };
+    const r = compare(qs, a, m);
+    expect(ids(r.relationship.redFlags)).toEqual(['kids']);
+    expect(r.relationship.percent).toBeCloseTo(9.77 * FIRM_FACTOR, 1);
     expect(ids(r.relationship.talkZones)).not.toContain('kids');
+    expect(r.friendship.percent).toBeCloseTo(compare(QS, anya(), misha()).friendship.percent!, 6);
+  });
+
+  it('отметка у вопроса без firm в банке не действует', () => {
+    const m = misha();
+    m.responses.kids = { ...ans(0, 0, 10, 2), firm: true };
+    expect(compare(QS, anya(), m).relationship.redFlags).toEqual([]);
   });
 
   it('пропущенный одним вопрос исключается для обоих', () => {
@@ -121,14 +138,11 @@ describe('compare — веса сфер в «отношениях»', () => {
     expect(kidsApart).toBeLessThan(1);
     expect(conflictsApart).toBeGreaterThan(25);
   });
-  it('в сферах с весом < 0,4 красного флага нет — только «обсудить»; в «дружбе» флаг остаётся', () => {
+  it('расхождение в стиле ссор без отметки — тема для разговора, не флаг', () => {
     const r = compare(qs, p2(5, 10), p2(5, 0), W);
     expect(r.relationship.redFlags).toEqual([]);
     expect(ids(r.relationship.talkZones)).toEqual(['c']);
-    expect(ids(r.friendship.redFlags)).toEqual(['c']);
-  });
-  it('без весов поведение прежнее', () => {
-    expect(compare(qs, p2(5, 10), p2(5, 0)).relationship.redFlags.map((x) => x.id)).toEqual(['c']);
+    expect(r.friendship.redFlags).toEqual([]);
   });
 });
 

@@ -105,6 +105,8 @@ input[type='text'] {
 .scale.range .cell.on { background: var(--range); }
 .importance { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
 .importance .imp.on { background: var(--accent); color: var(--accent-fg); }
+.firm { display: flex; align-items: center; gap: 10px; margin: 4px 0 14px; cursor: pointer; }
+.firm input { width: 20px; height: 20px; accent-color: var(--accent); margin: 0; }
 .nav { display: flex; gap: 8px; flex-wrap: wrap; }
 .nav .primary { margin-left: auto; }
 .share { display: flex; flex-direction: column; gap: 8px; }
