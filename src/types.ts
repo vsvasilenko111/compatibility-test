@@ -10,6 +10,8 @@ export interface Question {
   right: string;
   topic: string;
   optional: boolean;
+  /** false — ответ показывается, но в проценты и темы не идёт: разница здесь не минус (например, амбиции у мужчины и женщины). */
+  scored?: boolean;
 }
 
 export type ImportanceLevel = 0 | 1 | 2 | 3;

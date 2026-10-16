@@ -18,7 +18,7 @@ export interface MaturityResult {
 type Values = Record<string, number>;
 
 /** Чем ниже ответ, тем устойчивее. Вопросы о прошлом сюда не входят: высокий балл там сам по себе не риск. */
-const LEVEL = ['attach-01', 'attach-03', 'regul-01', 'regul-02', 'reflect-01', 'reflect-02', 'reflect-03'];
+const LEVEL = ['attach-01', 'attach-03', 'regul-01', 'regul-02', 'regul-06', 'regul-07', 'regul-08', 'reflect-01', 'reflect-02', 'reflect-03'];
 const PAST = ['trauma-01', 'trauma-02', 'trauma-03', 'trauma-04', 'trauma-05', 'trauma-06'];
 /** Проработанность прошлого опыта: узнавание триггеров, разговор о прошлом, реакция, когда задели больное. */
 const WORKED_THROUGH = ['trauma-02', 'trauma-03', 'trauma-05'];

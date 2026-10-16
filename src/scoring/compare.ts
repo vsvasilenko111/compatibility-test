@@ -104,7 +104,7 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL): ModeResult {
 
 /** relationshipWeight — вес сферы в «отношениях» (по умолчанию все равны); «дружба» всегда без весов. */
 export function compare(questions: Question[], a: Profile, b: Profile, relationshipWeight: SphereWeight = EQUAL): CompareResult {
-  const all = pairs(questions.filter((q) => q.block !== 'maturity'), a, b);
+  const all = pairs(questions.filter((q) => q.block !== 'maturity' && q.scored !== false), a, b);
   return {
     relationship: mode(all, relationshipWeight),
     friendship: mode(all.filter((p) => p.q.block === 'friendship')),

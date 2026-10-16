@@ -6,7 +6,7 @@ import { answerFor } from '/Users/arkady.vasilenko/projects/compatibility-test/s
 const D = '/Users/arkady.vasilenko/projects/compatibility-test/research/synthetic';
 const A = JSON.parse(fs.readFileSync(`${D}/judge30.json`, 'utf8')).ratings as any[];
 const B = JSON.parse(fs.readFileSync(`${D}/judge30b.json`, 'utf8')).ratings as any[];
-const prof = (id: string) => { const r = JSON.parse(fs.readFileSync(`${D}/answers/${id}.json`, 'utf8')); return { name: id, bankVersion: 3, responses: Object.fromEntries(QUESTIONS.map((q) => [q.id, answerFor(r[q.id])])) }; };
+const prof = (id: string) => { const r = JSON.parse(fs.readFileSync(`${D}/answers/${id}.json`, 'utf8')); return { name: id, bankVersion: 3, responses: Object.fromEntries(QUESTIONS.map((q) => [q.id, r[q.id] === undefined ? 'skipped' : answerFor(r[q.id])])) }; };
 const rows = A.map((a) => { const b = B.find((x) => x.man === a.man && x.woman === a.woman); if (!b) throw new Error('нет ' + a.man + a.woman);
   const r = compare(QUESTIONS, prof(a.man), prof(a.woman), relationshipWeight); return { a: a.couple, b: b.couple, af: a.friends, bf: b.friends, t: r.relationship.percent!, tf: r.friendship.percent! }; });
 const c = (x: number[], y: number[]) => { let ok = 0, n = 0; for (let i = 0; i < x.length; i++) for (let k = i + 1; k < x.length; k++) { const dy = y[i] - y[k]; if (!dy) continue; const dx = x[i] - x[k]; ok += dx === 0 ? 0.5 : (dx > 0) === (dy > 0) ? 1 : 0; n++; } return (100 * ok / n).toFixed(0) + '%'; };

@@ -29,21 +29,21 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('136 вопросов: 60 дружбы, 58 отношений и 18 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(136);
-    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(60);
+  it('141 вопрос: 62 дружбы, 58 отношений и 21 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(141);
+    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(62);
     expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(58);
-    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(18);
+    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(21);
   });
 
   it('блок зрелости — в конце, вопросы о прошлом — последними и подряд', () => {
-    expect(QUESTIONS.slice(-18).every((x) => x.block === 'maturity')).toBe(true);
+    expect(QUESTIONS.slice(-21).every((x) => x.block === 'maturity')).toBe(true);
     expect(QUESTIONS.slice(-6).every((x) => x.sphere === 'past')).toBe(true);
   });
 
-  it('в каждой сфере дружбы 7–8 вопросов, в каждой сфере отношений 6–8', () => {
+  it('в каждой сфере дружбы 7–9 вопросов, в каждой сфере отношений 6–8', () => {
     for (const s of SPHERES.filter((x) => x.block !== 'maturity')) {
-      const [min, max] = s.block === 'friendship' ? [7, 8] : [6, 8];
+      const [min, max] = s.block === 'friendship' ? [7, 9] : [6, 8];
       expect(count(s.id), s.id).toBeGreaterThanOrEqual(min);
       expect(count(s.id), s.id).toBeLessThanOrEqual(max);
     }
@@ -58,6 +58,11 @@ describe('полный банк', () => {
     expect(MANIFEST[4].slice(0, 118)).toEqual(MANIFEST[3]);
   });
 
+  it('манифест v4 не изменился — 136 вопросов; v5 содержит все его вопросы', () => {
+    expect(MANIFEST[4]).toHaveLength(136);
+    expect(MANIFEST[4].every((id) => MANIFEST[5].includes(id))).toBe(true);
+  });
+
   it('манифест v1 не изменился — старые ссылки открываются', () => {
     expect(MANIFEST[1]).toEqual([
       'humor-01', 'kids-01', 'money-01', 'home-01', 'conflicts-01', 'living-01',
@@ -65,7 +70,7 @@ describe('полный банк', () => {
     ]);
   });
 
-  // 4 бита на вопрос: 136 вопросов + имя в 40 байт → 151 символ.
+  // 4 бита на вопрос: 141 вопрос + имя в 40 байт → 154 символа.
   it('ссылка на полный банк с именем в 40 байт — не длиннее 155 символов', () => {
     const responses = Object.fromEntries(CURRENT_IDS.map((id) => [id, { value: 10, lo: 0, hi: 10, importance: 3 as const }]));
     const code = encode({ name: 'Александра-Анастасия', bankVersion: BANK_VERSION, responses }, CURRENT_IDS);

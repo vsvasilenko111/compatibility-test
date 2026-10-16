@@ -18,9 +18,12 @@ export function bothAnswered(questions: Question[], pa: Profile, pb: Profile): A
   });
 }
 
-/** Расхождения по группам: противоположные мнения, разные стороны от середины, одна сторона с разной силой. Внутри — от большей разницы. */
+/**
+ * Расхождения по группам: противоположные мнения, разные стороны от середины, одна сторона с разной силой. Внутри — от большей разницы.
+ * Вопросы, где разница не минус (scored: false), сюда не попадают — они видны только во всех ответах.
+ */
 export function divergences(questions: Question[], pa: Profile, pb: Profile): AnswerGroup[] {
-  const rows = bothAnswered(questions, pa, pb).filter((r) => r.diff >= DIVERGENCE).sort((x, y) => y.diff - x.diff);
+  const rows = bothAnswered(questions.filter((q) => q.scored !== false), pa, pb).filter((r) => r.diff >= DIVERGENCE).sort((x, y) => y.diff - x.diff);
   return [
     { title: 'Противоположные мнения', rows: rows.filter((r) => r.opposite && r.diff >= 6) },
     { title: 'По разные стороны от середины', rows: rows.filter((r) => r.opposite && r.diff < 6) },

@@ -131,3 +131,15 @@ describe('compare — веса сфер в «отношениях»', () => {
     expect(compare(qs, p2(5, 10), p2(5, 0)).relationship.redFlags.map((x) => x.id)).toEqual(['c']);
   });
 });
+
+describe('compare — вопрос с scored: false', () => {
+  it('в процент, флаги и темы не идёт', () => {
+    const qs = [...QS, { ...q('ambition', 'relationship', 'career'), scored: false }];
+    const a = anya(), b = misha();
+    a.responses.ambition = ans(0, 0, 1, 3);
+    b.responses.ambition = ans(10, 9, 10, 3);
+    const r = compare(qs, a, b);
+    expect(r.relationship.percent).toBeCloseTo(compare(QS, anya(), misha()).relationship.percent!, 6);
+    expect(ids([...r.relationship.redFlags, ...r.relationship.talkZones])).not.toContain('ambition');
+  });
+});

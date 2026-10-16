@@ -10,12 +10,14 @@ const D = '/Users/arkady.vasilenko/projects/compatibility-test/research/syntheti
 const { pairs } = JSON.parse(fs.readFileSync(`${D}/personas30.json`, 'utf8'));
 const judge = JSON.parse(fs.readFileSync(`${D}/judge30.json`, 'utf8')).ratings as { man: string; woman: string; couple: number; friends: number }[];
 
+const NEW_IN_V5 = new Set(['humor-10', 'values-09', 'regul-06', 'regul-07', 'regul-08']);
 const profile = (id: string): Profile => {
   const raw = JSON.parse(fs.readFileSync(`${D}/answers/${id}.json`, 'utf8')) as Record<string, number>;
   const responses: Profile['responses'] = {};
   for (const q of QUESTIONS) {
     const v = raw[q.id];
-    if (v === undefined || v === null) throw new Error(`${id}: нет ответа на ${q.id}`);
+    // Вопросов банка v5 у персонажей нет — считаются пропущенными.
+    if (v === undefined || v === null) { if (NEW_IN_V5.has(q.id)) { responses[q.id] = 'skipped'; continue; } throw new Error(`${id}: нет ответа на ${q.id}`); }
     responses[q.id] = v < 0 ? 'skipped' : answerFor(Math.max(0, Math.min(10, Math.round(v))));
   }
   return { name: id, bankVersion: 2, responses };
