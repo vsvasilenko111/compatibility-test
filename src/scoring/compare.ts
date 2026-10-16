@@ -1,5 +1,6 @@
 import type { Answer, Profile, Question } from '../types';
 import { maturity, type MaturityResult } from './maturity';
+import { resources, type Resource } from './resources';
 import { fit, rawFit, strength, weight } from './primitives';
 
 export interface ItemRef { id: string; topic: string; sphere: string }
@@ -16,7 +17,7 @@ export interface ModeResult {
   superCount: number;
   flexibleCount: number;
 }
-export interface CompareResult { relationship: ModeResult; friendship: ModeResult; maturity: MaturityResult | null }
+export interface CompareResult { relationship: ModeResult; friendship: ModeResult; maturity: MaturityResult | null; resources: Resource[] | null }
 
 export const TOP_N = 5;
 const CARES = 10;
@@ -86,7 +87,8 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeRes
   const strongs = ps.filter((p) => bothCare(p) && p.s >= 0.5 && p.s < 0.8).sort(desc(award));
   const talks = ps
     .filter((p) => !isRed(p) && ((p.wA >= CARES && p.rawA <= TALK_FIT) || (p.wB >= CARES && p.rawB <= TALK_FIT)))
-    .sort(desc((p) => p.wA * (1 - p.rawA) + p.wB * (1 - p.rawB)));
+    // Сначала темы из сфер с большим весом: в «отношениях» дети и деньги раньше досуга и юмора.
+    .sort(desc((p) => k(p.q.sphere) * (p.wA * (1 - p.rawA) + p.wB * (1 - p.rawB))));
   const reds = ps.filter(isRed).sort(desc((p) => p.wA + p.wB));
   const flexible = ps.filter(
     (p) => Math.abs(p.a.value - 5) <= 1 && Math.abs(p.b.value - 5) <= 1,
@@ -125,5 +127,6 @@ export function compare(questions: Question[], a: Profile, b: Profile, relations
       ? mode(all.filter((p) => friendshipWeight(p.q.sphere) > 0), friendshipWeight)
       : mode(all.filter((p) => p.q.block === 'friendship')),
     maturity: maturity(questions, a, b),
+    resources: resources(questions, a, b),
   };
 }

@@ -1,6 +1,7 @@
 import { calibrate, FRIENDSHIP_TABLE, RELATIONSHIP_TABLE } from '../../scoring/calibration';
 import type { CompareResult } from '../../scoring/compare';
 import type { MaturityResult } from '../../scoring/maturity';
+import type { Resource } from '../../scoring/resources';
 import type { Question } from '../../types';
 import { bothAnswered, divergences, type AnswerRow } from '../answers-view';
 import type { Profile } from '../../types';
@@ -78,17 +79,25 @@ function sphereMap(tiles: SphereTile[]): HTMLElement {
     panel);
 }
 
-/** Эмоции и прошлый опыт: опоры и бережные темы для разговора. Чьи это ответы — не показываем никогда. */
-function maturitySection(m: MaturityResult | null): HTMLElement | null {
-  if (!m || (!m.strengths.length && !m.talks.length && !m.softTopics.length)) return null;
-  return h('section', { class: 'maturity' },
-    h('h3', { class: 'eyebrow' }, 'Эмоции и близость'),
-    h('p', { class: 'hint' }, 'На проценты не влияет — это подсказки, о чём поговорить.'),
+const LEVEL_LABEL: Record<Resource['level'], string> = { strong: 'получается', ok: 'в целом получается', grow: 'зона роста' };
+
+/**
+ * Ресурсы пары: уровень навыков обоих (как спорите, отходите, миритесь, опираетесь друг на друга) и опасные сочетания.
+ * «Можно обсудить» из блока зрелости не показываем — его вопросы уже вошли в уровни. Чьи это ответы — не показываем никогда.
+ */
+function resourcesSection(rs: Resource[] | null, m: MaturityResult | null): HTMLElement | null {
+  const talks = m?.talks ?? [];
+  if (!rs && !talks.length) return null;
+  return h('section', { class: 'resources' },
+    h('h3', { class: 'eyebrow' }, 'Ресурсы пары'),
+    h('p', { class: 'hint' }, 'Не сходство, а то, как вы вдвоём справляетесь с трудным. На проценты не влияет; чьи это ответы, не показываем.'),
+    rs ? h('ul', { class: 'res-list' }, ...rs.map((r) =>
+      h('li', { class: `res lvl-${r.level}` },
+        h('div', { class: 'res-head' }, h('b', {}, r.title), h('span', { class: 'res-lvl' }, LEVEL_LABEL[r.level])),
+        h('p', {}, r.text)))) : null,
     h('div', { class: 'notes' },
-      note('support', 'Опоры пары', m.strengths),
-      ...m.talks.map((t) => h('div', { class: 'note talk' }, h('div', { class: 'note-label' }, t.title), h('p', {}, t.text))),
-      note('soft', 'Можно обсудить', m.softTopics)),
-    h('p', { class: 'hint' }, 'Если какая-то тема отзывается сильно, с этим можно прийти к психологу — вдвоём или по отдельности.'));
+      ...talks.map((t) => h('div', { class: 'note talk' }, h('div', { class: 'note-label' }, t.title), h('p', {}, t.text)))),
+    h('p', { class: 'hint' }, 'Это подсказки для разговора, а не диагноз. Если какая-то тема отзывается сильно, с этим можно прийти к психологу — вдвоём или по отдельности.'));
 }
 
 /** Кто смотрит и кто уже открыл свои ответы: mine — индекс смотрящего (0 — A, 1 — B), null — смотрит не участник. */
@@ -160,14 +169,17 @@ export function resultScreen(a: Profile, b: Profile, result: CompareResult, shar
       h('summary', {}, 'Что значат проценты?'),
       h('p', {}, 'Партнёр как друг — каково вам друг с другом каждый день: юмор, досуг, доверие, ссоры, ценности, быт, ревность, родные. Насколько вам легко вместе.'),
       h('p', {}, 'Совместимость в отношениях — по всем вопросам, кроме эмоций и прошлого опыта: к этому добавляются дети, быт, деньги, близость, родные. Получится ли общая жизнь.'),
-      h('p', {}, 'Вопросы об эмоциях и прошлом опыте на проценты не влияют — по ним видны опоры пары и темы для разговора.'),
+      h('p', {}, 'Вопросы об эмоциях и прошлом опыте на проценты не влияют — по ним считаются ресурсы пары: как вы спорите, отходите, миритесь и поддерживаете друг друга.'),
       h('p', {}, 'Это не прогноз и не приговор. Тест сравнивает то, что каждый рассказал о себе, а как вы на деле ведёте себя друг с другом — особенно в ссоре, — он видит лишь отчасти. Точность проверена только на смоделированных парах, на живых — ещё нет.'),
       h('p', {}, '50% — как у двух случайных людей, 75% и выше — заметно выше, чем у случайной пары. Если «партнёр как друг» заметно выше отношений — вам легко вместе, но во взглядах на совместную жизнь есть что обсудить.')),
-    h('div', { class: 'notes' },
-      note('red', reds.length > 1 ? 'Красные флаги' : 'Красный флаг', reds),
-      note('talk', 'Стоит обсудить', rel.talkZones.map((i) => i.topic)),
-      note('support', 'Ваша опора', supportTopics(rel))),
-    maturitySection(result.maturity),
+    h('section', { class: 'plans' },
+      h('h3', { class: 'eyebrow' }, 'Совпадение планов'),
+      h('p', { class: 'hint' }, 'Насколько совпадают ваши взгляды на общую жизнь: дети, деньги, где жить, быт, вера, родные.'),
+      h('div', { class: 'notes' },
+        note('red', reds.length > 1 ? 'Красные флаги' : 'Красный флаг', reds),
+        note('talk', 'Стоит обсудить', rel.talkZones.map((i) => i.topic)),
+        note('support', 'Ваша опора', supportTopics(rel)))),
+    resourcesSection(result.resources, result.maturity),
     answersSection(a, b, reveal),
     sphereMap(sphereTiles(rel.spheres)),
     h('h3', {}, 'Отправить результат партнёру'),

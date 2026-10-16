@@ -48,7 +48,7 @@ describe('карта сфер в DOM', () => {
   });
 });
 
-describe('блок «Эмоции и близость» в DOM', () => {
+describe('блок «Ресурсы пары» в DOM', () => {
   const mq: Question[] = [
     ...qs,
     { id: 'regul-03', block: 'maturity', sphere: 'regulation', text: 't', left: 'l', right: 'r', topic: 'если партнёр выходит из спора', optional: false },
@@ -61,7 +61,7 @@ describe('блок «Эмоции и близость» в DOM', () => {
   it('тема «если спор накаляется» с текстом, без имён и баллов', () => {
     const a = mp('Аня', [10, 0, 10, 9, 2]);
     const b = mp('Миша', [10, 10, 9, 2, 9]);
-    const section = resultScreen(a, b, compare(mq, a, b), 'https://x/#r.a.b').querySelector('.maturity')!;
+    const section = resultScreen(a, b, compare(mq, a, b), 'https://x/#r.a.b').querySelector('.resources')!;
     expect(section.textContent).toContain('Если спор накаляется');
     expect(section.textContent).not.toMatch(/Аня|Миша|\d+ ?из|\b9\b/);
   });
@@ -69,6 +69,19 @@ describe('блок «Эмоции и близость» в DOM', () => {
   it('у ссылок прошлой версии блока нет', () => {
     const a = p('Аня', [10, 0, 10]);
     const b = p('Миша', [10, 10, 9]);
-    expect(resultScreen(a, b, compare(mq, a, b), 'https://x/#r.a.b').querySelector('.maturity')).toBeNull();
+    expect(resultScreen(a, b, compare(mq, a, b), 'https://x/#r.a.b').querySelector('.resources')).toBeNull();
+  });
+
+  it('уровень навыков пары — без имён и ответов', () => {
+    const rq: Question[] = [...qs, ...['regul-01', 'regul-07', 'regul-02'].map((id, i): Question => ({
+      id, block: 'maturity', sphere: 'regulation', text: 't', left: 'l', right: 'r', topic: `t${i}`, optional: false }))];
+    const rp = (name: string, vals: number[]): Profile => ({
+      name, bankVersion: 9, responses: Object.fromEntries(rq.map((q, i) => [q.id, answerFor(vals[i])])),
+    });
+    const a = rp('Аня', [10, 0, 10, 1, 2, 9]);
+    const b = rp('Миша', [10, 10, 9, 0, 1, 9]);
+    const items = [...resultScreen(a, b, compare(rq, a, b), 'https://x/#r.a.b').querySelectorAll('.resources .res')];
+    expect(items.map((li) => li.querySelector('.res-head')!.textContent)).toEqual(['Спорить, не обжигаяполучается', 'Отпускать после ссорызона роста']);
+    expect(items.map((li) => li.textContent).join()).not.toMatch(/Аня|Миша/);
   });
 });
