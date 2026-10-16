@@ -13,11 +13,12 @@ const qs: Question[] = [
   { id: 'b1', block: 'relationship', sphere: 'budget', text: 'Подушка', left: 'Полгода', right: 'Потом', topic: 'подушка', optional: false },
   { id: 'h1', block: 'friendship', sphere: 'humor', text: 'Шутки', left: 'Смешно', right: 'Нет', topic: 'шутки', optional: false },
   { id: 'i1', block: 'relationship', sphere: 'intimacy', text: 'Тайный вопрос', left: 'l', right: 'r', topic: 'тайна', optional: true },
+  { id: 't1', block: 'maturity', sphere: 'past', text: 'Вопрос о прошлом', left: 'l', right: 'r', topic: 'прошлое', optional: true },
 ];
 const p = (name: string, vals: (number | null)[]): Profile => ({
   name, bankVersion: 4, responses: Object.fromEntries(qs.map((q, i) => [q.id, vals[i] === null ? 'skipped' : answerFor(vals[i]!)])),
 });
-const A = p('Аня', [10, 0, 7, 2]), B = p('Миша', [2, 7, 9, null]);
+const A = p('Аня', [10, 0, 7, 2, 0]), B = p('Миша', [2, 7, 9, null, 10]);
 
 describe('согласие открыть ответы', () => {
   it('метка своя у каждого кода и проверяется', () => {
@@ -52,6 +53,7 @@ describe('экран результата: ответы друг друга', ()
     expect(s.textContent).toContain('Сколько детей');
     expect(s.textContent).toMatch(/Аня: 10.*Миша: 2/);
     expect(s.textContent).not.toContain('Тайный вопрос');
+    expect(s.textContent).not.toContain('Вопрос о прошлом');
   });
   it('открыл один — ответов не видно, второму предлагается открыть свои', () => {
     const s = screen([true, false], 1)!;
