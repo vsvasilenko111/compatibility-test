@@ -1,0 +1,2160 @@
+{
+ "rows": [
+  {
+   "set": "judge30.json",
+   "man": "p8m",
+   "woman": "p23w",
+   "rel": 74.96760223719704,
+   "fr": 73.18117297409191,
+   "relNoSkip": 74.96760223719704,
+   "relEqual": 69.81719868505857
+  },
+  {
+   "set": "judge30.json",
+   "man": "p4m",
+   "woman": "p4w",
+   "rel": 80.45572120393729,
+   "fr": 84.69103746417413,
+   "relNoSkip": 80.45572120393729,
+   "relEqual": 81.22757583535399
+  },
+  {
+   "set": "judge30.json",
+   "man": "p17m",
+   "woman": "p28w",
+   "rel": 60.26547148747271,
+   "fr": 74.82515937312496,
+   "relNoSkip": 60.26547148747271,
+   "relEqual": 64.24469427587613
+  },
+  {
+   "set": "judge30.json",
+   "man": "p11m",
+   "woman": "p19w",
+   "rel": 25.22260081218542,
+   "fr": 37.160050109566676,
+   "relNoSkip": 25.22260081218542,
+   "relEqual": 33.73957026132927
+  },
+  {
+   "set": "judge30.json",
+   "man": "p15m",
+   "woman": "p20w",
+   "rel": 67.7805831571308,
+   "fr": 82.44002205862027,
+   "relNoSkip": 67.7805831571308,
+   "relEqual": 78.16771410074782
+  },
+  {
+   "set": "judge30.json",
+   "man": "p6m",
+   "woman": "p14w",
+   "rel": 56.542466417722515,
+   "fr": 76.15519870118568,
+   "relNoSkip": 56.542466417722515,
+   "relEqual": 62.71756729735439
+  },
+  {
+   "set": "judge30.json",
+   "man": "p16m",
+   "woman": "p16w",
+   "rel": 82.99459018609572,
+   "fr": 70.75913781522895,
+   "relNoSkip": 82.99459018609572,
+   "relEqual": 72.66068221690028
+  },
+  {
+   "set": "judge30.json",
+   "man": "p14m",
+   "woman": "p9w",
+   "rel": 55.47590860584505,
+   "fr": 65.55001721191795,
+   "relNoSkip": 55.47590860584505,
+   "relEqual": 59.81279146042592
+  },
+  {
+   "set": "judge30.json",
+   "man": "p16m",
+   "woman": "p15w",
+   "rel": 69.05147624821791,
+   "fr": 73.4469661310171,
+   "relNoSkip": 69.05147624821791,
+   "relEqual": 69.16050303960473
+  },
+  {
+   "set": "judge30.json",
+   "man": "p28m",
+   "woman": "p22w",
+   "rel": 77.24414172670947,
+   "fr": 89.00938232016765,
+   "relNoSkip": 77.24414172670947,
+   "relEqual": 79.87872546028996
+  },
+  {
+   "set": "judge30.json",
+   "man": "p22m",
+   "woman": "p26w",
+   "rel": 82.40193298623149,
+   "fr": 86.69715920108413,
+   "relNoSkip": 82.40193298623149,
+   "relEqual": 82.71191980433746
+  },
+  {
+   "set": "judge30.json",
+   "man": "p17m",
+   "woman": "p19w",
+   "rel": 73.4503985486137,
+   "fr": 68.69298995089297,
+   "relNoSkip": 73.4503985486137,
+   "relEqual": 68.57576013861075
+  },
+  {
+   "set": "judge30.json",
+   "man": "p7m",
+   "woman": "p12w",
+   "rel": 56.765607100034224,
+   "fr": 64.68541384587382,
+   "relNoSkip": 56.765607100034224,
+   "relEqual": 66.96441820430809
+  },
+  {
+   "set": "judge30.json",
+   "man": "p23m",
+   "woman": "p23w",
+   "rel": 49.73040666022806,
+   "fr": 51.91378377246387,
+   "relNoSkip": 49.73040666022806,
+   "relEqual": 52.26758043702713
+  },
+  {
+   "set": "judge30.json",
+   "man": "p10m",
+   "woman": "p20w",
+   "rel": 88.61914138669209,
+   "fr": 88.80566945819363,
+   "relNoSkip": 88.61914138669209,
+   "relEqual": 88.67868523193465
+  },
+  {
+   "set": "judge30.json",
+   "man": "p25m",
+   "woman": "p9w",
+   "rel": 14.48473361287057,
+   "fr": 28.324631362425183,
+   "relNoSkip": 14.48473361287057,
+   "relEqual": 22.288874299748908
+  },
+  {
+   "set": "judge30.json",
+   "man": "p14m",
+   "woman": "p22w",
+   "rel": 72.14246496576429,
+   "fr": 69.55900792783166,
+   "relNoSkip": 72.14246496576429,
+   "relEqual": 72.63305217863972
+  },
+  {
+   "set": "judge30.json",
+   "man": "p9m",
+   "woman": "p30w",
+   "rel": 46.82929441405076,
+   "fr": 41.46536197330595,
+   "relNoSkip": 46.82929441405076,
+   "relEqual": 37.8984206392083
+  },
+  {
+   "set": "judge30.json",
+   "man": "p18m",
+   "woman": "p6w",
+   "rel": 70.92012139004045,
+   "fr": 74.86709151473524,
+   "relNoSkip": 70.92012139004045,
+   "relEqual": 72.7613640491281
+  },
+  {
+   "set": "judge30.json",
+   "man": "p26m",
+   "woman": "p7w",
+   "rel": 74.20509706558849,
+   "fr": 79.49374434569577,
+   "relNoSkip": 74.20509706558849,
+   "relEqual": 72.84072569165592
+  },
+  {
+   "set": "judge30.json",
+   "man": "p13m",
+   "woman": "p10w",
+   "rel": 64.5430417970563,
+   "fr": 66.41178200280001,
+   "relNoSkip": 64.5430417970563,
+   "relEqual": 64.35157180630905
+  },
+  {
+   "set": "judge30.json",
+   "man": "p16m",
+   "woman": "p30w",
+   "rel": 76.42018652805773,
+   "fr": 67.04119120063024,
+   "relNoSkip": 76.42018652805773,
+   "relEqual": 65.91700411347016
+  },
+  {
+   "set": "judge30.json",
+   "man": "p21m",
+   "woman": "p27w",
+   "rel": 37.56906490245816,
+   "fr": 38.9719005171239,
+   "relNoSkip": 37.56906490245816,
+   "relEqual": 37.982793358904935
+  },
+  {
+   "set": "judge30.json",
+   "man": "p18m",
+   "woman": "p15w",
+   "rel": 75.60318754905948,
+   "fr": 84.8820608739467,
+   "relNoSkip": 75.60318754905948,
+   "relEqual": 77.1712209894597
+  },
+  {
+   "set": "judge30.json",
+   "man": "p17m",
+   "woman": "p17w",
+   "rel": 16.86634498695953,
+   "fr": 26.63277835516299,
+   "relNoSkip": 16.86634498695953,
+   "relEqual": 22.095825480751206
+  },
+  {
+   "set": "judge30.json",
+   "man": "p12m",
+   "woman": "p19w",
+   "rel": 53.68832988445267,
+   "fr": 55.797999528994026,
+   "relNoSkip": 53.68832988445267,
+   "relEqual": 51.760582191187055
+  },
+  {
+   "set": "judge30.json",
+   "man": "p10m",
+   "woman": "p4w",
+   "rel": 80.81501894901713,
+   "fr": 81.55585723853191,
+   "relNoSkip": 80.81501894901713,
+   "relEqual": 77.38424209673936
+  },
+  {
+   "set": "judge30.json",
+   "man": "p1m",
+   "woman": "p8w",
+   "rel": 70.67498939920806,
+   "fr": 67.42289092088502,
+   "relNoSkip": 70.67498939920806,
+   "relEqual": 67.16335313579353
+  },
+  {
+   "set": "judge30.json",
+   "man": "p7m",
+   "woman": "p26w",
+   "rel": 50.88386828004473,
+   "fr": 76.56186510343034,
+   "relNoSkip": 50.88386828004473,
+   "relEqual": 61.04935389744828
+  },
+  {
+   "set": "judge30.json",
+   "man": "p29m",
+   "woman": "p29w",
+   "rel": 34.475591685438175,
+   "fr": 29.30855649447053,
+   "relNoSkip": 34.475591685438175,
+   "relEqual": 28.669790889500852
+  },
+  {
+   "set": "judge30.json",
+   "man": "p24m",
+   "woman": "p10w",
+   "rel": 74.43262540523928,
+   "fr": 72.28312823248108,
+   "relNoSkip": 74.43262540523928,
+   "relEqual": 68.66288162118744
+  },
+  {
+   "set": "judge30.json",
+   "man": "p27m",
+   "woman": "p24w",
+   "rel": 41.82169627030776,
+   "fr": 57.07066152144208,
+   "relNoSkip": 41.82169627030776,
+   "relEqual": 47.27423753920778
+  },
+  {
+   "set": "judge30.json",
+   "man": "p5m",
+   "woman": "p5w",
+   "rel": 57.55371509319653,
+   "fr": 41.270609630989306,
+   "relNoSkip": 57.55371509319653,
+   "relEqual": 48.33187202632126
+  },
+  {
+   "set": "judge30.json",
+   "man": "p30m",
+   "woman": "p20w",
+   "rel": 74.57508841456828,
+   "fr": 68.26412849373487,
+   "relNoSkip": 74.57508841456828,
+   "relEqual": 69.29998545923482
+  },
+  {
+   "set": "judge30.json",
+   "man": "p24m",
+   "woman": "p24w",
+   "rel": 84.97820831251069,
+   "fr": 73.6147052286735,
+   "relNoSkip": 84.97820831251069,
+   "relEqual": 75.44437106178815
+  },
+  {
+   "set": "judge30.json",
+   "man": "p5m",
+   "woman": "p19w",
+   "rel": 44.86074738513793,
+   "fr": 40.757465513098666,
+   "relNoSkip": 44.86074738513793,
+   "relEqual": 41.488818103966814
+  },
+  {
+   "set": "judge30.json",
+   "man": "p26m",
+   "woman": "p2w",
+   "rel": 80.30235009181382,
+   "fr": 77.8787842244588,
+   "relNoSkip": 80.30235009181382,
+   "relEqual": 77.11671353823358
+  },
+  {
+   "set": "judge30.json",
+   "man": "p11m",
+   "woman": "p3w",
+   "rel": 41.42029771355827,
+   "fr": 49.204375294299616,
+   "relNoSkip": 41.42029771355827,
+   "relEqual": 48.080453217867394
+  },
+  {
+   "set": "judge30.json",
+   "man": "p24m",
+   "woman": "p27w",
+   "rel": 84.6015956623468,
+   "fr": 81.76217100545713,
+   "relNoSkip": 84.6015956623468,
+   "relEqual": 80.77346796429546
+  },
+  {
+   "set": "judge30.json",
+   "man": "p16m",
+   "woman": "p6w",
+   "rel": 76.90197761116116,
+   "fr": 79.10880326509866,
+   "relNoSkip": 76.90197761116116,
+   "relEqual": 77.07138527087469
+  },
+  {
+   "set": "judge30.json",
+   "man": "p21m",
+   "woman": "p21w",
+   "rel": 31.370142491426623,
+   "fr": 24.406176824310965,
+   "relNoSkip": 31.370142491426623,
+   "relEqual": 27.15112830334516
+  },
+  {
+   "set": "judge30.json",
+   "man": "p19m",
+   "woman": "p22w",
+   "rel": 63.81252269501997,
+   "fr": 67.58395255274205,
+   "relNoSkip": 63.81252269501997,
+   "relEqual": 68.13084609608654
+  },
+  {
+   "set": "judge30.json",
+   "man": "p20m",
+   "woman": "p20w",
+   "rel": 79.76296037653661,
+   "fr": 76.62889326079838,
+   "relNoSkip": 79.76296037653661,
+   "relEqual": 75.55576597817324
+  },
+  {
+   "set": "judge30.json",
+   "man": "p28m",
+   "woman": "p28w",
+   "rel": 91.0832691936462,
+   "fr": 90.8437484493276,
+   "relNoSkip": 91.0832691936462,
+   "relEqual": 87.76805921100224
+  },
+  {
+   "set": "judge30.json",
+   "man": "p20m",
+   "woman": "p5w",
+   "rel": 59.059879417142355,
+   "fr": 58.39018582330026,
+   "relNoSkip": 59.059879417142355,
+   "relEqual": 57.441146567268554
+  },
+  {
+   "set": "judge30.json",
+   "man": "p12m",
+   "woman": "p8w",
+   "rel": 77.11910296939932,
+   "fr": 76.58276674173746,
+   "relNoSkip": 77.11910296939932,
+   "relEqual": 74.8266194247425
+  },
+  {
+   "set": "judge30.json",
+   "man": "p8m",
+   "woman": "p26w",
+   "rel": 82.48973481075589,
+   "fr": 80.97897899045454,
+   "relNoSkip": 82.48973481075589,
+   "relEqual": 77.85169226533266
+  },
+  {
+   "set": "judge30.json",
+   "man": "p1m",
+   "woman": "p1w",
+   "rel": 36.01654909537039,
+   "fr": 39.53952173080093,
+   "relNoSkip": 36.01654909537039,
+   "relEqual": 37.09133881709412
+  },
+  {
+   "set": "judge30.json",
+   "man": "p6m",
+   "woman": "p24w",
+   "rel": 52.65317259672974,
+   "fr": 73.2383923461475,
+   "relNoSkip": 52.65317259672974,
+   "relEqual": 60.50046254910787
+  },
+  {
+   "set": "judge30.json",
+   "man": "p30m",
+   "woman": "p30w",
+   "rel": 72.93058628341798,
+   "fr": 71.65583612586383,
+   "relNoSkip": 72.93058628341798,
+   "relEqual": 69.39266730175937
+  },
+  {
+   "set": "judge30.json",
+   "man": "p26m",
+   "woman": "p21w",
+   "rel": 74.90717174244435,
+   "fr": 74.63727316995555,
+   "relNoSkip": 74.90717174244435,
+   "relEqual": 76.14634841500316
+  },
+  {
+   "set": "judge30.json",
+   "man": "p6m",
+   "woman": "p15w",
+   "rel": 42.22713187019526,
+   "fr": 56.86298646204152,
+   "relNoSkip": 42.22713187019526,
+   "relEqual": 52.51482460747877
+  },
+  {
+   "set": "judge30.json",
+   "man": "p8m",
+   "woman": "p8w",
+   "rel": 82.78570271278988,
+   "fr": 75.74704218202245,
+   "relNoSkip": 82.78570271278988,
+   "relEqual": 77.35978211238866
+  },
+  {
+   "set": "judge30.json",
+   "man": "p22m",
+   "woman": "p22w",
+   "rel": 79.96031382090243,
+   "fr": 73.62392856231061,
+   "relNoSkip": 79.96031382090243,
+   "relEqual": 73.10020224029361
+  },
+  {
+   "set": "judge30.json",
+   "man": "p10m",
+   "woman": "p15w",
+   "rel": 83.67638841104537,
+   "fr": 86.28490532350756,
+   "relNoSkip": 83.67638841104537,
+   "relEqual": 83.98736825803827
+  },
+  {
+   "set": "judge30.json",
+   "man": "p22m",
+   "woman": "p19w",
+   "rel": 75.05759938221281,
+   "fr": 75.40026013184006,
+   "relNoSkip": 75.05759938221281,
+   "relEqual": 73.5597617971915
+  },
+  {
+   "set": "judge30.json",
+   "man": "p7m",
+   "woman": "p7w",
+   "rel": 47.238356619064184,
+   "fr": 72.90719200283411,
+   "relNoSkip": 47.238356619064184,
+   "relEqual": 59.18439357526787
+  },
+  {
+   "set": "judge30.json",
+   "man": "p9m",
+   "woman": "p12w",
+   "rel": 56.78230898798704,
+   "fr": 48.6629166655158,
+   "relNoSkip": 56.78230898798704,
+   "relEqual": 51.506139289518096
+  },
+  {
+   "set": "judge30.json",
+   "man": "p12m",
+   "woman": "p28w",
+   "rel": 76.8799212621065,
+   "fr": 76.22541981553724,
+   "relNoSkip": 76.8799212621065,
+   "relEqual": 74.05163458462151
+  },
+  {
+   "set": "judge30.json",
+   "man": "p18m",
+   "woman": "p13w",
+   "rel": 71.69262728579052,
+   "fr": 74.32036690934322,
+   "relNoSkip": 71.69262728579052,
+   "relEqual": 69.86579807517204
+  },
+  {
+   "set": "judge30.json",
+   "man": "p2m",
+   "woman": "p28w",
+   "rel": 70.7900244277001,
+   "fr": 83.63620855715769,
+   "relNoSkip": 70.7900244277001,
+   "relEqual": 72.41803884279854
+  },
+  {
+   "set": "judge30.json",
+   "man": "p4m",
+   "woman": "p17w",
+   "rel": 57.39533896549236,
+   "fr": 73.4637909326395,
+   "relNoSkip": 57.39533896549236,
+   "relEqual": 64.2507757701417
+  },
+  {
+   "set": "judge30.json",
+   "man": "p14m",
+   "woman": "p5w",
+   "rel": 53.440093454483986,
+   "fr": 49.156128647090775,
+   "relNoSkip": 53.440093454483986,
+   "relEqual": 51.98694524222
+  },
+  {
+   "set": "judge30.json",
+   "man": "p4m",
+   "woman": "p15w",
+   "rel": 78.55391677699649,
+   "fr": 83.68079678099897,
+   "relNoSkip": 78.55391677699649,
+   "relEqual": 81.75017415643923
+  },
+  {
+   "set": "judge30.json",
+   "man": "p23m",
+   "woman": "p14w",
+   "rel": 54.56150541625063,
+   "fr": 69.81131412994105,
+   "relNoSkip": 54.56150541625063,
+   "relEqual": 60.925575103336236
+  },
+  {
+   "set": "judge30.json",
+   "man": "p3m",
+   "woman": "p30w",
+   "rel": 51.83530899426741,
+   "fr": 69.09715009172527,
+   "relNoSkip": 51.83530899426741,
+   "relEqual": 66.40382240027388
+  },
+  {
+   "set": "judge30.json",
+   "man": "p19m",
+   "woman": "p6w",
+   "rel": 72.11112716084041,
+   "fr": 84.56228087506769,
+   "relNoSkip": 72.11112716084041,
+   "relEqual": 74.73735045230804
+  },
+  {
+   "set": "judge30.json",
+   "man": "p30m",
+   "woman": "p6w",
+   "rel": 84.56741387005357,
+   "fr": 87.60633988756568,
+   "relNoSkip": 84.56741387005357,
+   "relEqual": 85.98890427417396
+  },
+  {
+   "set": "judge30.json",
+   "man": "p29m",
+   "woman": "p13w",
+   "rel": 50.17555632238775,
+   "fr": 51.59184067054263,
+   "relNoSkip": 50.17555632238775,
+   "relEqual": 54.92780711396465
+  },
+  {
+   "set": "judge30.json",
+   "man": "p27m",
+   "woman": "p9w",
+   "rel": 92.0664871475886,
+   "fr": 90.28121396061871,
+   "relNoSkip": 92.0664871475886,
+   "relEqual": 89.79197554116813
+  },
+  {
+   "set": "judge30.json",
+   "man": "p27m",
+   "woman": "p27w",
+   "rel": 24.36792259901163,
+   "fr": 36.04577752766092,
+   "relNoSkip": 24.36792259901163,
+   "relEqual": 32.82102628806826
+  },
+  {
+   "set": "judge30.json",
+   "man": "p29m",
+   "woman": "p10w",
+   "rel": 66.95558972584685,
+   "fr": 73.41351505111844,
+   "relNoSkip": 66.95558972584685,
+   "relEqual": 70.15466045368926
+  },
+  {
+   "set": "judge30.json",
+   "man": "p18m",
+   "woman": "p18w",
+   "rel": 88.19966974995292,
+   "fr": 87.27746819875432,
+   "relNoSkip": 88.19966974995292,
+   "relEqual": 87.9012404864174
+  },
+  {
+   "set": "judge30.json",
+   "man": "p5m",
+   "woman": "p17w",
+   "rel": 68.02343946795737,
+   "fr": 62.32307698936375,
+   "relNoSkip": 68.02343946795737,
+   "relEqual": 59.978189799867785
+  },
+  {
+   "set": "judge30.json",
+   "man": "p15m",
+   "woman": "p27w",
+   "rel": 30.52768096294965,
+   "fr": 39.95384614533749,
+   "relNoSkip": 30.52768096294965,
+   "relEqual": 36.62417952671061
+  },
+  {
+   "set": "judge30.json",
+   "man": "p13m",
+   "woman": "p13w",
+   "rel": 38.54331169962934,
+   "fr": 32.966718913898404,
+   "relNoSkip": 38.54331169962934,
+   "relEqual": 38.25061994708721
+  },
+  {
+   "set": "judge30.json",
+   "man": "p29m",
+   "woman": "p11w",
+   "rel": 46.545678738084426,
+   "fr": 53.93890707576566,
+   "relNoSkip": 46.545678738084426,
+   "relEqual": 53.08015441980728
+  },
+  {
+   "set": "judge30.json",
+   "man": "p23m",
+   "woman": "p15w",
+   "rel": 40.859705729952786,
+   "fr": 55.66243652898053,
+   "relNoSkip": 40.859705729952786,
+   "relEqual": 50.7703649271061
+  },
+  {
+   "set": "judge30.json",
+   "man": "p30m",
+   "woman": "p26w",
+   "rel": 76.35377056373888,
+   "fr": 78.45431154250664,
+   "relNoSkip": 76.35377056373888,
+   "relEqual": 74.82904812203536
+  },
+  {
+   "set": "judge30.json",
+   "man": "p14m",
+   "woman": "p14w",
+   "rel": 81.71499715872564,
+   "fr": 81.08914179051278,
+   "relNoSkip": 81.71499715872564,
+   "relEqual": 81.01140044339253
+  },
+  {
+   "set": "judge30.json",
+   "man": "p23m",
+   "woman": "p24w",
+   "rel": 47.37835909100189,
+   "fr": 64.1518201477061,
+   "relNoSkip": 47.37835909100189,
+   "relEqual": 51.61042131990222
+  },
+  {
+   "set": "judge30.json",
+   "man": "p13m",
+   "woman": "p16w",
+   "rel": 59.72660664872001,
+   "fr": 76.26563274235582,
+   "relNoSkip": 59.72660664872001,
+   "relEqual": 69.32509253966384
+  },
+  {
+   "set": "judge30.json",
+   "man": "p9m",
+   "woman": "p6w",
+   "rel": 70.97204210056695,
+   "fr": 71.89859401918484,
+   "relNoSkip": 70.97204210056695,
+   "relEqual": 73.23697526427553
+  },
+  {
+   "set": "judge30.json",
+   "man": "p15m",
+   "woman": "p12w",
+   "rel": 59.42468753055239,
+   "fr": 68.12378602763503,
+   "relNoSkip": 59.42468753055239,
+   "relEqual": 69.38965755198902
+  },
+  {
+   "set": "judge30.json",
+   "man": "p3m",
+   "woman": "p3w",
+   "rel": 25.2197031042319,
+   "fr": 27.036012726785287,
+   "relNoSkip": 25.2197031042319,
+   "relEqual": 25.31230265784356
+  },
+  {
+   "set": "judge30.json",
+   "man": "p17m",
+   "woman": "p8w",
+   "rel": 51.44246307912142,
+   "fr": 52.96752592767788,
+   "relNoSkip": 51.44246307912142,
+   "relEqual": 49.03492490360029
+  },
+  {
+   "set": "judge30.json",
+   "man": "p8m",
+   "woman": "p3w",
+   "rel": 81.92812886976397,
+   "fr": 85.74077378609456,
+   "relNoSkip": 81.92812886976397,
+   "relEqual": 83.2275506777189
+  },
+  {
+   "set": "judge30.json",
+   "man": "p28m",
+   "woman": "p7w",
+   "rel": 64.48338245722641,
+   "fr": 87.16180605493543,
+   "relNoSkip": 64.48338245722641,
+   "relEqual": 71.06878392315569
+  },
+  {
+   "set": "judge30.json",
+   "man": "p2m",
+   "woman": "p2w",
+   "rel": 84.08912086128862,
+   "fr": 79.00620056721645,
+   "relNoSkip": 84.08912086128862,
+   "relEqual": 78.1282605257351
+  },
+  {
+   "set": "judge30.json",
+   "man": "p3m",
+   "woman": "p12w",
+   "rel": 43.61962056552119,
+   "fr": 62.05300010288416,
+   "relNoSkip": 43.61962056552119,
+   "relEqual": 57.63428784006565
+  },
+  {
+   "set": "judge30.json",
+   "man": "p28m",
+   "woman": "p15w",
+   "rel": 71.4006192917659,
+   "fr": 88.56927292514318,
+   "relNoSkip": 71.4006192917659,
+   "relEqual": 75.47796792150521
+  },
+  {
+   "set": "judge30.json",
+   "man": "p21m",
+   "woman": "p11w",
+   "rel": 40.08856679703216,
+   "fr": 36.685939419391566,
+   "relNoSkip": 40.08856679703216,
+   "relEqual": 40.817771737458216
+  },
+  {
+   "set": "judge30.json",
+   "man": "p11m",
+   "woman": "p24w",
+   "rel": 57.47682994655926,
+   "fr": 69.02630420488278,
+   "relNoSkip": 57.47682994655926,
+   "relEqual": 63.59823278322231
+  },
+  {
+   "set": "judge30.json",
+   "man": "p13m",
+   "woman": "p11w",
+   "rel": 37.97585046435765,
+   "fr": 38.285327053446096,
+   "relNoSkip": 37.97585046435765,
+   "relEqual": 40.57743879385857
+  },
+  {
+   "set": "judge30.json",
+   "man": "p2m",
+   "woman": "p3w",
+   "rel": 85.9007045737598,
+   "fr": 89.17623678562946,
+   "relNoSkip": 85.9007045737598,
+   "relEqual": 85.97725107088313
+  },
+  {
+   "set": "judge30.json",
+   "man": "p11m",
+   "woman": "p11w",
+   "rel": 26.564019842060272,
+   "fr": 36.31445780244548,
+   "relNoSkip": 26.564019842060272,
+   "relEqual": 33.670048827511046
+  },
+  {
+   "set": "judge30.json",
+   "man": "p24m",
+   "woman": "p29w",
+   "rel": 58.03397130002666,
+   "fr": 57.51361938521663,
+   "relNoSkip": 58.03397130002666,
+   "relEqual": 57.37005304361499
+  },
+  {
+   "set": "judge30.json",
+   "man": "p3m",
+   "woman": "p2w",
+   "rel": 44.25183946932426,
+   "fr": 59.703782885062736,
+   "relNoSkip": 44.25183946932426,
+   "relEqual": 55.09802342156254
+  },
+  {
+   "set": "judge30.json",
+   "man": "p21m",
+   "woman": "p23w",
+   "rel": 60.522143241691985,
+   "fr": 64.79018256159573,
+   "relNoSkip": 60.522143241691985,
+   "relEqual": 68.03544008878379
+  },
+  {
+   "set": "judge30.json",
+   "man": "p22m",
+   "woman": "p12w",
+   "rel": 73.7715852176878,
+   "fr": 76.58080148433132,
+   "relNoSkip": 73.7715852176878,
+   "relEqual": 79.24158041140258
+  },
+  {
+   "set": "judge30.json",
+   "man": "p20m",
+   "woman": "p24w",
+   "rel": 81.79115244882216,
+   "fr": 77.94033421966115,
+   "relNoSkip": 81.79115244882216,
+   "relEqual": 77.31587495890544
+  },
+  {
+   "set": "judge30.json",
+   "man": "p19m",
+   "woman": "p19w",
+   "rel": 28.29652604577026,
+   "fr": 40.15447392835148,
+   "relNoSkip": 28.29652604577026,
+   "relEqual": 32.36687488471205
+  },
+  {
+   "set": "judge30.json",
+   "man": "p19m",
+   "woman": "p1w",
+   "rel": 72.60012339259522,
+   "fr": 70.56239202275911,
+   "relNoSkip": 72.60012339259522,
+   "relEqual": 66.21709203788213
+  },
+  {
+   "set": "judge30.json",
+   "man": "p25m",
+   "woman": "p29w",
+   "rel": 60.39680447946021,
+   "fr": 51.76879080882342,
+   "relNoSkip": 60.39680447946021,
+   "relEqual": 52.56228783266602
+  },
+  {
+   "set": "judge30.json",
+   "man": "p10m",
+   "woman": "p10w",
+   "rel": 85.52075342325,
+   "fr": 77.59373592651131,
+   "relNoSkip": 85.52075342325,
+   "relEqual": 76.79315114101249
+  },
+  {
+   "set": "judge30.json",
+   "man": "p4m",
+   "woman": "p30w",
+   "rel": 73.86066854070198,
+   "fr": 78.58210342874287,
+   "relNoSkip": 73.86066854070198,
+   "relEqual": 76.09030471734381
+  },
+  {
+   "set": "judge30.json",
+   "man": "p1m",
+   "woman": "p28w",
+   "rel": 68.91757662630576,
+   "fr": 82.87363026861193,
+   "relNoSkip": 68.91757662630576,
+   "relEqual": 71.25515205959854
+  },
+  {
+   "set": "judge30.json",
+   "man": "p27m",
+   "woman": "p23w",
+   "rel": 48.04810774063391,
+   "fr": 58.13791222878342,
+   "relNoSkip": 48.04810774063391,
+   "relEqual": 57.70121439910783
+  },
+  {
+   "set": "judge30.json",
+   "man": "p20m",
+   "woman": "p16w",
+   "rel": 82.15749329174754,
+   "fr": 79.56165076754677,
+   "relNoSkip": 82.15749329174754,
+   "relEqual": 79.23852481087187
+  },
+  {
+   "set": "judge30.json",
+   "man": "p9m",
+   "woman": "p9w",
+   "rel": 13.155897405118619,
+   "fr": 18.91150224416273,
+   "relNoSkip": 13.155897405118619,
+   "relEqual": 18.00754695087818
+  },
+  {
+   "set": "judge30.json",
+   "man": "p26m",
+   "woman": "p26w",
+   "rel": 76.320584861072,
+   "fr": 77.83122105380433,
+   "relNoSkip": 76.320584861072,
+   "relEqual": 74.4422438470549
+  },
+  {
+   "set": "judge30.json",
+   "man": "p15m",
+   "woman": "p15w",
+   "rel": 39.0317593136618,
+   "fr": 59.14530416444425,
+   "relNoSkip": 39.0317593136618,
+   "relEqual": 53.90409964768628
+  },
+  {
+   "set": "judge30.json",
+   "man": "p5m",
+   "woman": "p24w",
+   "rel": 70.91129816172625,
+   "fr": 75.622296179522,
+   "relNoSkip": 70.91129816172625,
+   "relEqual": 75.78680349572812
+  },
+  {
+   "set": "judge30.json",
+   "man": "p2m",
+   "woman": "p26w",
+   "rel": 80.53075985820625,
+   "fr": 80.37371127233622,
+   "relNoSkip": 80.53075985820625,
+   "relEqual": 76.2019271997627
+  },
+  {
+   "set": "judge30.json",
+   "man": "p1m",
+   "woman": "p19w",
+   "rel": 83.60513202240999,
+   "fr": 78.39166839309767,
+   "relNoSkip": 83.60513202240999,
+   "relEqual": 78.80954711322468
+  },
+  {
+   "set": "judge30.json",
+   "man": "p7m",
+   "woman": "p15w",
+   "rel": 38.03382158753323,
+   "fr": 60.33384503952164,
+   "relNoSkip": 38.03382158753323,
+   "relEqual": 51.48625784193375
+  },
+  {
+   "set": "judge30.json",
+   "man": "p25m",
+   "woman": "p25w",
+   "rel": 17.091047136818723,
+   "fr": 27.60716081928542,
+   "relNoSkip": 17.091047136818723,
+   "relEqual": 21.74984889621496
+  },
+  {
+   "set": "judge30.json",
+   "man": "p6m",
+   "woman": "p6w",
+   "rel": 50.25041189434116,
+   "fr": 61.0487388828064,
+   "relNoSkip": 50.25041189434116,
+   "relEqual": 49.8652738339012
+  },
+  {
+   "set": "judge30.json",
+   "man": "p12m",
+   "woman": "p12w",
+   "rel": 81.43297694647734,
+   "fr": 73.68630570045394,
+   "relNoSkip": 81.43297694647734,
+   "relEqual": 79.55589036452497
+  },
+  {
+   "set": "judge30.json",
+   "man": "p25m",
+   "woman": "p7w",
+   "rel": 64.06545424444936,
+   "fr": 65.26368843467607,
+   "relNoSkip": 64.06545424444936,
+   "relEqual": 59.64594665084062
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p36m",
+   "woman": "p36w",
+   "rel": 68.41011390648278,
+   "fr": 67.41147308830976,
+   "relNoSkip": 69.85423161452165,
+   "relEqual": 62.44242832908446
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p34m",
+   "woman": "p42w",
+   "rel": 85.10807213097013,
+   "fr": 79.41195274301397,
+   "relNoSkip": 85.10807213097013,
+   "relEqual": 81.37263271520973
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p43m",
+   "woman": "p43w",
+   "rel": 89.36860112207918,
+   "fr": 87.63739346965093,
+   "relNoSkip": 89.42278513548877,
+   "relEqual": 87.85809655331185
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p34m",
+   "woman": "p37w",
+   "rel": 65.05940550846523,
+   "fr": 59.774895696791695,
+   "relNoSkip": 64.08350904120897,
+   "relEqual": 60.657299032861744
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p46m",
+   "woman": "p46w",
+   "rel": 92.1618120000821,
+   "fr": 90.06547473949499,
+   "relNoSkip": 88.50994016218776,
+   "relEqual": 91.27620878561254
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p41m",
+   "woman": "p41w",
+   "rel": 75.320742819348,
+   "fr": 59.681656663167615,
+   "relNoSkip": 75.30337377726954,
+   "relEqual": 67.28819284765542
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p45m",
+   "woman": "p32w",
+   "rel": 91.54743762574725,
+   "fr": 87.37087929258458,
+   "relNoSkip": 90.74792653471738,
+   "relEqual": 86.1209337722052
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p36m",
+   "woman": "p39w",
+   "rel": 81.97877492615025,
+   "fr": 82.86706425599414,
+   "relNoSkip": 80.52117056420876,
+   "relEqual": 81.81997357550344
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p39m",
+   "woman": "p39w",
+   "rel": 85.14647646205255,
+   "fr": 84.64215634761788,
+   "relNoSkip": 85.14647646205255,
+   "relEqual": 85.86143165591687
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p42m",
+   "woman": "p42w",
+   "rel": 71.55460083956027,
+   "fr": 54.40369995945956,
+   "relNoSkip": 69.53419418983569,
+   "relEqual": 60.53199771567772
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p38m",
+   "woman": "p46w",
+   "rel": 66.65539666440685,
+   "fr": 64.44900029405657,
+   "relNoSkip": 65.8044001664502,
+   "relEqual": 63.26732978601004
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p31m",
+   "woman": "p31w",
+   "rel": 80.04673790271019,
+   "fr": 51.05454830289455,
+   "relNoSkip": 80.04673790271019,
+   "relEqual": 61.957622485225286
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p43m",
+   "woman": "p46w",
+   "rel": 79.17739292204365,
+   "fr": 82.91767009466056,
+   "relNoSkip": 77.10914034763067,
+   "relEqual": 80.0537278246201
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p45m",
+   "woman": "p45w",
+   "rel": 93.11713410084755,
+   "fr": 92.53807222016823,
+   "relNoSkip": 92.95053929000633,
+   "relEqual": 91.09715188277474
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p37m",
+   "woman": "p45w",
+   "rel": 80.7070533431262,
+   "fr": 76.23365777464471,
+   "relNoSkip": 77.91099308861766,
+   "relEqual": 78.92430025986796
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p33m",
+   "woman": "p36w",
+   "rel": 45.92016670191587,
+   "fr": 35.21656784303553,
+   "relNoSkip": 45.84748014465079,
+   "relEqual": 41.68682921602757
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p37m",
+   "woman": "p40w",
+   "rel": 56.89236759485414,
+   "fr": 53.90172549085568,
+   "relNoSkip": 55.164840680275574,
+   "relEqual": 51.20506083261408
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p46m",
+   "woman": "p33w",
+   "rel": 63.94716404793018,
+   "fr": 57.86855455652851,
+   "relNoSkip": 65.9368791707917,
+   "relEqual": 63.64834717050183
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p42m",
+   "woman": "p45w",
+   "rel": 81.30371361154346,
+   "fr": 81.87540034545117,
+   "relNoSkip": 81.9963679864999,
+   "relEqual": 77.46921553149116
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p39m",
+   "woman": "p42w",
+   "rel": 83.37619104043836,
+   "fr": 84.0095845776756,
+   "relNoSkip": 83.37619104043836,
+   "relEqual": 85.66906139130114
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p32m",
+   "woman": "p35w",
+   "rel": 52.1142885981563,
+   "fr": 54.409109189931314,
+   "relNoSkip": 52.1142885981563,
+   "relEqual": 51.41477915105307
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p31m",
+   "woman": "p39w",
+   "rel": 78.63843438269119,
+   "fr": 51.488510824488664,
+   "relNoSkip": 78.63843438269119,
+   "relEqual": 58.465367982179416
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p38m",
+   "woman": "p38w",
+   "rel": 84.95548850870945,
+   "fr": 83.73867154158361,
+   "relNoSkip": 84.86210611116711,
+   "relEqual": 82.34031139259505
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p41m",
+   "woman": "p44w",
+   "rel": 53.72349917790782,
+   "fr": 63.78599949595999,
+   "relNoSkip": 52.52145807003949,
+   "relEqual": 59.48487493249246
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p36m",
+   "woman": "p44w",
+   "rel": 32.41339569541019,
+   "fr": 40.48346022114031,
+   "relNoSkip": 32.348556872355246,
+   "relEqual": 37.86760293575594
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p44m",
+   "woman": "p44w",
+   "rel": 93.30219149271987,
+   "fr": 93.1350692277623,
+   "relNoSkip": 93.30219149271987,
+   "relEqual": 92.78900836641536
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p33m",
+   "woman": "p33w",
+   "rel": 75.71015252826008,
+   "fr": 66.94127364303299,
+   "relNoSkip": 74.26987252006788,
+   "relEqual": 66.22113395174952
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p32m",
+   "woman": "p32w",
+   "rel": 90.59361886337366,
+   "fr": 84.51386416691217,
+   "relNoSkip": 88.6789830135086,
+   "relEqual": 85.86905617223032
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p32m",
+   "woman": "p40w",
+   "rel": 64.88456694687707,
+   "fr": 74.24724640065571,
+   "relNoSkip": 62.08814810264196,
+   "relEqual": 67.75111969872117
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p31m",
+   "woman": "p34w",
+   "rel": 89.40874215682369,
+   "fr": 87.66871403996616,
+   "relNoSkip": 86.1449303629445,
+   "relEqual": 89.2075271128656
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p44m",
+   "woman": "p31w",
+   "rel": 59.88962873765911,
+   "fr": 55.56219838184856,
+   "relNoSkip": 59.88962873765911,
+   "relEqual": 58.959252241600524
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p35m",
+   "woman": "p43w",
+   "rel": 44.7171420653441,
+   "fr": 48.905694600284775,
+   "relNoSkip": 43.036473010420146,
+   "relEqual": 49.61635524001258
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p38m",
+   "woman": "p41w",
+   "rel": 70.77034619678845,
+   "fr": 64.387036159477,
+   "relNoSkip": 70.80217361942115,
+   "relEqual": 64.35289988458696
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p37m",
+   "woman": "p37w",
+   "rel": 46.442848099626424,
+   "fr": 37.31339412090197,
+   "relNoSkip": 46.04764967596513,
+   "relEqual": 43.77302410160559
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p33m",
+   "woman": "p41w",
+   "rel": 59.21621890979927,
+   "fr": 46.4343878969742,
+   "relNoSkip": 58.225206333271174,
+   "relEqual": 58.29373917147388
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p35m",
+   "woman": "p35w",
+   "rel": 46.83439245704884,
+   "fr": 49.5675086173752,
+   "relNoSkip": 46.83439245704884,
+   "relEqual": 46.18481632542221
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p34m",
+   "woman": "p34w",
+   "rel": 79.28099082751197,
+   "fr": 64.79146037167912,
+   "relNoSkip": 77.01293600665066,
+   "relEqual": 70.7316481834316
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p40m",
+   "woman": "p43w",
+   "rel": 50.58131042321278,
+   "fr": 47.094599079671475,
+   "relNoSkip": 55.324477357836074,
+   "relEqual": 47.106377408589964
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p40m",
+   "woman": "p40w",
+   "rel": 89.45110091657325,
+   "fr": 88.85267561370614,
+   "relNoSkip": 89.38023145517666,
+   "relEqual": 89.06549581027882
+  },
+  {
+   "set": "judge-d.json",
+   "man": "p35m",
+   "woman": "p38w",
+   "rel": 22.499852799192325,
+   "fr": 18.07979521095277,
+   "relNoSkip": 21.758249524670575,
+   "relEqual": 20.988944434866998
+  }
+ ],
+ "qs": [
+  {
+   "id": "humor-01",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "шутки на грани"
+  },
+  {
+   "id": "budget-01",
+   "sphere": "budget",
+   "block": "relationship",
+   "topic": "общий или раздельный бюджет"
+  },
+  {
+   "id": "leisure-01",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "активный или домашний отдых"
+  },
+  {
+   "id": "kids-01",
+   "sphere": "kids",
+   "block": "relationship",
+   "topic": "незапланированный ребёнок"
+  },
+  {
+   "id": "values-01",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "деньги и принципы"
+  },
+  {
+   "id": "budget-02",
+   "sphere": "budget",
+   "block": "relationship",
+   "topic": "крупные покупки"
+  },
+  {
+   "id": "conflicts-01",
+   "sphere": "conflicts",
+   "block": "friendship",
+   "topic": "как выходить из ссоры"
+  },
+  {
+   "id": "roles-01",
+   "sphere": "roles",
+   "block": "relationship",
+   "topic": "слова о любви"
+  },
+  {
+   "id": "humor-02",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "чёрный юмор"
+  },
+  {
+   "id": "kids-02",
+   "sphere": "kids",
+   "block": "relationship",
+   "topic": "сколько общих детей"
+  },
+  {
+   "id": "leisure-02",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "планирование поездок"
+  },
+  {
+   "id": "home-01",
+   "sphere": "home",
+   "block": "relationship",
+   "topic": "порядок в доме"
+  },
+  {
+   "id": "living-01",
+   "sphere": "living",
+   "block": "relationship",
+   "topic": "где жить"
+  },
+  {
+   "id": "loyalty-01",
+   "sphere": "loyalty",
+   "block": "friendship",
+   "topic": "поддержка, когда партнёр неправ"
+  },
+  {
+   "id": "career-01",
+   "sphere": "career",
+   "block": "relationship",
+   "topic": "переезд ради карьеры партнёра"
+  },
+  {
+   "id": "honesty-01",
+   "sphere": "honesty",
+   "block": "friendship",
+   "topic": "неприятная правда"
+  },
+  {
+   "id": "budget-03",
+   "sphere": "budget",
+   "block": "relationship",
+   "topic": "финансовая подушка"
+  },
+  {
+   "id": "money-01",
+   "sphere": "money",
+   "block": "friendship",
+   "topic": "отношение к неожиданным деньгам"
+  },
+  {
+   "id": "intimacy-01",
+   "sphere": "intimacy",
+   "block": "relationship",
+   "topic": "новизна в интимной жизни"
+  },
+  {
+   "id": "values-02",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "разговоры о политике"
+  },
+  {
+   "id": "space-01",
+   "sphere": "space",
+   "block": "relationship",
+   "topic": "личное пространство и телефоны"
+  },
+  {
+   "id": "conflicts-02",
+   "sphere": "conflicts",
+   "block": "friendship",
+   "topic": "эмоции в споре"
+  },
+  {
+   "id": "relatives-01",
+   "sphere": "relatives",
+   "block": "relationship",
+   "topic": "отношения с семьёй партнёра"
+  },
+  {
+   "id": "humor-03",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "глубина разговоров"
+  },
+  {
+   "id": "roles-02",
+   "sphere": "roles",
+   "block": "relationship",
+   "topic": "подарки"
+  },
+  {
+   "id": "leisure-03",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "шумные компании и энергия"
+  },
+  {
+   "id": "kids-08",
+   "sphere": "kids",
+   "block": "relationship",
+   "topic": "когда дети"
+  },
+  {
+   "id": "rhythm-08",
+   "sphere": "rhythm",
+   "block": "friendship",
+   "topic": "надёжность и обещания"
+  },
+  {
+   "id": "home-02",
+   "sphere": "home",
+   "block": "relationship",
+   "topic": "распределение домашних дел"
+  },
+  {
+   "id": "loyalty-02",
+   "sphere": "loyalty",
+   "block": "friendship",
+   "topic": "друзья партнёра среди ночи"
+  },
+  {
+   "id": "living-02",
+   "sphere": "living",
+   "block": "relationship",
+   "topic": "ипотека или аренда"
+  },
+  {
+   "id": "honesty-02",
+   "sphere": "honesty",
+   "block": "friendship",
+   "topic": "советы без запроса"
+  },
+  {
+   "id": "career-02",
+   "sphere": "career",
+   "block": "relationship",
+   "topic": "работа по вечерам"
+  },
+  {
+   "id": "budget-04",
+   "sphere": "budget",
+   "block": "relationship",
+   "topic": "кредиты"
+  },
+  {
+   "id": "values-03",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "разные взгляды"
+  },
+  {
+   "id": "intimacy-02",
+   "sphere": "intimacy",
+   "block": "relationship",
+   "topic": "частота близости"
+  },
+  {
+   "id": "conflicts-03",
+   "sphere": "conflicts",
+   "block": "friendship",
+   "topic": "прощение"
+  },
+  {
+   "id": "space-02",
+   "sphere": "space",
+   "block": "relationship",
+   "topic": "общение с бывшими"
+  },
+  {
+   "id": "humor-04",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "подколы и подтрунивание"
+  },
+  {
+   "id": "relatives-02",
+   "sphere": "relatives",
+   "block": "relationship",
+   "topic": "советы родственников"
+  },
+  {
+   "id": "leisure-04",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "отдых и комфорт"
+  },
+  {
+   "id": "roles-03",
+   "sphere": "roles",
+   "block": "relationship",
+   "topic": "традиционные роли"
+  },
+  {
+   "id": "rhythm-03",
+   "sphere": "rhythm",
+   "block": "friendship",
+   "topic": "скорость ответов"
+  },
+  {
+   "id": "kids-04",
+   "sphere": "kids",
+   "block": "relationship",
+   "topic": "строгость в воспитании"
+  },
+  {
+   "id": "humor-11",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "острый юмор"
+  },
+  {
+   "id": "loyalty-03",
+   "sphere": "loyalty",
+   "block": "friendship",
+   "topic": "выбор стороны в конфликте"
+  },
+  {
+   "id": "home-03",
+   "sphere": "home",
+   "block": "relationship",
+   "topic": "домашние животные"
+  },
+  {
+   "id": "rhythm-10",
+   "sphere": "rhythm",
+   "block": "friendship",
+   "topic": "темп жизни"
+  },
+  {
+   "id": "honesty-03",
+   "sphere": "honesty",
+   "block": "friendship",
+   "topic": "хранение секретов"
+  },
+  {
+   "id": "living-03",
+   "sphere": "living",
+   "block": "relationship",
+   "topic": "переезд в другую страну"
+  },
+  {
+   "id": "leisure-09",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "активный или спокойный отдых"
+  },
+  {
+   "id": "money-03",
+   "sphere": "money",
+   "block": "friendship",
+   "topic": "деньги в долг"
+  },
+  {
+   "id": "career-03",
+   "sphere": "career",
+   "block": "relationship",
+   "topic": "роль работы"
+  },
+  {
+   "id": "values-04",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "вера"
+  },
+  {
+   "id": "budget-05",
+   "sphere": "budget",
+   "block": "relationship",
+   "topic": "помощь родителям"
+  },
+  {
+   "id": "values-10",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "шутки о вере"
+  },
+  {
+   "id": "conflicts-09",
+   "sphere": "conflicts",
+   "block": "friendship",
+   "topic": "прямая критика"
+  },
+  {
+   "id": "intimacy-03",
+   "sphere": "intimacy",
+   "block": "relationship",
+   "topic": "разговоры о желаниях"
+  },
+  {
+   "id": "humor-09",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "интересные разговоры"
+  },
+  {
+   "id": "space-03",
+   "sphere": "space",
+   "block": "relationship",
+   "topic": "дружба с противоположным полом"
+  },
+  {
+   "id": "leisure-05",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "спонтанность"
+  },
+  {
+   "id": "relatives-07",
+   "sphere": "relatives",
+   "block": "relationship",
+   "topic": "жить с родителями"
+  },
+  {
+   "id": "rhythm-04",
+   "sphere": "rhythm",
+   "block": "friendship",
+   "topic": "частота встреч"
+  },
+  {
+   "id": "roles-04",
+   "sphere": "roles",
+   "block": "relationship",
+   "topic": "«мужские» и «женские» дела"
+  },
+  {
+   "id": "leisure-10",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "новое или привычное"
+  },
+  {
+   "id": "loyalty-04",
+   "sphere": "loyalty",
+   "block": "friendship",
+   "topic": "помощь в ущерб себе"
+  },
+  {
+   "id": "kids-05",
+   "sphere": "kids",
+   "block": "relationship",
+   "topic": "декрет"
+  },
+  {
+   "id": "honesty-04",
+   "sphere": "honesty",
+   "block": "friendship",
+   "topic": "личные вещи"
+  },
+  {
+   "id": "home-04",
+   "sphere": "home",
+   "block": "relationship",
+   "topic": "уборка за деньги"
+  },
+  {
+   "id": "money-04",
+   "sphere": "money",
+   "block": "friendship",
+   "topic": "цена подарков"
+  },
+  {
+   "id": "living-04",
+   "sphere": "living",
+   "block": "relationship",
+   "topic": "дом или квартира"
+  },
+  {
+   "id": "values-05",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "честность в мелочах"
+  },
+  {
+   "id": "career-04",
+   "sphere": "career",
+   "block": "relationship",
+   "topic": "рискованные карьерные шаги"
+  },
+  {
+   "id": "conflicts-05",
+   "sphere": "conflicts",
+   "block": "friendship",
+   "topic": "мелкие претензии"
+  },
+  {
+   "id": "budget-06",
+   "sphere": "budget",
+   "block": "relationship",
+   "topic": "ведение бюджета"
+  },
+  {
+   "id": "humor-06",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "юмор в трудный момент"
+  },
+  {
+   "id": "intimacy-04",
+   "sphere": "intimacy",
+   "block": "relationship",
+   "topic": "телесная нежность"
+  },
+  {
+   "id": "leisure-06",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "общие увлечения"
+  },
+  {
+   "id": "space-04",
+   "sphere": "space",
+   "block": "relationship",
+   "topic": "раздельный отдых"
+  },
+  {
+   "id": "relatives-04",
+   "sphere": "relatives",
+   "block": "relationship",
+   "topic": "мнение окружения о партнёре"
+  },
+  {
+   "id": "loyalty-05",
+   "sphere": "loyalty",
+   "block": "friendship",
+   "topic": "советы или сочувствие"
+  },
+  {
+   "id": "roles-05",
+   "sphere": "roles",
+   "block": "relationship",
+   "topic": "принятие решений"
+  },
+  {
+   "id": "honesty-05",
+   "sphere": "honesty",
+   "block": "friendship",
+   "topic": "вмешательство в чужие отношения"
+  },
+  {
+   "id": "kids-06",
+   "sphere": "kids",
+   "block": "relationship",
+   "topic": "ЭКО и усыновление"
+  },
+  {
+   "id": "money-05",
+   "sphere": "money",
+   "block": "friendship",
+   "topic": "контроль трат"
+  },
+  {
+   "id": "home-05",
+   "sphere": "home",
+   "block": "relationship",
+   "topic": "еда дома или вне дома"
+  },
+  {
+   "id": "values-06",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "стабильность или свобода"
+  },
+  {
+   "id": "living-05",
+   "sphere": "living",
+   "block": "relationship",
+   "topic": "жизнь вместе до брака"
+  },
+  {
+   "id": "conflicts-06",
+   "sphere": "conflicts",
+   "block": "friendship",
+   "topic": "ссоры при других"
+  },
+  {
+   "id": "career-05",
+   "sphere": "career",
+   "block": "relationship",
+   "topic": "доход партнёра"
+  },
+  {
+   "id": "humor-07",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "юмор во время ссоры"
+  },
+  {
+   "id": "budget-07",
+   "sphere": "budget",
+   "block": "relationship",
+   "topic": "траты на отдых"
+  },
+  {
+   "id": "leisure-07",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "алкоголь"
+  },
+  {
+   "id": "intimacy-05",
+   "sphere": "intimacy",
+   "block": "relationship",
+   "topic": "нежность на людях"
+  },
+  {
+   "id": "space-05",
+   "sphere": "space",
+   "block": "relationship",
+   "topic": "геолокация"
+  },
+  {
+   "id": "loyalty-06",
+   "sphere": "loyalty",
+   "block": "friendship",
+   "topic": "зависть и радость за другого"
+  },
+  {
+   "id": "relatives-05",
+   "sphere": "relatives",
+   "block": "relationship",
+   "topic": "позиция в семейном конфликте"
+  },
+  {
+   "id": "honesty-06",
+   "sphere": "honesty",
+   "block": "friendship",
+   "topic": "пунктуальность"
+  },
+  {
+   "id": "roles-06",
+   "sphere": "roles",
+   "block": "relationship",
+   "topic": "романтика в долгих отношениях"
+  },
+  {
+   "id": "kids-07",
+   "sphere": "kids",
+   "block": "relationship",
+   "topic": "свобода ребёнка"
+  },
+  {
+   "id": "values-07",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "мнение своего круга"
+  },
+  {
+   "id": "home-06",
+   "sphere": "home",
+   "block": "relationship",
+   "topic": "гости дома"
+  },
+  {
+   "id": "conflicts-07",
+   "sphere": "conflicts",
+   "block": "friendship",
+   "topic": "как заканчиваются конфликты"
+  },
+  {
+   "id": "living-06",
+   "sphere": "living",
+   "block": "relationship",
+   "topic": "своё пространство дома"
+  },
+  {
+   "id": "humor-08",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "дурачество на людях"
+  },
+  {
+   "id": "leisure-08",
+   "sphere": "leisure",
+   "block": "friendship",
+   "topic": "жаворонок или сова"
+  },
+  {
+   "id": "budget-08",
+   "sphere": "budget",
+   "block": "relationship",
+   "topic": "свои деньги и общие траты"
+  },
+  {
+   "id": "rhythm-07",
+   "sphere": "rhythm",
+   "block": "friendship",
+   "topic": "инициатива во встречах"
+  },
+  {
+   "id": "intimacy-06",
+   "sphere": "intimacy",
+   "block": "relationship",
+   "topic": "несовпадение желаний"
+  },
+  {
+   "id": "loyalty-07",
+   "sphere": "loyalty",
+   "block": "friendship",
+   "topic": "защита за спиной"
+  },
+  {
+   "id": "space-06",
+   "sphere": "space",
+   "block": "relationship",
+   "topic": "время наедине с собой"
+  },
+  {
+   "id": "honesty-07",
+   "sphere": "honesty",
+   "block": "friendship",
+   "topic": "личное в соцсетях"
+  },
+  {
+   "id": "relatives-06",
+   "sphere": "relatives",
+   "block": "relationship",
+   "topic": "семейные праздники"
+  },
+  {
+   "id": "money-07",
+   "sphere": "money",
+   "block": "friendship",
+   "topic": "риск общими деньгами"
+  },
+  {
+   "id": "roles-07",
+   "sphere": "roles",
+   "block": "relationship",
+   "topic": "кто платит в паре"
+  },
+  {
+   "id": "values-08",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "экологичность"
+  },
+  {
+   "id": "conflicts-08",
+   "sphere": "conflicts",
+   "block": "friendship",
+   "topic": "старые обиды"
+  },
+  {
+   "id": "humor-10",
+   "sphere": "humor",
+   "block": "friendship",
+   "topic": "шутки о трагедиях"
+  },
+  {
+   "id": "values-09",
+   "sphere": "values",
+   "block": "friendship",
+   "topic": "нормы на людях"
+  }
+ ]
+}
