@@ -2,6 +2,9 @@ import type { Question, Response } from '../../types';
 import { answerFor } from '../../answer';
 import { h } from '../dom';
 
+/** О ком вопрос: в блоке дружбы речь о друге, в остальных — о партнёре или о вас самих. */
+export const BLOCK_TAG: Record<Question['block'], string> = { friendship: 'О друзьях', relationship: 'О вас как паре', maturity: 'О вас и ваших чувствах' };
+
 export interface QuestionProps {
   question: Question;
   index: number;
@@ -36,6 +39,7 @@ export function questionScreen(p: QuestionProps): HTMLElement {
         h('div', { class: 'bar', style: `width:${(p.index / p.total) * 100}%` }),
         h('span', {}, `${p.index + 1} / ${p.total}`)),
       p.lead ? h('p', { class: 'lead' }, p.lead) : null,
+      h('p', { class: 'tag' }, BLOCK_TAG[q.block]),
       h('h2', {}, q.text),
       h('div', { class: 'poles' }, h('span', {}, `0 — ${q.left}`), h('span', {}, `10 — ${q.right}`)),
       h('div', { class: 'scale mine', role: 'group' },
