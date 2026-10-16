@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { hasOpened, openToken } from '../src/consent';
 import { parseHash, resultHash } from '../src/router';
 import { divergences } from '../src/ui/answers-view';
@@ -38,32 +38,21 @@ describe('расхождения', () => {
   it('группы по силе, пропущенные не показываются', () => {
     const g = divergences(qs, A, B);
     expect(g.map((x) => [x.title, x.rows.map((r) => r.id)])).toEqual([
-      ['Противоположные мнения', ['k1', 'b1']],
+      ['Противоположные мнения', ['t1', 'k1', 'b1']],
     ]);
     expect(g.flatMap((x) => x.rows).some((r) => r.id === 'i1')).toBe(false);
   });
 });
 
 describe('экран результата: ответы друг друга', () => {
-  const screen = (opened: [boolean, boolean], mine: 0 | 1 | null, onOpen = () => {}) =>
-    resultScreen(A, B, compare(qs, A, B), 'https://x/#r.a.b', { questions: qs, opened, mine, onOpen }).querySelector('.answers');
-
-  it('открыли оба — видны вопросы и ответы обоих, пропущенного нет', () => {
-    const s = screen([true, true], null)!;
+  it('видны сразу, без согласия: все вопросы с ответами обоих, включая прошлый опыт; пропущенного нет', () => {
+    const s = resultScreen(A, B, compare(qs, A, B), 'https://x/#r.a.b', qs).querySelector('.answers')!;
     expect(s.textContent).toContain('Сколько детей');
     expect(s.textContent).toMatch(/Аня: 10.*Миша: 2/);
+    expect(s.textContent).toContain('Вопрос о прошлом');
     expect(s.textContent).not.toContain('Тайный вопрос');
-    expect(s.textContent).not.toContain('Вопрос о прошлом');
   });
-  it('открыл один — ответов не видно, второму предлагается открыть свои', () => {
-    const s = screen([true, false], 1)!;
-    expect(s.textContent).not.toContain('Сколько детей');
-    expect(s.textContent).toContain('Партнёр уже открыл');
-    const onOpen = vi.fn();
-    screen([false, false], 0, onOpen)!.querySelector('button')!.click();
-    expect(onOpen).toHaveBeenCalled();
-  });
-  it('постороннему без согласия обоих блок не показывается', () => {
-    expect(screen([true, false], null)).toBeNull();
+  it('без списка вопросов блока нет', () => {
+    expect(resultScreen(A, B, compare(qs, A, B), 'https://x/#r.a.b').querySelector('.answers')).toBeNull();
   });
 });

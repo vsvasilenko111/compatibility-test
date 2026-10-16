@@ -9,14 +9,10 @@ export interface AnswerGroup { title: string; rows: AnswerRow[] }
 /** Расхождение — от 3 делений, как у «стоит обсудить». */
 export const DIVERGENCE = 3;
 
-/**
- * Вопросы, на которые ответили оба. Пропущенные и вопросы об эмоциях и прошлом опыте (блок maturity) не показываются никогда —
- * по ним партнёр видит только общие темы.
- */
+/** Вопросы, на которые ответили оба, — все блоки, включая эмоции и прошлый опыт. Пропущенные не показываются. */
 export function bothAnswered(questions: Question[], pa: Profile, pb: Profile): AnswerRow[] {
   const labels = new Map(SPHERES.map((s) => [s.id, s.label]));
   return questions.flatMap((q) => {
-    if (q.block === 'maturity') return [];
     const x = pa.responses[q.id], y = pb.responses[q.id];
     if (!x || !y || x === 'skipped' || y === 'skipped') return [];
     return [{ id: q.id, text: q.text, left: q.left, right: q.right, sphere: labels.get(q.sphere) ?? q.sphere,

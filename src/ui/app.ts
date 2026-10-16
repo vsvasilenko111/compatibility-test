@@ -3,7 +3,6 @@ import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, QUESTIONS } fr
 import { friendshipWeight, relationshipWeight } from '../questions/spheres';
 import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
-import { hasOpened, openToken } from '../consent';
 import { browserStorage, createStore, type Progress } from '../storage';
 import { firstUnanswered, resumeFor } from './flow';
 import { finishScreen } from './screens/finish';
@@ -16,7 +15,7 @@ import { resultScreen } from './screens/result';
 const QUICK_COUNT = 5;
 const QUICK_BY_QUERY = new URLSearchParams(location.search).has('quick');
 
-const PAST_LEAD = 'Следующие вопросы — о том, как прошлое влияет на настоящее. Отвечайте только на те, на которые хочется: любой можно пропустить, и на экране партнёр не увидит ни ответов, ни пропусков.';
+const PAST_LEAD = 'Следующие вопросы — о том, как прошлое влияет на настоящее. Партнёр увидит ваши ответы. Любой вопрос можно пропустить.';
 
 /** Публичный адрес для ссылок-приглашений: на хостинге Artifact страница не видит свой адрес, поэтому он вшивается при сборке. */
 const PUBLIC_BASE: string | undefined = import.meta.env.VITE_PUBLIC_URL;
@@ -125,25 +124,13 @@ export function startApp(root: HTMLElement): void {
     show(finishScreen(inviteUrl(base, code, quick)));
   }
 
-  /** Чьи это ответы на этом устройстве: свой код или код, с которым здесь проходили тест по приглашению. */
-  function mineOf(a: string, b: string): 0 | 1 | null {
-    const own = store.loadOwnCode();
-    if (own === a || store.loadResultFor(b) === a) return 0;
-    if (own === b || store.loadResultFor(a) === b) return 1;
-    return null;
-  }
 
   function showResult(a: string, b: string, open: string[]) {
     try {
       const pa = decode(a, MANIFEST, FIRM);
       const pb = decode(b, MANIFEST, FIRM);
-      const mine = mineOf(a, b);
-      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), {
-        questions: QUESTIONS,
-        opened: [hasOpened(a, open), hasOpened(b, open)],
-        mine,
-        onOpen: () => { if (mine !== null) location.hash = resultHash(a, b, quick, [...open, openToken(mine === 0 ? a : b)]); },
-      }));
+      // Ответы друг друга видны сразу: согласие на раскрытие считается данным. Метки согласия в старых ссылках просто сохраняются.
+      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), QUESTIONS));
     } catch (e) {
       show(messageScreen('Не получилось открыть результат', codecMessage(e)));
     }
