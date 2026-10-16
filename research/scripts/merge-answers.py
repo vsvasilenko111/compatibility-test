@@ -1,10 +1,11 @@
-# Вливает ответы на изменённые и новые вопросы банка v6 (answers-v6/) в answers/: ответы на старые формулировки заменяются.
+# Вливает ответы на изменённые и новые вопросы (answers-<V>/, по умолчанию v6) в answers/: ответы на старые формулировки заменяются. Запуск: python3 merge-answers.py [v7] [--write]
 import json, os, sys
+V = next((a for a in sys.argv[1:] if a.startswith('v')), 'v6')
 D = '/Users/arkady.vasilenko/projects/compatibility-test/research/synthetic'
-need = [l.split(' | ')[0] for l in open(f'{D}/questions-v6-changed.txt') if l.strip()]
+need = [l.split(' | ')[0] for l in open(f'{D}/questions-{V}-changed.txt') if l.strip()]
 bad = []
 for f in sorted(os.listdir(f'{D}/answers')):
-    p = f'{D}/answers-v6/{f}'
+    p = f'{D}/answers-{V}/{f}'
     if not os.path.exists(p): bad.append(f'{f}: нет файла'); continue
     new = json.load(open(p))
     miss = [i for i in need if not isinstance(new.get(i), int) or not -1 <= new[i] <= 10]

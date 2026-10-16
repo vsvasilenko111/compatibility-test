@@ -62,6 +62,7 @@ describe('полный банк', () => {
     expect(MANIFEST[4]).toHaveLength(136);
     expect(MANIFEST[4].every((id) => MANIFEST[5].includes(id))).toBe(true);
     expect(MANIFEST[5]).toHaveLength(141);
+    expect(MANIFEST[6]).toHaveLength(136);
   });
 
   it('манифест v1 не изменился — старые ссылки открываются', () => {
