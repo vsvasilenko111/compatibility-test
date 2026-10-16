@@ -586,7 +586,8 @@
       "left": "Призвание и смысл",
       "right": "Способ зарабатывать на жизнь",
       "topic": "роль работы",
-      "optional": false
+      "optional": false,
+      "scored": false
     },
     {
       "id": "values-04",
@@ -969,7 +970,8 @@
       "left": "Мне всё равно, кто больше",
       "right": "Мне важно зарабатывать не меньше",
       "topic": "кто зарабатывает больше",
-      "optional": false
+      "optional": false,
+      "scored": false
     },
     {
       "id": "humor-07",
