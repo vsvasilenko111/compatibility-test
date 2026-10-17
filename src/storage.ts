@@ -7,6 +7,9 @@ export interface Progress {
   inviterCode: string | null;
 }
 
+/** Открытый на этом устройстве результат: коды обоих и имена — чтобы потом вернуться к нему с главной. */
+export interface SavedResult { a: string; b: string; names: string; at: number }
+
 export interface Store {
   readonly available: boolean;
   loadProgress(): Progress | null;
@@ -16,11 +19,17 @@ export interface Store {
   saveOwnCode(code: string): void;
   loadResultFor(inviterCode: string): string | null;
   saveResultFor(inviterCode: string, code: string): void;
+  loadHistory(): SavedResult[];
+  rememberResult(r: SavedResult): void;
 }
+
+/** Сколько последних результатов помнить. */
+export const HISTORY_LIMIT = 20;
 
 const PROGRESS_KEY = 'compat:v1:progress';
 const OWN_CODE_KEY = 'compat:v1:own-code';
 const RESULTS_KEY = 'compat:v1:results';
+const HISTORY_KEY = 'compat:v1:history';
 const PROBE_KEY = 'compat:probe';
 
 function isProgress(p: unknown): p is Progress {
@@ -35,6 +44,11 @@ function isProgress(p: unknown): p is Progress {
 function isResults(r: unknown): r is Record<string, string> {
   return typeof r === 'object' && r !== null && !Array.isArray(r)
     && Object.values(r).every((v) => typeof v === 'string');
+}
+
+function isHistory(h: unknown): h is SavedResult[] {
+  return Array.isArray(h) && h.every((x) => typeof x === 'object' && x !== null
+    && typeof x.a === 'string' && typeof x.b === 'string' && typeof x.names === 'string' && typeof x.at === 'number');
 }
 
 function probe(s: Storage): boolean {
@@ -69,6 +83,18 @@ export function createStore(storage: Storage | null): Store {
     }
   };
 
+  const loadHistory = (): SavedResult[] => {
+    const raw = get(HISTORY_KEY);
+    if (!raw) return [];
+    try {
+      const parsed: unknown = JSON.parse(raw);
+      return isHistory(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  };
+  const samePair = (x: SavedResult, r: SavedResult) => (x.a === r.a && x.b === r.b) || (x.a === r.b && x.b === r.a);
+
   return {
     available: storage !== null && probe(storage),
     loadProgress() {
@@ -87,6 +113,9 @@ export function createStore(storage: Storage | null): Store {
     saveOwnCode: (code) => set(OWN_CODE_KEY, code),
     loadResultFor: (inviterCode) => Object.hasOwn(loadResults(), inviterCode) ? loadResults()[inviterCode] : null,
     saveResultFor: (inviterCode, code) => set(RESULTS_KEY, JSON.stringify({ ...loadResults(), [inviterCode]: code })),
+    loadHistory,
+    // Новый — первым; та же пара (в любом порядке) не дублируется.
+    rememberResult: (r) => set(HISTORY_KEY, JSON.stringify([r, ...loadHistory().filter((x) => !samePair(x, r))].slice(0, HISTORY_LIMIT))),
   };
 }
 

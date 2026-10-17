@@ -49,7 +49,10 @@ export function startApp(root: HTMLElement): void {
 
   function showInvite(code: string) {
     if (classifyInvite(code, store.loadOwnCode()) === 'own') {
-      return show(messageScreen('Это ваша ссылка', 'Отправьте её партнёру — он пройдёт тест и увидит результат.', inviteUrl(base, code, quick)));
+      return show(messageScreen('Это ваша ссылка', 'Отправьте её партнёру — он пройдёт тест и увидит результат. Если партнёр рядом, он может пройти тест прямо здесь.', inviteUrl(base, code, quick), [
+        { label: 'Пройти тест партнёру здесь', onClick: () => introFor(code) },
+        { label: 'На главную', onClick: () => { location.hash = ''; } },
+      ]));
     }
     const done = store.loadResultFor(code);
     if (done) {
@@ -89,6 +92,7 @@ export function startApp(root: HTMLElement): void {
       resumeAt: resumable ? Math.min(resumable.index, ASKED.length - 1) + 1 : null,
       storageAvailable: store.available,
       ownUrl: own ? inviteUrl(base, own, quick) : null,
+      history: store.loadHistory().map((r) => ({ names: r.names, at: r.at, url: `#${resultHash(r.a, r.b, quick)}` })),
       onStart: (name) => runTest({ name, index: 0, responses: {}, inviterCode }),
       onResume: () => { if (resumable) runTest(resumable); },
     }));
@@ -121,7 +125,7 @@ export function startApp(root: HTMLElement): void {
       return;
     }
     store.saveOwnCode(code);
-    show(finishScreen(inviteUrl(base, code, quick)));
+    show(finishScreen(inviteUrl(base, code, quick), () => introFor(code)));
   }
 
 
@@ -130,6 +134,7 @@ export function startApp(root: HTMLElement): void {
       const pa = decode(a, MANIFEST, FIRM);
       const pb = decode(b, MANIFEST, FIRM);
       // Ответы друг друга видны сразу: согласие на раскрытие считается данным. Метки согласия в старых ссылках просто сохраняются.
+      store.rememberResult({ a, b, names: `${pa.name || 'Первый'} × ${pb.name || 'Второй'}`, at: Date.now() });
       show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), QUESTIONS));
     } catch (e) {
       show(messageScreen('Не получилось открыть результат', codecMessage(e)));

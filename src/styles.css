@@ -246,3 +246,5 @@ button.secondary { background: var(--cell); color: var(--fg); }
 .answer-vals { margin-top: 4px; display: flex; gap: 16px; flex-wrap: wrap; }
 .answers details ul { margin-top: 8px; }
 .answers details .answer { border-left-color: var(--muted); }
+.history ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.history a { color: var(--accent); font-weight: 600; text-decoration: none; }

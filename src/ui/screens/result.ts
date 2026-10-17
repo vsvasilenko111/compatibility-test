@@ -161,6 +161,7 @@ export function resultScreen(a: Profile, b: Profile, result: CompareResult, shar
     answersSection(a, b, questions),
     sphereMap(sphereTiles(rel.spheres)),
     h('h3', {}, 'Отправить результат партнёру'),
+    h('p', { class: 'hint' }, 'По этой ссылке результат откроется в любой момент и на любом устройстве — сохраните её. На этом устройстве он есть и на главной в «Ваших результатах».'),
     shareBlock(shareUrl, 'Наш результат совместимости'),
   );
 }

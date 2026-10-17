@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createStore, type Progress } from '../src/storage';
+import { createStore, HISTORY_LIMIT, type Progress } from '../src/storage';
 
 class MemoryStorage implements Storage {
   [key: string]: any; // индексная сигнатура из интерфейса Storage — иначе tsc не соберёт тесты
@@ -73,5 +73,26 @@ describe('storage', () => {
       expect(() => store.saveResultFor('A', 'b')).not.toThrow();
       expect(store.loadResultFor('A')).toBeNull();
     }
+  });
+});
+
+describe('история результатов', () => {
+  it('новый первым, та же пара в любом порядке не дублируется, не больше HISTORY_LIMIT', () => {
+    const store = createStore(new MemoryStorage());
+    expect(store.loadHistory()).toEqual([]);
+    store.rememberResult({ a: 'A', b: 'B', names: 'Аня × Миша', at: 1 });
+    store.rememberResult({ a: 'C', b: 'D', names: 'Оля × Петя', at: 2 });
+    store.rememberResult({ a: 'B', b: 'A', names: 'Миша × Аня', at: 3 });
+    expect(store.loadHistory().map((r) => r.names)).toEqual(['Миша × Аня', 'Оля × Петя']);
+    for (let i = 0; i < HISTORY_LIMIT + 5; i++) store.rememberResult({ a: `x${i}`, b: 'y', names: `${i}`, at: i });
+    expect(store.loadHistory()).toHaveLength(HISTORY_LIMIT);
+  });
+  it('испорченная запись и недоступное хранилище — пустая история без ошибок', () => {
+    const s = new MemoryStorage();
+    s.setItem('compat:v1:history', '{"a":1}');
+    expect(createStore(s).loadHistory()).toEqual([]);
+    const t = createStore(new ThrowingStorage());
+    t.rememberResult({ a: 'A', b: 'B', names: 'n', at: 1 });
+    expect(t.loadHistory()).toEqual([]);
   });
 });

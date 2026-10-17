@@ -8,6 +8,7 @@ export interface IntroProps {
   resumeAt: number | null; // номер вопроса, с которого продолжить (с 1)
   storageAvailable: boolean;
   ownUrl: string | null;
+  history: { names: string; url: string; at: number }[];
   onStart(name: string): void;
   onResume(): void;
 }
@@ -32,6 +33,13 @@ export function introScreen(p: IntroProps): HTMLElement {
       p.resumeAt !== null ? 'Начать заново' : 'Начать'),
     p.ownUrl && p.inviterName === null
       ? h('div', { class: 'block' }, h('h3', {}, 'Ваша ссылка для партнёра'), shareBlock(p.ownUrl, 'Тест совместимости'))
+      : null,
+    p.history.length && p.inviterName === null
+      ? h('div', { class: 'block history' },
+        h('h3', {}, 'Ваши результаты'),
+        h('ul', {}, ...p.history.map((r) => h('li', {},
+          h('a', { href: r.url }, r.names),
+          h('span', { class: 'hint' }, ` · ${new Date(r.at).toLocaleDateString('ru-RU')}`)))))
       : null,
   );
 }
