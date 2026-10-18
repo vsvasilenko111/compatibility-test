@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { verdict } from '../src/ui/verdict';
+import { level, verdict } from '../src/ui/verdict';
 import type { CompareResult, ModeResult } from '../src/scoring/compare';
 
 const mode = (percent: number | null, reds = 0): ModeResult => ({
@@ -31,5 +31,12 @@ describe('verdict', () => {
   });
   it('оба null — темы не принципиальны', () => {
     expect(verdict(r(null, null))).toBe('Для вас обоих эти темы не принципиальны.');
+  });
+});
+
+describe('level', () => {
+  it('границы уровней', () => {
+    expect([null, 0, 39.9, 40, 54.9, 55, 69.9, 70, 79.9, 80, 100].map(level)).toEqual(
+      [null, 'низкая', 'низкая', 'ниже средней', 'ниже средней', 'средняя', 'средняя', 'высокая', 'высокая', 'очень высокая', 'очень высокая']);
   });
 });

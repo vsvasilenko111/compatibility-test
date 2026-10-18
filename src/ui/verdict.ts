@@ -11,3 +11,16 @@ export function verdict(r: Pick<CompareResult, 'relationship' | 'friendship'>): 
   if (rel >= 55) return 'Хорошая основа — несколько тем стоит обсудить.';
   return 'Вы во многом разные — результат подскажет, с чего начать разговор.';
 }
+
+/**
+ * Уровень по откалиброванному проценту. Границы — по синтетике (research/review/bands.txt): у задуманных крепких пар медиана 79–84%
+ * и почти все выше 70%; ниже 70% исход в симуляции трёх лет почти одинаково слабый, у пар с расходящимися планами — меньше 25%.
+ */
+export function level(percent: number | null): string | null {
+  if (percent === null) return null;
+  if (percent >= 80) return 'очень высокая';
+  if (percent >= 70) return 'высокая';
+  if (percent >= 55) return 'средняя';
+  if (percent >= 40) return 'ниже средней';
+  return 'низкая';
+}
