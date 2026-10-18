@@ -92,7 +92,7 @@ export function startApp(root: HTMLElement): void {
       resumeAt: resumable ? Math.min(resumable.index, ASKED.length - 1) + 1 : null,
       storageAvailable: store.available,
       ownUrl: own ? inviteUrl(base, own, quick) : null,
-      history: store.loadHistory().map((r) => ({ names: r.names, at: r.at, url: `#${resultHash(r.a, r.b, quick)}` })),
+      history: store.loadHistory().map((r) => ({ names: r.names, at: r.at, url: `#${resultHash(r.a, r.b, quick)}`, forget: () => store.forgetResult(r.a, r.b) })),
       onStart: (name) => runTest({ name, index: 0, responses: {}, inviterCode }),
       onResume: () => { if (resumable) runTest(resumable); },
     }));

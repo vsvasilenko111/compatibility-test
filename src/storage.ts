@@ -21,6 +21,7 @@ export interface Store {
   saveResultFor(inviterCode: string, code: string): void;
   loadHistory(): SavedResult[];
   rememberResult(r: SavedResult): void;
+  forgetResult(a: string, b: string): void;
 }
 
 /** Сколько последних результатов помнить. */
@@ -115,6 +116,7 @@ export function createStore(storage: Storage | null): Store {
     saveResultFor: (inviterCode, code) => set(RESULTS_KEY, JSON.stringify({ ...loadResults(), [inviterCode]: code })),
     loadHistory,
     // Новый — первым; та же пара (в любом порядке) не дублируется.
+    forgetResult: (a, b) => set(HISTORY_KEY, JSON.stringify(loadHistory().filter((x) => !samePair(x, { a, b, names: '', at: 0 })))),
     rememberResult: (r) => set(HISTORY_KEY, JSON.stringify([r, ...loadHistory().filter((x) => !samePair(x, r))].slice(0, HISTORY_LIMIT))),
   };
 }

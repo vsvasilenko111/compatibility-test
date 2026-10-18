@@ -8,7 +8,7 @@ export interface IntroProps {
   resumeAt: number | null; // номер вопроса, с которого продолжить (с 1)
   storageAvailable: boolean;
   ownUrl: string | null;
-  history: { names: string; url: string; at: number }[];
+  history: { names: string; url: string; at: number; forget(): void }[];
   onStart(name: string): void;
   onResume(): void;
 }
@@ -37,9 +37,14 @@ export function introScreen(p: IntroProps): HTMLElement {
     p.history.length && p.inviterName === null
       ? h('div', { class: 'block history' },
         h('h3', {}, 'Ваши результаты'),
-        h('ul', {}, ...p.history.map((r) => h('li', {},
-          h('a', { href: r.url }, r.names),
-          h('span', { class: 'hint' }, ` · ${new Date(r.at).toLocaleDateString('ru-RU')}`)))))
+        h('p', { class: 'hint' }, 'Видны только на этом устройстве.'),
+        h('ul', {}, ...p.history.map((r) => {
+          const li = h('li', {},
+            h('a', { href: r.url }, r.names),
+            h('span', { class: 'hint' }, ` · ${new Date(r.at).toLocaleDateString('ru-RU')}`),
+            h('button', { type: 'button', class: 'forget', 'aria-label': `Убрать ${r.names}`, onclick: () => { r.forget(); li.remove(); } }, '×'));
+          return li;
+        })))
       : null,
   );
 }

@@ -84,6 +84,9 @@ describe('история результатов', () => {
     store.rememberResult({ a: 'C', b: 'D', names: 'Оля × Петя', at: 2 });
     store.rememberResult({ a: 'B', b: 'A', names: 'Миша × Аня', at: 3 });
     expect(store.loadHistory().map((r) => r.names)).toEqual(['Миша × Аня', 'Оля × Петя']);
+    store.forgetResult('A', 'B');
+    expect(store.loadHistory().map((r) => r.names)).toEqual(['Оля × Петя']);
+    store.forgetResult('C', 'D');
     for (let i = 0; i < HISTORY_LIMIT + 5; i++) store.rememberResult({ a: `x${i}`, b: 'y', names: `${i}`, at: i });
     expect(store.loadHistory()).toHaveLength(HISTORY_LIMIT);
   });
