@@ -29,9 +29,9 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('145 вопросов: 59 о партнёре как друге, 65 отношений и 21 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(145);
-    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(59);
+  it('144 вопроса: 58 о партнёре как друге, 65 отношений и 21 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(144);
+    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(58);
     expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(65);
     expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(21);
   });
@@ -85,7 +85,7 @@ describe('полный банк', () => {
     ]);
   });
 
-  // 4 бита на вопрос + бит на отметку: 145 вопросов, 10 отметок и имя в 40 байт → 160 символов.
+  // 4 бита на вопрос + бит на отметку: 144 вопроса, 10 отметок и имя в 40 байт → 160 символов.
   it('ссылка на полный банк с именем в 40 байт — не длиннее 160 символов', () => {
     const responses = Object.fromEntries(CURRENT_IDS.map((id) => [id, { value: 10, lo: 0, hi: 10, importance: 3 as const, firm: true }]));
     const code = encode({ name: 'Александра-Анастасия', bankVersion: BANK_VERSION, responses }, CURRENT_IDS, CURRENT_FIRM);
