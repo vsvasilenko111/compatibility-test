@@ -84,12 +84,13 @@ export function startApp(root: HTMLElement): void {
   function showIntro(inviter: { code: string; name: string } | null) {
     const inviterCode = inviter?.code ?? null;
     const saved = store.loadProgress();
-    const resumable = resumeFor(saved, inviterCode, ASKED_IDS);
+    // Дозаполнение продолжается с тем же партнёром, с какой бы страницы его ни открыли.
+    const resumable = saved?.only ? { ...saved, index: firstUnanswered(saved.only, saved.responses) } : resumeFor(saved, inviterCode, ASKED_IDS);
     const own = store.loadOwnCode();
     show(introScreen({
       inviterName: inviter ? inviter.name : null,
       total: ASKED.length,
-      resumeAt: resumable ? Math.min(resumable.index, ASKED.length - 1) + 1 : null,
+      resumeAt: resumable ? Math.min(resumable.index, (resumable.only ?? ASKED_IDS).length - 1) + 1 : null,
       storageAvailable: store.available,
       ownUrl: own ? inviteUrl(base, own, quick) : null,
       history: store.loadHistory().map((r) => ({ names: r.names, at: r.at, url: `#${resultHash(r.a, r.b, quick)}`, forget: () => store.forgetResult(r.a, r.b) })),
@@ -100,17 +101,18 @@ export function startApp(root: HTMLElement): void {
 
   function runTest(p: Progress): void {
     store.saveProgress(p);
-    if (p.index >= ASKED.length) {
-      const gap = firstUnanswered(ASKED_IDS, p.responses);
-      return gap < ASKED.length ? runTest({ ...p, index: gap }) : finish(p);
+    const list = p.only ? QUESTIONS.filter((q) => p.only!.includes(q.id)) : ASKED;
+    if (p.index >= list.length) {
+      const gap = firstUnanswered(list.map((q) => q.id), p.responses);
+      return gap < list.length ? runTest({ ...p, index: gap }) : finish(p);
     }
-    const q = ASKED[p.index];
+    const q = list[p.index];
     show(questionScreen({
       question: q,
       index: p.index,
-      total: ASKED.length,
+      total: list.length,
       response: p.responses[q.id],
-      lead: q.sphere === 'past' && ASKED[p.index - 1]?.sphere !== 'past' ? PAST_LEAD : undefined,
+      lead: q.sphere === 'past' && list[p.index - 1]?.sphere !== 'past' ? PAST_LEAD : undefined,
       onBack: p.index > 0 ? () => runTest({ ...p, index: p.index - 1 }) : null,
       onSubmit: (r) => runTest({ ...p, index: p.index + 1, responses: { ...p.responses, [q.id]: r } }),
     }));
@@ -119,9 +121,11 @@ export function startApp(root: HTMLElement): void {
   function finish(p: Progress) {
     const code = encode({ name: p.name, bankVersion: BANK_VERSION, responses: p.responses }, CURRENT_IDS, CURRENT_FIRM);
     store.clearProgress();
+    // Дозаполнил свою старую ссылку — новая ссылка заменяет прежнюю «вашу ссылку».
+    if (p.only && p.ownCode !== undefined && p.ownCode === store.loadOwnCode()) store.saveOwnCode(code);
     if (p.inviterCode) {
       store.saveResultFor(p.inviterCode, code);
-      location.hash = resultHash(p.inviterCode, code, quick); // hashchange откроет результат
+      location.hash = p.selfFirst ? resultHash(code, p.inviterCode, quick) : resultHash(p.inviterCode, code, quick); // hashchange откроет результат
       return;
     }
     store.saveOwnCode(code);
@@ -135,7 +139,16 @@ export function startApp(root: HTMLElement): void {
       const pb = decode(b, MANIFEST, FIRM);
       // Ответы друг друга видны сразу: согласие на раскрытие считается данным. Метки согласия в старых ссылках просто сохраняются.
       store.rememberResult({ a, b, names: `${pa.name || 'Первый'} × ${pb.name || 'Второй'}`, at: Date.now() });
-      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), QUESTIONS));
+      // Ссылка от прежней версии теста: можно ответить только на новые вопросы — остальные ответы переносятся.
+      const fill = ([[pa, a, b], [pb, b, a]] as const).flatMap(([p, own, other]) => {
+        const only = CURRENT_IDS.filter((id) => !(id in p.responses));
+        return only.length ? [{
+          name: p.name || (p === pa ? 'Первый' : 'Второй'),
+          count: only.length,
+          onFill: () => runTest({ name: p.name, index: 0, responses: p.responses, inviterCode: other, only, ownCode: own, selfFirst: p === pa }),
+        }] : [];
+      });
+      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), QUESTIONS, fill));
     } catch (e) {
       show(messageScreen('Не получилось открыть результат', codecMessage(e)));
     }

@@ -5,6 +5,12 @@ export interface Progress {
   index: number;
   responses: Record<string, Response>;
   inviterCode: string | null;
+  /** Дозаполнение: спрашиваются только эти вопросы (новые после обновления теста), остальные ответы уже есть. */
+  only?: string[];
+  /** При дозаполнении — прежний код этого человека (чтобы обновить «вашу ссылку», если она была его). */
+  ownCode?: string;
+  /** При дозаполнении — стоял ли человек в результате первым (порядок имён сохраняется). */
+  selfFirst?: boolean;
 }
 
 /** Открытый на этом устройстве результат: коды обоих и имена — чтобы потом вернуться к нему с главной. */
@@ -39,7 +45,8 @@ function isProgress(p: unknown): p is Progress {
   return typeof x.name === 'string'
     && typeof x.index === 'number'
     && typeof x.responses === 'object' && x.responses !== null
-    && (x.inviterCode === null || typeof x.inviterCode === 'string');
+    && (x.inviterCode === null || typeof x.inviterCode === 'string')
+    && (x.only === undefined || (Array.isArray(x.only) && x.only.every((id) => typeof id === 'string')));
 }
 
 function isResults(r: unknown): r is Record<string, string> {

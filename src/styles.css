@@ -251,3 +251,5 @@ button.secondary { background: var(--cell); color: var(--fg); }
 .history li { display: flex; align-items: baseline; gap: 4px; }
 .history .forget { margin-left: auto; padding: 2px 10px; background: none; color: var(--muted); font-size: 1.2em; }
 .score .lvl { font-size: 0.8rem; margin-top: 2px; color: rgba(255, 255, 255, 0.7); }
+.fill { margin-top: 16px; }
+.fill button { display: block; width: 100%; margin-top: 8px; }

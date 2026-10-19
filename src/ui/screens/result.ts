@@ -127,7 +127,19 @@ function answersSection(a: Profile, b: Profile, questions: Question[] | undefine
       h('ul', {}, ...all.map((r) => answerItem(r, na, nb)))));
 }
 
-export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string, questions?: Question[]): HTMLElement {
+/** Кто прошёл прежнюю версию теста и может ответить только на новые вопросы. */
+export interface FillOffer { name: string; count: number; onFill(): void }
+
+function fillBlock(fill: FillOffer[]): HTMLElement | null {
+  if (!fill.length) return null;
+  return h('div', { class: 'block fill' },
+    h('h3', {}, 'В тесте появились новые вопросы'),
+    h('p', { class: 'hint' }, 'Ответьте только на них — прежние ответы сохранятся, и результат пересчитается с новыми темами.'),
+    ...fill.map((f) => h('button', { type: 'button', class: 'secondary', onclick: () => f.onFill() },
+      `${f.name}: ответить на ${plural(f.count, ['новый вопрос', 'новых вопроса', 'новых вопросов'])}`)));
+}
+
+export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string, questions?: Question[], fill: FillOffer[] = []): HTMLElement {
   const rel = result.relationship;
   // На постере и в вердикте — откалиброванные проценты (50% — типичная случайная пара); карта сфер — по сырым.
   const shown = {
@@ -145,9 +157,10 @@ export function resultScreen(a: Profile, b: Profile, result: CompareResult, shar
         score(shown.friendship.percent, 'партнёр как друг', 'second')),
       h('p', { class: 'poster-verdict' }, verdict(shown)),
       flags ? h('p', { class: 'poster-flags' }, flags) : null),
+    fillBlock(fill),
     h('details', { class: 'explain' },
       h('summary', {}, 'Что значат проценты?'),
-      h('p', {}, 'Партнёр как друг — каково вам друг с другом каждый день: юмор, досуг, доверие, ссоры, ценности, быт, ревность, родные. Насколько вам легко вместе.'),
+      h('p', {}, 'Партнёр как друг — каково вам друг с другом каждый день: юмор, досуг, увлечения, доверие, ссоры, ценности, быт, ревность, родные. Насколько вам легко вместе.'),
       h('p', {}, 'Совместимость в отношениях — по всем вопросам, кроме эмоций и прошлого опыта: к этому добавляются дети, быт, деньги, близость, родные. Получится ли общая жизнь.'),
       h('p', {}, 'Вопросы об эмоциях и прошлом опыте на проценты не влияют — по ним считаются ресурсы пары: как вы спорите, отходите, миритесь и поддерживаете друг друга.'),
       h('p', {}, 'Процент — насколько вы совпадаете по сравнению с двумя случайными людьми: 50% — как у случайной пары незнакомцев. У крепких пар обычно 75–90%.'),

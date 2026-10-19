@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "questions": [
     {
       "id": "humor-01",
@@ -123,6 +123,16 @@
       "optional": false
     },
     {
+      "id": "life-01",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Спорт в вашей жизни",
+      "left": "Регулярно, несколько раз в неделю",
+      "right": "Почти не занимаюсь",
+      "topic": "спорт",
+      "optional": false
+    },
+    {
       "id": "home-01",
       "block": "relationship",
       "sphere": "home",
@@ -131,6 +141,17 @@
       "right": "Сначала порядок, потом прогулка",
       "topic": "порядок в доме",
       "optional": false
+    },
+    {
+      "id": "life-02",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Партнёр совсем не занимается спортом",
+      "left": "Это его личное дело",
+      "right": "Мне важно, чтобы партнёр следил за собой",
+      "topic": "спорт у партнёра",
+      "optional": false,
+      "firm": true
     },
     {
       "id": "living-01",
@@ -251,6 +272,16 @@
       "left": "Охотно — хочу стать для них своим",
       "right": "Вежливо, но держу дистанцию",
       "topic": "отношения с семьёй партнёра",
+      "optional": false
+    },
+    {
+      "id": "life-03",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Заниматься спортом вместе — зал, бег, походы",
+      "left": "Хочу, чтобы это было нашим",
+      "right": "Каждый сам по себе",
+      "topic": "спорт вместе",
       "optional": false
     },
     {
@@ -377,6 +408,16 @@
       "optional": false
     },
     {
+      "id": "life-04",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Как вы питаетесь",
+      "left": "Слежу: правильное питание, мало сахара и фастфуда",
+      "right": "Ем что хочу",
+      "topic": "питание",
+      "optional": false
+    },
+    {
       "id": "budget-09",
       "block": "relationship",
       "sphere": "budget",
@@ -497,6 +538,17 @@
       "optional": false
     },
     {
+      "id": "life-05",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Мясо в вашем рационе",
+      "left": "Ем всё",
+      "right": "Вегетарианство или веганство",
+      "topic": "мясо и вегетарианство",
+      "optional": false,
+      "firm": true
+    },
+    {
       "id": "loyalty-03",
       "block": "friendship",
       "sphere": "loyalty",
@@ -548,14 +600,15 @@
       "firm": true
     },
     {
-      "id": "leisure-09",
-      "block": "friendship",
-      "sphere": "leisure",
-      "text": "Свободное время вам больше нравится проводить…",
-      "left": "Активно: спорт, походы, движение",
-      "right": "Спокойно: дома, неспешно",
-      "topic": "активный или спокойный отдых",
-      "optional": false
+      "id": "career-03",
+      "block": "relationship",
+      "sphere": "career",
+      "text": "Что для вас работа",
+      "left": "Призвание и смысл",
+      "right": "Способ зарабатывать на жизнь",
+      "topic": "роль работы",
+      "optional": false,
+      "scored": false
     },
     {
       "id": "living-07",
@@ -577,17 +630,6 @@
       "right": "Откажу — деньги портят отношения",
       "topic": "деньги в долг",
       "optional": false
-    },
-    {
-      "id": "career-03",
-      "block": "relationship",
-      "sphere": "career",
-      "text": "Что для вас работа",
-      "left": "Призвание и смысл",
-      "right": "Способ зарабатывать на жизнь",
-      "topic": "роль работы",
-      "optional": false,
-      "scored": false
     },
     {
       "id": "values-04",
@@ -701,6 +743,16 @@
       "topic": "курение",
       "optional": false,
       "firm": true
+    },
+    {
+      "id": "life-06",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Партнёр ест иначе, чем вы",
+      "left": "Не важно — каждый ест своё",
+      "right": "Хочу, чтобы еда была общей",
+      "topic": "общая еда",
+      "optional": false
     },
     {
       "id": "roles-04",
@@ -913,6 +965,16 @@
       "optional": false
     },
     {
+      "id": "life-07",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Здоровье: врачи, чекапы, сон",
+      "left": "Профилактика — слежу заранее",
+      "right": "Иду к врачу, когда уже прижало",
+      "topic": "забота о здоровье",
+      "optional": false
+    },
+    {
       "id": "kids-10",
       "block": "relationship",
       "sphere": "kids",
@@ -991,6 +1053,16 @@
       "left": "Не пью совсем",
       "right": "Регулярно — бокал вечером, на каждой встрече",
       "topic": "алкоголь",
+      "optional": false
+    },
+    {
+      "id": "life-08",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Увлечения в паре",
+      "left": "Хочу общее дело, которым горим оба",
+      "right": "Пусть у каждого своё",
+      "topic": "общие увлечения",
       "optional": false
     },
     {
@@ -1074,6 +1146,16 @@
       "optional": false
     },
     {
+      "id": "life-09",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Сколько времени уходит на ваше хобби",
+      "left": "Много: почти все вечера и выходные",
+      "right": "Немного, по настроению",
+      "topic": "время на хобби",
+      "optional": false
+    },
+    {
       "id": "conflicts-07",
       "block": "friendship",
       "sphere": "conflicts",
@@ -1152,6 +1234,16 @@
       "left": "Флирт и тайная переписка",
       "right": "Только физическая близость",
       "topic": "что считать изменой",
+      "optional": false
+    },
+    {
+      "id": "life-10",
+      "block": "relationship",
+      "sphere": "lifestyle",
+      "text": "Вечер с телефоном, сериалами или играми",
+      "left": "Нормальный отдых",
+      "right": "Жалко времени — хочу живого общения",
+      "topic": "экраны и игры",
       "optional": false
     },
     {

@@ -85,3 +85,21 @@ describe('блок «Ресурсы пары» в DOM', () => {
     expect(items.map((li) => li.textContent).join()).not.toMatch(/Аня|Миша/);
   });
 });
+
+describe('дозаполнение после обновления теста', () => {
+  const a = p('Аня', [10, 0, 10]);
+  const b = p('Миша', [10, 10, 9]);
+
+  it('без новых вопросов блока нет', () => {
+    expect(resultScreen(a, b, compare(qs, a, b), 'https://x/#r.a.b').querySelector('.fill')).toBeNull();
+  });
+
+  it('кнопка на каждого, у кого есть новые вопросы, и нажатие запускает дозаполнение', () => {
+    let filled = '';
+    const root = resultScreen(a, b, compare(qs, a, b), 'https://x/#r.a.b', qs, [{ name: 'Аня', count: 10, onFill: () => { filled = 'Аня'; } }]);
+    const btn = root.querySelector<HTMLButtonElement>('.fill button')!;
+    expect(btn.textContent).toBe('Аня: ответить на 10 новых вопросов');
+    btn.click();
+    expect(filled).toBe('Аня');
+  });
+});

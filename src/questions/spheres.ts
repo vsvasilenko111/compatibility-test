@@ -21,6 +21,7 @@ export const SPHERES: SphereInfo[] = [
   { id: 'space', block: 'relationship', label: 'Ревность и личное пространство' },
   { id: 'relatives', block: 'relationship', label: 'Родственники и окружение' },
   { id: 'roles', block: 'relationship', label: 'Роли и языки любви' },
+  { id: 'lifestyle', block: 'relationship', label: 'Образ жизни и увлечения' },
   { id: 'attachment', block: 'maturity', label: 'Близость и опора' },
   { id: 'regulation', block: 'maturity', label: 'Эмоции в споре' },
   { id: 'reflection', block: 'maturity', label: 'Понимание себя и партнёра' },
@@ -37,7 +38,9 @@ export const SPHERES: SphereInfo[] = [
  * 0,7 — близость (важен общий уровень, а не совпадение желания: Kim 2020), где жить, ценности (сходство ценностей в сложившихся
  *     парах почти не предсказывает удовлетворённость: Luo & Klohnen 2005), роли (языки любви почти не подтверждены),
  *     быт, ревность и пространство; стоп-факторы этих сфер (моногамия, эмиграция, вера) ловит отметка «не обсуждается»;
- * 0,5 — родственники (расхождение в близости с семьёй предсказывало развод, 355 пар, 16 лет), карьерные решения (данные косвенные);
+ * 0,5 — родственники (расхождение в близости с семьёй предсказывало развод, 355 пар, 16 лет), карьерные решения (данные косвенные),
+ *     образ жизни: спорт, питание, здоровье, увлечения (партнёры со временем сближаются в привычках здоровья, а расхождение
+ *     в них, особенно в алкоголе и активности, связано с конфликтами; связь с разводом слабее, чем у детей и денег);
  * 0,4 — деньги между людьми, честность, ритм общения, досуг, юмор: данных о вреде несовпадения почти нет.
  * Сходство партнёров в целом объясняет меньше 1% удовлетворённости (Dyrenforth 2010), поэтому точность весов вторична.
  * На синтетике набор не хуже прежних: свежие пары — эксперты 72,0, терапевт 76,8, симуляция трёх лет 73,3.
@@ -45,7 +48,7 @@ export const SPHERES: SphereInfo[] = [
 export const RELATIONSHIP_WEIGHTS: Record<string, number> = {
   kids: 1, conflicts: 1, budget: 1, loyalty: 1,
   intimacy: 0.7, living: 0.7, values: 0.7, roles: 0.7, home: 0.7, space: 0.7,
-  relatives: 0.5, career: 0.5,
+  relatives: 0.5, career: 0.5, lifestyle: 0.5,
   honesty: 0.4, rhythm: 0.4, leisure: 0.4, humor: 0.4, money: 0.4,
 };
 
@@ -53,11 +56,11 @@ export const relationshipWeight = (sphere: string): number => RELATIONSHIP_WEIGH
 
 /**
  * Вес сферы в «партнёр как друг»: все сферы блока дружбы, ценности ×3 и повседневные сферы пары — роли, ревность
- * и пространство, быт, родные. Жизненные планы (дети, жильё, карьера, бюджет) и близость не входят.
+ * и пространство, быт, родные, образ жизни и увлечения. Жизненные планы (дети, жильё, карьера, бюджет) и близость не входят.
  * Подбор на половине синтетических пар, проверка на другой (research/scripts/pf-cv.ts): 70,0% → 74,2%, лучше в 200 из 200 разбиений.
  */
 export const FRIENDSHIP_WEIGHTS: Record<string, number> = {
   humor: 1, leisure: 1, rhythm: 1, loyalty: 1, honesty: 1, money: 1, conflicts: 1, values: 3,
-  roles: 1, space: 1, home: 1, relatives: 1,
+  roles: 1, space: 1, home: 1, relatives: 1, lifestyle: 1,
 };
 export const friendshipWeight = (sphere: string): number => FRIENDSHIP_WEIGHTS[sphere] ?? 0;

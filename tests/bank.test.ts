@@ -19,9 +19,9 @@ describe('банк вопросов', () => {
   it('в банке есть все три блока', () => {
     expect(new Set(QUESTIONS.map((x) => x.block))).toEqual(new Set(['friendship', 'relationship', 'maturity']));
   });
-  it('сфер 21: 8 дружбы, 9 отношений и 4 зрелости', () => {
+  it('сфер 22: 8 дружбы, 10 отношений и 4 зрелости', () => {
     expect(SPHERES.filter((s) => s.block === 'friendship')).toHaveLength(8);
-    expect(SPHERES.filter((s) => s.block === 'relationship')).toHaveLength(9);
+    expect(SPHERES.filter((s) => s.block === 'relationship')).toHaveLength(10);
     expect(SPHERES.filter((s) => s.block === 'maturity')).toHaveLength(4);
   });
 });
@@ -29,10 +29,10 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('143 вопроса: 57 о партнёре как друге, 65 отношений и 21 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(143);
-    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(57);
-    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(65);
+  it('152 вопроса: 56 о партнёре как друге, 75 отношений и 21 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(152);
+    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(56);
+    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(75);
     expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(21);
   });
 
@@ -53,9 +53,9 @@ describe('полный банк', () => {
     for (const x of QUESTIONS) expect(x.optional, x.id).toBe(x.sphere === 'intimacy' || x.sphere === 'past' || x.id === 'kids-08');
   });
 
-  it('отметка «не обсуждается» — у 10 вопросов, список в коде ссылки совпадает с банком', () => {
+  it('отметка «не обсуждается» — у 12 вопросов, список в коде ссылки совпадает с банком', () => {
     const firm = QUESTIONS.filter((x) => x.firm).map((x) => x.id);
-    expect(firm).toHaveLength(10);
+    expect(firm).toHaveLength(12);
     expect(CURRENT_FIRM).toEqual(firm);
     expect(FIRM[8]).toBeUndefined();
   });
@@ -85,11 +85,11 @@ describe('полный банк', () => {
     ]);
   });
 
-  // 4 бита на вопрос + бит на отметку: 143 вопроса, 10 отметок и имя в 40 байт → 160 символов.
-  it('ссылка на полный банк с именем в 40 байт — не длиннее 160 символов', () => {
+  // 4 бита на вопрос + бит на отметку: 152 вопроса, 12 отметок и имя в 40 байт → 170 символов.
+  it('ссылка на полный банк с именем в 40 байт — не длиннее 170 символов', () => {
     const responses = Object.fromEntries(CURRENT_IDS.map((id) => [id, { value: 10, lo: 0, hi: 10, importance: 3 as const, firm: true }]));
     const code = encode({ name: 'Александра-Анастасия', bankVersion: BANK_VERSION, responses }, CURRENT_IDS, CURRENT_FIRM);
-    expect(code.length).toBeLessThanOrEqual(160);
+    expect(code.length).toBeLessThanOrEqual(170);
   });
 });
 
