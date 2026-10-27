@@ -28,6 +28,11 @@ export const SPHERES: SphereInfo[] = [
   { id: 'past', block: 'maturity', label: 'Прошлый опыт', grouped: true },
 ];
 
+/** Сферы, из которых человек выбирает самые и наименее важные: все, кроме блока зрелости (он на проценты не влияет). */
+export const PRIORITY_SPHERES: SphereInfo[] = SPHERES.filter((s) => s.block !== 'maturity');
+export const PRIORITY_TOP = 5;
+export const PRIORITY_LOW = 3;
+
 /**
  * Вес сферы в «совместимости в отношениях» (на «дружбу» не влияет). Аудитория — пары 20–30 лет из больших городов России,
  * обычно с высшим образованием и хорошим доходом. Веса — экспертная оценка с опорой на исследования

@@ -2,7 +2,8 @@ import { calibrate, FRIENDSHIP_TABLE, RELATIONSHIP_TABLE } from '../../scoring/c
 import type { CompareResult } from '../../scoring/compare';
 import type { MaturityResult } from '../../scoring/maturity';
 import type { Resource } from '../../scoring/resources';
-import type { Question } from '../../types';
+import { PRIORITY_SPHERES } from '../../questions/spheres';
+import type { Priority, Question } from '../../types';
 import { bothAnswered, divergences, type AnswerRow } from '../answers-view';
 import type { Profile } from '../../types';
 import { h } from '../dom';
@@ -127,16 +128,48 @@ function answersSection(a: Profile, b: Profile, questions: Question[] | undefine
       h('ul', {}, ...all.map((r) => answerItem(r, na, nb)))));
 }
 
-/** Кто прошёл прежнюю версию теста и может ответить только на новые вопросы. */
-export interface FillOffer { name: string; count: number; onFill(): void }
+/** Кто прошёл прежнюю версию теста и может ответить только на новые вопросы и (или) выбрать важные сферы. */
+export interface FillOffer { name: string; count: number; priorities?: boolean; onFill(): void }
+
+function fillLabel(f: FillOffer): string {
+  const parts = [
+    f.count ? `ответить на ${plural(f.count, ['новый вопрос', 'новых вопроса', 'новых вопросов'])}` : null,
+    f.priorities ? 'выбрать важные для себя сферы' : null,
+  ].filter(Boolean);
+  return `${f.name}: ${parts.join(' и ')}`;
+}
 
 function fillBlock(fill: FillOffer[]): HTMLElement | null {
   if (!fill.length) return null;
   return h('div', { class: 'block fill' },
-    h('h3', {}, 'В тесте появились новые вопросы'),
-    h('p', { class: 'hint' }, 'Ответьте только на них — прежние ответы сохранятся, и результат пересчитается с новыми темами.'),
-    ...fill.map((f) => h('button', { type: 'button', class: 'secondary', onclick: () => f.onFill() },
-      `${f.name}: ответить на ${plural(f.count, ['новый вопрос', 'новых вопроса', 'новых вопросов'])}`)));
+    h('h3', {}, 'В тесте появилось новое'),
+    h('p', { class: 'hint' }, 'Прежние ответы сохранятся — нужно только дополнить, и результат пересчитается.'),
+    ...fill.map((f) => h('button', { type: 'button', class: 'secondary', onclick: () => f.onFill() }, fillLabel(f))));
+}
+
+const sphereLabels = (pr: Record<string, Priority>, kind: Priority) =>
+  PRIORITY_SPHERES.filter((s) => pr[s.id] === kind).map((s) => s.label);
+
+/** Что важнее каждому: личный выбор сфер и общее в нём. Сам выбор — тоже тема для разговора. */
+function prioritiesSection(a: Profile, b: Profile): HTMLElement | null {
+  if (!a.priorities && !b.priorities) return null;
+  const na = a.name || 'Первый', nb = b.name || 'Второй';
+  const both = a.priorities && b.priorities
+    ? PRIORITY_SPHERES.filter((s) => a.priorities![s.id] === 'top' && b.priorities![s.id] === 'top').map((s) => s.label)
+    : [];
+  const person = (name: string, pr: Record<string, Priority> | undefined) => pr
+    ? h('div', { class: 'note soft' },
+      h('div', { class: 'note-label' }, name),
+      h('p', {}, h('b', {}, 'Важнее всего: '), sphereLabels(pr, 'top').join(' · ')),
+      h('p', {}, h('b', {}, 'Менее важно: '), sphereLabels(pr, 'low').join(' · ')))
+    : h('div', { class: 'note soft' }, h('div', { class: 'note-label' }, name), h('p', {}, 'Пока не выбрано — проценты считаются по обычным весам.'));
+  return h('section', { class: 'priorities-result' },
+    h('h3', { class: 'eyebrow' }, 'Что важнее каждому'),
+    h('p', { class: 'hint' }, 'Совпадение в важных для человека сферах весит для него вдвое больше, в менее важных — вдвое меньше.'),
+    h('div', { class: 'notes' },
+      both.length ? note('support', 'Важно обоим', both) : null,
+      person(na, a.priorities),
+      person(nb, b.priorities)));
 }
 
 export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string, questions?: Question[], fill: FillOffer[] = []): HTMLElement {
@@ -178,6 +211,7 @@ export function resultScreen(a: Profile, b: Profile, result: CompareResult, shar
         note('red', reds.length > 1 ? 'Красные флаги' : 'Красный флаг', reds),
         note('talk', 'Стоит обсудить', rel.talkZones.map((i) => i.topic)),
         note('support', 'Ваша опора', supportTopics(rel)))),
+    prioritiesSection(a, b),
     resourcesSection(result.resources, result.maturity),
     answersSection(a, b, questions),
     sphereMap(sphereTiles(rel.spheres)),

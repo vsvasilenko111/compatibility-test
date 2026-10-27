@@ -1,4 +1,4 @@
-import type { Answer, Profile, Question } from '../types';
+import type { Answer, Priority, Profile, Question } from '../types';
 import { maturity, type MaturityResult } from './maturity';
 import { resources, type Resource } from './resources';
 import { fit, rawFit, strength, weight } from './primitives';
@@ -32,6 +32,18 @@ export const FIRM_GAP = 4;
  */
 export const FIRM_FACTOR = 1;
 
+/**
+ * Личная важность сферы умножает её вес только для того, кто её выбрал: проценты считаются «насколько партнёр подходит мне
+ * по моим меркам», поэтому у каждого свои множители. Вес по исследованиям остаётся — личный выбор его усиливает или ослабляет,
+ * но не обнуляет (люди плохо угадывают, что на самом деле разрушает пары).
+ * Калибровка не пересчитана: на синтетике выбор почти не сдвигает сырые проценты (research/review/priorities-eval.txt).
+ */
+export const PRIORITY_FACTOR: Record<Priority, number> = { top: 2, low: 0.5 };
+const priorityOf = (p: Profile, sphere: string): number => {
+  const pr = p.priorities?.[sphere];
+  return pr ? PRIORITY_FACTOR[pr] : 1;
+};
+
 export type SphereWeight = (sphere: string) => number;
 const EQUAL: SphereWeight = () => 1;
 /** Тема для разговора — расхождение от 3 делений (fit ≤ 0,5); мелкая разница в 1–2 деления темой не считается. */
@@ -40,6 +52,8 @@ const TALK_FIT = 0.5;
 interface Pair {
   q: Question; a: Answer; b: Answer;
   wA: number; wB: number; fitA: number; fitB: number; s: number;
+  /** Личная важность сферы для каждого (PRIORITY_FACTOR). */
+  mA: number; mB: number;
   /** Совпадение по полной разнице — для «стоит обсудить». */
   rawA: number; rawB: number;
 }
@@ -51,7 +65,7 @@ function pairs(questions: Question[], pa: Profile, pb: Profile): Pair[] {
     const b = pb.responses[q.id];
     if (!a || !b || a === 'skipped' || b === 'skipped') continue;
     out.push({
-      q, a, b, wA: weight(a), wB: weight(b),
+      q, a, b, wA: weight(a), wB: weight(b), mA: priorityOf(pa, q.sphere), mB: priorityOf(pb, q.sphere),
       fitA: fit(a, b.value), fitB: fit(b, a.value), s: strength(a, b),
       rawA: rawFit(a, b.value), rawB: rawFit(b, a.value),
     });
@@ -63,8 +77,8 @@ function percent(ps: Pair[], k: SphereWeight = EQUAL): number | null {
   let numA = 0, sumA = 0, numB = 0, sumB = 0;
   for (const p of ps) {
     const m = k(p.q.sphere);
-    numA += m * p.wA * p.fitA; sumA += m * p.wA;
-    numB += m * p.wB * p.fitB; sumB += m * p.wB;
+    numA += m * p.mA * p.wA * p.fitA; sumA += m * p.mA * p.wA;
+    numB += m * p.mB * p.wB * p.fitB; sumB += m * p.mB * p.wB;
   }
   if (sumA === 0 && sumB === 0) return null;
   const sA = sumA === 0 ? 1 : numA / sumA;
@@ -86,8 +100,8 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeRes
   const strongs = ps.filter((p) => bothCare(p) && p.s >= 0.5 && p.s < 0.8).sort(desc(award));
   const talks = ps
     .filter((p) => !isRed(p) && ((p.wA >= CARES && p.rawA <= TALK_FIT) || (p.wB >= CARES && p.rawB <= TALK_FIT)))
-    // Сначала темы из сфер с большим весом: в «отношениях» дети и деньги раньше досуга и юмора.
-    .sort(desc((p) => k(p.q.sphere) * (p.wA * (1 - p.rawA) + p.wB * (1 - p.rawB))));
+    // Сначала темы из сфер с большим весом: в «отношениях» дети и деньги раньше досуга и юмора; выше — то, что важно кому-то лично.
+    .sort(desc((p) => k(p.q.sphere) * (p.mA * p.wA * (1 - p.rawA) + p.mB * p.wB * (1 - p.rawB))));
   const reds = ps.filter(isRed).sort(desc((p) => p.wA + p.wB));
   const flexible = ps.filter(
     (p) => Math.abs(p.a.value - 5) <= 1 && Math.abs(p.b.value - 5) <= 1,

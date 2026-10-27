@@ -30,8 +30,13 @@ export interface Answer {
 
 export type Response = Answer | 'skipped';
 
+/** Личная важность сферы: top — среди 5 самых важных, low — среди 3 наименее важных; остальные — обычные. */
+export type Priority = 'top' | 'low';
+
 export interface Profile {
   name: string;
   bankVersion: number;
   responses: Record<string, Response>;
+  /** Нет в ссылках до формата 4 — тогда все сферы обычные. */
+  priorities?: Record<string, Priority>;
 }

@@ -253,3 +253,9 @@ button.secondary { background: var(--cell); color: var(--fg); }
 .score .lvl { font-size: 0.8rem; margin-top: 2px; color: rgba(255, 255, 255, 0.7); }
 .fill { margin-top: 16px; }
 .fill button { display: block; width: 100%; margin-top: 8px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 2px; }
+.chip { padding: 9px 12px; border-radius: 999px; font-size: 0.9rem; }
+.chip.on { background: var(--accent); color: var(--accent-fg); }
+.chip.taken { opacity: 0.45; text-decoration: line-through; }
+.chip:disabled:not(.taken) { opacity: 0.6; }

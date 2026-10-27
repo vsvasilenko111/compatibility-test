@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { CodecError, decode, encode, seal, truncateName } from '../src/codec/codec';
+import { CodecError, decode, encode, PRIORITY_SPHERES_V4, seal, truncateName } from '../src/codec/codec';
+import { BitWriter } from '../src/codec/bits';
+import { PRIORITY_SPHERES } from '../src/questions/spheres';
 import type { Profile } from '../src/types';
 import { answerFor } from '../src/answer';
 import { MANIFEST as REAL_MANIFEST } from '../src/questions';
@@ -74,7 +76,7 @@ describe('codec', () => {
   });
 
   it('неизвестная версия формата → unsupported-format', () => {
-    expect(kindOf(() => decode(seal(Uint8Array.from([4, 1, 0, 0])), MANIFEST))).toBe('unsupported-format');
+    expect(kindOf(() => decode(seal(Uint8Array.from([5, 1, 0, 0])), MANIFEST))).toBe('unsupported-format');
   });
 
   it('неизвестная версия банка → unknown-bank', () => {
@@ -113,6 +115,34 @@ describe('codec', () => {
     const d = decode(seal(v2), MANIFEST, { 1: ['q0'] });
     expect(d.responses.q0).toEqual(answerFor(5));
     expect(Object.keys(d.responses)).toHaveLength(116);
+  });
+
+  it('важность сфер сохраняется; без выбора её в профиле нет', () => {
+    const p: Profile = { ...randomProfile(3), priorities: { kids: 'top', budget: 'top', humor: 'low', lifestyle: 'low' } };
+    expect(decode(encode(p, IDS), MANIFEST)).toEqual(p);
+    expect(decode(encode(randomProfile(3), IDS), MANIFEST).priorities).toBeUndefined();
+  });
+
+  it('важность читается и при отметках «не обсуждается» — без сдвига', () => {
+    const firm = ['q1', 'q2'];
+    const p: Profile = { name: 'x', bankVersion: 1, responses: { q1: { ...answerFor(9), firm: true } }, priorities: { kids: 'top', money: 'low' } };
+    const d = decode(encode(p, IDS, firm), MANIFEST, { 1: firm });
+    expect(d.priorities).toEqual(p.priorities);
+    expect(d.responses.q1).toEqual({ ...answerFor(9), firm: true });
+  });
+
+  it('ссылка формата v3 (отметки, без важности сфер) по-прежнему открывается', () => {
+    const w = new BitWriter();
+    [3, 1, 0, 0].forEach((b) => w.write(b, 8));
+    IDS.forEach(() => w.write(7, 4));
+    w.write(1, 1); // q0 — «не обсуждается»
+    const d = decode(seal(w.finish()), MANIFEST, { 1: ['q0'] });
+    expect(d.responses.q0).toEqual({ ...answerFor(7), firm: true });
+    expect(d.priorities).toBeUndefined();
+  });
+
+  it('порядок сфер в формате 4 совпадает со сферами выбора', () => {
+    expect([...PRIORITY_SPHERES_V4]).toEqual(PRIORITY_SPHERES.map((s) => s.id));
   });
 
   it('важность и диапазон восстанавливаются из ответа', () => {

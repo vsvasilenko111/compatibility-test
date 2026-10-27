@@ -1,4 +1,4 @@
-import type { Response } from './types';
+import type { Priority, Response } from './types';
 
 export interface Progress {
   name: string;
@@ -11,6 +11,8 @@ export interface Progress {
   ownCode?: string;
   /** При дозаполнении — стоял ли человек в результате первым (порядок имён сохраняется). */
   selfFirst?: boolean;
+  /** Уже выбранные важные сферы — при дозаполнении переносятся из прежней ссылки. */
+  priorities?: Record<string, Priority>;
 }
 
 /** Открытый на этом устройстве результат: коды обоих и имена — чтобы потом вернуться к нему с главной. */

@@ -8,6 +8,7 @@ import { firstUnanswered, resumeFor } from './flow';
 import { finishScreen } from './screens/finish';
 import { introScreen } from './screens/intro';
 import { messageScreen } from './screens/message';
+import { prioritiesScreen } from './screens/priorities';
 import { questionScreen } from './screens/question';
 import { resultScreen } from './screens/result';
 
@@ -74,7 +75,7 @@ export function startApp(root: HTMLElement): void {
 
   function introFor(code: string) {
     try {
-      const inviter = decode(code, MANIFEST);
+      const inviter = decode(code, MANIFEST, FIRM);
       showIntro({ code, name: inviter.name });
     } catch (e) {
       show(messageScreen('Не получилось открыть ссылку', codecMessage(e)));
@@ -86,11 +87,13 @@ export function startApp(root: HTMLElement): void {
     const saved = store.loadProgress();
     // Дозаполнение продолжается с тем же партнёром, с какой бы страницы его ни открыли.
     const resumable = saved?.only ? { ...saved, index: firstUnanswered(saved.only, saved.responses) } : resumeFor(saved, inviterCode, ASKED_IDS);
+    const resumeList = resumable?.only ?? ASKED_IDS;
     const own = store.loadOwnCode();
     show(introScreen({
       inviterName: inviter ? inviter.name : null,
       total: ASKED.length,
-      resumeAt: resumable ? Math.min(resumable.index, (resumable.only ?? ASKED_IDS).length - 1) + 1 : null,
+      // Дозаполнение только важных сфер — вопросов нет, продолжать «с вопроса» нечего: продолжаем с первого шага.
+      resumeAt: resumable ? Math.max(1, Math.min(resumable.index, resumeList.length - 1) + 1) : null,
       storageAvailable: store.available,
       ownUrl: own ? inviteUrl(base, own, quick) : null,
       history: store.loadHistory().map((r) => ({ names: r.names, at: r.at, url: `#${resultHash(r.a, r.b, quick)}`, forget: () => store.forgetResult(r.a, r.b) })),
@@ -104,7 +107,8 @@ export function startApp(root: HTMLElement): void {
     const list = p.only ? QUESTIONS.filter((q) => p.only!.includes(q.id)) : ASKED;
     if (p.index >= list.length) {
       const gap = firstUnanswered(list.map((q) => q.id), p.responses);
-      return gap < list.length ? runTest({ ...p, index: gap }) : finish(p);
+      if (gap < list.length) return runTest({ ...p, index: gap });
+      return p.priorities ? finish(p) : choosePriorities(p, list.length);
     }
     const q = list[p.index];
     show(questionScreen({
@@ -118,8 +122,16 @@ export function startApp(root: HTMLElement): void {
     }));
   }
 
+  /** После вопросов — выбор важных сфер; «Назад» возвращает к последнему вопросу. */
+  function choosePriorities(p: Progress, count: number) {
+    show(prioritiesScreen({
+      onBack: count > 0 ? () => runTest({ ...p, index: count - 1 }) : null,
+      onDone: (priorities) => finish({ ...p, priorities }),
+    }));
+  }
+
   function finish(p: Progress) {
-    const code = encode({ name: p.name, bankVersion: BANK_VERSION, responses: p.responses }, CURRENT_IDS, CURRENT_FIRM);
+    const code = encode({ name: p.name, bankVersion: BANK_VERSION, responses: p.responses, priorities: p.priorities }, CURRENT_IDS, CURRENT_FIRM);
     store.clearProgress();
     // Дозаполнил свою старую ссылку — новая ссылка заменяет прежнюю «вашу ссылку».
     if (p.only && p.ownCode !== undefined && p.ownCode === store.loadOwnCode()) store.saveOwnCode(code);
@@ -140,12 +152,14 @@ export function startApp(root: HTMLElement): void {
       // Ответы друг друга видны сразу: согласие на раскрытие считается данным. Метки согласия в старых ссылках просто сохраняются.
       store.rememberResult({ a, b, names: `${pa.name || 'Первый'} × ${pb.name || 'Второй'}`, at: Date.now() });
       // Ссылка от прежней версии теста: можно ответить только на новые вопросы — остальные ответы переносятся.
+      // Ссылка до выбора важных сфер — их тоже можно выбрать, не отвечая заново.
       const fill = ([[pa, a, b], [pb, b, a]] as const).flatMap(([p, own, other]) => {
         const only = CURRENT_IDS.filter((id) => !(id in p.responses));
-        return only.length ? [{
+        return only.length || !p.priorities ? [{
           name: p.name || (p === pa ? 'Первый' : 'Второй'),
           count: only.length,
-          onFill: () => runTest({ name: p.name, index: 0, responses: p.responses, inviterCode: other, only, ownCode: own, selfFirst: p === pa }),
+          priorities: !p.priorities,
+          onFill: () => runTest({ name: p.name, index: 0, responses: p.responses, inviterCode: other, only, ownCode: own, selfFirst: p === pa, priorities: p.priorities }),
         }] : [];
       });
       show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), QUESTIONS, fill));

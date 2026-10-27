@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { compare, FIRM_FACTOR } from '../src/scoring/compare';
+import { answerFor } from '../src/answer';
 import type { Answer, ImportanceLevel, Profile, Question } from '../src/types';
 
 const q = (id: string, block: Question['block'], sphere: string): Question => ({
@@ -163,5 +164,26 @@ describe('compare — веса «партнёр как друг»', () => {
     const only = (s: string) => (s === 'money' || s === 'space' ? 1 : 0);
     const r = compare(QS, anya(), misha(), undefined, only);
     expect(r.friendship.spheres.map((s) => s.sphere).sort()).toEqual(['money', 'space']);
+  });
+});
+
+describe('compare — личная важность сфер', () => {
+  const qs = [q('k', 'relationship', 'kids'), q('m', 'relationship', 'budget')];
+  // Дети совпали (fit 1), бюджет разошёлся (fit 0): без выбора у обоих 1/2 → 50%.
+  const a = (): Profile => profile({ k: answerFor(10), m: answerFor(0) });
+  const b = (): Profile => profile({ k: answerFor(10), m: answerFor(10) });
+
+  it('без выбора — как раньше', () => {
+    expect(compare(qs, a(), b()).relationship.percent).toBeCloseTo(50, 5);
+  });
+  it('важная сфера весит вдвое больше только для выбравшего: √(2/3 · 1/2) ≈ 57,7%', () => {
+    expect(compare(qs, { ...a(), priorities: { kids: 'top' } }, b()).relationship.percent).toBeCloseTo(Math.sqrt(2 / 3 / 2) * 100, 5);
+  });
+  it('менее важная — вдвое меньше: √(2/3 · 1/2) при бюджете low', () => {
+    expect(compare(qs, { ...a(), priorities: { budget: 'low' } }, b()).relationship.percent).toBeCloseTo(Math.sqrt(2 / 3 / 2) * 100, 5);
+  });
+  it('проценты по сферам от выбора не зависят', () => {
+    const r = compare(qs, { ...a(), priorities: { kids: 'top' } }, b());
+    expect(r.relationship.spheres.map((x) => x.percent)).toEqual(compare(qs, a(), b()).relationship.spheres.map((x) => x.percent));
   });
 });
