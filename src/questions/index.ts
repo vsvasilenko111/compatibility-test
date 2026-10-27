@@ -5,6 +5,8 @@ import firmJson from './firm.json';
 import manifestJson from './manifest.json';
 
 export const BANK_VERSION: number = bank.version;
+/** С этой версии банка ответы — 5 вариантов словами; ответы прежней шкалы 0–10 с ними не сравниваются. */
+export const OPTIONS_SINCE = 14;
 export const QUESTIONS = bank.questions as Question[];
 export const MANIFEST: Manifest = Object.fromEntries(
   Object.entries(manifestJson as Record<string, string[]>).map(([v, ids]) => [Number(v), ids]),
