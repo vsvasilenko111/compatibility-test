@@ -17,7 +17,7 @@ export function introScreen(p: IntroProps): HTMLElement {
   const title = p.inviterName === null
     ? 'Тест совместимости'
     : p.inviterName ? `${p.inviterName} приглашает вас проверить совместимость` : 'Вас пригласили проверить совместимость';
-  // Около 13 секунд на вопрос: прочитать, подумать, выбрать деление.
+  // Около 13 секунд на вопрос: прочитать, подумать, выбрать вариант.
   const minutes = Math.max(1, Math.round((p.total * 13) / 60));
   const input = h('input', { type: 'text', maxlength: '20', placeholder: 'Ваше имя (необязательно)', autocomplete: 'given-name' });
 

@@ -1,5 +1,5 @@
 import type { Question, Response } from '../../types';
-import { answerFor } from '../../answer';
+import { answerFor, OPTION_VALUES } from '../../answer';
 import { h } from '../dom';
 
 /** О ком вопрос: тест только для пар; блок дружбы — о партнёре как друге. */
@@ -47,15 +47,7 @@ export function questionScreen(p: QuestionProps): HTMLElement {
       p.lead ? h('p', { class: 'lead' }, p.lead) : null,
       h('p', { class: 'tag' }, BLOCK_TAG[q.block]),
       h('h2', {}, q.text),
-      h('div', { class: 'poles' }, h('span', {}, `0 — ${q.left}`), h('span', {}, `10 — ${q.right}`)),
-      h('div', { class: 'scale mine', role: 'group' },
-        ...Array.from({ length: 11 }, (_, i) =>
-          h('button', {
-            type: 'button',
-            class: i === value ? 'cell on' : 'cell',
-            'aria-pressed': i === value ? 'true' : 'false',
-            onclick: () => choose(i),
-          }, String(i)))),
+      ...(q.options ? [optionList(q.options)] : legacyScale(q)),
       q.firm
         ? h('label', { class: 'firm' },
           h('input', { type: 'checkbox', checked: firm, onchange: (e: Event) => { firm = (e.target as HTMLInputElement).checked; } }),
@@ -70,6 +62,35 @@ export function questionScreen(p: QuestionProps): HTMLElement {
           : null),
     ];
     root.replaceChildren(...nodes.filter((n): n is Node => n !== null));
+  }
+
+  /** 5 вариантов словами — по одной оси, сверху вниз от левого края к правому. */
+  function optionList(options: string[]): HTMLElement {
+    return h('div', { class: 'options mine', role: 'group' },
+      ...options.map((label, i) => {
+        const v = OPTION_VALUES[i];
+        return h('button', {
+          type: 'button',
+          class: v === value ? 'option on' : 'option',
+          'aria-pressed': v === value ? 'true' : 'false',
+          onclick: () => choose(v),
+        }, label);
+      }));
+  }
+
+  /** Прежняя шкала 0–10 — для вопросов без вариантов. */
+  function legacyScale(q: Question): HTMLElement[] {
+    return [
+      h('div', { class: 'poles' }, h('span', {}, `0 — ${q.left}`), h('span', {}, `10 — ${q.right}`)),
+      h('div', { class: 'scale mine', role: 'group' },
+        ...Array.from({ length: 11 }, (_, i) =>
+          h('button', {
+            type: 'button',
+            class: i === value ? 'cell on' : 'cell',
+            'aria-pressed': i === value ? 'true' : 'false',
+            onclick: () => choose(i),
+          }, String(i)))),
+    ];
   }
 
   draw();

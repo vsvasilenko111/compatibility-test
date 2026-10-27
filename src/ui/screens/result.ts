@@ -105,10 +105,9 @@ function resourcesSection(rs: Resource[] | null, m: MaturityResult | null): HTML
 function answerItem(r: AnswerRow, na: string, nb: string): HTMLElement {
   return h('li', { class: r.opposite && r.diff >= 6 ? 'answer far' : 'answer' },
     h('div', { class: 'answer-q' }, r.text),
-    h('div', { class: 'answer-poles' }, `0 — ${r.left} · 10 — ${r.right}`),
     h('div', { class: 'answer-vals' },
-      h('span', {}, `${na}: `, h('b', {}, String(r.a)), r.firmA ? ' · не обсуждается' : null),
-      h('span', {}, `${nb}: `, h('b', {}, String(r.b)), r.firmB ? ' · не обсуждается' : null)));
+      h('span', {}, `${na}: `, h('b', {}, r.labelA), r.firmA ? ' · не обсуждается' : null),
+      h('span', {}, `${nb}: `, h('b', {}, r.labelB), r.firmB ? ' · не обсуждается' : null)));
 }
 
 /** Ответы друг друга: расхождения по группам и все ответы. Пропущенные не показываются. */
@@ -122,7 +121,7 @@ function answersSection(a: Profile, b: Profile, questions: Question[] | undefine
     ...groups.map((g) => h('div', { class: 'answer-group' },
       h('h4', {}, `${g.title} — ${g.rows.length}`),
       h('ul', {}, ...g.rows.map((r) => answerItem(r, na, nb))))),
-    groups.length ? null : h('p', {}, 'Расхождений на 3 деления и больше нет.'),
+    groups.length ? null : h('p', {}, 'Заметных расхождений нет.'),
     h('details', { class: 'explain' },
       h('summary', {}, `Все ответы — ${all.length}`),
       h('ul', {}, ...all.map((r) => answerItem(r, na, nb)))));
@@ -160,12 +159,11 @@ function prioritiesSection(a: Profile, b: Profile): HTMLElement | null {
   const person = (name: string, pr: Record<string, Priority> | undefined) => pr
     ? h('div', { class: 'note soft' },
       h('div', { class: 'note-label' }, name),
-      h('p', {}, h('b', {}, 'Важнее всего: '), sphereLabels(pr, 'top').join(' · ')),
-      h('p', {}, h('b', {}, 'Менее важно: '), sphereLabels(pr, 'low').join(' · ')))
+      h('p', {}, sphereLabels(pr, 'top').join(' · ')))
     : h('div', { class: 'note soft' }, h('div', { class: 'note-label' }, name), h('p', {}, 'Пока не выбрано — проценты считаются по обычным весам.'));
   return h('section', { class: 'priorities-result' },
     h('h3', { class: 'eyebrow' }, 'Что важнее каждому'),
-    h('p', { class: 'hint' }, 'Совпадение в важных для человека сферах весит для него вдвое больше, в менее важных — вдвое меньше.'),
+    h('p', { class: 'hint' }, 'Каждый выбрал 5 самых важных для себя сфер — совпадение в них весит для него втрое больше.'),
     h('div', { class: 'notes' },
       both.length ? note('support', 'Важно обоим', both) : null,
       person(na, a.priorities),

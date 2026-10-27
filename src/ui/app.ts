@@ -1,5 +1,5 @@
 import { CodecError, decode, encode } from '../codec/codec';
-import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, QUESTIONS } from '../questions';
+import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, OPTIONS_SINCE, QUESTIONS } from '../questions';
 import { friendshipWeight, relationshipWeight } from '../questions/spheres';
 import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
@@ -84,7 +84,8 @@ export function startApp(root: HTMLElement): void {
 
   function showIntro(inviter: { code: string; name: string } | null) {
     const inviterCode = inviter?.code ?? null;
-    const saved = store.loadProgress();
+    const stored = store.loadProgress();
+    const saved = stored && (stored.bankVersion ?? 0) >= OPTIONS_SINCE ? stored : null;
     // Дозаполнение продолжается с тем же партнёром, с какой бы страницы его ни открыли.
     const resumable = saved?.only ? { ...saved, index: firstUnanswered(saved.only, saved.responses) } : resumeFor(saved, inviterCode, ASKED_IDS);
     const resumeList = resumable?.only ?? ASKED_IDS;
@@ -103,7 +104,7 @@ export function startApp(root: HTMLElement): void {
   }
 
   function runTest(p: Progress): void {
-    store.saveProgress(p);
+    store.saveProgress({ ...p, bankVersion: BANK_VERSION });
     const list = p.only ? QUESTIONS.filter((q) => p.only!.includes(q.id)) : ASKED;
     if (p.index >= list.length) {
       const gap = firstUnanswered(list.map((q) => q.id), p.responses);
@@ -125,6 +126,7 @@ export function startApp(root: HTMLElement): void {
   /** После вопросов — выбор важных сфер; «Назад» возвращает к последнему вопросу. */
   function choosePriorities(p: Progress, count: number) {
     show(prioritiesScreen({
+      questions: QUESTIONS,
       onBack: count > 0 ? () => runTest({ ...p, index: count - 1 }) : null,
       onDone: (priorities) => finish({ ...p, priorities }),
     }));
@@ -133,8 +135,8 @@ export function startApp(root: HTMLElement): void {
   function finish(p: Progress) {
     const code = encode({ name: p.name, bankVersion: BANK_VERSION, responses: p.responses, priorities: p.priorities }, CURRENT_IDS, CURRENT_FIRM);
     store.clearProgress();
-    // Дозаполнил свою старую ссылку — новая ссылка заменяет прежнюю «вашу ссылку».
-    if (p.only && p.ownCode !== undefined && p.ownCode === store.loadOwnCode()) store.saveOwnCode(code);
+    // Дозаполнил или перепрошёл свою старую ссылку — новая ссылка заменяет прежнюю «вашу ссылку».
+    if (p.ownCode !== undefined && p.ownCode === store.loadOwnCode()) store.saveOwnCode(code);
     if (p.inviterCode) {
       store.saveResultFor(p.inviterCode, code);
       location.hash = p.selfFirst ? resultHash(code, p.inviterCode, quick) : resultHash(p.inviterCode, code, quick); // hashchange откроет результат
@@ -150,6 +152,18 @@ export function startApp(root: HTMLElement): void {
       const pa = decode(a, MANIFEST, FIRM);
       const pb = decode(b, MANIFEST, FIRM);
       // Ответы друг друга видны сразу: согласие на раскрытие считается данным. Метки согласия в старых ссылках просто сохраняются.
+      // Кто проходил тест со шкалой 0–10 — проходит обновлённый заново: ответы разных шкал не сравниваются.
+      const outdated = ([[pa, a, b], [pb, b, a]] as const).filter(([p]) => p.bankVersion < OPTIONS_SINCE);
+      if (outdated.length) {
+        return show(messageScreen('Тест обновился', 'Теперь вместо шкалы от 0 до 10 — варианты ответа словами. Ответы по старой шкале с новыми не сравнить, поэтому тест нужно пройти заново — он займёт столько же времени.', null, [
+          ...outdated.map(([p, own, other]) => ({
+            label: `${p.name || (p === pa ? 'Первый' : 'Второй')}: пройти обновлённый тест`,
+            primary: true,
+            onClick: () => runTest({ name: p.name, index: 0, responses: {}, inviterCode: other, ownCode: own, selfFirst: p === pa }),
+          })),
+          { label: 'На главную', onClick: () => { location.hash = ''; } },
+        ]));
+      }
       store.rememberResult({ a, b, names: `${pa.name || 'Первый'} × ${pb.name || 'Второй'}`, at: Date.now() });
       // Ссылка от прежней версии теста: можно ответить только на новые вопросы — остальные ответы переносятся.
       // Ссылка до выбора важных сфер — их тоже можно выбрать, не отвечая заново.

@@ -99,6 +99,9 @@ input[type='text'] {
 .question .lead { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--card); font-size: 0.9rem; line-height: 1.45; }
 .question .tag { margin: 0 0 -8px; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
 .warn { color: var(--orange); }
+.options { display: flex; flex-direction: column; gap: 6px; }
+.options .option { text-align: left; padding: 12px 14px; border-radius: 10px; line-height: 1.3; }
+.options .option.on { background: var(--accent); color: var(--accent-fg); }
 .scale { display: grid; grid-template-columns: repeat(11, 1fr); gap: 3px; }
 .scale .cell { padding: 10px 0; border-radius: 8px; font-size: 0.9rem; min-width: 0; }
 .scale.mine .cell.on { background: var(--accent); color: var(--accent-fg); }
@@ -259,3 +262,9 @@ button.secondary { background: var(--cell); color: var(--fg); }
 .chip.on { background: var(--accent); color: var(--accent-fg); }
 .chip.taken { opacity: 0.45; text-decoration: line-through; }
 .chip:disabled:not(.taken) { opacity: 0.6; }
+
+.sphere-pick { display: flex; flex-direction: column; gap: 6px; }
+.sphere-card { display: flex; flex-direction: column; gap: 4px; padding: 8px; border-radius: 12px; background: var(--card); }
+.sphere-card .chip { align-self: flex-start; }
+.sphere-questions summary { font-size: 0.8rem; color: var(--muted); cursor: pointer; }
+.sphere-questions ul { margin: 6px 0 2px; padding-left: 18px; font-size: 0.85rem; line-height: 1.4; color: var(--muted); }

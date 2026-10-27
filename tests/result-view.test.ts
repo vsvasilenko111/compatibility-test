@@ -11,11 +11,11 @@ const mode = (over: Partial<ModeResult> = {}): ModeResult => ({
 describe('sphereTiles', () => {
   it('сортирует от лучшей сферы к худшей, «не принципиально» — в конце, неизвестные сферы пропускает', () => {
     const tiles = sphereTiles([
-      { sphere: 'money', percent: 40, items: [] }, { sphere: 'kids', percent: null, items: [] },
+      { sphere: 'budget', percent: 40, items: [] }, { sphere: 'kids', percent: null, items: [] },
       { sphere: 'humor', percent: 95, items: [] }, { sphere: 'nope', percent: 50, items: [] },
     ]);
-    expect(tiles.map((t) => t.id)).toEqual(['humor', 'money', 'kids']);
-    expect(tiles[0]).toEqual({ id: 'humor', label: 'Юмор и вайб', percent: 95, items: [] });
+    expect(tiles.map((t) => t.id)).toEqual(['humor', 'budget', 'kids']);
+    expect(tiles[0]).toEqual({ id: 'humor', label: 'Юмор', percent: 95, items: [] });
   });
 });
 
@@ -42,7 +42,7 @@ describe('flagsLine', () => {
 });
 
 describe('matchLevel', () => {
-  it.each([[1, 'same'], [5 / 6, 'close'], [4 / 6, 'close'], [3 / 6, 'apart'], [1 / 6, 'apart'], [0, 'opposite']])(
+  it.each([[1, 'same'], [0.95, 'same'], [0.9, 'same'], [0.75, 'close'], [0.35, 'apart'], [0.1, 'apart'], [0, 'opposite']])(
     '%f → %s', (m, level) => expect(matchLevel(m as number)).toBe(level),
   );
 });

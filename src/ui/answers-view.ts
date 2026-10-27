@@ -1,13 +1,18 @@
+import { optionIndex } from '../answer';
 import { SPHERES } from '../questions/spheres';
 import type { Profile, Question } from '../types';
 
 export interface AnswerRow { id: string; text: string; left: string; right: string; sphere: string; a: number; b: number; diff: number; opposite: boolean;
   /** Отметка «Для меня это не обсуждается» у первого и второго. */
-  firmA: boolean; firmB: boolean }
+  firmA: boolean; firmB: boolean;
+  /** Выбранные варианты словами; у вопросов без вариантов — число. */
+  labelA: string; labelB: string }
 export interface AnswerGroup { title: string; rows: AnswerRow[] }
 
-/** Расхождение — от 3 делений, как у «стоит обсудить». */
-export const DIVERGENCE = 3;
+/** Расхождение — от 4 делений (через вариант и дальше: 3 и 7, 0 и 5), как у «стоит обсудить». */
+export const DIVERGENCE = 4;
+
+const label = (q: Question, v: number) => (q.options ? q.options[optionIndex(v)] : String(v));
 
 /** Вопросы, на которые ответили оба, — все блоки, включая эмоции и прошлый опыт. Пропущенные не показываются. */
 export function bothAnswered(questions: Question[], pa: Profile, pb: Profile): AnswerRow[] {
@@ -16,7 +21,7 @@ export function bothAnswered(questions: Question[], pa: Profile, pb: Profile): A
     const x = pa.responses[q.id], y = pb.responses[q.id];
     if (!x || !y || x === 'skipped' || y === 'skipped') return [];
     return [{ id: q.id, text: q.text, left: q.left, right: q.right, sphere: labels.get(q.sphere) ?? q.sphere,
-      a: x.value, b: y.value, firmA: x.firm === true, firmB: y.firm === true, diff: Math.abs(x.value - y.value), opposite: (x.value - 5) * (y.value - 5) < 0 }];
+      a: x.value, b: y.value, labelA: label(q, x.value), labelB: label(q, y.value), firmA: x.firm === true, firmB: y.firm === true, diff: Math.abs(x.value - y.value), opposite: (x.value - 5) * (y.value - 5) < 0 }];
   });
 }
 

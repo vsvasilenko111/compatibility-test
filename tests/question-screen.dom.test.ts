@@ -42,3 +42,25 @@ describe('экран вопроса — отметка «Для меня это 
     expect(s.onSubmit).toHaveBeenCalledWith({ ...answerFor(1), firm: true });
   });
 });
+
+describe('экран вопроса — 5 вариантов словами', () => {
+  const opts: Question = { ...base, options: ['А', 'Скорее А', 'Середина', 'Скорее Б', 'Б'] };
+
+  it('показывает варианты вместо шкалы; выбор отдаёт значение 0/3/5/7/10', () => {
+    vi.useFakeTimers();
+    const onSubmit = vi.fn();
+    const el = questionScreen({ question: opts, index: 0, total: 1, response: undefined, onBack: null, onSubmit });
+    expect(el.querySelector('.scale')).toBeNull();
+    const buttons = [...el.querySelectorAll<HTMLButtonElement>('.options .option')];
+    expect(buttons.map((b) => b.textContent)).toEqual(opts.options);
+    buttons[3].click();
+    vi.runAllTimers();
+    expect(onSubmit).toHaveBeenCalledWith(answerFor(7));
+    vi.useRealTimers();
+  });
+
+  it('при возврате выбранный вариант подсвечен', () => {
+    const el = questionScreen({ question: opts, index: 0, total: 1, response: answerFor(3), onBack: null, onSubmit: vi.fn() });
+    expect(el.querySelector('.option.on')?.textContent).toBe('Скорее А');
+  });
+});

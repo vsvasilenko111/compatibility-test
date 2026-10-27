@@ -46,10 +46,10 @@ const LEVEL_LABELS: Record<MatchLevel, string> = {
   opposite: 'противоположно',
 };
 
-/** Совпадение по одному вопросу словами: 1 — совпадаете, разница 1–2 деления — близко, 3–5 — по-разному, 6+ — противоположно. */
+/** Совпадение по одному вопросу словами (по таблице MATCH): тот же вариант — совпадаете, соседний — близко, дальше — по-разному, края — противоположно. */
 export function matchLevel(match: number): MatchLevel {
-  if (match >= 1) return 'same';
-  if (match >= 4 / 6 - 1e-9) return 'close';
+  if (match >= 0.9) return 'same';
+  if (match >= 0.75) return 'close';
   if (match > 0) return 'apart';
   return 'opposite';
 }
