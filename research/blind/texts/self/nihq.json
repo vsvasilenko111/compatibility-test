@@ -1,0 +1,20 @@
+{
+ "id": "nihq",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "563051f824f536e92e9750d6619e3f5d1507ec1743c5dac867cb80858f6e659a",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "563051f824f536e92e9750d6619e3f5d1507ec1743c5dac867cb80858f6e659a",
+   "words": 426,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/nihq/text0-23c995938e8e00ab18dc.jsonl",
+   "raw_restorer": "raw/C/nihq/self0-928308667bc0f3ceb1e5.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

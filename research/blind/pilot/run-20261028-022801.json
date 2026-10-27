@@ -1,0 +1,81 @@
+{
+ "finished": "2026-10-27T23:28:01+00:00",
+ "wall_seconds": 0.1,
+ "ids": [
+  "q7kd",
+  "ern9",
+  "jmsb",
+  "ftwc",
+  "nihq"
+ ],
+ "roles": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "models": {
+  "A": [
+   "claude-opus-5-5",
+   "high"
+  ],
+  "B": [
+   "claude-sonnet-5-5",
+   "high"
+  ],
+  "C": [
+   "claude-opus-5",
+   "medium"
+  ],
+  "D": [
+   "claude-opus-5-5",
+   "medium"
+  ]
+ },
+ "stats": {
+  "calls": 0,
+  "cached": 105,
+  "rejected_fabricated": 0,
+  "rejected_unparsable": 0,
+  "api_errors": 0,
+  "cost_usd": 0.0,
+  "call_seconds": 0.0
+ },
+ "people": [
+  {
+   "id": "ftwc",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 0.1
+  },
+  {
+   "id": "q7kd",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 0.1
+  },
+  {
+   "id": "ern9",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 0.1
+  },
+  {
+   "id": "nihq",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 0.1
+  },
+  {
+   "id": "jmsb",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 0.1
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "finished": "2026-10-27T23:27:44+00:00",
+ "wall_seconds": 165.9,
+ "ids": [
+  "q7kd",
+  "ern9",
+  "jmsb",
+  "ftwc",
+  "nihq"
+ ],
+ "roles": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "models": {
+  "A": [
+   "claude-opus-5-5",
+   "high"
+  ],
+  "B": [
+   "claude-sonnet-5-5",
+   "high"
+  ],
+  "C": [
+   "claude-opus-5",
+   "medium"
+  ],
+  "D": [
+   "claude-opus-5-5",
+   "medium"
+  ]
+ },
+ "stats": {
+  "calls": 105,
+  "cached": 0,
+  "rejected_fabricated": 0,
+  "rejected_unparsable": 0,
+  "api_errors": 0,
+  "cost_usd": 3.250800599999998,
+  "call_seconds": 658.0102705955505
+ },
+ "people": [
+  {
+   "id": "jmsb",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 88.0
+  },
+  {
+   "id": "q7kd",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 104.9
+  },
+  {
+   "id": "ern9",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 123.8
+  },
+  {
+   "id": "ftwc",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 143.8
+  },
+  {
+   "id": "nihq",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 165.9
+  }
+ ]
+}

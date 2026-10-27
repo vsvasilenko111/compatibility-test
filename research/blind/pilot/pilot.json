@@ -1,0 +1,40 @@
+{
+ "design": "design.md, 16.6",
+ "master_seed": 20261028,
+ "seed": "SeedSequence(20261028).spawn(19)[18]",
+ "seed_name": "pilot_pick",
+ "part": "work",
+ "n_work_people": 58,
+ "pilot": [
+  {
+   "id": "q7kd",
+   "stratum": "тревожный",
+   "criterion": "anxious",
+   "n_candidates": 13
+  },
+  {
+   "id": "ern9",
+   "stratum": "конфликтный",
+   "criterion": "conflictual",
+   "n_candidates": 10
+  },
+  {
+   "id": "jmsb",
+   "stratum": "пьющий",
+   "criterion": "drinker_strict",
+   "n_candidates": 6
+  },
+  {
+   "id": "ftwc",
+   "stratum": "благополучный",
+   "criterion": "wellbeing",
+   "n_candidates": 10
+  },
+  {
+   "id": "nihq",
+   "stratum": "религиозный",
+   "criterion": "religious",
+   "n_candidates": 9
+  }
+ ]
+}

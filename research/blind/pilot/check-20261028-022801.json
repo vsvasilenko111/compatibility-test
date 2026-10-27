@@ -1,0 +1,419 @@
+{
+ "checked": "2026-10-27T23:28:01+00:00",
+ "people": [
+  {
+   "id": "q7kd",
+   "stratum": "тревожный",
+   "dossier": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 510
+   },
+   "self": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 431
+   },
+   "answers": {
+    "n": 153,
+    "skipped": 0,
+    "firm_marked": [
+     "living-03",
+     "living-07",
+     "space-08"
+    ],
+    "priorities": [
+     "space",
+     "kids",
+     "loyalty",
+     "conflicts",
+     "career"
+    ],
+    "problems": [],
+    "option_sd": 1.06,
+    "shown_share": {
+     "1": 0.06,
+     "2": 0.3,
+     "3": 0.3,
+     "4": 0.25,
+     "5": 0.08
+    }
+   },
+   "shift": {
+    "items": {
+     "leisure-11": {
+      "truth": 1,
+      "self": 1,
+      "D": 1
+     },
+     "conflicts-02": {
+      "truth": 5.0,
+      "self": 3.67,
+      "D": 4
+     },
+     "regul-04": {
+      "truth": 1.0,
+      "self": 1.0,
+      "D": 1
+     },
+     "attach-01": {
+      "truth": 5,
+      "self": 5,
+      "D": 5
+     },
+     "trauma-06": {
+      "truth": 5,
+      "self": 5,
+      "D": 4
+     }
+    },
+    "toward_desirable_vs_truth": 0.4,
+    "toward_desirable_vs_self": 0.13,
+    "kids": {
+     "self_option": 3,
+     "D_option": 3,
+     "match": true
+    }
+   }
+  },
+  {
+   "id": "ern9",
+   "stratum": "конфликтный",
+   "dossier": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 524
+   },
+   "self": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 414
+   },
+   "answers": {
+    "n": 153,
+    "skipped": 1,
+    "firm_marked": [
+     "living-07",
+     "space-08"
+    ],
+    "priorities": [
+     "career",
+     "living",
+     "roles",
+     "kids",
+     "loyalty"
+    ],
+    "problems": [],
+    "option_sd": 1.09,
+    "shown_share": {
+     "1": 0.1,
+     "2": 0.2,
+     "3": 0.33,
+     "4": 0.27,
+     "5": 0.1
+    }
+   },
+   "shift": {
+    "items": {
+     "leisure-11": {
+      "truth": 3,
+      "self": 3,
+      "D": 3
+     },
+     "conflicts-02": {
+      "truth": 5.0,
+      "self": 3.67,
+      "D": 4
+     },
+     "regul-04": {
+      "truth": 2.33,
+      "self": 2.33,
+      "D": 1
+     },
+     "attach-01": {
+      "truth": 3,
+      "self": 2,
+      "D": 3
+     },
+     "trauma-06": {
+      "truth": 3,
+      "self": 2,
+      "D": 2
+     }
+    },
+    "toward_desirable_vs_truth": 0.67,
+    "toward_desirable_vs_self": 0.0,
+    "kids": {
+     "self_option": 2,
+     "D_option": 2,
+     "match": true
+    }
+   }
+  },
+  {
+   "id": "jmsb",
+   "stratum": "пьющий",
+   "dossier": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     [
+      "избегание"
+     ]
+    ],
+    "words": 442
+   },
+   "self": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 416
+   },
+   "answers": {
+    "n": 153,
+    "skipped": 1,
+    "firm_marked": [],
+    "priorities": [
+     "kids",
+     "roles",
+     "conflicts",
+     "career",
+     "space"
+    ],
+    "problems": [],
+    "option_sd": 0.9,
+    "shown_share": {
+     "1": 0.06,
+     "2": 0.26,
+     "3": 0.38,
+     "4": 0.26,
+     "5": 0.05
+    }
+   },
+   "shift": {
+    "items": {
+     "leisure-11": {
+      "truth": 5,
+      "self": 3,
+      "D": 3
+     },
+     "conflicts-02": {
+      "truth": 3.67,
+      "self": 5.0,
+      "D": 4
+     },
+     "regul-04": {
+      "truth": 2.33,
+      "self": 2.33,
+      "D": 1
+     },
+     "attach-01": {
+      "truth": 1,
+      "self": 1,
+      "D": 2
+     },
+     "trauma-06": {
+      "truth": 1,
+      "self": 1,
+      "D": 1
+     }
+    },
+    "toward_desirable_vs_truth": 0.4,
+    "toward_desirable_vs_self": 0.27,
+    "kids": {
+     "self_option": null,
+     "D_option": 3,
+     "match": true
+    }
+   }
+  },
+  {
+   "id": "ftwc",
+   "stratum": "благополучный",
+   "dossier": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 472
+   },
+   "self": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 380
+   },
+   "answers": {
+    "n": 153,
+    "skipped": 3,
+    "firm_marked": [],
+    "priorities": [
+     "career",
+     "kids",
+     "home",
+     "roles",
+     "habits"
+    ],
+    "problems": [],
+    "option_sd": 1.12,
+    "shown_share": {
+     "1": 0.09,
+     "2": 0.24,
+     "3": 0.3,
+     "4": 0.27,
+     "5": 0.1
+    }
+   },
+   "shift": {
+    "items": {
+     "leisure-11": {
+      "truth": 1,
+      "self": 1,
+      "D": 1
+     },
+     "conflicts-02": {
+      "truth": 2.33,
+      "self": 5.0,
+      "D": 4
+     },
+     "regul-04": {
+      "truth": 2.33,
+      "self": 2.33,
+      "D": 1
+     },
+     "attach-01": {
+      "truth": 2,
+      "self": 3,
+      "D": 4
+     },
+     "trauma-06": {
+      "truth": 2,
+      "self": 3,
+      "D": 3
+     }
+    },
+    "toward_desirable_vs_truth": -0.67,
+    "toward_desirable_vs_self": 0.27,
+    "kids": {
+     "self_option": 3,
+     "D_option": 3,
+     "match": true
+    }
+   }
+  },
+  {
+   "id": "nihq",
+   "stratum": "религиозный",
+   "dossier": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 537
+   },
+   "self": {
+    "text_wrong": false,
+    "attempts": 1,
+    "misses_by_attempt": [
+     []
+    ],
+    "words": 426
+   },
+   "answers": {
+    "n": 153,
+    "skipped": 1,
+    "firm_marked": [
+     "home-07",
+     "kids-11",
+     "space-08",
+     "values-04"
+    ],
+    "priorities": [
+     "values",
+     "roles",
+     "kids",
+     "conflicts",
+     "budget"
+    ],
+    "problems": [],
+    "option_sd": 0.97,
+    "shown_share": {
+     "1": 0.08,
+     "2": 0.24,
+     "3": 0.41,
+     "4": 0.2,
+     "5": 0.07
+    }
+   },
+   "shift": {
+    "items": {
+     "leisure-11": {
+      "truth": 1,
+      "self": 1,
+      "D": 1
+     },
+     "conflicts-02": {
+      "truth": 3.67,
+      "self": 3.67,
+      "D": 3
+     },
+     "regul-04": {
+      "truth": 2.33,
+      "self": 1.0,
+      "D": 1
+     },
+     "attach-01": {
+      "truth": 2,
+      "self": 1,
+      "D": 3
+     },
+     "trauma-06": {
+      "truth": 2,
+      "self": 1,
+      "D": 2
+     }
+    },
+    "toward_desirable_vs_truth": 0.2,
+    "toward_desirable_vs_self": -0.47,
+    "kids": {
+     "self_option": 3,
+     "D_option": 3,
+     "match": true
+    }
+   }
+  }
+ ],
+ "check_transcripts": {
+  "exit": 0,
+  "tail": [
+   "нарушений нет"
+  ]
+ },
+ "raw_accepted": 105,
+ "raw_rejected_by_role": {},
+ "summary": {
+  "text_wrong": "0 из 10",
+  "mean_shift_vs_truth": 0.2,
+  "mean_shift_vs_self": 0.04,
+  "kids_match": "5 из 5",
+  "d_problems": 0
+ }
+}

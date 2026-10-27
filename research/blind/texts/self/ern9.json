@@ -1,0 +1,20 @@
+{
+ "id": "ern9",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "fedb135a1dab9fb3ff5c76be71c405aab2863589ffb5d1f7284a41a81c251cad",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "fedb135a1dab9fb3ff5c76be71c405aab2863589ffb5d1f7284a41a81c251cad",
+   "words": 414,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/ern9/text0-ed8f71940e294ebc8726.jsonl",
+   "raw_restorer": "raw/C/ern9/self0-bc7dc5e796f7bb1dd546.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

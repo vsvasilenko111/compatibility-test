@@ -1,0 +1,20 @@
+{
+ "id": "q7kd",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "314e8db23124359369248892e59883cf94f5325ec26c596f75401f361a1c9f00",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "314e8db23124359369248892e59883cf94f5325ec26c596f75401f361a1c9f00",
+   "words": 510,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/q7kd/text0-734f192e2c5f16d3adf0.jsonl",
+   "raw_restorer": "raw/C/q7kd/truth0-103e2b69807543da1069.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}
