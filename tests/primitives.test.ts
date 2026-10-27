@@ -1,41 +1,32 @@
 import { describe, it, expect } from 'vitest';
-import { fit, rawFit, strength, weight } from '../src/scoring/primitives';
+import { fit, MATCH, steps, strength } from '../src/scoring/primitives';
+import { answerFor, OPTION_VALUES } from '../src/answer';
 import type { Answer, ImportanceLevel } from '../src/types';
 
 const ans = (value: number, lo = 0, hi = 10, importance: ImportanceLevel = 2): Answer => ({
   value, lo, hi, importance,
 });
+const opt = (n: number) => answerFor(OPTION_VALUES[n - 1]);
 
-describe('weight', () => {
-  it('переводит уровень в вес 0/1/10/50', () => {
-    expect([0, 1, 2, 3].map((i) => weight(ans(5, 0, 10, i as ImportanceLevel)))).toEqual([0, 1, 10, 50]);
+describe('fit — таблица совпадения 5×5', () => {
+  it('строка первого варианта: 100 / 75 / 35 / 10 / 0', () => {
+    expect([1, 2, 3, 4, 5].map((n) => fit(opt(1), opt(n)))).toEqual([1, 0.75, 0.35, 0.1, 0]);
+  });
+  it('одинаковые ответы: в крае 100, во втором и четвёртом 95, в середине 90', () => {
+    expect([1, 2, 3, 4, 5].map((n) => fit(opt(n), opt(n)))).toEqual([1, 0.95, 0.9, 0.95, 1]);
+  });
+  it('таблица симметрична', () => {
+    for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) expect(MATCH[i][j]).toBe(MATCH[j][i]);
+  });
+  it('ответ прежней шкалы 0–10 берётся по ближайшему варианту', () => {
+    expect(fit(answerFor(9), answerFor(10))).toBe(1);
+    expect(fit(answerFor(2), answerFor(3))).toBe(0.95);
   });
 });
 
-describe('fit — каждое деление разницы снимает 1/6, по одну сторону от середины — 1/12', () => {
-  it('10 и 9 → 11/12, 10 и 6 → 2/3; 5 — середина, смягчения нет: 10 и 5 → 1/6, 10 и 4 → 0', () => {
-    const ten = ans(10, 10, 10);
-    expect([10, 9, 8, 7, 6, 5, 4].map((v) => fit(ten, v))).toEqual([1, 11 / 12, 10 / 12, 9 / 12, 8 / 12, 1 / 6, 0].map((x) => expect.closeTo(x, 10)));
-  });
-  it('разные стороны — полная разница: 3 и 7 → 1/3', () => {
-    expect(fit(ans(3), 7)).toBeCloseTo(2 / 6, 10);
-  });
-});
-
-describe('rawFit — полная разница без смягчения', () => {
-  it('10 и 9 → 5/6, 10 и 6 → 1/3, 10 и 4 → 0', () => {
-    const ten = ans(10, 10, 10);
-    expect([9, 6, 4].map((v) => rawFit(ten, v))).toEqual([5 / 6, 2 / 6, 0].map((x) => expect.closeTo(x, 10)));
-  });
-});
-
-describe('fit — диапазоны из старых ссылок не учитываются', () => {
-  it('0 и 2 при старом диапазоне [0,2] → 5/6, а не 1', () => {
-    expect(fit(ans(0, 0, 2), 2)).toBeCloseTo(5 / 6, 10);
-    expect(fit(ans(8, 6, 10), 10)).toBeCloseTo(5 / 6, 10);
-  });
-  it('симметрично', () => {
-    expect(fit(ans(3), 7)).toBeCloseTo(fit(ans(7), 3), 10);
+describe('steps — расстояние в вариантах', () => {
+  it('0 — тот же, 4 — противоположные края', () => {
+    expect([1, 2, 3, 4, 5].map((n) => steps(opt(1), opt(n)))).toEqual([0, 1, 2, 3, 4]);
   });
 });
 

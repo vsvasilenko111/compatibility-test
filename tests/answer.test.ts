@@ -29,10 +29,13 @@ describe('важность из ответа → результат', () => {
     expect(compare(qs, p(10, true), p(6)).relationship.redFlags.map((x) => x.id)).toEqual(['q']);
     expect(compare(qs, p(10, true), p(7)).relationship.redFlags).toEqual([]);
   });
-  it('10 и 7 → не флаг, а тема для разговора', () => {
-    const r = compare(qs, p(10), p(7)).relationship;
+  it('10 и 5 → не флаг, а тема для разговора', () => {
+    const r = compare(qs, p(10), p(5)).relationship;
     expect(r.redFlags).toEqual([]);
     expect(r.talkZones.map((x) => x.id)).toEqual(['q']);
+  });
+  it('10 и 7 — соседние варианты — темой не считаются', () => {
+    expect(compare(qs, p(10), p(7)).relationship.talkZones).toEqual([]);
   });
   it('9 и 9 → супер-совпадение', () => {
     expect(compare(qs, p(9), p(9)).relationship.superMatches.map((x) => x.id)).toEqual(['q']);
@@ -43,14 +46,18 @@ describe('процент совместимости по одному вопро
   const qs: Question[] = [{ id: 'q', block: 'friendship', sphere: 'humor', text: 't', left: 'l', right: 'r', topic: 'юмор', optional: false }];
   const p = (v: number): Profile => ({ name: '', bankVersion: 1, responses: { q: answerFor(v) } });
 
-  // По одну сторону от середины разница вдвое мягче; 5 — середина, смягчения нет.
-  it.each([[10, 100], [9, 91.67], [8, 83.33], [7, 75], [6, 66.67], [5, 16.67], [4, 0]])('10 и %i → %f%%', (v, pct) => {
-    expect(compare(qs, p(10), p(v)).relationship.percent).toBeCloseTo(pct, 1);
+  // Строка первого варианта таблицы MATCH: 100 / 75 / 35 / 10 / 0.
+  it.each([[10, 100], [7, 75], [5, 35], [3, 10], [0, 0]])('10 и %i → %f%%', (v, pct) => {
+    expect(compare(qs, p(10), p(v)).relationship.percent).toBeCloseTo(pct, 6);
   });
-  it('10 и 6 — тема для разговора: «стоит обсудить» считается по полной разнице', () => {
-    expect(compare(qs, p(10), p(6)).relationship.talkZones.map((i) => i.id)).toEqual(['q']);
+  it('оба в середине — 90%, оба во втором варианте — 95%', () => {
+    expect(compare(qs, p(5), p(5)).relationship.percent).toBeCloseTo(90, 6);
+    expect(compare(qs, p(3), p(3)).relationship.percent).toBeCloseTo(95, 6);
   });
-  it('8 и 9 — не тема для разговора (разница меньше 3)', () => {
-    expect(compare(qs, p(8), p(9)).relationship.talkZones).toEqual([]);
+  it('10 и 5 — через вариант — тема для разговора', () => {
+    expect(compare(qs, p(10), p(5)).relationship.talkZones.map((i) => i.id)).toEqual(['q']);
+  });
+  it('7 и 10 — соседние варианты — не тема для разговора', () => {
+    expect(compare(qs, p(7), p(10)).relationship.talkZones).toEqual([]);
   });
 });

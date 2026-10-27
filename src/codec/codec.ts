@@ -5,23 +5,28 @@ import { BitReader, BitWriter } from './bits';
 import { crc16 } from './crc16';
 
 /**
- * v4 — как v3, плюс в конце личная важность сфер: бит «выбрано» и по 2 бита на сферу из PRIORITY_SPHERES (0 — обычная, 1 — top, 2 — low).
+ * v5 — как v4, но сферы важности — новые 18 (PRIORITY_SPHERES_V5): общение, деньги, проявления любви, привычки и здоровье.
+ * v4 — как v3, плюс в конце личная важность сфер: бит «выбрано» и по 2 бита на сферу из PRIORITY_SPHERES_V4 (0 — обычная, 1 — top, 2 — low).
  * v3 — как v2, плюс после ответов по биту на каждый вопрос с отметкой «не обсуждается» (список — по версии банка).
  * v2 — только ответ, 4 бита на вопрос (диапазон и важность выводятся из ответа). v1 — ответ, диапазон и важность.
  * v1–v3 читаются для старых ссылок — важности сфер в них нет, v1 и v2 — без отметок.
  */
-export const FORMAT_VERSION = 4;
+export const FORMAT_VERSION = 5;
+const PRIORITY_FORMAT = 4;
 const FIRM_FORMAT = 3;
-const SHORT_FORMAT = 2;
 const LEGACY_FORMAT = 1;
 export const TEST_TYPE_RELATIONSHIP = 0;
 export const MAX_NAME_BYTES = 40;
 const SKIPPED = 15;
 /**
- * Сферы для важности в формате 4 — порядок зашит в формат: новая сфера или другой порядок — только с новым форматом.
- * Совпадает с PRIORITY_SPHERES (проверяется тестом).
+ * Сферы для важности — порядок зашит в формат: новая сфера или другой порядок — только с новым форматом.
+ * V5 совпадает с PRIORITY_SPHERES (проверяется тестом); V4 — только для чтения старых ссылок.
  */
-export const PRIORITY_SPHERES_V4 = [
+export const PRIORITY_SPHERES_V5 = [
+  'humor', 'contact', 'leisure', 'loyalty', 'honesty', 'values', 'conflicts',
+  'kids', 'home', 'living', 'career', 'budget', 'intimacy', 'space', 'relatives', 'roles', 'love', 'habits',
+] as const;
+const PRIORITY_SPHERES_V4 = [
   'humor', 'leisure', 'rhythm', 'loyalty', 'honesty', 'money', 'values', 'conflicts',
   'kids', 'home', 'living', 'career', 'budget', 'intimacy', 'space', 'relatives', 'roles', 'lifestyle',
 ] as const;
@@ -86,7 +91,7 @@ export function encode(profile: Profile, ids: string[], firmIds: string[] = []):
   }
   const pr = profile.priorities;
   w.write(pr ? 1 : 0, 1);
-  if (pr) for (const s of PRIORITY_SPHERES_V4) w.write(pr[s] ? PRIORITY_CODE[pr[s]] : 0, 2);
+  if (pr) for (const s of PRIORITY_SPHERES_V5) w.write(pr[s] ? PRIORITY_CODE[pr[s]] : 0, 2);
   return seal(w.finish());
 }
 
@@ -105,7 +110,7 @@ export function decode(code: string, manifest: Manifest, firm: Manifest = {}): P
   try {
     const r = new BitReader(body);
     const format = r.read(8);
-    if (format !== FORMAT_VERSION && format !== FIRM_FORMAT && format !== SHORT_FORMAT && format !== LEGACY_FORMAT) throw new CodecError('unsupported-format');
+    if (format < LEGACY_FORMAT || format > FORMAT_VERSION) throw new CodecError('unsupported-format');
     const bankVersion = r.read(8);
     r.read(8); // тип теста — зарезервирован под «Друзья»
     const name = new TextDecoder().decode(r.readBytes(r.read(8)));
@@ -123,7 +128,7 @@ export function decode(code: string, manifest: Manifest, firm: Manifest = {}): P
       } else {
         const value = r.read(4);
         if (value === SKIPPED) { responses[id] = 'skipped'; continue; }
-        if (value > 10) throw new CodecError('corrupt');
+        if (value > 10) throw new CodecError('corrupt'); // форматы 2 и выше: только ответ
         responses[id] = answerFor(value);
       }
     }
@@ -134,9 +139,9 @@ export function decode(code: string, manifest: Manifest, firm: Manifest = {}): P
         if (marked && answer && answer !== 'skipped') responses[id] = { ...answer, firm: true };
       }
     }
-    if (format === FORMAT_VERSION && r.read(1) === 1) {
+    if (format >= PRIORITY_FORMAT && r.read(1) === 1) {
       const priorities: Record<string, Priority> = {};
-      for (const s of PRIORITY_SPHERES_V4) {
+      for (const s of format === PRIORITY_FORMAT ? PRIORITY_SPHERES_V4 : PRIORITY_SPHERES_V5) {
         const c = r.read(2);
         if (c === 3) throw new CodecError('corrupt');
         if (c) priorities[s] = PRIORITY_BY_CODE[c];

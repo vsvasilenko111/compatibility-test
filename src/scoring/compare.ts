@@ -1,7 +1,7 @@
 import type { Answer, Priority, Profile, Question } from '../types';
 import { maturity, type MaturityResult } from './maturity';
 import { resources, type Resource } from './resources';
-import { fit, rawFit, strength, weight } from './primitives';
+import { fit, steps, strength } from './primitives';
 
 export interface ItemRef { id: string; topic: string; sphere: string }
 /** Тема вопроса и степень совпадения 0..1 — без самих ответов. */
@@ -19,12 +19,11 @@ export interface ModeResult {
 }
 export interface CompareResult { relationship: ModeResult; friendship: ModeResult; maturity: MaturityResult | null; resources: Resource[] | null }
 
-const CARES = 10;
 /**
  * Красный флаг — только по явной отметке «Для меня это не обсуждается»: кто-то из пары её поставил, а ответы расходятся
- * на FIRM_GAP делений и больше. Раньше флаг ставился по крайнему ответу — и выпадал у 82% случайных пар.
+ * через вариант и дальше (FIRM_STEPS). Раньше флаг ставился по крайнему ответу — и выпадал у 82% случайных пар.
  */
-export const FIRM_GAP = 4;
+export const FIRM_STEPS = 2;
 /**
  * Каждый красный флаг умножает «совместимость в отношениях» на FIRM_FACTOR (до калибровки). Сейчас 1 — процент флаг не снижает:
  * подбор на старых синтетических парах дал оптимум ≈1 (×0,95 — то же 82,8%), а на свежих любой штраф ухудшал согласие
@@ -34,11 +33,11 @@ export const FIRM_FACTOR = 1;
 
 /**
  * Личная важность сферы умножает её вес только для того, кто её выбрал: проценты считаются «насколько партнёр подходит мне
- * по моим меркам», поэтому у каждого свои множители. Вес по исследованиям остаётся — личный выбор его усиливает или ослабляет,
- * но не обнуляет (люди плохо угадывают, что на самом деле разрушает пары).
- * Калибровка не пересчитана: на синтетике выбор почти не сдвигает сырые проценты (research/review/priorities-eval.txt).
+ * по моим меркам», поэтому у каждого свои множители. Вес по исследованиям остаётся — личный выбор его усиливает.
+ * Человек выбирает 5 важных сфер (×3). «Менее важные» (low) остались только в ссылках формата 4 и ничего не меняют:
+ * на синтетике они точности не добавляли. ×3 — лучший из ×1,5…×4 (research/review/priorities-eval-v14.txt).
  */
-export const PRIORITY_FACTOR: Record<Priority, number> = { top: 2, low: 0.5 };
+export const PRIORITY_FACTOR: Record<Priority, number> = { top: 3, low: 1 };
 const priorityOf = (p: Profile, sphere: string): number => {
   const pr = p.priorities?.[sphere];
   return pr ? PRIORITY_FACTOR[pr] : 1;
@@ -46,16 +45,15 @@ const priorityOf = (p: Profile, sphere: string): number => {
 
 export type SphereWeight = (sphere: string) => number;
 const EQUAL: SphereWeight = () => 1;
-/** Тема для разговора — расхождение от 3 делений (fit ≤ 0,5); мелкая разница в 1–2 деления темой не считается. */
-const TALK_FIT = 0.5;
+/** Тема для разговора — расхождение через вариант и дальше; соседние варианты темой не считаются. */
+const TALK_STEPS = 2;
 
 interface Pair {
   q: Question; a: Answer; b: Answer;
-  wA: number; wB: number; fitA: number; fitB: number; s: number;
+  /** Совпадение по таблице MATCH и расстояние в вариантах. */
+  match: number; steps: number; s: number;
   /** Личная важность сферы для каждого (PRIORITY_FACTOR). */
   mA: number; mB: number;
-  /** Совпадение по полной разнице — для «стоит обсудить». */
-  rawA: number; rawB: number;
 }
 
 function pairs(questions: Question[], pa: Profile, pb: Profile): Pair[] {
@@ -65,9 +63,8 @@ function pairs(questions: Question[], pa: Profile, pb: Profile): Pair[] {
     const b = pb.responses[q.id];
     if (!a || !b || a === 'skipped' || b === 'skipped') continue;
     out.push({
-      q, a, b, wA: weight(a), wB: weight(b), mA: priorityOf(pa, q.sphere), mB: priorityOf(pb, q.sphere),
-      fitA: fit(a, b.value), fitB: fit(b, a.value), s: strength(a, b),
-      rawA: rawFit(a, b.value), rawB: rawFit(b, a.value),
+      q, a, b, match: fit(a, b), steps: steps(a, b), s: strength(a, b),
+      mA: priorityOf(pa, q.sphere), mB: priorityOf(pb, q.sphere),
     });
   }
   return out;
@@ -77,8 +74,8 @@ function percent(ps: Pair[], k: SphereWeight = EQUAL): number | null {
   let numA = 0, sumA = 0, numB = 0, sumB = 0;
   for (const p of ps) {
     const m = k(p.q.sphere);
-    numA += m * p.mA * p.wA * p.fitA; sumA += m * p.mA * p.wA;
-    numB += m * p.mB * p.wB * p.fitB; sumB += m * p.mB * p.wB;
+    numA += m * p.mA * p.match; sumA += m * p.mA;
+    numB += m * p.mB * p.match; sumB += m * p.mB;
   }
   if (sumA === 0 && sumB === 0) return null;
   const sA = sumA === 0 ? 1 : numA / sumA;
@@ -88,21 +85,21 @@ function percent(ps: Pair[], k: SphereWeight = EQUAL): number | null {
 
 const ref = (p: Pair): ItemRef => ({ id: p.q.id, topic: p.q.topic, sphere: p.q.sphere });
 const desc = (key: (p: Pair) => number) => (x: Pair, y: Pair) => key(y) - key(x);
-const bothCare = (p: Pair) => p.wA >= CARES && p.wB >= CARES;
-const award = (p: Pair) => p.s * (p.wA + p.wB);
+const award = (p: Pair) => p.s * (p.mA + p.mB);
 
 const isRed = (p: Pair) => p.q.firm === true && (p.a.firm === true || p.b.firm === true)
-  && Math.abs(p.a.value - p.b.value) >= FIRM_GAP;
+  && p.steps >= FIRM_STEPS;
 
 /** firmPenalty — снижать ли процент за красные флаги (только «совместимость в отношениях»). */
 function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeResult {
-  const supers = ps.filter((p) => bothCare(p) && p.s >= 0.8).sort(desc(award));
-  const strongs = ps.filter((p) => bothCare(p) && p.s >= 0.5 && p.s < 0.8).sort(desc(award));
+  // Награды — только за совпадение по одну сторону от середины (strength > 0): общее убеждение, а не компромисс.
+  const supers = ps.filter((p) => p.s >= 0.8).sort(desc(award));
+  const strongs = ps.filter((p) => p.s >= 0.5 && p.s < 0.8).sort(desc(award));
   const talks = ps
-    .filter((p) => !isRed(p) && ((p.wA >= CARES && p.rawA <= TALK_FIT) || (p.wB >= CARES && p.rawB <= TALK_FIT)))
+    .filter((p) => !isRed(p) && p.steps >= TALK_STEPS)
     // Сначала темы из сфер с большим весом: в «отношениях» дети и деньги раньше досуга и юмора; выше — то, что важно кому-то лично.
-    .sort(desc((p) => k(p.q.sphere) * (p.mA * p.wA * (1 - p.rawA) + p.mB * p.wB * (1 - p.rawB))));
-  const reds = ps.filter(isRed).sort(desc((p) => p.wA + p.wB));
+    .sort(desc((p) => k(p.q.sphere) * (p.mA + p.mB) * (1 - p.match)));
+  const reds = ps.filter(isRed).sort(desc((p) => p.steps + k(p.q.sphere)));
   const flexible = ps.filter(
     (p) => Math.abs(p.a.value - 5) <= 1 && Math.abs(p.b.value - 5) <= 1,
   );
@@ -116,7 +113,7 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeRes
       return {
         sphere,
         percent: percent(inSphere),
-        items: inSphere.map((p) => ({ id: p.q.id, topic: p.q.topic, match: Math.min(p.fitA, p.fitB) })),
+        items: inSphere.map((p) => ({ id: p.q.id, topic: p.q.topic, match: p.match })),
       };
     }),
     redFlags: reds.map(ref),

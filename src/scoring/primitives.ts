@@ -1,26 +1,28 @@
-import { IMPORTANCE_WEIGHTS, type Answer } from '../types';
-
-export function weight(a: Answer): number {
-  return IMPORTANCE_WEIGHTS[a.importance];
-}
-
-/** Ответы по одну сторону от середины — одно мнение разной силы: их разница считается вдвое мягче. */
-export const SAME_SIDE_FACTOR = 0.5;
+import { optionIndex } from '../answer';
+import type { Answer } from '../types';
 
 /**
- * Насколько ответ другого мне подходит: каждое деление разницы снимает 1/6 — 10 и 10 → 1, 10 и 4 → 0, разница 6+ → 0.
- * Если оба ответа по одну сторону от середины (10 и 7), разница считается вдвое мягче: 10 и 7 → 3/4, а не 1/2.
- * Так решительная манера отвечать (много 0 и 10) не превращает «то же мнение, но мягче» в расхождение.
- * Считается только по самим ответам: диапазоны lo/hi в ссылках остались от старых версий и больше не учитываются.
+ * Совпадение по одному вопросу — по номерам вариантов (строка — ответ одного, столбец — другого). Таблица симметрична.
+ * Шаг в сторону — 75%, через вариант — 35%, через два — 10%, противоположные края — 0. Одинаковые ответы: в крае 100%,
+ * во втором и четвёртом 95%, в середине 90% — совпасть в убеждении чуть ценнее, чем в компромиссе.
+ * Все вопросы весят одинаково: важность задают вес сферы, личный выбор сфер и отметка «не обсуждается».
+ * На синтетике (research/review/scoring-eval.txt) так согласие с оценщиками выше, чем при весах из удалённости от середины.
  */
-export function fit(own: Answer, otherValue: number): number {
-  const sameSide = (own.value - 5) * (otherValue - 5) > 0;
-  return Math.max(0, 1 - (Math.abs(own.value - otherValue) * (sameSide ? SAME_SIDE_FACTOR : 1)) / 6);
+export const MATCH: readonly (readonly number[])[] = [
+  [1, 0.75, 0.35, 0.1, 0],
+  [0.75, 0.95, 0.75, 0.35, 0.1],
+  [0.35, 0.75, 0.9, 0.75, 0.35],
+  [0.1, 0.35, 0.75, 0.95, 0.75],
+  [0, 0.1, 0.35, 0.75, 1],
+];
+
+export function fit(a: Answer, b: Answer): number {
+  return MATCH[optionIndex(a.value)][optionIndex(b.value)];
 }
 
-/** Совпадение по полной разнице, без смягчения: для «стоит обсудить» — 10 и 6 остаётся темой, даже если мнение одно. */
-export function rawFit(own: Answer, otherValue: number): number {
-  return Math.max(0, 1 - Math.abs(own.value - otherValue) / 6);
+/** На сколько вариантов расходятся ответы: 0 — одинаковые, 4 — противоположные края. */
+export function steps(a: Answer, b: Answer): number {
+  return Math.abs(optionIndex(a.value) - optionIndex(b.value));
 }
 
 /** Сила совпадения для наград. На процент совместимости не влияет. */

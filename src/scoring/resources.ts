@@ -10,7 +10,11 @@ import type { Profile, Question } from '../types';
 export type ResourceLevel = 'strong' | 'ok' | 'grow';
 export interface Resource { key: string; title: string; level: ResourceLevel; text: string }
 
-interface Dimension { key: string; title: string; ids: string[]; texts: Record<ResourceLevel, string> }
+interface Dimension {
+  key: string; title: string; ids: string[]; texts: Record<ResourceLevel, string>;
+  /** Свои пороги [получается, в целом] — если общие STRONG/OK не дают примерно по четверти пар (банк v14). */
+  levels?: [number, number];
+}
 
 /** Во всех вопросах 0 — устойчивее, 10 — труднее. */
 const DIMENSIONS: Dimension[] = [
@@ -23,7 +27,8 @@ const DIMENSIONS: Dimension[] = [
     },
   },
   {
-    key: 'cool', title: 'Отпускать после ссоры', ids: ['regul-02', 'regul-06'],
+    // Оба вопроса — о мягких поводах (спор о счёте, опоздание на 10 минут): отпускает почти всех, поэтому пороги выше.
+    key: 'cool', title: 'Отпускать после ссоры', ids: ['regul-02', 'regul-06'], levels: [0.85, 0.65],
     texts: {
       strong: 'Вы быстро отходите после неприятного, и мелочи не портят вам вечер.',
       ok: 'Обычно вы отходите довольно быстро, но иногда неприятное держит дольше. Спросите друг друга, что помогает отпустить.',
@@ -31,7 +36,7 @@ const DIMENSIONS: Dimension[] = [
     },
   },
   {
-    key: 'repair', title: 'Мириться', ids: ['regul-08', 'reflect-01', 'reflect-02'],
+    key: 'repair', title: 'Мириться', ids: ['regul-08', 'reflect-01', 'reflect-02'], levels: [0.8, 0.6],
     texts: {
       strong: 'Вы умеете признать свою часть, не принимать резкость на свой счёт и сделать шаг навстречу.',
       ok: 'Мириться получается, хотя признать свою часть или не принять резкость на свой счёт иногда непросто.',
@@ -48,7 +53,10 @@ const DIMENSIONS: Dimension[] = [
   },
 ];
 
-/** Пороги по уровню пары 0..1 — примерно верхняя и нижняя четверть синтетических персонажей. */
+/**
+ * Пороги по уровню пары 0..1 — примерно верхняя и нижняя четверть случайных синтетических пар
+ * (банк v14: research/review/scale-eval.txt; у «отпускать» и «мириться» — свои, см. levels).
+ */
 const STRONG = 0.7;
 const OK = 0.5;
 
@@ -72,7 +80,8 @@ export function resources(questions: Question[], pa: Profile, pb: Profile): Reso
     const a = personLevel(pa, ids), b = personLevel(pb, ids);
     if (a === null || b === null) continue;
     const pair = (a + b) / 2;
-    const level: ResourceLevel = pair >= STRONG ? 'strong' : pair >= OK ? 'ok' : 'grow';
+    const [strong, ok] = d.levels ?? [STRONG, OK];
+    const level: ResourceLevel = pair >= strong - 1e-9 ? 'strong' : pair >= ok - 1e-9 ? 'ok' : 'grow';
     out.push({ key: d.key, title: d.title, level, text: d.texts[level] });
   }
   return out.length ? out : null;

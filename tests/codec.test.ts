@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CodecError, decode, encode, PRIORITY_SPHERES_V4, seal, truncateName } from '../src/codec/codec';
+import { CodecError, decode, encode, PRIORITY_SPHERES_V5, seal, truncateName } from '../src/codec/codec';
 import { BitWriter } from '../src/codec/bits';
 import { PRIORITY_SPHERES } from '../src/questions/spheres';
 import type { Profile } from '../src/types';
@@ -76,7 +76,7 @@ describe('codec', () => {
   });
 
   it('неизвестная версия формата → unsupported-format', () => {
-    expect(kindOf(() => decode(seal(Uint8Array.from([5, 1, 0, 0])), MANIFEST))).toBe('unsupported-format');
+    expect(kindOf(() => decode(seal(Uint8Array.from([6, 1, 0, 0])), MANIFEST))).toBe('unsupported-format');
   });
 
   it('неизвестная версия банка → unknown-bank', () => {
@@ -118,14 +118,14 @@ describe('codec', () => {
   });
 
   it('важность сфер сохраняется; без выбора её в профиле нет', () => {
-    const p: Profile = { ...randomProfile(3), priorities: { kids: 'top', budget: 'top', humor: 'low', lifestyle: 'low' } };
+    const p: Profile = { ...randomProfile(3), priorities: { kids: 'top', budget: 'top', humor: 'low', habits: 'low' } };
     expect(decode(encode(p, IDS), MANIFEST)).toEqual(p);
     expect(decode(encode(randomProfile(3), IDS), MANIFEST).priorities).toBeUndefined();
   });
 
   it('важность читается и при отметках «не обсуждается» — без сдвига', () => {
     const firm = ['q1', 'q2'];
-    const p: Profile = { name: 'x', bankVersion: 1, responses: { q1: { ...answerFor(9), firm: true } }, priorities: { kids: 'top', money: 'low' } };
+    const p: Profile = { name: 'x', bankVersion: 1, responses: { q1: { ...answerFor(9), firm: true } }, priorities: { kids: 'top', love: 'low' } };
     const d = decode(encode(p, IDS, firm), MANIFEST, { 1: firm });
     expect(d.priorities).toEqual(p.priorities);
     expect(d.responses.q1).toEqual({ ...answerFor(9), firm: true });
@@ -141,8 +141,19 @@ describe('codec', () => {
     expect(d.priorities).toBeUndefined();
   });
 
-  it('порядок сфер в формате 4 совпадает со сферами выбора', () => {
-    expect([...PRIORITY_SPHERES_V4]).toEqual(PRIORITY_SPHERES.map((s) => s.id));
+  it('ссылка формата 4 читает важность по прежнему списку сфер', () => {
+    const w = new BitWriter();
+    [4, 1, 0, 0].forEach((x) => w.write(x, 8));
+    IDS.forEach(() => w.write(5, 4));
+    w.write(1, 1);
+    w.write(1, 2); // humor — top
+    w.write(0, 2 * 16);
+    w.write(2, 2); // lifestyle — low
+    expect(decode(seal(w.finish()), MANIFEST).priorities).toEqual({ humor: 'top', lifestyle: 'low' });
+  });
+
+  it('порядок сфер в формате 5 совпадает со сферами выбора', () => {
+    expect([...PRIORITY_SPHERES_V5]).toEqual(PRIORITY_SPHERES.map((s) => s.id));
   });
 
   it('важность и диапазон восстанавливаются из ответа', () => {
