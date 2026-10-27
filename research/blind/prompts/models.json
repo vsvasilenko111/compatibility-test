@@ -1,0 +1,12 @@
+{
+ "_note": "Какая модель Claude играет какую роль (design.md, 6 и 13.1). Фиксируется до первого вызова; менять — только новой записью в design.md с датой. temperature не передаётся (API отклоняет sampling-параметры с 2026-10-21); воспроизводимость — через кеш выхода и хеши. Все роли — одно семейство (Claude): это ограничение партии (design.md, 6). Обязательное различие: автор самоописания (B) и отвечающий (D) — разные модели; B отличается и от A.",
+ "fixed_at": "2026-10-28",
+ "roles": {
+  "A_dossier_author": {"model": "claude-opus-5-5", "effort": "high", "input": "одна запись inputs/truth/<id>.json, вставленная в задание", "tools": "нет", "cwd": "вне проекта"},
+  "B_selfdesc_author": {"model": "claude-sonnet-5-5", "effort": "high", "input": "одна запись inputs/self/<id>.json, вставленная в задание", "tools": "нет", "cwd": "вне проекта"},
+  "C_restorer": {"model": "claude-opus-5", "effort": "medium", "input": "один текст (досье или самоописание), вставленный в задание", "tools": "нет", "cwd": "вне проекта"},
+  "D_answerer": {"model": "claude-opus-5-5", "effort": "medium", "input": "одно самоописание и пачка вопросов, вставленные в задание", "tools": "нет", "cwd": "вне проекта"},
+  "E_judges_optional": {"model": "claude-haiku-5-5", "effort": "medium", "input": "два текста, вставленные в задание", "tools": "нет", "cwd": "вне проекта"}
+ },
+ "constraints_checked": {"B_ne_D": true, "B_ne_A": true, "C_ne_B": true, "single_family_limitation": true}
+}

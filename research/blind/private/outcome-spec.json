@@ -1,0 +1,18 @@
+{
+ "_note": "Точечная (центральная) формула исхода. Записана до генерации пар и исходов. Все числа — [допущение]: из литературы взяты знаки и порядок силы, сами величины — суждение автора (design.md, 5.2). Владельцу теста не показывать (design.md, 6, 8.3). SHA-256 этого файла записан в design.md.",
+ "ind": {"COMM": 0.35, "HOST": 0.30, "AVO": 0.20, "ANX": 0.15, "N": 0.15,
+         "RISKY": 0.40, "DEBT_PROB": 0.26, "INF": 0.40, "PDIV": 0.26},
+ "mis": {"kids_hard": 0.92, "kids_soft": 0.26, "drink": 0.69, "rel": 0.26, "money": 0.26},
+ "beta_sim": -0.03,
+ "ind_sat": {"COMM": 0.20, "HOST": 0.25, "AVO": 0.25, "ANX": 0.18, "N": 0.15,
+             "RISKY": 0.15, "DEBT_PROB": 0.15, "INF": 0.10, "PDIV": 0.05},
+ "mis_sat_mult": 0.5,
+ "sigma_U2": 1.2,
+ "gamma_duration_per_ln_year": -0.25,
+ "stage_targets_3y_breakup": {"встречаются": 0.50, "живут вместе": 0.30, "в браке": 0.15},
+ "k_rule": {"target_R2_selfreport_formula": 0.10, "tolerance": 0.02, "k_bounds": [0.5, 1.5]},
+ "sat_shares": {"skeleton": 0.12, "U": 0.25},
+ "sat_U_corr": 0.9,
+ "csi4": {"mean": 16, "sd": 4.7, "max": 21, "distress_below": 13.5},
+ "ensemble": {"n": 30, "sigma_log_multiplier": 0.354, "note": "95% априорный интервал каждого коэффициента — ×/÷2 вокруг центрального, знак фиксирован"}
+}

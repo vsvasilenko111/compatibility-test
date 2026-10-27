@@ -1,0 +1,2231 @@
+{
+ "meta": {
+  "generator": "research/blind/outcome.py",
+  "master_seed": 20261028,
+  "lib_versions": {
+   "numpy": "2.0.2",
+   "scipy": "1.13.1"
+  },
+  "pairs_sha256": "67457449098d5d52500feb68697464d4db0632b7cfde5a8eeb891844fd89a44b",
+  "note": "ЗАКРЫТО. Исход посчитан до появления любого текста. Тест сюда не входит."
+ },
+ "outcomes": [
+  {
+   "pair_id": "a6pwp0",
+   "p_together_3y": 0.9832,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 21.33,
+   "risk_logit_skeleton": -0.05596,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ab30o5",
+   "p_together_3y": 0.8455,
+   "together_3y": false,
+   "breakup_month": 27,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.04,
+   "risk_logit_skeleton": 1.66448,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "agbo48",
+   "p_together_3y": 0.6419,
+   "together_3y": false,
+   "breakup_month": 13,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.65,
+   "risk_logit_skeleton": -0.18968,
+   "mismatches": []
+  },
+  {
+   "pair_id": "b1gmul",
+   "p_together_3y": 0.8242,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.93,
+   "risk_logit_skeleton": 0.69939,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "b5mb1l",
+   "p_together_3y": 0.8563,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.98,
+   "risk_logit_skeleton": -0.47599,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "b7br90",
+   "p_together_3y": 0.1499,
+   "together_3y": false,
+   "breakup_month": 3,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.42,
+   "risk_logit_skeleton": 2.30947,
+   "mismatches": [
+    "kids_hard",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "b7pvki",
+   "p_together_3y": 0.9341,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.33,
+   "risk_logit_skeleton": 0.28793,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ba2qsn",
+   "p_together_3y": 0.5505,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.53,
+   "risk_logit_skeleton": 2.14111,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "bv5r0x",
+   "p_together_3y": 0.7449,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.52,
+   "risk_logit_skeleton": 1.94548,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "bz4xly",
+   "p_together_3y": 0.5841,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 12.55,
+   "risk_logit_skeleton": 1.44289,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "cbyvgv",
+   "p_together_3y": 0.9576,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.75,
+   "risk_logit_skeleton": -0.06773,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ck7ydn",
+   "p_together_3y": 0.9174,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.57,
+   "risk_logit_skeleton": 0.5689,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "cqzsdg",
+   "p_together_3y": 0.99,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 21.48,
+   "risk_logit_skeleton": -0.66199,
+   "mismatches": []
+  },
+  {
+   "pair_id": "crn9o3",
+   "p_together_3y": 0.9946,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.89,
+   "risk_logit_skeleton": -0.96735,
+   "mismatches": []
+  },
+  {
+   "pair_id": "csi9pe",
+   "p_together_3y": 0.3505,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 9,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 12.25,
+   "risk_logit_skeleton": 0.77644,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ctzy3y",
+   "p_together_3y": 0.7252,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.78,
+   "risk_logit_skeleton": 1.13207,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "d08o6y",
+   "p_together_3y": 0.9623,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.32,
+   "risk_logit_skeleton": 0.90131,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "dql2c9",
+   "p_together_3y": 0.2237,
+   "together_3y": false,
+   "breakup_month": 35,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.0,
+   "risk_logit_skeleton": 1.90098,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "dx35f0",
+   "p_together_3y": 0.3486,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 12,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.15,
+   "risk_logit_skeleton": 1.80273,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "dyzpba",
+   "p_together_3y": 0.8912,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.2,
+   "risk_logit_skeleton": 1.42429,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "e5dg0w",
+   "p_together_3y": 0.803,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 11,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 12.95,
+   "risk_logit_skeleton": -0.37869,
+   "mismatches": []
+  },
+  {
+   "pair_id": "e63879",
+   "p_together_3y": 0.8098,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 7,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.09,
+   "risk_logit_skeleton": 2.28155,
+   "mismatches": [
+    "kids_hard",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "e7ptk6",
+   "p_together_3y": 0.9414,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.86,
+   "risk_logit_skeleton": 0.07424,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "eb969a",
+   "p_together_3y": 0.9012,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.49,
+   "risk_logit_skeleton": 0.24811,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "eiw0po",
+   "p_together_3y": 0.6541,
+   "together_3y": false,
+   "breakup_month": 7,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.34,
+   "risk_logit_skeleton": 1.79143,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "el2tto",
+   "p_together_3y": 0.992,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 23.76,
+   "risk_logit_skeleton": -0.35971,
+   "mismatches": []
+  },
+  {
+   "pair_id": "elj9ow",
+   "p_together_3y": 0.9898,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.08,
+   "risk_logit_skeleton": -1.55112,
+   "mismatches": []
+  },
+  {
+   "pair_id": "elveam",
+   "p_together_3y": 0.7606,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.76,
+   "risk_logit_skeleton": -0.04278,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ezi3wm",
+   "p_together_3y": 0.8414,
+   "together_3y": false,
+   "breakup_month": 18,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.54,
+   "risk_logit_skeleton": 1.31638,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "f24y2l",
+   "p_together_3y": 0.762,
+   "together_3y": false,
+   "breakup_month": 9,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.49,
+   "risk_logit_skeleton": 0.58661,
+   "mismatches": [
+    "kids_hard"
+   ]
+  },
+  {
+   "pair_id": "fftgoq",
+   "p_together_3y": 0.5147,
+   "together_3y": false,
+   "breakup_month": 28,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.1,
+   "risk_logit_skeleton": 0.82655,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "fkm6o5",
+   "p_together_3y": 0.9976,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 21.9,
+   "risk_logit_skeleton": -0.12888,
+   "mismatches": []
+  },
+  {
+   "pair_id": "fou7im",
+   "p_together_3y": 0.9334,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.17,
+   "risk_logit_skeleton": -0.12482,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "fpb0zx",
+   "p_together_3y": 0.9204,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.04,
+   "risk_logit_skeleton": -0.07821,
+   "mismatches": []
+  },
+  {
+   "pair_id": "fywtpp",
+   "p_together_3y": 0.9747,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.81,
+   "risk_logit_skeleton": -0.50927,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "g5c2h4",
+   "p_together_3y": 0.2139,
+   "together_3y": false,
+   "breakup_month": 22,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.55,
+   "risk_logit_skeleton": 2.05364,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "g6ydk4",
+   "p_together_3y": 0.9544,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.98,
+   "risk_logit_skeleton": 0.00825,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "gbkbmc",
+   "p_together_3y": 0.5112,
+   "together_3y": false,
+   "breakup_month": 34,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.85,
+   "risk_logit_skeleton": 1.20773,
+   "mismatches": [
+    "kids_soft",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "gjbisy",
+   "p_together_3y": 0.9383,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.91,
+   "risk_logit_skeleton": 0.28887,
+   "mismatches": []
+  },
+  {
+   "pair_id": "gobw81",
+   "p_together_3y": 0.7096,
+   "together_3y": false,
+   "breakup_month": 35,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.33,
+   "risk_logit_skeleton": 0.02135,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "gsm0g5",
+   "p_together_3y": 0.8076,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 17.93,
+   "risk_logit_skeleton": 0.11309,
+   "mismatches": []
+  },
+  {
+   "pair_id": "h5ip3k",
+   "p_together_3y": 0.7594,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 8,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.12,
+   "risk_logit_skeleton": 2.38997,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "hlj694",
+   "p_together_3y": 0.882,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.58,
+   "risk_logit_skeleton": -0.341,
+   "mismatches": []
+  },
+  {
+   "pair_id": "hmmsdn",
+   "p_together_3y": 0.7297,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.82,
+   "risk_logit_skeleton": 1.19872,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "htffrj",
+   "p_together_3y": 0.8691,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.92,
+   "risk_logit_skeleton": 1.53359,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "i6a3d9",
+   "p_together_3y": 0.5919,
+   "together_3y": false,
+   "breakup_month": 2,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.21,
+   "risk_logit_skeleton": 1.6221,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "iit343",
+   "p_together_3y": 0.7082,
+   "together_3y": false,
+   "breakup_month": 12,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 12.82,
+   "risk_logit_skeleton": 1.01636,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "iqwe0g",
+   "p_together_3y": 0.3726,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 12.16,
+   "risk_logit_skeleton": 1.60578,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ivgh83",
+   "p_together_3y": 0.9781,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.67,
+   "risk_logit_skeleton": -0.43537,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "izrjkd",
+   "p_together_3y": 0.9647,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.2,
+   "risk_logit_skeleton": -0.52138,
+   "mismatches": []
+  },
+  {
+   "pair_id": "izzglx",
+   "p_together_3y": 0.8049,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 8,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.42,
+   "risk_logit_skeleton": 0.68672,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "j2a452",
+   "p_together_3y": 0.8075,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.26,
+   "risk_logit_skeleton": 1.13985,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "j3l0w6",
+   "p_together_3y": 0.987,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 21.01,
+   "risk_logit_skeleton": 0.23778,
+   "mismatches": []
+  },
+  {
+   "pair_id": "j73gqg",
+   "p_together_3y": 0.8069,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.45,
+   "risk_logit_skeleton": 0.24497,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "j7hjgi",
+   "p_together_3y": 0.9709,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.47,
+   "risk_logit_skeleton": -0.57773,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "jc4fi6",
+   "p_together_3y": 0.9803,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.82,
+   "risk_logit_skeleton": -0.05395,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "jewzai",
+   "p_together_3y": 0.7379,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 12.74,
+   "risk_logit_skeleton": 0.65547,
+   "mismatches": []
+  },
+  {
+   "pair_id": "k0a4pn",
+   "p_together_3y": 0.9918,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.36,
+   "risk_logit_skeleton": -1.42741,
+   "mismatches": []
+  },
+  {
+   "pair_id": "k0rqbl",
+   "p_together_3y": 0.9522,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 10,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.95,
+   "risk_logit_skeleton": 0.47654,
+   "mismatches": []
+  },
+  {
+   "pair_id": "k9eup0",
+   "p_together_3y": 0.7033,
+   "together_3y": false,
+   "breakup_month": 9,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.01,
+   "risk_logit_skeleton": -0.80649,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "khofjy",
+   "p_together_3y": 0.9586,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.85,
+   "risk_logit_skeleton": -0.51009,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "kqujng",
+   "p_together_3y": 0.9015,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.05,
+   "risk_logit_skeleton": 0.83275,
+   "mismatches": []
+  },
+  {
+   "pair_id": "kw6c44",
+   "p_together_3y": 0.399,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.19,
+   "risk_logit_skeleton": 1.79194,
+   "mismatches": []
+  },
+  {
+   "pair_id": "lbji05",
+   "p_together_3y": 0.9573,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.78,
+   "risk_logit_skeleton": -0.42252,
+   "mismatches": []
+  },
+  {
+   "pair_id": "llxm1a",
+   "p_together_3y": 0.6288,
+   "together_3y": false,
+   "breakup_month": 27,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.18,
+   "risk_logit_skeleton": 0.593,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "m2a9sv",
+   "p_together_3y": 0.9877,
+   "together_3y": false,
+   "breakup_month": 32,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 19.44,
+   "risk_logit_skeleton": -1.49001,
+   "mismatches": []
+  },
+  {
+   "pair_id": "m3oy49",
+   "p_together_3y": 0.5445,
+   "together_3y": false,
+   "breakup_month": 12,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.71,
+   "risk_logit_skeleton": 0.82354,
+   "mismatches": []
+  },
+  {
+   "pair_id": "m67g69",
+   "p_together_3y": 0.8533,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.84,
+   "risk_logit_skeleton": -0.10053,
+   "mismatches": []
+  },
+  {
+   "pair_id": "mbwkqb",
+   "p_together_3y": 0.8733,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.62,
+   "risk_logit_skeleton": -0.21803,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "mdkjtl",
+   "p_together_3y": 0.9809,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.93,
+   "risk_logit_skeleton": -0.23288,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "mhv8gm",
+   "p_together_3y": 0.5837,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.27,
+   "risk_logit_skeleton": -0.55882,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "mkzk22",
+   "p_together_3y": 0.8164,
+   "together_3y": false,
+   "breakup_month": 35,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.12,
+   "risk_logit_skeleton": 0.8142,
+   "mismatches": []
+  },
+  {
+   "pair_id": "mubm5m",
+   "p_together_3y": 0.9898,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 21.42,
+   "risk_logit_skeleton": 0.59807,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "my81ge",
+   "p_together_3y": 0.9397,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.63,
+   "risk_logit_skeleton": -0.43358,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "n06dni",
+   "p_together_3y": 0.9336,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.53,
+   "risk_logit_skeleton": 0.53388,
+   "mismatches": []
+  },
+  {
+   "pair_id": "nasqiu",
+   "p_together_3y": 0.9662,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.39,
+   "risk_logit_skeleton": -0.44983,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "ncgz6e",
+   "p_together_3y": 0.9345,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.96,
+   "risk_logit_skeleton": 0.14876,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "nhq84m",
+   "p_together_3y": 0.9933,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.95,
+   "risk_logit_skeleton": -0.39679,
+   "mismatches": []
+  },
+  {
+   "pair_id": "npkp1w",
+   "p_together_3y": 0.7075,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.4,
+   "risk_logit_skeleton": 0.11686,
+   "mismatches": []
+  },
+  {
+   "pair_id": "nso56g",
+   "p_together_3y": 0.8973,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.2,
+   "risk_logit_skeleton": -0.40532,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "nu8x7j",
+   "p_together_3y": 0.9509,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.53,
+   "risk_logit_skeleton": -0.94871,
+   "mismatches": []
+  },
+  {
+   "pair_id": "nyw530",
+   "p_together_3y": 0.8033,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 13.65,
+   "risk_logit_skeleton": -0.11712,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "o1v1o4",
+   "p_together_3y": 0.9363,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.92,
+   "risk_logit_skeleton": -0.86253,
+   "mismatches": []
+  },
+  {
+   "pair_id": "o7tkj4",
+   "p_together_3y": 0.5504,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.2,
+   "risk_logit_skeleton": -0.99491,
+   "mismatches": []
+  },
+  {
+   "pair_id": "o7wxe1",
+   "p_together_3y": 0.8534,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.39,
+   "risk_logit_skeleton": -1.06292,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "oi5bwz",
+   "p_together_3y": 0.7921,
+   "together_3y": false,
+   "breakup_month": 12,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.92,
+   "risk_logit_skeleton": -0.68143,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "p83geg",
+   "p_together_3y": 0.9495,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.54,
+   "risk_logit_skeleton": -0.06107,
+   "mismatches": []
+  },
+  {
+   "pair_id": "pe4dc0",
+   "p_together_3y": 0.9429,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.0,
+   "risk_logit_skeleton": -1.12641,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "phb7n1",
+   "p_together_3y": 0.685,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.07,
+   "risk_logit_skeleton": -1.1157,
+   "mismatches": []
+  },
+  {
+   "pair_id": "pty7gc",
+   "p_together_3y": 0.4918,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.38,
+   "risk_logit_skeleton": 1.30458,
+   "mismatches": []
+  },
+  {
+   "pair_id": "q1fkes",
+   "p_together_3y": 0.8805,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.88,
+   "risk_logit_skeleton": -0.75019,
+   "mismatches": []
+  },
+  {
+   "pair_id": "q365at",
+   "p_together_3y": 0.5979,
+   "together_3y": false,
+   "breakup_month": 26,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.97,
+   "risk_logit_skeleton": 1.5255,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "q75sjr",
+   "p_together_3y": 0.9393,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.24,
+   "risk_logit_skeleton": 0.55604,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qegk9k",
+   "p_together_3y": 0.9172,
+   "together_3y": false,
+   "breakup_month": 6,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.53,
+   "risk_logit_skeleton": 0.71917,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qgvqo1",
+   "p_together_3y": 0.7825,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 8,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 13.76,
+   "risk_logit_skeleton": 2.59003,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qkec46",
+   "p_together_3y": 0.9681,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.01,
+   "risk_logit_skeleton": -0.84532,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "qlkhwb",
+   "p_together_3y": 0.7943,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 13.33,
+   "risk_logit_skeleton": 1.01792,
+   "mismatches": [
+    "kids_hard"
+   ]
+  },
+  {
+   "pair_id": "qnxb2m",
+   "p_together_3y": 0.6743,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.1,
+   "risk_logit_skeleton": 0.35192,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "qo3e3p",
+   "p_together_3y": 0.4575,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 12.84,
+   "risk_logit_skeleton": -0.73235,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qonj6b",
+   "p_together_3y": 0.9728,
+   "together_3y": false,
+   "breakup_month": 27,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 19.97,
+   "risk_logit_skeleton": -0.61664,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qygdpt",
+   "p_together_3y": 0.3462,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 9,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 15.05,
+   "risk_logit_skeleton": 0.96552,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "r126v5",
+   "p_together_3y": 0.9577,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 8,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 17.58,
+   "risk_logit_skeleton": 0.90271,
+   "mismatches": [
+    "kids_soft",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "r16f3r",
+   "p_together_3y": 0.9883,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.9,
+   "risk_logit_skeleton": -0.43152,
+   "mismatches": []
+  },
+  {
+   "pair_id": "r36yk4",
+   "p_together_3y": 0.8258,
+   "together_3y": false,
+   "breakup_month": 24,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.05,
+   "risk_logit_skeleton": 1.13306,
+   "mismatches": []
+  },
+  {
+   "pair_id": "rt5ctd",
+   "p_together_3y": 0.246,
+   "together_3y": false,
+   "breakup_month": 12,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.73,
+   "risk_logit_skeleton": 1.31168,
+   "mismatches": []
+  },
+  {
+   "pair_id": "rvwy48",
+   "p_together_3y": 0.529,
+   "together_3y": false,
+   "breakup_month": 2,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.72,
+   "risk_logit_skeleton": 1.9902,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ryqqdb",
+   "p_together_3y": 0.9378,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.41,
+   "risk_logit_skeleton": 0.36988,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "s0wi5n",
+   "p_together_3y": 0.7339,
+   "together_3y": false,
+   "breakup_month": 3,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.33,
+   "risk_logit_skeleton": -0.25666,
+   "mismatches": []
+  },
+  {
+   "pair_id": "s35tbz",
+   "p_together_3y": 0.8634,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.53,
+   "risk_logit_skeleton": 0.06082,
+   "mismatches": []
+  },
+  {
+   "pair_id": "sac9r8",
+   "p_together_3y": 0.9625,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.32,
+   "risk_logit_skeleton": 0.25588,
+   "mismatches": []
+  },
+  {
+   "pair_id": "sd3fbt",
+   "p_together_3y": 0.7648,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.82,
+   "risk_logit_skeleton": -0.65883,
+   "mismatches": []
+  },
+  {
+   "pair_id": "sm2s0i",
+   "p_together_3y": 0.4322,
+   "together_3y": false,
+   "breakup_month": 7,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.62,
+   "risk_logit_skeleton": -0.14276,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "smt5br",
+   "p_together_3y": 0.8594,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.2,
+   "risk_logit_skeleton": 2.16737,
+   "mismatches": []
+  },
+  {
+   "pair_id": "t15wov",
+   "p_together_3y": 0.8626,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.45,
+   "risk_logit_skeleton": 0.47942,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "t3gbf6",
+   "p_together_3y": 0.7423,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.32,
+   "risk_logit_skeleton": 2.71656,
+   "mismatches": [
+    "kids_hard",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "t511px",
+   "p_together_3y": 0.978,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.14,
+   "risk_logit_skeleton": 0.07835,
+   "mismatches": []
+  },
+  {
+   "pair_id": "t5s66z",
+   "p_together_3y": 0.2957,
+   "together_3y": false,
+   "breakup_month": 9,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 10.52,
+   "risk_logit_skeleton": 2.74283,
+   "mismatches": [
+    "kids_hard",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "t7pwum",
+   "p_together_3y": 0.7597,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 12,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 15.11,
+   "risk_logit_skeleton": 1.00419,
+   "mismatches": []
+  },
+  {
+   "pair_id": "tab32u",
+   "p_together_3y": 0.2079,
+   "together_3y": false,
+   "breakup_month": 3,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.32,
+   "risk_logit_skeleton": -0.24694,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "tah7q4",
+   "p_together_3y": 0.8923,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.83,
+   "risk_logit_skeleton": 0.10882,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "tczahe",
+   "p_together_3y": 0.4592,
+   "together_3y": false,
+   "breakup_month": 23,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 12.89,
+   "risk_logit_skeleton": 1.78245,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "tjk2sm",
+   "p_together_3y": 0.7232,
+   "together_3y": false,
+   "breakup_month": 4,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.99,
+   "risk_logit_skeleton": -0.72607,
+   "mismatches": []
+  },
+  {
+   "pair_id": "tlex77",
+   "p_together_3y": 0.9296,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.38,
+   "risk_logit_skeleton": 1.82372,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "trauar",
+   "p_together_3y": 0.8119,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 13.53,
+   "risk_logit_skeleton": 0.89147,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "treaq7",
+   "p_together_3y": 0.9034,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 4,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 15.15,
+   "risk_logit_skeleton": 0.51733,
+   "mismatches": [
+    "kids_soft",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "tsx93o",
+   "p_together_3y": 0.9271,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 11,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.11,
+   "risk_logit_skeleton": -0.34751,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "tuaovm",
+   "p_together_3y": 0.9766,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.76,
+   "risk_logit_skeleton": 0.35482,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "tyws74",
+   "p_together_3y": 0.9363,
+   "together_3y": false,
+   "breakup_month": 13,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 18.86,
+   "risk_logit_skeleton": -0.17144,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "u013je",
+   "p_together_3y": 0.9698,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.96,
+   "risk_logit_skeleton": 1.50781,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "u29xj8",
+   "p_together_3y": 0.9665,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.04,
+   "risk_logit_skeleton": 0.49364,
+   "mismatches": [
+    "kids_hard"
+   ]
+  },
+  {
+   "pair_id": "ucurow",
+   "p_together_3y": 0.5395,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 8,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 11.52,
+   "risk_logit_skeleton": 0.57447,
+   "mismatches": []
+  },
+  {
+   "pair_id": "uivnzx",
+   "p_together_3y": 0.0555,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 10.65,
+   "risk_logit_skeleton": 2.34072,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "ujil8f",
+   "p_together_3y": 0.8622,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.67,
+   "risk_logit_skeleton": 2.00851,
+   "mismatches": [
+    "kids_soft",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "uk3y20",
+   "p_together_3y": 0.3224,
+   "together_3y": false,
+   "breakup_month": 5,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.29,
+   "risk_logit_skeleton": 1.59142,
+   "mismatches": [
+    "kids_hard",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "un6nun",
+   "p_together_3y": 0.9747,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.82,
+   "risk_logit_skeleton": 0.71561,
+   "mismatches": []
+  },
+  {
+   "pair_id": "upaben",
+   "p_together_3y": 0.8143,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.44,
+   "risk_logit_skeleton": -0.77693,
+   "mismatches": []
+  },
+  {
+   "pair_id": "utme7h",
+   "p_together_3y": 0.3804,
+   "together_3y": false,
+   "breakup_month": 26,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.97,
+   "risk_logit_skeleton": 3.32153,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "uvje9i",
+   "p_together_3y": 0.3899,
+   "together_3y": false,
+   "breakup_month": 7,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.8,
+   "risk_logit_skeleton": 0.64657,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ux71lg",
+   "p_together_3y": 0.5495,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.07,
+   "risk_logit_skeleton": 0.65658,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "v4adbb",
+   "p_together_3y": 0.9825,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.59,
+   "risk_logit_skeleton": 0.12475,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "vejgux",
+   "p_together_3y": 0.94,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.72,
+   "risk_logit_skeleton": 0.5528,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "vtu122",
+   "p_together_3y": 0.9683,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.37,
+   "risk_logit_skeleton": 0.85037,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "vzecdz",
+   "p_together_3y": 0.5312,
+   "together_3y": false,
+   "breakup_month": 33,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.05,
+   "risk_logit_skeleton": 1.45809,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "w3mo3u",
+   "p_together_3y": 0.5597,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.69,
+   "risk_logit_skeleton": 1.12382,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "w6ecqf",
+   "p_together_3y": 0.0898,
+   "together_3y": false,
+   "breakup_month": 7,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 8.6,
+   "risk_logit_skeleton": 2.22314,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "wd1sqf",
+   "p_together_3y": 0.7203,
+   "together_3y": false,
+   "breakup_month": 33,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 12.82,
+   "risk_logit_skeleton": -0.20003,
+   "mismatches": []
+  },
+  {
+   "pair_id": "wj1pnu",
+   "p_together_3y": 0.5146,
+   "together_3y": false,
+   "breakup_month": 31,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.37,
+   "risk_logit_skeleton": 0.97338,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "wjrrwc",
+   "p_together_3y": 0.2302,
+   "together_3y": false,
+   "breakup_month": 27,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.38,
+   "risk_logit_skeleton": 0.41031,
+   "mismatches": []
+  },
+  {
+   "pair_id": "wo4e17",
+   "p_together_3y": 0.9732,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.33,
+   "risk_logit_skeleton": -1.07915,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "wt5to1",
+   "p_together_3y": 0.2407,
+   "together_3y": false,
+   "breakup_month": 24,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.01,
+   "risk_logit_skeleton": 1.34816,
+   "mismatches": [
+    "kids_soft",
+    "drink",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "wxke55",
+   "p_together_3y": 0.8559,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.47,
+   "risk_logit_skeleton": 0.63587,
+   "mismatches": []
+  },
+  {
+   "pair_id": "x13ybo",
+   "p_together_3y": 0.9542,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.53,
+   "risk_logit_skeleton": -1.238,
+   "mismatches": []
+  },
+  {
+   "pair_id": "x1t48i",
+   "p_together_3y": 0.7238,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 7,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 13.88,
+   "risk_logit_skeleton": 2.10549,
+   "mismatches": [
+    "kids_hard",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "x6zki4",
+   "p_together_3y": 0.916,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.4,
+   "risk_logit_skeleton": 1.043,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "xal6c9",
+   "p_together_3y": 0.4649,
+   "together_3y": false,
+   "breakup_month": 19,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.36,
+   "risk_logit_skeleton": 1.14569,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "xaws3h",
+   "p_together_3y": 0.8595,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.29,
+   "risk_logit_skeleton": 0.28265,
+   "mismatches": []
+  },
+  {
+   "pair_id": "xiub1w",
+   "p_together_3y": 0.1893,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 10,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 9.86,
+   "risk_logit_skeleton": 3.997,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "xr3gzm",
+   "p_together_3y": 0.9042,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.12,
+   "risk_logit_skeleton": 0.66926,
+   "mismatches": []
+  },
+  {
+   "pair_id": "xsq7sh",
+   "p_together_3y": 0.3503,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.08,
+   "risk_logit_skeleton": 0.31535,
+   "mismatches": []
+  },
+  {
+   "pair_id": "y0cw0h",
+   "p_together_3y": 0.0666,
+   "together_3y": false,
+   "breakup_month": 30,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 10.82,
+   "risk_logit_skeleton": 2.52683,
+   "mismatches": []
+  },
+  {
+   "pair_id": "y34t5k",
+   "p_together_3y": 0.392,
+   "together_3y": false,
+   "breakup_month": 9,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.3,
+   "risk_logit_skeleton": 0.15234,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "y85wun",
+   "p_together_3y": 0.2876,
+   "together_3y": false,
+   "breakup_month": 14,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.85,
+   "risk_logit_skeleton": -0.08297,
+   "mismatches": []
+  },
+  {
+   "pair_id": "y88fg7",
+   "p_together_3y": 0.8676,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.5,
+   "risk_logit_skeleton": 0.99312,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ycdead",
+   "p_together_3y": 0.9759,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.27,
+   "risk_logit_skeleton": -0.34795,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ydd02e",
+   "p_together_3y": 0.9717,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.22,
+   "risk_logit_skeleton": -0.54866,
+   "mismatches": []
+  },
+  {
+   "pair_id": "yedyuy",
+   "p_together_3y": 0.8942,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.82,
+   "risk_logit_skeleton": -0.35656,
+   "mismatches": []
+  },
+  {
+   "pair_id": "yehd6c",
+   "p_together_3y": 0.9444,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 17.04,
+   "risk_logit_skeleton": 1.23591,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "yif3po",
+   "p_together_3y": 0.9768,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 11,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 17.4,
+   "risk_logit_skeleton": -1.07576,
+   "mismatches": []
+  },
+  {
+   "pair_id": "yypoki",
+   "p_together_3y": 0.5385,
+   "together_3y": false,
+   "breakup_month": 21,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.77,
+   "risk_logit_skeleton": -1.03313,
+   "mismatches": []
+  },
+  {
+   "pair_id": "z60y4u",
+   "p_together_3y": 0.6844,
+   "together_3y": false,
+   "breakup_month": 6,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 18.24,
+   "risk_logit_skeleton": -0.91035,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "zb22y5",
+   "p_together_3y": 0.9099,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.01,
+   "risk_logit_skeleton": 1.4485,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "zbnz6n",
+   "p_together_3y": 0.2504,
+   "together_3y": false,
+   "breakup_month": 13,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.94,
+   "risk_logit_skeleton": 0.40684,
+   "mismatches": []
+  },
+  {
+   "pair_id": "zesxpp",
+   "p_together_3y": 0.3625,
+   "together_3y": false,
+   "breakup_month": 8,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 10.96,
+   "risk_logit_skeleton": 1.44518,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ziulxx",
+   "p_together_3y": 0.892,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.15,
+   "risk_logit_skeleton": 1.14707,
+   "mismatches": [
+    "kids_hard",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "zjz71c",
+   "p_together_3y": 0.9528,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 18.48,
+   "risk_logit_skeleton": -0.24166,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "zpy9ab",
+   "p_together_3y": 0.9117,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.09,
+   "risk_logit_skeleton": 0.65708,
+   "mismatches": []
+  },
+  {
+   "pair_id": "zqwmrv",
+   "p_together_3y": 0.9735,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 11,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 20.19,
+   "risk_logit_skeleton": 0.57189,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ztkvbe",
+   "p_together_3y": 0.4737,
+   "together_3y": false,
+   "breakup_month": 12,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.87,
+   "risk_logit_skeleton": 1.31719,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "zvxg2u",
+   "p_together_3y": 0.983,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.64,
+   "risk_logit_skeleton": 0.05326,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "zybva8",
+   "p_together_3y": 0.969,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.0,
+   "risk_logit_skeleton": 0.89594,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  }
+ ]
+}

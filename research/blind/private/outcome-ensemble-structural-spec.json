@@ -1,0 +1,122 @@
+{
+ "_note": "Ансамбль другого устройства формулы (ответ критику 2, п. 1; design.md, 13.3). Записан до просмотра результата. Числа — множители и правила относительно точечной формулы outcome-spec.json; абсолютных коэффициентов здесь нет. Закрыто от владельца теста.",
+ "ind_continuous": [
+  "COMM",
+  "HOST",
+  "AVO",
+  "ANX",
+  "N"
+ ],
+ "ind_binary": [
+  "RISKY",
+  "DEBT_PROB",
+  "INF",
+  "PDIV"
+ ],
+ "high_cut_z": 0.6,
+ "interaction_weight_rel_to_mis": "drink",
+ "interaction_weight_mult": 1.0,
+ "variants": [
+  {
+   "name": "mis_x2_ind_x0.5",
+   "ind_mult": 0.5,
+   "mis_mult": 2.0
+  },
+  {
+   "name": "mis_x3_ind_x0.5",
+   "ind_mult": 0.5,
+   "mis_mult": 3.0
+  },
+  {
+   "name": "mis_x4_ind_x0.5",
+   "ind_mult": 0.5,
+   "mis_mult": 4.0
+  },
+  {
+   "name": "partner_effect_0.5",
+   "partner_weight": 0.5
+  },
+  {
+   "name": "drop_IND",
+   "drop": [
+    "IND"
+   ]
+  },
+  {
+   "name": "drop_IND_continuous",
+   "drop": [
+    "IND_continuous"
+   ]
+  },
+  {
+   "name": "drop_IND_binary",
+   "drop": [
+    "IND_binary"
+   ]
+  },
+  {
+   "name": "drop_MIS",
+   "drop": [
+    "MIS"
+   ]
+  },
+  {
+   "name": "drop_SIM",
+   "drop": [
+    "SIM"
+   ]
+  },
+  {
+   "name": "inter_both_anxious",
+   "inter": [
+    "both_anxious"
+   ]
+  },
+  {
+   "name": "inter_anxious_avoidant",
+   "inter": [
+    "anxious_avoidant"
+   ]
+  },
+  {
+   "name": "inter_host_max",
+   "inter": [
+    "host_max"
+   ]
+  },
+  {
+   "name": "inter_all",
+   "inter": [
+    "both_anxious",
+    "anxious_avoidant",
+    "host_max"
+   ]
+  },
+  {
+   "name": "inter_strong_anxious_avoidant",
+   "inter": [
+    "anxious_avoidant"
+   ],
+   "inter_scale": "match_ind_sd",
+   "inter_scale_mult": 1.0
+  },
+  {
+   "name": "inter_strong_dw_continuous",
+   "inter": [
+    "dw_continuous"
+   ],
+   "inter_scale": "match_ind_sd",
+   "inter_scale_mult": 1.0
+  },
+  {
+   "name": "inter_strong_dw_both_anx_continuous",
+   "inter": [
+    "dw_continuous",
+    "both_anx_continuous"
+   ],
+   "inter_scale": "match_ind_sd",
+   "inter_scale_mult": 0.71
+  }
+ ],
+ "_note_v2": "Критик 3, п. 3: варианты 1–13 записаны до просмотра результата; 14–16 дописаны ПОСЛЕ просмотра согласия вариантов 10–13 с точечной формулой (они почти не отличались: вес взаимодействия привязан к слабому члену несовпадений). В вариантах с inter_scale вес каждого взаимодействия подбирается на настоящих парах калибровочной популяции так, чтобы SD его вклада = inter_scale_mult × SD индивидуальных рисков пары (точечная формула). Индивидуальные риски и несовпадения не ослабляются. Бинарные индикаторы (порог high_cut_z) на этой партии покрывают мало пар, поэтому добавлены и непрерывные формы: требование — уход = ANX_м·AVO_ж + ANX_ж·AVO_м, оба тревожные = ANX_м·ANX_ж (z-баллы «правды»; произведение почти не коррелирует с линейными членами, то есть ранжирует пары по-другому)."
+}

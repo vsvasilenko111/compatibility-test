@@ -1,0 +1,17 @@
+{
+ "n": 1,
+ "reason": "критик 3, п. 2: новые поля JEAL_FEEL/CONTROL изменили people.json; пары и исходы те же",
+ "at": "2026-10-28T01:45:08",
+ "old": {
+  "pairs_sha256": "6439ca772778e146d7ef0e7779b3b044567fa9e8992594f538cb25da88f94fd4",
+  "outcome_sha256": "a3d67afd63e32fcdb355429e3b0ac40ab199281e30a658c9a18c0d13c5c39c4d"
+ },
+ "new": {
+  "pairs_sha256": "67457449098d5d52500feb68697464d4db0632b7cfde5a8eeb891844fd89a44b",
+  "outcome_sha256": "352746d7f45dca59c4fb2b8684b8011556385fc4250adf75e4b267d13ae7fae9"
+ },
+ "files_unchanged": {
+  "holdout-pairs.json": "03a19b8a4047d288f3a0751e8b0b62a405e2d4b3f1ced81325cd9e51eaa3d94e",
+  "holdout-outcomes.json": "68bb229ac0c64e00a43bdc6d8ed398bf9ebb045e9df547d44d4024e6c626c0c2"
+ }
+}

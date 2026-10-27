@@ -1,0 +1,48 @@
+{
+ "note": "Главная метрика — ранговая корреляция балла теста с риском по скелету (design.md, 7). Порог утечки = верхняя граница 95% бутстрэпа (по людям) у формулы исхода, применённой к самоотчёту (MAIN_leak_threshold_spearman). Для AUC по одному жребию — то же (leak_threshold_auc). Записан до появления первого текста.",
+ "outcome_sha256": "352746d7f45dca59c4fb2b8684b8011556385fc4250adf75e4b267d13ae7fae9",
+ "thresholds": {
+  "work": {
+   "n_pairs": 107,
+   "n_breakups": 34,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7642,
+   "MAIN_leak_threshold_spearman": 0.892,
+   "MAIN_spearman_boot_95": [
+    0.5637,
+    0.892
+   ],
+   "selfreport_ceiling_auc": 0.5326,
+   "boot_97_5": 0.7974,
+   "leak_threshold_auc": 0.7974,
+   "selfreport_ceiling_auc_expected_over_V": 0.6492
+  },
+  "holdout": {
+   "n_pairs": 73,
+   "n_breakups": 21,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7666,
+   "MAIN_leak_threshold_spearman": 0.9017,
+   "MAIN_spearman_boot_95": [
+    0.5665,
+    0.9017
+   ],
+   "selfreport_ceiling_auc": 0.7586,
+   "boot_97_5": 0.9375,
+   "leak_threshold_auc": 0.9375,
+   "selfreport_ceiling_auc_expected_over_V": 0.6951
+  },
+  "all": {
+   "n_pairs": 180,
+   "n_breakups": 55,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7851,
+   "MAIN_leak_threshold_spearman": 0.8737,
+   "MAIN_spearman_boot_95": [
+    0.6553,
+    0.8737
+   ],
+   "selfreport_ceiling_auc": 0.644,
+   "boot_97_5": 0.7917,
+   "leak_threshold_auc": 0.7917,
+   "selfreport_ceiling_auc_expected_over_V": 0.676
+  }
+ }
+}

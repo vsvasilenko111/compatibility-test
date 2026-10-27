@@ -1,0 +1,142 @@
+{
+ "note": "ЗАКРЫТО: агрегаты, которых нет в generation-report.md (доли и AUC по семействам, согласие вариантов устройства формулы). Владельцу теста не показывать.",
+ "family_shares_sample": {
+  "IND": 0.1582,
+  "MIS": 0.0151,
+  "SIM": 0.00014
+ },
+ "family_shares_calibration": {
+  "IND": 0.1688,
+  "MIS": 0.0192,
+  "SIM": 0.0001
+ },
+ "family_auc_calibration": {
+  "oracle_IND_only": 0.6739,
+  "oracle_MIS_only": 0.5538,
+  "selfreport_MIS_only": 0.5414
+ },
+ "structural_agreement": {
+  "mis_x2_ind_x0.5": {
+   "spearman_with_central_sample": 0.8961,
+   "spearman_with_central_calibration": 0.8545
+  },
+  "mis_x3_ind_x0.5": {
+   "spearman_with_central_sample": 0.8177,
+   "spearman_with_central_calibration": 0.765
+  },
+  "mis_x4_ind_x0.5": {
+   "spearman_with_central_sample": 0.7617,
+   "spearman_with_central_calibration": 0.6978
+  },
+  "partner_effect_0.5": {
+   "spearman_with_central_sample": 0.9858,
+   "spearman_with_central_calibration": 0.9814
+  },
+  "drop_IND": {
+   "spearman_with_central_sample": 0.4206,
+   "spearman_with_central_calibration": 0.2919
+  },
+  "drop_IND_continuous": {
+   "spearman_with_central_sample": 0.6079,
+   "spearman_with_central_calibration": 0.4831
+  },
+  "drop_IND_binary": {
+   "spearman_with_central_sample": 0.9603,
+   "spearman_with_central_calibration": 0.9503
+  },
+  "drop_MIS": {
+   "spearman_with_central_sample": 0.963,
+   "spearman_with_central_calibration": 0.9454
+  },
+  "drop_SIM": {
+   "spearman_with_central_sample": 0.9995,
+   "spearman_with_central_calibration": 0.9996
+  },
+  "inter_both_anxious": {
+   "spearman_with_central_sample": 0.9997,
+   "spearman_with_central_calibration": 0.9887
+  },
+  "inter_anxious_avoidant": {
+   "spearman_with_central_sample": 0.9965,
+   "spearman_with_central_calibration": 0.9831
+  },
+  "inter_host_max": {
+   "spearman_with_central_sample": 0.9758,
+   "spearman_with_central_calibration": 0.9723
+  },
+  "inter_all": {
+   "spearman_with_central_sample": 0.9736,
+   "spearman_with_central_calibration": 0.9471
+  },
+  "inter_strong_anxious_avoidant": {
+   "spearman_with_central_sample": 0.991,
+   "spearman_with_central_calibration": 0.9237
+  },
+  "inter_strong_dw_continuous": {
+   "spearman_with_central_sample": 0.6958,
+   "spearman_with_central_calibration": 0.7543
+  },
+  "inter_strong_dw_both_anx_continuous": {
+   "spearman_with_central_sample": 0.6532,
+   "spearman_with_central_calibration": 0.7017
+  }
+ },
+ "avoidance_vs_expected_csi4": {
+  "man": -0.25,
+  "woman": -0.134
+ },
+ "power_mis_only_selfreport": {
+  "work": {
+   "spearman": 0.164,
+   "boot95": [
+    -0.225,
+    0.468
+   ]
+  },
+  "holdout": {
+   "spearman": 0.363,
+   "boot95": [
+    -0.103,
+    0.7
+   ]
+  }
+ },
+ "power_selfreport_vs_structural": {
+  "work": {
+   "mis_x2_ind_x0.5": 0.653,
+   "mis_x3_ind_x0.5": 0.581,
+   "mis_x4_ind_x0.5": 0.529,
+   "partner_effect_0.5": 0.752,
+   "drop_IND": 0.274,
+   "drop_IND_continuous": 0.416,
+   "drop_IND_binary": 0.75,
+   "drop_MIS": 0.753,
+   "drop_SIM": 0.763,
+   "inter_both_anxious": 0.762,
+   "inter_anxious_avoidant": 0.757,
+   "inter_host_max": 0.756,
+   "inter_all": 0.751,
+   "inter_strong_anxious_avoidant": 0.755,
+   "inter_strong_dw_continuous": 0.528,
+   "inter_strong_dw_both_anx_continuous": 0.52
+  },
+  "holdout": {
+   "mis_x2_ind_x0.5": 0.725,
+   "mis_x3_ind_x0.5": 0.684,
+   "mis_x4_ind_x0.5": 0.648,
+   "partner_effect_0.5": 0.794,
+   "drop_IND": 0.344,
+   "drop_IND_continuous": 0.365,
+   "drop_IND_binary": 0.77,
+   "drop_MIS": 0.735,
+   "drop_SIM": 0.769,
+   "inter_both_anxious": 0.762,
+   "inter_anxious_avoidant": 0.763,
+   "inter_host_max": 0.723,
+   "inter_all": 0.727,
+   "inter_strong_anxious_avoidant": 0.755,
+   "inter_strong_dw_continuous": 0.655,
+   "inter_strong_dw_both_anx_continuous": 0.548
+  }
+ }
+}

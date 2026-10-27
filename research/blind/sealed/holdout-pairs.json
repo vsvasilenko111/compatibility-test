@@ -1,0 +1,443 @@
+{
+ "note": "ЗАПЕЧАТАНО: пары проверочной части",
+ "pairs": [
+  {
+   "pair_id": "ab30o5",
+   "man": "z74u",
+   "woman": "shvz",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "b1gmul",
+   "man": "g8s3",
+   "woman": "mvd3",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "b5mb1l",
+   "man": "nien",
+   "woman": "tqgn",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "b7br90",
+   "man": "clij",
+   "woman": "tpr7",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "b7pvki",
+   "man": "zhd4",
+   "woman": "s6be",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "cqzsdg",
+   "man": "fjpk",
+   "woman": "mvd3",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "el2tto",
+   "man": "kpe9",
+   "woman": "fn8j",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "elveam",
+   "man": "sbbb",
+   "woman": "mwds",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "ezi3wm",
+   "man": "xjml",
+   "woman": "cihr",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "f24y2l",
+   "man": "zwyj",
+   "woman": "tpr7",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "fkm6o5",
+   "man": "pjqb",
+   "woman": "amzk",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "fpb0zx",
+   "man": "odsu",
+   "woman": "k0h6",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "g5c2h4",
+   "man": "g8s3",
+   "woman": "biqk",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "gbkbmc",
+   "man": "clij",
+   "woman": "b3cp",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "h5ip3k",
+   "man": "g8s3",
+   "woman": "p2ox",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "hmmsdn",
+   "man": "odsu",
+   "woman": "shvz",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "iit343",
+   "man": "iyhb",
+   "woman": "b3cp",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "ivgh83",
+   "man": "xjml",
+   "woman": "q2h8",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "izrjkd",
+   "man": "fjpk",
+   "woman": "mwds",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "j2a452",
+   "man": "iyhb",
+   "woman": "s7fv",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "jc4fi6",
+   "man": "pjqb",
+   "woman": "is96",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "jewzai",
+   "man": "ekxp",
+   "woman": "is96",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "k0rqbl",
+   "man": "zhd4",
+   "woman": "q2h8",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "lbji05",
+   "man": "xjml",
+   "woman": "amzk",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "m67g69",
+   "man": "zdan",
+   "woman": "xzh4",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "mdkjtl",
+   "man": "zhd4",
+   "woman": "k0h6",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "mhv8gm",
+   "man": "i56q",
+   "woman": "tqgn",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "mkzk22",
+   "man": "ekxp",
+   "woman": "amzk",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "n06dni",
+   "man": "zhd4",
+   "woman": "shvz",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "nasqiu",
+   "man": "nien",
+   "woman": "k89i",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "nhq84m",
+   "man": "sbbb",
+   "woman": "mvd3",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "nso56g",
+   "man": "sbbb",
+   "woman": "k89i",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "nu8x7j",
+   "man": "xjml",
+   "woman": "s6be",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "o1v1o4",
+   "man": "zwyj",
+   "woman": "xzh4",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "o7tkj4",
+   "man": "ufpl",
+   "woman": "mwds",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "pe4dc0",
+   "man": "xjml",
+   "woman": "k0h6",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "phb7n1",
+   "man": "ufpl",
+   "woman": "mvd3",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "q1fkes",
+   "man": "zwyj",
+   "woman": "b3cp",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "q75sjr",
+   "man": "o7po",
+   "woman": "qwcx",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "qegk9k",
+   "man": "zhd4",
+   "woman": "amzk",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "qgvqo1",
+   "man": "odsu",
+   "woman": "cihr",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "qkec46",
+   "man": "sbbb",
+   "woman": "tqgn",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "qlkhwb",
+   "man": "u9uv",
+   "woman": "amzk",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "r36yk4",
+   "man": "o7po",
+   "woman": "b3cp",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "s0wi5n",
+   "man": "ob3k",
+   "woman": "mwds",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "s35tbz",
+   "man": "i56q",
+   "woman": "mwds",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "sac9r8",
+   "man": "w7tk",
+   "woman": "xzh4",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "sd3fbt",
+   "man": "pjqb",
+   "woman": "s6be",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "smt5br",
+   "man": "zhd4",
+   "woman": "cihr",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "t511px",
+   "man": "zdan",
+   "woman": "b3cp",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "t5s66z",
+   "man": "u9uv",
+   "woman": "cihr",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "trauar",
+   "man": "iyhb",
+   "woman": "xzh4",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "u013je",
+   "man": "sbbb",
+   "woman": "p2ox",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "ujil8f",
+   "man": "clij",
+   "woman": "pfgb",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "utme7h",
+   "man": "z74u",
+   "woman": "cihr",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "vtu122",
+   "man": "ekxp",
+   "woman": "q2h8",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "vzecdz",
+   "man": "w7tk",
+   "woman": "pfgb",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "wo4e17",
+   "man": "pjqb",
+   "woman": "k0h6",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "wt5to1",
+   "man": "g8s3",
+   "woman": "wo9j",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "wxke55",
+   "man": "odsu",
+   "woman": "s6be",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "x13ybo",
+   "man": "ufpl",
+   "woman": "fn8j",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "xal6c9",
+   "man": "odsu",
+   "woman": "q2h8",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "y85wun",
+   "man": "i56q",
+   "woman": "mvd3",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "y88fg7",
+   "man": "nien",
+   "woman": "biqk",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "ycdead",
+   "man": "pjqb",
+   "woman": "q2h8",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "ydd02e",
+   "man": "xjml",
+   "woman": "is96",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "yedyuy",
+   "man": "ob3k",
+   "woman": "mvd3",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "zbnz6n",
+   "man": "w7tk",
+   "woman": "b3cp",
+   "stage": "встречаются"
+  },
+  {
+   "pair_id": "zesxpp",
+   "man": "z74u",
+   "woman": "s6be",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "ziulxx",
+   "man": "u9uv",
+   "woman": "is96",
+   "stage": "в браке"
+  },
+  {
+   "pair_id": "zjz71c",
+   "man": "fjpk",
+   "woman": "wo9j",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "zqwmrv",
+   "man": "ekxp",
+   "woman": "s6be",
+   "stage": "живут вместе"
+  },
+  {
+   "pair_id": "zvxg2u",
+   "man": "ob3k",
+   "woman": "wo9j",
+   "stage": "в браке"
+  }
+ ]
+}
