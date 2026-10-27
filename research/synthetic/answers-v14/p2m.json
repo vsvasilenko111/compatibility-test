@@ -172,5 +172,12 @@
  "prio:conflicts": "top",
  "prio:values": "low",
  "prio:roles": "low",
- "prio:space": "low"
+ "prio:space": "low",
+ "contact-01": 3,
+ "home-10": 2,
+ "home-11": 3,
+ "budget-10": 2,
+ "space-10": 2,
+ "relatives-08": 2,
+ "intimacy-06": 2
 }

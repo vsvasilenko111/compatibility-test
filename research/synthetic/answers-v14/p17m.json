@@ -172,5 +172,12 @@
  "prio:kids": "top",
  "prio:humor": "low",
  "prio:contact": "low",
- "prio:love": "low"
+ "prio:love": "low",
+ "contact-01": 4,
+ "home-10": 2,
+ "home-11": 1,
+ "budget-10": 1,
+ "space-10": 5,
+ "relatives-08": 5,
+ "intimacy-06": 5
 }

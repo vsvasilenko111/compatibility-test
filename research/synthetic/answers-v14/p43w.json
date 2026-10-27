@@ -172,5 +172,12 @@
  "prio:relatives": "top",
  "prio:honesty": "low",
  "prio:contact": "low",
- "prio:leisure": "low"
+ "prio:leisure": "low",
+ "contact-01": 3,
+ "home-10": 2,
+ "home-11": 2,
+ "budget-10": 2,
+ "space-10": 2,
+ "relatives-08": 3,
+ "intimacy-06": 5
 }

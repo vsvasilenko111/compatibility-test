@@ -172,5 +172,12 @@
  "prio:career": "top",
  "prio:relatives": "low",
  "prio:values": "low",
- "prio:love": "low"
+ "prio:love": "low",
+ "contact-01": 2,
+ "home-10": 3,
+ "home-11": 3,
+ "budget-10": 2,
+ "space-10": 1,
+ "relatives-08": 2,
+ "intimacy-06": 1
 }
