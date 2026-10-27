@@ -60,6 +60,11 @@ describe('полный банк', () => {
     expect(FIRM[8]).toBeUndefined();
   });
 
+  it('манифест v12 не изменился; в v13 humor-01 и conflicts-05 заменены на humor-12 и conflicts-10 на тех же местах', () => {
+    expect(MANIFEST[12]).toHaveLength(152);
+    expect(MANIFEST[13]).toEqual(MANIFEST[12].map((id) => ({ 'humor-01': 'humor-12', 'conflicts-05': 'conflicts-10' })[id] ?? id));
+  });
+
   it('манифест v8 не изменился — 141 вопрос', () => {
     expect(MANIFEST[8]).toHaveLength(141);
     expect(MANIFEST[8]).toContain('humor-10');
