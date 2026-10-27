@@ -35,10 +35,10 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('149 вопросов: 50 о партнёре как друге, 78 отношений и 21 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(149);
-    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(50);
-    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(78);
+  it('156 вопросов: 51 о партнёре как друге, 84 отношений и 21 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(156);
+    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(51);
+    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(84);
     expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(21);
   });
 
@@ -96,7 +96,7 @@ describe('полный банк', () => {
     ]);
   });
 
-  // 4 бита на вопрос + бит на отметку + 37 бит важности сфер: 149 вопросов, 13 отметок и имя в 40 байт → 180 символов.
+  // 4 бита на вопрос + бит на отметку + 37 бит важности сфер: 156 вопросов, 13 отметок и имя в 40 байт → 180 символов.
   it('ссылка на полный банк с именем в 40 байт и важностью сфер — не длиннее 180 символов', () => {
     const responses = Object.fromEntries(CURRENT_IDS.map((id) => [id, { value: 10, lo: 0, hi: 10, importance: 3 as const, firm: true }]));
     const priorities = { kids: 'top', budget: 'top', loyalty: 'top', conflicts: 'top', values: 'top', humor: 'low', roles: 'low', career: 'low' } as const;
