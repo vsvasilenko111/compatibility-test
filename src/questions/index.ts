@@ -5,8 +5,12 @@ import firmJson from './firm.json';
 import manifestJson from './manifest.json';
 
 export const BANK_VERSION: number = bank.version;
-/** С этой версии банка ответы — 5 вариантов словами; ответы прежней шкалы 0–10 с ними не сравниваются. */
-export const OPTIONS_SINCE = 14;
+/**
+ * Самая старая версия банка, ответы которой сравниваются с текущей. Поднимать, когда меняется смысл вопросов
+ * при прежних id (или шкала): тогда старые ответы честно не сравнить, и человек проходит тест заново.
+ * v14 — первые варианты словами (до 14 — шкала 0–10); в v15 переписаны 8 вопросов и шутка о вас при друзьях.
+ */
+export const COMPATIBLE_SINCE = 15;
 export const QUESTIONS = bank.questions as Question[];
 export const MANIFEST: Manifest = Object.fromEntries(
   Object.entries(manifestJson as Record<string, string[]>).map(([v, ids]) => [Number(v), ids]),

@@ -1,5 +1,5 @@
 import { CodecError, decode, encode } from '../codec/codec';
-import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, OPTIONS_SINCE, QUESTIONS } from '../questions';
+import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, COMPATIBLE_SINCE, QUESTIONS } from '../questions';
 import { friendshipWeight, relationshipWeight } from '../questions/spheres';
 import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
@@ -85,7 +85,7 @@ export function startApp(root: HTMLElement): void {
   function showIntro(inviter: { code: string; name: string } | null) {
     const inviterCode = inviter?.code ?? null;
     const stored = store.loadProgress();
-    const saved = stored && (stored.bankVersion ?? 0) >= OPTIONS_SINCE ? stored : null;
+    const saved = stored && (stored.bankVersion ?? 0) >= COMPATIBLE_SINCE ? stored : null;
     // Дозаполнение продолжается с тем же партнёром, с какой бы страницы его ни открыли.
     const resumable = saved?.only ? { ...saved, index: firstUnanswered(saved.only, saved.responses) } : resumeFor(saved, inviterCode, ASKED_IDS);
     const resumeList = resumable?.only ?? ASKED_IDS;
@@ -152,10 +152,10 @@ export function startApp(root: HTMLElement): void {
       const pa = decode(a, MANIFEST, FIRM);
       const pb = decode(b, MANIFEST, FIRM);
       // Ответы друг друга видны сразу: согласие на раскрытие считается данным. Метки согласия в старых ссылках просто сохраняются.
-      // Кто проходил тест со шкалой 0–10 — проходит обновлённый заново: ответы разных шкал не сравниваются.
-      const outdated = ([[pa, a, b], [pb, b, a]] as const).filter(([p]) => p.bankVersion < OPTIONS_SINCE);
+      // Кто проходил прежнюю версию теста с другим смыслом вопросов — проходит обновлённый заново: такие ответы не сравнить.
+      const outdated = ([[pa, a, b], [pb, b, a]] as const).filter(([p]) => p.bankVersion < COMPATIBLE_SINCE);
       if (outdated.length) {
-        return show(messageScreen('Тест обновился', 'Теперь вместо шкалы от 0 до 10 — варианты ответа словами. Ответы по старой шкале с новыми не сравнить, поэтому тест нужно пройти заново — он займёт столько же времени.', null, [
+        return show(messageScreen('Тест обновился', 'Вопросы и варианты ответа изменились, поэтому прежние ответы с новыми честно не сравнить. Пройдите тест заново — это займёт столько же времени.', null, [
           ...outdated.map(([p, own, other]) => ({
             label: `${p.name || (p === pa ? 'Первый' : 'Второй')}: пройти обновлённый тест`,
             primary: true,
