@@ -4,18 +4,21 @@
   python3 research/blind/batch_check.py --all                    # все, у кого есть answers/
   ... --cumulative            # ещё и нарастающим итогом по всем, у кого есть ответы
 
-По сопоставлению «вопрос ↔ поле» (MAPPING, 17.12) считает по каждому вопросу и каждой сфере: отношение SD ответа D
-к SD самоотчёта, ранговую корреляцию ответа с самоотчётом, сдвиг к желательному полюсу против самоотчёта
-(в SD самоотчёта) и, справочно, против «правды». Выносит вердикт «принять / брак» и «остановка по сдвигу»
-по порогам 17.11. Проверяет, что тексты и ответы сделаны действующими заданиями (prompts/roles.json = run_roles.py).
+По сопоставлению «вопрос ↔ поле» (MAPPING, 17.12; ред. 5.1 — 17.14) считает по каждому вопросу и каждой сфере:
+отношение SD ответа D к SD самоотчёта (кроме двоичных полей), ранговую корреляцию ответа с самоотчётом, сдвиг к
+желательному полюсу против самоотчёта (в SD самоотчёта) и, справочно, против «правды». Выносит вердикт «принять /
+брак» и «остановка по сдвигу» по правилам 17.14: критические значения зависят от числа людей и посчитаны
+симуляцией (batch_sim.py → batch-thresholds.json) так, чтобы ложный брак от шума был редким. Проверяет, что тексты
+и ответы сделаны действующими заданиями (prompts/roles.json = run_roles.py).
 
-Читает: inputs/truth, inputs/self, texts/, answers/, raw/ (заголовки), src/questions/bank.json.
+Читает: inputs/truth, inputs/self, texts/, answers/, raw/ (заголовки), src/questions/bank.json, batch-thresholds.json.
 private/, sealed/, people.json, selfreport.json не читает.
 Выход: stdout и pilot/batch-check-<время>.json.
 """
 import argparse
 import datetime as dt
 import glob
+import hashlib
 import json
 import os
 import re
@@ -38,10 +41,13 @@ TALK3 = ["трудно, обычно избегает таких разгово�
 CLOSE3 = ["решения принимает без оглядки на родителей", "советуется с родителями и прислушивается к ним",
           "мнение родителей для него (неё) решающее"]
 
-# пороги 17.11 (записаны до прогона)
-SD_RATIO_MEDIAN_MIN, RHO_MEDIAN_MIN = .8, .5        # 3.3
-SD_RATIO_ITEM_MIN, RHO_ITEM_MIN = .6, .3            # грубый сбой отдельного вопроса
-SHIFT_MEAN_MAX, SHIFT_SPHERE_MAX = .4, .6           # остановка по сдвигу D против самоотчёта (SD самоотчёта)
+# Пороги ред. 5.1 (design.md, 17.14; записаны до первой порции). Критические значения зависят от числа людей и
+# посчитаны симуляцией batch_sim.py → batch-thresholds.json (зерно и модель — там же). Точечные пороги 3.3 (0,8 / 0,5)
+# и остановки 17.11 (0,4 / 0,6 SD) — это пороги «в популяции»; на n людях решение принимается тестом против них.
+THRESHOLDS = os.path.join(ROOT, "batch-thresholds.json")
+SD_RATIO_POP, RHO_POP_STRONG, RHO_POP_WEAK = .8, .5, .3     # 3.3; слабые аналоги — мягкий порог (17.14)
+SHIFT_MEAN_POP, SHIFT_SPHERE_POP = .4, .6                   # 17.11
+ITEM_RULES_MIN_N = 40                                       # проверка отдельного вопроса — только от 40 человек
 
 
 def lin(levels, v):
@@ -70,27 +76,34 @@ def kids(rec):
     return None if v == "не знаю" else float(min(int(str(v).rstrip("+")), 4) + 1)
 
 
-# Сопоставление 17.12: (вопрос, поле, функция записи → 1..5, знак: +1 — больше поле → больший номер варианта,
-# −1 — наоборот; желательный полюс поля: −1 — меньше, +1 — больше, 0 — направления нет; в вердикте ли)
+# Сопоставление 17.12 (ред. 5.1 — 17.14): (вопрос, поле, функция записи → 1..5, знак: +1 — больше поле → больший номер
+# варианта, −1 — наоборот; желательный полюс поля: −1 — меньше, +1 — больше, 0 — направления нет;
+# класс: "strong" — прямой аналог (медианы и проверка вопроса против 0,5), "weak" — слабый аналог (только проверка
+# вопроса против мягкого порога 0,3, в медианы не входит), "shift" — только правило остановки по сдвигу;
+# двоичное ли поле: у двоичного отношение SD не считается — другая мера)
 MAPPING = [
-    ("leisure-11", "частота алкоголя", lambda r: lin(ALC4, alc_self(r)), +1, -1, True),
+    ("leisure-11", "частота алкоголя", lambda r: lin(ALC4, alc_self(r)), +1, -1, "strong", False),
     ("conflicts-02", "критика и враждебность (громкость — неточный аналог)",
-     lambda r: lin(FREQ4, r["ссоры"]["критика, презрение, враждебность"]), +1, -1, False),
-    ("conflicts-07", "уход от разговора", lambda r: lin(FREQ4, r["ссоры"]["уход от разговора, молчание"]), +1, -1, True),
-    ("conflicts-01", "уход от разговора", lambda r: lin(FREQ4, r["ссоры"]["уход от разговора, молчание"]), +1, -1, True),
-    ("regul-08", "оборона в ссорах", lambda r: lin(FREQ4, r["ссоры"]["оборона, оправдания вместо разговора"]), +1, -1, True),
-    ("attach-01", "тревожность в отношениях", lambda r: lin(ORD5, r["привязанность"]["тревожность в отношениях"]), +1, -1, True),
-    ("trauma-06", "тревожность в отношениях", lambda r: lin(ORD5, r["привязанность"]["тревожность в отношениях"]), +1, -1, True),
-    ("attach-03", "избегание близости", lambda r: lin(ORD5, r["привязанность"]["избегание близости"]), +1, -1, True),
-    ("budget-09", "есть свой кредит", credit, +1, 0, True),
-    ("kids-02", "сколько детей хочет", kids, +1, 0, True),
-    ("humor-11", "подкалывает и высмеивает партнёра", lambda r: lin(FREQ4, r["юмор"]["подкалывает и высмеивает партнёра, шутит обидно"]), +1, -1, True),
-    ("humor-06", "шутит по-доброму", lambda r: lin(FREQ4, r["юмор"]["шутит по-доброму, смешит других"]), -1, 0, True),
-    ("intimacy-02", "как часто хотелось бы близости", lambda r: lin(DESIRE4, r["близость"]["как часто хотелось бы близости (секса)"]), +1, 0, True),
-    ("intimacy-03", "легко говорить о сексе", lambda r: lin(TALK3, r["близость"]["говорить с партнёром о сексе"]), -1, +1, True),
-    ("relatives-04", "считается с мнением родителей", lambda r: lin(CLOSE3, r["отношения с родителями сейчас"]["насколько считается с мнением родителей"]), +1, -1, True),
-    ("relatives-05", "считается с мнением родителей", lambda r: lin(CLOSE3, r["отношения с родителями сейчас"]["насколько считается с мнением родителей"]), +1, -1, True),
+     lambda r: lin(FREQ4, r["ссоры"]["критика, презрение, враждебность"]), +1, -1, "shift", False),
+    ("conflicts-07", "уход от разговора", lambda r: lin(FREQ4, r["ссоры"]["уход от разговора, молчание"]), +1, -1, "weak", False),
+    ("conflicts-01", "уход от разговора", lambda r: lin(FREQ4, r["ссоры"]["уход от разговора, молчание"]), +1, -1, "weak", False),
+    ("regul-08", "оборона в ссорах", lambda r: lin(FREQ4, r["ссоры"]["оборона, оправдания вместо разговора"]), +1, -1, "strong", False),
+    # attach-01: «не буду трогать» (1) — скорее избегание, социально желательны средние варианты 3–4 → без направления
+    ("attach-01", "тревожность в отношениях", lambda r: lin(ORD5, r["привязанность"]["тревожность в отношениях"]), +1, 0, "weak", False),
+    ("trauma-06", "тревожность в отношениях", lambda r: lin(ORD5, r["привязанность"]["тревожность в отношениях"]), +1, -1, "strong", False),
+    ("attach-03", "избегание близости", lambda r: lin(ORD5, r["привязанность"]["избегание близости"]), +1, -1, "strong", False),
+    ("budget-09", "есть свой кредит", credit, +1, 0, "strong", True),
+    ("kids-02", "сколько детей хочет", kids, +1, 0, "strong", False),
+    ("humor-11", "подкалывает и высмеивает партнёра", lambda r: lin(FREQ4, r["юмор"]["подкалывает и высмеивает партнёра, шутит обидно"]), +1, -1, "strong", False),
+    ("humor-06", "шутит по-доброму", lambda r: lin(FREQ4, r["юмор"]["шутит по-доброму, смешит других"]), -1, 0, "weak", False),
+    ("intimacy-02", "как часто хотелось бы близости", lambda r: lin(DESIRE4, r["близость"]["как часто хотелось бы близости (секса)"]), +1, 0, "strong", False),
+    ("intimacy-03", "легко говорить о сексе", lambda r: lin(TALK3, r["близость"]["говорить с партнёром о сексе"]), -1, +1, "strong", False),
+    ("relatives-04", "считается с мнением родителей", lambda r: lin(CLOSE3, r["отношения с родителями сейчас"]["насколько считается с мнением родителей"]), +1, -1, "strong", False),
+    ("relatives-05", "считается с мнением родителей", lambda r: lin(CLOSE3, r["отношения с родителями сейчас"]["насколько считается с мнением родителей"]), +1, -1, "weak", False),
 ]
+# справочно: humor-11 против враждебности самоотчёта (критик 05, п. 2–3). Если ρ с враждебностью не меньше, чем с
+# «подкалывает партнёра», вопрос мерит враждебность, а не юмор — пометка в выводе, не брак.
+HOST_FIELD = lambda r: lin(FREQ4, r["ссоры"]["критика, презрение, враждебность"])
 
 
 def j(p):
@@ -165,75 +178,133 @@ def answer_problems(a, bank):
     return probs
 
 
+def thresholds():
+    return RR.read_json(THRESHOLDS)
+
+
+def crit(table, n):
+    """Критическое значение для n людей: из таблицы batch-thresholds.json берётся строка с наибольшим n_grid ≤ n
+    (для меньших n — первая строка); так тест не строже, чем посчитано."""
+    grid = sorted(int(k) for k in table)
+    use = max([g_ for g_ in grid if g_ <= n], default=grid[0])
+    return table[str(use)], use
+
+
+def item_values(ids, qid, fn, sign):
+    xs, xt, ys, ids_ok = [], [], [], []
+    for pid in ids:
+        a = j(os.path.join(ROOT, "answers", f"{pid}.json"))["responses"].get(qid)
+        if a in (None, "skipped"):
+            continue
+        rs = j(os.path.join(ROOT, "inputs", "self", f"{pid}.json"))
+        vs = fn(rs)
+        vt = fn(j(os.path.join(ROOT, "inputs", "truth", f"{pid}.json")))
+        if vs is None:
+            continue
+        xs.append(vs)
+        xt.append(vt)
+        ys.append(float(a["option"]))
+        ids_ok.append(pid)
+    ys = np.array(ys)
+    yv = ys if sign > 0 else 6 - ys     # знак −1: переворачиваем ответ в шкалу поля
+    return np.array(xs), np.array(xt), yv, ids_ok
+
+
+def spear(a, b):
+    return float(spearmanr(a, b).correlation) if len(a) > 2 and len(set(a)) > 1 and len(set(b)) > 1 else None
+
+
 def stats(ids, bank):
     rows = {}
-    for qid, field, fn, sign, desirable, in_verdict in MAPPING:
+    for qid, field, fn, sign, desirable, cls, binary in MAPPING:
         directed = desirable != 0
         if qid not in bank:
             rows[qid] = {"field": field, "missing_in_bank": True}
             continue
-        xs, xt, ys = [], [], []
-        for pid in ids:
-            a = j(os.path.join(ROOT, "answers", f"{pid}.json"))["responses"].get(qid)
-            if a in (None, "skipped"):
-                continue
-            vs = fn(j(os.path.join(ROOT, "inputs", "self", f"{pid}.json")))
-            vt = fn(j(os.path.join(ROOT, "inputs", "truth", f"{pid}.json")))
-            if vs is None:
-                continue
-            xs.append(vs)
-            xt.append(vt)
-            ys.append(float(a["option"]))
-        xs, xt, ys = np.array(xs), np.array(xt), np.array(ys)
-        # знак: −1 — поле «наоборот» (больше поле → меньший номер); переворачиваем ответ в шкалу поля
-        yv = ys if sign > 0 else 6 - ys
+        xs, xt, yv, ids_ok = item_values(ids, qid, fn, sign)
         sd_s = float(np.std(xs, ddof=1)) if len(xs) > 1 else float("nan")
-        r = {"field": field, "sphere": bank[qid]["sphere"], "n": int(len(xs)), "directed": directed, "in_verdict": in_verdict,
-             "sd_ratio": round(float(np.std(yv, ddof=1)) / sd_s, 3) if sd_s > 0 else None,
-             "spearman_self": round(float(spearmanr(xs, yv).correlation), 3) if len(set(xs)) > 1 and len(set(yv)) > 1 else None,
-             "spearman_truth": round(float(spearmanr(xt, yv).correlation), 3) if len(set(xt)) > 1 and len(set(yv)) > 1 else None}
+        r = {"field": field, "sphere": bank[qid]["sphere"], "n": int(len(xs)), "directed": directed, "class": cls,
+             "binary": binary,
+             # у двоичного поля отношение SD не имеет смысла (другая мера): только ранговая (точечно-бисериальная) связь
+             "sd_ratio": (round(float(np.std(yv, ddof=1)) / sd_s, 3) if sd_s > 0 and not binary else None),
+             "spearman_self": None if spear(xs, yv) is None else round(spear(xs, yv), 3),
+             "spearman_truth": None if spear(xt, yv) is None else round(spear(xt, yv), 3)}
         if directed and sd_s > 0:
             # > 0 — ответ D ближе к желательному полюсу, чем самоотчёт (в SD самоотчёта)
             r["shift_vs_self_sd"] = round(float(desirable * np.mean(yv - xs)) / sd_s, 3)
             st = float(np.std(xt, ddof=1))
             r["shift_vs_truth_sd"] = round(float(desirable * np.mean(yv - xt)) / st, 3) if st > 0 else None
+        if qid == "humor-11":
+            hs = np.array([HOST_FIELD(j(os.path.join(ROOT, "inputs", "self", f"{p}.json"))) for p in ids_ok])
+            rh = spear(hs, yv)
+            r["spearman_self_hostility"] = None if rh is None else round(rh, 3)
+            r["measures_hostility_rather_than_humor"] = (rh is not None and r["spearman_self"] is not None
+                                                         and rh >= r["spearman_self"])
         rows[qid] = r
     return rows
 
 
-def verdict(rows):
-    use = [r for r in rows.values() if r.get("in_verdict") and r.get("n", 0) > 2]
-    sdr = [r["sd_ratio"] for r in use if r.get("sd_ratio") is not None]
-    rho = [r["spearman_self"] for r in use if r.get("spearman_self") is not None]
-    reasons = []
-    if sdr and np.median(sdr) < SD_RATIO_MEDIAN_MIN:
-        reasons.append(f"медиана отношения SD {np.median(sdr):.2f} < {SD_RATIO_MEDIAN_MIN}")
-    if rho and np.median(rho) < RHO_MEDIAN_MIN:
-        reasons.append(f"медиана ранговой корреляции {np.median(rho):.2f} < {RHO_MEDIAN_MIN}")
-    for qid, r in rows.items():
-        if not r.get("in_verdict") or r.get("n", 0) <= 2:
-            continue
-        if r.get("sd_ratio") is not None and r["sd_ratio"] < SD_RATIO_ITEM_MIN:
-            reasons.append(f"{qid}: отношение SD {r['sd_ratio']:.2f} < {SD_RATIO_ITEM_MIN}")
-        if r.get("spearman_self") is not None and r["spearman_self"] < RHO_ITEM_MIN:
-            reasons.append(f"{qid}: ранговая корреляция {r['spearman_self']:.2f} < {RHO_ITEM_MIN}")
-    shifts = [r["shift_vs_self_sd"] for r in use if r.get("directed") and r.get("shift_vs_self_sd") is not None]
+def verdict(rows, n_people, T):
+    """Вердикт ред. 5.1 (design.md, 17.14). Брак — только если статистика ниже критического значения для этого n
+    (при «граничном» D — в популяции ровно на порогах 3.3 — такое случается с вероятностью ≈ 1% на правило)."""
+    strong = [r for r in rows.values() if r.get("class") == "strong" and r.get("n", 0) > 2]
+    weak = [r for r in rows.values() if r.get("class") == "weak" and r.get("n", 0) > 2]
+    sdr = [r["sd_ratio"] for r in strong if r.get("sd_ratio") is not None]
+    rho = [r["spearman_self"] for r in strong if r.get("spearman_self") is not None]
+    reasons, used = [], {}
+    c, g_ = crit(T["median_spearman_strong"], n_people)
+    used["median_spearman_strong"] = {"critical": c, "n_grid": g_}
+    if rho and np.median(rho) < c:
+        reasons.append(f"медиана ранговой корреляции {np.median(rho):.2f} < {c:.2f} (n = {n_people}; в популяции 0,5)")
+    c, g_ = crit(T["median_sd_ratio_strong"], n_people)
+    used["median_sd_ratio_strong"] = {"critical": c, "n_grid": g_}
+    if sdr and np.median(sdr) < c:
+        reasons.append(f"медиана отношения SD {np.median(sdr):.2f} < {c:.2f} (n = {n_people}; в популяции 0,8)")
+    if n_people >= ITEM_RULES_MIN_N:          # отдельный вопрос — только нарастающим итогом от 40 человек
+        for cls, key in (("strong", "item_spearman_strong"), ("weak", "item_spearman_weak")):
+            c, g_ = crit(T[key], n_people)
+            used[key] = {"critical": c, "n_grid": g_}
+            for qid, r in rows.items():
+                if r.get("class") == cls and r.get("n", 0) > 2 and r.get("spearman_self") is not None \
+                        and r["spearman_self"] < c:
+                    reasons.append(f"{qid}: ранговая корреляция {r['spearman_self']:.2f} < {c:.2f} ({cls}, n = {r['n']})")
+        c, g_ = crit(T["item_sd_ratio"], n_people)
+        used["item_sd_ratio"] = {"critical": c, "n_grid": g_}
+        for qid, r in rows.items():
+            if r.get("class") in ("strong", "weak") and r.get("n", 0) > 2 and r.get("sd_ratio") is not None \
+                    and r["sd_ratio"] < c:
+                reasons.append(f"{qid}: отношение SD {r['sd_ratio']:.2f} < {c:.2f} (n = {r['n']})")
+    # сдвиг D к желательному: все направленные вопросы, включая conflicts-02 (класс shift)
+    dirs = [r for r in rows.values() if r.get("directed") and r.get("shift_vs_self_sd") is not None and r.get("n", 0) > 2]
+    shifts = [r["shift_vs_self_sd"] for r in dirs]
     by_sphere = {}
-    for r in use:
-        if r.get("directed") and r.get("shift_vs_self_sd") is not None:
-            by_sphere.setdefault(r["sphere"], []).append(r["shift_vs_self_sd"])
+    for r in dirs:
+        by_sphere.setdefault(r["sphere"], []).append(r["shift_vs_self_sd"])
     sph = {k: round(float(np.mean(v)), 3) for k, v in by_sphere.items()}
     stop = []
-    if shifts and np.mean(shifts) > SHIFT_MEAN_MAX:
-        stop.append(f"средний сдвиг D к желательному {np.mean(shifts):+.2f} SD > {SHIFT_MEAN_MAX}")
-    stop += [f"сфера {k}: сдвиг {v:+.2f} SD > {SHIFT_SPHERE_MAX}" for k, v in sph.items() if v > SHIFT_SPHERE_MAX]
-    return {"reject_reasons": reasons, "stop_reasons": stop,
+    c, g_ = crit(T["shift_mean"], n_people)
+    used["shift_mean"] = {"critical": c, "n_grid": g_}
+    if shifts and np.mean(shifts) > c:
+        stop.append(f"средний сдвиг D к желательному {np.mean(shifts):+.2f} SD > {c:.2f} (n = {n_people}; в популяции 0,4)")
+    tab, g_ = crit(T["shift_sphere"], n_people)
+    used["shift_sphere"] = {"critical": tab, "n_grid": g_}
+    stop += [f"сфера {k}: сдвиг {v:+.2f} SD > {tab[k]:.2f} (в популяции 0,6)" for k, v in sph.items() if k in tab and v > tab[k]]
+    warn = []
+    if sdr and np.median(sdr) < SD_RATIO_POP:
+        warn.append(f"медиана отношения SD {np.median(sdr):.2f} ниже популяционного порога {SD_RATIO_POP} (не брак: шум n)")
+    if rho and np.median(rho) < RHO_POP_STRONG:
+        warn.append(f"медиана ранговой корреляции {np.median(rho):.2f} ниже популяционного порога {RHO_POP_STRONG} (не брак: шум n)")
+    h = rows.get("humor-11", {})
+    if h.get("measures_hostility_rather_than_humor"):
+        warn.append(f"humor-11: ρ с враждебностью {h['spearman_self_hostility']:.2f} ≥ ρ с «подкалывает» "
+                    f"{h['spearman_self']:.2f} — вопрос мерит враждебность, а не юмор")
+    return {"reject_reasons": reasons, "stop_reasons": stop, "warnings": warn, "critical_used": used,
             "median_sd_ratio": round(float(np.median(sdr)), 3) if sdr else None,
             "median_spearman_self": round(float(np.median(rho)), 3) if rho else None,
             "mean_shift_vs_self_sd": round(float(np.mean(shifts)), 3) if shifts else None, "shift_by_sphere": sph}
 
 
-def check(ids, bank, label):
+def check(ids, bank, label, T):
     out = {"label": label, "ids": ids, "n": len(ids), "people": {}}
     probs_all = []
     for pid in ids:
@@ -244,7 +315,7 @@ def check(ids, bank, label):
         probs_all += [f"{pid}: {x}" for x in pr]
     have = [p for p in ids if os.path.exists(os.path.join(ROOT, "answers", f"{p}.json"))]
     rows = stats(have, bank)
-    v = verdict(rows)
+    v = verdict(rows, len(have), T)
     v["reject_reasons"] = [f"версии/ответы: {x}" for x in probs_all] + v["reject_reasons"]
     out.update(items=rows, **v)
     out["verdict"] = "брак" if v["reject_reasons"] else "принять"
@@ -265,13 +336,15 @@ def main():
     for pid in ids:
         if not re.fullmatch(r"[a-z0-9]{4}", pid):
             raise SystemExit(f"плохой id {pid!r}")
-    res = {"checked": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "design": "design.md, 17.11–17.12",
-           "thresholds": {"sd_ratio_median_min": SD_RATIO_MEDIAN_MIN, "spearman_median_min": RHO_MEDIAN_MIN,
-                          "sd_ratio_item_min": SD_RATIO_ITEM_MIN, "spearman_item_min": RHO_ITEM_MIN,
-                          "shift_mean_max_sd": SHIFT_MEAN_MAX, "shift_sphere_max_sd": SHIFT_SPHERE_MAX},
-           "portion": check(ids, bank, "порция")}
+    T = thresholds()
+    res = {"checked": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "design": "design.md, 17.11–17.12, 17.14",
+           "thresholds_file": os.path.relpath(THRESHOLDS, PROJECT), "thresholds_sha256": hashlib.sha256(open(THRESHOLDS, "rb").read()).hexdigest(),
+           "population_thresholds": {"sd_ratio": SD_RATIO_POP, "spearman_strong": RHO_POP_STRONG,
+                                     "spearman_weak": RHO_POP_WEAK, "shift_mean_sd": SHIFT_MEAN_POP,
+                                     "shift_sphere_sd": SHIFT_SPHERE_POP, "item_rules_min_n": ITEM_RULES_MIN_N},
+           "portion": check(ids, bank, "порция", T)}
     if args.cumulative:
-        res["cumulative"] = check(all_ids, bank, "нарастающий итог")
+        res["cumulative"] = check(all_ids, bank, "нарастающий итог", T)
     os.makedirs(os.path.join(ROOT, "pilot"), exist_ok=True)
     path = os.path.join(ROOT, "pilot", f"batch-check-{dt.datetime.now().strftime('%Y%m%d-%H%M%S')}.json")
     RR.write_file(path, res)
@@ -285,6 +358,8 @@ def main():
                 f"средний сдвиг {r['mean_shift_vs_self_sd']} SD")
         for x in (r["reject_reasons"][:15] + r["stop_reasons"]):
             print("   -", x)
+        for x in r["warnings"]:
+            print("   ! ", x)
     print("→", os.path.relpath(path, PROJECT))
     sys.exit(0 if res["portion"]["verdict"] == "принять" and not res["portion"]["stop"] else 1)
 

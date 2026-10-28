@@ -9,10 +9,16 @@
   python3 research/blind/seal.py --rehash "<причина>"   — перепечатать в MANIFEST только ссылки на хеши private/, если
                                                           сами пары и исходы проверочной части не изменились
   python3 research/blind/seal.py --reseal "<причина>"   — перепечатать исходы проверочной части после предрегистрированной
-                                                          смены формулы (design.md, 17.8): только если на проверочной
-                                                          части не было ни одного запуска, пары те же, а хеш новой спеки
-                                                          записан в design.md; прежние запечатанные файлы не читаются,
-                                                          а переносятся в sealed/superseded/r<ред.>/; счётчик не сбрасывается
+                                                          смены формулы (design.md, 17.8; ужесточено в 17.14): только если
+                                                          на проверочной части не было ни одного запуска, пары те же,
+                                                          в design.md есть «Разрешение перепечатки №<n>» с хешем НОВОЙ
+                                                          спеки (не той, что в прежних перепечатках) и хешем кода исхода,
+                                                          совпадающим с текущим; не больше RESEAL_LIMIT перепечаток на
+                                                          партию; нет ни проверки порции, ни ответов D по действующим
+                                                          заданиям; прежние запечатанные файлы не читаются, а переносятся
+                                                          в sealed/superseded/r<ред.>/; счётчик запусков не сбрасывается;
+                                                          каждая перепечатка — в sealed/reseal/ и в журнал
+  python3 research/blind/seal.py --code-hash           — напечатать хеш кода исхода (для записи в design.md)
   python3 research/blind/seal.py --verify              — сверить хеши sealed/ с манифестом и журнал запусков
 
 Запечатанное не перезаписывается: если файл уже есть и отличается — падение (печать сломана, разбираться руками).
@@ -20,9 +26,11 @@
 Счётчик — максимум из двух, поэтому удаление jsonl лимит не сбрасывает; --verify сверяет их между собой.
 """
 import datetime
+import glob
 import hashlib
 import json
 import os
+import re
 import stat
 import sys
 
@@ -38,6 +46,46 @@ SUPERSEDED = os.path.join(SEALED, "superseded")
 SPEC_R5 = os.path.join(B.PRIV, "outcome-spec-r5.json")
 DESIGN = os.path.join(B.ROOT, "design.md")
 MANIFEST_KEEP = ("revision", "superseded")          # ключи манифеста, которые переживают обычную печать и rehash
+RESEAL_LIMIT = 2    # перепечаток на партию людей (design.md, 17.14): ред. 5 и ред. 5.1; дальше — только новая партия
+RESEAL_DIR = os.path.join(SEALED, "reseal")
+RESEAL_JOURNAL = os.path.join(B.PRIV, "reseal-journal.jsonl")
+# код, от которого зависят исходы проверочной части (design.md, 17.14): его хеш записывается в design.md до пересчёта
+OUTCOME_CODE = ("blindlib.py", "generate.py", "calibrate.py", "pairs.py", "calibrate_r5.py", "pair_vars.py", "outcome.py")
+PERMIT_RX = re.compile(r"Разрешение перепечатки №(\d+): ред\. ([0-9.]+); спека outcome-spec-r5\.json SHA-256 "
+                       r"`?([0-9a-f]{64})`?; код исхода SHA-256 `?([0-9a-f]{64})`?")
+
+
+def code_hash():
+    """Хеш кода исхода: SHA-256 от строк «имя файла  SHA-256 файла» в фиксированном порядке."""
+    lines = "".join(f"{n}  {B.sha256(os.path.join(B.ROOT, n))}\n" for n in OUTCOME_CODE)
+    return hashlib.sha256(lines.encode("utf-8")).hexdigest()
+
+
+def reseal_records():
+    """Прежние перепечатки: файлы sealed/reseal/ (444), журнал private/ и записи superseded в манифесте.
+    Счётчик — максимум из трёх, поэтому удаление одного места его не сбрасывает."""
+    files = sorted(f for f in os.listdir(RESEAL_DIR) if f.startswith("reseal-") and f.endswith(".json")) \
+        if os.path.isdir(RESEAL_DIR) else []
+    recs = [B.load(os.path.join(RESEAL_DIR, f)) for f in files]
+    journal = []
+    if os.path.exists(RESEAL_JOURNAL):
+        with open(RESEAL_JOURNAL, encoding="utf-8") as f:
+            journal = [json.loads(x) for x in f if x.strip()]
+    mpath = os.path.join(SEALED, "MANIFEST.json")
+    n_sup = len(B.load(mpath).get("superseded", {})) if os.path.exists(mpath) else 0
+    return recs, journal, max(len(recs), len(journal), n_sup)
+
+
+def work_part_used():
+    """Есть ли уже материал ред. 5 для оценки теста на рабочей части: файл проверки порции или ответы D, сделанные
+    действующими заданиями (design.md, 17.14: после первой оценки формула исхода не меняется до новой партии)."""
+    found = sorted(os.path.basename(f) for f in glob.glob(os.path.join(B.ROOT, "pilot", "batch-check-*.json")))
+    import batch_check as BC          # только шаблоны и проверка версий; вызовов модели нет
+    for f in sorted(glob.glob(os.path.join(B.ROOT, "answers", "*.json"))):
+        pid = os.path.basename(f)[:-5]
+        if not BC.version_problems(pid):
+            found.append(f"answers/{pid}.json (действующие задания)")
+    return found
 
 
 def text(obj):
@@ -137,6 +185,11 @@ def verify(stream=None):
             path = os.path.join(SUPERSEDED, label, name)
             assert B.sha256(path) == h, f"sealed/superseded/{label}/{name}: хеш не совпал"
             assert stat.S_IMODE(os.stat(path).st_mode) == RO, f"sealed/superseded/{label}/{name}: права не 444"
+    rs_recs, rs_journal, _ = reseal_records()
+    if rs_journal:
+        assert len(rs_journal) == len(rs_recs), \
+            f"журнал перепечаток расходится: private {len(rs_journal)}, sealed/reseal {len(rs_recs)} — разбираться руками"
+    assert len(rs_recs) <= RESEAL_LIMIT, f"перепечаток {len(rs_recs)} > {RESEAL_LIMIT}"
     log, sl = runs_log(), runs_sealed()
     assert len(log) == len(sl), f"журнал запусков расходится: jsonl {len(log)}, sealed/runs {len(sl)} — разбираться руками"
     for f in sl:
@@ -173,11 +226,29 @@ def reseal(reason):
     if n_done > 0:
         raise SystemExit(f"на проверочной части уже было запусков: {n_done}. Исходы видели — перепечатка без открытия "
                          "невозможна; решение владельца проекта (design.md, 17.8, п. 1)")
-    spec_sha = B.sha256(SPEC_R5)
+    prev, journal, n_prev = reseal_records()
+    n_new = n_prev + 1
+    if n_new > RESEAL_LIMIT:
+        raise SystemExit(f"перепечаток уже {n_prev} из {RESEAL_LIMIT} на партию — дальше только новая партия людей "
+                         "(design.md, 17.14)")
+    spec_sha, c_sha = B.sha256(SPEC_R5), code_hash()
     with open(DESIGN, encoding="utf-8") as f:
-        if spec_sha not in f.read():
-            raise SystemExit("SHA-256 private/outcome-spec-r5.json не записан в design.md — формула не предрегистрирована "
-                             "(design.md, 17.8, п. 3)")
+        permits = {int(mt.group(1)): mt.groups()[1:] for mt in PERMIT_RX.finditer(f.read())}
+    if n_new not in permits:
+        raise SystemExit(f"в design.md нет «Разрешение перепечатки №{n_new}: ред. …; спека outcome-spec-r5.json SHA-256 …; "
+                         "код исхода SHA-256 …» — пересчёт не предрегистрирован (design.md, 17.14)")
+    rev_new, p_spec, p_code = permits[n_new]
+    if p_spec != spec_sha:
+        raise SystemExit("хеш спеки в разрешении не совпадает с private/outcome-spec-r5.json (design.md, 17.14)")
+    used_specs = {r.get("outcome_spec_r5_sha256") for r in prev + journal}
+    if spec_sha in used_specs:
+        raise SystemExit("спека та же, что в прежней перепечатке — перепечатка разрешена только при смене спеки (17.14)")
+    if p_code != c_sha:
+        raise SystemExit(f"хеш кода исхода {c_sha[:16]}… не совпадает с записанным в разрешении №{n_new} (design.md, 17.14)")
+    used = work_part_used()
+    if used:
+        raise SystemExit("на рабочей части уже есть материал ред. 5 для оценки теста — формула исхода не меняется до "
+                         "новой партии (design.md, 17.14): " + ", ".join(used[:5]))
     verify(sys.stderr)                                    # старая печать цела (хеши и права), журналы согласованы
     mpath = os.path.join(SEALED, "MANIFEST.json")
     old = B.load(mpath)
@@ -202,17 +273,21 @@ def reseal(reason):
         os.chmod(dst, RO)
         moved[name] = h
     assert moved["holdout-outcomes.json"] == old["files"]["holdout-outcomes.json"]
-    man["revision"] = rev_old + 1
+    man["revision"] = rev_new
     man["superseded"] = dict(old.get("superseded", {}))
     man["superseded"][label] = {"files": moved, "pairs_sha256": old["pairs_sha256"], "outcome_sha256": old["outcome_sha256"]}
     for name in files:
         man["files"][name] = B.sha256(put(name, files[name]))
     put("MANIFEST.json", man)
-    rdir = os.path.join(SEALED, "reseal")
+    rdir = RESEAL_DIR
     os.makedirs(rdir, exist_ok=True)
-    n = len([f for f in os.listdir(rdir) if f.endswith(".json")]) + 1
+    n = n_new
+    if os.path.exists(os.path.join(rdir, f"reseal-{n}.json")):
+        raise SystemExit(f"sealed/reseal/reseal-{n}.json уже есть — журнал расходится, разбираться руками")
     rec = {"n": n, "reason": reason, "at": datetime.datetime.now().isoformat(timespec="seconds"),
-           "design": "design.md, 17.8", "outcome_spec_r5_sha256": spec_sha, "opened": False,
+           "design": "design.md, 17.8, 17.14", "revision": rev_new, "outcome_spec_r5_sha256": spec_sha,
+           "outcome_code_sha256": c_sha, "outcome_code_files": list(OUTCOME_CODE), "reseal_limit": RESEAL_LIMIT,
+           "opened": False,
            "holdout_runs_before": n_done, "superseded_dir": f"sealed/superseded/{label}/", "old_files": moved,
            "new_files": man["files"], "pairs_unchanged": True,
            "new_refs": {k: man[k] for k in ("pairs_sha256", "outcome_sha256")}}
@@ -220,6 +295,15 @@ def reseal(reason):
     with open(rp, "w", encoding="utf-8") as f:
         f.write(text(rec))
     os.chmod(rp, RO)
+    if not journal and prev:                              # журнал заведён в ред. 5.1: прежние записи переносятся в него
+        with open(RESEAL_JOURNAL, "a", encoding="utf-8") as f:
+            for r in prev:
+                f.write(json.dumps({k: r.get(k) for k in ("n", "at", "reason", "outcome_spec_r5_sha256", "opened",
+                                                          "holdout_runs_before")}, ensure_ascii=False) + "\n")
+    with open(RESEAL_JOURNAL, "a", encoding="utf-8") as f:
+        f.write(json.dumps({k: rec[k] for k in ("n", "at", "reason", "revision", "outcome_spec_r5_sha256",
+                                                "outcome_code_sha256", "opened", "holdout_runs_before")},
+                           ensure_ascii=False) + "\n")
     verify()
     print(f"sealed/: исходы проверочной части перепечатаны без открытия ({len(pairs)} пар; ред. {man['revision']}); "
           f"прежние — sealed/superseded/{label}/; запись sealed/reseal/reseal-{n}.json; счётчик запусков {n_done} из {HOLDOUT_LIMIT}")
@@ -244,5 +328,7 @@ if __name__ == "__main__":
         seal(sys.argv[2])
     elif len(sys.argv) == 2 and sys.argv[1] == "--verify":
         verify()
+    elif len(sys.argv) == 2 and sys.argv[1] == "--code-hash":
+        print(code_hash())
     else:
         seal()

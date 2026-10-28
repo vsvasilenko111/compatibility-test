@@ -125,6 +125,13 @@ def main():
     EVt = B.pair_vars_expected(P, m, w, pcuts, rx, M, uc)
     EVs = B.pair_vars_expected(S, m, w, pcuts, rx, M, uc)
     print(f"[{time.time()-t0:.0f}s] свойства пары и ожидания готовы")
+    # ред. 5.1 (design.md, 17.14): знак связи «химии» с удовлетворённостью сексом и правило 17.5 по всем парам
+    r_u_sex = float(np.corrcoef(U, Vr["sex_raw"])[0, 1])
+    assert r_u_sex < 0, "U — риск: corr(U, удовлетворённость сексом) должна быть < 0 (критик 05, п. 1)"
+    strength = {"break_real": B.r5_strength_check(P, m, w, spec, Vr, "break"),
+                "sat_real": B.r5_strength_check(P, m, w, spec, Vr, "sat"),
+                "break_expected": B.r5_strength_check(P, m, w, spec, EVt, "break")}
+    assert all(v["ok"] for v in strength.values()), "правило 17.5 нарушено: новый фактор сильнее сильных ред. 4"
 
     IND, MIS, SIM, PR, _ = B.components_r5(P, m, w, spec, Vr, mu, sd)
     PE = B.pair_terms(P, m, w, EVt, spec["pair"])
@@ -221,6 +228,10 @@ def main():
         "live_young_pair": float(Vr["live"][liv & young_pair].mean()), "live_older_pair": float(Vr["live"][liv & ~young_pair].mean()),
         "approve_against_neutral_approve": [float(np.mean(np.concatenate([Vr["app_m"], Vr["app_w"]]) == L)) for L in range(3)],
         "inlaw": float(np.concatenate([Vr["inlaw_m"], Vr["inlaw_w"]]).mean()),
+        "inlaw_dating": float(np.concatenate([Vr["inlaw_m"], Vr["inlaw_w"]])[np.tile(stage == 0, 2)].mean()),
+        "inlaw_living": float(np.concatenate([Vr["inlaw_m"], Vr["inlaw_w"]])[np.tile(liv, 2)].mean()),
+        "inlaw_any_pair_by_stage": {B.STAGES[s]: float(np.maximum(Vr["inlaw_m"], Vr["inlaw_w"])[stage == s].mean())
+                                    for s in range(3)},
         "inlaw_living_with_parents": float(np.concatenate([Vr["inlaw_m"], Vr["inlaw_w"]])[np.tile(Vr["live"] > 0, 2)].mean()),
         "inlaw_not_living_with_parents": float(np.concatenate([Vr["inlaw_m"], Vr["inlaw_w"]])[np.tile(liv & (Vr["live"] == 0), 2)].mean()),
         "sexsat_20_24": [float(np.mean(sat_all[yo_all] == L)) for L in range(3)],
@@ -233,6 +244,8 @@ def main():
     }
     log = {"n_real": int(len(m)), "n_alt": int(len(am)), "k5": round(float(k5), 4), "k5_at_bound": bool(flo > 0 or fhi < 0),
            "sigma_U5": round(s5, 4), "sigma_U4": sU4, "target_pair_specific_var": round(target_u, 4),
+           "sigma_U5_below_U4": bool(s5 < sU4), "corr_U_sexsat_latent": round(r_u_sex, 4),
+           "rule_17_5_ok": bool(all(v["ok"] for v in strength.values())),
            "alpha5": alpha5.tolist(),
            "breakup_by_stage_real": {B.STAGES[s]: round(float(p5[stage == s].mean()), 4) for s in range(3)},
            "breakup_real": round(float(p5.mean()), 4), "breakup_alt": round(float(ap5.mean()), 4),
@@ -246,7 +259,7 @@ def main():
            "k": float(k5), "alpha": alpha5.tolist(), "gamma": gamma, "sigU4": sU4, "sigU5": s5,
            "sim_mu": mu, "sim_sd": sd, "pair_cuts": pcuts, "sexsat_U_corr": uc, "expect_draws": M,
            "sat_time": sat, "ensemble": ens, "calibration": log,
-           "private_family": {"shares": fam, "auc": fam_auc}}
+           "private_family": {"shares": fam, "auc": fam_auc}, "strength_check_calibration": strength}
     B.dump(out, os.path.join(B.PRIV, "model-r5.json"))
     print(f"[{time.time()-t0:.0f}s] model-r5.json sha256: {B.sha256(os.path.join(B.PRIV, 'model-r5.json'))[:16]}")
 

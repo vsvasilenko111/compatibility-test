@@ -887,7 +887,8 @@ R5_LOAD = {
 R5_SHIFT = {"HUM_AGG": {"male": .30}, "DESIRE": {"male": .40}, "SEX_TALK": {"male": .25},
             "FAM_CLOSE": {"islam": .40, "young": .15}}
 R5_SHARES = {"HUM_AFF": (.10, .30, .40, .20), "HUM_AGG": (.35, .35, .20, .10), "HUM_SELF": (.25, .40, .25, .10),
-             "DESIRE": (.20, .30, .35, .15), "SEX_TALK": (.25, .45, .30), "FAM_CLOSE": (.35, .45, .20)}
+             "DESIRE": (.20, .30, .35, .15), "SEX_TALK": (.25, .45, .30),
+             "FAM_CLOSE": (.40, .48, .12)}   # ред. 5.1 (design.md, 17.14): «решающее» 20 → 12% (критик 05, п. 7)
 DESIRE_LEVELS = ["реже раза в неделю", "примерно раз в неделю", "несколько раз в неделю", "почти каждый день"]
 SEX_TALK_LEVELS = ["трудно, обычно избегает таких разговоров", "смотря о чём", "легко"]
 FAM_CLOSE_LEVELS = ["решения принимает без оглядки на родителей", "советуется с родителями и прислушивается к ним",
@@ -987,14 +988,14 @@ def r5_from_records(recs, zkey, X):
 R5_PAIR = {   # коэффициенты образования свойств пары — [допущение]; направления по base-rates 16.2–16.3
     "live": {"islam": .50, "inc": -.35},
     "approve": {"relmis": -.55, "relmis_trad": .30, "heavy": -.35, "host": -.15, "married": .25, "shared": .30},
-    "inlaw": {"host": .25, "n": .10, "close_p": .20, "live": .60, "against": .50, "neutral": .25, "dating": -.30},
+    "inlaw": {"host": .25, "n": .10, "close_p": .20, "live": .60, "against": .50, "neutral": .25},   # ред. 5.1: доля по стадии
     "sexsat": {"anx": -.20, "avo": -.20, "avo_p": -.10, "anx_p": -.05, "host_p": -.10, "talk": .15, "talk_p": .10,
                "desire_mean": .10, "want_more": -.20, "w_higher": -.10, "dur": -.10, "pair": .50, "ind": .60},
     "sexfreq": {"desire_mean": .30, "sexsat": .40, "dur": -.20, "living": .25, "noise": .80},
 }
 R5_PAIR_TARGETS = {"live": {True: .15, False: .05},           # среди живущих вместе; ключ — средний возраст пары < 25
                    "approve": (.10, .20, .70),                  # против / нейтрально / одобряют
-                   "inlaw": .20,
+                   "inlaw": {"dating": .08, "living": .20},      # ред. 5.1 (17.14): у встречающихся ниже (критик 05, п. 7)
                    "sexsat": {True: (.11, .17), False: (.13, .18)},   # недоволен, ни то ни другое; ключ — человеку 20–24
                    "sexfreq": (.40, .25, .27, .08)}
 APPROVE_LEVELS = ["против", "нейтрально", "одобряют"]
@@ -1066,14 +1067,19 @@ def pair_vars_r5(D, m, w, stage, dur, Uz, E, u_corr, cuts=None):
     for side, own, p, ps in (("m", m, w, "w"), ("w", w, m, "m")):
         LI[side] = (ci["host"] * g(D["HOST"], own) + ci["n"] * g(D["N"], own) + ci["close_p"] * g(D["FAM_CLOSE"], p)
                     + ci["live"] * live + ci["against"] * (app[ps] == 0) + ci["neutral"] * (app[ps] == 1)
-                    + ci["dating"] * dating + E[f"e_inl_{side}"])
-    if fit:
-        cuts["inlaw"] = float(np.quantile(np.concatenate([LI["m"], LI["w"]]), 1 - R5_PAIR_TARGETS["inlaw"]))
-    inlaw = {s: LI[s] > cuts["inlaw"] for s in LI}
+                    + E[f"e_inl_{side}"])
+    if fit:   # ред. 5.1: свой порог у встречающихся и у живущих вместе (design.md, 17.14)
+        for nm, mk in (("dating", dating), ("living", living)):
+            pool = np.concatenate([LI["m"][mk], LI["w"][mk]])
+            cuts[f"inlaw_{nm}"] = float(np.quantile(pool, 1 - R5_PAIR_TARGETS["inlaw"][nm]))
+    thr_inl = np.where(dating, cuts["inlaw_dating"], cuts["inlaw_living"])
+    inlaw = {s: LI[s] > thr_inl for s in LI}
     # сексуальная удовлетворённость каждого
     cs = c["sexsat"]
     dm, dw = g(D["DESIRE"], m), g(D["DESIRE"], w)
-    pair_part = u_corr * Uz + np.sqrt(1 - u_corr ** 2) * E["e_sex_pair"]
+    # U — риск: входит в логит распада со знаком «+». Удовлетворённость сексом — часть «химии», поэтому её
+    # специфичная для пары часть связана с U со знаком «−» (ред. 5.1: ошибка знака, найдена критиком 05, п. 1).
+    pair_part = -u_corr * Uz + np.sqrt(1 - u_corr ** 2) * E["e_sex_pair"]
     X = {}
     for side, own, p, d_own, d_p in (("m", m, w, dm, dw), ("w", w, m, dw, dm)):
         X[side] = (cs["anx"] * g(D["ANX"], own) + cs["avo"] * g(D["AVO"], own) + cs["avo_p"] * g(D["AVO"], p)
@@ -1142,8 +1148,9 @@ def merge_spec(spec4, spec5):
 
 def pair_terms(D, m, w, V, c):
     """Вклад свойств пары. V — реализованные значения или их ожидания (R5_TERMS); c — веса pair или pair_sat."""
-    amp_m = 1 + c["close_amp"] * (D["FAM_CLOSE_F"][m] == 2)
-    amp_w = 1 + c["close_amp"] * (D["FAM_CLOSE_F"][w] == 2)
+    amp = c.get("close_amp", 0.0)       # ред. 5.1: усиление через FAM_CLOSE снято (в спеке ключа нет, design.md 17.14)
+    amp_m = 1 + amp * (D["FAM_CLOSE_F"][m] == 2)
+    amp_w = 1 + amp * (D["FAM_CLOSE_F"][w] == 2)
     return (-c["sex"] * V["sex_z"] + (c["against"] * V["against_m"] + c["neutral"] * V["neutral_m"]) * amp_m
             + (c["against"] * V["against_w"] + c["neutral"] * V["neutral_w"]) * amp_w
             + c["inlaw_w"] * V["inlaw_w"] + c["inlaw_m"] * V["inlaw_m"] + c["par_live"] * V["live"])
@@ -1159,3 +1166,65 @@ def components_r5(D, m, w, spec, V, sim_mu, sim_sd, which="break"):
     SIM = spec["beta_sim"] * (sim_raw(D, m, w) - sim_mu) / sim_sd
     PAIR = pair_terms(D, m, w, V, spec["pair"] if which == "break" else spec["pair_sat"])
     return IND, MIS, SIM, PAIR, F
+
+
+# ---------------------------------------------------------------- ред. 5.1: правило 17.5 «ни один новый фактор не сильнее
+# сильных ред. 4» — проверка кодом по всем парам (design.md, 17.14; критик 05, п. 4 и 6)
+R5_STRONG_BIN, R5_STRONG_CONT = ("RISKY", "INF"), ("COMM", "HOST")
+
+
+def r5_strength_check(D, m, w, spec, V, which="break"):
+    """Сравнивает каждый новый фактор с сильными ред. 4 по всем парам m, w (V — реализованные свойства пары или их
+    ожидание). Две меры, сравнение «того же рода с тем же»: (1) вес на единицу в каждой паре и с каждой стороны
+    (с учётом любых усилений): бинарные новые — не больше наименьшего веса сильных бинарных (RISKY, INF), непрерывные
+    (на 1 SD) — не больше наименьшего веса сильных непрерывных (COMM, HOST); (2) разброс вклада по парам (SD):
+    бинарный новый — не больше наименьшего у сильных бинарных (RISKY, INF двоих, «дети: жёсткое»), непрерывный —
+    не больше наименьшего у сильных непрерывных (COMM, HOST двоих).
+    which="sat" — то же для формулы удовлетворённости, где сильные — HOST и AVO (5.5): только мера (2) против них.
+    Возвращает словарь с флагами и числами (числа — только в private/)."""
+    ci = spec["ind"] if which == "break" else spec["ind_sat"]
+    cp = spec["pair"] if which == "break" else spec["pair_sat"]
+    amp = cp.get("close_amp", 0.0)
+    amp_m = 1 + amp * (D["FAM_CLOSE_F"][m] == 2)
+    amp_w = 1 + amp * (D["FAM_CLOSE_F"][w] == 2)
+    contrib_new = {
+        "relatives_disapproval": (cp["against"] * V["against_m"] + cp["neutral"] * V["neutral_m"]) * amp_m
+                                 + (cp["against"] * V["against_w"] + cp["neutral"] * V["neutral_w"]) * amp_w,
+        "inlaw_conflict": cp["inlaw_m"] * V["inlaw_m"] + cp["inlaw_w"] * V["inlaw_w"],
+        "par_live": cp["par_live"] * V["live"],
+        "sex_satisfaction": -cp["sex"] * V["sex_z"],
+        "humor_aggressive": ci.get("HUM_AGG", 0.0) * (D["HUM_AGG"][m] + D["HUM_AGG"][w]),
+        "humor_affiliative": ci.get("HUM_AFF", 0.0) * (D["HUM_AFF"][m] + D["HUM_AFF"][w]),
+    }
+    if which == "break":
+        F = mis_flags(D, m, w)
+        strong = {k: ci[k] * (D[k][m] + D[k][w]) for k in R5_STRONG_BIN + R5_STRONG_CONT}
+        strong["COMM"] = -strong["COMM"]
+        strong["kids_hard"] = spec["mis"]["kids_hard"] * F["kids_hard"]
+    else:
+        strong = {k: ci[k] * (D[k][m] + D[k][w]) for k in ("HOST", "AVO")}
+    sd = lambda x: float(np.std(x))
+    sd_new = {k: sd(v) for k, v in contrib_new.items()}
+    sd_strong = {k: sd(v) for k, v in strong.items()}
+    binary_new = ("relatives_disapproval", "inlaw_conflict", "par_live")
+    if which == "break":
+        lim_bin = min(sd_strong[k] for k in R5_STRONG_BIN + ("kids_hard",))
+        lim_cont = min(sd_strong[k] for k in R5_STRONG_CONT)
+    else:
+        lim_bin = lim_cont = min(sd_strong.values())
+    sd_lim = {k: (lim_bin if k in binary_new else lim_cont) for k in sd_new}
+    out = {"which": which, "n_pairs": int(len(m)), "sd_new": sd_new, "sd_strong": sd_strong, "sd_limit": sd_lim,
+           "sd_ok": {k: v <= sd_lim[k] + 1e-12 for k, v in sd_new.items()}}
+    if which == "break":
+        wb = min(ci[k] for k in R5_STRONG_BIN)
+        wc = min(ci[k] for k in R5_STRONG_CONT)
+        side_w = np.concatenate([cp["against"] * amp_m, cp["against"] * amp_w, cp["neutral"] * amp_m, cp["neutral"] * amp_w])
+        unit = {"relatives_disapproval_per_side_max": float(side_w.max()),
+                "inlaw_conflict_per_person_max": float(max(cp["inlaw_m"], cp["inlaw_w"])),
+                "par_live": float(cp["par_live"]),
+                "sex_satisfaction_per_sd": float(cp["sex"]), "humor_aggressive_per_sd": float(ci.get("HUM_AGG", 0.0))}
+        lim = {"relatives_disapproval_per_side_max": wb, "inlaw_conflict_per_person_max": wb, "par_live": wb,
+               "sex_satisfaction_per_sd": wc, "humor_aggressive_per_sd": wc}
+        out.update(unit_weight=unit, unit_limit=lim, unit_ok={k: unit[k] <= lim[k] + 1e-12 for k in unit})
+    out["ok"] = bool(all(out["sd_ok"].values()) and all(out.get("unit_ok", {}).values()))
+    return out

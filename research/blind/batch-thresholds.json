@@ -1,0 +1,976 @@
+{
+ "note": "Критические значения проверки порции (design.md, 17.14), посчитаны batch_sim.py до первой порции. Строка — n людей в проверке (берётся наибольшая строка n ≤ фактического). Брак — статистика ниже критического значения; остановка — сдвиг выше. Ответов D симуляция не читала.",
+ "seed": 2026102851,
+ "sims": 10000,
+ "eval_sims": 4000,
+ "run_sims": 1000,
+ "pop_reps": 200,
+ "alpha_per_rule": 0.0025,
+ "n_grid": [
+  15,
+  20,
+  30,
+  40,
+  60,
+  80,
+  100
+ ],
+ "classes": {
+  "strong": [
+   "leisure-11",
+   "regul-08",
+   "trauma-06",
+   "attach-03",
+   "budget-09",
+   "kids-02",
+   "humor-11",
+   "intimacy-02",
+   "intimacy-03",
+   "relatives-04"
+  ],
+  "weak": [
+   "conflicts-07",
+   "conflicts-01",
+   "attach-01",
+   "humor-06",
+   "relatives-05"
+  ],
+  "sd_ratio_items": [
+   "leisure-11",
+   "conflicts-07",
+   "conflicts-01",
+   "regul-08",
+   "attach-01",
+   "trauma-06",
+   "attach-03",
+   "kids-02",
+   "humor-11",
+   "humor-06",
+   "intimacy-02",
+   "intimacy-03",
+   "relatives-04",
+   "relatives-05"
+  ],
+  "directed": [
+   "leisure-11",
+   "conflicts-02",
+   "conflicts-07",
+   "conflicts-01",
+   "regul-08",
+   "trauma-06",
+   "attach-03",
+   "humor-11",
+   "intimacy-03",
+   "relatives-04",
+   "relatives-05"
+  ],
+  "spheres": [
+   "attachment",
+   "conflicts",
+   "habits",
+   "humor",
+   "intimacy",
+   "past",
+   "regulation",
+   "relatives"
+  ]
+ },
+ "scenarios": {
+  "boundary": {
+   "rho": {
+    "strong": 0.5,
+    "weak": 0.3,
+    "shift": 0.5
+   },
+   "sd_ratio": 0.8,
+   "shift": "как во втором пилоте (16.10): уход от разговора 0,58, тревожность 0,46, критика 0,42, алкоголь 0, остальные 0,28"
+  },
+  "typical": {
+   "rho": {
+    "strong": 0.65,
+    "weak": 0.4,
+    "shift": 0.5
+   },
+   "sd_ratio": 0.9,
+   "shift": "как во втором пилоте (16.10): уход от разговора 0,58, тревожность 0,46, критика 0,42, алкоголь 0, остальные 0,28"
+  },
+  "bad": {
+   "rho": {
+    "strong": 0.25,
+    "weak": 0.1,
+    "shift": 0.25
+   },
+   "sd_ratio": 0.55,
+   "shift": "как во втором пилоте (16.10): уход от разговора 0,58, тревожность 0,46, критика 0,42, алкоголь 0, остальные 0,28"
+  },
+  "shift_mean_boundary": {
+   "rho": {
+    "strong": 0.5,
+    "weak": 0.3,
+    "shift": 0.5
+   },
+   "sd_ratio": 0.8,
+   "shift": 0.4
+  },
+  "shift_sphere_boundary": {
+   "rho": {
+    "strong": 0.5,
+    "weak": 0.3,
+    "shift": 0.5
+   },
+   "sd_ratio": 0.8,
+   "shift": 0.6
+  },
+  "shift_big": {
+   "rho": {
+    "strong": 0.65,
+    "weak": 0.4,
+    "shift": 0.5
+   },
+   "sd_ratio": 0.9,
+   "shift": 0.8
+  }
+ },
+ "population_check": {
+  "boundary": {
+   "leisure-11": {
+    "rho": 0.501,
+    "sd_ratio": 0.797,
+    "shift": 0.0
+   },
+   "conflicts-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.42
+   },
+   "conflicts-07": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.58
+   },
+   "conflicts-01": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.58
+   },
+   "regul-08": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.28
+   },
+   "attach-01": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "trauma-06": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.46
+   },
+   "attach-03": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.28
+   },
+   "budget-09": {
+    "rho": 0.5,
+    "sd_ratio": 0.518,
+    "shift": 0.0
+   },
+   "kids-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "humor-11": {
+    "rho": 0.497,
+    "sd_ratio": 0.776,
+    "shift": 0.28
+   },
+   "humor-06": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "intimacy-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "intimacy-03": {
+    "rho": 0.497,
+    "sd_ratio": 0.794,
+    "shift": 0.28
+   },
+   "relatives-04": {
+    "rho": 0.499,
+    "sd_ratio": 0.799,
+    "shift": 0.28
+   },
+   "relatives-05": {
+    "rho": 0.3,
+    "sd_ratio": 0.799,
+    "shift": 0.28
+   }
+  },
+  "typical": {
+   "leisure-11": {
+    "rho": 0.65,
+    "sd_ratio": 0.891,
+    "shift": -0.0
+   },
+   "conflicts-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.9,
+    "shift": 0.42
+   },
+   "conflicts-07": {
+    "rho": 0.4,
+    "sd_ratio": 0.899,
+    "shift": 0.58
+   },
+   "conflicts-01": {
+    "rho": 0.4,
+    "sd_ratio": 0.899,
+    "shift": 0.58
+   },
+   "regul-08": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.28
+   },
+   "attach-01": {
+    "rho": 0.4,
+    "sd_ratio": 0.9,
+    "shift": 0.0
+   },
+   "trauma-06": {
+    "rho": 0.649,
+    "sd_ratio": 0.899,
+    "shift": 0.46
+   },
+   "attach-03": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.28
+   },
+   "budget-09": {
+    "rho": 0.65,
+    "sd_ratio": 0.518,
+    "shift": 0.0
+   },
+   "kids-02": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.0
+   },
+   "humor-11": {
+    "rho": 0.641,
+    "sd_ratio": 0.858,
+    "shift": 0.28
+   },
+   "humor-06": {
+    "rho": 0.4,
+    "sd_ratio": 0.9,
+    "shift": 0.0
+   },
+   "intimacy-02": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.0
+   },
+   "intimacy-03": {
+    "rho": 0.647,
+    "sd_ratio": 0.885,
+    "shift": 0.28
+   },
+   "relatives-04": {
+    "rho": 0.649,
+    "sd_ratio": 0.896,
+    "shift": 0.28
+   },
+   "relatives-05": {
+    "rho": 0.4,
+    "sd_ratio": 0.897,
+    "shift": 0.28
+   }
+  },
+  "bad": {
+   "leisure-11": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": -0.0
+   },
+   "conflicts-02": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": 0.42
+   },
+   "conflicts-07": {
+    "rho": 0.1,
+    "sd_ratio": 0.55,
+    "shift": 0.58
+   },
+   "conflicts-01": {
+    "rho": 0.1,
+    "sd_ratio": 0.55,
+    "shift": 0.58
+   },
+   "regul-08": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": 0.28
+   },
+   "attach-01": {
+    "rho": 0.1,
+    "sd_ratio": 0.55,
+    "shift": 0.0
+   },
+   "trauma-06": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": 0.46
+   },
+   "attach-03": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": 0.28
+   },
+   "budget-09": {
+    "rho": 0.25,
+    "sd_ratio": 0.518,
+    "shift": 0.0
+   },
+   "kids-02": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": 0.0
+   },
+   "humor-11": {
+    "rho": 0.25,
+    "sd_ratio": 0.549,
+    "shift": 0.28
+   },
+   "humor-06": {
+    "rho": 0.1,
+    "sd_ratio": 0.55,
+    "shift": 0.0
+   },
+   "intimacy-02": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": 0.0
+   },
+   "intimacy-03": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": 0.28
+   },
+   "relatives-04": {
+    "rho": 0.25,
+    "sd_ratio": 0.55,
+    "shift": 0.28
+   },
+   "relatives-05": {
+    "rho": 0.1,
+    "sd_ratio": 0.55,
+    "shift": 0.28
+   }
+  },
+  "shift_mean_boundary": {
+   "leisure-11": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.236
+   },
+   "conflicts-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.4
+   },
+   "conflicts-07": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.4
+   },
+   "conflicts-01": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.4
+   },
+   "regul-08": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.4
+   },
+   "attach-01": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "trauma-06": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.4
+   },
+   "attach-03": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.4
+   },
+   "budget-09": {
+    "rho": 0.5,
+    "sd_ratio": 0.518,
+    "shift": 0.0
+   },
+   "kids-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "humor-11": {
+    "rho": 0.486,
+    "sd_ratio": 0.733,
+    "shift": 0.4
+   },
+   "humor-06": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "intimacy-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "intimacy-03": {
+    "rho": 0.493,
+    "sd_ratio": 0.776,
+    "shift": 0.4
+   },
+   "relatives-04": {
+    "rho": 0.499,
+    "sd_ratio": 0.793,
+    "shift": 0.4
+   },
+   "relatives-05": {
+    "rho": 0.301,
+    "sd_ratio": 0.793,
+    "shift": 0.4
+   }
+  },
+  "shift_sphere_boundary": {
+   "leisure-11": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.236
+   },
+   "conflicts-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.6
+   },
+   "conflicts-07": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.6
+   },
+   "conflicts-01": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.6
+   },
+   "regul-08": {
+    "rho": 0.5,
+    "sd_ratio": 0.799,
+    "shift": 0.6
+   },
+   "attach-01": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "trauma-06": {
+    "rho": 0.5,
+    "sd_ratio": 0.799,
+    "shift": 0.6
+   },
+   "attach-03": {
+    "rho": 0.498,
+    "sd_ratio": 0.791,
+    "shift": 0.6
+   },
+   "budget-09": {
+    "rho": 0.5,
+    "sd_ratio": 0.518,
+    "shift": 0.0
+   },
+   "kids-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "humor-11": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.376
+   },
+   "humor-06": {
+    "rho": 0.3,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "intimacy-02": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.0
+   },
+   "intimacy-03": {
+    "rho": 0.5,
+    "sd_ratio": 0.8,
+    "shift": 0.46
+   },
+   "relatives-04": {
+    "rho": 0.484,
+    "sd_ratio": 0.746,
+    "shift": 0.6
+   },
+   "relatives-05": {
+    "rho": 0.291,
+    "sd_ratio": 0.749,
+    "shift": 0.6
+   }
+  },
+  "shift_big": {
+   "leisure-11": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.18
+   },
+   "conflicts-02": {
+    "rho": 0.497,
+    "sd_ratio": 0.886,
+    "shift": 0.8
+   },
+   "conflicts-07": {
+    "rho": 0.398,
+    "sd_ratio": 0.885,
+    "shift": 0.8
+   },
+   "conflicts-01": {
+    "rho": 0.398,
+    "sd_ratio": 0.885,
+    "shift": 0.8
+   },
+   "regul-08": {
+    "rho": 0.64,
+    "sd_ratio": 0.868,
+    "shift": 0.8
+   },
+   "attach-01": {
+    "rho": 0.4,
+    "sd_ratio": 0.9,
+    "shift": 0.0
+   },
+   "trauma-06": {
+    "rho": 0.641,
+    "sd_ratio": 0.874,
+    "shift": 0.8
+   },
+   "attach-03": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.705
+   },
+   "budget-09": {
+    "rho": 0.65,
+    "sd_ratio": 0.518,
+    "shift": 0.0
+   },
+   "kids-02": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.0
+   },
+   "humor-11": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.309
+   },
+   "humor-06": {
+    "rho": 0.4,
+    "sd_ratio": 0.9,
+    "shift": 0.0
+   },
+   "intimacy-02": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.0
+   },
+   "intimacy-03": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.364
+   },
+   "relatives-04": {
+    "rho": 0.65,
+    "sd_ratio": 0.9,
+    "shift": 0.461
+   },
+   "relatives-05": {
+    "rho": 0.4,
+    "sd_ratio": 0.9,
+    "shift": 0.459
+   }
+  }
+ },
+ "median_spearman_strong": {
+  "15": 0.253,
+  "20": 0.3,
+  "30": 0.342,
+  "40": 0.367,
+  "60": 0.396,
+  "80": 0.413,
+  "100": 0.423
+ },
+ "median_sd_ratio_strong": {
+  "15": 0.611,
+  "20": 0.636,
+  "30": 0.665,
+  "40": 0.686,
+  "60": 0.709,
+  "80": 0.721,
+  "100": 0.73
+ },
+ "item_spearman_strong": {
+  "15": -0.413,
+  "20": -0.294,
+  "30": -0.134,
+  "40": -0.019,
+  "60": 0.103,
+  "80": 0.164,
+  "100": 0.204
+ },
+ "item_spearman_weak": {
+  "15": -0.576,
+  "20": -0.436,
+  "30": -0.302,
+  "40": -0.217,
+  "60": -0.108,
+  "80": -0.07,
+  "100": -0.02
+ },
+ "item_sd_ratio": {
+  "15": 0.0,
+  "20": 0.264,
+  "30": 0.347,
+  "40": 0.412,
+  "60": 0.471,
+  "80": 0.521,
+  "100": 0.554
+ },
+ "shift_mean": {
+  "15": 0.632,
+  "20": 0.594,
+  "30": 0.549,
+  "40": 0.514,
+  "60": 0.488,
+  "80": 0.463,
+  "100": 0.448
+ },
+ "shift_sphere": {
+  "15": {
+   "attachment": 1.752,
+   "conflicts": 1.38,
+   "habits": 0.9,
+   "humor": 1.164,
+   "intimacy": 1.301,
+   "past": 1.728,
+   "regulation": 1.653,
+   "relatives": 1.706
+  },
+  "20": {
+   "attachment": 1.396,
+   "conflicts": 1.19,
+   "habits": 0.753,
+   "humor": 1.045,
+   "intimacy": 1.272,
+   "past": 1.549,
+   "regulation": 1.559,
+   "relatives": 1.347
+  },
+  "30": {
+   "attachment": 1.215,
+   "conflicts": 1.086,
+   "habits": 0.643,
+   "humor": 0.91,
+   "intimacy": 0.946,
+   "past": 1.247,
+   "regulation": 1.244,
+   "relatives": 1.144
+  },
+  "40": {
+   "attachment": 1.068,
+   "conflicts": 0.965,
+   "habits": 0.603,
+   "humor": 0.757,
+   "intimacy": 0.864,
+   "past": 1.102,
+   "regulation": 1.121,
+   "relatives": 1.003
+  },
+  "60": {
+   "attachment": 0.967,
+   "conflicts": 0.89,
+   "habits": 0.524,
+   "humor": 0.677,
+   "intimacy": 0.775,
+   "past": 0.97,
+   "regulation": 0.954,
+   "relatives": 0.898
+  },
+  "80": {
+   "attachment": 0.871,
+   "conflicts": 0.8,
+   "habits": 0.478,
+   "humor": 0.626,
+   "intimacy": 0.714,
+   "past": 0.887,
+   "regulation": 0.882,
+   "relatives": 0.805
+  },
+  "100": {
+   "attachment": 0.837,
+   "conflicts": 0.741,
+   "habits": 0.429,
+   "humor": 0.581,
+   "intimacy": 0.666,
+   "past": 0.814,
+   "regulation": 0.826,
+   "relatives": 0.745
+  }
+ },
+ "probabilities": {
+  "15": {
+   "boundary": {
+    "reject": 0.0043,
+    "stop": 0.0015
+   },
+   "typical": {
+    "reject": 0.0,
+    "stop": 0.0008
+   },
+   "bad": {
+    "reject": 0.9447,
+    "stop": 0.0018
+   },
+   "shift_big": {
+    "reject": 0.0013,
+    "stop": 0.374
+   },
+   "boundary_rules_r5": {
+    "reject": 1.0
+   },
+   "boundary_rules_r5_without_credit_sd": {
+    "reject": 0.9997
+   },
+   "typical_rules_r5": {
+    "reject": 1.0
+   },
+   "typical_rules_r5_without_credit_sd": {
+    "reject": 0.9511
+   }
+  },
+  "20": {
+   "boundary": {
+    "reject": 0.006,
+    "stop": 0.0003
+   },
+   "typical": {
+    "reject": 0.0,
+    "stop": 0.0005
+   },
+   "bad": {
+    "reject": 0.9925,
+    "stop": 0.0003
+   },
+   "shift_big": {
+    "reject": 0.0005,
+    "stop": 0.547
+   },
+   "boundary_rules_r5": {
+    "reject": 1.0
+   },
+   "boundary_rules_r5_without_credit_sd": {
+    "reject": 0.999
+   },
+   "typical_rules_r5": {
+    "reject": 1.0
+   },
+   "typical_rules_r5_without_credit_sd": {
+    "reject": 0.9047
+   }
+  },
+  "30": {
+   "boundary": {
+    "reject": 0.0063,
+    "stop": 0.0005
+   },
+   "typical": {
+    "reject": 0.0,
+    "stop": 0.0
+   },
+   "bad": {
+    "reject": 0.9998,
+    "stop": 0.001
+   },
+   "shift_big": {
+    "reject": 0.0003,
+    "stop": 0.8285
+   },
+   "boundary_rules_r5": {
+    "reject": 1.0
+   },
+   "boundary_rules_r5_without_credit_sd": {
+    "reject": 0.9983
+   },
+   "typical_rules_r5": {
+    "reject": 1.0
+   },
+   "typical_rules_r5_without_credit_sd": {
+    "reject": 0.8158
+   }
+  },
+  "40": {
+   "boundary": {
+    "reject": 0.0112,
+    "stop": 0.0005
+   },
+   "typical": {
+    "reject": 0.0015,
+    "stop": 0.0003
+   },
+   "bad": {
+    "reject": 1.0,
+    "stop": 0.0003
+   },
+   "shift_big": {
+    "reject": 0.0088,
+    "stop": 0.969
+   },
+   "boundary_rules_r5": {
+    "reject": 1.0
+   },
+   "boundary_rules_r5_without_credit_sd": {
+    "reject": 0.9975
+   },
+   "typical_rules_r5": {
+    "reject": 1.0
+   },
+   "typical_rules_r5_without_credit_sd": {
+    "reject": 0.7366
+   }
+  },
+  "60": {
+   "boundary": {
+    "reject": 0.0123,
+    "stop": 0.0
+   },
+   "typical": {
+    "reject": 0.0005,
+    "stop": 0.0
+   },
+   "bad": {
+    "reject": 1.0,
+    "stop": 0.0
+   },
+   "shift_big": {
+    "reject": 0.0037,
+    "stop": 0.9995
+   },
+   "boundary_rules_r5": {
+    "reject": 1.0
+   },
+   "boundary_rules_r5_without_credit_sd": {
+    "reject": 0.998
+   },
+   "typical_rules_r5": {
+    "reject": 1.0
+   },
+   "typical_rules_r5_without_credit_sd": {
+    "reject": 0.6215
+   }
+  },
+  "80": {
+   "boundary": {
+    "reject": 0.0125,
+    "stop": 0.0
+   },
+   "typical": {
+    "reject": 0.0003,
+    "stop": 0.0
+   },
+   "bad": {
+    "reject": 1.0,
+    "stop": 0.0
+   },
+   "shift_big": {
+    "reject": 0.0027,
+    "stop": 1.0
+   },
+   "boundary_rules_r5": {
+    "reject": 1.0
+   },
+   "boundary_rules_r5_without_credit_sd": {
+    "reject": 0.9992
+   },
+   "typical_rules_r5": {
+    "reject": 1.0
+   },
+   "typical_rules_r5_without_credit_sd": {
+    "reject": 0.5282
+   }
+  },
+  "100": {
+   "boundary": {
+    "reject": 0.0118,
+    "stop": 0.0
+   },
+   "typical": {
+    "reject": 0.0003,
+    "stop": 0.0
+   },
+   "bad": {
+    "reject": 1.0,
+    "stop": 0.0
+   },
+   "shift_big": {
+    "reject": 0.0008,
+    "stop": 1.0
+   },
+   "boundary_rules_r5": {
+    "reject": 1.0
+   },
+   "boundary_rules_r5_without_credit_sd": {
+    "reject": 0.9983
+   },
+   "typical_rules_r5": {
+    "reject": 1.0
+   },
+   "typical_rules_r5_without_credit_sd": {
+    "reject": 0.4438
+   }
+  }
+ },
+ "whole_run_portions_of_20": {
+  "boundary": {
+   "reject_any": 0.059,
+   "stop_any": 0.001
+  },
+  "typical": {
+   "reject_any": 0.004,
+   "stop_any": 0.0
+  }
+ }
+}

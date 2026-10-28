@@ -363,8 +363,17 @@ def main():
         " / ".join(f"{100 * np.mean(ap == L):.0f}" for L in range(3)), " / ".join(f"{100 * v:.0f}" for v in pk["approve_against_neutral_approve"]),
         tol_ok(max(abs(a - b) for a, b in zip(pk["approve_against_neutral_approve"], (.1, .2, .7))), 0, .03))
     il = np.array([r[k_] for r in pvr for k_ in ("man_conflict_with_her_family", "woman_conflict_with_his_family")])
-    add(T3, "заметный конфликт с роднёй партнёра (каждый)", "20%; у живущих с родителями ≈ 40%", "17.3 [допущение]",
-        pc(il.mean()), f"{pc(pk['inlaw'])}; живут с родителями {pc(pk['inlaw_living_with_parents'])}", tol_ok(pk["inlaw"], .17, .23))
+    ild = np.array([r[k_] for r, p in zip(pvr, pairs) if p["stage"] == "встречаются"
+                    for k_ in ("man_conflict_with_her_family", "woman_conflict_with_his_family")])
+    ill = np.array([r[k_] for r, p in zip(pvr, pairs) if p["stage"] != "встречаются"
+                    for k_ in ("man_conflict_with_her_family", "woman_conflict_with_his_family")])
+    add(T3, "заметный конфликт с роднёй партнёра (каждый): встречаются / живут вместе и в браке", "8 / 20%; у живущих с родителями ≈ 40%",
+        "17.3, 17.14 [допущение]", f"{pc(ild.mean())} / {pc(ill.mean())}",
+        f"{pc(pk['inlaw_dating'])} / {pc(pk['inlaw_living'])}; живут с родителями {pc(pk['inlaw_living_with_parents'])}",
+        tol_ok(abs(pk["inlaw_dating"] - .08) + abs(pk["inlaw_living"] - .20), 0, .03))
+    il_pair = np.array([r["man_conflict_with_her_family"] or r["woman_conflict_with_his_family"] for r in pvr])
+    add(T3, "пар, где хотя бы у одного заметный конфликт с роднёй партнёра", "следствие; справочно", "17.14",
+        pc(il_pair.mean()), " / ".join(f"{100 * v:.0f}" for v in pk["inlaw_any_pair_by_stage"].values()) + " по стадиям")
     sx = np.array([B.SEXSAT_LEVELS.index(r[f"sex_satisfaction_{x}"]) for r in pvr for x in ("man", "woman")])
     ya = np.concatenate([[P["age"][a_] <= 24, P["age"][b_] <= 24] for a_, b_ in zip(m, w)])
     for y_, lab, t in ((True, "20–24", (.11, .17, .72)), (False, "25–30", (.13, .18, .69))):
@@ -452,6 +461,26 @@ def main():
     add(T5, "скелет + вся специфичная для пары часть", "≤ 0,45 (ред. 4: ≈ 0,40)", "17.6", f"{v(lk + T_ps):.3f}",
         f"{sh['skeleton_plus_pair_specific']:.3f}", tol_ok(sh["skeleton_plus_pair_specific"], 0, .45))
     add(T5, "чистая случайность (жребий V)", "≈ 0,6", "Joel 2020", f"{PI2_3 / tot:.3f}", f"{sh['noise_V']:.3f}")
+    # ред. 5.1 (design.md, 17.14): знак «химии» в близости, σ_U5 < σ_U4, правило 17.5 по всем парам
+    import pair_vars as PVmod
+    pvv = PVmod.arrays(B.load(os.path.join(B.PRIV, "pair-vars.json")), pairs, m5["pair_cuts"])
+    spec_m = B.merge_spec(B.load(os.path.join(B.PRIV, "outcome-spec.json")), B.load(os.path.join(B.PRIV, "outcome-spec-r5.json")))
+    EVt_ = B.pair_vars_expected(P, m, w, m5["pair_cuts"], B.rng_of(tree, "expect_r5"), m5["expect_draws"], m5["sexsat_U_corr"])
+    sex_lat = np.array([r["sex_satisfaction_pair_latent"] for r in pvr])
+    r_us = float(np.corrcoef(U, sex_lat)[0, 1])
+    add(T5, "r(U, удовлетворённость сексом пары): U — риск, связь должна быть отрицательной", "< 0",
+        "17.3, 17.14 (критик 05, п. 1)", f"{r_us:+.2f}", f"{cal5['corr_U_sexsat_latent']:+.2f}",
+        "да" if (r_us < 0 and cal5["corr_U_sexsat_latent"] < 0) else "НЕТ")
+    add(T5, "σ «химии» ред. 5 меньше, чем ред. 4 (новые свойства пары вырезают свою долю из U)", "σ_U5 < σ_U4",
+        "17.5, 17.14", "—", "да" if cal5["sigma_U5_below_U4"] else "нет", "да" if cal5["sigma_U5_below_U4"] else "НЕТ")
+    st_ = {f"{wh}_{nm}": B.r5_strength_check(P, m, w, spec_m, VV, wh) for wh in ("break", "sat")
+           for nm, VV in (("real", pvv), ("expected", EVt_))}
+    private["strength_check_sample_r5"] = st_
+    private["strength_check_calibration_r5"] = m5["strength_check_calibration"]
+    ok17 = all(v_["ok"] for v_ in st_.values()) and cal5["rule_17_5_ok"]
+    add(T5, "правило 17.5: ни один новый фактор не сильнее сильных ред. 4 (вес на единицу в каждой паре; разброс вклада)",
+        "во всех парах", "17.5, 17.14 (критик 05, п. 4)", "все 180 пар: " + ("да" if all(v_["ok"] for v_ in st_.values()) else "нет"),
+        "все настоящие пары: " + ("да" if cal5["rule_17_5_ok"] else "нет"), "да" if ok17 else "НЕТ")
     # доли и AUC по семействам — закрыто (критик 2, п. 1; 17.5): в private/report-private.json
     private["family_shares_calibration_r5"] = m5["private_family"]["shares"]
     private["family_auc_calibration_r5"] = m5["private_family"]["auc"]
@@ -600,7 +629,10 @@ def main():
     if dirs and sign_p < .05:
         lines.append(f"- Выборка сдвинута в одну сторону: в здоровую {n_h} из {len(dirs)} показателей (знаковый тест p = {sign_p:.3f}). "
                      "Каждое отклонение по отдельности может быть в пределах 2 SE; для следующих партий объявлен сбалансированный жребий (design.md, 13.4)")
-    if not misses and not s_miss and not (dirs and sign_p < .05):
+    if not (.08 <= r2s <= .12):        # справочно (критик 05, п. 5): правило 17.6 проверяется на калибровке
+        lines.append(f"- Справочно: R² формулы по самоотчёту на выборке {r2s:.3f} — вне коридора 0,08–0,12 (правило 17.6 "
+                     "проверяется на калибровке, там в коридоре; на 180 парах — шум выборки)")
+    if not misses and not s_miss and not (dirs and sign_p < .05) and (.08 <= r2s <= .12):
         lines.append("- ничего")
     lines.append("")
     misses = misses + s_miss

@@ -121,6 +121,10 @@ def main():
     EVt = B.pair_vars_expected(P, m, w, m5["pair_cuts"], rx, m5["expect_draws"], m5["sexsat_U_corr"])
     EVs = B.pair_vars_expected(S, m, w, m5["pair_cuts"], rx, m5["expect_draws"], m5["sexsat_U_corr"])
 
+    # ред. 5.1 (design.md, 17.14): правило 17.5 — по всем 180 парам, реализованные свойства и их ожидание
+    for VV in (V, EVt):
+        for wh in ("break", "sat"):
+            assert B.r5_strength_check(P, m, w, spec, VV, wh)["ok"], "правило 17.5 нарушено на парах выборки"
     IND, MIS, SIM, PR, F = B.components_r5(P, m, w, spec, V, mu, sd)
     PE = B.pair_terms(P, m, w, EVt, spec["pair"])
     lin = IND + MIS + SIM + PR               # реализованный (со свойствами пары)
