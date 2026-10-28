@@ -1,0 +1,20 @@
+{
+ "id": "v3cy",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "dbdadd228fd4b38427893884be5e9a5881872377e54400850d40b5a493a5102f",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "dbdadd228fd4b38427893884be5e9a5881872377e54400850d40b5a493a5102f",
+   "words": 508,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/v3cy/text0-7e1cb1c001be0c522830.jsonl",
+   "raw_restorer": "raw/C/v3cy/truth0-e38c10bfde0816b563dc.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

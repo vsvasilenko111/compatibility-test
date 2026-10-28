@@ -1,0 +1,20 @@
+{
+ "id": "iyhb",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "12c5c18fcf9b428667db5ae741a8a09d764f0461e1c16a465e34a35c75a829bb",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "12c5c18fcf9b428667db5ae741a8a09d764f0461e1c16a465e34a35c75a829bb",
+   "words": 440,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/iyhb/text0-21eddc9c9361a1882c3e.jsonl",
+   "raw_restorer": "raw/C/iyhb/self0-e130f8801ead6d06ddea.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

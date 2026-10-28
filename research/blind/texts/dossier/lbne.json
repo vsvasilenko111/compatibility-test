@@ -1,0 +1,20 @@
+{
+ "id": "lbne",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "4ff5b26bc9fd6ce004afb0aec956beaf989f13a8b5bad36d2cfeb1488e0257cc",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "4ff5b26bc9fd6ce004afb0aec956beaf989f13a8b5bad36d2cfeb1488e0257cc",
+   "words": 480,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/lbne/text0-89f3fc0fb70022ff189c.jsonl",
+   "raw_restorer": "raw/C/lbne/truth0-32880209df1c51875219.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

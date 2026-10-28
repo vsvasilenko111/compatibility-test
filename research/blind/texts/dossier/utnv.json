@@ -1,0 +1,20 @@
+{
+ "id": "utnv",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "8cbc034d4a108e7dcc34f67fb60ed42cf487431b6a4c8ca0b80b2c85969aa9af",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "8cbc034d4a108e7dcc34f67fb60ed42cf487431b6a4c8ca0b80b2c85969aa9af",
+   "words": 489,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/utnv/text0-a20ec0ed32b53256cdbe.jsonl",
+   "raw_restorer": "raw/C/utnv/truth0-48b3aa3d1bdfa43f041f.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

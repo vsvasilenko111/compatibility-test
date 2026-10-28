@@ -1,0 +1,20 @@
+{
+ "id": "lrwi",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "6f1480192bbd99c9227c55222aaf3f653d510df524e76c4ee2fe112a5880fe10",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "6f1480192bbd99c9227c55222aaf3f653d510df524e76c4ee2fe112a5880fe10",
+   "words": 453,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/lrwi/text0-cb8b92d8cf7039194c33.jsonl",
+   "raw_restorer": "raw/C/lrwi/self0-1f4b97afea8cb56887fa.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

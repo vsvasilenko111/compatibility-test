@@ -1,0 +1,20 @@
+{
+ "id": "k89i",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "b69db445f16840413f7f86383c367ea8c39c75b82078d69c77fde6129a44171f",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "b69db445f16840413f7f86383c367ea8c39c75b82078d69c77fde6129a44171f",
+   "words": 490,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/k89i/text0-c8fe9754cb4ac818e84a.jsonl",
+   "raw_restorer": "raw/C/k89i/truth0-735c8f3d4822efec2c4d.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

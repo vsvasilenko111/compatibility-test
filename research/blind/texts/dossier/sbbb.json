@@ -1,0 +1,20 @@
+{
+ "id": "sbbb",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "378773e8ee3f1b7bf8b6a5f0a50a1fa6efde1a53addd064e020b571b62f9e004",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "378773e8ee3f1b7bf8b6a5f0a50a1fa6efde1a53addd064e020b571b62f9e004",
+   "words": 451,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/sbbb/text0-faa2ade27beb808b6408.jsonl",
+   "raw_restorer": "raw/C/sbbb/truth0-563ee1a662181dc2ea84.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

@@ -1,0 +1,20 @@
+{
+ "id": "zdan",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "9021625307c49ca9ef4b390c0e83b1c80d6e712db1d20075f39fbfed68cda625",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "9021625307c49ca9ef4b390c0e83b1c80d6e712db1d20075f39fbfed68cda625",
+   "words": 482,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/zdan/text0-6699573d59d2a41e7f53.jsonl",
+   "raw_restorer": "raw/C/zdan/truth0-085a803e6a2f97cc8f1c.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

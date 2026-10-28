@@ -1,0 +1,22 @@
+{
+ "id": "me1a",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "3580ae7469e4ef94fdb247477bd293c79bee84c9fae3ca219cd73f56084f401b",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "3580ae7469e4ef94fdb247477bd293c79bee84c9fae3ca219cd73f56084f401b",
+   "words": 424,
+   "bad": false,
+   "misses": [
+    "тревожность"
+   ],
+   "raw_author": "raw/B/me1a/text0-427c0aea395412bd92cf.jsonl",
+   "raw_restorer": "raw/C/me1a/self0-f50b0198ea5ee9053c58.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

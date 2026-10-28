@@ -1,0 +1,20 @@
+{
+ "id": "byed",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "11161545bad42c8d34091ba48103066874af6c0c5ca5dfa5f46ffcd8699d9d31",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "11161545bad42c8d34091ba48103066874af6c0c5ca5dfa5f46ffcd8699d9d31",
+   "words": 451,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/byed/text0-0923869b040931144a34.jsonl",
+   "raw_restorer": "raw/C/byed/self0-66838126852f9b5884cb.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

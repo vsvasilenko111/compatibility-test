@@ -1,0 +1,20 @@
+{
+ "id": "biqk",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "d9817076c27a0c9db03b403a27090f0b126f0cd10db05266f0ba05e8f8c0088a",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "d9817076c27a0c9db03b403a27090f0b126f0cd10db05266f0ba05e8f8c0088a",
+   "words": 455,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/biqk/text0-3630fe4e524041af23ea.jsonl",
+   "raw_restorer": "raw/C/biqk/truth0-b577f79ef0c785cf4993.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

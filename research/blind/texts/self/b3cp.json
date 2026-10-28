@@ -1,0 +1,20 @@
+{
+ "id": "b3cp",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "92978dd059fb3bd698714b141a358e7edc75f549ec373e812f9b72e547d8b9ff",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "92978dd059fb3bd698714b141a358e7edc75f549ec373e812f9b72e547d8b9ff",
+   "words": 404,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/b3cp/text0-40dfeea716f356115fa2.jsonl",
+   "raw_restorer": "raw/C/b3cp/self0-2ad6c27ab768ad85042d.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

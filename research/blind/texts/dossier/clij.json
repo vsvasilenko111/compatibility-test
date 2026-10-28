@@ -1,0 +1,20 @@
+{
+ "id": "clij",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "1f27bb9de34a6c85f455d7a7032a136373120ff837ec66e5cb1cea24c99b5993",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "1f27bb9de34a6c85f455d7a7032a136373120ff837ec66e5cb1cea24c99b5993",
+   "words": 456,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/clij/text0-a2c39fb2d783ae8e104a.jsonl",
+   "raw_restorer": "raw/C/clij/truth0-2535912c6ada6704bfd1.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

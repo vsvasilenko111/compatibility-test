@@ -1,0 +1,20 @@
+{
+ "id": "s7fv",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "82a0abc50e6b875ceda3e14a39f9dbd092ba1b6d34413dc1a42c2a17f4495c6c",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "82a0abc50e6b875ceda3e14a39f9dbd092ba1b6d34413dc1a42c2a17f4495c6c",
+   "words": 418,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/s7fv/text0-177f5f73f3d13a5d44a6.jsonl",
+   "raw_restorer": "raw/C/s7fv/self0-c60b6c84255d8aade209.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

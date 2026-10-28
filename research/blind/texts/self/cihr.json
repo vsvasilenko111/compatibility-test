@@ -1,0 +1,22 @@
+{
+ "id": "cihr",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "6298a714709ee448302553d5b8cf6ae9c43fe4e265259e5f689701c7249544f2",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "6298a714709ee448302553d5b8cf6ae9c43fe4e265259e5f689701c7249544f2",
+   "words": 468,
+   "bad": false,
+   "misses": [
+    "избегание"
+   ],
+   "raw_author": "raw/B/cihr/text0-3dabf7be386c3c713fc0.jsonl",
+   "raw_restorer": "raw/C/cihr/self0-928a6bec598b919f3a6c.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

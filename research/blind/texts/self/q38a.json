@@ -3,17 +3,17 @@
  "role": "B",
  "model": "claude-sonnet-5-5",
  "effort": "high",
- "text_sha256": "f0e0cdef2167ad4e478e0d507a6a9036f34cc6f16c1ba64cc1e3cda1ffe06a57",
+ "text_sha256": "6d411dcd0b8b7b6e27a5b0593bf76f168dec5004270b66a6cc1b4134e41942f4",
  "text_wrong": false,
  "attempts": [
   {
    "attempt": 1,
-   "text_sha256": "f0e0cdef2167ad4e478e0d507a6a9036f34cc6f16c1ba64cc1e3cda1ffe06a57",
-   "words": 378,
+   "text_sha256": "6d411dcd0b8b7b6e27a5b0593bf76f168dec5004270b66a6cc1b4134e41942f4",
+   "words": 381,
    "bad": false,
    "misses": [],
-   "raw_author": "raw/B/q38a/text0-0ea0c84e074db47b163a.jsonl",
-   "raw_restorer": "raw/C/q38a/self0-e5d4cd983f2ca7b322fc.jsonl"
+   "raw_author": "raw/B/q38a/text0-13428ac9b2df9e4aa09c.jsonl",
+   "raw_restorer": "raw/C/q38a/self0-ebcda4e1e7dff8f38a46.jsonl"
   }
  ],
  "restorer_model": "claude-opus-5"

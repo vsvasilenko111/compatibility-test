@@ -1,0 +1,20 @@
+{
+ "id": "dh3z",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "3cb404467a503f26f40c3d30afc9e30fe4cd6f6deaa0282d840bd550b7874c57",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "3cb404467a503f26f40c3d30afc9e30fe4cd6f6deaa0282d840bd550b7874c57",
+   "words": 509,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/dh3z/text0-f35790f3b5c3e0a50943.jsonl",
+   "raw_restorer": "raw/C/dh3z/truth0-fe766a09eaa3ebbf7e5a.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

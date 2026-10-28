@@ -1,0 +1,22 @@
+{
+ "id": "i56q",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "a078360d989d2b74d091de2ef5ef0518e04c986cdbc18735e780ba64fb88c1f5",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "a078360d989d2b74d091de2ef5ef0518e04c986cdbc18735e780ba64fb88c1f5",
+   "words": 432,
+   "bad": false,
+   "misses": [
+    "тревожность"
+   ],
+   "raw_author": "raw/B/i56q/text0-d024c3c354571ff8a6cc.jsonl",
+   "raw_restorer": "raw/C/i56q/self0-211ddbda67281daa0249.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

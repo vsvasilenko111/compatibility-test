@@ -1,0 +1,20 @@
+{
+ "id": "ox8s",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "ae3b0f3edad6d513ae2375f7dea7a5e07dcd6bd0f98441918bf0fd57bf6daf5f",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "ae3b0f3edad6d513ae2375f7dea7a5e07dcd6bd0f98441918bf0fd57bf6daf5f",
+   "words": 470,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/ox8s/text0-f715d543429dfda5993c.jsonl",
+   "raw_restorer": "raw/C/ox8s/truth0-fa7eab46495237376d6d.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

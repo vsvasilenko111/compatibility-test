@@ -1,0 +1,20 @@
+{
+ "id": "kpe9",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "4c668306dcc4fef46b86e44feccedde4d62c49235a03b0aa32bfe97aa18d5063",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "4c668306dcc4fef46b86e44feccedde4d62c49235a03b0aa32bfe97aa18d5063",
+   "words": 438,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/kpe9/text0-50fadb8523a3fe9f8ce6.jsonl",
+   "raw_restorer": "raw/C/kpe9/truth0-2c6c69d49fed269967b1.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

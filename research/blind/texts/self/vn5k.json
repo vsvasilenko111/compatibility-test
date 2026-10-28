@@ -3,17 +3,29 @@
  "role": "B",
  "model": "claude-sonnet-5-5",
  "effort": "high",
- "text_sha256": "32ffd7eb394cb9157e38c0be2fc45bb1dc6a985054a8e2cd08c411890229ca6f",
+ "text_sha256": "103447c88f033804b2bb64b243915ef93afc54e52efb58f3db673a690bff6eb3",
  "text_wrong": false,
  "attempts": [
   {
    "attempt": 1,
-   "text_sha256": "32ffd7eb394cb9157e38c0be2fc45bb1dc6a985054a8e2cd08c411890229ca6f",
-   "words": 385,
+   "text_sha256": "964580907fdac9cf52cd461db872427cd794a13e16ba026d4ed3099e87b479e0",
+   "words": 371,
+   "bad": true,
+   "misses": [
+    "тревожность",
+    "избегание"
+   ],
+   "raw_author": "raw/B/vn5k/text0-29bcd4c1d3291684cb16.jsonl",
+   "raw_restorer": "raw/C/vn5k/self0-eff8e42763f09f38f811.jsonl"
+  },
+  {
+   "attempt": 2,
+   "text_sha256": "103447c88f033804b2bb64b243915ef93afc54e52efb58f3db673a690bff6eb3",
+   "words": 334,
    "bad": false,
    "misses": [],
-   "raw_author": "raw/B/vn5k/text0-f4c555413d1cd51b7ed0.jsonl",
-   "raw_restorer": "raw/C/vn5k/self0-5e4ab142d3bbb62955f8.jsonl"
+   "raw_author": "raw/B/vn5k/text1-3b09c0417dac41d78336.jsonl",
+   "raw_restorer": "raw/C/vn5k/self1-e6a318e45bd9f606ea9f.jsonl"
   }
  ],
  "restorer_model": "claude-opus-5"

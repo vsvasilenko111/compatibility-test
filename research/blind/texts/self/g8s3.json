@@ -1,0 +1,20 @@
+{
+ "id": "g8s3",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "57030fbe5f2fa151c6761f1e3c4edb4373d3a11e352ea94dc59cb8342f387bc5",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "57030fbe5f2fa151c6761f1e3c4edb4373d3a11e352ea94dc59cb8342f387bc5",
+   "words": 404,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/g8s3/text0-89785011bb49a39c23c4.jsonl",
+   "raw_restorer": "raw/C/g8s3/self0-df99b3271d1561cad0b9.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

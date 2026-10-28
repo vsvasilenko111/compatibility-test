@@ -3,17 +3,17 @@
  "role": "A",
  "model": "claude-opus-5-5",
  "effort": "high",
- "text_sha256": "d79a6fea90a262768f70d16f17144cca6bc0a1a87586fde2cfa389dff4035eb6",
+ "text_sha256": "8326d98af9a42880d3388b84ba35182cc9e03507cf23cc6d8b70e6658edba0a8",
  "text_wrong": false,
  "attempts": [
   {
    "attempt": 1,
-   "text_sha256": "d79a6fea90a262768f70d16f17144cca6bc0a1a87586fde2cfa389dff4035eb6",
-   "words": 385,
+   "text_sha256": "8326d98af9a42880d3388b84ba35182cc9e03507cf23cc6d8b70e6658edba0a8",
+   "words": 479,
    "bad": false,
    "misses": [],
-   "raw_author": "raw/A/td2k/text0-c71f671b5bc4d73c70be.jsonl",
-   "raw_restorer": "raw/C/td2k/truth0-39c7638d3eaed687e749.jsonl"
+   "raw_author": "raw/A/td2k/text0-990507a52313d11e09a4.jsonl",
+   "raw_restorer": "raw/C/td2k/truth0-23602aa7b405f120abf1.jsonl"
   }
  ],
  "restorer_model": "claude-opus-5"

@@ -1,0 +1,20 @@
+{
+ "id": "ufpl",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "f40fd75ea8490d19a1f916427866458f446497ba205345e444b7f5740bef2e78",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "f40fd75ea8490d19a1f916427866458f446497ba205345e444b7f5740bef2e78",
+   "words": 467,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/ufpl/text0-b0ea90fb4f99ba58e55a.jsonl",
+   "raw_restorer": "raw/C/ufpl/truth0-72467e2ac050bb01147a.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

@@ -1,0 +1,20 @@
+{
+ "id": "z74u",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "02c81367241c19084315d5859f93bf2cedcba487eb846907dde9c3cddda17425",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "02c81367241c19084315d5859f93bf2cedcba487eb846907dde9c3cddda17425",
+   "words": 475,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/z74u/text0-606fa9f03eddeb0edfc9.jsonl",
+   "raw_restorer": "raw/C/z74u/truth0-e54994982c3979a9e8fd.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

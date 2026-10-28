@@ -1,0 +1,32 @@
+{
+ "id": "sbbb",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "edfc4acf6da76b85a40c2d743627d2b5385bd30db2ad156cb5dcd84072abf493",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "81a54552af23af69b6dc4d5ad354c5a5a46cd9d4b485738def597dae2aa9a7a1",
+   "words": 338,
+   "bad": true,
+   "misses": [
+    "тревожность",
+    "избегание"
+   ],
+   "raw_author": "raw/B/sbbb/text0-7307b1562784a18ca6af.jsonl",
+   "raw_restorer": "raw/C/sbbb/self0-386a0db7a39d48d75e48.jsonl"
+  },
+  {
+   "attempt": 2,
+   "text_sha256": "edfc4acf6da76b85a40c2d743627d2b5385bd30db2ad156cb5dcd84072abf493",
+   "words": 307,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/sbbb/text1-be900b6a77492c879b21.jsonl",
+   "raw_restorer": "raw/C/sbbb/self1-91df19c7235d87d98d28.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

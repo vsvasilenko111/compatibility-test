@@ -1,0 +1,193 @@
+{
+ "finished": "2026-10-28T13:06:10+00:00",
+ "wall_seconds": 738.7,
+ "ids": [
+  "a44x",
+  "amzk",
+  "b3cp",
+  "biqk",
+  "bv3x",
+  "byed",
+  "cihr",
+  "clij",
+  "dh3z",
+  "eazi",
+  "ekxp",
+  "f140",
+  "fjpk",
+  "fn8j",
+  "fpuc",
+  "fy03",
+  "g8s3",
+  "i56q",
+  "iio3"
+ ],
+ "roles": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "models": {
+  "A": [
+   "claude-opus-5-5",
+   "high"
+  ],
+  "B": [
+   "claude-sonnet-5-5",
+   "high"
+  ],
+  "C": [
+   "claude-opus-5",
+   "medium"
+  ],
+  "D": [
+   "claude-opus-5-5",
+   "medium"
+  ]
+ },
+ "stats": {
+  "calls": 403,
+  "cached": 0,
+  "rejected_fabricated": 0,
+  "rejected_unparsable": 2,
+  "api_errors": 0,
+  "cost_usd": 13.316070100000003,
+  "call_seconds": 2945.26056098938
+ },
+ "people": [
+  {
+   "id": "a44x",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 296.0
+  },
+  {
+   "id": "clij",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 335.0
+  },
+  {
+   "id": "b3cp",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 357.4
+  },
+  {
+   "id": "dh3z",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 382.0
+  },
+  {
+   "id": "bv3x",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 409.8
+  },
+  {
+   "id": "biqk",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 437.6
+  },
+  {
+   "id": "byed",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 462.4
+  },
+  {
+   "id": "amzk",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 484.5
+  },
+  {
+   "id": "eazi",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 510.3
+  },
+  {
+   "id": "ekxp",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 533.9
+  },
+  {
+   "id": "fpuc",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 555.7
+  },
+  {
+   "id": "f140",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 580.0
+  },
+  {
+   "id": "cihr",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 607.7
+  },
+  {
+   "id": "iio3",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 627.4
+  },
+  {
+   "id": "fy03",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 647.0
+  },
+  {
+   "id": "g8s3",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 670.7
+  },
+  {
+   "id": "fjpk",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 692.9
+  },
+  {
+   "id": "i56q",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 716.0
+  },
+  {
+   "id": "fn8j",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 738.7
+  }
+ ]
+}

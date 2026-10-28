@@ -1,0 +1,20 @@
+{
+ "id": "pfgb",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "33b12f3664f7f4caf5d8e8afdcdc6308cfe7ae517fdb5047c644077a2ddf6d5c",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "33b12f3664f7f4caf5d8e8afdcdc6308cfe7ae517fdb5047c644077a2ddf6d5c",
+   "words": 404,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/pfgb/text0-66ef880617ca36ed6c3c.jsonl",
+   "raw_restorer": "raw/C/pfgb/self0-3fd011144095db840cc1.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

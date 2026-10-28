@@ -1,0 +1,20 @@
+{
+ "id": "tpr7",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "28f9ee261098947827745f16a67810aee31582984a8f3504e1fbad8d7e014303",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "28f9ee261098947827745f16a67810aee31582984a8f3504e1fbad8d7e014303",
+   "words": 525,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/tpr7/text0-f11410a013e1b62145be.jsonl",
+   "raw_restorer": "raw/C/tpr7/truth0-e85f6be7f8fa7d78e2e6.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

@@ -1,0 +1,20 @@
+{
+ "id": "zdan",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "3eb1ee55febfddf547c645e1454d538b4f1f20d92c8d0468d4f98e0a88b38cfd",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "3eb1ee55febfddf547c645e1454d538b4f1f20d92c8d0468d4f98e0a88b38cfd",
+   "words": 445,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/zdan/text0-a1559d048c5f5e953481.jsonl",
+   "raw_restorer": "raw/C/zdan/self0-a3dc34eb461ca3481f78.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

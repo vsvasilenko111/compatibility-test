@@ -1,0 +1,20 @@
+{
+ "id": "oks0",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "f7cfad1c2d03870ff078b47a81f7e22c82bcc4a9e10e72b5e5c44e0ca9b3b463",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "f7cfad1c2d03870ff078b47a81f7e22c82bcc4a9e10e72b5e5c44e0ca9b3b463",
+   "words": 459,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/oks0/text0-674b62b67e41b3b85d2c.jsonl",
+   "raw_restorer": "raw/C/oks0/truth0-d173cd1b334f65f07343.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

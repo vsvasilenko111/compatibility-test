@@ -1,0 +1,20 @@
+{
+ "id": "xoxa",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "c298734bea42bb18400359683692ce23fb6fdc1ffee8ed39ba8711b2809a3b37",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "c298734bea42bb18400359683692ce23fb6fdc1ffee8ed39ba8711b2809a3b37",
+   "words": 458,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/xoxa/text0-0f115deffd4f4656d401.jsonl",
+   "raw_restorer": "raw/C/xoxa/truth0-011617589c046259d564.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

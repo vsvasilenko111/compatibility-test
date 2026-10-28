@@ -1,0 +1,20 @@
+{
+ "id": "xjml",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "031fa8f51ba29e5d5af4ccc84ec0f5c10c63853fc329c09652dbb3d4a630ca3b",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "031fa8f51ba29e5d5af4ccc84ec0f5c10c63853fc329c09652dbb3d4a630ca3b",
+   "words": 423,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/xjml/text0-6878c3ff72d38c20a04b.jsonl",
+   "raw_restorer": "raw/C/xjml/self0-43d6a142cade52db282f.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

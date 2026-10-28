@@ -1,0 +1,20 @@
+{
+ "id": "lgi7",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "ae1d4e5da2026b8472ec6bc778b546ad241055960abba9c65ff383baa4dc8091",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "ae1d4e5da2026b8472ec6bc778b546ad241055960abba9c65ff383baa4dc8091",
+   "words": 409,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/lgi7/text0-ab72d40dddd36fb4a5ae.jsonl",
+   "raw_restorer": "raw/C/lgi7/self0-d13cdc5e6e29e594471d.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

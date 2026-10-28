@@ -1,0 +1,20 @@
+{
+ "id": "shvz",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "1e329070a61035d73b6893f772666801ccb753665775b68d9fb6fc5510985a2e",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "1e329070a61035d73b6893f772666801ccb753665775b68d9fb6fc5510985a2e",
+   "words": 436,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/shvz/text0-f896f56446763dc11a33.jsonl",
+   "raw_restorer": "raw/C/shvz/self0-942640250c019de70861.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

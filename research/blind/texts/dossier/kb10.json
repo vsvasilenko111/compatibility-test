@@ -1,0 +1,20 @@
+{
+ "id": "kb10",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "bbd1cbe764a8b9d5f18ee7eb927744546d2fd5b22192e6f2804254c785949be2",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "bbd1cbe764a8b9d5f18ee7eb927744546d2fd5b22192e6f2804254c785949be2",
+   "words": 481,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/kb10/text0-d5fbe01d1862d02e4350.jsonl",
+   "raw_restorer": "raw/C/kb10/truth0-cabbf4034056186a3494.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

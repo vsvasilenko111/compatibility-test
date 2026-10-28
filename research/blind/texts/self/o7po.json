@@ -1,0 +1,20 @@
+{
+ "id": "o7po",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "260055523eb0fd10fb53c4a14d38eb4b46a9055822367fc3d4c9436112fc0a45",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "260055523eb0fd10fb53c4a14d38eb4b46a9055822367fc3d4c9436112fc0a45",
+   "words": 427,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/o7po/text0-1a40adc48e95a9c4bcd6.jsonl",
+   "raw_restorer": "raw/C/o7po/self0-7965c786f7143278210a.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

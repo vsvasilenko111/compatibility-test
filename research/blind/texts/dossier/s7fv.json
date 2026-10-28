@@ -1,0 +1,20 @@
+{
+ "id": "s7fv",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "bb244ab89f5ac4dae016263efbe4c94e761b46f594bc0c5fa6ea6201a6dd55a8",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "bb244ab89f5ac4dae016263efbe4c94e761b46f594bc0c5fa6ea6201a6dd55a8",
+   "words": 461,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/s7fv/text0-813c9e37c42d89f8a2f2.jsonl",
+   "raw_restorer": "raw/C/s7fv/truth0-df7c62f8534074acf4b8.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

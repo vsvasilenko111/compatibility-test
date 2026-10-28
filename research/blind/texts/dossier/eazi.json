@@ -1,0 +1,20 @@
+{
+ "id": "eazi",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "3af718565bd566c1dba4409b0f7c1733eda67f151e61599e162ba2f5eb7ecf5d",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "3af718565bd566c1dba4409b0f7c1733eda67f151e61599e162ba2f5eb7ecf5d",
+   "words": 498,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/eazi/text0-60f4dd10b628080b19b9.jsonl",
+   "raw_restorer": "raw/C/eazi/truth0-bd3884bdb899e8676598.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

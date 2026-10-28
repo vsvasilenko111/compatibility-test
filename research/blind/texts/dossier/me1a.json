@@ -1,0 +1,20 @@
+{
+ "id": "me1a",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "5950fdfce5d201a22a30a6af14247a98114570fff3739a9340aa1324877f7831",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "5950fdfce5d201a22a30a6af14247a98114570fff3739a9340aa1324877f7831",
+   "words": 465,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/me1a/text0-3d5feaac586b0735a6a3.jsonl",
+   "raw_restorer": "raw/C/me1a/truth0-0aed1430b2861dad3b14.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

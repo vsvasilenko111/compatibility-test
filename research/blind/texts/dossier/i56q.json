@@ -1,0 +1,20 @@
+{
+ "id": "i56q",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "c52dd7af994bddbee8b5bcca42f310d9bcb00fba3a63b9b025570c76fd417fb3",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "c52dd7af994bddbee8b5bcca42f310d9bcb00fba3a63b9b025570c76fd417fb3",
+   "words": 456,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/i56q/text0-fe84537e98a29bb08d75.jsonl",
+   "raw_restorer": "raw/C/i56q/truth0-59b7eed5a172d757e9d2.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

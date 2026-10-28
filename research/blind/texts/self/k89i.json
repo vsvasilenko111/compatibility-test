@@ -1,0 +1,22 @@
+{
+ "id": "k89i",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "4ca0aee83fe4e7b7ba88dce7017696d3b9b229a7a54eca53c648ee45644eae5b",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "4ca0aee83fe4e7b7ba88dce7017696d3b9b229a7a54eca53c648ee45644eae5b",
+   "words": 350,
+   "bad": false,
+   "misses": [
+    "избегание"
+   ],
+   "raw_author": "raw/B/k89i/text0-fb9311d777b42981000d.jsonl",
+   "raw_restorer": "raw/C/k89i/self0-526bba1cb9a601b45c5f.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

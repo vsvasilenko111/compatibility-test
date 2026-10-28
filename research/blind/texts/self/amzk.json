@@ -1,0 +1,20 @@
+{
+ "id": "amzk",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "dca45f9f4c9b88de397cac27491ec8ed2f628a1897659ed691d84d7b9cf5cff7",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "dca45f9f4c9b88de397cac27491ec8ed2f628a1897659ed691d84d7b9cf5cff7",
+   "words": 422,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/amzk/text0-fd06c284a4ff898388f2.jsonl",
+   "raw_restorer": "raw/C/amzk/self0-08cf3bbabfa4a4ff69f8.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

@@ -1,0 +1,20 @@
+{
+ "id": "z74u",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "8fe30623736349a1f351304aed6dfa8deedf1218bb50887a15ae4bd1b8d0abb0",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "8fe30623736349a1f351304aed6dfa8deedf1218bb50887a15ae4bd1b8d0abb0",
+   "words": 433,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/z74u/text0-79d83a6f52031f571719.jsonl",
+   "raw_restorer": "raw/C/z74u/self0-0125d20a5913f7d717ff.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

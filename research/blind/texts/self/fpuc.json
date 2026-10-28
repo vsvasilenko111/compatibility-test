@@ -1,0 +1,20 @@
+{
+ "id": "fpuc",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "cbab51927fe8fbc8188ef10adc039d0528b3f626faef2b43b99b47d5dea9c7ca",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "cbab51927fe8fbc8188ef10adc039d0528b3f626faef2b43b99b47d5dea9c7ca",
+   "words": 451,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/fpuc/text0-fbc92e655cd9a4b9ac55.jsonl",
+   "raw_restorer": "raw/C/fpuc/self0-a07c563a4da0cb28b51b.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

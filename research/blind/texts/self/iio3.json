@@ -1,0 +1,20 @@
+{
+ "id": "iio3",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "26f098639104550f3bc6478fc8d342d448a564f17f96a3bfb696ffbfa2e298e9",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "26f098639104550f3bc6478fc8d342d448a564f17f96a3bfb696ffbfa2e298e9",
+   "words": 448,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/iio3/text0-832a178ea8332562d371.jsonl",
+   "raw_restorer": "raw/C/iio3/self0-2d8d99d9d9a1207addbb.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

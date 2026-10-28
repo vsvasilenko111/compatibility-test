@@ -1,0 +1,20 @@
+{
+ "id": "ox84",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "1a4eee9f3148fb4624da79889b2c494e3fd97361c59c61d4c197e165cd2291b6",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "1a4eee9f3148fb4624da79889b2c494e3fd97361c59c61d4c197e165cd2291b6",
+   "words": 501,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/ox84/text0-75b129188e0b52e2c0a7.jsonl",
+   "raw_restorer": "raw/C/ox84/truth0-eea3cd16d70718a31423.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

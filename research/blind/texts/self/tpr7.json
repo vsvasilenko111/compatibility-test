@@ -1,0 +1,20 @@
+{
+ "id": "tpr7",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "27f5434707b0f2d976662afb1789bcd37de25d7524a0f0271e7ea06bba099bfa",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "27f5434707b0f2d976662afb1789bcd37de25d7524a0f0271e7ea06bba099bfa",
+   "words": 447,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/tpr7/text0-67b24e478ec15fb2de55.jsonl",
+   "raw_restorer": "raw/C/tpr7/self0-ef7cecf5a297ec322a0e.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

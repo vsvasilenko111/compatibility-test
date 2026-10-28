@@ -1,0 +1,20 @@
+{
+ "id": "bv3x",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "588493979a953ce196354ed83132e2bc7503412dd8fe10aee7285aac61768bd8",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "588493979a953ce196354ed83132e2bc7503412dd8fe10aee7285aac61768bd8",
+   "words": 361,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/bv3x/text0-d9cc453e2cad2922350f.jsonl",
+   "raw_restorer": "raw/C/bv3x/self0-ba63923d3b6a04e047a1.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

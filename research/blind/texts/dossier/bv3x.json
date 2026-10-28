@@ -1,0 +1,20 @@
+{
+ "id": "bv3x",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "71567d27b2a52ae59be56e0dcc90e6342552661e7b2336311ba65e462eaa4610",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "71567d27b2a52ae59be56e0dcc90e6342552661e7b2336311ba65e462eaa4610",
+   "words": 455,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/bv3x/text0-d4e998b5a823b7073134.jsonl",
+   "raw_restorer": "raw/C/bv3x/truth0-b74826e0837b09db2594.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

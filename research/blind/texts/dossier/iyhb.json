@@ -1,0 +1,20 @@
+{
+ "id": "iyhb",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "4c2dd8199aa31173fbab9bb499be7c0e6c4e04e0acf0e3c5b1d8ffbfc97bd3a2",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "4c2dd8199aa31173fbab9bb499be7c0e6c4e04e0acf0e3c5b1d8ffbfc97bd3a2",
+   "words": 440,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/iyhb/text0-d6ed55a3272035a22fc7.jsonl",
+   "raw_restorer": "raw/C/iyhb/truth0-44bcade2b201b7fe16a2.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

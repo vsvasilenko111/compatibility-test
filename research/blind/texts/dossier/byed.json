@@ -1,0 +1,20 @@
+{
+ "id": "byed",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "9fa7bfc989abdaf8880153ba7ee48d8d9f5fa3ffd834363da5a9ecd1f03950ec",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "9fa7bfc989abdaf8880153ba7ee48d8d9f5fa3ffd834363da5a9ecd1f03950ec",
+   "words": 522,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/byed/text0-69233954e55adb7b20dc.jsonl",
+   "raw_restorer": "raw/C/byed/truth0-09f78edc14f8885db358.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

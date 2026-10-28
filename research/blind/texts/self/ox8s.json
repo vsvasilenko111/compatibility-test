@@ -1,0 +1,32 @@
+{
+ "id": "ox8s",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "67e171376784c58db598f0463668a84ebe93a0c978b2351adf6de71fad248907",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "ca4770f6c74519e5d16cfbd6270b8b4f99037f05d3bfebf3aadcb295eece4918",
+   "words": 406,
+   "bad": true,
+   "misses": [
+    "избегание",
+    "конфессия"
+   ],
+   "raw_author": "raw/B/ox8s/text0-63cd8a5ec42eb506d1a9.jsonl",
+   "raw_restorer": "raw/C/ox8s/self0-fe08f95027ee3fe3695d.jsonl"
+  },
+  {
+   "attempt": 2,
+   "text_sha256": "67e171376784c58db598f0463668a84ebe93a0c978b2351adf6de71fad248907",
+   "words": 428,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/ox8s/text1-c2ff0ebf3990c45e1dc7.jsonl",
+   "raw_restorer": "raw/C/ox8s/self1-ec290524652058907463.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

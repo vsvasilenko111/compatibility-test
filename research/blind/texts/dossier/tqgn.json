@@ -1,0 +1,20 @@
+{
+ "id": "tqgn",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "6c9795daeb41328aeca646ab5cfcbf4f8dbe8d6d568cc359d67f5be8dd4624fc",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "6c9795daeb41328aeca646ab5cfcbf4f8dbe8d6d568cc359d67f5be8dd4624fc",
+   "words": 431,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/tqgn/text0-05260c117d25071a9f48.jsonl",
+   "raw_restorer": "raw/C/tqgn/truth0-d4bd7b6c8008085fa8e3.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

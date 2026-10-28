@@ -1,0 +1,20 @@
+{
+ "id": "shvz",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "2137651c688a5b7e0432986e2c00f7b1ee7005f0cbe6952f33a973a2eea35b82",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "2137651c688a5b7e0432986e2c00f7b1ee7005f0cbe6952f33a973a2eea35b82",
+   "words": 501,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/shvz/text0-d0b59287ab514825f6bf.jsonl",
+   "raw_restorer": "raw/C/shvz/truth0-dc8c01eb7b45fda72873.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

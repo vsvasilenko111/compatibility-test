@@ -1,0 +1,20 @@
+{
+ "id": "nien",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "15d03aa8e7bd913017f8da9d5876ae8c7112e63da535d34f9cfe1f8c3ec00d90",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "15d03aa8e7bd913017f8da9d5876ae8c7112e63da535d34f9cfe1f8c3ec00d90",
+   "words": 520,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/nien/text0-f64ab01580b1371a198a.jsonl",
+   "raw_restorer": "raw/C/nien/truth0-f2315d5d545967eae31f.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

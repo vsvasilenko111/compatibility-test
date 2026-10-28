@@ -1,0 +1,20 @@
+{
+ "id": "p2ox",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "897d952b665b03ab9e4cf0f7bc561f76dbeda0b41c237a9fb664214bf30ef2f5",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "897d952b665b03ab9e4cf0f7bc561f76dbeda0b41c237a9fb664214bf30ef2f5",
+   "words": 497,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/p2ox/text0-9c9e9a8d7633352b96f3.jsonl",
+   "raw_restorer": "raw/C/p2ox/truth0-792737d267caec4ddec4.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

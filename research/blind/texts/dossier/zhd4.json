@@ -1,0 +1,20 @@
+{
+ "id": "zhd4",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "a0e24e781273527623f700f6db94002cdef57f0aaac3cbf518cfa9b35a29c10e",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "a0e24e781273527623f700f6db94002cdef57f0aaac3cbf518cfa9b35a29c10e",
+   "words": 485,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/zhd4/text0-ac08504d7fdc909d960e.jsonl",
+   "raw_restorer": "raw/C/zhd4/truth0-fc45233526ca3b2acfbb.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

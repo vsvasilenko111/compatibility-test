@@ -1,0 +1,20 @@
+{
+ "id": "ekxp",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "cf20970b10d0318efbbeb60b49545122a9b3ea054670bf59944f376254c3c8b4",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "cf20970b10d0318efbbeb60b49545122a9b3ea054670bf59944f376254c3c8b4",
+   "words": 364,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/ekxp/text0-2572e01bedfe6f86d2e3.jsonl",
+   "raw_restorer": "raw/C/ekxp/self0-85b7db5828f7847fa814.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

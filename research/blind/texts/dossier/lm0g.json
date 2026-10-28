@@ -1,0 +1,20 @@
+{
+ "id": "lm0g",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "62cb932eb5f24418b2446445f3a835ed7797b786072273f07ede2fdc64e24084",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "62cb932eb5f24418b2446445f3a835ed7797b786072273f07ede2fdc64e24084",
+   "words": 465,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/lm0g/text0-3257d9463f22f814fdad.jsonl",
+   "raw_restorer": "raw/C/lm0g/truth0-0509f789e442de95caff.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

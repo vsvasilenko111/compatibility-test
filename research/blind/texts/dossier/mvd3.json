@@ -1,0 +1,20 @@
+{
+ "id": "mvd3",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "c7af8f4c2bfa618c3829c85856972c64c9e458cb633de3ec9b4d5ef90d333b86",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "c7af8f4c2bfa618c3829c85856972c64c9e458cb633de3ec9b4d5ef90d333b86",
+   "words": 499,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/mvd3/text0-2ea50ed73d8776dbd1c2.jsonl",
+   "raw_restorer": "raw/C/mvd3/truth0-040ca3e1e9d328cae816.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

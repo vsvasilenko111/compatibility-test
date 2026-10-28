@@ -1,0 +1,20 @@
+{
+ "id": "xoxa",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "ef5d25c35866d548cde54b737a246b24f97d22fd71342133b51bab93d905e050",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "ef5d25c35866d548cde54b737a246b24f97d22fd71342133b51bab93d905e050",
+   "words": 478,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/xoxa/text0-07359122084febd595f8.jsonl",
+   "raw_restorer": "raw/C/xoxa/self0-6894eed9e5fc324d113f.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

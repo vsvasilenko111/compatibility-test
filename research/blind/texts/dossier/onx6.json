@@ -3,17 +3,28 @@
  "role": "A",
  "model": "claude-opus-5-5",
  "effort": "high",
- "text_sha256": "3fb72de6f3bbe10e249e4e4d7caf02f6aec105a8ee7ad3c3c77fe045796ef19a",
+ "text_sha256": "896317912ec32cca2ee0f37b0efccbde315569ef390fdc127b18eb926c143555",
  "text_wrong": false,
  "attempts": [
   {
    "attempt": 1,
-   "text_sha256": "3fb72de6f3bbe10e249e4e4d7caf02f6aec105a8ee7ad3c3c77fe045796ef19a",
-   "words": 490,
+   "text_sha256": "a4c25a851cab1fd5b891d95db84c11054eee945cc07ac2cdcfe67d3dbe02cf1e",
+   "words": 517,
+   "bad": true,
+   "misses": [
+    "конфессия"
+   ],
+   "raw_author": "raw/A/onx6/text0-f6db7badb34fa38cff3e.jsonl",
+   "raw_restorer": "raw/C/onx6/truth0-6e2a830b3ad613b7176f.jsonl"
+  },
+  {
+   "attempt": 2,
+   "text_sha256": "896317912ec32cca2ee0f37b0efccbde315569ef390fdc127b18eb926c143555",
+   "words": 510,
    "bad": false,
    "misses": [],
-   "raw_author": "raw/A/onx6/text0-47e7ccbed298d2894b85.jsonl",
-   "raw_restorer": "raw/C/onx6/truth0-b17aeadddeb91036c666.jsonl"
+   "raw_author": "raw/A/onx6/text1-d15672000962a63c0b1d.jsonl",
+   "raw_restorer": "raw/C/onx6/truth1-5088a93eabf50e2b4abc.jsonl"
   }
  ],
  "restorer_model": "claude-opus-5"

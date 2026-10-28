@@ -1,0 +1,193 @@
+{
+ "finished": "2026-10-28T15:43:52+00:00",
+ "wall_seconds": 731.5,
+ "ids": [
+  "odsu",
+  "oks0",
+  "ox84",
+  "ox8s",
+  "p2ox",
+  "pfgb",
+  "pjqb",
+  "q2h8",
+  "qwcx",
+  "rxsg",
+  "s6be",
+  "s7fv",
+  "sbbb",
+  "shvz",
+  "tpr7",
+  "tqgn",
+  "u7u9",
+  "u94x",
+  "u9uv"
+ ],
+ "roles": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "models": {
+  "A": [
+   "claude-opus-5-5",
+   "high"
+  ],
+  "B": [
+   "claude-sonnet-5-5",
+   "high"
+  ],
+  "C": [
+   "claude-opus-5",
+   "medium"
+  ],
+  "D": [
+   "claude-opus-5-5",
+   "medium"
+  ]
+ },
+ "stats": {
+  "calls": 405,
+  "cached": 0,
+  "rejected_fabricated": 0,
+  "rejected_unparsable": 2,
+  "api_errors": 0,
+  "cost_usd": 13.253355399999991,
+  "call_seconds": 2913.409567832947
+ },
+ "people": [
+  {
+   "id": "ox84",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 279.7
+  },
+  {
+   "id": "odsu",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 316.1
+  },
+  {
+   "id": "p2ox",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 345.5
+  },
+  {
+   "id": "pfgb",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 365.9
+  },
+  {
+   "id": "q2h8",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 388.2
+  },
+  {
+   "id": "qwcx",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 411.8
+  },
+  {
+   "id": "rxsg",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 436.0
+  },
+  {
+   "id": "s6be",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 487.6
+  },
+  {
+   "id": "oks0",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 494.5
+  },
+  {
+   "id": "tqgn",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 513.8
+  },
+  {
+   "id": "u9uv",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 539.9
+  },
+  {
+   "id": "s7fv",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 566.4
+  },
+  {
+   "id": "u94x",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 587.2
+  },
+  {
+   "id": "shvz",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 609.0
+  },
+  {
+   "id": "pjqb",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 630.0
+  },
+  {
+   "id": "tpr7",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 656.4
+  },
+  {
+   "id": "u7u9",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 682.7
+  },
+  {
+   "id": "ox8s",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 708.4
+  },
+  {
+   "id": "sbbb",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 731.4
+  }
+ ]
+}

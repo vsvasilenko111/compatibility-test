@@ -1,0 +1,20 @@
+{
+ "id": "ufpl",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "9551d798287a096814acd7ea2f016b5d684535256dc196c4bc578a5d2237861a",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "9551d798287a096814acd7ea2f016b5d684535256dc196c4bc578a5d2237861a",
+   "words": 431,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/ufpl/text0-0915ccd08efae4c75900.jsonl",
+   "raw_restorer": "raw/C/ufpl/self0-f9f737171e0d8958f661.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

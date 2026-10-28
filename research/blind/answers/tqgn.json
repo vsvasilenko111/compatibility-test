@@ -1,0 +1,993 @@
+{
+ "id": "tqgn",
+ "bank_version": 16,
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "selfdesc_sha256": "d8077a75cc2643f6e784756dcfb47c49d811071716ab5391def24845121b0881",
+ "note": "option — номер варианта банка 1..5 (1 = первый вариант, левый полюс); shown — номер, как показан D",
+ "responses": {
+  "humor-12": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "budget-01": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "leisure-01": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "kids-01": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "values-01": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "budget-02": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "conflicts-01": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "roles-01": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "humor-02": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "kids-02": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true,
+   "firm": false
+  },
+  "leisure-02": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "kids-09": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "life-01": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "living-01": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "life-02": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true,
+   "firm": false
+  },
+  "loyalty-01": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "contact-01": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "honesty-01": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "budget-03": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "intimacy-01": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "values-02": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "space-07": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "conflicts-02": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "space-08": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true,
+   "firm": false
+  },
+  "relatives-01": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "humor-03": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "roles-02": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "kids-08": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true,
+   "firm": false
+  },
+  "rhythm-08": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "kids-11": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false,
+   "firm": false
+  },
+  "home-02": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "loyalty-02": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "home-07": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true,
+   "firm": false
+  },
+  "home-10": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "honesty-02": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "career-02": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "life-04": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "budget-09": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "values-03": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "intimacy-02": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "conflicts-03": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "space-02": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "humor-04": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "relatives-02": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "leisure-04": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "roles-03": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "rhythm-03": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "kids-04": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "humor-11": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "loyalty-03": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "home-03": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "rhythm-10": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "home-12": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "honesty-03": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "living-03": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true,
+   "firm": false
+  },
+  "career-03": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "money-03": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "values-04": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false,
+   "firm": false
+  },
+  "budget-05": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "values-10": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "conflicts-09": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "intimacy-03": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "humor-09": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "space-03": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "budget-10": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "leisure-05": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "relatives-07": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true,
+   "firm": false
+  },
+  "rhythm-04": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "relatives-09": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false,
+   "firm": false
+  },
+  "home-08": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false,
+   "firm": false
+  },
+  "roles-04": {
+   "option": 5,
+   "shown": 1,
+   "reversed": true
+  },
+  "life-06": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "leisure-10": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "loyalty-04": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "honesty-04": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "home-04": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "living-04": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "roles-08": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "career-04": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "conflicts-10": {
+   "option": 5,
+   "shown": 1,
+   "reversed": true
+  },
+  "space-10": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "budget-06": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "humor-06": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "intimacy-04": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "leisure-06": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "space-04": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "relatives-04": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "loyalty-05": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "roles-05": {
+   "option": 1,
+   "shown": 5,
+   "reversed": true
+  },
+  "honesty-05": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "kids-06": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "home-05": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "life-07": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "kids-10": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "values-06": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "living-05": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "conflicts-06": {
+   "option": 5,
+   "shown": 1,
+   "reversed": true
+  },
+  "relatives-08": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "career-07": {
+   "option": 1,
+   "shown": 5,
+   "reversed": true
+  },
+  "humor-07": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "budget-07": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "leisure-11": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false
+  },
+  "life-08": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "intimacy-05": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "space-05": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "relatives-05": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "honesty-06": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "roles-06": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "kids-07": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "values-07": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "home-06": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "life-09": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "conflicts-07": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "living-06": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "intimacy-06": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "humor-08": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "career-06": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "leisure-08": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "budget-08": {
+   "option": 1,
+   "shown": 5,
+   "reversed": true
+  },
+  "rhythm-07": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "space-09": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "loyalty-07": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "life-10": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "home-09": {
+   "option": 1,
+   "shown": 1,
+   "reversed": false,
+   "firm": false
+  },
+  "space-06": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "honesty-07": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "relatives-06": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "money-07": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "roles-07": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "conflicts-08": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "values-09": {
+   "option": 3,
+   "shown": 3,
+   "reversed": true
+  },
+  "reflect-01": {
+   "option": 5,
+   "shown": 1,
+   "reversed": true
+  },
+  "attach-01": {
+   "option": 4,
+   "shown": 2,
+   "reversed": true
+  },
+  "reflect-02": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "attach-03": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "reflect-03": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "regul-08": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "reflect-04": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "trauma-01": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  },
+  "trauma-02": {
+   "option": 3,
+   "shown": 3,
+   "reversed": false
+  },
+  "trauma-03": {
+   "option": 2,
+   "shown": 4,
+   "reversed": true
+  },
+  "trauma-05": {
+   "option": 4,
+   "shown": 4,
+   "reversed": false
+  },
+  "trauma-06": {
+   "option": 2,
+   "shown": 2,
+   "reversed": false
+  }
+ },
+ "priorities": [
+  "kids",
+  "intimacy",
+  "leisure",
+  "home",
+  "roles"
+ ],
+ "plan": {
+  "seed": "SeedSequence(20261028).spawn(13)[12] (answerer_order) + sha256(id)[:8]",
+  "batch_sizes": [
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   9,
+   8
+  ],
+  "sees_previous_answers": false,
+  "order": [
+   "home-04",
+   "loyalty-05",
+   "home-12",
+   "rhythm-04",
+   "humor-02",
+   "humor-03",
+   "roles-02",
+   "career-07",
+   "reflect-01",
+   "relatives-05",
+   "budget-06",
+   "living-04",
+   "loyalty-07",
+   "intimacy-02",
+   "loyalty-02",
+   "budget-02",
+   "relatives-04",
+   "trauma-06",
+   "values-10",
+   "humor-04",
+   "budget-03",
+   "life-09",
+   "roles-04",
+   "honesty-03",
+   "budget-01",
+   "kids-02",
+   "life-02",
+   "values-03",
+   "reflect-02",
+   "relatives-01",
+   "budget-05",
+   "intimacy-01",
+   "humor-11",
+   "conflicts-01",
+   "space-10",
+   "conflicts-02",
+   "life-01",
+   "leisure-10",
+   "roles-08",
+   "rhythm-07",
+   "trauma-05",
+   "space-05",
+   "space-03",
+   "life-10",
+   "humor-06",
+   "money-03",
+   "kids-08",
+   "kids-06",
+   "space-06",
+   "budget-09",
+   "relatives-07",
+   "budget-08",
+   "attach-01",
+   "life-08",
+   "budget-10",
+   "home-08",
+   "reflect-04",
+   "space-02",
+   "conflicts-03",
+   "values-06",
+   "leisure-01",
+   "conflicts-09",
+   "values-07",
+   "kids-09",
+   "values-01",
+   "conflicts-08",
+   "conflicts-10",
+   "intimacy-03",
+   "leisure-08",
+   "values-04",
+   "honesty-05",
+   "roles-03",
+   "kids-07",
+   "leisure-04",
+   "honesty-06",
+   "life-07",
+   "living-01",
+   "living-03",
+   "relatives-06",
+   "conflicts-07",
+   "career-02",
+   "career-06",
+   "intimacy-05",
+   "humor-12",
+   "rhythm-03",
+   "trauma-01",
+   "humor-09",
+   "attach-03",
+   "home-06",
+   "home-07",
+   "home-09",
+   "space-08",
+   "roles-05",
+   "reflect-03",
+   "leisure-11",
+   "roles-06",
+   "home-10",
+   "budget-07",
+   "honesty-04",
+   "space-07",
+   "space-04",
+   "kids-10",
+   "honesty-02",
+   "life-04",
+   "contact-01",
+   "values-02",
+   "career-04",
+   "loyalty-01",
+   "trauma-02",
+   "relatives-09",
+   "conflicts-06",
+   "intimacy-04",
+   "humor-08",
+   "career-03",
+   "home-02",
+   "living-05",
+   "intimacy-06",
+   "kids-11",
+   "relatives-08",
+   "trauma-03",
+   "kids-04",
+   "living-06",
+   "loyalty-04",
+   "values-09",
+   "money-07",
+   "honesty-07",
+   "honesty-01",
+   "leisure-06",
+   "relatives-02",
+   "life-06",
+   "roles-07",
+   "home-03",
+   "leisure-05",
+   "kids-01",
+   "rhythm-10",
+   "regul-08",
+   "roles-01",
+   "space-09",
+   "leisure-02",
+   "home-05",
+   "humor-07",
+   "loyalty-03",
+   "rhythm-08"
+  ],
+  "reversed": [
+   "leisure-01",
+   "conflicts-01",
+   "roles-01",
+   "kids-02",
+   "life-01",
+   "life-02",
+   "loyalty-01",
+   "honesty-01",
+   "space-08",
+   "kids-08",
+   "rhythm-08",
+   "home-02",
+   "loyalty-02",
+   "home-07",
+   "home-10",
+   "honesty-02",
+   "values-03",
+   "relatives-02",
+   "loyalty-03",
+   "home-03",
+   "rhythm-10",
+   "living-03",
+   "career-03",
+   "money-03",
+   "values-10",
+   "conflicts-09",
+   "humor-09",
+   "relatives-07",
+   "roles-04",
+   "loyalty-04",
+   "conflicts-10",
+   "space-10",
+   "budget-06",
+   "relatives-04",
+   "loyalty-05",
+   "roles-05",
+   "kids-06",
+   "home-05",
+   "kids-10",
+   "conflicts-06",
+   "career-07",
+   "humor-07",
+   "budget-07",
+   "space-05",
+   "relatives-05",
+   "honesty-06",
+   "kids-07",
+   "values-07",
+   "humor-08",
+   "budget-08",
+   "rhythm-07",
+   "space-09",
+   "life-10",
+   "honesty-07",
+   "money-07",
+   "conflicts-08",
+   "values-09",
+   "reflect-01",
+   "attach-01",
+   "reflect-04",
+   "trauma-03"
+  ]
+ },
+ "raw": [
+  "raw/D/tqgn/batch00-cf58eef6f3c84a54cc62.jsonl",
+  "raw/D/tqgn/batch01-f775dd5fac3e8401a36b.jsonl",
+  "raw/D/tqgn/batch02-059a25f8bda0107d112f.jsonl",
+  "raw/D/tqgn/batch03-96919eb9d29847358f29.jsonl",
+  "raw/D/tqgn/batch04-b0a96142b1227b84d325.jsonl",
+  "raw/D/tqgn/batch05-b75dfb8b84d93b3f7b3d.jsonl",
+  "raw/D/tqgn/batch06-9f926b6540a5a4c286a9.jsonl",
+  "raw/D/tqgn/batch07-3a47d4e4a3eb1f867341.jsonl",
+  "raw/D/tqgn/batch08-c90b0129bcefb4243e58.jsonl",
+  "raw/D/tqgn/batch09-67d73916654d63674c70.jsonl",
+  "raw/D/tqgn/batch10-0fea70a6afcf8d6381c5.jsonl",
+  "raw/D/tqgn/batch11-231542601884153ff82f.jsonl",
+  "raw/D/tqgn/batch12-709b29dad1148f905dd5.jsonl",
+  "raw/D/tqgn/batch13-07cdf8aa523d562423b9.jsonl",
+  "raw/D/tqgn/batch14-2107a03bb79a23f09344.jsonl",
+  "raw/D/tqgn/batch15-1643102e609d3a39d13e.jsonl",
+  "raw/D/tqgn/priorities-2d7cf67c609fbada48c6.jsonl"
+ ]
+}

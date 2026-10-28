@@ -1,0 +1,20 @@
+{
+ "id": "f140",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "446841dff97bc5118ed2ce49fda54f5b0962478d2e8ac34ff87e9ad940fd4dfa",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "446841dff97bc5118ed2ce49fda54f5b0962478d2e8ac34ff87e9ad940fd4dfa",
+   "words": 486,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/f140/text0-48ffc78a27a0cea5bd1f.jsonl",
+   "raw_restorer": "raw/C/f140/truth0-22e3ae3de1c734bd9524.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}
