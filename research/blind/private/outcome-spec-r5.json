@@ -1,0 +1,20 @@
+{
+ "_note": "Формула исхода, редакция 5 (design.md, 17). Записана до генерации новых полей, свойств пар и исходов. Дополняет outcome-spec.json (ред. 4): прежние члены ind, mis, beta_sim, ind_sat, mis_sat_mult берутся из него без изменений. Все числа — [допущение]: из литературы взяты знаки и порядок силы (base-rates, «Юмор, близость, родня»), сами величины — суждение автора. Владельцу теста не показывать (design.md, 6, 8.3). SHA-256 этого файла записан в design.md, 17.",
+ "base_spec": "outcome-spec.json",
+ "ind_r5": {"HUM_AGG": 0.08},
+ "ind_sat_r5": {"HUM_AGG": 0.10, "HUM_AFF": -0.06},
+ "pair_r5": {"sex": 0.15, "against": 0.30, "neutral": 0.10, "close_amp": 0.5, "inlaw_w": 0.15, "inlaw_m": 0.08, "par_live": 0.0},
+ "pair_sat_r5": {"sex": 0.30, "against": 0.10, "neutral": 0.03, "close_amp": 0.5, "inlaw_w": 0.12, "inlaw_m": 0.08, "par_live": 0.08},
+ "_note_pair": "sex — на 1 SD средней по двоим латентной сексуальной удовлетворённости (знак: ниже удовлетворённость — выше риск); against / neutral — индикатор «родня этой стороны против / нейтральна», умножается на (1 + close_amp), если человек этой стороны считается с родителями сильнее всего (FAM_CLOSE — верхняя категория); inlaw_w / inlaw_m — заметный конфликт женщины / мужчины с роднёй партнёра; par_live — пара живёт с родителями.",
+ "sigma_U2_total_pair_specific": 1.2,
+ "sexsat_U_corr": 0.3,
+ "expect_draws": 256,
+ "gamma_duration_per_ln_year": -0.25,
+ "stage_targets_3y_breakup": {"встречаются": 0.50, "живут вместе": 0.30, "в браке": 0.15},
+ "k_rule": {"target_R2_selfreport_formula": 0.10, "tolerance": 0.02, "k_bounds": [0.5, 1.5]},
+ "sat_shares": {"skeleton": 0.17, "U": 0.20},
+ "sat_U_corr": 0.9,
+ "csi4": {"mean": 16, "sd": 4.7, "max": 21, "distress_below": 13.5},
+ "ensemble": {"n": 30, "sigma_log_multiplier": 0.354, "note": "члены ансамбля ред. 4 сохраняют свои множители прежних коэффициентов; новым коэффициентам (ind_r5, ind_sat_r5, pair_r5, pair_sat_r5, кроме нулевых) — свои множители, 95% интервал ×/÷2, знак фиксирован, зерно ensemble_r5"},
+ "checks": {"skeleton_plus_pair_specific_share_max": 0.45, "R2_selfreport_range": [0.08, 0.12]}
+}
