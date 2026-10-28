@@ -7,6 +7,9 @@
 // calibrate(): калибровка монотонна, на ранги не влияет, кроме обрезки краёв) с важными сферами и без них, процент по
 // каждой сфере и процент без каждой сферы (вклад сфер, 06-metric.md).
 // Запуск из корня проекта:  npx vite-node research/blind/score_pairs.ts
+// Вторая партия (design.md 18.6, отчёт 07):  npx vite-node research/blind/score_pairs.ts -- --batch 2
+//   читает b2-people.json, пишет metric/b2-scores.json (все 25 × 25 пар второй партии; пары партий не пересекаются).
+// Версия теста — банк v16 и src/scoring/ коммита 035f4c0 (18.6); на другом банке скрипт падает (ответы D — на v16).
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import { QUESTIONS, BANK_VERSION } from '../../src/questions';
@@ -17,8 +20,15 @@ import { answerFor, OPTION_VALUES } from '../../src/answer';
 import type { Priority, Profile } from '../../src/types';
 
 const ROOT = 'research/blind';
+// строгий разбор аргументов (критик 07, п. 8): незнакомый аргумент — ошибка, а не тихая перезапись scores.json
+const ARGS = process.argv.slice(2).filter((a) => a !== '--');
+if (!(ARGS.length === 0 || (ARGS.length === 2 && ARGS[0] === '--batch' && ARGS[1] === '2')))
+  throw new Error(`аргументы: ничего (первая партия) или «--batch 2»; получено: ${ARGS.join(' ')}`);
+const BATCH2 = ARGS.length === 2;
+const PEOPLE_FILE = BATCH2 ? 'b2-people.json' : 'people.json';
+const OUT_FILE = BATCH2 ? 'b2-scores.json' : 'scores.json';
 const read = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
-const people = (read(`${ROOT}/people.json`).people as any[]).map((p) => ({ id: p.id as string, sex: p.sex as string }));
+const people = (read(`${ROOT}/${PEOPLE_FILE}`).people as any[]).map((p) => ({ id: p.id as string, sex: p.sex as string }));
 
 function profile(id: string, withPrio: boolean): Profile {
   const rec = read(`${ROOT}/answers/${id}.json`);
@@ -70,12 +80,25 @@ for (const m of men) for (const w of women) {
 }
 
 const sha = (p: string) => createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+// хеш всего дерева src/ (критик 07, п. 2): в балл входят и calibration.ts, answer.ts, types.ts; пишется только во второй
+// партии, чтобы файл первой партии (отчёт 06) оставался воспроизводимым побайтно
+function treeSha(dir: string): string {
+  const h = createHash('sha256');
+  const walk = (d: string) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      const f = `${d}/${e.name}`;
+      if (e.isDirectory()) walk(f); else h.update(`${f} ${sha(f)}\n`);
+    }
+  };
+  walk(dir);
+  return h.digest('hex');
+}
 const answersHash = createHash('sha256');
 for (const p of [...people].sort((a, b) => a.id.localeCompare(b.id))) answersHash.update(`${p.id} ${sha(`${ROOT}/answers/${p.id}.json`)}\n`);
 fs.mkdirSync(`${ROOT}/metric`, { recursive: true });
-fs.writeFileSync(`${ROOT}/metric/scores.json`, JSON.stringify({
+fs.writeFileSync(`${ROOT}/metric/${OUT_FILE}`, JSON.stringify({
   meta: {
-    generator: 'research/blind/score_pairs.ts', bank_version: BANK_VERSION, bank_sha256: sha('src/questions/bank.json'),
+    generator: 'research/blind/score_pairs.ts', ...(BATCH2 ? { batch: 2, people_file: PEOPLE_FILE, src_tree_sha256: treeSha('src') } : {}), bank_version: BANK_VERSION, bank_sha256: sha('src/questions/bank.json'),
     compare_sha256: sha('src/scoring/compare.ts'), spheres_sha256: sha('src/questions/spheres.ts'),
     answers_sha256: answersHash.digest('hex'), scored_questions: scored.length, spheres,
     note: 'score — relationship.percent (сырой, до calibrate()), с 5 важными сферами ×3; score_no_prio — все сферы ×1 (16.10). '

@@ -1,0 +1,321 @@
+{
+ "note": "ЗАКРЫТО: вклад сфер теста в главную метрику и согласие вариантов ансамбля с центральной формулой (объединённая рабочая часть, 18.6). Владельцу теста — только словами (reviews/07-metric-88.md).",
+ "spheres": {
+  "budget": {
+   "rho_sphere_alone": 0.1431,
+   "contribution_prio": {
+    "delta": 0.0321,
+    "ci95": [
+     -0.0395,
+     0.1132
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0138,
+    "ci95": [
+     -0.0774,
+     0.0978
+    ]
+   }
+  },
+  "career": {
+   "rho_sphere_alone": 0.0879,
+   "contribution_prio": {
+    "delta": -0.0007,
+    "ci95": [
+     -0.0306,
+     0.0314
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0006,
+    "ci95": [
+     -0.0316,
+     0.0331
+    ]
+   }
+  },
+  "conflicts": {
+   "rho_sphere_alone": 0.1904,
+   "contribution_prio": {
+    "delta": 0.0202,
+    "ci95": [
+     -0.0532,
+     0.0896
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.02,
+    "ci95": [
+     -0.0605,
+     0.1082
+    ]
+   }
+  },
+  "contact": {
+   "rho_sphere_alone": 0.1833,
+   "contribution_prio": {
+    "delta": 0.0012,
+    "ci95": [
+     -0.0191,
+     0.0258
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0031,
+    "ci95": [
+     -0.0281,
+     0.0344
+    ]
+   }
+  },
+  "habits": {
+   "rho_sphere_alone": -0.0501,
+   "contribution_prio": {
+    "delta": 0.0021,
+    "ci95": [
+     -0.0455,
+     0.0604
+    ]
+   },
+   "contribution_noprio": {
+    "delta": -0.0213,
+    "ci95": [
+     -0.0832,
+     0.0378
+    ]
+   }
+  },
+  "home": {
+   "rho_sphere_alone": 0.0178,
+   "contribution_prio": {
+    "delta": 0.0126,
+    "ci95": [
+     -0.0215,
+     0.0521
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0018,
+    "ci95": [
+     -0.036,
+     0.0446
+    ]
+   }
+  },
+  "honesty": {
+   "rho_sphere_alone": 0.2073,
+   "contribution_prio": {
+    "delta": 0.0082,
+    "ci95": [
+     -0.0139,
+     0.0379
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0082,
+    "ci95": [
+     -0.0191,
+     0.0371
+    ]
+   }
+  },
+  "humor": {
+   "rho_sphere_alone": 0.1295,
+   "contribution_prio": {
+    "delta": 0.0115,
+    "ci95": [
+     -0.0235,
+     0.0571
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0111,
+    "ci95": [
+     -0.0406,
+     0.0799
+    ]
+   }
+  },
+  "intimacy": {
+   "rho_sphere_alone": 0.0817,
+   "contribution_prio": {
+    "delta": 0.0027,
+    "ci95": [
+     -0.0677,
+     0.0684
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0025,
+    "ci95": [
+     -0.0647,
+     0.0641
+    ]
+   }
+  },
+  "kids": {
+   "rho_sphere_alone": 0.1223,
+   "contribution_prio": {
+    "delta": 0.0259,
+    "ci95": [
+     -0.0795,
+     0.1338
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0099,
+    "ci95": [
+     -0.0696,
+     0.0892
+    ]
+   }
+  },
+  "leisure": {
+   "rho_sphere_alone": 0.0719,
+   "contribution_prio": {
+    "delta": 0.0026,
+    "ci95": [
+     -0.0475,
+     0.0544
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0013,
+    "ci95": [
+     -0.0396,
+     0.0495
+    ]
+   }
+  },
+  "living": {
+   "rho_sphere_alone": -0.0541,
+   "contribution_prio": {
+    "delta": -0.0098,
+    "ci95": [
+     -0.0693,
+     0.0416
+    ]
+   },
+   "contribution_noprio": {
+    "delta": -0.0121,
+    "ci95": [
+     -0.0782,
+     0.0487
+    ]
+   }
+  },
+  "love": {
+   "rho_sphere_alone": 0.1221,
+   "contribution_prio": {
+    "delta": 0.0045,
+    "ci95": [
+     -0.0117,
+     0.0289
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0017,
+    "ci95": [
+     -0.0298,
+     0.0292
+    ]
+   }
+  },
+  "loyalty": {
+   "rho_sphere_alone": 0.0187,
+   "contribution_prio": {
+    "delta": -0.0009,
+    "ci95": [
+     -0.0588,
+     0.0644
+    ]
+   },
+   "contribution_noprio": {
+    "delta": -0.0023,
+    "ci95": [
+     -0.066,
+     0.0595
+    ]
+   }
+  },
+  "relatives": {
+   "rho_sphere_alone": 0.0478,
+   "contribution_prio": {
+    "delta": 0.0057,
+    "ci95": [
+     -0.0552,
+     0.0662
+    ]
+   },
+   "contribution_noprio": {
+    "delta": -0.0121,
+    "ci95": [
+     -0.0765,
+     0.046
+    ]
+   }
+  },
+  "roles": {
+   "rho_sphere_alone": -0.0881,
+   "contribution_prio": {
+    "delta": -0.0683,
+    "ci95": [
+     -0.2674,
+     0.0861
+    ]
+   },
+   "contribution_noprio": {
+    "delta": -0.0387,
+    "ci95": [
+     -0.1577,
+     0.0601
+    ]
+   }
+  },
+  "space": {
+   "rho_sphere_alone": 0.1666,
+   "contribution_prio": {
+    "delta": 0.0056,
+    "ci95": [
+     -0.0734,
+     0.0819
+    ]
+   },
+   "contribution_noprio": {
+    "delta": 0.0114,
+    "ci95": [
+     -0.0616,
+     0.0734
+    ]
+   }
+  },
+  "values": {
+   "rho_sphere_alone": 0.0507,
+   "contribution_prio": {
+    "delta": 0.0072,
+    "ci95": [
+     -0.0382,
+     0.0546
+    ]
+   },
+   "contribution_noprio": {
+    "delta": -0.0002,
+    "ci95": [
+     -0.0571,
+     0.0508
+    ]
+   }
+  }
+ },
+ "ensemble_agreement_with_central": {
+  "main_30": {
+   "min": 0.9123,
+   "median": 0.9761
+  },
+  "structural_24": {
+   "min": 0.6125,
+   "median": 0.9827
+  }
+ }
+}
