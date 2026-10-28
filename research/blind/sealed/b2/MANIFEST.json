@@ -1,0 +1,9 @@
+{
+ "pairs_sha256": "8fe010ef8799e2652cba066ce6cd27f587ff10edf6a32774e94cfdfa2337ee87",
+ "outcome_sha256": "c1a5e91c3d95d6ae670c7a39bafa0f9d3c95d45deb6106359221426a6c3fae33",
+ "files": {
+  "holdout-pairs.json": "06311928bbdd600c5f4a819d5b4961d2b77626127fcae3ea4b355d9f66488628",
+  "holdout-outcomes.json": "a0500e914a5931ffab8d9c05cf3d9da60eca9cf0227e66b1025baaf666b634cd"
+ },
+ "batch": 2
+}

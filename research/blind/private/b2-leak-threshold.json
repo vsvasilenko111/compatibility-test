@@ -1,0 +1,59 @@
+{
+ "note": "Вторая партия (design.md, 18.5): потолок самоотчёта (формула ред. 5.1 по самоотчёту) и порог утечки = верхняя граница 95% бутстрэпа по людям со слоем «партия». work_combined — рабочие пары обеих партий. Записан до первого текста второй партии. Порог первой партии (leak-threshold.json) не пересчитывается.",
+ "outcome_sha256": "c1a5e91c3d95d6ae670c7a39bafa0f9d3c95d45deb6106359221426a6c3fae33",
+ "batch1_outcome_sha256": "102349620b996bb2d9c4eb3537227020640391ba9e7f3b489b57aaa5f2f0efa2",
+ "thresholds": {
+  "work_combined": {
+   "n_pairs": 141,
+   "n_people": 88,
+   "n_breakups": 43,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7508,
+   "MAIN_leak_threshold_spearman": 0.8735,
+   "MAIN_spearman_boot_95": [
+    0.5741,
+    0.8735
+   ],
+   "selfreport_ceiling_auc": 0.5704,
+   "leak_threshold_auc": 0.8
+  },
+  "holdout_batch2": {
+   "n_pairs": 21,
+   "n_people": 20,
+   "n_breakups": 5,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.8143,
+   "MAIN_leak_threshold_spearman": 0.9444,
+   "MAIN_spearman_boot_95": [
+    0.5804,
+    0.9444
+   ],
+   "selfreport_ceiling_auc": 0.3321,
+   "leak_threshold_auc": 1.0
+  },
+  "work_batch2": {
+   "n_pairs": 34,
+   "n_people": 30,
+   "n_breakups": 9,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.721,
+   "MAIN_leak_threshold_spearman": 0.931,
+   "MAIN_spearman_boot_95": [
+    0.2401,
+    0.931
+   ],
+   "selfreport_ceiling_auc": 0.349,
+   "leak_threshold_auc": 1.0
+  },
+  "all_batch2": {
+   "n_pairs": 55,
+   "n_people": 50,
+   "n_breakups": 14,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7103,
+   "MAIN_leak_threshold_spearman": 0.8883,
+   "MAIN_spearman_boot_95": [
+    0.4001,
+    0.8883
+   ],
+   "selfreport_ceiling_auc": 0.3922,
+   "leak_threshold_auc": 0.8
+  }
+ }
+}

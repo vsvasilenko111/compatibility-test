@@ -2,7 +2,8 @@
 
   python3 research/blind/run_roles.py --pilot                 # люди из pilot/pilot.json
   python3 research/blind/run_roles.py --ids q7kd ern9         # конкретные люди
-  python3 research/blind/run_roles.py --all                   # все 100 (только после порога 16.7)
+  python3 research/blind/run_roles.py --all                   # все, у кого есть inputs/truth (с design.md 18 — 150)
+  python3 research/blind/run_roles.py --batch 2               # вторая партия: 50 человек из inputs/manifest-b2.json
   ... --roles A,B,C,D   (по умолчанию все; C всегда идёт вместе с A и B)
   ... --no-call          # только кеш: упасть, если какой-то вызов не закеширован
   ... --dry-run          # показать задания первого человека и выйти
@@ -38,7 +39,8 @@ import numpy as np
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PROJECT = os.path.realpath(os.path.join(ROOT, "..", ".."))
-FORBIDDEN = [os.path.join(ROOT, x) for x in ("private", "sealed", "people.json", "selfreport.json")]
+FORBIDDEN = [os.path.join(ROOT, x) for x in ("private", "sealed", "people.json", "selfreport.json",
+                                             "b2-people.json", "b2-selfreport.json")]   # вторая партия (design.md, 18.5)
 BANK = os.path.join(PROJECT, "src", "questions", "bank.json")
 MODELS = os.path.join(ROOT, "prompts", "models.json")
 RAW = os.path.join(ROOT, "raw")
@@ -677,6 +679,7 @@ def main():
     g.add_argument("--pilot", action="store_true")
     g.add_argument("--ids", nargs="+")
     g.add_argument("--all", action="store_true")
+    g.add_argument("--batch", choices=["2"])
     ap.add_argument("--roles", default="A,B,C,D")
     ap.add_argument("--no-call", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
@@ -691,6 +694,8 @@ def main():
         ids = [r["id"] for r in read_json(os.path.join(ROOT, "pilot", "pilot.json"))["pilot"]]
     elif args.ids:
         ids = args.ids
+    elif args.batch:
+        ids = sorted(read_json(os.path.join(ROOT, "inputs", f"manifest-b{args.batch}.json"))["truth"])
     else:
         ids = sorted(os.path.basename(f)[:-5] for f in glob.glob(os.path.join(ROOT, "inputs", "truth", "*.json")))
     for pid in ids:

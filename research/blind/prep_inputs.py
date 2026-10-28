@@ -1,6 +1,7 @@
 """Вход LLM-ролям (ответ критику 2, п. 3; design.md, 13.1): одна запись на человека, только слова и категории.
 
 Запуск из корня проекта (после generate.py):  python3 research/blind/prep_inputs.py
+Вторая партия (design.md, 18.5):              python3 research/blind/prep_inputs.py --batch 2
 Выход:
   inputs/truth/<id>.json — для автора досье (A): «правда» человека словами;
   inputs/self/<id>.json  — для автора самоописания (B): самоотчёт человека словами;
@@ -135,19 +136,28 @@ def write(path, obj):
         f.write("\n")
 
 
-def main():
+def main(batch=1):
+    """batch=1 — первая партия (как раньше: people.json, selfreport.json, каталоги пересоздаются, inputs/manifest.json).
+    batch=2 — вторая партия (design.md, 18.5): b2-people.json, b2-selfreport.json; файлы дописываются в те же
+    inputs/truth и inputs/self без удаления прежних, свой манифест inputs/manifest-b2.json; если файл с таким id уже
+    есть и отличается — падение (прежние входы не перезаписываются)."""
     B.check_versions()
-    people = B.load(os.path.join(B.ROOT, "people.json"))["people"]
-    selfr = B.load(os.path.join(B.ROOT, "selfreport.json"))["people"]
+    pf, sf, mf = (("people.json", "selfreport.json", "manifest.json") if batch == 1 else
+                  ("b2-people.json", "b2-selfreport.json", "manifest-b2.json"))
+    people = B.load(os.path.join(B.ROOT, pf))["people"]
+    selfr = B.load(os.path.join(B.ROOT, sf))["people"]
     assert [p["id"] for p in people] == [s["id"] for s in selfr]
-    for sub in ("truth", "self"):
-        shutil.rmtree(os.path.join(IN, sub), ignore_errors=True)
-        os.makedirs(os.path.join(IN, sub))
+    if batch == 1:
+        for sub in ("truth", "self"):
+            shutil.rmtree(os.path.join(IN, sub), ignore_errors=True)
+            os.makedirs(os.path.join(IN, sub))
     man = {"generator": "research/blind/prep_inputs.py",
-           "people_sha256": B.sha256(os.path.join(B.ROOT, "people.json")),
-           "selfreport_sha256": B.sha256(os.path.join(B.ROOT, "selfreport.json")),
+           "people_sha256": B.sha256(os.path.join(B.ROOT, pf)),
+           "selfreport_sha256": B.sha256(os.path.join(B.ROOT, sf)),
            "note": "Вход ролям A (truth) и B (self). Владельцу теста, отвечающему D и восстановителю C не показывать.",
            "truth": {}, "self": {}}
+    if batch != 1:
+        man["batch"] = batch
     for p, s in zip(people, selfr):
         t, sr = truth_record(p), self_record(s)
         check(t)
@@ -158,11 +168,15 @@ def main():
             assert not any(wd in body for wd in FORBIDDEN_WORDS), f"анкетное слово в новых полях: {body}"
         for sub, rec in (("truth", t), ("self", sr)):
             path = os.path.join(IN, sub, f"{p['id']}.json")
+            if batch != 1 and os.path.exists(path):
+                with open(path, encoding="utf-8") as f:
+                    if f.read() != json.dumps(rec, ensure_ascii=False, indent=1) + "\n":
+                        raise SystemExit(f"inputs/{sub}/{p['id']}.json уже есть и отличается — прежние входы не перезаписываются")
             write(path, rec)
             man[sub][p["id"]] = B.sha256(path)
-    write(os.path.join(IN, "manifest.json"), man)
-    print(f"входы ролям: {len(people)} × 2; manifest sha256 {B.sha256(os.path.join(IN, 'manifest.json'))[:16]}")
+    write(os.path.join(IN, mf), man)
+    print(f"входы ролям: {len(people)} × 2; {mf} sha256 {B.sha256(os.path.join(IN, mf))[:16]}")
 
 
 if __name__ == "__main__":
-    main()
+    main(2 if sys.argv[1:] == ["--batch", "2"] else 1)

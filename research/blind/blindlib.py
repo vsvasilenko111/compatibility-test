@@ -26,6 +26,9 @@ SEED_NAMES = [
     "skeleton_ext", "selfreport_ext",   # ответ критику 2: новые поля с нулевым весом (после всех прежних)
     "pilot_pick", "pilot2_pick",        # уже заняты пилотами (spawn(19)[18], spawn(20)[19]) — вписаны, чтобы не занять
     "skeleton_r5", "selfreport_r5", "reference_r5", "pair_r5", "expect_r5", "ensemble_r5",   # ред. 5 (design.md, 17)
+    # уже заняты metric_eval.py (отчёт 06: spawn(27)[26], spawn(28)[27], spawn(29)[28]) — вписаны, чтобы не занять
+    "metric_06_boot", "metric_06_perm", "metric_06_vdraw",
+    "batch2", "batch2_balance", "metric_combined",   # вторая партия (design.md, 18.2)
 ]
 
 # Версии, на которых проверен детерминизм (ответ критику 2, п. 9). Потоки Generator могут смениться между версиями.

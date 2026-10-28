@@ -1,0 +1,215 @@
+{
+ "note": "ЗАКРЫТО: агрегаты второй партии, которые подсказывают устройство формулы (design.md, 15.1).",
+ "structural_agreement_spearman_with_central": {
+  "mis_x2_ind_x0.5": 0.919,
+  "mis_x3_ind_x0.5": 0.8686,
+  "mis_x4_ind_x0.5": 0.8374,
+  "partner_effect_0.5": 0.9701,
+  "drop_IND": 0.7072,
+  "drop_IND_continuous": 0.5435,
+  "drop_IND_binary": 0.9429,
+  "drop_MIS": 0.9562,
+  "drop_SIM": 0.9992,
+  "inter_both_anxious": 0.9927,
+  "inter_anxious_avoidant": 0.9788,
+  "inter_host_max": 0.9887,
+  "inter_all": 0.9649,
+  "inter_strong_anxious_avoidant": 0.917,
+  "inter_strong_dw_continuous": 0.8191,
+  "inter_strong_dw_both_anx_continuous": 0.8077,
+  "r5_drop_all": 0.986,
+  "r5_drop_pair": 0.9972,
+  "r5_drop_humor": 0.9905,
+  "r5_drop_intimacy": 0.9973,
+  "r5_drop_relatives": 0.9987,
+  "r5_x2": 0.9941,
+  "r5_sex_discrepancy": 0.9895,
+  "r5_humor_similarity": 0.9902
+ },
+ "strength_check_17_5": [
+  {
+   "pair_vars": "realized",
+   "which": "break",
+   "n_pairs": 55,
+   "sd_new": {
+    "relatives_disapproval": 0.06281285334590798,
+    "inlaw_conflict": 0.059157724462967326,
+    "par_live": 0.0,
+    "sex_satisfaction": 0.1336992032764326,
+    "humor_aggressive": 0.1014573758962879,
+    "humor_affiliative": 0.0
+   },
+   "sd_strong": {
+    "RISKY": 0.1333112929441699,
+    "INF": 0.1943329340492711,
+    "COMM": 0.5237207852961725,
+    "HOST": 0.3410282563439454,
+    "kids_hard": 0.12291984891057402
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.12291984891057402,
+    "inlaw_conflict": 0.12291984891057402,
+    "par_live": 0.12291984891057402,
+    "sex_satisfaction": 0.3410282563439454,
+    "humor_aggressive": 0.3410282563439454,
+    "humor_affiliative": 0.3410282563439454
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "unit_weight": {
+    "relatives_disapproval_per_side_max": 0.15,
+    "inlaw_conflict_per_person_max": 0.15,
+    "par_live": 0.0,
+    "sex_satisfaction_per_sd": 0.15,
+    "humor_aggressive_per_sd": 0.08
+   },
+   "unit_limit": {
+    "relatives_disapproval_per_side_max": 0.4,
+    "inlaw_conflict_per_person_max": 0.4,
+    "par_live": 0.4,
+    "sex_satisfaction_per_sd": 0.3,
+    "humor_aggressive_per_sd": 0.3
+   },
+   "unit_ok": {
+    "relatives_disapproval_per_side_max": true,
+    "inlaw_conflict_per_person_max": true,
+    "par_live": true,
+    "sex_satisfaction_per_sd": true,
+    "humor_aggressive_per_sd": true
+   },
+   "ok": true
+  },
+  {
+   "pair_vars": "realized",
+   "which": "sat",
+   "n_pairs": 55,
+   "sd_new": {
+    "relatives_disapproval": 0.04111423312296189,
+    "inlaw_conflict": 0.049944100984405514,
+    "par_live": 0.02077506451939738,
+    "sex_satisfaction": 0.2673984065528652,
+    "humor_aggressive": 0.12682171987035987,
+    "humor_affiliative": 0.07128550472742201
+   },
+   "sd_strong": {
+    "HOST": 0.2841902136199545,
+    "AVO": 0.3633427728891051
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.2841902136199545,
+    "inlaw_conflict": 0.2841902136199545,
+    "par_live": 0.2841902136199545,
+    "sex_satisfaction": 0.2841902136199545,
+    "humor_aggressive": 0.2841902136199545,
+    "humor_affiliative": 0.2841902136199545
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "ok": true
+  },
+  {
+   "pair_vars": "expected",
+   "which": "break",
+   "n_pairs": 55,
+   "sd_new": {
+    "relatives_disapproval": 0.020522998669380496,
+    "inlaw_conflict": 0.014642425780857962,
+    "par_live": 0.0,
+    "sex_satisfaction": 0.07170163456360529,
+    "humor_aggressive": 0.1014573758962879,
+    "humor_affiliative": 0.0
+   },
+   "sd_strong": {
+    "RISKY": 0.1333112929441699,
+    "INF": 0.1943329340492711,
+    "COMM": 0.5237207852961725,
+    "HOST": 0.3410282563439454,
+    "kids_hard": 0.12291984891057402
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.12291984891057402,
+    "inlaw_conflict": 0.12291984891057402,
+    "par_live": 0.12291984891057402,
+    "sex_satisfaction": 0.3410282563439454,
+    "humor_aggressive": 0.3410282563439454,
+    "humor_affiliative": 0.3410282563439454
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "unit_weight": {
+    "relatives_disapproval_per_side_max": 0.15,
+    "inlaw_conflict_per_person_max": 0.15,
+    "par_live": 0.0,
+    "sex_satisfaction_per_sd": 0.15,
+    "humor_aggressive_per_sd": 0.08
+   },
+   "unit_limit": {
+    "relatives_disapproval_per_side_max": 0.4,
+    "inlaw_conflict_per_person_max": 0.4,
+    "par_live": 0.4,
+    "sex_satisfaction_per_sd": 0.3,
+    "humor_aggressive_per_sd": 0.3
+   },
+   "unit_ok": {
+    "relatives_disapproval_per_side_max": true,
+    "inlaw_conflict_per_person_max": true,
+    "par_live": true,
+    "sex_satisfaction_per_sd": true,
+    "humor_aggressive_per_sd": true
+   },
+   "ok": true
+  },
+  {
+   "pair_vars": "expected",
+   "which": "sat",
+   "n_pairs": 55,
+   "sd_new": {
+    "relatives_disapproval": 0.013400703127331893,
+    "inlaw_conflict": 0.01251644063450248,
+    "par_live": 0.0025394358633626154,
+    "sex_satisfaction": 0.14340326912721058,
+    "humor_aggressive": 0.12682171987035987,
+    "humor_affiliative": 0.07128550472742201
+   },
+   "sd_strong": {
+    "HOST": 0.2841902136199545,
+    "AVO": 0.3633427728891051
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.2841902136199545,
+    "inlaw_conflict": 0.2841902136199545,
+    "par_live": 0.2841902136199545,
+    "sex_satisfaction": 0.2841902136199545,
+    "humor_aggressive": 0.2841902136199545,
+    "humor_affiliative": 0.2841902136199545
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "ok": true
+  }
+ ]
+}

@@ -1,0 +1,732 @@
+{
+ "meta": {
+  "generator": "research/blind/batch2.py",
+  "batch": 2,
+  "master_seed": 20261028,
+  "lib_versions": {
+   "numpy": "2.0.2",
+   "scipy": "1.13.1"
+  },
+  "revision": "5.1",
+  "pairs_sha256": "8fe010ef8799e2652cba066ce6cd27f587ff10edf6a32774e94cfdfa2337ee87",
+  "pair_vars_sha256": "2b7f70e15320d6daa4de561beeb15caf18397e2acb6ce41190bf11af81f59bcf",
+  "model_r5_sha256": "6cc0b618c8eef37326f13960966f88fdd3dd5dff232738619a309253f68c15cd",
+  "outcome_spec_r5_sha256": "9e9cde663c2cd71f1dbb3fae5e84fe1627bf6ac18b690c9b5cf431fd818bae4b",
+  "note": "ЗАКРЫТО. Исход второй партии по формуле ред. 5.1 (без изменений), посчитан до любого текста. risk_logit_skeleton — главная метрика."
+ },
+ "outcomes": [
+  {
+   "pair_id": "ae6nha",
+   "p_together_3y": 0.2727,
+   "together_3y": false,
+   "breakup_month": 2,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.34,
+   "risk_logit_skeleton": 0.66536,
+   "risk_logit_with_pair_vars": 0.65513,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ajvswf",
+   "p_together_3y": 0.9129,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.74,
+   "risk_logit_skeleton": 1.75868,
+   "risk_logit_with_pair_vars": 1.70743,
+   "mismatches": [
+    "drink",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "axlkfi",
+   "p_together_3y": 0.8729,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.79,
+   "risk_logit_skeleton": -0.24971,
+   "risk_logit_with_pair_vars": 0.05102,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "aycq0y",
+   "p_together_3y": 0.6239,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.85,
+   "risk_logit_skeleton": 0.4483,
+   "risk_logit_with_pair_vars": 0.47944,
+   "mismatches": []
+  },
+  {
+   "pair_id": "b4szkp",
+   "p_together_3y": 0.793,
+   "together_3y": false,
+   "breakup_month": 19,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 18.08,
+   "risk_logit_skeleton": 0.42909,
+   "risk_logit_with_pair_vars": 0.26991,
+   "mismatches": []
+  },
+  {
+   "pair_id": "cek0oc",
+   "p_together_3y": 0.9686,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.79,
+   "risk_logit_skeleton": 0.16935,
+   "risk_logit_with_pair_vars": 0.16357,
+   "mismatches": []
+  },
+  {
+   "pair_id": "czn1ty",
+   "p_together_3y": 0.9061,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 12,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 15.69,
+   "risk_logit_skeleton": 0.4114,
+   "risk_logit_with_pair_vars": 0.57286,
+   "mismatches": []
+  },
+  {
+   "pair_id": "dj12jq",
+   "p_together_3y": 0.457,
+   "together_3y": false,
+   "breakup_month": 26,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 12.21,
+   "risk_logit_skeleton": 1.01839,
+   "risk_logit_with_pair_vars": 1.3412,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "eir5s3",
+   "p_together_3y": 0.4113,
+   "together_3y": false,
+   "breakup_month": 33,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 12.7,
+   "risk_logit_skeleton": 1.85701,
+   "risk_logit_with_pair_vars": 2.16646,
+   "mismatches": []
+  },
+  {
+   "pair_id": "emjho1",
+   "p_together_3y": 0.9853,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.35,
+   "risk_logit_skeleton": 0.42358,
+   "risk_logit_with_pair_vars": 0.21634,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "fcggti",
+   "p_together_3y": 0.2884,
+   "together_3y": false,
+   "breakup_month": 20,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.61,
+   "risk_logit_skeleton": 2.76915,
+   "risk_logit_with_pair_vars": 2.72882,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "fh456q",
+   "p_together_3y": 0.0403,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 10.02,
+   "risk_logit_skeleton": 1.91793,
+   "risk_logit_with_pair_vars": 2.04281,
+   "mismatches": []
+  },
+  {
+   "pair_id": "gzpjz4",
+   "p_together_3y": 0.9419,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.63,
+   "risk_logit_skeleton": 0.37369,
+   "risk_logit_with_pair_vars": 0.38263,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "hcr7lv",
+   "p_together_3y": 0.5613,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.57,
+   "risk_logit_skeleton": 0.37824,
+   "risk_logit_with_pair_vars": 0.33645,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "j40ukk",
+   "p_together_3y": 0.8668,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.55,
+   "risk_logit_skeleton": 1.13723,
+   "risk_logit_with_pair_vars": 0.94755,
+   "mismatches": [
+    "kids_hard",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "jv59az",
+   "p_together_3y": 0.9405,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.15,
+   "risk_logit_skeleton": -0.39642,
+   "risk_logit_with_pair_vars": -0.21658,
+   "mismatches": []
+  },
+  {
+   "pair_id": "jvzz31",
+   "p_together_3y": 0.4916,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.61,
+   "risk_logit_skeleton": 1.08338,
+   "risk_logit_with_pair_vars": 1.02995,
+   "mismatches": []
+  },
+  {
+   "pair_id": "jwoq5r",
+   "p_together_3y": 0.9284,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.11,
+   "risk_logit_skeleton": -0.61516,
+   "risk_logit_with_pair_vars": -0.33004,
+   "mismatches": []
+  },
+  {
+   "pair_id": "k16q3r",
+   "p_together_3y": 0.9506,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.99,
+   "risk_logit_skeleton": 0.03614,
+   "risk_logit_with_pair_vars": 0.03477,
+   "mismatches": []
+  },
+  {
+   "pair_id": "k1m323",
+   "p_together_3y": 0.3421,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 9,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.05,
+   "risk_logit_skeleton": 2.32396,
+   "risk_logit_with_pair_vars": 2.38228,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "k3nrqp",
+   "p_together_3y": 0.6136,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 13.82,
+   "risk_logit_skeleton": 2.65406,
+   "risk_logit_with_pair_vars": 2.42679,
+   "mismatches": []
+  },
+  {
+   "pair_id": "kepxxl",
+   "p_together_3y": 0.9744,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.53,
+   "risk_logit_skeleton": -1.18207,
+   "risk_logit_with_pair_vars": -1.35976,
+   "mismatches": []
+  },
+  {
+   "pair_id": "l0qent",
+   "p_together_3y": 0.8866,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.75,
+   "risk_logit_skeleton": 1.31673,
+   "risk_logit_with_pair_vars": 1.20367,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "l7724a",
+   "p_together_3y": 0.1714,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 6,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 10.34,
+   "risk_logit_skeleton": 2.52011,
+   "risk_logit_with_pair_vars": 2.45738,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "nq96tr",
+   "p_together_3y": 0.9477,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 6,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 15.87,
+   "risk_logit_skeleton": 1.11639,
+   "risk_logit_with_pair_vars": 1.0952,
+   "mismatches": []
+  },
+  {
+   "pair_id": "o4zhyc",
+   "p_together_3y": 0.6733,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.59,
+   "risk_logit_skeleton": 2.20991,
+   "risk_logit_with_pair_vars": 2.2365,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "ohzc0s",
+   "p_together_3y": 0.9426,
+   "together_3y": false,
+   "breakup_month": 24,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.51,
+   "risk_logit_skeleton": -0.13199,
+   "risk_logit_with_pair_vars": -0.10599,
+   "mismatches": []
+  },
+  {
+   "pair_id": "olhc81",
+   "p_together_3y": 0.984,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.27,
+   "risk_logit_skeleton": 0.12011,
+   "risk_logit_with_pair_vars": 0.03775,
+   "mismatches": []
+  },
+  {
+   "pair_id": "on40yy",
+   "p_together_3y": 0.6854,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.64,
+   "risk_logit_skeleton": 1.34226,
+   "risk_logit_with_pair_vars": 1.27371,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ozgp41",
+   "p_together_3y": 0.9943,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.45,
+   "risk_logit_skeleton": -0.84371,
+   "risk_logit_with_pair_vars": -0.90875,
+   "mismatches": []
+  },
+  {
+   "pair_id": "p1e7rq",
+   "p_together_3y": 0.9478,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.78,
+   "risk_logit_skeleton": 0.02019,
+   "risk_logit_with_pair_vars": -0.08251,
+   "mismatches": []
+  },
+  {
+   "pair_id": "pj5baa",
+   "p_together_3y": 0.992,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 21.35,
+   "risk_logit_skeleton": -0.75103,
+   "risk_logit_with_pair_vars": -0.84156,
+   "mismatches": []
+  },
+  {
+   "pair_id": "pjsj8k",
+   "p_together_3y": 0.6422,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 11,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 13.33,
+   "risk_logit_skeleton": 0.66631,
+   "risk_logit_with_pair_vars": 0.82753,
+   "mismatches": []
+  },
+  {
+   "pair_id": "q92lpt",
+   "p_together_3y": 0.9406,
+   "together_3y": false,
+   "breakup_month": 28,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.77,
+   "risk_logit_skeleton": -0.08751,
+   "risk_logit_with_pair_vars": -0.08249,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qtvw7i",
+   "p_together_3y": 0.9594,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.05,
+   "risk_logit_skeleton": 0.07558,
+   "risk_logit_with_pair_vars": 0.08602,
+   "mismatches": []
+  },
+  {
+   "pair_id": "slk5jq",
+   "p_together_3y": 0.9517,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.62,
+   "risk_logit_skeleton": 0.44009,
+   "risk_logit_with_pair_vars": 0.30173,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "sntk3h",
+   "p_together_3y": 0.5688,
+   "together_3y": false,
+   "breakup_month": 18,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.42,
+   "risk_logit_skeleton": 0.47818,
+   "risk_logit_with_pair_vars": 0.33211,
+   "mismatches": []
+  },
+  {
+   "pair_id": "thopnd",
+   "p_together_3y": 0.8199,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 10,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.04,
+   "risk_logit_skeleton": 1.7875,
+   "risk_logit_with_pair_vars": 1.98218,
+   "mismatches": [
+    "drink",
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "tidw9m",
+   "p_together_3y": 0.76,
+   "together_3y": false,
+   "breakup_month": 28,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.73,
+   "risk_logit_skeleton": 0.2581,
+   "risk_logit_with_pair_vars": 0.13119,
+   "mismatches": []
+  },
+  {
+   "pair_id": "tqao4h",
+   "p_together_3y": 0.7739,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.03,
+   "risk_logit_skeleton": 1.63162,
+   "risk_logit_with_pair_vars": 1.59695,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "trf5xp",
+   "p_together_3y": 0.4002,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 9,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 13.34,
+   "risk_logit_skeleton": 0.49317,
+   "risk_logit_with_pair_vars": 0.73091,
+   "mismatches": []
+  },
+  {
+   "pair_id": "urahov",
+   "p_together_3y": 0.1332,
+   "together_3y": false,
+   "breakup_month": 32,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.77,
+   "risk_logit_skeleton": 0.87194,
+   "risk_logit_with_pair_vars": 0.68817,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "uyx6q5",
+   "p_together_3y": 0.9258,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 17.41,
+   "risk_logit_skeleton": 0.28912,
+   "risk_logit_with_pair_vars": 0.27679,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "wrout6",
+   "p_together_3y": 0.8832,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 18.81,
+   "risk_logit_skeleton": 1.40799,
+   "risk_logit_with_pair_vars": 1.34491,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "x95w3z",
+   "p_together_3y": 0.9354,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.68,
+   "risk_logit_skeleton": 0.42056,
+   "risk_logit_with_pair_vars": 0.36955,
+   "mismatches": []
+  },
+  {
+   "pair_id": "xlx02w",
+   "p_together_3y": 0.9586,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.68,
+   "risk_logit_skeleton": 0.73314,
+   "risk_logit_with_pair_vars": 0.76785,
+   "mismatches": []
+  },
+  {
+   "pair_id": "xszz2b",
+   "p_together_3y": 0.9167,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.82,
+   "risk_logit_skeleton": 0.00014,
+   "risk_logit_with_pair_vars": 0.09331,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "xz8dne",
+   "p_together_3y": 0.9464,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.12,
+   "risk_logit_skeleton": 0.10172,
+   "risk_logit_with_pair_vars": 0.14081,
+   "mismatches": []
+  },
+  {
+   "pair_id": "y0twuc",
+   "p_together_3y": 0.2909,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 9,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 11.12,
+   "risk_logit_skeleton": 1.0681,
+   "risk_logit_with_pair_vars": 1.13943,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ydd763",
+   "p_together_3y": 0.2493,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 13.6,
+   "risk_logit_skeleton": 1.56459,
+   "risk_logit_with_pair_vars": 1.61846,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ye4owh",
+   "p_together_3y": 0.7784,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 12,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 13.84,
+   "risk_logit_skeleton": 2.15043,
+   "risk_logit_with_pair_vars": 2.20142,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "yxadv7",
+   "p_together_3y": 0.9162,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 7,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 15.93,
+   "risk_logit_skeleton": 0.17874,
+   "risk_logit_with_pair_vars": 0.35197,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "zbmc85",
+   "p_together_3y": 0.8051,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.6,
+   "risk_logit_skeleton": 0.63538,
+   "risk_logit_with_pair_vars": 0.50165,
+   "mismatches": []
+  },
+  {
+   "pair_id": "zm3pwj",
+   "p_together_3y": 0.7205,
+   "together_3y": false,
+   "breakup_month": 32,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.18,
+   "risk_logit_skeleton": 0.64937,
+   "risk_logit_with_pair_vars": 0.60787,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "zy14s7",
+   "p_together_3y": 0.6935,
+   "together_3y": false,
+   "breakup_month": 3,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.96,
+   "risk_logit_skeleton": -0.84348,
+   "risk_logit_with_pair_vars": -0.80217,
+   "mismatches": []
+  }
+ ]
+}

@@ -1,0 +1,275 @@
+{
+ "note": "ЗАПЕЧАТАНО: исходы проверочной части",
+ "outcomes": [
+  {
+   "pair_id": "ajvswf",
+   "p_together_3y": 0.9129,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.74,
+   "risk_logit_skeleton": 1.75868,
+   "risk_logit_with_pair_vars": 1.70743,
+   "mismatches": [
+    "drink",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "axlkfi",
+   "p_together_3y": 0.8729,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.79,
+   "risk_logit_skeleton": -0.24971,
+   "risk_logit_with_pair_vars": 0.05102,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "aycq0y",
+   "p_together_3y": 0.6239,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.85,
+   "risk_logit_skeleton": 0.4483,
+   "risk_logit_with_pair_vars": 0.47944,
+   "mismatches": []
+  },
+  {
+   "pair_id": "cek0oc",
+   "p_together_3y": 0.9686,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.79,
+   "risk_logit_skeleton": 0.16935,
+   "risk_logit_with_pair_vars": 0.16357,
+   "mismatches": []
+  },
+  {
+   "pair_id": "eir5s3",
+   "p_together_3y": 0.4113,
+   "together_3y": false,
+   "breakup_month": 33,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 12.7,
+   "risk_logit_skeleton": 1.85701,
+   "risk_logit_with_pair_vars": 2.16646,
+   "mismatches": []
+  },
+  {
+   "pair_id": "fcggti",
+   "p_together_3y": 0.2884,
+   "together_3y": false,
+   "breakup_month": 20,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.61,
+   "risk_logit_skeleton": 2.76915,
+   "risk_logit_with_pair_vars": 2.72882,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "jv59az",
+   "p_together_3y": 0.9405,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.15,
+   "risk_logit_skeleton": -0.39642,
+   "risk_logit_with_pair_vars": -0.21658,
+   "mismatches": []
+  },
+  {
+   "pair_id": "k16q3r",
+   "p_together_3y": 0.9506,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.99,
+   "risk_logit_skeleton": 0.03614,
+   "risk_logit_with_pair_vars": 0.03477,
+   "mismatches": []
+  },
+  {
+   "pair_id": "k1m323",
+   "p_together_3y": 0.3421,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 9,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.05,
+   "risk_logit_skeleton": 2.32396,
+   "risk_logit_with_pair_vars": 2.38228,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "kepxxl",
+   "p_together_3y": 0.9744,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.53,
+   "risk_logit_skeleton": -1.18207,
+   "risk_logit_with_pair_vars": -1.35976,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ohzc0s",
+   "p_together_3y": 0.9426,
+   "together_3y": false,
+   "breakup_month": 24,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.51,
+   "risk_logit_skeleton": -0.13199,
+   "risk_logit_with_pair_vars": -0.10599,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ozgp41",
+   "p_together_3y": 0.9943,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.45,
+   "risk_logit_skeleton": -0.84371,
+   "risk_logit_with_pair_vars": -0.90875,
+   "mismatches": []
+  },
+  {
+   "pair_id": "p1e7rq",
+   "p_together_3y": 0.9478,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.78,
+   "risk_logit_skeleton": 0.02019,
+   "risk_logit_with_pair_vars": -0.08251,
+   "mismatches": []
+  },
+  {
+   "pair_id": "q92lpt",
+   "p_together_3y": 0.9406,
+   "together_3y": false,
+   "breakup_month": 28,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.77,
+   "risk_logit_skeleton": -0.08751,
+   "risk_logit_with_pair_vars": -0.08249,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qtvw7i",
+   "p_together_3y": 0.9594,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.05,
+   "risk_logit_skeleton": 0.07558,
+   "risk_logit_with_pair_vars": 0.08602,
+   "mismatches": []
+  },
+  {
+   "pair_id": "slk5jq",
+   "p_together_3y": 0.9517,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.62,
+   "risk_logit_skeleton": 0.44009,
+   "risk_logit_with_pair_vars": 0.30173,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "xszz2b",
+   "p_together_3y": 0.9167,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.82,
+   "risk_logit_skeleton": 0.00014,
+   "risk_logit_with_pair_vars": 0.09331,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "ye4owh",
+   "p_together_3y": 0.7784,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 12,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 13.84,
+   "risk_logit_skeleton": 2.15043,
+   "risk_logit_with_pair_vars": 2.20142,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "yxadv7",
+   "p_together_3y": 0.9162,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 7,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 15.93,
+   "risk_logit_skeleton": 0.17874,
+   "risk_logit_with_pair_vars": 0.35197,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "zbmc85",
+   "p_together_3y": 0.8051,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 14.6,
+   "risk_logit_skeleton": 0.63538,
+   "risk_logit_with_pair_vars": 0.50165,
+   "mismatches": []
+  },
+  {
+   "pair_id": "zy14s7",
+   "p_together_3y": 0.6935,
+   "together_3y": false,
+   "breakup_month": 3,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.96,
+   "risk_logit_skeleton": -0.84348,
+   "risk_logit_with_pair_vars": -0.80217,
+   "mismatches": []
+  }
+ ]
+}

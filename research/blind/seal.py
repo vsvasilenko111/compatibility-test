@@ -21,6 +21,11 @@
   python3 research/blind/seal.py --code-hash           — напечатать хеш кода исхода (для записи в design.md)
   python3 research/blind/seal.py --verify              — сверить хеши sealed/ с манифестом и журнал запусков
 
+Вторая партия (design.md, 18.5): те же команды с префиксом --batch 2 (python3 research/blind/seal.py --batch 2 [...]).
+Печать — sealed/b2/ (свой MANIFEST, файлы 444), источник — private/b2-pairs.json и private/b2-outcome.json, свой
+счётчик запусков (private/b2-holdout-runs.jsonl и sealed/b2/runs/, лимит HOLDOUT_LIMIT); --reseal для партии 2
+отказывает (формула исхода заморожена, design.md 18.1).
+
 Запечатанное не перезаписывается: если файл уже есть и отличается — падение (печать сломана, разбираться руками).
 Журнал запусков — два места: private/holdout-runs.jsonl (дописывается) и по файлу на запуск в sealed/runs/ (444).
 Счётчик — максимум из двух, поэтому удаление jsonl лимит не сбрасывает; --verify сверяет их между собой.
@@ -49,6 +54,23 @@ MANIFEST_KEEP = ("revision", "superseded")          # ключи манифес�
 RESEAL_LIMIT = 2    # перепечаток на партию людей (design.md, 17.14): ред. 5 и ред. 5.1; дальше — только новая партия
 RESEAL_DIR = os.path.join(SEALED, "reseal")
 RESEAL_JOURNAL = os.path.join(B.PRIV, "reseal-journal.jsonl")
+PAIRS_FILE = os.path.join(B.PRIV, "pairs.json")
+OUTCOME_FILE = os.path.join(B.PRIV, "outcome.json")
+BATCH = 1
+
+
+def use_batch2():
+    """Переключить все пути на вторую партию (design.md, 18.5). Первая партия при этом не читается и не пишется."""
+    global SEALED, RUNS, RUNS_SEALED, SUPERSEDED, RESEAL_DIR, RESEAL_JOURNAL, PAIRS_FILE, OUTCOME_FILE, BATCH
+    BATCH = 2
+    SEALED = os.path.join(B.ROOT, "sealed", "b2")
+    RUNS = os.path.join(B.PRIV, "b2-holdout-runs.jsonl")
+    RUNS_SEALED = os.path.join(SEALED, "runs")
+    SUPERSEDED = os.path.join(SEALED, "superseded")
+    RESEAL_DIR = os.path.join(SEALED, "reseal")
+    RESEAL_JOURNAL = os.path.join(B.PRIV, "b2-reseal-journal.jsonl")
+    PAIRS_FILE = os.path.join(B.PRIV, "b2-pairs.json")
+    OUTCOME_FILE = os.path.join(B.PRIV, "b2-outcome.json")
 # код, от которого зависят исходы проверочной части (design.md, 17.14): его хеш записывается в design.md до пересчёта
 OUTCOME_CODE = ("blindlib.py", "generate.py", "calibrate.py", "pairs.py", "calibrate_r5.py", "pair_vars.py", "outcome.py")
 PERMIT_RX = re.compile(r"Разрешение перепечатки №(\d+): ред\. ([0-9.]+); спека outcome-spec-r5\.json SHA-256 "
@@ -109,17 +131,18 @@ def put(name, obj):
 
 def holdout_files():
     """Содержимое проверочной части по private/ (в stdout не печатается)."""
-    pj = B.load(os.path.join(B.PRIV, "pairs.json"))
-    oj = B.load(os.path.join(B.PRIV, "outcome.json"))
-    assert oj["meta"]["pairs_sha256"] == B.sha256(os.path.join(B.PRIV, "pairs.json"))
+    pj = B.load(PAIRS_FILE)
+    oj = B.load(OUTCOME_FILE)
+    assert oj["meta"]["pairs_sha256"] == B.sha256(PAIRS_FILE)
     hold = {p["pair_id"] for p in pj["pairs"] if p["part"] == "holdout"}
     pairs = [{"pair_id": p["pair_id"], "man": p["man"], "woman": p["woman"], "stage": p["stage"]}
              for p in pj["pairs"] if p["pair_id"] in hold]
     outs = [o for o in oj["outcomes"] if o["pair_id"] in hold]
     files = {"holdout-pairs.json": {"note": "ЗАПЕЧАТАНО: пары проверочной части", "pairs": pairs},
              "holdout-outcomes.json": {"note": "ЗАПЕЧАТАНО: исходы проверочной части", "outcomes": outs}}
-    man = {"pairs_sha256": B.sha256(os.path.join(B.PRIV, "pairs.json")),
-           "outcome_sha256": B.sha256(os.path.join(B.PRIV, "outcome.json")), "files": {}}
+    man = {"pairs_sha256": B.sha256(PAIRS_FILE), "outcome_sha256": B.sha256(OUTCOME_FILE), "files": {}}
+    if BATCH != 1:
+        man["batch"] = BATCH
     return pairs, files, man
 
 
@@ -157,7 +180,7 @@ def seal(rehash_reason=None):
         os.remove(mpath)
         print(f"sealed/MANIFEST.json: ссылки на хеши перепечатаны (запись sealed/rehash/rehash-{n}.json)")
     put("MANIFEST.json", man)
-    print(f"sealed/: {len(pairs)} пар проверочной части; файлы 444")
+    print(f"{os.path.relpath(SEALED, B.ROOT)}/: {len(pairs)} пар проверочной части; файлы 444")
 
 
 def runs_log():
@@ -194,7 +217,8 @@ def verify(stream=None):
     assert len(log) == len(sl), f"журнал запусков расходится: jsonl {len(log)}, sealed/runs {len(sl)} — разбираться руками"
     for f in sl:
         assert stat.S_IMODE(os.stat(os.path.join(RUNS_SEALED, f)).st_mode) == RO, f"sealed/runs/{f}: права не 444"
-    print(f"sealed/: хеши и права в порядке; запусков проверочной части {len(sl)} из {HOLDOUT_LIMIT}", file=stream or sys.stdout)
+    print(f"{os.path.relpath(SEALED, B.ROOT)}/: хеши и права в порядке; запусков проверочной части {len(sl)} из {HOLDOUT_LIMIT}"
+          + ("" if BATCH == 1 else f" (партия {BATCH})"), file=stream or sys.stdout)
 
 
 def register(decision):
@@ -220,6 +244,8 @@ def register(decision):
 def reseal(reason):
     """Перепечатка исходов проверочной части БЕЗ открытия (design.md, 17.8). Прежние запечатанные файлы не читаются
     (только хешируются для сверки) и переносятся в sealed/superseded/r<ред.>/; счётчик запусков не трогается."""
+    if BATCH != 1:
+        raise SystemExit("для второй партии перепечатка не предусмотрена: формула исхода заморожена (design.md, 18.1, 18.5)")
     if not reason.strip():
         raise SystemExit("нужна причина перепечатки")
     n_done = max(len(runs_log()), len(runs_sealed()))
@@ -318,6 +344,11 @@ def open_holdout(decision):
 
 
 if __name__ == "__main__":
+    if sys.argv[1:3] == ["--batch", "2"]:
+        use_batch2()
+        del sys.argv[1:3]
+    elif len(sys.argv) >= 2 and sys.argv[1] == "--batch":
+        raise SystemExit("известны партии 1 (без --batch) и 2 (--batch 2)")
     if len(sys.argv) >= 3 and sys.argv[1] == "--register":
         register(sys.argv[2])
     elif len(sys.argv) >= 3 and sys.argv[1] == "--open":

@@ -13,8 +13,8 @@ outcome-ensemble-structural.json, benchmarks.json, leak-threshold.json — и с
 скелету)). AUC — балл против распада (ниже балл — выше риск), c-index — против месяца распада.
 
 Бутстрэп — по людям рабочей части (design.md, 7): люди с возвращением, вес пары — произведение кратностей двоих;
-4 000 повторов; зерно — SeedSequence(20261028).spawn(27)[26] (новый поток после 26 имён blindlib.SEED_NAMES;
-blindlib.py не меняется, чтобы не трогать хеш кода исхода, 17.14 п. 7).
+4 000 повторов; зерно — SeedSequence(20261028).spawn(27)[26] (имя metric_06_boot, 27-е в blindlib.SEED_NAMES с design.md 18.2;
+перестановки и перетяжки V — metric_06_perm и metric_06_vdraw, 28-е и 29-е).
 """
 import json
 import os
@@ -38,9 +38,16 @@ OUT = os.path.join(B.ROOT, "metric", "metric-06.json")
 OUT_PRIV = os.path.join(B.PRIV, "metric-06-private.json")
 
 
+def seed_06(name):
+    """Зёрна отчёта 06 — по явному номеру имени в SEED_NAMES (26, 27, 28: прежние spawn(27)[26], spawn(28)[27],
+    spawn(29)[28]). Раньше номер считался от длины списка; с design.md 18.2 список длиннее, номера закреплены."""
+    i = B.SEED_NAMES.index(name)
+    assert (name, i) in (("metric_06_boot", 26), ("metric_06_perm", 27), ("metric_06_vdraw", 28))
+    return np.random.SeedSequence(B.MASTER_SEED).spawn(i + 1)[i]
+
+
 def rng_metric():
-    ss = np.random.SeedSequence(B.MASTER_SEED).spawn(len(B.SEED_NAMES) + 1)[len(B.SEED_NAMES)]
-    return np.random.default_rng(ss)
+    return np.random.default_rng(seed_06("metric_06_boot"))
 
 
 def rake(is_real, F, base, iters=200):
@@ -270,7 +277,7 @@ def main():
     # случайный балл: те же ответы, перемешанные между людьми внутри пола (рабочая часть) — распределение ρ при нуле
     men_w = np.unique(m_id)
     wom_w = np.unique(w_id)
-    rp = np.random.default_rng(np.random.SeedSequence(B.MASTER_SEED).spawn(len(B.SEED_NAMES) + 2)[-1])
+    rp = np.random.default_rng(seed_06("metric_06_perm"))
     perm = {"prio": [], "noprio": []}
     for _ in range(N_PERM):
         pm = dict(zip(men_w, rp.permutation(men_w)))
@@ -317,7 +324,7 @@ def main():
         a["auc_breakup_strat"] = {"auc": round(pt, 4), "ci95": ci(bs)}
         pt, bs = stat_row(lambda wt: wauc_strat(broke, x, wt, stage), "all_unweighted")
         a["auc_breakup_strat_unweighted"] = {"auc": round(pt, 4), "ci95": ci(bs)}
-        rv = np.random.default_rng(np.random.SeedSequence(B.MASTER_SEED).spawn(len(B.SEED_NAMES) + 3)[-1])
+        rv = np.random.default_rng(seed_06("metric_06_vdraw"))
         av = [wauc_strat(rv.random(n) < p_break, x, w_main, stage) for _ in range(N_VDRAW)]
         a["auc_expected_over_V"] = {"auc": round(float(np.nanmean(av)), 4), "range95_over_V": ci(av)}
         pt, bs = stat_row(lambda wt: cindex_month(X[var], month, broke, wt), "all_weighted")
@@ -329,7 +336,7 @@ def main():
     # ориентир для AUC: потолок самоотчёта и «оракул по скелету» на тех же весах
     aux["selfreport_ceiling_auc_weighted"] = round(wauc_strat(broke, self_risk, w_main, stage), 4)
     aux["oracle_skeleton_auc_weighted"] = round(wauc_strat(broke, risk, w_main, stage), 4)
-    rv = np.random.default_rng(np.random.SeedSequence(B.MASTER_SEED).spawn(len(B.SEED_NAMES) + 3)[-1])
+    rv = np.random.default_rng(seed_06("metric_06_vdraw"))
     draws = [rv.random(n) < p_break for _ in range(N_VDRAW)]
     aux["oracle_skeleton_auc_expected_over_V"] = round(float(np.nanmean([wauc_strat(d, risk, w_main, stage) for d in draws])), 4)
     aux["selfreport_auc_expected_over_V"] = round(float(np.nanmean([wauc_strat(d, self_risk, w_main, stage) for d in draws])), 4)

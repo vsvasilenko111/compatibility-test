@@ -1,0 +1,5214 @@
+{
+ "meta": {
+  "generator": "research/blind/batch2.py",
+  "batch": 2,
+  "master_seed": 20261028,
+  "lib_versions": {
+   "numpy": "2.0.2",
+   "scipy": "1.13.1"
+  },
+  "note": "слой самоотчёта второй партии (design.md, 3, 18)"
+ },
+ "people": [
+  {
+   "id": "ae49",
+   "sex": "ж",
+   "age": 22,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "учится",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 5.24,
+    "avoidance_ecr_1_7": 5.49
+   },
+   "big5_1_5": {
+    "neuroticism": 4.1,
+    "agreeableness": 3.0,
+    "conscientiousness": 2.5
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 4.9,
+   "life_satisfaction_1_10": 10,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "еженедельно и чаще"
+   },
+   "nicotine": "вейп",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.33,
+    "узкий круг общения ↔ широкий круг общения": 1.47,
+    "город ↔ природа, дача": 0.07,
+    "карьера важнее ↔ баланс важнее": -1.33,
+    "тратить на вещи ↔ тратить на впечатления": 1.94,
+    "укоренённость на месте ↔ готовность к переезду": 1.49
+   },
+   "z_self": {
+    "N": 1.5161,
+    "ANX": 1.2059,
+    "AVO": 2.1723,
+    "HOST": -0.0972,
+    "WD": -0.6885,
+    "SPEND": -0.7366,
+    "COMM": 0.07,
+    "C": -0.6973,
+    "A": -0.0538,
+    "LS": 3.1472,
+    "TRAD": 1.1011,
+    "V1": -0.3279,
+    "V2": 1.4695,
+    "V3": 0.0741,
+    "V4": -1.3327,
+    "V5": 1.9416,
+    "V6": 1.4866,
+    "DEFENS": 0.2398,
+    "JEAL_FEEL": -0.258,
+    "CONTROL": -1.5199,
+    "LIE": -0.6262,
+    "HUM_AFF": -1.1925,
+    "HUM_AGG": -0.2441,
+    "HUM_SELF": 0.9663,
+    "DESIRE": -0.9692,
+    "SEX_TALK": 0.3867,
+    "FAM_CLOSE": 0.6849
+   }
+  },
+  {
+   "id": "akgk",
+   "sex": "м",
+   "age": 23,
+   "city": "Ярославль",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 1,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.0,
+    "avoidance_ecr_1_7": 3.65
+   },
+   "big5_1_5": {
+    "neuroticism": 2.7,
+    "agreeableness": 3.7,
+    "conscientiousness": 3.3
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 3.8,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "ежемесячно"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "другое / вне конфессии",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.08,
+    "узкий круг общения ↔ широкий круг общения": -0.0,
+    "город ↔ природа, дача": 0.28,
+    "карьера важнее ↔ баланс важнее": -0.03,
+    "тратить на вещи ↔ тратить на впечатления": -0.23,
+    "укоренённость на месте ↔ готовность к переезду": -1.25
+   },
+   "z_self": {
+    "N": -0.4988,
+    "ANX": -2.3972,
+    "AVO": 0.6096,
+    "HOST": 0.0174,
+    "WD": -1.5337,
+    "SPEND": -1.9115,
+    "COMM": -0.8623,
+    "C": 0.4563,
+    "A": 0.9327,
+    "LS": -0.285,
+    "TRAD": 0.4676,
+    "V1": 1.0793,
+    "V2": -0.0025,
+    "V3": 0.2811,
+    "V4": -0.0338,
+    "V5": -0.2322,
+    "V6": -1.2514,
+    "DEFENS": 0.5954,
+    "JEAL_FEEL": -0.9782,
+    "CONTROL": 0.1393,
+    "LIE": -1.1604,
+    "HUM_AFF": 0.2783,
+    "HUM_AGG": 0.8409,
+    "HUM_SELF": -0.3977,
+    "DESIRE": -0.8563,
+    "SEX_TALK": 1.6275,
+    "FAM_CLOSE": 0.8365
+   }
+  },
+  {
+   "id": "cfrd",
+   "sex": "ж",
+   "age": 25,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "не работает",
+   "income_quintile_in_city": 5,
+   "attachment": {
+    "anxiety_ecr_1_7": 4.64,
+    "avoidance_ecr_1_7": 2.75
+   },
+   "big5_1_5": {
+    "neuroticism": 3.7,
+    "agreeableness": 2.8,
+    "conscientiousness": 3.5
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 5.5,
+   "life_satisfaction_1_10": 5,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "сигареты",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "ислам",
+    "religiosity": "практикует регулярно"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.02,
+    "узкий круг общения ↔ широкий круг общения": 0.85,
+    "город ↔ природа, дача": 1.13,
+    "карьера важнее ↔ баланс важнее": -1.23,
+    "тратить на вещи ↔ тратить на впечатления": 0.78,
+    "укоренённость на месте ↔ готовность к переезду": -1.75
+   },
+   "z_self": {
+    "N": 0.9441,
+    "ANX": 0.752,
+    "AVO": -0.1562,
+    "HOST": 0.0963,
+    "WD": -1.2105,
+    "SPEND": -0.6865,
+    "COMM": 0.5728,
+    "C": 0.7776,
+    "A": -0.2537,
+    "LS": -0.6879,
+    "TRAD": 0.0631,
+    "V1": -1.0217,
+    "V2": 0.8529,
+    "V3": 1.1324,
+    "V4": -1.2327,
+    "V5": 0.7805,
+    "V6": -1.7512,
+    "DEFENS": -0.5343,
+    "JEAL_FEEL": -0.5307,
+    "CONTROL": -0.429,
+    "LIE": 0.1025,
+    "HUM_AFF": 1.7462,
+    "HUM_AGG": -1.6706,
+    "HUM_SELF": 0.8865,
+    "DESIRE": 0.5511,
+    "SEX_TALK": 0.449,
+    "FAM_CLOSE": -0.6941
+   }
+  },
+  {
+   "id": "cgel",
+   "sex": "м",
+   "age": 20,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 1,
+   "attachment": {
+    "anxiety_ecr_1_7": 5.88,
+    "avoidance_ecr_1_7": 4.09
+   },
+   "big5_1_5": {
+    "neuroticism": 2.1,
+    "agreeableness": 3.5,
+    "conscientiousness": 2.3
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "часто"
+   },
+   "long_term_orientation_1_7": 4.0,
+   "life_satisfaction_1_10": 8,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "ежемесячно"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "в основном женщина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.2,
+    "узкий круг общения ↔ широкий круг общения": 0.21,
+    "город ↔ природа, дача": -0.94,
+    "карьера важнее ↔ баланс важнее": -0.37,
+    "тратить на вещи ↔ тратить на впечатления": 2.3,
+    "укоренённость на месте ↔ готовность к переезду": -1.51
+   },
+   "z_self": {
+    "N": -1.2639,
+    "ANX": 1.6847,
+    "AVO": 0.9809,
+    "HOST": 0.6375,
+    "WD": 2.1841,
+    "SPEND": -1.5773,
+    "COMM": -0.6363,
+    "C": -1.0566,
+    "A": 0.7688,
+    "LS": 0.829,
+    "TRAD": 0.929,
+    "V1": -0.2034,
+    "V2": 0.2141,
+    "V3": -0.9391,
+    "V4": -0.368,
+    "V5": 2.2964,
+    "V6": -1.5087,
+    "DEFENS": -0.824,
+    "JEAL_FEEL": -0.4116,
+    "CONTROL": -2.6331,
+    "LIE": -1.7232,
+    "HUM_AFF": 0.4423,
+    "HUM_AGG": 0.761,
+    "HUM_SELF": 1.6986,
+    "DESIRE": 0.6964,
+    "SEX_TALK": -1.3725,
+    "FAM_CLOSE": -2.3324
+   }
+  },
+  {
+   "id": "cuif",
+   "sex": "м",
+   "age": 26,
+   "city": "Москва",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 5,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.0,
+    "avoidance_ecr_1_7": 1.6
+   },
+   "big5_1_5": {
+    "neuroticism": 1.5,
+    "agreeableness": 2.4,
+    "conscientiousness": 3.0
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 5.1,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "ежемесячно"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": true,
+    "man_must_provide": true,
+    "housework_should_be": "в основном мужчина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.07,
+    "узкий круг общения ↔ широкий круг общения": 2.1,
+    "город ↔ природа, дача": 0.62,
+    "карьера важнее ↔ баланс важнее": -0.58,
+    "тратить на вещи ↔ тратить на впечатления": -0.47,
+    "укоренённость на месте ↔ готовность к переезду": -0.74
+   },
+   "z_self": {
+    "N": -2.1402,
+    "ANX": -2.0443,
+    "AVO": -1.1246,
+    "HOST": -0.1516,
+    "WD": -1.5736,
+    "SPEND": -0.7526,
+    "COMM": 0.2626,
+    "C": 0.0493,
+    "A": -0.8061,
+    "LS": 0.5479,
+    "TRAD": 2.2482,
+    "V1": 1.0677,
+    "V2": 2.1038,
+    "V3": 0.6225,
+    "V4": -0.5848,
+    "V5": -0.4667,
+    "V6": -0.7418,
+    "DEFENS": 0.8067,
+    "JEAL_FEEL": -2.0444,
+    "CONTROL": -1.2047,
+    "LIE": 0.2131,
+    "HUM_AFF": 1.5226,
+    "HUM_AGG": -0.1402,
+    "HUM_SELF": -0.1245,
+    "DESIRE": 3.1237,
+    "SEX_TALK": 1.1935,
+    "FAM_CLOSE": 1.2695
+   }
+  },
+  {
+   "id": "cy7c",
+   "sex": "ж",
+   "age": 26,
+   "city": "Москва",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 6.44,
+    "avoidance_ecr_1_7": 1.0
+   },
+   "big5_1_5": {
+    "neuroticism": 3.3,
+    "agreeableness": 3.2,
+    "conscientiousness": 4.7
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 7.0,
+   "life_satisfaction_1_10": 4,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "часто",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "сигареты",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.82,
+    "узкий круг общения ↔ широкий круг общения": 0.07,
+    "город ↔ природа, дача": 1.08,
+    "карьера важнее ↔ баланс важнее": -1.54,
+    "тратить на вещи ↔ тратить на впечатления": 0.2,
+    "укоренённость на месте ↔ готовность к переезду": 0.17
+   },
+   "z_self": {
+    "N": 0.4458,
+    "ANX": 2.1016,
+    "AVO": -2.205,
+    "HOST": -1.1852,
+    "WD": 0.2892,
+    "SPEND": 0.4275,
+    "COMM": 3.1732,
+    "C": 2.4289,
+    "A": 0.2422,
+    "LS": -1.2857,
+    "TRAD": -0.3616,
+    "V1": -0.8158,
+    "V2": 0.0703,
+    "V3": 1.0809,
+    "V4": -1.5439,
+    "V5": 0.2004,
+    "V6": 0.1706,
+    "DEFENS": 1.4504,
+    "JEAL_FEEL": 0.3005,
+    "CONTROL": -0.0893,
+    "LIE": -1.2695,
+    "HUM_AFF": 1.366,
+    "HUM_AGG": -1.737,
+    "HUM_SELF": 0.0529,
+    "DESIRE": 0.9885,
+    "SEX_TALK": 1.4973,
+    "FAM_CLOSE": 0.8933
+   }
+  },
+  {
+   "id": "d861",
+   "sex": "м",
+   "age": 27,
+   "city": "Казань",
+   "education": "школа",
+   "work": "работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.31,
+    "avoidance_ecr_1_7": 2.84
+   },
+   "big5_1_5": {
+    "neuroticism": 3.1,
+    "agreeableness": 3.7,
+    "conscientiousness": 4.4
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 6.3,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "еженедельно и чаще"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "колеблется",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.36,
+    "узкий круг общения ↔ широкий круг общения": 0.3,
+    "город ↔ природа, дача": 0.36,
+    "карьера важнее ↔ баланс важнее": 0.28,
+    "тратить на вещи ↔ тратить на впечатления": 0.17,
+    "укоренённость на месте ↔ готовность к переезду": -0.11
+   },
+   "z_self": {
+    "N": 0.0927,
+    "ANX": -0.998,
+    "AVO": -0.0795,
+    "HOST": -0.126,
+    "WD": 0.2937,
+    "SPEND": -0.5033,
+    "COMM": 1.2574,
+    "C": 2.0693,
+    "A": 0.9878,
+    "LS": -0.2806,
+    "TRAD": 1.2277,
+    "V1": 1.3644,
+    "V2": 0.2988,
+    "V3": 0.361,
+    "V4": 0.2803,
+    "V5": 0.1714,
+    "V6": -0.1141,
+    "DEFENS": -0.1789,
+    "JEAL_FEEL": -0.7665,
+    "CONTROL": 0.1169,
+    "LIE": -0.4726,
+    "HUM_AFF": 0.469,
+    "HUM_AGG": -1.3474,
+    "HUM_SELF": 0.0372,
+    "DESIRE": -0.5641,
+    "SEX_TALK": -0.7114,
+    "FAM_CLOSE": -0.484
+   }
+  },
+  {
+   "id": "dmt7",
+   "sex": "м",
+   "age": 29,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.76,
+    "avoidance_ecr_1_7": 3.01
+   },
+   "big5_1_5": {
+    "neuroticism": 3.4,
+    "agreeableness": 1.6,
+    "conscientiousness": 2.0
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 3.7,
+   "life_satisfaction_1_10": 4,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "вейп",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "не знаю"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.48,
+    "узкий круг общения ↔ широкий круг общения": 0.15,
+    "город ↔ природа, дача": 0.42,
+    "карьера важнее ↔ баланс важнее": 1.13,
+    "тратить на вещи ↔ тратить на впечатления": 0.78,
+    "укоренённость на месте ↔ готовность к переезду": -0.31
+   },
+   "z_self": {
+    "N": 0.5401,
+    "ANX": -1.4152,
+    "AVO": 0.0684,
+    "HOST": 0.5084,
+    "WD": -3.6805,
+    "SPEND": 1.0961,
+    "COMM": -0.8871,
+    "C": -1.4085,
+    "A": -1.9713,
+    "LS": -1.2929,
+    "TRAD": -0.2268,
+    "V1": -1.4756,
+    "V2": 0.1527,
+    "V3": 0.4236,
+    "V4": 1.1289,
+    "V5": 0.7786,
+    "V6": -0.3101,
+    "DEFENS": -0.5859,
+    "JEAL_FEEL": -0.8249,
+    "CONTROL": -0.8629,
+    "LIE": -1.791,
+    "HUM_AFF": 0.4188,
+    "HUM_AGG": -0.1924,
+    "HUM_SELF": 0.2815,
+    "DESIRE": -0.9522,
+    "SEX_TALK": 2.6883,
+    "FAM_CLOSE": -1.1304
+   }
+  },
+  {
+   "id": "eunh",
+   "sex": "м",
+   "age": 27,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 1,
+   "attachment": {
+    "anxiety_ecr_1_7": 5.73,
+    "avoidance_ecr_1_7": 3.49
+   },
+   "big5_1_5": {
+    "neuroticism": 2.6,
+    "agreeableness": 1.6,
+    "conscientiousness": 3.7
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 4.3,
+   "life_satisfaction_1_10": 8,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "часто",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "в основном женщина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.67,
+    "узкий круг общения ↔ широкий круг общения": -0.19,
+    "город ↔ природа, дача": 1.13,
+    "карьера важнее ↔ баланс важнее": 1.29,
+    "тратить на вещи ↔ тратить на впечатления": -2.33,
+    "укоренённость на месте ↔ готовность к переезду": -0.72
+   },
+   "z_self": {
+    "N": -0.6217,
+    "ANX": 1.575,
+    "AVO": 0.4781,
+    "HOST": 0.3159,
+    "WD": -0.7719,
+    "SPEND": 0.1371,
+    "COMM": -0.3909,
+    "C": 0.9393,
+    "A": -1.946,
+    "LS": 0.7112,
+    "TRAD": 0.7069,
+    "V1": -0.6665,
+    "V2": -0.1913,
+    "V3": 1.1327,
+    "V4": 1.2877,
+    "V5": -2.3275,
+    "V6": -0.7154,
+    "DEFENS": -0.2042,
+    "JEAL_FEEL": -0.4184,
+    "CONTROL": -1.623,
+    "LIE": 0.286,
+    "HUM_AFF": 0.4001,
+    "HUM_AGG": 1.7231,
+    "HUM_SELF": -1.2111,
+    "DESIRE": 0.4018,
+    "SEX_TALK": -0.1279,
+    "FAM_CLOSE": 2.0651
+   }
+  },
+  {
+   "id": "h0kv",
+   "sex": "ж",
+   "age": 21,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "учится",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 4.4,
+    "avoidance_ecr_1_7": 4.21
+   },
+   "big5_1_5": {
+    "neuroticism": 2.3,
+    "agreeableness": 5.0,
+    "conscientiousness": 5.0
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 7.0,
+   "life_satisfaction_1_10": 9,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "иногда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "в основном мужчина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.82,
+    "узкий круг общения ↔ широкий круг общения": 1.15,
+    "город ↔ природа, дача": -0.3,
+    "карьера важнее ↔ баланс важнее": -0.17,
+    "тратить на вещи ↔ тратить на впечатления": -1.24,
+    "укоренённость на месте ↔ готовность к переезду": 1.54
+   },
+   "z_self": {
+    "N": -0.9359,
+    "ANX": 0.5679,
+    "AVO": 1.0872,
+    "HOST": -1.9299,
+    "WD": 1.0177,
+    "SPEND": -1.0019,
+    "COMM": 1.8639,
+    "C": 3.2788,
+    "A": 2.9102,
+    "LS": 1.5012,
+    "TRAD": 0.1661,
+    "V1": 0.8226,
+    "V2": 1.1547,
+    "V3": -0.2955,
+    "V4": -0.1741,
+    "V5": -1.2416,
+    "V6": 1.5448,
+    "DEFENS": -2.2404,
+    "JEAL_FEEL": -0.9566,
+    "CONTROL": 1.6754,
+    "LIE": 0.0346,
+    "HUM_AFF": 1.0742,
+    "HUM_AGG": 0.4941,
+    "HUM_SELF": -1.7925,
+    "DESIRE": -1.2743,
+    "SEX_TALK": -0.0399,
+    "FAM_CLOSE": -1.018
+   }
+  },
+  {
+   "id": "hfcr",
+   "sex": "ж",
+   "age": 22,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.38,
+    "avoidance_ecr_1_7": 2.78
+   },
+   "big5_1_5": {
+    "neuroticism": 2.2,
+    "agreeableness": 4.3,
+    "conscientiousness": 4.0
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 7.0,
+   "life_satisfaction_1_10": 8,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 0,
+    "first_child_when": "не знаю"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.11,
+    "узкий круг общения ↔ широкий круг общения": -1.4,
+    "город ↔ природа, дача": 2.13,
+    "карьера важнее ↔ баланс важнее": -0.07,
+    "тратить на вещи ↔ тратить на впечатления": -0.97,
+    "укоренённость на месте ↔ готовность к переезду": 0.81
+   },
+   "z_self": {
+    "N": -1.1768,
+    "ANX": -0.1929,
+    "AVO": -0.129,
+    "HOST": -0.158,
+    "WD": -1.8076,
+    "SPEND": -1.8462,
+    "COMM": 2.6146,
+    "C": 1.4813,
+    "A": 1.8136,
+    "LS": 0.7331,
+    "TRAD": -0.4882,
+    "V1": 0.1094,
+    "V2": -1.3982,
+    "V3": 2.1331,
+    "V4": -0.0667,
+    "V5": -0.9671,
+    "V6": 0.8108,
+    "DEFENS": 0.6173,
+    "JEAL_FEEL": 0.528,
+    "CONTROL": -0.104,
+    "LIE": -1.4216,
+    "HUM_AFF": 1.4769,
+    "HUM_AGG": -0.4863,
+    "HUM_SELF": 1.0086,
+    "DESIRE": 0.278,
+    "SEX_TALK": 0.4884,
+    "FAM_CLOSE": -0.3219
+   }
+  },
+  {
+   "id": "hhkp",
+   "sex": "м",
+   "age": 27,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 4.31,
+    "avoidance_ecr_1_7": 1.71
+   },
+   "big5_1_5": {
+    "neuroticism": 3.1,
+    "agreeableness": 3.3,
+    "conscientiousness": 3.3
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 4.0,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "сигареты и вейп",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 3,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.76,
+    "узкий круг общения ↔ широкий круг общения": -0.67,
+    "город ↔ природа, дача": 0.95,
+    "карьера важнее ↔ баланс важнее": 1.61,
+    "тратить на вещи ↔ тратить на впечатления": -1.89,
+    "укоренённость на месте ↔ готовность к переезду": -1.38
+   },
+   "z_self": {
+    "N": 0.0737,
+    "ANX": 0.5023,
+    "AVO": -1.0378,
+    "HOST": 0.0854,
+    "WD": -0.9834,
+    "SPEND": 1.1065,
+    "COMM": -0.6543,
+    "C": 0.3651,
+    "A": 0.4343,
+    "LS": 0.4061,
+    "TRAD": -0.5848,
+    "V1": -0.7575,
+    "V2": -0.6666,
+    "V3": 0.9522,
+    "V4": 1.6056,
+    "V5": -1.8927,
+    "V6": -1.3814,
+    "DEFENS": -1.0845,
+    "JEAL_FEEL": -0.366,
+    "CONTROL": -0.8888,
+    "LIE": -2.6749,
+    "HUM_AFF": -1.364,
+    "HUM_AGG": -0.8022,
+    "HUM_SELF": -1.088,
+    "DESIRE": 0.1203,
+    "SEX_TALK": -0.3767,
+    "FAM_CLOSE": -0.9991
+   }
+  },
+  {
+   "id": "hwuk",
+   "sex": "ж",
+   "age": 21,
+   "city": "Москва",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 4.65,
+    "avoidance_ecr_1_7": 3.82
+   },
+   "big5_1_5": {
+    "neuroticism": 3.6,
+    "agreeableness": 2.0,
+    "conscientiousness": 3.4
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 4.2,
+   "life_satisfaction_1_10": 10,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "редко",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "сигареты",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": true,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "колеблется",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.54,
+    "узкий круг общения ↔ широкий круг общения": -0.95,
+    "город ↔ природа, дача": 0.57,
+    "карьера важнее ↔ баланс важнее": -0.49,
+    "тратить на вещи ↔ тратить на впечатления": -0.28,
+    "укоренённость на месте ↔ готовность к переезду": 0.01
+   },
+   "z_self": {
+    "N": 0.8451,
+    "ANX": 0.7585,
+    "AVO": 0.7559,
+    "HOST": -1.0264,
+    "WD": 0.0443,
+    "SPEND": 0.6231,
+    "COMM": -0.4884,
+    "C": 0.6192,
+    "A": -1.3792,
+    "LS": 2.609,
+    "TRAD": -1.6115,
+    "V1": -1.5354,
+    "V2": -0.9522,
+    "V3": 0.5744,
+    "V4": -0.4886,
+    "V5": -0.2786,
+    "V6": 0.0069,
+    "DEFENS": -1.6317,
+    "JEAL_FEEL": -2.1973,
+    "CONTROL": 0.6869,
+    "LIE": 0.3323,
+    "HUM_AFF": -0.4752,
+    "HUM_AGG": -0.8142,
+    "HUM_SELF": 0.2804,
+    "DESIRE": -2.0948,
+    "SEX_TALK": 1.5651,
+    "FAM_CLOSE": -0.9147
+   }
+  },
+  {
+   "id": "itzt",
+   "sex": "м",
+   "age": 29,
+   "city": "Казань",
+   "education": "СПО",
+   "work": "не работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.25,
+    "avoidance_ecr_1_7": 3.6
+   },
+   "big5_1_5": {
+    "neuroticism": 1.6,
+    "agreeableness": 3.7,
+    "conscientiousness": 2.0
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 6.5,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "иногда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нагреваемый табак",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "ислам",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.7,
+    "узкий круг общения ↔ широкий круг общения": 0.47,
+    "город ↔ природа, дача": -1.2,
+    "карьера важнее ↔ баланс важнее": -1.14,
+    "тратить на вещи ↔ тратить на впечатления": -1.63,
+    "укоренённость на месте ↔ готовность к переезду": 0.94
+   },
+   "z_self": {
+    "N": -1.9972,
+    "ANX": -0.2932,
+    "AVO": 0.5719,
+    "HOST": 0.3712,
+    "WD": -0.816,
+    "SPEND": -0.2457,
+    "COMM": 1.4539,
+    "C": -1.4406,
+    "A": 1.0337,
+    "LS": -0.0527,
+    "TRAD": -0.7163,
+    "V1": 0.7041,
+    "V2": 0.4716,
+    "V3": -1.1951,
+    "V4": -1.1362,
+    "V5": -1.6349,
+    "V6": 0.9377,
+    "DEFENS": -0.4092,
+    "JEAL_FEEL": 0.1343,
+    "CONTROL": 1.5048,
+    "LIE": -2.093,
+    "HUM_AFF": 1.7134,
+    "HUM_AGG": -0.4655,
+    "HUM_SELF": 0.8192,
+    "DESIRE": -1.489,
+    "SEX_TALK": 0.2359,
+    "FAM_CLOSE": -0.2211
+   }
+  },
+  {
+   "id": "jp5s",
+   "sex": "ж",
+   "age": 26,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 1,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.17,
+    "avoidance_ecr_1_7": 2.34
+   },
+   "big5_1_5": {
+    "neuroticism": 3.0,
+    "agreeableness": 3.2,
+    "conscientiousness": 3.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 3.3,
+   "life_satisfaction_1_10": 5,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нагреваемый табак",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 3,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.44,
+    "узкий круг общения ↔ широкий круг общения": -0.45,
+    "город ↔ природа, дача": -2.19,
+    "карьера важнее ↔ баланс важнее": -0.67,
+    "тратить на вещи ↔ тратить на впечатления": -0.88,
+    "укоренённость на месте ↔ готовность к переезду": 0.49
+   },
+   "z_self": {
+    "N": -0.0274,
+    "ANX": -1.8587,
+    "AVO": -0.4971,
+    "HOST": 0.2274,
+    "WD": -1.9555,
+    "SPEND": -0.9371,
+    "COMM": -1.2805,
+    "C": 1.299,
+    "A": 0.3384,
+    "LS": -0.5755,
+    "TRAD": -0.9112,
+    "V1": 1.4407,
+    "V2": -0.4483,
+    "V3": -2.1928,
+    "V4": -0.6726,
+    "V5": -0.877,
+    "V6": 0.4872,
+    "DEFENS": 0.1175,
+    "JEAL_FEEL": -1.0666,
+    "CONTROL": -1.5734,
+    "LIE": 0.572,
+    "HUM_AFF": -0.5548,
+    "HUM_AGG": -0.3111,
+    "HUM_SELF": -1.2542,
+    "DESIRE": 2.1139,
+    "SEX_TALK": 0.2597,
+    "FAM_CLOSE": -1.1015
+   }
+  },
+  {
+   "id": "jvza",
+   "sex": "м",
+   "age": 28,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 1,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.82,
+    "avoidance_ecr_1_7": 2.83
+   },
+   "big5_1_5": {
+    "neuroticism": 2.4,
+    "agreeableness": 3.6,
+    "conscientiousness": 3.6
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "часто"
+   },
+   "long_term_orientation_1_7": 4.9,
+   "life_satisfaction_1_10": 4,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "ислам",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.48,
+    "узкий круг общения ↔ широкий круг общения": 1.37,
+    "город ↔ природа, дача": -0.54,
+    "карьера важнее ↔ баланс важнее": 0.3,
+    "тратить на вещи ↔ тратить на впечатления": 0.9,
+    "укоренённость на месте ↔ готовность к переезду": 0.94
+   },
+   "z_self": {
+    "N": -0.8105,
+    "ANX": -0.614,
+    "AVO": -0.0865,
+    "HOST": -1.1279,
+    "WD": 1.3068,
+    "SPEND": 0.2054,
+    "COMM": 0.0924,
+    "C": 0.9201,
+    "A": 0.8229,
+    "LS": -1.6596,
+    "TRAD": -1.079,
+    "V1": -1.4772,
+    "V2": 1.3714,
+    "V3": -0.5363,
+    "V4": 0.3031,
+    "V5": 0.9021,
+    "V6": 0.9437,
+    "DEFENS": -2.1041,
+    "JEAL_FEEL": 0.7829,
+    "CONTROL": -1.8609,
+    "LIE": 0.6598,
+    "HUM_AFF": 1.1942,
+    "HUM_AGG": 0.2221,
+    "HUM_SELF": 1.8827,
+    "DESIRE": -0.697,
+    "SEX_TALK": -0.737,
+    "FAM_CLOSE": 0.7322
+   }
+  },
+  {
+   "id": "jypf",
+   "sex": "м",
+   "age": 30,
+   "city": "Ярославль",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.24,
+    "avoidance_ecr_1_7": 1.59
+   },
+   "big5_1_5": {
+    "neuroticism": 2.6,
+    "agreeableness": 3.1,
+    "conscientiousness": 3.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 5.6,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "вейп",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": true,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.36,
+    "узкий круг общения ↔ широкий круг общения": 2.28,
+    "город ↔ природа, дача": -1.8,
+    "карьера важнее ↔ баланс важнее": 0.24,
+    "тратить на вещи ↔ тратить на впечатления": 1.03,
+    "укоренённость на месте ↔ готовность к переезду": -0.68
+   },
+   "z_self": {
+    "N": -0.6355,
+    "ANX": -0.3013,
+    "AVO": -1.1365,
+    "HOST": -0.898,
+    "WD": 0.3026,
+    "SPEND": -0.573,
+    "COMM": 0.6297,
+    "C": 1.2665,
+    "A": 0.0732,
+    "LS": 0.3837,
+    "TRAD": 1.1592,
+    "V1": 1.3635,
+    "V2": 2.2761,
+    "V3": -1.8031,
+    "V4": 0.2378,
+    "V5": 1.0279,
+    "V6": -0.6802,
+    "DEFENS": -0.5059,
+    "JEAL_FEEL": 1.012,
+    "CONTROL": -0.8367,
+    "LIE": -0.0894,
+    "HUM_AFF": -0.0317,
+    "HUM_AGG": -1.8479,
+    "HUM_SELF": 0.8267,
+    "DESIRE": 0.4631,
+    "SEX_TALK": -0.5727,
+    "FAM_CLOSE": 2.348
+   }
+  },
+  {
+   "id": "ko4h",
+   "sex": "ж",
+   "age": 23,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "учится",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 4.75,
+    "avoidance_ecr_1_7": 3.72
+   },
+   "big5_1_5": {
+    "neuroticism": 3.0,
+    "agreeableness": 3.4,
+    "conscientiousness": 4.1
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 4.6,
+   "life_satisfaction_1_10": 9,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "иногда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.95,
+    "узкий круг общения ↔ широкий круг общения": 1.73,
+    "город ↔ природа, дача": -0.22,
+    "карьера важнее ↔ баланс важнее": -1.16,
+    "тратить на вещи ↔ тратить на впечатления": -1.39,
+    "укоренённость на месте ↔ готовность к переезду": 1.83
+   },
+   "z_self": {
+    "N": -0.013,
+    "ANX": 0.8312,
+    "AVO": 0.668,
+    "HOST": -1.7043,
+    "WD": 1.0258,
+    "SPEND": -1.1717,
+    "COMM": -0.1729,
+    "C": 1.6377,
+    "A": 0.5291,
+    "LS": 1.1396,
+    "TRAD": 0.5946,
+    "V1": 0.9463,
+    "V2": 1.7295,
+    "V3": -0.2184,
+    "V4": -1.1585,
+    "V5": -1.391,
+    "V6": 1.8317,
+    "DEFENS": -0.184,
+    "JEAL_FEEL": 0.5597,
+    "CONTROL": 0.197,
+    "LIE": -2.9809,
+    "HUM_AFF": 0.9484,
+    "HUM_AGG": 0.7357,
+    "HUM_SELF": -1.0771,
+    "DESIRE": -0.056,
+    "SEX_TALK": -2.0603,
+    "FAM_CLOSE": 2.1015
+   }
+  },
+  {
+   "id": "kwje",
+   "sex": "ж",
+   "age": 22,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "учится",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.0,
+    "avoidance_ecr_1_7": 2.19
+   },
+   "big5_1_5": {
+    "neuroticism": 3.2,
+    "agreeableness": 4.5,
+    "conscientiousness": 5.0
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 5.7,
+   "life_satisfaction_1_10": 10,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "позже"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.65,
+    "узкий круг общения ↔ широкий круг общения": -0.05,
+    "город ↔ природа, дача": 0.18,
+    "карьера важнее ↔ баланс важнее": -0.88,
+    "тратить на вещи ↔ тратить на впечатления": -1.11,
+    "укоренённость на месте ↔ готовность к переезду": 2.28
+   },
+   "z_self": {
+    "N": 0.3156,
+    "ANX": -2.2489,
+    "AVO": -0.6307,
+    "HOST": -0.6771,
+    "WD": -0.7654,
+    "SPEND": -2.5117,
+    "COMM": 0.7765,
+    "C": 5.0818,
+    "A": 2.171,
+    "LS": 2.9747,
+    "TRAD": -0.6076,
+    "V1": -1.6527,
+    "V2": -0.0477,
+    "V3": 0.1842,
+    "V4": -0.8813,
+    "V5": -1.105,
+    "V6": 2.283,
+    "DEFENS": -1.1303,
+    "JEAL_FEEL": 0.8302,
+    "CONTROL": -0.8301,
+    "LIE": -0.7119,
+    "HUM_AFF": 1.6523,
+    "HUM_AGG": -2.4741,
+    "HUM_SELF": 1.0771,
+    "DESIRE": -0.9372,
+    "SEX_TALK": -0.2566,
+    "FAM_CLOSE": -1.9309
+   }
+  },
+  {
+   "id": "mh4k",
+   "sex": "ж",
+   "age": 20,
+   "city": "Казань",
+   "education": "СПО",
+   "work": "учится",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.04,
+    "avoidance_ecr_1_7": 2.35
+   },
+   "big5_1_5": {
+    "neuroticism": 2.7,
+    "agreeableness": 2.7,
+    "conscientiousness": 3.2
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 4.8,
+   "life_satisfaction_1_10": 8,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.3,
+    "узкий круг общения ↔ широкий круг общения": 2.09,
+    "город ↔ природа, дача": -0.88,
+    "карьера важнее ↔ баланс важнее": 0.53,
+    "тратить на вещи ↔ тратить на впечатления": -1.3,
+    "укоренённость на месте ↔ готовность к переезду": -0.38
+   },
+   "z_self": {
+    "N": -0.3837,
+    "ANX": -0.4485,
+    "AVO": -0.4889,
+    "HOST": -0.5281,
+    "WD": -2.2112,
+    "SPEND": -1.5627,
+    "COMM": 0.0288,
+    "C": 0.3515,
+    "A": -0.4921,
+    "LS": 0.8209,
+    "TRAD": -1.5737,
+    "V1": 1.304,
+    "V2": 2.0924,
+    "V3": -0.8829,
+    "V4": 0.5319,
+    "V5": -1.3009,
+    "V6": -0.3782,
+    "DEFENS": -0.1414,
+    "JEAL_FEEL": -0.0235,
+    "CONTROL": 0.3879,
+    "LIE": -1.9022,
+    "HUM_AFF": 0.722,
+    "HUM_AGG": -2.5018,
+    "HUM_SELF": -0.6379,
+    "DESIRE": -1.0559,
+    "SEX_TALK": -0.4038,
+    "FAM_CLOSE": 1.067
+   }
+  },
+  {
+   "id": "mjd9",
+   "sex": "ж",
+   "age": 25,
+   "city": "Ярославль",
+   "education": "школа",
+   "work": "работает",
+   "income_quintile_in_city": 1,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.0,
+    "avoidance_ecr_1_7": 1.0
+   },
+   "big5_1_5": {
+    "neuroticism": 1.7,
+    "agreeableness": 3.6,
+    "conscientiousness": 3.7
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 5.2,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.03,
+    "узкий круг общения ↔ широкий круг общения": 0.58,
+    "город ↔ природа, дача": -1.64,
+    "карьера важнее ↔ баланс важнее": 0.15,
+    "тратить на вещи ↔ тратить на впечатления": -1.08,
+    "укоренённость на месте ↔ готовность к переезду": 1.1
+   },
+   "z_self": {
+    "N": -1.9096,
+    "ANX": -2.6486,
+    "AVO": -1.693,
+    "HOST": -0.6978,
+    "WD": 0.7402,
+    "SPEND": -2.0165,
+    "COMM": 0.3394,
+    "C": 1.0352,
+    "A": 0.8822,
+    "LS": 0.1945,
+    "TRAD": -1.3405,
+    "V1": -0.034,
+    "V2": 0.5769,
+    "V3": -1.6364,
+    "V4": 0.152,
+    "V5": -1.0788,
+    "V6": 1.1005,
+    "DEFENS": -1.6082,
+    "JEAL_FEEL": -0.6748,
+    "CONTROL": -0.9201,
+    "LIE": -1.4257,
+    "HUM_AFF": 0.8335,
+    "HUM_AGG": -2.1474,
+    "HUM_SELF": -1.3764,
+    "DESIRE": 2.4135,
+    "SEX_TALK": 0.3763,
+    "FAM_CLOSE": -1.4744
+   }
+  },
+  {
+   "id": "nk95",
+   "sex": "м",
+   "age": 30,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.25,
+    "avoidance_ecr_1_7": 4.2
+   },
+   "big5_1_5": {
+    "neuroticism": 2.6,
+    "agreeableness": 4.0,
+    "conscientiousness": 4.2
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 5.2,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "реже раза в месяц"
+   },
+   "nicotine": "вейп",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "другое / вне конфессии",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.42,
+    "узкий круг общения ↔ широкий круг общения": -0.94,
+    "город ↔ природа, дача": -0.8,
+    "карьера важнее ↔ баланс важнее": -1.37,
+    "тратить на вещи ↔ тратить на впечатления": -0.09,
+    "укоренённость на месте ↔ готовность к переезду": -1.68
+   },
+   "z_self": {
+    "N": -0.568,
+    "ANX": -0.293,
+    "AVO": 1.0783,
+    "HOST": -0.1043,
+    "WD": -0.959,
+    "SPEND": -0.7468,
+    "COMM": 0.365,
+    "C": 1.6735,
+    "A": 1.3903,
+    "LS": 0.465,
+    "TRAD": 0.2658,
+    "V1": -1.418,
+    "V2": -0.9361,
+    "V3": -0.7965,
+    "V4": -1.3749,
+    "V5": -0.0888,
+    "V6": -1.6806,
+    "DEFENS": -0.3459,
+    "JEAL_FEEL": -0.1519,
+    "CONTROL": -2.0445,
+    "LIE": -0.6499,
+    "HUM_AFF": -0.1003,
+    "HUM_AGG": -1.3121,
+    "HUM_SELF": 0.9611,
+    "DESIRE": -0.1127,
+    "SEX_TALK": 2.1397,
+    "FAM_CLOSE": -0.3621
+   }
+  },
+  {
+   "id": "nrjt",
+   "sex": "м",
+   "age": 26,
+   "city": "Москва",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.61,
+    "avoidance_ecr_1_7": 4.0
+   },
+   "big5_1_5": {
+    "neuroticism": 2.1,
+    "agreeableness": 1.4,
+    "conscientiousness": 2.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 3.1,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "вейп",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": true,
+    "man_must_provide": true,
+    "housework_should_be": "в основном женщина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.6,
+    "узкий круг общения ↔ широкий круг общения": 1.14,
+    "город ↔ природа, дача": -0.09,
+    "карьера важнее ↔ баланс важнее": 0.35,
+    "тратить на вещи ↔ тратить на впечатления": 1.24,
+    "укоренённость на месте ↔ готовность к переезду": 0.66
+   },
+   "z_self": {
+    "N": -1.3306,
+    "ANX": -0.773,
+    "AVO": 0.9035,
+    "HOST": -0.6069,
+    "WD": -2.1283,
+    "SPEND": 0.1988,
+    "COMM": -1.3952,
+    "C": -0.0965,
+    "A": -2.223,
+    "LS": 0.3243,
+    "TRAD": 1.8624,
+    "V1": 0.6026,
+    "V2": 1.1398,
+    "V3": -0.0861,
+    "V4": 0.3538,
+    "V5": 1.2428,
+    "V6": 0.6608,
+    "DEFENS": -0.01,
+    "JEAL_FEEL": -1.1134,
+    "CONTROL": -1.4999,
+    "LIE": -0.0227,
+    "HUM_AFF": -1.9692,
+    "HUM_AGG": 0.5465,
+    "HUM_SELF": -0.113,
+    "DESIRE": 0.0641,
+    "SEX_TALK": 0.4187,
+    "FAM_CLOSE": 0.4512
+   }
+  },
+  {
+   "id": "o8z1",
+   "sex": "м",
+   "age": 29,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 5,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.24,
+    "avoidance_ecr_1_7": 1.25
+   },
+   "big5_1_5": {
+    "neuroticism": 2.4,
+    "agreeableness": 4.2,
+    "conscientiousness": 3.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 6.2,
+   "life_satisfaction_1_10": 5,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "реже раза в месяц"
+   },
+   "nicotine": "сигареты и вейп",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 3,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.95,
+    "узкий круг общения ↔ широкий круг общения": 1.63,
+    "город ↔ природа, дача": 0.85,
+    "карьера важнее ↔ баланс важнее": 0.47,
+    "тратить на вещи ↔ тратить на впечатления": -0.5,
+    "укоренённость на месте ↔ готовность к переезду": -1.56
+   },
+   "z_self": {
+    "N": -0.8465,
+    "ANX": -1.0551,
+    "AVO": -1.4232,
+    "HOST": -1.0613,
+    "WD": -0.5728,
+    "SPEND": 1.4702,
+    "COMM": 1.1725,
+    "C": 1.3394,
+    "A": 1.6477,
+    "LS": -0.609,
+    "TRAD": -1.2005,
+    "V1": -0.9463,
+    "V2": 1.6333,
+    "V3": 0.848,
+    "V4": 0.4707,
+    "V5": -0.4964,
+    "V6": -1.5617,
+    "DEFENS": 0.3229,
+    "JEAL_FEEL": -3.2749,
+    "CONTROL": -0.5953,
+    "LIE": 1.2655,
+    "HUM_AFF": 1.5219,
+    "HUM_AGG": -1.1963,
+    "HUM_SELF": 1.113,
+    "DESIRE": 0.6045,
+    "SEX_TALK": 3.456,
+    "FAM_CLOSE": 0.4057
+   }
+  },
+  {
+   "id": "ofkb",
+   "sex": "ж",
+   "age": 20,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 4.94,
+    "avoidance_ecr_1_7": 1.57
+   },
+   "big5_1_5": {
+    "neuroticism": 2.8,
+    "agreeableness": 4.7,
+    "conscientiousness": 2.8
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "часто"
+   },
+   "long_term_orientation_1_7": 3.7,
+   "life_satisfaction_1_10": 5,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "часто",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 3,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "ислам",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": true,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.73,
+    "узкий круг общения ↔ широкий круг общения": 0.5,
+    "город ↔ природа, дача": 0.72,
+    "карьера важнее ↔ баланс важнее": -1.06,
+    "тратить на вещи ↔ тратить на впечатления": 0.96,
+    "укоренённость на месте ↔ готовность к переезду": 0.02
+   },
+   "z_self": {
+    "N": -0.2877,
+    "ANX": 0.9781,
+    "AVO": -1.1536,
+    "HOST": 0.761,
+    "WD": 2.3263,
+    "SPEND": -0.1774,
+    "COMM": -0.9105,
+    "C": -0.2293,
+    "A": 2.4444,
+    "LS": -0.8654,
+    "TRAD": 1.3496,
+    "V1": -0.7298,
+    "V2": 0.4992,
+    "V3": 0.7232,
+    "V4": -1.058,
+    "V5": 0.9565,
+    "V6": 0.0199,
+    "DEFENS": 0.8722,
+    "JEAL_FEEL": -1.5891,
+    "CONTROL": -1.8941,
+    "LIE": -1.2094,
+    "HUM_AFF": 0.368,
+    "HUM_AGG": 1.2054,
+    "HUM_SELF": 0.8909,
+    "DESIRE": -1.0385,
+    "SEX_TALK": -1.5165,
+    "FAM_CLOSE": 3.5136
+   }
+  },
+  {
+   "id": "ozil",
+   "sex": "м",
+   "age": 28,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 6.21,
+    "avoidance_ecr_1_7": 3.31
+   },
+   "big5_1_5": {
+    "neuroticism": 2.2,
+    "agreeableness": 2.2,
+    "conscientiousness": 4.3
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "часто",
+    "withdrawal_stonewalling": "часто"
+   },
+   "long_term_orientation_1_7": 6.9,
+   "life_satisfaction_1_10": 8,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "ежемесячно"
+   },
+   "nicotine": "сигареты",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "колеблется",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.2,
+    "узкий круг общения ↔ широкий круг общения": -1.22,
+    "город ↔ природа, дача": 0.91,
+    "карьера важнее ↔ баланс важнее": 0.8,
+    "тратить на вещи ↔ тратить на впечатления": -0.62,
+    "укоренённость на месте ↔ готовность к переезду": -0.24
+   },
+   "z_self": {
+    "N": -1.1778,
+    "ANX": 1.9303,
+    "AVO": 0.3196,
+    "HOST": 1.6247,
+    "WD": 2.3979,
+    "SPEND": 1.2635,
+    "COMM": 1.7735,
+    "C": 1.8744,
+    "A": -1.1984,
+    "LS": 0.8017,
+    "TRAD": -0.8894,
+    "V1": -0.2022,
+    "V2": -1.2206,
+    "V3": 0.9114,
+    "V4": 0.8027,
+    "V5": -0.6215,
+    "V6": -0.2356,
+    "DEFENS": -1.8168,
+    "JEAL_FEEL": -0.0696,
+    "CONTROL": -0.4208,
+    "LIE": 1.0052,
+    "HUM_AFF": -1.4129,
+    "HUM_AGG": -0.2737,
+    "HUM_SELF": 1.18,
+    "DESIRE": 0.3835,
+    "SEX_TALK": -1.3376,
+    "FAM_CLOSE": -0.2177
+   }
+  },
+  {
+   "id": "p7j1",
+   "sex": "ж",
+   "age": 22,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "не работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.92,
+    "avoidance_ecr_1_7": 2.82
+   },
+   "big5_1_5": {
+    "neuroticism": 2.0,
+    "agreeableness": 2.6,
+    "conscientiousness": 3.1
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 5.3,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.12,
+    "узкий круг общения ↔ широкий круг общения": 1.07,
+    "город ↔ природа, дача": -0.22,
+    "карьера важнее ↔ баланс важнее": 0.01,
+    "тратить на вещи ↔ тратить на впечатления": 0.18,
+    "укоренённость на месте ↔ готовность к переезду": 0.07
+   },
+   "z_self": {
+    "N": -1.408,
+    "ANX": 0.2069,
+    "AVO": -0.0954,
+    "HOST": 0.127,
+    "WD": 0.7965,
+    "SPEND": 0.161,
+    "COMM": 0.4309,
+    "C": 0.1218,
+    "A": -0.6105,
+    "LS": 0.239,
+    "TRAD": -1.5909,
+    "V1": -0.1158,
+    "V2": 1.0718,
+    "V3": -0.2166,
+    "V4": 0.0052,
+    "V5": 0.1845,
+    "V6": 0.0666,
+    "DEFENS": -1.0141,
+    "JEAL_FEEL": -1.0451,
+    "CONTROL": -1.4717,
+    "LIE": -1.2044,
+    "HUM_AFF": -0.7096,
+    "HUM_AGG": 0.1928,
+    "HUM_SELF": -2.6925,
+    "DESIRE": 0.4621,
+    "SEX_TALK": -0.8633,
+    "FAM_CLOSE": -0.7478
+   }
+  },
+  {
+   "id": "p81v",
+   "sex": "м",
+   "age": 21,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "учится и работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 5.51,
+    "avoidance_ecr_1_7": 1.32
+   },
+   "big5_1_5": {
+    "neuroticism": 2.0,
+    "agreeableness": 3.9,
+    "conscientiousness": 3.8
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 3.9,
+   "life_satisfaction_1_10": 10,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "не знаю"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.95,
+    "узкий круг общения ↔ широкий круг общения": -0.08,
+    "город ↔ природа, дача": 1.53,
+    "карьера важнее ↔ баланс важнее": -0.51,
+    "тратить на вещи ↔ тратить на впечатления": 0.88,
+    "укоренённость на месте ↔ готовность к переезду": 0.34
+   },
+   "z_self": {
+    "N": -1.3754,
+    "ANX": 1.4096,
+    "AVO": -1.3685,
+    "HOST": -1.5765,
+    "WD": 0.5919,
+    "SPEND": -0.2427,
+    "COMM": -0.7135,
+    "C": 1.2087,
+    "A": 1.3529,
+    "LS": 1.846,
+    "TRAD": -0.1757,
+    "V1": 0.9475,
+    "V2": -0.0844,
+    "V3": 1.5322,
+    "V4": -0.5078,
+    "V5": 0.8849,
+    "V6": 0.3353,
+    "DEFENS": -0.7946,
+    "JEAL_FEEL": -1.4415,
+    "CONTROL": -2.0846,
+    "LIE": 0.8671,
+    "HUM_AFF": 2.3986,
+    "HUM_AGG": -0.0651,
+    "HUM_SELF": 0.0227,
+    "DESIRE": -0.7515,
+    "SEX_TALK": -0.1602,
+    "FAM_CLOSE": -0.6735
+   }
+  },
+  {
+   "id": "pcy4",
+   "sex": "ж",
+   "age": 27,
+   "city": "Москва",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.97,
+    "avoidance_ecr_1_7": 2.35
+   },
+   "big5_1_5": {
+    "neuroticism": 2.7,
+    "agreeableness": 2.6,
+    "conscientiousness": 2.2
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 6.3,
+   "life_satisfaction_1_10": 5,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "часто",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.69,
+    "узкий круг общения ↔ широкий круг общения": 0.02,
+    "город ↔ природа, дача": 1.48,
+    "карьера важнее ↔ баланс важнее": 0.97,
+    "тратить на вещи ↔ тратить на впечатления": -0.07,
+    "укоренённость на месте ↔ готовность к переезду": -0.76
+   },
+   "z_self": {
+    "N": -0.4497,
+    "ANX": 0.2452,
+    "AVO": -0.4885,
+    "HOST": 0.4025,
+    "WD": -0.2136,
+    "SPEND": -1.0405,
+    "COMM": 1.2723,
+    "C": -1.109,
+    "A": -0.5436,
+    "LS": -0.8747,
+    "TRAD": -1.8784,
+    "V1": -0.6854,
+    "V2": 0.0151,
+    "V3": 1.4791,
+    "V4": 0.9707,
+    "V5": -0.0678,
+    "V6": -0.7568,
+    "DEFENS": -0.1966,
+    "JEAL_FEEL": 1.4475,
+    "CONTROL": -0.5637,
+    "LIE": 0.1704,
+    "HUM_AFF": 0.9446,
+    "HUM_AGG": 1.0063,
+    "HUM_SELF": 0.3685,
+    "DESIRE": -0.2295,
+    "SEX_TALK": 0.1431,
+    "FAM_CLOSE": -2.9526
+   }
+  },
+  {
+   "id": "pgc6",
+   "sex": "м",
+   "age": 20,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "учится и работает",
+   "income_quintile_in_city": 1,
+   "attachment": {
+    "anxiety_ecr_1_7": 5.98,
+    "avoidance_ecr_1_7": 2.26
+   },
+   "big5_1_5": {
+    "neuroticism": 2.8,
+    "agreeableness": 2.9,
+    "conscientiousness": 4.7
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 6.6,
+   "life_satisfaction_1_10": 5,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "часто",
+   "controlling_partner": "часто",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "сигареты и вейп",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.73,
+    "узкий круг общения ↔ широкий круг общения": -0.45,
+    "город ↔ природа, дача": -1.56,
+    "карьера важнее ↔ баланс важнее": 0.86,
+    "тратить на вещи ↔ тратить на впечатления": -0.77,
+    "укоренённость на месте ↔ готовность к переезду": 0.29
+   },
+   "z_self": {
+    "N": -0.2273,
+    "ANX": 1.7601,
+    "AVO": -0.5657,
+    "HOST": -2.7943,
+    "WD": -0.8076,
+    "SPEND": -0.2197,
+    "COMM": 1.531,
+    "C": 2.4617,
+    "A": -0.1192,
+    "LS": -0.6875,
+    "TRAD": -1.1184,
+    "V1": -1.7305,
+    "V2": -0.4549,
+    "V3": -1.5631,
+    "V4": 0.8588,
+    "V5": -0.7739,
+    "V6": 0.2907,
+    "DEFENS": -0.5452,
+    "JEAL_FEEL": 1.5576,
+    "CONTROL": 1.7054,
+    "LIE": 0.0411,
+    "HUM_AFF": -0.7089,
+    "HUM_AGG": 0.1462,
+    "HUM_SELF": -0.849,
+    "DESIRE": 1.4129,
+    "SEX_TALK": -1.3302,
+    "FAM_CLOSE": 0.9585
+   }
+  },
+  {
+   "id": "qoa1",
+   "sex": "м",
+   "age": 29,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 4.33,
+    "avoidance_ecr_1_7": 2.1
+   },
+   "big5_1_5": {
+    "neuroticism": 2.8,
+    "agreeableness": 3.6,
+    "conscientiousness": 3.4
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 7.0,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "редко",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "практикует регулярно"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.33,
+    "узкий круг общения ↔ широкий круг общения": -0.28,
+    "город ↔ природа, дача": 1.91,
+    "карьера важнее ↔ баланс важнее": 0.89,
+    "тратить на вещи ↔ тратить на впечатления": 0.61,
+    "укоренённость на месте ↔ готовность к переезду": 0.39
+   },
+   "z_self": {
+    "N": -0.3147,
+    "ANX": 0.5171,
+    "AVO": -0.7026,
+    "HOST": -0.0239,
+    "WD": -0.4086,
+    "SPEND": -0.7253,
+    "COMM": 2.0133,
+    "C": 0.5349,
+    "A": 0.9088,
+    "LS": -0.2333,
+    "TRAD": 1.002,
+    "V1": -1.3307,
+    "V2": -0.2765,
+    "V3": 1.9096,
+    "V4": 0.8935,
+    "V5": 0.6105,
+    "V6": 0.388,
+    "DEFENS": 0.5284,
+    "JEAL_FEEL": -0.1518,
+    "CONTROL": 0.4859,
+    "LIE": -1.0737,
+    "HUM_AFF": 0.474,
+    "HUM_AGG": 1.1218,
+    "HUM_SELF": 1.0982,
+    "DESIRE": -0.2716,
+    "SEX_TALK": 1.2397,
+    "FAM_CLOSE": -0.1098
+   }
+  },
+  {
+   "id": "rbzb",
+   "sex": "ж",
+   "age": 30,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.86,
+    "avoidance_ecr_1_7": 1.16
+   },
+   "big5_1_5": {
+    "neuroticism": 1.4,
+    "agreeableness": 2.6,
+    "conscientiousness": 3.6
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 4.9,
+   "life_satisfaction_1_10": 10,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "не знаю"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": true,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.1,
+    "узкий круг общения ↔ широкий круг общения": 0.27,
+    "город ↔ природа, дача": 0.16,
+    "карьера важнее ↔ баланс важнее": 1.81,
+    "тратить на вещи ↔ тратить на впечатления": -0.58,
+    "укоренённость на месте ↔ готовность к переезду": 1.16
+   },
+   "z_self": {
+    "N": -2.2514,
+    "ANX": 0.1678,
+    "AVO": -1.4974,
+    "HOST": -2.0471,
+    "WD": -2.3909,
+    "SPEND": -0.5456,
+    "COMM": 0.1238,
+    "C": 0.8621,
+    "A": -0.5198,
+    "LS": 1.8208,
+    "TRAD": 1.1816,
+    "V1": 0.1006,
+    "V2": 0.2695,
+    "V3": 0.157,
+    "V4": 1.8074,
+    "V5": -0.5842,
+    "V6": 1.1621,
+    "DEFENS": -1.3524,
+    "JEAL_FEEL": 0.8063,
+    "CONTROL": -0.1006,
+    "LIE": -1.7294,
+    "HUM_AFF": -1.1533,
+    "HUM_AGG": -1.6551,
+    "HUM_SELF": -0.1484,
+    "DESIRE": -1.2091,
+    "SEX_TALK": 0.491,
+    "FAM_CLOSE": 2.1692
+   }
+  },
+  {
+   "id": "rvfe",
+   "sex": "ж",
+   "age": 23,
+   "city": "Москва",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.54,
+    "avoidance_ecr_1_7": 3.39
+   },
+   "big5_1_5": {
+    "neuroticism": 3.3,
+    "agreeableness": 3.3,
+    "conscientiousness": 3.1
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "часто"
+   },
+   "long_term_orientation_1_7": 3.2,
+   "life_satisfaction_1_10": 5,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "часто",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "вейп",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.55,
+    "узкий круг общения ↔ широкий круг общения": -0.02,
+    "город ↔ природа, дача": 1.13,
+    "карьера важнее ↔ баланс важнее": -0.21,
+    "тратить на вещи ↔ тратить на впечатления": -1.57,
+    "укоренённость на месте ↔ готовность к переезду": -2.57
+   },
+   "z_self": {
+    "N": 0.3951,
+    "ANX": -0.8245,
+    "AVO": 0.3861,
+    "HOST": -1.7009,
+    "WD": 1.3176,
+    "SPEND": -0.152,
+    "COMM": -1.3081,
+    "C": 0.1526,
+    "A": 0.4667,
+    "LS": -0.5778,
+    "TRAD": -0.8657,
+    "V1": -0.5524,
+    "V2": -0.0201,
+    "V3": 1.1294,
+    "V4": -0.2124,
+    "V5": -1.5681,
+    "V6": -2.5736,
+    "DEFENS": 0.5461,
+    "JEAL_FEEL": 3.221,
+    "CONTROL": 0.4874,
+    "LIE": -0.3559,
+    "HUM_AFF": 0.0446,
+    "HUM_AGG": -1.3861,
+    "HUM_SELF": 0.0709,
+    "DESIRE": -2.5044,
+    "SEX_TALK": 0.2615,
+    "FAM_CLOSE": -0.6656
+   }
+  },
+  {
+   "id": "sink",
+   "sex": "ж",
+   "age": 29,
+   "city": "Казань",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.96,
+    "avoidance_ecr_1_7": 2.12
+   },
+   "big5_1_5": {
+    "neuroticism": 1.2,
+    "agreeableness": 3.4,
+    "conscientiousness": 4.2
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 4.1,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "часто",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "ежемесячно"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "не знаю"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "в основном мужчина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.83,
+    "узкий круг общения ↔ широкий круг общения": 0.7,
+    "город ↔ природа, дача": 0.34,
+    "карьера важнее ↔ баланс важнее": 0.84,
+    "тратить на вещи ↔ тратить на впечатления": -2.46,
+    "укоренённость на месте ↔ готовность к переезду": -1.21
+   },
+   "z_self": {
+    "N": -2.5744,
+    "ANX": -1.2641,
+    "AVO": -0.6832,
+    "HOST": -0.8852,
+    "WD": -1.3387,
+    "SPEND": 1.542,
+    "COMM": -0.5627,
+    "C": 1.7552,
+    "A": 0.6109,
+    "LS": 0.3883,
+    "TRAD": -0.7438,
+    "V1": 0.8301,
+    "V2": 0.6971,
+    "V3": 0.3422,
+    "V4": 0.8408,
+    "V5": -2.4606,
+    "V6": -1.2125,
+    "DEFENS": 0.994,
+    "JEAL_FEEL": -2.2099,
+    "CONTROL": -2.0824,
+    "LIE": -2.0725,
+    "HUM_AFF": 1.098,
+    "HUM_AGG": -0.8065,
+    "HUM_SELF": 1.2287,
+    "DESIRE": -0.7868,
+    "SEX_TALK": 1.9838,
+    "FAM_CLOSE": -0.6254
+   }
+  },
+  {
+   "id": "sypl",
+   "sex": "м",
+   "age": 26,
+   "city": "Казань",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 1,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.77,
+    "avoidance_ecr_1_7": 2.32
+   },
+   "big5_1_5": {
+    "neuroticism": 1.8,
+    "agreeableness": 3.5,
+    "conscientiousness": 2.7
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 5.3,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "часто",
+   "controlling_partner": "редко",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "реже раза в месяц"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "позже"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "в основном мужчина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.39,
+    "узкий круг общения ↔ широкий круг общения": 0.49,
+    "город ↔ природа, дача": -1.84,
+    "карьера важнее ↔ баланс важнее": 0.45,
+    "тратить на вещи ↔ тратить на впечатления": -1.45,
+    "укоренённость на месте ↔ готовность к переезду": 0.43
+   },
+   "z_self": {
+    "N": -1.7107,
+    "ANX": 0.0951,
+    "AVO": -0.5161,
+    "HOST": 0.4027,
+    "WD": -0.3442,
+    "SPEND": 1.0319,
+    "COMM": 0.3938,
+    "C": -0.4983,
+    "A": 0.7405,
+    "LS": -0.4525,
+    "TRAD": -0.6737,
+    "V1": 0.3852,
+    "V2": 0.4931,
+    "V3": -1.8409,
+    "V4": 0.4527,
+    "V5": -1.4511,
+    "V6": 0.4267,
+    "DEFENS": 0.4339,
+    "JEAL_FEEL": 1.3147,
+    "CONTROL": 1.0255,
+    "LIE": -0.6697,
+    "HUM_AFF": -2.0678,
+    "HUM_AGG": -1.1827,
+    "HUM_SELF": 1.4442,
+    "DESIRE": -0.3503,
+    "SEX_TALK": 0.9613,
+    "FAM_CLOSE": -1.1639
+   }
+  },
+  {
+   "id": "t8nv",
+   "sex": "м",
+   "age": 29,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.29,
+    "avoidance_ecr_1_7": 1.41
+   },
+   "big5_1_5": {
+    "neuroticism": 3.3,
+    "agreeableness": 3.7,
+    "conscientiousness": 2.4
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 7.0,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "реже раза в месяц"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 3,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": true,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.33,
+    "узкий круг общения ↔ широкий круг общения": 0.81,
+    "город ↔ природа, дача": 1.94,
+    "карьера важнее ↔ баланс важнее": 0.35,
+    "тратить на вещи ↔ тратить на впечатления": 0.38,
+    "укоренённость на месте ↔ готовность к переезду": -0.04
+   },
+   "z_self": {
+    "N": 0.4751,
+    "ANX": -1.0188,
+    "AVO": -1.2879,
+    "HOST": 0.7045,
+    "WD": -0.0984,
+    "SPEND": -1.3272,
+    "COMM": 2.5651,
+    "C": -0.8306,
+    "A": 0.9727,
+    "LS": -0.2996,
+    "TRAD": 0.8392,
+    "V1": -1.3311,
+    "V2": 0.8106,
+    "V3": 1.9447,
+    "V4": 0.3501,
+    "V5": 0.3808,
+    "V6": -0.0402,
+    "DEFENS": -0.0981,
+    "JEAL_FEEL": -0.0737,
+    "CONTROL": -1.7302,
+    "LIE": 0.586,
+    "HUM_AFF": 1.833,
+    "HUM_AGG": 0.1284,
+    "HUM_SELF": 0.0183,
+    "DESIRE": 2.342,
+    "SEX_TALK": 1.6998,
+    "FAM_CLOSE": -0.5972
+   }
+  },
+  {
+   "id": "tcxq",
+   "sex": "м",
+   "age": 24,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.86,
+    "avoidance_ecr_1_7": 1.47
+   },
+   "big5_1_5": {
+    "neuroticism": 3.0,
+    "agreeableness": 3.4,
+    "conscientiousness": 2.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "часто",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 5.8,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "иногда",
+   "controlling_partner": "иногда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "alcohol": {
+    "frequency": "ежемесячно"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "позже"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": true,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.29,
+    "узкий круг общения ↔ широкий круг общения": 0.7,
+    "город ↔ природа, дача": -0.44,
+    "карьера важнее ↔ баланс важнее": -0.52,
+    "тратить на вещи ↔ тратить на впечатления": 0.58,
+    "укоренённость на месте ↔ готовность к переезду": 1.64
+   },
+   "z_self": {
+    "N": 0.0366,
+    "ANX": -1.3409,
+    "AVO": -1.2333,
+    "HOST": 1.1332,
+    "WD": -2.1904,
+    "SPEND": 0.7895,
+    "COMM": 0.8182,
+    "C": -0.0956,
+    "A": 0.5961,
+    "LS": 0.5071,
+    "TRAD": 0.8727,
+    "V1": -1.2913,
+    "V2": 0.7037,
+    "V3": -0.439,
+    "V4": -0.5178,
+    "V5": 0.5767,
+    "V6": 1.6408,
+    "DEFENS": -0.5026,
+    "JEAL_FEEL": 0.2644,
+    "CONTROL": 1.1721,
+    "LIE": -1.6047,
+    "HUM_AFF": -0.2599,
+    "HUM_AGG": 0.8474,
+    "HUM_SELF": 0.2986,
+    "DESIRE": -0.4863,
+    "SEX_TALK": 0.7425,
+    "FAM_CLOSE": 1.6858
+   }
+  },
+  {
+   "id": "tv2n",
+   "sex": "ж",
+   "age": 29,
+   "city": "Казань",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 5,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.6,
+    "avoidance_ecr_1_7": 2.14
+   },
+   "big5_1_5": {
+    "neuroticism": 2.2,
+    "agreeableness": 3.9,
+    "conscientiousness": 3.5
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 3.3,
+   "life_satisfaction_1_10": 9,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "редко",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "сигареты",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "колеблется",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.56,
+    "узкий круг общения ↔ широкий круг общения": -0.13,
+    "город ↔ природа, дача": -1.02,
+    "карьера важнее ↔ баланс важнее": -0.49,
+    "тратить на вещи ↔ тратить на впечатления": 0.16,
+    "укоренённость на месте ↔ готовность к переезду": -0.12
+   },
+   "z_self": {
+    "N": -1.1358,
+    "ANX": -0.7854,
+    "AVO": -0.6713,
+    "HOST": -0.6639,
+    "WD": -0.4062,
+    "SPEND": -1.1852,
+    "COMM": -1.2499,
+    "C": 0.7371,
+    "A": 1.2681,
+    "LS": 1.4128,
+    "TRAD": 0.1705,
+    "V1": 0.5592,
+    "V2": -0.1281,
+    "V3": -1.0215,
+    "V4": -0.4947,
+    "V5": 0.1621,
+    "V6": -0.1161,
+    "DEFENS": -0.2765,
+    "JEAL_FEEL": -0.2372,
+    "CONTROL": 0.6743,
+    "LIE": 1.0276,
+    "HUM_AFF": 0.7893,
+    "HUM_AGG": -0.7249,
+    "HUM_SELF": 0.5169,
+    "DESIRE": 0.0602,
+    "SEX_TALK": -1.0487,
+    "FAM_CLOSE": -1.0514
+   }
+  },
+  {
+   "id": "u2un",
+   "sex": "м",
+   "age": 21,
+   "city": "Москва",
+   "education": "высшее",
+   "work": "учится и работает",
+   "income_quintile_in_city": 5,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.86,
+    "avoidance_ecr_1_7": 1.0
+   },
+   "big5_1_5": {
+    "neuroticism": 2.7,
+    "agreeableness": 5.0,
+    "conscientiousness": 3.4
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 3.9,
+   "life_satisfaction_1_10": 2,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "редко",
+   "lies_to_partner_small_things": "часто",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.04,
+    "узкий круг общения ↔ широкий круг общения": 0.95,
+    "город ↔ природа, дача": 0.8,
+    "карьера важнее ↔ баланс важнее": 0.91,
+    "тратить на вещи ↔ тратить на впечатления": 0.95,
+    "укоренённость на месте ↔ готовность к переезду": -0.49
+   },
+   "z_self": {
+    "N": -0.409,
+    "ANX": -1.337,
+    "AVO": -1.6587,
+    "HOST": -2.3982,
+    "WD": -0.2461,
+    "SPEND": -1.6406,
+    "COMM": -0.7213,
+    "C": 0.6344,
+    "A": 3.0622,
+    "LS": -2.5798,
+    "TRAD": -0.0271,
+    "V1": -0.0376,
+    "V2": 0.9523,
+    "V3": 0.7981,
+    "V4": 0.9104,
+    "V5": 0.9463,
+    "V6": -0.4874,
+    "DEFENS": -2.0634,
+    "JEAL_FEEL": -0.9949,
+    "CONTROL": 0.3877,
+    "LIE": 2.0634,
+    "HUM_AFF": -0.0763,
+    "HUM_AGG": -0.1204,
+    "HUM_SELF": 1.3501,
+    "DESIRE": 1.7117,
+    "SEX_TALK": 2.6995,
+    "FAM_CLOSE": 2.2738
+   }
+  },
+  {
+   "id": "ufy2",
+   "sex": "ж",
+   "age": 22,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "учится",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.98,
+    "avoidance_ecr_1_7": 2.01
+   },
+   "big5_1_5": {
+    "neuroticism": 4.0,
+    "agreeableness": 3.2,
+    "conscientiousness": 3.2
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 3.8,
+   "life_satisfaction_1_10": 2,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "ежемесячно"
+   },
+   "nicotine": "вейп",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.04,
+    "узкий круг общения ↔ широкий круг общения": 0.39,
+    "город ↔ природа, дача": -2.22,
+    "карьера важнее ↔ баланс важнее": -0.33,
+    "тратить на вещи ↔ тратить на впечатления": -1.22,
+    "укоренённость на месте ↔ готовность к переезду": 1.17
+   },
+   "z_self": {
+    "N": 1.4995,
+    "ANX": 0.2528,
+    "AVO": -0.7829,
+    "HOST": 0.6977,
+    "WD": -0.706,
+    "SPEND": -0.74,
+    "COMM": -0.8675,
+    "C": 0.3249,
+    "A": 0.3376,
+    "LS": -2.4169,
+    "TRAD": -0.9779,
+    "V1": 1.0367,
+    "V2": 0.3916,
+    "V3": -2.2217,
+    "V4": -0.3335,
+    "V5": -1.2232,
+    "V6": 1.1749,
+    "DEFENS": -1.1962,
+    "JEAL_FEEL": -0.7171,
+    "CONTROL": -0.338,
+    "LIE": -0.9629,
+    "HUM_AFF": 0.3717,
+    "HUM_AGG": -0.3556,
+    "HUM_SELF": 1.394,
+    "DESIRE": -1.1759,
+    "SEX_TALK": 0.267,
+    "FAM_CLOSE": -2.3974
+   }
+  },
+  {
+   "id": "utmi",
+   "sex": "ж",
+   "age": 27,
+   "city": "Москва",
+   "education": "школа",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.0,
+    "avoidance_ecr_1_7": 3.07
+   },
+   "big5_1_5": {
+    "neuroticism": 2.0,
+    "agreeableness": 3.8,
+    "conscientiousness": 2.8
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 5.0,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "не знаю"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": true,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.09,
+    "узкий круг общения ↔ широкий круг общения": 0.32,
+    "город ↔ природа, дача": -2.0,
+    "карьера важнее ↔ баланс важнее": 0.37,
+    "тратить на вещи ↔ тратить на впечатления": -0.1,
+    "укоренённость на месте ↔ готовность к переезду": -0.09
+   },
+   "z_self": {
+    "N": -1.4001,
+    "ANX": -2.4747,
+    "AVO": 0.1155,
+    "HOST": -1.7003,
+    "WD": -0.6475,
+    "SPEND": -0.3797,
+    "COMM": 0.172,
+    "C": -0.2338,
+    "A": 1.1937,
+    "LS": -0.5424,
+    "TRAD": 1.51,
+    "V1": 1.088,
+    "V2": 0.3189,
+    "V3": -2.0037,
+    "V4": 0.3702,
+    "V5": -0.0983,
+    "V6": -0.0914,
+    "DEFENS": -1.6739,
+    "JEAL_FEEL": -1.61,
+    "CONTROL": -2.3442,
+    "LIE": 0.6069,
+    "HUM_AFF": -0.3782,
+    "HUM_AGG": -1.6299,
+    "HUM_SELF": -0.1178,
+    "DESIRE": 0.8636,
+    "SEX_TALK": -0.9317,
+    "FAM_CLOSE": 0.1945
+   }
+  },
+  {
+   "id": "v2bk",
+   "sex": "ж",
+   "age": 20,
+   "city": "Ярославль",
+   "education": "школа",
+   "work": "учится",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.74,
+    "avoidance_ecr_1_7": 1.03
+   },
+   "big5_1_5": {
+    "neuroticism": 1.4,
+    "agreeableness": 3.2,
+    "conscientiousness": 2.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "иногда"
+   },
+   "long_term_orientation_1_7": 5.2,
+   "life_satisfaction_1_10": 10,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "почти никогда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 3,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "колеблется",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "в основном женщина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -1.85,
+    "узкий круг общения ↔ широкий круг общения": 0.12,
+    "город ↔ природа, дача": 0.51,
+    "карьера важнее ↔ баланс важнее": 0.22,
+    "тратить на вещи ↔ тратить на впечатления": 0.68,
+    "укоренённость на месте ↔ готовность к переезду": 0.74
+   },
+   "z_self": {
+    "N": -2.2899,
+    "ANX": -0.6734,
+    "AVO": -1.6143,
+    "HOST": -0.3285,
+    "WD": 0.2069,
+    "SPEND": 0.2471,
+    "COMM": 0.3087,
+    "C": -0.1588,
+    "A": 0.3499,
+    "LS": 2.0595,
+    "TRAD": 0.6402,
+    "V1": -1.8456,
+    "V2": 0.1243,
+    "V3": 0.5089,
+    "V4": 0.2238,
+    "V5": 0.6761,
+    "V6": 0.7416,
+    "DEFENS": -2.9735,
+    "JEAL_FEEL": -0.315,
+    "CONTROL": -2.4199,
+    "LIE": -0.7638,
+    "HUM_AFF": -0.4717,
+    "HUM_AGG": -1.6234,
+    "HUM_SELF": 2.244,
+    "DESIRE": 1.8006,
+    "SEX_TALK": 1.0527,
+    "FAM_CLOSE": 0.9577
+   }
+  },
+  {
+   "id": "vrfe",
+   "sex": "м",
+   "age": 30,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "не работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 2.81,
+    "avoidance_ecr_1_7": 4.31
+   },
+   "big5_1_5": {
+    "neuroticism": 3.0,
+    "agreeableness": 2.7,
+    "conscientiousness": 3.8
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 6.0,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": true,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "не знаю"
+   },
+   "religion": {
+    "confession": "ислам",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "в основном женщина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 2.78,
+    "узкий круг общения ↔ широкий круг общения": -0.98,
+    "город ↔ природа, дача": -0.2,
+    "карьера важнее ↔ баланс важнее": -0.93,
+    "тратить на вещи ↔ тратить на впечатления": 0.25,
+    "укоренённость на месте ↔ готовность к переезду": -0.18
+   },
+   "z_self": {
+    "N": 0.0313,
+    "ANX": -0.6226,
+    "AVO": 1.1737,
+    "HOST": -2.328,
+    "WD": -0.1803,
+    "SPEND": -1.6264,
+    "COMM": 0.9874,
+    "C": 1.1755,
+    "A": -0.4112,
+    "LS": 0.2135,
+    "TRAD": 0.4961,
+    "V1": 2.7787,
+    "V2": -0.9785,
+    "V3": -0.1985,
+    "V4": -0.929,
+    "V5": 0.2459,
+    "V6": -0.1774,
+    "DEFENS": -1.0757,
+    "JEAL_FEEL": -0.9429,
+    "CONTROL": -0.2615,
+    "LIE": 0.8683,
+    "HUM_AFF": -0.7646,
+    "HUM_AGG": -0.2007,
+    "HUM_SELF": 0.9522,
+    "DESIRE": 1.6394,
+    "SEX_TALK": -1.0527,
+    "FAM_CLOSE": 0.2219
+   }
+  },
+  {
+   "id": "vsic",
+   "sex": "ж",
+   "age": 27,
+   "city": "Москва",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 4.55,
+    "avoidance_ecr_1_7": 1.78
+   },
+   "big5_1_5": {
+    "neuroticism": 4.1,
+    "agreeableness": 2.7,
+    "conscientiousness": 2.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "почти никогда"
+   },
+   "long_term_orientation_1_7": 5.3,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "часто",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "реже раза в месяц"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "другое / вне конфессии",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.68,
+    "узкий круг общения ↔ широкий круг общения": -0.61,
+    "город ↔ природа, дача": -0.26,
+    "карьера важнее ↔ баланс важнее": -0.82,
+    "тратить на вещи ↔ тратить на впечатления": -0.44,
+    "укоренённость на месте ↔ готовность к переезду": -0.34
+   },
+   "z_self": {
+    "N": 1.5189,
+    "ANX": 0.6841,
+    "AVO": -0.9739,
+    "HOST": -0.1266,
+    "WD": -2.3899,
+    "SPEND": 0.2212,
+    "COMM": 0.4355,
+    "C": -0.1343,
+    "A": -0.4884,
+    "LS": -0.3573,
+    "TRAD": -0.3078,
+    "V1": 0.6816,
+    "V2": -0.6097,
+    "V3": -0.2584,
+    "V4": -0.8205,
+    "V5": -0.4421,
+    "V6": -0.3406,
+    "DEFENS": 2.4281,
+    "JEAL_FEEL": -1.5944,
+    "CONTROL": -1.7132,
+    "LIE": 0.4862,
+    "HUM_AFF": 1.479,
+    "HUM_AGG": -0.7135,
+    "HUM_SELF": 2.0592,
+    "DESIRE": -1.4131,
+    "SEX_TALK": 0.161,
+    "FAM_CLOSE": -0.9266
+   }
+  },
+  {
+   "id": "w2hc",
+   "sex": "м",
+   "age": 25,
+   "city": "Ярославль",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.15,
+    "avoidance_ecr_1_7": 2.19
+   },
+   "big5_1_5": {
+    "neuroticism": 2.2,
+    "agreeableness": 1.7,
+    "conscientiousness": 3.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 6.5,
+   "life_satisfaction_1_10": 7,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": true,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "позже"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 0.69,
+    "узкий круг общения ↔ широкий круг общения": 0.29,
+    "город ↔ природа, дача": 0.4,
+    "карьера важнее ↔ баланс важнее": 0.23,
+    "тратить на вещи ↔ тратить на впечатления": -1.24,
+    "укоренённость на месте ↔ готовность к переезду": -0.6
+   },
+   "z_self": {
+    "N": -1.1045,
+    "ANX": -1.8701,
+    "AVO": -0.6247,
+    "HOST": -0.7627,
+    "WD": -1.0381,
+    "SPEND": -0.0307,
+    "COMM": 1.3764,
+    "C": 1.2484,
+    "A": -1.8799,
+    "LS": 0.1305,
+    "TRAD": -0.6541,
+    "V1": 0.6876,
+    "V2": 0.2944,
+    "V3": 0.3972,
+    "V4": 0.2293,
+    "V5": -1.2401,
+    "V6": -0.5957,
+    "DEFENS": -1.0298,
+    "JEAL_FEEL": -0.2087,
+    "CONTROL": 0.1596,
+    "LIE": 0.7239,
+    "HUM_AFF": 0.5078,
+    "HUM_AGG": -1.2245,
+    "HUM_SELF": -0.9136,
+    "DESIRE": -0.8413,
+    "SEX_TALK": -1.3294,
+    "FAM_CLOSE": -1.955
+   }
+  },
+  {
+   "id": "wwxk",
+   "sex": "ж",
+   "age": 26,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "работает",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.75,
+    "avoidance_ecr_1_7": 2.32
+   },
+   "big5_1_5": {
+    "neuroticism": 2.9,
+    "agreeableness": 3.0,
+    "conscientiousness": 3.2
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "часто"
+   },
+   "long_term_orientation_1_7": 7.0,
+   "life_satisfaction_1_10": 3,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "иногда",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "иногда",
+   "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "сигареты",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 1,
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "ислам",
+    "religiosity": "по традиции"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "в основном женщина"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -2.55,
+    "узкий круг общения ↔ широкий круг общения": 0.35,
+    "город ↔ природа, дача": 0.43,
+    "карьера важнее ↔ баланс важнее": 1.29,
+    "тратить на вещи ↔ тратить на впечатления": -0.16,
+    "укоренённость на месте ↔ готовность к переезду": 0.49
+   },
+   "z_self": {
+    "N": -0.1898,
+    "ANX": -1.4216,
+    "AVO": -0.5169,
+    "HOST": -0.1252,
+    "WD": 1.193,
+    "SPEND": 0.0976,
+    "COMM": 1.9025,
+    "C": 0.2636,
+    "A": -0.0309,
+    "LS": -1.9432,
+    "TRAD": -1.4814,
+    "V1": -2.5502,
+    "V2": 0.3514,
+    "V3": 0.4317,
+    "V4": 1.2912,
+    "V5": -0.1619,
+    "V6": 0.4949,
+    "DEFENS": 0.0495,
+    "JEAL_FEEL": -0.8228,
+    "CONTROL": 1.4104,
+    "LIE": 0.509,
+    "HUM_AFF": 0.0773,
+    "HUM_AGG": 0.4802,
+    "HUM_SELF": 1.6684,
+    "DESIRE": -0.0886,
+    "SEX_TALK": -0.724,
+    "FAM_CLOSE": 0.8207
+   }
+  },
+  {
+   "id": "xjqx",
+   "sex": "ж",
+   "age": 20,
+   "city": "Москва",
+   "education": "СПО",
+   "work": "учится и работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 5.22,
+    "avoidance_ecr_1_7": 1.82
+   },
+   "big5_1_5": {
+    "neuroticism": 3.7,
+    "agreeableness": 3.3,
+    "conscientiousness": 2.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "иногда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 7.0,
+   "life_satisfaction_1_10": 6,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "часто",
+   "jealousy_feeling": "часто",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "реже раза в месяц"
+   },
+   "nicotine": "нагреваемый табак",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": true
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "позже"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.12,
+    "узкий круг общения ↔ широкий круг общения": 0.23,
+    "город ↔ природа, дача": -0.92,
+    "карьера важнее ↔ баланс важнее": -0.96,
+    "тратить на вещи ↔ тратить на впечатления": -0.47,
+    "укоренённость на месте ↔ готовность к переезду": 0.49
+   },
+   "z_self": {
+    "N": 0.9888,
+    "ANX": 1.1848,
+    "AVO": -0.9433,
+    "HOST": 0.7893,
+    "WD": -0.3254,
+    "SPEND": 1.6273,
+    "COMM": 2.1133,
+    "C": -0.1856,
+    "A": 0.4321,
+    "LS": -0.4224,
+    "TRAD": -0.8868,
+    "V1": -0.1168,
+    "V2": 0.2328,
+    "V3": -0.9239,
+    "V4": -0.9587,
+    "V5": -0.471,
+    "V6": 0.4891,
+    "DEFENS": 2.083,
+    "JEAL_FEEL": 2.0477,
+    "CONTROL": -0.6156,
+    "LIE": 0.2372,
+    "HUM_AFF": -1.0208,
+    "HUM_AGG": -0.3187,
+    "HUM_SELF": 0.4404,
+    "DESIRE": -0.4492,
+    "SEX_TALK": 1.8028,
+    "FAM_CLOSE": 0.3392
+   }
+  },
+  {
+   "id": "yfvk",
+   "sex": "м",
+   "age": 27,
+   "city": "Казань",
+   "education": "высшее",
+   "work": "работает",
+   "income_quintile_in_city": 2,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.2,
+    "avoidance_ecr_1_7": 1.55
+   },
+   "big5_1_5": {
+    "neuroticism": 2.1,
+    "agreeableness": 3.7,
+    "conscientiousness": 3.5
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 5.7,
+   "life_satisfaction_1_10": 8,
+   "admits_secretly_checking_partner_phone": true,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "редко",
+   "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": "не знаю",
+    "first_child_when": "в ближайшие 3 года"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "практикует регулярно"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": true,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.61,
+    "узкий круг общения ↔ широкий круг общения": 0.87,
+    "город ↔ природа, дача": 0.72,
+    "карьера важнее ↔ баланс важнее": 0.31,
+    "тратить на вещи ↔ тратить на впечатления": -3.89,
+    "укоренённость на месте ↔ готовность к переезду": -2.08
+   },
+   "z_self": {
+    "N": -1.3048,
+    "ANX": -0.3302,
+    "AVO": -1.1699,
+    "HOST": -0.6251,
+    "WD": -0.4319,
+    "SPEND": -2.5515,
+    "COMM": 0.7848,
+    "C": 0.7438,
+    "A": 1.0125,
+    "LS": 0.8152,
+    "TRAD": 0.0394,
+    "V1": -0.6084,
+    "V2": 0.8671,
+    "V3": 0.72,
+    "V4": 0.3144,
+    "V5": -3.893,
+    "V6": -2.0805,
+    "DEFENS": -1.0385,
+    "JEAL_FEEL": -0.7804,
+    "CONTROL": 0.1388,
+    "LIE": -0.5191,
+    "HUM_AFF": 0.9686,
+    "HUM_AGG": 0.2513,
+    "HUM_SELF": -0.7458,
+    "DESIRE": 0.3204,
+    "SEX_TALK": -0.2592,
+    "FAM_CLOSE": 0.0208
+   }
+  },
+  {
+   "id": "ypew",
+   "sex": "ж",
+   "age": 21,
+   "city": "Ярославль",
+   "education": "высшее",
+   "work": "не работает",
+   "income_quintile_in_city": 4,
+   "attachment": {
+    "anxiety_ecr_1_7": 3.77,
+    "avoidance_ecr_1_7": 3.76
+   },
+   "big5_1_5": {
+    "neuroticism": 2.3,
+    "agreeableness": 5.0,
+    "conscientiousness": 2.9
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "почти никогда",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 4.2,
+   "life_satisfaction_1_10": 8,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "редко",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": false,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": true,
+    "step_parent": true
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "через 3–6 лет"
+   },
+   "religion": {
+    "confession": "неверующий",
+    "religiosity": "нет"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": 1.24,
+    "узкий круг общения ↔ широкий круг общения": 1.98,
+    "город ↔ природа, дача": -0.75,
+    "карьера важнее ↔ баланс важнее": -0.16,
+    "тратить на вещи ↔ тратить на впечатления": 0.64,
+    "укоренённость на месте ↔ готовность к переезду": 1.36
+   },
+   "z_self": {
+    "N": -0.9583,
+    "ANX": 0.097,
+    "AVO": 0.6995,
+    "HOST": -1.7658,
+    "WD": -0.9675,
+    "SPEND": -1.2407,
+    "COMM": -0.5098,
+    "C": -0.1666,
+    "A": 2.9102,
+    "LS": 1.071,
+    "TRAD": 0.0507,
+    "V1": 1.2404,
+    "V2": 1.98,
+    "V3": -0.7476,
+    "V4": -0.1634,
+    "V5": 0.6396,
+    "V6": 1.3641,
+    "DEFENS": -0.4747,
+    "JEAL_FEEL": -0.9081,
+    "CONTROL": -1.3238,
+    "LIE": 0.2992,
+    "HUM_AFF": 0.3984,
+    "HUM_AGG": -0.6193,
+    "HUM_SELF": -1.0005,
+    "DESIRE": -0.0367,
+    "SEX_TALK": 0.244,
+    "FAM_CLOSE": 0.6166
+   }
+  },
+  {
+   "id": "zevk",
+   "sex": "м",
+   "age": 24,
+   "city": "Москва",
+   "education": "школа",
+   "work": "работает",
+   "income_quintile_in_city": 3,
+   "attachment": {
+    "anxiety_ecr_1_7": 1.0,
+    "avoidance_ecr_1_7": 1.0
+   },
+   "big5_1_5": {
+    "neuroticism": 1.6,
+    "agreeableness": 3.9,
+    "conscientiousness": 2.7
+   },
+   "conflict": {
+    "hostility_criticism_contempt": "редко",
+    "withdrawal_stonewalling": "редко"
+   },
+   "long_term_orientation_1_7": 6.1,
+   "life_satisfaction_1_10": 10,
+   "admits_secretly_checking_partner_phone": false,
+   "conflict_defensiveness": "редко",
+   "jealousy_feeling": "почти никогда",
+   "controlling_partner": "почти никогда",
+   "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
+   "alcohol": {
+    "frequency": "не пьёт"
+   },
+   "nicotine": "нет",
+   "money": {
+    "has_consumer_debt": true,
+    "admits_problem_debt": false,
+    "saves_nothing": false
+   },
+   "admits_cheating_in_past": false,
+   "parents": {
+    "born_outside_union": false,
+    "parents_separated_before_15": false,
+    "step_parent": false
+   },
+   "kids": {
+    "wanted": 2,
+    "first_child_when": "позже"
+   },
+   "religion": {
+    "confession": "православие",
+    "religiosity": "верующий, практикует редко"
+   },
+   "roles": {
+    "man_is_head_of_family": false,
+    "man_must_provide": false,
+    "housework_should_be": "поровну"
+   },
+   "views_z": {
+    "досуг дома ↔ досуг вне дома": -0.37,
+    "узкий круг общения ↔ широкий круг общения": 0.3,
+    "город ↔ природа, дача": -1.81,
+    "карьера важнее ↔ баланс важнее": 1.05,
+    "тратить на вещи ↔ тратить на впечатления": 0.21,
+    "укоренённость на месте ↔ готовность к переезду": 0.37
+   },
+   "z_self": {
+    "N": -2.0607,
+    "ANX": -2.0347,
+    "AVO": -1.6904,
+    "HOST": -0.3754,
+    "WD": -0.4651,
+    "SPEND": -0.245,
+    "COMM": 1.1047,
+    "C": -0.4822,
+    "A": 1.3475,
+    "LS": 3.6596,
+    "TRAD": 0.4921,
+    "V1": -0.3691,
+    "V2": 0.2971,
+    "V3": -1.8051,
+    "V4": 1.0537,
+    "V5": 0.2106,
+    "V6": 0.3685,
+    "DEFENS": -0.6966,
+    "JEAL_FEEL": -1.2592,
+    "CONTROL": -1.4973,
+    "LIE": 0.3567,
+    "HUM_AFF": 0.7192,
+    "HUM_AGG": -1.7502,
+    "HUM_SELF": -1.0614,
+    "DESIRE": 0.1882,
+    "SEX_TALK": 1.8296,
+    "FAM_CLOSE": -0.4954
+   }
+  }
+ ]
+}
