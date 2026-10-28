@@ -1,100 +1,431 @@
 {
  "note": "ЗАКРЫТО: агрегаты, которых нет в generation-report.md (доли и AUC по семействам, согласие вариантов устройства формулы). Владельцу теста не показывать.",
+ "strength_check_sample_r5": {
+  "break_real": {
+   "which": "break",
+   "n_pairs": 180,
+   "sd_new": {
+    "relatives_disapproval": 0.06796138609534093,
+    "inlaw_conflict": 0.06617308020040986,
+    "par_live": 0.0,
+    "sex_satisfaction": 0.14991289388832363,
+    "humor_aggressive": 0.11439535554031494,
+    "humor_affiliative": 0.0
+   },
+   "sd_strong": {
+    "RISKY": 0.113833319776584,
+    "INF": 0.1823170484974993,
+    "COMM": 0.4622975950224622,
+    "HOST": 0.42774932448560204,
+    "kids_hard": 0.21073650975379155
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.113833319776584,
+    "inlaw_conflict": 0.113833319776584,
+    "par_live": 0.113833319776584,
+    "sex_satisfaction": 0.42774932448560204,
+    "humor_aggressive": 0.42774932448560204,
+    "humor_affiliative": 0.42774932448560204
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "unit_weight": {
+    "relatives_disapproval_per_side_max": 0.15,
+    "inlaw_conflict_per_person_max": 0.15,
+    "par_live": 0.0,
+    "sex_satisfaction_per_sd": 0.15,
+    "humor_aggressive_per_sd": 0.08
+   },
+   "unit_limit": {
+    "relatives_disapproval_per_side_max": 0.4,
+    "inlaw_conflict_per_person_max": 0.4,
+    "par_live": 0.4,
+    "sex_satisfaction_per_sd": 0.3,
+    "humor_aggressive_per_sd": 0.3
+   },
+   "unit_ok": {
+    "relatives_disapproval_per_side_max": true,
+    "inlaw_conflict_per_person_max": true,
+    "par_live": true,
+    "sex_satisfaction_per_sd": true,
+    "humor_aggressive_per_sd": true
+   },
+   "ok": true
+  },
+  "break_expected": {
+   "which": "break",
+   "n_pairs": 180,
+   "sd_new": {
+    "relatives_disapproval": 0.023844724239569504,
+    "inlaw_conflict": 0.017324953999092237,
+    "par_live": 0.0,
+    "sex_satisfaction": 0.0979420076251778,
+    "humor_aggressive": 0.11439535554031494,
+    "humor_affiliative": 0.0
+   },
+   "sd_strong": {
+    "RISKY": 0.113833319776584,
+    "INF": 0.1823170484974993,
+    "COMM": 0.4622975950224622,
+    "HOST": 0.42774932448560204,
+    "kids_hard": 0.21073650975379155
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.113833319776584,
+    "inlaw_conflict": 0.113833319776584,
+    "par_live": 0.113833319776584,
+    "sex_satisfaction": 0.42774932448560204,
+    "humor_aggressive": 0.42774932448560204,
+    "humor_affiliative": 0.42774932448560204
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "unit_weight": {
+    "relatives_disapproval_per_side_max": 0.15,
+    "inlaw_conflict_per_person_max": 0.15,
+    "par_live": 0.0,
+    "sex_satisfaction_per_sd": 0.15,
+    "humor_aggressive_per_sd": 0.08
+   },
+   "unit_limit": {
+    "relatives_disapproval_per_side_max": 0.4,
+    "inlaw_conflict_per_person_max": 0.4,
+    "par_live": 0.4,
+    "sex_satisfaction_per_sd": 0.3,
+    "humor_aggressive_per_sd": 0.3
+   },
+   "unit_ok": {
+    "relatives_disapproval_per_side_max": true,
+    "inlaw_conflict_per_person_max": true,
+    "par_live": true,
+    "sex_satisfaction_per_sd": true,
+    "humor_aggressive_per_sd": true
+   },
+   "ok": true
+  },
+  "sat_real": {
+   "which": "sat",
+   "n_pairs": 180,
+   "sd_new": {
+    "relatives_disapproval": 0.044847443738484614,
+    "inlaw_conflict": 0.05598236053756598,
+    "par_live": 0.0207084404572831,
+    "sex_satisfaction": 0.29982578777664726,
+    "humor_aggressive": 0.14299419442539366,
+    "humor_affiliative": 0.0850456450265516
+   },
+   "sd_strong": {
+    "HOST": 0.3564577704046684,
+    "AVO": 0.4251466125014412
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.3564577704046684,
+    "inlaw_conflict": 0.3564577704046684,
+    "par_live": 0.3564577704046684,
+    "sex_satisfaction": 0.3564577704046684,
+    "humor_aggressive": 0.3564577704046684,
+    "humor_affiliative": 0.3564577704046684
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "ok": true
+  },
+  "sat_expected": {
+   "which": "sat",
+   "n_pairs": 180,
+   "sd_new": {
+    "relatives_disapproval": 0.015599260354990896,
+    "inlaw_conflict": 0.014470257509192095,
+    "par_live": 0.003214255822110172,
+    "sex_satisfaction": 0.1958840152503556,
+    "humor_aggressive": 0.14299419442539366,
+    "humor_affiliative": 0.0850456450265516
+   },
+   "sd_strong": {
+    "HOST": 0.3564577704046684,
+    "AVO": 0.4251466125014412
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.3564577704046684,
+    "inlaw_conflict": 0.3564577704046684,
+    "par_live": 0.3564577704046684,
+    "sex_satisfaction": 0.3564577704046684,
+    "humor_aggressive": 0.3564577704046684,
+    "humor_affiliative": 0.3564577704046684
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "ok": true
+  }
+ },
+ "strength_check_calibration_r5": {
+  "break_real": {
+   "which": "break",
+   "n_pairs": 5000,
+   "sd_new": {
+    "relatives_disapproval": 0.07219418259112018,
+    "inlaw_conflict": 0.06393074124394305,
+    "par_live": 0.0,
+    "sex_satisfaction": 0.15,
+    "humor_aggressive": 0.1134355554481724,
+    "humor_affiliative": 0.0
+   },
+   "sd_strong": {
+    "RISKY": 0.10864103092294367,
+    "INF": 0.19696324936393592,
+    "COMM": 0.49882161963425503,
+    "HOST": 0.42225391397056555,
+    "kids_hard": 0.22119340952207414
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.10864103092294367,
+    "inlaw_conflict": 0.10864103092294367,
+    "par_live": 0.10864103092294367,
+    "sex_satisfaction": 0.42225391397056555,
+    "humor_aggressive": 0.42225391397056555,
+    "humor_affiliative": 0.42225391397056555
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "unit_weight": {
+    "relatives_disapproval_per_side_max": 0.15,
+    "inlaw_conflict_per_person_max": 0.15,
+    "par_live": 0.0,
+    "sex_satisfaction_per_sd": 0.15,
+    "humor_aggressive_per_sd": 0.08
+   },
+   "unit_limit": {
+    "relatives_disapproval_per_side_max": 0.4,
+    "inlaw_conflict_per_person_max": 0.4,
+    "par_live": 0.4,
+    "sex_satisfaction_per_sd": 0.3,
+    "humor_aggressive_per_sd": 0.3
+   },
+   "unit_ok": {
+    "relatives_disapproval_per_side_max": true,
+    "inlaw_conflict_per_person_max": true,
+    "par_live": true,
+    "sex_satisfaction_per_sd": true,
+    "humor_aggressive_per_sd": true
+   },
+   "ok": true
+  },
+  "sat_real": {
+   "which": "sat",
+   "n_pairs": 5000,
+   "sd_new": {
+    "relatives_disapproval": 0.04748810377347152,
+    "inlaw_conflict": 0.05433117469740554,
+    "par_live": 0.01983457345142567,
+    "sex_satisfaction": 0.3,
+    "humor_aggressive": 0.1417944443102155,
+    "humor_affiliative": 0.08451542875028721
+   },
+   "sd_strong": {
+    "HOST": 0.351878261642138,
+    "AVO": 0.3545750809825284
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.351878261642138,
+    "inlaw_conflict": 0.351878261642138,
+    "par_live": 0.351878261642138,
+    "sex_satisfaction": 0.351878261642138,
+    "humor_aggressive": 0.351878261642138,
+    "humor_affiliative": 0.351878261642138
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "ok": true
+  },
+  "break_expected": {
+   "which": "break",
+   "n_pairs": 5000,
+   "sd_new": {
+    "relatives_disapproval": 0.022099904175943305,
+    "inlaw_conflict": 0.015203215599991798,
+    "par_live": 0.0,
+    "sex_satisfaction": 0.08704843589850986,
+    "humor_aggressive": 0.1134355554481724,
+    "humor_affiliative": 0.0
+   },
+   "sd_strong": {
+    "RISKY": 0.10864103092294367,
+    "INF": 0.19696324936393592,
+    "COMM": 0.49882161963425503,
+    "HOST": 0.42225391397056555,
+    "kids_hard": 0.22119340952207414
+   },
+   "sd_limit": {
+    "relatives_disapproval": 0.10864103092294367,
+    "inlaw_conflict": 0.10864103092294367,
+    "par_live": 0.10864103092294367,
+    "sex_satisfaction": 0.42225391397056555,
+    "humor_aggressive": 0.42225391397056555,
+    "humor_affiliative": 0.42225391397056555
+   },
+   "sd_ok": {
+    "relatives_disapproval": true,
+    "inlaw_conflict": true,
+    "par_live": true,
+    "sex_satisfaction": true,
+    "humor_aggressive": true,
+    "humor_affiliative": true
+   },
+   "unit_weight": {
+    "relatives_disapproval_per_side_max": 0.15,
+    "inlaw_conflict_per_person_max": 0.15,
+    "par_live": 0.0,
+    "sex_satisfaction_per_sd": 0.15,
+    "humor_aggressive_per_sd": 0.08
+   },
+   "unit_limit": {
+    "relatives_disapproval_per_side_max": 0.4,
+    "inlaw_conflict_per_person_max": 0.4,
+    "par_live": 0.4,
+    "sex_satisfaction_per_sd": 0.3,
+    "humor_aggressive_per_sd": 0.3
+   },
+   "unit_ok": {
+    "relatives_disapproval_per_side_max": true,
+    "inlaw_conflict_per_person_max": true,
+    "par_live": true,
+    "sex_satisfaction_per_sd": true,
+    "humor_aggressive_per_sd": true
+   },
+   "ok": true
+  }
+ },
  "family_shares_calibration_r5": {
-  "IND_r4": 0.1359,
+  "IND_r4": 0.1375,
   "IND_r5_humor": 0.0017,
-  "MIS": 0.0155,
+  "MIS": 0.0156,
   "SIM": 0.0001,
-  "PAIR_expected": 0.0016,
-  "PAIR_resid": 0.0059
+  "PAIR_expected": 0.0012,
+  "PAIR_resid": 0.0032
  },
  "family_auc_calibration_r5": {
-  "oracle_IND_only": 0.6818,
-  "oracle_MIS_only": 0.5468,
-  "oracle_PAIR_expected_only": 0.625,
+  "oracle_IND_only": 0.6796,
+  "oracle_MIS_only": 0.5446,
+  "oracle_PAIR_expected_only": 0.6272,
   "selfreport_MIS_only": 0.5391,
-  "selfreport_PAIR_expected_only": 0.6022
+  "selfreport_PAIR_expected_only": 0.602
  },
  "family_shares_sample_r5": {
-  "skeleton_IND": 0.1414,
-  "skeleton_MIS": 0.0121,
-  "skeleton_PAIR": 0.0019
+  "skeleton_IND": 0.1435,
+  "skeleton_MIS": 0.0123,
+  "skeleton_PAIR": 0.0014
  },
  "structural_agreement": {
   "mis_x2_ind_x0.5": {
-   "spearman_with_central_sample": 0.9194,
-   "spearman_with_central_calibration": 0.874
+   "spearman_with_central_sample": 0.9207,
+   "spearman_with_central_calibration": 0.8729
   },
   "mis_x3_ind_x0.5": {
-   "spearman_with_central_sample": 0.8448,
-   "spearman_with_central_calibration": 0.789
+   "spearman_with_central_sample": 0.8435,
+   "spearman_with_central_calibration": 0.7864
   },
   "mis_x4_ind_x0.5": {
-   "spearman_with_central_sample": 0.7888,
-   "spearman_with_central_calibration": 0.7234
+   "spearman_with_central_sample": 0.7865,
+   "spearman_with_central_calibration": 0.7195
   },
   "partner_effect_0.5": {
-   "spearman_with_central_sample": 0.989,
-   "spearman_with_central_calibration": 0.9834
+   "spearman_with_central_sample": 0.9886,
+   "spearman_with_central_calibration": 0.9831
   },
   "drop_IND": {
-   "spearman_with_central_sample": 0.6427,
-   "spearman_with_central_calibration": 0.5252
+   "spearman_with_central_sample": 0.6345,
+   "spearman_with_central_calibration": 0.5141
   },
   "drop_IND_continuous": {
-   "spearman_with_central_sample": 0.709,
-   "spearman_with_central_calibration": 0.5828
+   "spearman_with_central_sample": 0.7015,
+   "spearman_with_central_calibration": 0.5733
   },
   "drop_IND_binary": {
-   "spearman_with_central_sample": 0.9666,
-   "spearman_with_central_calibration": 0.9598
+   "spearman_with_central_sample": 0.9671,
+   "spearman_with_central_calibration": 0.9591
   },
   "drop_MIS": {
-   "spearman_with_central_sample": 0.9703,
-   "spearman_with_central_calibration": 0.9554
+   "spearman_with_central_sample": 0.9691,
+   "spearman_with_central_calibration": 0.9546
   },
   "drop_SIM": {
-   "spearman_with_central_sample": 0.9994,
+   "spearman_with_central_sample": 0.9995,
    "spearman_with_central_calibration": 0.9996
   },
   "inter_both_anxious": {
    "spearman_with_central_sample": 0.9998,
-   "spearman_with_central_calibration": 0.9907
+   "spearman_with_central_calibration": 0.9906
   },
   "inter_anxious_avoidant": {
-   "spearman_with_central_sample": 0.9967,
-   "spearman_with_central_calibration": 0.9861
+   "spearman_with_central_sample": 0.9969,
+   "spearman_with_central_calibration": 0.986
   },
   "inter_host_max": {
-   "spearman_with_central_sample": 0.9804,
-   "spearman_with_central_calibration": 0.9772
+   "spearman_with_central_sample": 0.9806,
+   "spearman_with_central_calibration": 0.9768
   },
   "inter_all": {
-   "spearman_with_central_sample": 0.9783,
-   "spearman_with_central_calibration": 0.9557
+   "spearman_with_central_sample": 0.9785,
+   "spearman_with_central_calibration": 0.9555
   },
   "inter_strong_anxious_avoidant": {
-   "spearman_with_central_sample": 0.9909,
-   "spearman_with_central_calibration": 0.9281
+   "spearman_with_central_sample": 0.9917,
+   "spearman_with_central_calibration": 0.929
   },
   "inter_strong_dw_continuous": {
-   "spearman_with_central_sample": 0.7236,
-   "spearman_with_central_calibration": 0.7721
+   "spearman_with_central_sample": 0.7233,
+   "spearman_with_central_calibration": 0.7699
   },
   "inter_strong_dw_both_anx_continuous": {
-   "spearman_with_central_sample": 0.6824,
-   "spearman_with_central_calibration": 0.7202
+   "spearman_with_central_sample": 0.6812,
+   "spearman_with_central_calibration": 0.718
   },
   "r5_drop_all": {
-   "spearman_with_central_sample": 0.9916,
-   "spearman_with_central_calibration": 0.9917
+   "spearman_with_central_sample": 0.9933,
+   "spearman_with_central_calibration": 0.9927
   },
   "r5_drop_pair": {
-   "spearman_with_central_sample": 0.9969,
-   "spearman_with_central_calibration": 0.997
+   "spearman_with_central_sample": 0.9979,
+   "spearman_with_central_calibration": 0.9979
   },
   "r5_drop_humor": {
-   "spearman_with_central_sample": 0.9958,
+   "spearman_with_central_sample": 0.9956,
    "spearman_with_central_calibration": 0.9954
   },
   "r5_drop_intimacy": {
@@ -102,93 +433,93 @@
    "spearman_with_central_calibration": 0.998
   },
   "r5_drop_relatives": {
-   "spearman_with_central_sample": 0.9977,
-   "spearman_with_central_calibration": 0.9986
+   "spearman_with_central_sample": 0.9993,
+   "spearman_with_central_calibration": 0.9997
   },
   "r5_x2": {
-   "spearman_with_central_sample": 0.9943,
-   "spearman_with_central_calibration": 0.9945
+   "spearman_with_central_sample": 0.9948,
+   "spearman_with_central_calibration": 0.995
   },
   "r5_sex_discrepancy": {
-   "spearman_with_central_sample": 0.9954,
-   "spearman_with_central_calibration": 0.9963
+   "spearman_with_central_sample": 0.9951,
+   "spearman_with_central_calibration": 0.9962
   },
   "r5_humor_similarity": {
-   "spearman_with_central_sample": 0.9944,
+   "spearman_with_central_sample": 0.9941,
    "spearman_with_central_calibration": 0.995
   }
  },
  "avoidance_vs_expected_csi4": {
-  "man": -0.348,
-  "woman": -0.214
+  "man": -0.327,
+  "woman": -0.187
  },
  "power_mis_only_selfreport": {
   "work": {
-   "spearman": 0.2,
+   "spearman": 0.184,
    "boot95": [
-    -0.18,
-    0.506
+    -0.193,
+    0.499
    ]
   },
   "holdout": {
-   "spearman": 0.33,
+   "spearman": 0.325,
    "boot95": [
-    -0.135,
-    0.681
+    -0.144,
+    0.68
    ]
   }
  },
  "power_selfreport_vs_structural": {
   "work": {
-   "mis_x2_ind_x0.5": 0.677,
+   "mis_x2_ind_x0.5": 0.682,
    "mis_x3_ind_x0.5": 0.612,
-   "mis_x4_ind_x0.5": 0.556,
-   "partner_effect_0.5": 0.783,
-   "drop_IND": 0.412,
-   "drop_IND_continuous": 0.49,
+   "mis_x4_ind_x0.5": 0.559,
+   "partner_effect_0.5": 0.782,
+   "drop_IND": 0.417,
+   "drop_IND_continuous": 0.494,
    "drop_IND_binary": 0.772,
-   "drop_MIS": 0.782,
+   "drop_MIS": 0.781,
    "drop_SIM": 0.784,
    "inter_both_anxious": 0.782,
    "inter_anxious_avoidant": 0.778,
    "inter_host_max": 0.783,
-   "inter_all": 0.776,
+   "inter_all": 0.777,
    "inter_strong_anxious_avoidant": 0.776,
-   "inter_strong_dw_continuous": 0.579,
+   "inter_strong_dw_continuous": 0.578,
    "inter_strong_dw_both_anx_continuous": 0.559,
-   "r5_drop_all": 0.784,
-   "r5_drop_pair": 0.795,
-   "r5_drop_humor": 0.773,
-   "r5_drop_intimacy": 0.793,
-   "r5_drop_relatives": 0.789,
-   "r5_x2": 0.776,
-   "r5_sex_discrepancy": 0.782,
-   "r5_humor_similarity": 0.778
+   "r5_drop_all": 0.781,
+   "r5_drop_pair": 0.792,
+   "r5_drop_humor": 0.772,
+   "r5_drop_intimacy": 0.791,
+   "r5_drop_relatives": 0.786,
+   "r5_x2": 0.779,
+   "r5_sex_discrepancy": 0.78,
+   "r5_humor_similarity": 0.776
   },
   "holdout": {
-   "mis_x2_ind_x0.5": 0.742,
+   "mis_x2_ind_x0.5": 0.743,
    "mis_x3_ind_x0.5": 0.692,
-   "mis_x4_ind_x0.5": 0.663,
-   "partner_effect_0.5": 0.801,
-   "drop_IND": 0.505,
-   "drop_IND_continuous": 0.481,
-   "drop_IND_binary": 0.783,
+   "mis_x4_ind_x0.5": 0.66,
+   "partner_effect_0.5": 0.8,
+   "drop_IND": 0.503,
+   "drop_IND_continuous": 0.477,
+   "drop_IND_binary": 0.778,
    "drop_MIS": 0.762,
-   "drop_SIM": 0.787,
-   "inter_both_anxious": 0.78,
-   "inter_anxious_avoidant": 0.782,
-   "inter_host_max": 0.738,
-   "inter_all": 0.743,
-   "inter_strong_anxious_avoidant": 0.776,
-   "inter_strong_dw_continuous": 0.673,
-   "inter_strong_dw_both_anx_continuous": 0.576,
-   "r5_drop_all": 0.778,
+   "drop_SIM": 0.779,
+   "inter_both_anxious": 0.779,
+   "inter_anxious_avoidant": 0.781,
+   "inter_host_max": 0.737,
+   "inter_all": 0.742,
+   "inter_strong_anxious_avoidant": 0.775,
+   "inter_strong_dw_continuous": 0.667,
+   "inter_strong_dw_both_anx_continuous": 0.574,
+   "r5_drop_all": 0.779,
    "r5_drop_pair": 0.78,
    "r5_drop_humor": 0.776,
-   "r5_drop_intimacy": 0.78,
+   "r5_drop_intimacy": 0.777,
    "r5_drop_relatives": 0.781,
-   "r5_x2": 0.774,
-   "r5_sex_discrepancy": 0.783,
+   "r5_x2": 0.769,
+   "r5_sex_discrepancy": 0.782,
    "r5_humor_similarity": 0.77
   }
  }

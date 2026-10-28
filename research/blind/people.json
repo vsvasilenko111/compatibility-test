@@ -56,8 +56,8 @@
     0.6495316709855594
    ],
    "FAM_CLOSE": [
-    -0.23332275656816204,
-    1.0076680665642148
+    -0.09991157848956253,
+    1.3494872836954015
    ]
   },
   "note": "«правда» о человеке. Не показывать владельцу теста и отвечающему (design.md, 6)."
@@ -219,7 +219,7 @@
     "desired_frequency": "несколько раз в неделю",
     "talking_about_sex": "легко"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "реже раза в месяц",
     "risky_audit8plus": false
@@ -915,7 +915,7 @@
     "desired_frequency": "примерно раз в неделю",
     "talking_about_sex": "смотря о чём"
    },
-   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -1727,7 +1727,7 @@
     "desired_frequency": "несколько раз в неделю",
     "talking_about_sex": "легко"
    },
-   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "ежемесячно",
     "risky_audit8plus": false
@@ -2655,7 +2655,7 @@
     "desired_frequency": "несколько раз в неделю",
     "talking_about_sex": "смотря о чём"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -2887,7 +2887,7 @@
     "desired_frequency": "несколько раз в неделю",
     "talking_about_sex": "смотря о чём"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "ежемесячно",
     "risky_audit8plus": false
@@ -3699,7 +3699,7 @@
     "desired_frequency": "почти каждый день",
     "talking_about_sex": "трудно, обычно избегает таких разговоров"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -5555,7 +5555,7 @@
     "desired_frequency": "несколько раз в неделю",
     "talking_about_sex": "смотря о чём"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -6483,7 +6483,7 @@
     "desired_frequency": "примерно раз в неделю",
     "talking_about_sex": "трудно, обычно избегает таких разговоров"
    },
-   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -7759,7 +7759,7 @@
     "desired_frequency": "почти каждый день",
     "talking_about_sex": "смотря о чём"
    },
-   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -9731,7 +9731,7 @@
     "desired_frequency": "почти каждый день",
     "talking_about_sex": "смотря о чём"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -9963,7 +9963,7 @@
     "desired_frequency": "несколько раз в неделю",
     "talking_about_sex": "трудно, обычно избегает таких разговоров"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -11007,7 +11007,7 @@
     "desired_frequency": "примерно раз в неделю",
     "talking_about_sex": "смотря о чём"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false
@@ -11123,7 +11123,7 @@
     "desired_frequency": "реже раза в неделю",
     "talking_about_sex": "трудно, обычно избегает таких разговоров"
    },
-   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "реже раза в месяц",
     "risky_audit8plus": false
@@ -11239,7 +11239,7 @@
     "desired_frequency": "примерно раз в неделю",
     "talking_about_sex": "трудно, обычно избегает таких разговоров"
    },
-   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт",
     "risky_audit8plus": false

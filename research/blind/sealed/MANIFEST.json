@@ -1,11 +1,11 @@
 {
- "pairs_sha256": "f318dc180e7d3d3d852a046264b2a004b54215ab8723aee566ea5bd0acd73a58",
- "outcome_sha256": "6c56ba1db4270fda15d85d52fec95011bdbfbee43e2cf0e93095d4155db8aa1e",
+ "pairs_sha256": "90f18e73c73e52a05849155245012995ccca232cfed110704ba3f1a1550bf5fe",
+ "outcome_sha256": "102349620b996bb2d9c4eb3537227020640391ba9e7f3b489b57aaa5f2f0efa2",
  "files": {
   "holdout-pairs.json": "03a19b8a4047d288f3a0751e8b0b62a405e2d4b3f1ced81325cd9e51eaa3d94e",
-  "holdout-outcomes.json": "18ebe34643a06b190c0400be6e5dbd2f1653cd4e91e7af10b38eae089f081156"
+  "holdout-outcomes.json": "92156adddb09bb0f031b0b64194b268dbaee144a05254f2e93be2292d19e1bd7"
  },
- "revision": 5,
+ "revision": "5.1",
  "superseded": {
   "r4": {
    "files": {
@@ -14,6 +14,14 @@
    },
    "pairs_sha256": "67457449098d5d52500feb68697464d4db0632b7cfde5a8eeb891844fd89a44b",
    "outcome_sha256": "352746d7f45dca59c4fb2b8684b8011556385fc4250adf75e4b267d13ae7fae9"
+  },
+  "r5": {
+   "files": {
+    "holdout-outcomes.json": "18ebe34643a06b190c0400be6e5dbd2f1653cd4e91e7af10b38eae089f081156",
+    "MANIFEST.json": "a6a85085e8f5a92b817b911f6e0e8b35bf05d89bed4b01f257bd07766fd9243e"
+   },
+   "pairs_sha256": "f318dc180e7d3d3d852a046264b2a004b54215ab8723aee566ea5bd0acd73a58",
+   "outcome_sha256": "6c56ba1db4270fda15d85d52fec95011bdbfbee43e2cf0e93095d4155db8aa1e"
   }
  }
 }

@@ -1,0 +1,35 @@
+{
+ "n": 2,
+ "reason": "ред. 5.1 (design.md, 17.14): предрегистрированная смена формулы исхода по критику 05 — знак «химии» в близости, слабый вес неодобрения роднёй без усиления, доли мнения родителей и конфликтов с роднёй; пары проверочной части те же, запусков на проверочной части не было",
+ "at": "2026-10-28T13:27:29",
+ "design": "design.md, 17.8, 17.14",
+ "revision": "5.1",
+ "outcome_spec_r5_sha256": "9e9cde663c2cd71f1dbb3fae5e84fe1627bf6ac18b690c9b5cf431fd818bae4b",
+ "outcome_code_sha256": "02ead32fc36ccde0b2021814774b12ccd9f162934b4c833af3efc234c63ee907",
+ "outcome_code_files": [
+  "blindlib.py",
+  "generate.py",
+  "calibrate.py",
+  "pairs.py",
+  "calibrate_r5.py",
+  "pair_vars.py",
+  "outcome.py"
+ ],
+ "reseal_limit": 2,
+ "opened": false,
+ "holdout_runs_before": 0,
+ "superseded_dir": "sealed/superseded/r5/",
+ "old_files": {
+  "holdout-outcomes.json": "18ebe34643a06b190c0400be6e5dbd2f1653cd4e91e7af10b38eae089f081156",
+  "MANIFEST.json": "a6a85085e8f5a92b817b911f6e0e8b35bf05d89bed4b01f257bd07766fd9243e"
+ },
+ "new_files": {
+  "holdout-pairs.json": "03a19b8a4047d288f3a0751e8b0b62a405e2d4b3f1ced81325cd9e51eaa3d94e",
+  "holdout-outcomes.json": "92156adddb09bb0f031b0b64194b268dbaee144a05254f2e93be2292d19e1bd7"
+ },
+ "pairs_unchanged": true,
+ "new_refs": {
+  "pairs_sha256": "90f18e73c73e52a05849155245012995ccca232cfed110704ba3f1a1550bf5fe",
+  "outcome_sha256": "102349620b996bb2d9c4eb3537227020640391ba9e7f3b489b57aaa5f2f0efa2"
+ }
+}

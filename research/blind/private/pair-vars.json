@@ -6,8 +6,8 @@
    "numpy": "2.0.2",
    "scipy": "1.13.1"
   },
-  "pairs_sha256": "f318dc180e7d3d3d852a046264b2a004b54215ab8723aee566ea5bd0acd73a58",
-  "model_r5_sha256": "b9131836cb27c5f323402e130668f89ec9fcda40ccb00778767906caf566ffe9",
+  "pairs_sha256": "90f18e73c73e52a05849155245012995ccca232cfed110704ba3f1a1550bf5fe",
+  "model_r5_sha256": "6cc0b618c8eef37326f13960966f88fdd3dd5dff232738619a309253f68c15cd",
   "note": "ЗАКРЫТО: свойства пары ред. 5 (design.md, 17.3). Не показывать ни одной LLM-роли и владельцу теста."
  },
  "pairs": [
@@ -18,12 +18,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "недоволен",
+   "sex_satisfaction_man": "ни то ни другое",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.94152
+   "sex_satisfaction_pair_latent": -0.29915
   },
   {
    "pair_id": "ab30o5",
@@ -37,7 +37,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.10429
+   "sex_satisfaction_pair_latent": -0.94351
   },
   {
    "pair_id": "agbo48",
@@ -51,7 +51,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.13755
+   "sex_satisfaction_pair_latent": 1.11544
   },
   {
    "pair_id": "b1gmul",
@@ -60,12 +60,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
-   "sex_satisfaction_woman": "ни то ни другое",
+   "sex_satisfaction_man": "доволен",
+   "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.94567
+   "sex_satisfaction_pair_latent": -0.45655
   },
   {
    "pair_id": "b5mb1l",
@@ -79,7 +79,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.90661
+   "sex_satisfaction_pair_latent": 1.11976
   },
   {
    "pair_id": "b7br90",
@@ -93,7 +93,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.34996
+   "sex_satisfaction_pair_latent": 0.43385
   },
   {
    "pair_id": "b7pvki",
@@ -107,7 +107,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.44434
+   "sex_satisfaction_pair_latent": 0.44542
   },
   {
    "pair_id": "ba2qsn",
@@ -121,7 +121,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.4547
+   "sex_satisfaction_pair_latent": -0.28415
   },
   {
    "pair_id": "bv5r0x",
@@ -132,10 +132,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "недоволен",
-   "sex_frequency": "примерно раз в неделю",
+   "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
-   "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.96258
+   "woman_wants_more_than_now": false,
+   "sex_satisfaction_pair_latent": -0.27814
   },
   {
    "pair_id": "bz4xly",
@@ -144,12 +144,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": true,
-   "sex_satisfaction_man": "доволен",
+   "sex_satisfaction_man": "ни то ни другое",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "несколько раз в неделю",
+   "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
-   "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.14776
+   "woman_wants_more_than_now": true,
+   "sex_satisfaction_pair_latent": -0.45958
   },
   {
    "pair_id": "cbyvgv",
@@ -163,7 +163,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.01383
+   "sex_satisfaction_pair_latent": 0.00692
   },
   {
    "pair_id": "ck7ydn",
@@ -177,7 +177,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.59831
+   "sex_satisfaction_pair_latent": -0.59597
   },
   {
    "pair_id": "cqzsdg",
@@ -191,7 +191,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.18221
+   "sex_satisfaction_pair_latent": 0.80377
   },
   {
    "pair_id": "crn9o3",
@@ -205,7 +205,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.86936
+   "sex_satisfaction_pair_latent": 1.24491
   },
   {
    "pair_id": "csi9pe",
@@ -219,7 +219,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.69442
+   "sex_satisfaction_pair_latent": -2.13286
   },
   {
    "pair_id": "ctzy3y",
@@ -233,7 +233,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.2539
+   "sex_satisfaction_pair_latent": -0.12634
   },
   {
    "pair_id": "d08o6y",
@@ -242,40 +242,40 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.13765
+   "sex_satisfaction_pair_latent": 0.45959
   },
   {
    "pair_id": "dql2c9",
    "lives_with_parents": null,
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "одобряют",
-   "man_conflict_with_her_family": true,
+   "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.18364
+   "sex_satisfaction_pair_latent": -0.16163
   },
   {
    "pair_id": "dx35f0",
    "lives_with_parents": null,
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "против",
-   "man_conflict_with_her_family": true,
+   "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.07338
+   "sex_satisfaction_pair_latent": -0.88896
   },
   {
    "pair_id": "dyzpba",
@@ -286,10 +286,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "ни то ни другое",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "реже раза в неделю",
+   "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
-   "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.78477
+   "woman_wants_more_than_now": false,
+   "sex_satisfaction_pair_latent": -0.30729
   },
   {
    "pair_id": "e5dg0w",
@@ -298,12 +298,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.02598
+   "sex_satisfaction_pair_latent": -0.48037
   },
   {
    "pair_id": "e63879",
@@ -317,7 +317,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.90513
+   "sex_satisfaction_pair_latent": -0.70745
   },
   {
    "pair_id": "e7ptk6",
@@ -331,7 +331,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.24894
+   "sex_satisfaction_pair_latent": -0.28097
   },
   {
    "pair_id": "eb969a",
@@ -345,7 +345,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.03228
+   "sex_satisfaction_pair_latent": 0.57142
   },
   {
    "pair_id": "eiw0po",
@@ -359,7 +359,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.76258
+   "sex_satisfaction_pair_latent": -0.51939
   },
   {
    "pair_id": "el2tto",
@@ -368,12 +368,12 @@
    "family_of_woman_about_pair": "нейтрально",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "примерно раз в неделю",
+   "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.61487
+   "sex_satisfaction_pair_latent": 0.16717
   },
   {
    "pair_id": "elj9ow",
@@ -387,7 +387,7 @@
    "sex_frequency": "почти каждый день",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.51767
+   "sex_satisfaction_pair_latent": 1.58207
   },
   {
    "pair_id": "elveam",
@@ -401,7 +401,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.29306
+   "sex_satisfaction_pair_latent": 0.49351
   },
   {
    "pair_id": "ezi3wm",
@@ -415,7 +415,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.64889
+   "sex_satisfaction_pair_latent": -0.5604
   },
   {
    "pair_id": "f24y2l",
@@ -429,7 +429,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.04086
+   "sex_satisfaction_pair_latent": 0.16969
   },
   {
    "pair_id": "fftgoq",
@@ -443,7 +443,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.34081
+   "sex_satisfaction_pair_latent": 0.50076
   },
   {
    "pair_id": "fkm6o5",
@@ -452,12 +452,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "недоволен",
-   "sex_satisfaction_woman": "ни то ни другое",
+   "sex_satisfaction_man": "доволен",
+   "sex_satisfaction_woman": "доволен",
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.22329
+   "sex_satisfaction_pair_latent": -0.43224
   },
   {
    "pair_id": "fou7im",
@@ -471,7 +471,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.85261
+   "sex_satisfaction_pair_latent": 1.06457
   },
   {
    "pair_id": "fpb0zx",
@@ -485,7 +485,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.00588
+   "sex_satisfaction_pair_latent": 0.18962
   },
   {
    "pair_id": "fywtpp",
@@ -499,7 +499,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.0691
+   "sex_satisfaction_pair_latent": 1.18021
   },
   {
    "pair_id": "g5c2h4",
@@ -513,7 +513,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.06539
+   "sex_satisfaction_pair_latent": 0.13321
   },
   {
    "pair_id": "g6ydk4",
@@ -527,7 +527,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.06975
+   "sex_satisfaction_pair_latent": 0.0895
   },
   {
    "pair_id": "gbkbmc",
@@ -537,11 +537,11 @@
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
-   "sex_satisfaction_woman": "недоволен",
+   "sex_satisfaction_woman": "ни то ни другое",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.85607
+   "sex_satisfaction_pair_latent": -0.61088
   },
   {
    "pair_id": "gjbisy",
@@ -555,7 +555,7 @@
    "sex_frequency": "почти каждый день",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.1494
+   "sex_satisfaction_pair_latent": 0.15008
   },
   {
    "pair_id": "gobw81",
@@ -569,7 +569,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 1.02623
+   "sex_satisfaction_pair_latent": 0.80739
   },
   {
    "pair_id": "gsm0g5",
@@ -577,13 +577,13 @@
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "нейтрально",
    "man_conflict_with_her_family": false,
-   "woman_conflict_with_his_family": true,
+   "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.11679
+   "sex_satisfaction_pair_latent": 1.38584
   },
   {
    "pair_id": "h5ip3k",
@@ -597,7 +597,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.65903
+   "sex_satisfaction_pair_latent": -0.5145
   },
   {
    "pair_id": "hlj694",
@@ -611,7 +611,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.86006
+   "sex_satisfaction_pair_latent": -0.7532
   },
   {
    "pair_id": "hmmsdn",
@@ -625,7 +625,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.83324
+   "sex_satisfaction_pair_latent": -1.64158
   },
   {
    "pair_id": "htffrj",
@@ -639,7 +639,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.22131
+   "sex_satisfaction_pair_latent": 0.26616
   },
   {
    "pair_id": "i6a3d9",
@@ -653,7 +653,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.13642
+   "sex_satisfaction_pair_latent": 0.99717
   },
   {
    "pair_id": "iit343",
@@ -667,7 +667,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.4461
+   "sex_satisfaction_pair_latent": -0.67153
   },
   {
    "pair_id": "iqwe0g",
@@ -681,7 +681,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.14748
+   "sex_satisfaction_pair_latent": -1.33257
   },
   {
    "pair_id": "ivgh83",
@@ -695,7 +695,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.04691
+   "sex_satisfaction_pair_latent": 0.26261
   },
   {
    "pair_id": "izrjkd",
@@ -709,7 +709,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.65746
+   "sex_satisfaction_pair_latent": -0.33991
   },
   {
    "pair_id": "izzglx",
@@ -723,7 +723,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.19329
+   "sex_satisfaction_pair_latent": 0.97396
   },
   {
    "pair_id": "j2a452",
@@ -734,10 +734,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "реже раза в неделю",
+   "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.37366
+   "sex_satisfaction_pair_latent": 0.92364
   },
   {
    "pair_id": "j3l0w6",
@@ -746,12 +746,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": true,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "примерно раз в неделю",
+   "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.77665
+   "sex_satisfaction_pair_latent": -0.01753
   },
   {
    "pair_id": "j73gqg",
@@ -765,7 +765,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.31574
+   "sex_satisfaction_pair_latent": -0.05039
   },
   {
    "pair_id": "j7hjgi",
@@ -779,7 +779,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.64071
+   "sex_satisfaction_pair_latent": 0.6227
   },
   {
    "pair_id": "jc4fi6",
@@ -793,7 +793,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.58206
+   "sex_satisfaction_pair_latent": 0.83119
   },
   {
    "pair_id": "jewzai",
@@ -802,12 +802,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.75026
+   "sex_satisfaction_pair_latent": -1.07807
   },
   {
    "pair_id": "k0a4pn",
@@ -821,7 +821,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.34974
+   "sex_satisfaction_pair_latent": 0.48097
   },
   {
    "pair_id": "k0rqbl",
@@ -835,7 +835,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.31224
+   "sex_satisfaction_pair_latent": -1.17988
   },
   {
    "pair_id": "k9eup0",
@@ -846,10 +846,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "несколько раз в неделю",
-   "man_wants_more_than_now": false,
+   "sex_frequency": "примерно раз в неделю",
+   "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.15603
+   "sex_satisfaction_pair_latent": 0.70218
   },
   {
    "pair_id": "khofjy",
@@ -863,7 +863,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.06655
+   "sex_satisfaction_pair_latent": 0.20853
   },
   {
    "pair_id": "kqujng",
@@ -877,7 +877,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.08947
+   "sex_satisfaction_pair_latent": -0.07463
   },
   {
    "pair_id": "kw6c44",
@@ -891,7 +891,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.88227
+   "sex_satisfaction_pair_latent": -0.62929
   },
   {
    "pair_id": "lbji05",
@@ -901,11 +901,11 @@
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "недоволен",
-   "sex_satisfaction_woman": "доволен",
+   "sex_satisfaction_woman": "ни то ни другое",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.04988
+   "sex_satisfaction_pair_latent": -1.11544
   },
   {
    "pair_id": "llxm1a",
@@ -913,13 +913,13 @@
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "против",
    "man_conflict_with_her_family": true,
-   "woman_conflict_with_his_family": true,
+   "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "почти каждый день",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.68036
+   "sex_satisfaction_pair_latent": 1.61684
   },
   {
    "pair_id": "m2a9sv",
@@ -933,7 +933,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 1.2316
+   "sex_satisfaction_pair_latent": 1.23806
   },
   {
    "pair_id": "m3oy49",
@@ -943,11 +943,11 @@
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "ни то ни другое",
-   "sex_satisfaction_woman": "недоволен",
+   "sex_satisfaction_woman": "ни то ни другое",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.18957
+   "sex_satisfaction_pair_latent": -1.04932
   },
   {
    "pair_id": "m67g69",
@@ -961,7 +961,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.35605
+   "sex_satisfaction_pair_latent": -0.27171
   },
   {
    "pair_id": "mbwkqb",
@@ -975,7 +975,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.31255
+   "sex_satisfaction_pair_latent": 0.28862
   },
   {
    "pair_id": "mdkjtl",
@@ -989,21 +989,21 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.29323
+   "sex_satisfaction_pair_latent": -0.06109
   },
   {
    "pair_id": "mhv8gm",
    "lives_with_parents": false,
    "family_of_man_about_pair": "нейтрально",
    "family_of_woman_about_pair": "против",
-   "man_conflict_with_her_family": true,
+   "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "примерно раз в неделю",
-   "man_wants_more_than_now": false,
-   "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.09308
+   "sex_frequency": "реже раза в неделю",
+   "man_wants_more_than_now": true,
+   "woman_wants_more_than_now": true,
+   "sex_satisfaction_pair_latent": 0.68201
   },
   {
    "pair_id": "mkzk22",
@@ -1017,7 +1017,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.37009
+   "sex_satisfaction_pair_latent": -0.49912
   },
   {
    "pair_id": "mubm5m",
@@ -1031,7 +1031,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.31666
+   "sex_satisfaction_pair_latent": 0.31432
   },
   {
    "pair_id": "my81ge",
@@ -1045,7 +1045,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.76216
+   "sex_satisfaction_pair_latent": 0.58884
   },
   {
    "pair_id": "n06dni",
@@ -1059,7 +1059,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.06314
+   "sex_satisfaction_pair_latent": 0.07422
   },
   {
    "pair_id": "nasqiu",
@@ -1073,7 +1073,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.5639
+   "sex_satisfaction_pair_latent": 1.55227
   },
   {
    "pair_id": "ncgz6e",
@@ -1087,7 +1087,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 2.29569
+   "sex_satisfaction_pair_latent": 2.26306
   },
   {
    "pair_id": "nhq84m",
@@ -1098,10 +1098,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "реже раза в неделю",
+   "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
-   "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.24032
+   "woman_wants_more_than_now": false,
+   "sex_satisfaction_pair_latent": -0.63673
   },
   {
    "pair_id": "npkp1w",
@@ -1115,7 +1115,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.14427
+   "sex_satisfaction_pair_latent": -0.05113
   },
   {
    "pair_id": "nso56g",
@@ -1129,7 +1129,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.02852
+   "sex_satisfaction_pair_latent": 0.68945
   },
   {
    "pair_id": "nu8x7j",
@@ -1143,7 +1143,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.08536
+   "sex_satisfaction_pair_latent": -0.10281
   },
   {
    "pair_id": "nyw530",
@@ -1154,10 +1154,10 @@
    "woman_conflict_with_his_family": true,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "почти каждый день",
-   "man_wants_more_than_now": false,
+   "sex_frequency": "несколько раз в неделю",
+   "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 2.17238
+   "sex_satisfaction_pair_latent": 1.71032
   },
   {
    "pair_id": "o1v1o4",
@@ -1171,7 +1171,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.83217
+   "sex_satisfaction_pair_latent": 0.50945
   },
   {
    "pair_id": "o7tkj4",
@@ -1185,7 +1185,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.54869
+   "sex_satisfaction_pair_latent": -0.90387
   },
   {
    "pair_id": "o7wxe1",
@@ -1199,7 +1199,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.71261
+   "sex_satisfaction_pair_latent": -0.63707
   },
   {
    "pair_id": "oi5bwz",
@@ -1210,10 +1210,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "несколько раз в неделю",
+   "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.43851
+   "sex_satisfaction_pair_latent": 0.13436
   },
   {
    "pair_id": "p83geg",
@@ -1227,7 +1227,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.65492
+   "sex_satisfaction_pair_latent": -0.67468
   },
   {
    "pair_id": "pe4dc0",
@@ -1238,10 +1238,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "почти каждый день",
-   "man_wants_more_than_now": false,
+   "sex_frequency": "несколько раз в неделю",
+   "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.03771
+   "sex_satisfaction_pair_latent": -0.28704
   },
   {
    "pair_id": "phb7n1",
@@ -1251,11 +1251,11 @@
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
-   "sex_satisfaction_woman": "ни то ни другое",
-   "sex_frequency": "несколько раз в неделю",
-   "man_wants_more_than_now": false,
+   "sex_satisfaction_woman": "недоволен",
+   "sex_frequency": "примерно раз в неделю",
+   "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.3495
+   "sex_satisfaction_pair_latent": -0.59093
   },
   {
    "pair_id": "pty7gc",
@@ -1269,7 +1269,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.09887
+   "sex_satisfaction_pair_latent": 0.34282
   },
   {
    "pair_id": "q1fkes",
@@ -1277,13 +1277,13 @@
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
-   "woman_conflict_with_his_family": true,
+   "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
-   "sex_satisfaction_woman": "ни то ни другое",
+   "sex_satisfaction_woman": "доволен",
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.66083
+   "sex_satisfaction_pair_latent": -0.41
   },
   {
    "pair_id": "q365at",
@@ -1297,7 +1297,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.03708
+   "sex_satisfaction_pair_latent": 0.12824
   },
   {
    "pair_id": "q75sjr",
@@ -1311,7 +1311,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.01881
+   "sex_satisfaction_pair_latent": 0.13361
   },
   {
    "pair_id": "qegk9k",
@@ -1325,7 +1325,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -2.08539
+   "sex_satisfaction_pair_latent": -1.99764
   },
   {
    "pair_id": "qgvqo1",
@@ -1339,7 +1339,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.01968
+   "sex_satisfaction_pair_latent": -0.78351
   },
   {
    "pair_id": "qkec46",
@@ -1353,7 +1353,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.42099
+   "sex_satisfaction_pair_latent": -0.41724
   },
   {
    "pair_id": "qlkhwb",
@@ -1367,7 +1367,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.19203
+   "sex_satisfaction_pair_latent": 0.0255
   },
   {
    "pair_id": "qnxb2m",
@@ -1381,7 +1381,7 @@
    "sex_frequency": "почти каждый день",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.41476
+   "sex_satisfaction_pair_latent": 0.26218
   },
   {
    "pair_id": "qo3e3p",
@@ -1395,7 +1395,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.42247
+   "sex_satisfaction_pair_latent": 0.73268
   },
   {
    "pair_id": "qonj6b",
@@ -1406,10 +1406,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "ни то ни другое",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "примерно раз в неделю",
-   "man_wants_more_than_now": true,
-   "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.28867
+   "sex_frequency": "несколько раз в неделю",
+   "man_wants_more_than_now": false,
+   "woman_wants_more_than_now": false,
+   "sex_satisfaction_pair_latent": 0.04376
   },
   {
    "pair_id": "qygdpt",
@@ -1423,7 +1423,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.6116
+   "sex_satisfaction_pair_latent": -0.60383
   },
   {
    "pair_id": "r126v5",
@@ -1437,7 +1437,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.40342
+   "sex_satisfaction_pair_latent": 0.7226
   },
   {
    "pair_id": "r16f3r",
@@ -1451,7 +1451,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.42122
+   "sex_satisfaction_pair_latent": -0.11833
   },
   {
    "pair_id": "r36yk4",
@@ -1465,7 +1465,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.05402
+   "sex_satisfaction_pair_latent": -0.0094
   },
   {
    "pair_id": "rt5ctd",
@@ -1479,7 +1479,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.11492
+   "sex_satisfaction_pair_latent": -1.20419
   },
   {
    "pair_id": "rvwy48",
@@ -1493,7 +1493,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.42981
+   "sex_satisfaction_pair_latent": -0.28933
   },
   {
    "pair_id": "ryqqdb",
@@ -1507,7 +1507,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.96949
+   "sex_satisfaction_pair_latent": -0.93055
   },
   {
    "pair_id": "s0wi5n",
@@ -1521,7 +1521,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.02962
+   "sex_satisfaction_pair_latent": 0.09911
   },
   {
    "pair_id": "s35tbz",
@@ -1535,7 +1535,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.05232
+   "sex_satisfaction_pair_latent": 0.33935
   },
   {
    "pair_id": "sac9r8",
@@ -1549,7 +1549,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.31743
+   "sex_satisfaction_pair_latent": 0.49998
   },
   {
    "pair_id": "sd3fbt",
@@ -1563,7 +1563,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.39827
+   "sex_satisfaction_pair_latent": 1.39542
   },
   {
    "pair_id": "sm2s0i",
@@ -1574,10 +1574,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "примерно раз в неделю",
+   "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.17738
+   "sex_satisfaction_pair_latent": -0.42127
   },
   {
    "pair_id": "smt5br",
@@ -1591,7 +1591,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.77296
+   "sex_satisfaction_pair_latent": -1.45374
   },
   {
    "pair_id": "t15wov",
@@ -1605,21 +1605,21 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.85156
+   "sex_satisfaction_pair_latent": -1.01844
   },
   {
    "pair_id": "t3gbf6",
    "lives_with_parents": true,
    "family_of_man_about_pair": "против",
    "family_of_woman_about_pair": "нейтрально",
-   "man_conflict_with_her_family": true,
+   "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": true,
    "sex_satisfaction_man": "доволен",
-   "sex_satisfaction_woman": "ни то ни другое",
+   "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.70783
+   "sex_satisfaction_pair_latent": -0.38974
   },
   {
    "pair_id": "t511px",
@@ -1633,7 +1633,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.09527
+   "sex_satisfaction_pair_latent": 0.67948
   },
   {
    "pair_id": "t5s66z",
@@ -1647,7 +1647,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.03238
+   "sex_satisfaction_pair_latent": 0.79926
   },
   {
    "pair_id": "t7pwum",
@@ -1655,13 +1655,13 @@
    "family_of_man_about_pair": "против",
    "family_of_woman_about_pair": "нейтрально",
    "man_conflict_with_her_family": true,
-   "woman_conflict_with_his_family": true,
+   "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.47798
+   "sex_satisfaction_pair_latent": 0.57526
   },
   {
    "pair_id": "tab32u",
@@ -1669,13 +1669,13 @@
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
-   "woman_conflict_with_his_family": true,
+   "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "примерно раз в неделю",
+   "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
-   "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.0025
+   "woman_wants_more_than_now": true,
+   "sex_satisfaction_pair_latent": 0.46422
   },
   {
    "pair_id": "tah7q4",
@@ -1689,7 +1689,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.02016
+   "sex_satisfaction_pair_latent": -0.55979
   },
   {
    "pair_id": "tczahe",
@@ -1703,7 +1703,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.68505
+   "sex_satisfaction_pair_latent": -0.73171
   },
   {
    "pair_id": "tjk2sm",
@@ -1717,7 +1717,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.04854
+   "sex_satisfaction_pair_latent": -0.02543
   },
   {
    "pair_id": "tlex77",
@@ -1726,12 +1726,12 @@
    "family_of_woman_about_pair": "против",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "недоволен",
-   "sex_satisfaction_woman": "ни то ни другое",
+   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.35316
+   "sex_satisfaction_pair_latent": -0.60766
   },
   {
    "pair_id": "trauar",
@@ -1745,7 +1745,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.30548
+   "sex_satisfaction_pair_latent": -0.45929
   },
   {
    "pair_id": "treaq7",
@@ -1754,12 +1754,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "доволен",
+   "sex_satisfaction_man": "ни то ни другое",
    "sex_satisfaction_woman": "ни то ни другое",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.70932
+   "sex_satisfaction_pair_latent": -0.77494
   },
   {
    "pair_id": "tsx93o",
@@ -1773,7 +1773,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.706
+   "sex_satisfaction_pair_latent": 0.48643
   },
   {
    "pair_id": "tuaovm",
@@ -1787,7 +1787,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.06603
+   "sex_satisfaction_pair_latent": 0.4275
   },
   {
    "pair_id": "tyws74",
@@ -1801,7 +1801,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.15548
+   "sex_satisfaction_pair_latent": 0.39343
   },
   {
    "pair_id": "u013je",
@@ -1810,12 +1810,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "недоволен",
-   "sex_satisfaction_woman": "недоволен",
+   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_woman": "ни то ни другое",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.46078
+   "sex_satisfaction_pair_latent": -0.92158
   },
   {
    "pair_id": "u29xj8",
@@ -1829,7 +1829,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.79792
+   "sex_satisfaction_pair_latent": 1.09865
   },
   {
    "pair_id": "ucurow",
@@ -1838,12 +1838,12 @@
    "family_of_woman_about_pair": "нейтрально",
    "man_conflict_with_her_family": true,
    "woman_conflict_with_his_family": true,
-   "sex_satisfaction_man": "доволен",
+   "sex_satisfaction_man": "ни то ни другое",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "примерно раз в неделю",
+   "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.38224
+   "sex_satisfaction_pair_latent": -0.85885
   },
   {
    "pair_id": "uivnzx",
@@ -1852,12 +1852,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.44466
+   "sex_satisfaction_pair_latent": -0.73154
   },
   {
    "pair_id": "ujil8f",
@@ -1866,12 +1866,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": true,
-   "sex_satisfaction_man": "ни то ни другое",
-   "sex_satisfaction_woman": "ни то ни другое",
+   "sex_satisfaction_man": "доволен",
+   "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.7978
+   "sex_satisfaction_pair_latent": -0.50619
   },
   {
    "pair_id": "uk3y20",
@@ -1885,7 +1885,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.95852
+   "sex_satisfaction_pair_latent": -1.09638
   },
   {
    "pair_id": "un6nun",
@@ -1899,7 +1899,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.16634
+   "sex_satisfaction_pair_latent": 0.54269
   },
   {
    "pair_id": "upaben",
@@ -1913,21 +1913,21 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.89847
+   "sex_satisfaction_pair_latent": 0.6925
   },
   {
    "pair_id": "utme7h",
    "lives_with_parents": false,
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "одобряют",
-   "man_conflict_with_her_family": true,
+   "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "недоволен",
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.62296
+   "sex_satisfaction_pair_latent": -1.51513
   },
   {
    "pair_id": "uvje9i",
@@ -1941,7 +1941,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.42798
+   "sex_satisfaction_pair_latent": 1.39985
   },
   {
    "pair_id": "ux71lg",
@@ -1955,7 +1955,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.1823
+   "sex_satisfaction_pair_latent": -0.05842
   },
   {
    "pair_id": "v4adbb",
@@ -1966,10 +1966,10 @@
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
-   "sex_frequency": "примерно раз в неделю",
+   "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.35441
+   "sex_satisfaction_pair_latent": 0.09052
   },
   {
    "pair_id": "vejgux",
@@ -1983,7 +1983,7 @@
    "sex_frequency": "почти каждый день",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.04009
+   "sex_satisfaction_pair_latent": 0.2524
   },
   {
    "pair_id": "vtu122",
@@ -1993,11 +1993,11 @@
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "недоволен",
-   "sex_satisfaction_woman": "недоволен",
+   "sex_satisfaction_woman": "ни то ни другое",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.72994
+   "sex_satisfaction_pair_latent": -1.37501
   },
   {
    "pair_id": "vzecdz",
@@ -2011,7 +2011,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.05231
+   "sex_satisfaction_pair_latent": -0.04067
   },
   {
    "pair_id": "w3mo3u",
@@ -2025,7 +2025,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.76406
+   "sex_satisfaction_pair_latent": 0.7118
   },
   {
    "pair_id": "w6ecqf",
@@ -2034,12 +2034,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": true,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "недоволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.06269
+   "sex_satisfaction_pair_latent": -1.80837
   },
   {
    "pair_id": "wd1sqf",
@@ -2048,12 +2048,12 @@
    "family_of_woman_about_pair": "нейтрально",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": true,
-   "sex_satisfaction_man": "доволен",
+   "sex_satisfaction_man": "ни то ни другое",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.63712
+   "sex_satisfaction_pair_latent": 0.02968
   },
   {
    "pair_id": "wj1pnu",
@@ -2063,11 +2063,11 @@
    "man_conflict_with_her_family": true,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
-   "sex_satisfaction_woman": "ни то ни другое",
+   "sex_satisfaction_woman": "недоволен",
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.78246
+   "sex_satisfaction_pair_latent": -0.89795
   },
   {
    "pair_id": "wjrrwc",
@@ -2075,13 +2075,13 @@
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": true,
-   "woman_conflict_with_his_family": true,
+   "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.37499
+   "sex_satisfaction_pair_latent": 0.00815
   },
   {
    "pair_id": "wo4e17",
@@ -2095,7 +2095,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.05798
+   "sex_satisfaction_pair_latent": 1.30416
   },
   {
    "pair_id": "wt5to1",
@@ -2109,7 +2109,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.45968
+   "sex_satisfaction_pair_latent": -0.1434
   },
   {
    "pair_id": "wxke55",
@@ -2123,7 +2123,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.58872
+   "sex_satisfaction_pair_latent": -0.61199
   },
   {
    "pair_id": "x13ybo",
@@ -2137,7 +2137,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.27453
+   "sex_satisfaction_pair_latent": 0.28819
   },
   {
    "pair_id": "x1t48i",
@@ -2145,13 +2145,13 @@
    "family_of_man_about_pair": "против",
    "family_of_woman_about_pair": "нейтрально",
    "man_conflict_with_her_family": true,
-   "woman_conflict_with_his_family": true,
+   "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.05515
+   "sex_satisfaction_pair_latent": 0.01984
   },
   {
    "pair_id": "x6zki4",
@@ -2165,7 +2165,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.13262
+   "sex_satisfaction_pair_latent": 0.29042
   },
   {
    "pair_id": "xal6c9",
@@ -2174,12 +2174,12 @@
    "family_of_woman_about_pair": "нейтрально",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "доволен",
+   "sex_satisfaction_man": "ни то ни другое",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.17579
+   "sex_satisfaction_pair_latent": -0.66366
   },
   {
    "pair_id": "xaws3h",
@@ -2193,7 +2193,7 @@
    "sex_frequency": "почти каждый день",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.27921
+   "sex_satisfaction_pair_latent": 0.74234
   },
   {
    "pair_id": "xiub1w",
@@ -2207,7 +2207,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.45762
+   "sex_satisfaction_pair_latent": -1.54345
   },
   {
    "pair_id": "xr3gzm",
@@ -2221,7 +2221,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.13244
+   "sex_satisfaction_pair_latent": -1.11282
   },
   {
    "pair_id": "xsq7sh",
@@ -2235,7 +2235,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.66984
+   "sex_satisfaction_pair_latent": 0.52416
   },
   {
    "pair_id": "y0cw0h",
@@ -2245,11 +2245,11 @@
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
-   "sex_satisfaction_woman": "доволен",
+   "sex_satisfaction_woman": "ни то ни другое",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.19255
+   "sex_satisfaction_pair_latent": 0.05705
   },
   {
    "pair_id": "y34t5k",
@@ -2263,7 +2263,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.73842
+   "sex_satisfaction_pair_latent": 0.52996
   },
   {
    "pair_id": "y85wun",
@@ -2277,7 +2277,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.42696
+   "sex_satisfaction_pair_latent": 0.01776
   },
   {
    "pair_id": "y88fg7",
@@ -2291,7 +2291,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.20508
+   "sex_satisfaction_pair_latent": 0.25194
   },
   {
    "pair_id": "ycdead",
@@ -2305,7 +2305,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.51107
+   "sex_satisfaction_pair_latent": 0.65247
   },
   {
    "pair_id": "ydd02e",
@@ -2319,7 +2319,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.2169
+   "sex_satisfaction_pair_latent": 0.21344
   },
   {
    "pair_id": "yedyuy",
@@ -2333,7 +2333,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.08877
+   "sex_satisfaction_pair_latent": -1.09036
   },
   {
    "pair_id": "yehd6c",
@@ -2347,7 +2347,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -1.4588
+   "sex_satisfaction_pair_latent": -1.14867
   },
   {
    "pair_id": "yif3po",
@@ -2361,7 +2361,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.15559
+   "sex_satisfaction_pair_latent": -0.23094
   },
   {
    "pair_id": "yypoki",
@@ -2375,7 +2375,7 @@
    "sex_frequency": "примерно раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.54615
+   "sex_satisfaction_pair_latent": 0.14769
   },
   {
    "pair_id": "z60y4u",
@@ -2389,7 +2389,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.16379
+   "sex_satisfaction_pair_latent": 1.01073
   },
   {
    "pair_id": "zb22y5",
@@ -2403,7 +2403,7 @@
    "sex_frequency": "почти каждый день",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.05772
+   "sex_satisfaction_pair_latent": 1.4024
   },
   {
    "pair_id": "zbnz6n",
@@ -2412,12 +2412,12 @@
    "family_of_woman_about_pair": "одобряют",
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
-   "sex_satisfaction_man": "ни то ни другое",
+   "sex_satisfaction_man": "недоволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.28057
+   "sex_satisfaction_pair_latent": -0.53228
   },
   {
    "pair_id": "zesxpp",
@@ -2431,7 +2431,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.11593
+   "sex_satisfaction_pair_latent": -0.38949
   },
   {
    "pair_id": "ziulxx",
@@ -2445,7 +2445,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": 0.522
+   "sex_satisfaction_pair_latent": 0.64888
   },
   {
    "pair_id": "zjz71c",
@@ -2459,7 +2459,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -1.11858
+   "sex_satisfaction_pair_latent": -0.79814
   },
   {
    "pair_id": "zpy9ab",
@@ -2473,7 +2473,7 @@
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": -0.89442
+   "sex_satisfaction_pair_latent": -0.84946
   },
   {
    "pair_id": "zqwmrv",
@@ -2483,25 +2483,25 @@
    "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
-   "sex_satisfaction_woman": "ни то ни другое",
+   "sex_satisfaction_woman": "доволен",
    "sex_frequency": "реже раза в неделю",
    "man_wants_more_than_now": true,
    "woman_wants_more_than_now": true,
-   "sex_satisfaction_pair_latent": -0.90965
+   "sex_satisfaction_pair_latent": -0.23585
   },
   {
    "pair_id": "ztkvbe",
    "lives_with_parents": null,
    "family_of_man_about_pair": "одобряют",
    "family_of_woman_about_pair": "одобряют",
-   "man_conflict_with_her_family": true,
+   "man_conflict_with_her_family": false,
    "woman_conflict_with_his_family": false,
    "sex_satisfaction_man": "доволен",
    "sex_satisfaction_woman": "доволен",
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.11324
+   "sex_satisfaction_pair_latent": 0.36254
   },
   {
    "pair_id": "zvxg2u",
@@ -2515,7 +2515,7 @@
    "sex_frequency": "почти каждый день",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 1.54559
+   "sex_satisfaction_pair_latent": 1.90796
   },
   {
    "pair_id": "zybva8",
@@ -2529,7 +2529,7 @@
    "sex_frequency": "несколько раз в неделю",
    "man_wants_more_than_now": false,
    "woman_wants_more_than_now": false,
-   "sex_satisfaction_pair_latent": 0.98607
+   "sex_satisfaction_pair_latent": 1.41627
   }
  ]
 }

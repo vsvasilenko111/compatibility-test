@@ -1,0 +1,19 @@
+{
+ "pairs_sha256": "f318dc180e7d3d3d852a046264b2a004b54215ab8723aee566ea5bd0acd73a58",
+ "outcome_sha256": "6c56ba1db4270fda15d85d52fec95011bdbfbee43e2cf0e93095d4155db8aa1e",
+ "files": {
+  "holdout-pairs.json": "03a19b8a4047d288f3a0751e8b0b62a405e2d4b3f1ced81325cd9e51eaa3d94e",
+  "holdout-outcomes.json": "18ebe34643a06b190c0400be6e5dbd2f1653cd4e91e7af10b38eae089f081156"
+ },
+ "revision": 5,
+ "superseded": {
+  "r4": {
+   "files": {
+    "holdout-outcomes.json": "68bb229ac0c64e00a43bdc6d8ed398bf9ebb045e9df547d44d4024e6c626c0c2",
+    "MANIFEST.json": "d9e504dde0894c80e56e592daa502f2dcd8acceb0f34df03aec9b7695933885d"
+   },
+   "pairs_sha256": "67457449098d5d52500feb68697464d4db0632b7cfde5a8eeb891844fd89a44b",
+   "outcome_sha256": "352746d7f45dca59c4fb2b8684b8011556385fc4250adf75e4b267d13ae7fae9"
+  }
+ }
+}

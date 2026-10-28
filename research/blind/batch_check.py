@@ -291,9 +291,9 @@ def verdict(rows, n_people, T):
     stop += [f"сфера {k}: сдвиг {v:+.2f} SD > {tab[k]:.2f} (в популяции 0,6)" for k, v in sph.items() if k in tab and v > tab[k]]
     warn = []
     if sdr and np.median(sdr) < SD_RATIO_POP:
-        warn.append(f"медиана отношения SD {np.median(sdr):.2f} ниже популяционного порога {SD_RATIO_POP} (не брак: шум n)")
+        warn.append(f"медиана отношения SD {np.median(sdr):.2f} ниже популяционного порога {SD_RATIO_POP} (предупреждение; брак — только по критическому значению для n)")
     if rho and np.median(rho) < RHO_POP_STRONG:
-        warn.append(f"медиана ранговой корреляции {np.median(rho):.2f} ниже популяционного порога {RHO_POP_STRONG} (не брак: шум n)")
+        warn.append(f"медиана ранговой корреляции {np.median(rho):.2f} ниже популяционного порога {RHO_POP_STRONG} (предупреждение; брак — только по критическому значению для n)")
     h = rows.get("humor-11", {})
     if h.get("measures_hostility_rather_than_humor"):
         warn.append(f"humor-11: ρ с враждебностью {h['spearman_self_hostility']:.2f} ≥ ρ с «подкалывает» "
