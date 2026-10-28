@@ -35,16 +35,16 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('153 вопроса: 51 о партнёре как друге, 81 отношений и 21 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(153);
+  it('143 вопроса: 51 о партнёре как друге, 80 отношений и 12 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(143);
     expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(51);
-    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(81);
-    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(21);
+    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(80);
+    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(12);
   });
 
   it('блок зрелости — в конце, вопросы о прошлом — последними и подряд', () => {
-    expect(QUESTIONS.slice(-21).every((x) => x.block === 'maturity')).toBe(true);
-    expect(QUESTIONS.slice(-6).every((x) => x.sphere === 'past')).toBe(true);
+    expect(QUESTIONS.slice(-12).every((x) => x.block === 'maturity')).toBe(true);
+    expect(QUESTIONS.slice(-5).every((x) => x.sphere === 'past')).toBe(true);
   });
 
   it('в каждой сфере 4–12 вопросов, в «Проявлениях любви» — от 3', () => {
@@ -55,13 +55,13 @@ describe('полный банк', () => {
     }
   });
 
-  it('пропускать можно только вопросы о близости, о прошлом опыте и «когда ребёнок», и все они пропускаемые', () => {
-    for (const x of QUESTIONS) expect(x.optional, x.id).toBe(x.sphere === 'intimacy' || x.sphere === 'past' || x.id === 'kids-08');
+  it('с v16 пропускать нельзя ни один вопрос', () => {
+    for (const x of QUESTIONS) expect(x.optional, x.id).toBe(false);
   });
 
-  it('отметка «не обсуждается» — у 13 вопросов, список в коде ссылки совпадает с банком', () => {
+  it('отметка «не обсуждается» — у 12 вопросов, список в коде ссылки совпадает с банком', () => {
     const firm = QUESTIONS.filter((x) => x.firm).map((x) => x.id);
-    expect(firm).toHaveLength(13);
+    expect(firm).toHaveLength(12);
     expect(CURRENT_FIRM).toEqual(firm);
     expect(FIRM[8]).toBeUndefined();
   });

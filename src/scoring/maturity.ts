@@ -18,9 +18,11 @@ export interface MaturityResult {
 type Values = Record<string, number>;
 
 /** Чем ниже ответ, тем устойчивее. Вопросы о прошлом сюда не входят: высокий балл там сам по себе не риск. */
-const LEVEL = ['attach-01', 'attach-03', 'regul-01', 'regul-02', 'regul-06', 'regul-07', 'regul-08', 'reflect-01', 'reflect-02', 'reflect-03'];
-const PAST = ['trauma-01', 'trauma-02', 'trauma-03', 'trauma-04', 'trauma-05', 'trauma-06'];
-/** Проработанность прошлого опыта: узнавание триггеров, разговор о прошлом, реакция, когда задели больное. */
+const LEVEL = ['attach-01', 'attach-03', 'regul-08', 'reflect-01', 'reflect-02', 'reflect-03'];
+const PAST = ['trauma-01', 'trauma-02', 'trauma-03', 'trauma-05', 'trauma-06'];
+/** Вопросы других блоков, нужные для сочетаний: как отвечаете, когда задели (conflicts-02), сколько вечеров нужно для себя (space-06). */
+const EXTRA = ['conflicts-02', 'space-06'];
+/** Проработанность прошлого опыта: умение объяснить, что задело, готовность делиться тем, что ранит, реакция, когда задели больное. */
 const WORKED_THROUGH = ['trauma-02', 'trauma-03', 'trauma-05'];
 const HIGH = 7;
 const STRONG = 3;
@@ -32,10 +34,6 @@ const TEXTS: Record<string, Omit<MaturityTopic, 'key'>> = {
   closeness: {
     title: 'Близость и пространство',
     text: 'Когда между вами появляется дистанция, одному из вас, скорее всего, важно поскорее восстановить контакт, а другому — сначала немного побыть с собой. Обе потребности нормальные. Договоритесь, как один может попросить близости, а другой — паузы, чтобы никто не почувствовал себя брошенным или зажатым.',
-  },
-  heated: {
-    title: 'Если спор накаляется',
-    text: 'Похоже, в споре один из вас стремится договорить, а другой — выдохнуть. Чем сильнее один догоняет, тем больше другому хочется уйти, и наоборот. Помогает простое правило: пауза с договорённостью вернуться («давай через 30 минут»), а не уход без срока.',
   },
   silence: {
     title: 'Внезапная тишина',
@@ -64,7 +62,7 @@ const TEXTS: Record<string, Omit<MaturityTopic, 'key'>> = {
 };
 
 /** Вопросы, тема которых уже раскрыта в тексте «стоит обсудить». */
-const COVERS: Record<string, string[]> = { closeness: ['attach-01', 'attach-03'], escalation: ['regul-01'], feelings: ['reflect-03'] };
+const COVERS: Record<string, string[]> = { closeness: ['attach-01', 'attach-03'], feelings: ['reflect-03'] };
 
 /** Ответы человека на вопросы блока; пропуски не попадают. */
 function values(p: Profile, ids: string[]): Values {
@@ -79,8 +77,7 @@ function values(p: Profile, ids: string[]): Values {
 const mean = (xs: number[]) => xs.reduce((s, x) => s + x, 0) / xs.length;
 const high = (v: Values, id: string, t = HIGH) => id in v && v[id] >= t;
 const avoidance = (v: Values) => {
-  const xs = ['attach-02', 'attach-03'].filter((id) => id in v).map((id) => v[id]);
-  return xs.length ? mean(xs) : 0;
+  return 'attach-03' in v ? v['attach-03'] : 0;
 };
 /** Вопросы о прошлом учитываются, только если человек ответил хотя бы на половину из них. */
 const pastUsable = (v: Values) => PAST.filter((id) => id in v).length >= PAST.length / 2;
@@ -89,9 +86,8 @@ const pastUsable = (v: Values) => PAST.filter((id) => id in v).length >= PAST.le
 function riskyPairs(x: Values, y: Values, xPast: boolean): string[] {
   const out: string[] = [];
   if (high(x, 'attach-01') && avoidance(y) >= HIGH) out.push('closeness');
-  if (high(x, 'regul-03') && high(y, 'regul-04')) out.push('heated');
-  if (xPast && high(x, 'trauma-06') && (high(y, 'regul-04') || high(y, 'attach-02'))) out.push('silence');
-  if (xPast && high(x, 'trauma-05') && high(y, 'regul-01', SOFT)) out.push('escalation');
+  if (xPast && high(x, 'trauma-06') && (high(y, 'attach-03') || high(y, 'space-06'))) out.push('silence');
+  if (xPast && high(x, 'trauma-05') && high(y, 'conflicts-02', SOFT)) out.push('escalation');
   return out;
 }
 
@@ -103,17 +99,17 @@ const polar = (a: Values, b: Values, id: string, lo: number, hi: number) =>
 export function maturity(questions: Question[], pa: Profile, pb: Profile): MaturityResult | null {
   const qs = questions.filter((q) => q.block === 'maturity');
   const ids = qs.map((q) => q.id);
-  const a = values(pa, ids), b = values(pb, ids);
+  const a = values(pa, [...ids, ...EXTRA]), b = values(pb, [...ids, ...EXTRA]);
   const core = ids.filter((id) => !PAST.includes(id));
   if (!core.some((id) => id in a) || !core.some((id) => id in b)) return null;
   const topic = new Map(qs.map((q) => [q.id, q.topic]));
   const aPast = pastUsable(a), bPast = pastUsable(b);
 
   const keys = new Set([...riskyPairs(a, b, aPast), ...riskyPairs(b, a, bPast)]);
-  if (apart(a, b, 'regul-05')) keys.add('stress');
+  if (apart(a, b, 'attach-03')) keys.add('stress');
   if (apart(a, b, 'reflect-04')) keys.add('help');
   if (polar(a, b, 'reflect-03', 2, 8)) keys.add('feelings');
-  if (!keys.has('closeness') && polar(a, b, 'attach-02', 3, 8)) keys.add('dosage');
+  if (!keys.has('closeness') && polar(a, b, 'space-06', 3, 8)) keys.add('dosage');
   // Порядок TEXTS — порядок важности.
   const talks = Object.keys(TEXTS).filter((k) => keys.has(k)).map((key) => ({ key, ...TEXTS[key] }));
 
@@ -126,7 +122,7 @@ export function maturity(questions: Question[], pa: Profile, pb: Profile): Matur
     return xs.length > 0 && mean(xs) <= 4;
   };
   const pastTalk = talks.some((t) => t.key === 'silence' || t.key === 'escalation');
-  if (aPast && bPast && !pastTalk && worked(a) && worked(b)) strengths.push('разговор о прошлом');
+  if (aPast && bPast && !pastTalk && worked(a) && worked(b)) strengths.push('разговор о том, что ранит');
   const softTopics = both
     .filter((id) => !covered.has(id) && Math.max(a[id], b[id]) >= SOFT)
     .map((id) => topic.get(id)!);

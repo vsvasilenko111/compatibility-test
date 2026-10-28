@@ -51,18 +51,18 @@ describe('карта сфер в DOM', () => {
 describe('блок «Ресурсы пары» в DOM', () => {
   const mq: Question[] = [
     ...qs,
-    { id: 'regul-03', block: 'maturity', sphere: 'regulation', text: 't', left: 'l', right: 'r', topic: 'если партнёр выходит из спора', optional: false },
-    { id: 'regul-04', block: 'maturity', sphere: 'regulation', text: 't', left: 'l', right: 'r', topic: 'когда спор накаляется', optional: false },
+    { id: 'attach-03', block: 'maturity', sphere: 'attachment', text: 't', left: 'l', right: 'r', topic: 'опора на партнёра', optional: false },
+    { id: 'reflect-04', block: 'maturity', sphere: 'reflection', text: 't', left: 'l', right: 'r', topic: 'помощь со стороны', optional: false },
   ];
   const mp = (name: string, vals: number[]): Profile => ({
     name, bankVersion: 4, responses: Object.fromEntries(mq.map((q, i) => [q.id, answerFor(vals[i])])),
   });
 
-  it('тема «если спор накаляется» с текстом, без имён и баллов', () => {
-    const a = mp('Аня', [10, 0, 10, 9, 2]);
-    const b = mp('Миша', [10, 10, 9, 2, 9]);
+  it('тема «тяжёлые периоды» с текстом, без имён и баллов', () => {
+    const a = mp('Аня', [10, 0, 10, 0, 2]);
+    const b = mp('Миша', [10, 10, 9, 9, 2]);
     const section = resultScreen(a, b, compare(mq, a, b), 'https://x/#r.a.b').querySelector('.resources')!;
-    expect(section.textContent).toContain('Если спор накаляется');
+    expect(section.textContent).toContain('Тяжёлые периоды');
     expect(section.textContent).not.toMatch(/Аня|Миша|\d+ ?из|\b9\b/);
   });
 
@@ -73,13 +73,13 @@ describe('блок «Ресурсы пары» в DOM', () => {
   });
 
   it('уровень навыков пары — без имён и ответов', () => {
-    const rq: Question[] = [...qs, ...['regul-01', 'regul-07', 'regul-02'].map((id, i): Question => ({
+    const rq: Question[] = [...qs, ...['conflicts-02', 'conflicts-03'].map((id, i): Question => ({
       id, block: 'maturity', sphere: 'regulation', text: 't', left: 'l', right: 'r', topic: `t${i}`, optional: false }))];
     const rp = (name: string, vals: number[]): Profile => ({
       name, bankVersion: 9, responses: Object.fromEntries(rq.map((q, i) => [q.id, answerFor(vals[i])])),
     });
-    const a = rp('Аня', [10, 0, 10, 1, 2, 9]);
-    const b = rp('Миша', [10, 10, 9, 0, 1, 9]);
+    const a = rp('Аня', [10, 0, 10, 1, 9]);
+    const b = rp('Миша', [10, 10, 9, 0, 9]);
     const items = [...resultScreen(a, b, compare(rq, a, b), 'https://x/#r.a.b').querySelectorAll('.resources .res')];
     expect(items.map((li) => li.querySelector('.res-head')!.textContent)).toEqual(['Спорить, не обжигаяполучается', 'Отпускать после ссорызона роста']);
     expect(items.map((li) => li.textContent).join()).not.toMatch(/Аня|Миша/);

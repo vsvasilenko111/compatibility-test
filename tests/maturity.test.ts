@@ -17,6 +17,8 @@ function person(over: Record<string, number | null> = {}, fill = 2, withBase = t
     const v = id in over ? over[id] : fill;
     responses[id] = v === null ? 'skipped' : answerFor(v);
   }
+  // Вопросы других блоков, которые участвуют в сочетаниях (conflicts-02, space-06).
+  for (const [id, v] of Object.entries(over)) if (!MAT.includes(id)) responses[id] = v === null ? 'skipped' : answerFor(v);
   return { name: '', bankVersion: 4, responses };
 }
 const keys = (a: Profile, b: Profile) => maturity(QUESTIONS, a, b)!.talks.map((t) => t.key);
@@ -45,23 +47,24 @@ describe('блок «Эмоциональная зрелость»', () => {
   });
 
   it('тревога у одного и потребность в пространстве у другого — «близость и пространство» первой', () => {
-    expect(keys(person({ 'attach-01': 9 }), person({ 'attach-02': 8, 'attach-03': 7 }))[0]).toBe('closeness');
+    expect(keys(person({ 'attach-01': 9 }), person({ 'attach-03': 8 }))[0]).toBe('closeness');
     // в обратную сторону — то же
-    expect(keys(person({ 'attach-02': 8, 'attach-03': 7 }), person({ 'attach-01': 9 }))[0]).toBe('closeness');
+    expect(keys(person({ 'attach-03': 8 }), person({ 'attach-01': 9 }))[0]).toBe('closeness');
   });
 
-  it('один догоняет в споре, другой уходит — «если спор накаляется»', () => {
-    expect(keys(person({ 'regul-03': 8 }), person({ 'regul-04': 9 }))).toContain('heated');
-    expect(keys(person({ 'regul-03': 8 }), person({ 'regul-04': 5 }))).not.toContain('heated');
+  it('внезапная тишина: чувствительность к отдалению у одного и привычка справляться в одиночку у другого', () => {
+    expect(keys(person({ 'trauma-06': 9 }), person({ 'attach-03': 8, 'space-06': 0 }))).toContain('silence');
+    expect(keys(person({ 'trauma-06': 9 }), person({ 'space-06': 9 }))).toContain('silence');
   });
 
-  it('внезапная тишина: чувствительность к отдалению у одного и привычка уходить в себя у другого', () => {
-    expect(keys(person({ 'trauma-06': 9 }), person({ 'regul-04': 8 }))).toContain('silence');
+  it('когда задели больное: у одного болезненные темы, другой в споре отвечает громко', () => {
+    expect(keys(person({ 'trauma-05': 9 }), person({ 'conflicts-02': 9 }))).toContain('escalation');
+    expect(keys(person({ 'trauma-05': 9, 'conflicts-02': 0 }), person({ 'conflicts-02': 3 }))).not.toContain('escalation');
   });
 
   it('вопросы о прошлом не учитываются, если человек пропустил больше половины', () => {
-    const skipped = { 'trauma-01': null, 'trauma-02': null, 'trauma-03': null, 'trauma-04': null, 'trauma-06': 9 };
-    expect(keys(person(skipped), person({ 'regul-04': 8 }))).not.toContain('silence');
+    const skipped = { 'trauma-01': null, 'trauma-02': null, 'trauma-03': null, 'trauma-06': 9 };
+    expect(keys(person(skipped), person({ 'attach-03': 8 }))).not.toContain('silence');
   });
 
   it('пропуск сам по себе не даёт тем', () => {
@@ -72,19 +75,19 @@ describe('блок «Эмоциональная зрелость»', () => {
   });
 
   it('большая разница в переживании стресса и в отношении к психологу — темы для разговора', () => {
-    const k = keys(person({ 'regul-05': 1, 'reflect-04': 0 }), person({ 'regul-05': 8, 'reflect-04': 9 }));
+    const k = keys(person({ 'attach-03': 1, 'reflect-04': 0 }), person({ 'attach-03': 8, 'reflect-04': 9 }));
     expect(k).toEqual(expect.arrayContaining(['stress', 'help']));
   });
 
   it('все темы, самые важные первыми', () => {
-    const a = person({ 'attach-01': 9, 'regul-03': 9, 'regul-05': 0, 'reflect-04': 0 });
-    const b = person({ 'attach-02': 9, 'attach-03': 9, 'regul-04': 9, 'regul-05': 9, 'reflect-04': 10 });
-    expect(keys(a, b)).toEqual(['closeness', 'heated', 'stress', 'help']);
+    const a = person({ 'attach-01': 9, 'attach-03': 0, 'reflect-04': 0, 'space-06': 5 });
+    const b = person({ 'attach-03': 9, 'reflect-04': 10, 'space-06': 5 });
+    expect(keys(a, b)).toEqual(['closeness', 'stress', 'help']);
   });
 
   it('трудно хотя бы одному, но без опасного сочетания — мягкая тема без текста', () => {
-    const r = maturity(QUESTIONS, person({ 'regul-02': 9 }), person())!;
+    const r = maturity(QUESTIONS, person({ 'regul-08': 9 }), person())!;
     expect(r.talks).toEqual([]);
-    expect(r.softTopics).toEqual(['время на восстановление']);
+    expect(r.softTopics).toEqual(['признать, что перегнули']);
   });
 });
