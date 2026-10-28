@@ -23,7 +23,8 @@ export interface CompareResult { relationship: ModeResult; friendship: ModeResul
 /**
  * Красный флаг — только по явной отметке «Для меня это не обсуждается»: кто-то из пары её поставил, а ответы расходятся
  * через вариант и дальше (FIRM_STEPS). Раньше флаг ставился по крайнему ответу — и выпадал у 82% случайных пар.
- * У вопроса с firmSides — только если ответы по разные стороны от середины; с cross — если привычка другого задевает отношение.
+ * У вопроса с firmSides — только если ответы по разные стороны от середины; с cross — если привычка другого задевает отношение;
+ * со split — и при соседних ответах по разные стороны границы.
  */
 export const FIRM_STEPS = 2;
 /**
@@ -71,9 +72,12 @@ const answered = (p: Profile, id: string): Answer | null => {
 const marked = (a: Answer, b: Answer) => a.firm === true || b.firm === true;
 /** Насколько отношение (вариант 0–4: «Нормально» … «Против») мирится с привычкой силы lvl (0..1). */
 const tolerate = (tol: number, lvl: number) => 1 - (tol / 4) * lvl;
-/** Привычка задевает принцип: «Скорее против» или «Против» — при сильной привычке, «Против» — уже при средней. */
-const clash = (tol: number, lvl: number) => (tol >= 3 && lvl >= 0.75) || (tol === 4 && lvl >= 0.5);
-/** Общий риск — совпадение не выше, чем через вариант (MATCH[0][2]), и это тема для разговора. */
+/**
+ * Привычка задевает принцип: «Скорее против» или «Против» — только при привычке не слабее описанной в вопросе.
+ * С v18 «Против» при средней привычке («иногда, в компании») флага не даёт: человек оценивал полпачки в день, а не это.
+ */
+const clash = (tol: number, lvl: number) => tol >= 3 && lvl >= 0.75;
+/** Общий риск и ответы по разные стороны split — совпадение не выше, чем через вариант (MATCH[0][2]), и это тема для разговора. */
 const SHARED_RISK_MATCH = 0.35;
 
 function pair(q: Question, a: Answer, b: Answer, pa: Profile, pb: Profile): Pair | null {
@@ -90,7 +94,8 @@ function pair(q: Question, a: Answer, b: Answer, pa: Profile, pb: Profile): Pair
     return { ...base, matchA, matchB, match, steps: Math.round((1 - match) * 4), s: 0, red };
   }
   let match = fit(a, b), st = steps(a, b), s = strength(a, b);
-  if (q.sharedRisk && Math.min(ia, ib) >= q.sharedRisk - 1) {
+  const across = q.split !== undefined && (ia < q.split) !== (ib < q.split);
+  if ((q.sharedRisk && Math.min(ia, ib) >= q.sharedRisk - 1) || across) {
     match = Math.min(match, SHARED_RISK_MATCH); st = Math.max(st, 2); s = 0;
   }
   const apart = q.firmSides ? (ia <= 1 && ib >= 3) || (ib <= 1 && ia >= 3) : st >= FIRM_STEPS;
@@ -105,6 +110,8 @@ function pairs(questions: Question[], pa: Profile, pb: Profile): Pair[] {
     const p = a && b ? pair(q, a, b, pa, pb) : null;
     if (p) out.push(p);
   }
+  const red = new Set(out.filter((p) => p.red).map((p) => p.q.id));
+  for (const p of out) if (p.q.flagCoveredBy && red.has(p.q.flagCoveredBy)) p.red = false;
   return out;
 }
 

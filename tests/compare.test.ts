@@ -204,11 +204,12 @@ describe('compare — отношение к привычке партнёра (c
     // A против (1 − 1·1 = 0), B ничего не имеет против некурящего A (1) → √(0 · 1) = 0.
     expect(r.relationship.percent).toBeCloseTo(0, 6);
   });
-  it('«Скорее против» при курении иногда — не флаг, а тема; «Против» при курении иногда — флаг', () => {
+  it('курение иногда — тема, но не флаг даже при «Против»; ежедневное — флаг', () => {
     const r = compare(qs, p(4, 1, true), p(1, 3));
     expect(r.relationship.redFlags).toEqual([]);
     expect(ids(r.relationship.talkZones)).toEqual(['smoke']);
-    expect(ids(compare(qs, p(5, 1, true), p(1, 3)).relationship.redFlags)).toEqual(['smoke']);
+    expect(compare(qs, p(5, 1, true), p(1, 3)).relationship.redFlags).toEqual([]);
+    expect(ids(compare(qs, p(5, 1, true), p(1, 4)).relationship.redFlags)).toEqual(['smoke']);
   });
   it('оба курят и обоим нормально — полное совпадение', () => {
     expect(compare(qs, p(1, 5), p(2, 4)).relationship.percent).toBeCloseTo(Math.sqrt(1 * (1 - 0.25 * 1)) * 100, 6);
@@ -235,5 +236,29 @@ describe('compare — флаг только через середину (firmSid
   });
   it('оба отвечают спокойно — обычное совпадение', () => {
     expect(compare(loud, profile({ shout: o(2) }), profile({ shout: o(2) })).relationship.percent).toBeCloseTo(95, 6);
+  });
+});
+
+describe('compare — граница по смыслу (split) и один флаг на одно разногласие (flagCoveredBy)', () => {
+  const kids: Question[] = [
+    { ...q('many', 'relationship', 'kids'), firm: true, split: 2 },
+    { ...q('when', 'relationship', 'kids'), firm: true, flagCoveredBy: 'many' },
+  ];
+  it('«Скорее не хочу» и «Один» — соседние варианты, но по разные стороны границы: флаг и тема', () => {
+    const r = compare(kids.slice(0, 1), profile({ many: { ...o(2), firm: true } }), profile({ many: o(3) }));
+    expect(ids(r.relationship.redFlags)).toEqual(['many']);
+    expect(r.relationship.percent).toBeCloseTo(35, 6);
+  });
+  it('«Один» и «Двое» — обычные соседние варианты', () => {
+    const r = compare(kids.slice(0, 1), profile({ many: { ...o(3), firm: true } }), profile({ many: o(4) }));
+    expect(r.relationship.redFlags).toEqual([]);
+    expect(r.relationship.percent).toBeCloseTo(75, 6);
+  });
+  it('флаг «когда» не ставится, если уже стоит флаг «сколько»; без него — ставится', () => {
+    const both = compare(kids, profile({ many: { ...o(1), firm: true }, when: { ...o(5), firm: true } }), profile({ many: o(4), when: o(1) }));
+    expect(ids(both.relationship.redFlags)).toEqual(['many']);
+    expect(ids(both.relationship.talkZones)).toEqual(['when']);
+    const only = compare(kids, profile({ many: o(4), when: { ...o(1), firm: true } }), profile({ many: o(4), when: o(4) }));
+    expect(ids(only.relationship.redFlags)).toEqual(['when']);
   });
 });

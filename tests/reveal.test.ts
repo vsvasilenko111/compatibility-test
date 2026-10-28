@@ -56,3 +56,12 @@ describe('экран результата: ответы друг друга', ()
     expect(resultScreen(A, B, compare(qs, A, B), 'https://x/#r.a.b').querySelector('.answers')).toBeNull();
   });
 });
+
+describe('расхождения: отношение к привычке партнёра', () => {
+  it('вопросы с cross не попадают в расхождения: у двух некурящих «Нормально» и «Против» — не разногласие', () => {
+    const cq: Question[] = [{ id: 'smoke', block: 'relationship', sphere: 'habits', text: 'Курение', left: 'l', right: 'r', topic: 'курение', optional: false, cross: { id: 'me', level: [0, 0, 0.5, 0.75, 1] } }];
+    const x: Profile = { name: '', bankVersion: 4, responses: { smoke: answerFor(0) } };
+    const y: Profile = { name: '', bankVersion: 4, responses: { smoke: answerFor(10) } };
+    expect(divergences(cq, x, y)).toEqual([]);
+  });
+});

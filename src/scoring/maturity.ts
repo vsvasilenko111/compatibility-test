@@ -19,11 +19,11 @@ type Values = Record<string, number>;
 
 /** Чем ниже ответ, тем устойчивее. Вопросы о прошлом сюда не входят: высокий балл там сам по себе не риск. */
 const LEVEL = ['attach-01', 'attach-03', 'regul-08', 'reflect-01', 'reflect-02', 'reflect-03'];
-const PAST = ['trauma-01', 'trauma-02', 'trauma-03', 'trauma-05', 'trauma-06'];
+const PAST = ['trauma-05', 'trauma-06'];
 /** Вопросы других блоков, нужные для сочетаний: как отвечаете, когда задели (conflicts-02), сколько вечеров нужно для себя (space-06). */
 const EXTRA = ['conflicts-02', 'space-06'];
-/** Проработанность прошлого опыта: умение объяснить, что задело, готовность делиться тем, что ранит, реакция, когда задели больное. */
-const WORKED_THROUGH = ['trauma-02', 'trauma-03', 'trauma-05'];
+/** Проработанность прошлого опыта: как человек реагирует, когда случайно задели больное (с v18 — один вопрос). */
+const WORKED_THROUGH = ['trauma-05'];
 const HIGH = 7;
 const STRONG = 3;
 const SOFT = 8;
@@ -37,7 +37,7 @@ const TEXTS: Record<string, Omit<MaturityTopic, 'key'>> = {
   },
   silence: {
     title: 'Внезапная тишина',
-    text: 'Похоже, для одного из вас внезапная тишина может отзываться сильнее, чем выглядит со стороны, а другому иногда нужно побыть в тишине. Договоритесь о простом сигнале — «я на связи, просто занят» или «мне нужен вечер для себя» — это бережёт обоих.',
+    text: 'Похоже, для одного из вас внезапная тишина может отзываться сильнее, чем выглядит со стороны, а другому часто нужно побыть одному. Договоритесь о простом сигнале — «я на связи, просто занят» или «мне нужен вечер для себя» — это бережёт обоих.',
   },
   escalation: {
     title: 'Когда задели больное',
@@ -49,7 +49,7 @@ const TEXTS: Record<string, Omit<MaturityTopic, 'key'>> = {
   },
   stress: {
     title: 'Тяжёлые периоды',
-    text: 'В стрессе вы переживаете по-разному: одному помогает разговор, другому — тишина. Обсудите, какая поддержка нужна каждому, когда трудно, и как понять, что сейчас лучше: спросить или просто быть рядом.',
+    text: 'Когда трудно, одному из вас легко прямо сказать «мне тяжело, поддержи», а другому привычнее справляться самому и не грузить близкого. Тогда второй может долго тянуть всё в одиночку, а первый — не заметить, что пора помочь. Обсудите, по каким признакам видно, что другому тяжело, и как предложить помощь, не навязываясь.',
   },
   help: {
     title: 'Помощь со стороны',
@@ -89,8 +89,9 @@ const pastUsable = (v: Values) => PAST.filter((id) => id in v).length >= PAST.le
 /** Опасные сочетания: у одного — x, у другого — y; проверяются в обе стороны. */
 function riskyPairs(x: Values, y: Values, xPast: boolean): string[] {
   const out: string[] = [];
-  if (high(x, 'attach-01') && avoidance(y) >= HIGH) out.push('closeness');
-  if (xPast && high(x, 'trauma-06') && (high(y, 'attach-03') || high(y, 'space-06'))) out.push('silence');
+  // Справляться в одиночку — только крайний ответ attach-03: «расскажу, если спросит» ещё не отдаление.
+  if (high(x, 'attach-01') && avoidance(y) >= SOFT) out.push('closeness');
+  if (xPast && high(x, 'trauma-06') && high(y, 'space-06')) out.push('silence');
   if (xPast && high(x, 'trauma-05') && high(y, 'conflicts-02', SOFT)) out.push('escalation');
   return out;
 }
@@ -112,10 +113,13 @@ export function maturity(questions: Question[], pa: Profile, pb: Profile): Matur
   const keys = new Set([...riskyPairs(a, b, aPast), ...riskyPairs(b, a, bPast)]);
   // Оба отвечают громко или криком (conflicts-02): одинаковый ответ здесь не согласие, а общий риск.
   if (high(a, 'conflicts-02') && high(b, 'conflicts-02')) keys.add('loud');
-  if (apart(a, b, 'attach-03')) keys.add('stress');
+  // «Когда один замолкает» уже говорит и об этом: тишина и тяжёлые периоды при нём не повторяются.
+  if (keys.has('closeness')) keys.delete('silence');
+  else if (apart(a, b, 'attach-03')) keys.add('stress');
   if (apart(a, b, 'reflect-04')) keys.add('help');
   if (polar(a, b, 'reflect-03', 2, 8)) keys.add('feelings');
-  if (!keys.has('closeness') && polar(a, b, 'space-06', 3, 8)) keys.add('dosage');
+  // Разное время для себя уже названо во «внезапной тишине».
+  if (!keys.has('silence') && polar(a, b, 'space-06', 3, 8)) keys.add('dosage');
   // Порядок TEXTS — порядок важности.
   const talks = Object.keys(TEXTS).filter((k) => keys.has(k)).map((key) => ({ key, ...TEXTS[key] }));
 

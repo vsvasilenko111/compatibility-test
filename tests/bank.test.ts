@@ -35,16 +35,16 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('139 вопросов: 49 о партнёре как друге, 78 отношений и 12 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(139);
+  it('136 вопросов: 49 о партнёре как друге, 78 отношений и 9 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(136);
     expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(49);
     expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(78);
-    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(12);
+    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(9);
   });
 
   it('блок зрелости — в конце, вопросы о прошлом — последними и подряд', () => {
-    expect(QUESTIONS.slice(-12).every((x) => x.block === 'maturity')).toBe(true);
-    expect(QUESTIONS.slice(-5).every((x) => x.sphere === 'past')).toBe(true);
+    expect(QUESTIONS.slice(-9).every((x) => x.block === 'maturity')).toBe(true);
+    expect(QUESTIONS.slice(-2).every((x) => x.sphere === 'past')).toBe(true);
   });
 
   it('в каждой сфере 4–12 вопросов, в «Проявлениях любви» — от 3', () => {

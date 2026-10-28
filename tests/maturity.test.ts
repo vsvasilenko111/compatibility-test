@@ -47,14 +47,28 @@ describe('блок «Эмоциональная зрелость»', () => {
   });
 
   it('тревога у одного и потребность в пространстве у другого — «близость и пространство» первой', () => {
-    expect(keys(person({ 'attach-01': 9 }), person({ 'attach-03': 8 }))[0]).toBe('closeness');
+    expect(keys(person({ 'attach-01': 9 }), person({ 'attach-03': 10 }))[0]).toBe('closeness');
     // в обратную сторону — то же
-    expect(keys(person({ 'attach-03': 8 }), person({ 'attach-01': 9 }))[0]).toBe('closeness');
+    expect(keys(person({ 'attach-03': 10 }), person({ 'attach-01': 9 }))[0]).toBe('closeness');
   });
 
-  it('внезапная тишина: чувствительность к отдалению у одного и привычка справляться в одиночку у другого', () => {
-    expect(keys(person({ 'trauma-06': 9 }), person({ 'attach-03': 8, 'space-06': 0 }))).toContain('silence');
+  it('внезапная тишина: чувствительность к отдалению у одного и частая нужда побыть одному у другого', () => {
     expect(keys(person({ 'trauma-06': 9 }), person({ 'space-06': 9 }))).toContain('silence');
+    // привычка не грузить партнёра (attach-03) — не то же, что нужда в тишине
+    expect(keys(person({ 'trauma-06': 9 }), person({ 'attach-03': 8, 'space-06': 0 }))).not.toContain('silence');
+  });
+
+  it('при «Когда один замолкает» тишина и тяжёлые периоды не повторяются, а разное время для себя — только без тишины', () => {
+    const k = keys(person({ 'attach-01': 9, 'trauma-06': 9, 'attach-03': 0, 'space-06': 0 }), person({ 'attach-03': 10, 'space-06': 10 }));
+    expect(k).toContain('closeness');
+    expect(k).not.toContain('silence');
+    expect(k).not.toContain('stress');
+    expect(k).toContain('dosage');
+    expect(keys(person({ 'trauma-06': 9, 'space-06': 0 }), person({ 'space-06': 10 }))).not.toContain('dosage');
+  });
+
+  it('«Когда один замолкает» — только при крайнем «справлюсь сам(а)»', () => {
+    expect(keys(person({ 'attach-01': 9 }), person({ 'attach-03': 7.5 }))).not.toContain('closeness');
   });
 
   it('когда задели больное: у одного болезненные темы, другой в споре отвечает громко', () => {
@@ -63,8 +77,8 @@ describe('блок «Эмоциональная зрелость»', () => {
   });
 
   it('вопросы о прошлом не учитываются, если человек пропустил больше половины', () => {
-    const skipped = { 'trauma-01': null, 'trauma-02': null, 'trauma-03': null, 'trauma-06': 9 };
-    expect(keys(person(skipped), person({ 'attach-03': 8 }))).not.toContain('silence');
+    const skipped = { 'trauma-05': null, 'trauma-06': null };
+    expect(keys(person(skipped), person({ 'space-06': 9 }))).not.toContain('silence');
   });
 
   it('пропуск сам по себе не даёт тем', () => {
@@ -81,8 +95,10 @@ describe('блок «Эмоциональная зрелость»', () => {
 
   it('все темы, самые важные первыми', () => {
     const a = person({ 'attach-01': 9, 'attach-03': 0, 'reflect-04': 0, 'space-06': 5 });
-    const b = person({ 'attach-03': 9, 'reflect-04': 10, 'space-06': 5 });
-    expect(keys(a, b)).toEqual(['closeness', 'stress', 'help']);
+    const b = person({ 'attach-03': 10, 'reflect-04': 10, 'space-06': 5 });
+    expect(keys(a, b)).toEqual(['closeness', 'help']);
+    expect(keys(person({ 'trauma-05': 9, 'attach-03': 0, 'reflect-04': 0 }), person({ 'conflicts-02': 10, 'attach-03': 9, 'reflect-04': 10 })))
+      .toEqual(['escalation', 'stress', 'help']);
   });
 
   it('трудно хотя бы одному, но без опасного сочетания — мягкая тема без текста', () => {
