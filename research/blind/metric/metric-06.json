@@ -1,0 +1,383 @@
+{
+ "meta": {
+  "generator": "research/blind/metric_eval.py",
+  "scores_meta": {
+   "generator": "research/blind/score_pairs.ts",
+   "bank_version": 16,
+   "bank_sha256": "f1affea85d8a2d43476c2928da32e5a391d21714efc0d5adee12055f2d114e49",
+   "compare_sha256": "934287238469fcb57f1fb724595f9e1f8e5d27f8f7c6bb22119db09b54701a5f",
+   "spheres_sha256": "37cef0767a5a72f2a91b3bc15119b94f1cbbf70fd685d1cfa515b48061a29804",
+   "answers_sha256": "dfca2983ec54ab5d097649dc3b5bac4f000082c5f41fe62a436b9567fc823503",
+   "scored_questions": 128,
+   "spheres": [
+    "budget",
+    "career",
+    "conflicts",
+    "contact",
+    "habits",
+    "home",
+    "honesty",
+    "humor",
+    "intimacy",
+    "kids",
+    "leisure",
+    "living",
+    "love",
+    "loyalty",
+    "relatives",
+    "roles",
+    "space",
+    "values"
+   ],
+   "note": "score — relationship.percent (сырой, до calibrate()), с 5 важными сферами ×3; score_no_prio — все сферы ×1 (16.10). drop_sphere — тот же процент без сферы (вес 0). Числа округлены до 1e-4. Блок «зрелость» (в том числе trauma-06) в процент не входит."
+  },
+  "n_pairs_work": 107,
+  "n_real": 29,
+  "n_alt": 78,
+  "n_people_work": 58,
+  "n_boot": 4000,
+  "n_perm": 2000,
+  "lib_versions": {
+   "numpy": "2.0.2",
+   "scipy": "1.13.1"
+  },
+  "outcome_sha256": "102349620b996bb2d9c4eb3537227020640391ba9e7f3b489b57aaa5f2f0efa2",
+  "scores_sha256": "e51d60778d87725b7f2f331c33900e30f44e21b88f4ca3f8d6cbf8a85c96e717",
+  "note": "только агрегаты рабочей части; ρ = Spearman(балл, −риск по скелету)"
+ },
+ "main": {
+  "prio": {
+   "all_weighted": {
+    "rho": 0.2538,
+    "ci95": [
+     -0.1683,
+     0.5938
+    ],
+    "n_boot_ok": 4000
+   },
+   "all_unweighted": {
+    "rho": 0.2512,
+    "ci95": [
+     -0.1188,
+     0.5635
+    ],
+    "n_boot_ok": 4000
+   },
+   "real": {
+    "rho": 0.2635,
+    "ci95": [
+     -0.3969,
+     0.7603
+    ],
+    "n_boot_ok": 3456
+   },
+   "alt": {
+    "rho": 0.2605,
+    "ci95": [
+     -0.192,
+     0.6254
+    ],
+    "n_boot_ok": 4000
+   }
+  },
+  "noprio": {
+   "all_weighted": {
+    "rho": 0.2604,
+    "ci95": [
+     -0.1682,
+     0.6033
+    ],
+    "n_boot_ok": 4000
+   },
+   "all_unweighted": {
+    "rho": 0.2753,
+    "ci95": [
+     -0.0987,
+     0.5788
+    ],
+    "n_boot_ok": 4000
+   },
+   "real": {
+    "rho": 0.3084,
+    "ci95": [
+     -0.3812,
+     0.8003
+    ],
+    "n_boot_ok": 3456
+   },
+   "alt": {
+    "rho": 0.2784,
+    "ci95": [
+     -0.1612,
+     0.6305
+    ],
+    "n_boot_ok": 4000
+   }
+  }
+ },
+ "prio_minus_noprio": {
+  "all_weighted": {
+   "delta": -0.0066,
+   "ci95": [
+    -0.1864,
+    0.1531
+   ]
+  },
+  "all_unweighted": {
+   "delta": -0.0242,
+   "ci95": [
+    -0.1823,
+    0.1102
+   ]
+  },
+  "real": {
+   "delta": -0.0448,
+   "ci95": [
+    -0.3943,
+    0.3126
+   ]
+  },
+  "alt": {
+   "delta": -0.0179,
+   "ci95": [
+    -0.1976,
+    0.1228
+   ]
+  }
+ },
+ "weights_check": {
+  "kids": {
+   "real": 0.172,
+   "alt_raw": 0.09,
+   "alt_weighted": 0.172
+  },
+  "drink": {
+   "real": 0.172,
+   "alt_raw": 0.128,
+   "alt_weighted": 0.172
+  },
+  "rel": {
+   "real": 0.241,
+   "alt_raw": 0.295,
+   "alt_weighted": 0.241
+  },
+  "boot_reps_not_raked_share": 0.1148,
+  "effective_n_alt": 68.7
+ },
+ "selfreport_ceiling": {
+  "all_weighted": {
+   "rho": 0.7882,
+   "ci95": [
+    0.5055,
+    0.918
+   ]
+  },
+  "all_unweighted": {
+   "rho": 0.7853,
+   "ci95": [
+    0.5644,
+    0.9081
+   ]
+  },
+  "real": {
+   "rho": 0.7355,
+   "ci95": [
+    0.1682,
+    0.98
+   ]
+  },
+  "alt": {
+   "rho": 0.7858,
+   "ci95": [
+    0.5208,
+    0.9062
+   ]
+  }
+ },
+ "leak_threshold_recorded_work": {
+  "selfreport_ceiling_spearman": 0.7853,
+  "leak_threshold_spearman": 0.9029,
+  "selfreport_ceiling_auc": 0.5978,
+  "leak_threshold_auc": 0.8499,
+  "selfreport_ceiling_auc_expected_over_V": 0.6715
+ },
+ "random_score": {
+  "prio": {
+   "mean": -0.0045,
+   "range95": [
+    -0.2513,
+    0.2363
+   ],
+   "p_one_sided": 0.0195
+  },
+  "noprio": {
+   "mean": -0.006,
+   "range95": [
+    -0.2561,
+    0.2465
+   ],
+   "p_one_sided": 0.0185
+  }
+ },
+ "random_score_note": "справка, в плане не записано: перестановка людей внутри пола — нулевое распределение при тех же людях; вывод делается по бутстрэпу по людям (раздел 7)",
+ "truth_answers": "не считается: в плане (design.md 7, 5.7, 17) вариант «тест по правде» не записан, и ответов D по «правде» нет — D отвечал только по самоописанию; ближайший ориентир — потолок самоотчёта (формула исхода по самоотчёту) и оракул по скелету (ρ = 1 по построению).",
+ "ensemble_main_30": {
+  "prio": {
+   "min": 0.189,
+   "median": 0.246,
+   "max": 0.3293
+  },
+  "noprio": {
+   "min": 0.1869,
+   "median": 0.2496,
+   "max": 0.341
+  }
+ },
+ "ensemble_structural_24": {
+  "prio": {
+   "min": 0.0405,
+   "median": 0.2477,
+   "max": 0.287,
+   "by_variant": {
+    "mis_x2_ind_x0.5": 0.2244,
+    "mis_x3_ind_x0.5": 0.1829,
+    "mis_x4_ind_x0.5": 0.1706,
+    "partner_effect_0.5": 0.287,
+    "drop_IND": 0.1639,
+    "drop_IND_continuous": 0.2632,
+    "drop_IND_binary": 0.2255,
+    "drop_MIS": 0.2591,
+    "drop_SIM": 0.2536,
+    "inter_both_anxious": 0.2509,
+    "inter_anxious_avoidant": 0.2519,
+    "inter_host_max": 0.2477,
+    "inter_all": 0.2453,
+    "inter_strong_anxious_avoidant": 0.2533,
+    "inter_strong_dw_continuous": 0.0405,
+    "inter_strong_dw_both_anx_continuous": 0.0496,
+    "r5_drop_all": 0.2459,
+    "r5_drop_pair": 0.2477,
+    "r5_drop_humor": 0.2563,
+    "r5_drop_intimacy": 0.2436,
+    "r5_drop_relatives": 0.255,
+    "r5_x2": 0.2607,
+    "r5_sex_discrepancy": 0.2432,
+    "r5_humor_similarity": 0.2491
+   }
+  },
+  "noprio": {
+   "min": 0.0368,
+   "median": 0.2492,
+   "max": 0.2965,
+   "by_variant": {
+    "mis_x2_ind_x0.5": 0.2105,
+    "mis_x3_ind_x0.5": 0.1618,
+    "mis_x4_ind_x0.5": 0.1467,
+    "partner_effect_0.5": 0.2965,
+    "drop_IND": 0.1451,
+    "drop_IND_continuous": 0.2391,
+    "drop_IND_binary": 0.2364,
+    "drop_MIS": 0.2847,
+    "drop_SIM": 0.2593,
+    "inter_both_anxious": 0.2574,
+    "inter_anxious_avoidant": 0.2575,
+    "inter_host_max": 0.2469,
+    "inter_all": 0.2428,
+    "inter_strong_anxious_avoidant": 0.2585,
+    "inter_strong_dw_continuous": 0.037,
+    "inter_strong_dw_both_anx_continuous": 0.0368,
+    "r5_drop_all": 0.249,
+    "r5_drop_pair": 0.25,
+    "r5_drop_humor": 0.2617,
+    "r5_drop_intimacy": 0.2477,
+    "r5_drop_relatives": 0.2599,
+    "r5_x2": 0.2708,
+    "r5_sex_discrepancy": 0.2493,
+    "r5_humor_similarity": 0.262
+   }
+  }
+ },
+ "auxiliary": {
+  "prio": {
+   "auc_breakup_strat": {
+    "auc": 0.5853,
+    "ci95": [
+     0.3482,
+     0.8198
+    ]
+   },
+   "auc_breakup_strat_unweighted": {
+    "auc": 0.5981,
+    "ci95": [
+     0.3884,
+     0.8164
+    ]
+   },
+   "auc_expected_over_V": {
+    "auc": 0.5557,
+    "range95_over_V": [
+     0.4356,
+     0.6758
+    ]
+   },
+   "cindex_month": {
+    "c": 0.5864,
+    "ci95": [
+     0.3878,
+     0.7628
+    ]
+   },
+   "rho_csi4_together": {
+    "rho": 0.073,
+    "ci95": [
+     -0.3585,
+     0.5264
+    ],
+    "n": 73
+   }
+  },
+  "noprio": {
+   "auc_breakup_strat": {
+    "auc": 0.5858,
+    "ci95": [
+     0.3436,
+     0.8086
+    ]
+   },
+   "auc_breakup_strat_unweighted": {
+    "auc": 0.5974,
+    "ci95": [
+     0.3861,
+     0.8018
+    ]
+   },
+   "auc_expected_over_V": {
+    "auc": 0.5814,
+    "range95_over_V": [
+     0.4586,
+     0.6968
+    ]
+   },
+   "cindex_month": {
+    "c": 0.5729,
+    "ci95": [
+     0.3774,
+     0.7416
+    ]
+   },
+   "rho_csi4_together": {
+    "rho": 0.0706,
+    "ci95": [
+     -0.3845,
+     0.5313
+    ],
+    "n": 73
+   }
+  },
+  "selfreport_ceiling_auc_weighted": 0.6025,
+  "oracle_skeleton_auc_weighted": 0.607,
+  "oracle_skeleton_auc_expected_over_V": 0.7011,
+  "selfreport_auc_expected_over_V": 0.6718,
+  "n_breakups_work": 34
+ }
+}
