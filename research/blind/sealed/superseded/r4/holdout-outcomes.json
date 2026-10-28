@@ -1,0 +1,892 @@
+{
+ "note": "ЗАПЕЧАТАНО: исходы проверочной части",
+ "outcomes": [
+  {
+   "pair_id": "ab30o5",
+   "p_together_3y": 0.8455,
+   "together_3y": false,
+   "breakup_month": 27,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.04,
+   "risk_logit_skeleton": 1.66448,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "b1gmul",
+   "p_together_3y": 0.8242,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.93,
+   "risk_logit_skeleton": 0.69939,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "b5mb1l",
+   "p_together_3y": 0.8563,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.98,
+   "risk_logit_skeleton": -0.47599,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "b7br90",
+   "p_together_3y": 0.1499,
+   "together_3y": false,
+   "breakup_month": 3,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.42,
+   "risk_logit_skeleton": 2.30947,
+   "mismatches": [
+    "kids_hard",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "b7pvki",
+   "p_together_3y": 0.9341,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.33,
+   "risk_logit_skeleton": 0.28793,
+   "mismatches": []
+  },
+  {
+   "pair_id": "cqzsdg",
+   "p_together_3y": 0.99,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 21.48,
+   "risk_logit_skeleton": -0.66199,
+   "mismatches": []
+  },
+  {
+   "pair_id": "el2tto",
+   "p_together_3y": 0.992,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 23.76,
+   "risk_logit_skeleton": -0.35971,
+   "mismatches": []
+  },
+  {
+   "pair_id": "elveam",
+   "p_together_3y": 0.7606,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.76,
+   "risk_logit_skeleton": -0.04278,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ezi3wm",
+   "p_together_3y": 0.8414,
+   "together_3y": false,
+   "breakup_month": 18,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.54,
+   "risk_logit_skeleton": 1.31638,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "f24y2l",
+   "p_together_3y": 0.762,
+   "together_3y": false,
+   "breakup_month": 9,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.49,
+   "risk_logit_skeleton": 0.58661,
+   "mismatches": [
+    "kids_hard"
+   ]
+  },
+  {
+   "pair_id": "fkm6o5",
+   "p_together_3y": 0.9976,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 21.9,
+   "risk_logit_skeleton": -0.12888,
+   "mismatches": []
+  },
+  {
+   "pair_id": "fpb0zx",
+   "p_together_3y": 0.9204,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.04,
+   "risk_logit_skeleton": -0.07821,
+   "mismatches": []
+  },
+  {
+   "pair_id": "g5c2h4",
+   "p_together_3y": 0.2139,
+   "together_3y": false,
+   "breakup_month": 22,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.55,
+   "risk_logit_skeleton": 2.05364,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "gbkbmc",
+   "p_together_3y": 0.5112,
+   "together_3y": false,
+   "breakup_month": 34,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 16.85,
+   "risk_logit_skeleton": 1.20773,
+   "mismatches": [
+    "kids_soft",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "h5ip3k",
+   "p_together_3y": 0.7594,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 8,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 14.12,
+   "risk_logit_skeleton": 2.38997,
+   "mismatches": [
+    "drink"
+   ]
+  },
+  {
+   "pair_id": "hmmsdn",
+   "p_together_3y": 0.7297,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.82,
+   "risk_logit_skeleton": 1.19872,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "iit343",
+   "p_together_3y": 0.7082,
+   "together_3y": false,
+   "breakup_month": 12,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 12.82,
+   "risk_logit_skeleton": 1.01636,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "ivgh83",
+   "p_together_3y": 0.9781,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.67,
+   "risk_logit_skeleton": -0.43537,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "izrjkd",
+   "p_together_3y": 0.9647,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.2,
+   "risk_logit_skeleton": -0.52138,
+   "mismatches": []
+  },
+  {
+   "pair_id": "j2a452",
+   "p_together_3y": 0.8075,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.26,
+   "risk_logit_skeleton": 1.13985,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "jc4fi6",
+   "p_together_3y": 0.9803,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.82,
+   "risk_logit_skeleton": -0.05395,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "jewzai",
+   "p_together_3y": 0.7379,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 12.74,
+   "risk_logit_skeleton": 0.65547,
+   "mismatches": []
+  },
+  {
+   "pair_id": "k0rqbl",
+   "p_together_3y": 0.9522,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 10,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.95,
+   "risk_logit_skeleton": 0.47654,
+   "mismatches": []
+  },
+  {
+   "pair_id": "lbji05",
+   "p_together_3y": 0.9573,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.78,
+   "risk_logit_skeleton": -0.42252,
+   "mismatches": []
+  },
+  {
+   "pair_id": "m67g69",
+   "p_together_3y": 0.8533,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.84,
+   "risk_logit_skeleton": -0.10053,
+   "mismatches": []
+  },
+  {
+   "pair_id": "mdkjtl",
+   "p_together_3y": 0.9809,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.93,
+   "risk_logit_skeleton": -0.23288,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "mhv8gm",
+   "p_together_3y": 0.5837,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.27,
+   "risk_logit_skeleton": -0.55882,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "mkzk22",
+   "p_together_3y": 0.8164,
+   "together_3y": false,
+   "breakup_month": 35,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.12,
+   "risk_logit_skeleton": 0.8142,
+   "mismatches": []
+  },
+  {
+   "pair_id": "n06dni",
+   "p_together_3y": 0.9336,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.53,
+   "risk_logit_skeleton": 0.53388,
+   "mismatches": []
+  },
+  {
+   "pair_id": "nasqiu",
+   "p_together_3y": 0.9662,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.39,
+   "risk_logit_skeleton": -0.44983,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "nhq84m",
+   "p_together_3y": 0.9933,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.95,
+   "risk_logit_skeleton": -0.39679,
+   "mismatches": []
+  },
+  {
+   "pair_id": "nso56g",
+   "p_together_3y": 0.8973,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 19,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.2,
+   "risk_logit_skeleton": -0.40532,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "nu8x7j",
+   "p_together_3y": 0.9509,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.53,
+   "risk_logit_skeleton": -0.94871,
+   "mismatches": []
+  },
+  {
+   "pair_id": "o1v1o4",
+   "p_together_3y": 0.9363,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.92,
+   "risk_logit_skeleton": -0.86253,
+   "mismatches": []
+  },
+  {
+   "pair_id": "o7tkj4",
+   "p_together_3y": 0.5504,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.2,
+   "risk_logit_skeleton": -0.99491,
+   "mismatches": []
+  },
+  {
+   "pair_id": "pe4dc0",
+   "p_together_3y": 0.9429,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.0,
+   "risk_logit_skeleton": -1.12641,
+   "mismatches": [
+    "rel",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "phb7n1",
+   "p_together_3y": 0.685,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.07,
+   "risk_logit_skeleton": -1.1157,
+   "mismatches": []
+  },
+  {
+   "pair_id": "q1fkes",
+   "p_together_3y": 0.8805,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 20,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.88,
+   "risk_logit_skeleton": -0.75019,
+   "mismatches": []
+  },
+  {
+   "pair_id": "q75sjr",
+   "p_together_3y": 0.9393,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.24,
+   "risk_logit_skeleton": 0.55604,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qegk9k",
+   "p_together_3y": 0.9172,
+   "together_3y": false,
+   "breakup_month": 6,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.53,
+   "risk_logit_skeleton": 0.71917,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qgvqo1",
+   "p_together_3y": 0.7825,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 8,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 13.76,
+   "risk_logit_skeleton": 2.59003,
+   "mismatches": []
+  },
+  {
+   "pair_id": "qkec46",
+   "p_together_3y": 0.9681,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.01,
+   "risk_logit_skeleton": -0.84532,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "qlkhwb",
+   "p_together_3y": 0.7943,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 13.33,
+   "risk_logit_skeleton": 1.01792,
+   "mismatches": [
+    "kids_hard"
+   ]
+  },
+  {
+   "pair_id": "r36yk4",
+   "p_together_3y": 0.8258,
+   "together_3y": false,
+   "breakup_month": 24,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.05,
+   "risk_logit_skeleton": 1.13306,
+   "mismatches": []
+  },
+  {
+   "pair_id": "s0wi5n",
+   "p_together_3y": 0.7339,
+   "together_3y": false,
+   "breakup_month": 3,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 17.33,
+   "risk_logit_skeleton": -0.25666,
+   "mismatches": []
+  },
+  {
+   "pair_id": "s35tbz",
+   "p_together_3y": 0.8634,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 19.53,
+   "risk_logit_skeleton": 0.06082,
+   "mismatches": []
+  },
+  {
+   "pair_id": "sac9r8",
+   "p_together_3y": 0.9625,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 17,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.32,
+   "risk_logit_skeleton": 0.25588,
+   "mismatches": []
+  },
+  {
+   "pair_id": "sd3fbt",
+   "p_together_3y": 0.7648,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 15,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.82,
+   "risk_logit_skeleton": -0.65883,
+   "mismatches": []
+  },
+  {
+   "pair_id": "smt5br",
+   "p_together_3y": 0.8594,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 14,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.2,
+   "risk_logit_skeleton": 2.16737,
+   "mismatches": []
+  },
+  {
+   "pair_id": "t511px",
+   "p_together_3y": 0.978,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.14,
+   "risk_logit_skeleton": 0.07835,
+   "mismatches": []
+  },
+  {
+   "pair_id": "t5s66z",
+   "p_together_3y": 0.2957,
+   "together_3y": false,
+   "breakup_month": 9,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 10.52,
+   "risk_logit_skeleton": 2.74283,
+   "mismatches": [
+    "kids_hard",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "trauar",
+   "p_together_3y": 0.8119,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 13.53,
+   "risk_logit_skeleton": 0.89147,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "u013je",
+   "p_together_3y": 0.9698,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.96,
+   "risk_logit_skeleton": 1.50781,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "ujil8f",
+   "p_together_3y": 0.8622,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.67,
+   "risk_logit_skeleton": 2.00851,
+   "mismatches": [
+    "kids_soft",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "utme7h",
+   "p_together_3y": 0.3804,
+   "together_3y": false,
+   "breakup_month": 26,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.97,
+   "risk_logit_skeleton": 3.32153,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "vtu122",
+   "p_together_3y": 0.9683,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.37,
+   "risk_logit_skeleton": 0.85037,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "vzecdz",
+   "p_together_3y": 0.5312,
+   "together_3y": false,
+   "breakup_month": 33,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 14.05,
+   "risk_logit_skeleton": 1.45809,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "wo4e17",
+   "p_together_3y": 0.9732,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 20.33,
+   "risk_logit_skeleton": -1.07915,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "wt5to1",
+   "p_together_3y": 0.2407,
+   "together_3y": false,
+   "breakup_month": 24,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.01,
+   "risk_logit_skeleton": 1.34816,
+   "mismatches": [
+    "kids_soft",
+    "drink",
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "wxke55",
+   "p_together_3y": 0.8559,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 15.47,
+   "risk_logit_skeleton": 0.63587,
+   "mismatches": []
+  },
+  {
+   "pair_id": "x13ybo",
+   "p_together_3y": 0.9542,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.53,
+   "risk_logit_skeleton": -1.238,
+   "mismatches": []
+  },
+  {
+   "pair_id": "xal6c9",
+   "p_together_3y": 0.4649,
+   "together_3y": false,
+   "breakup_month": 19,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 11.36,
+   "risk_logit_skeleton": 1.14569,
+   "mismatches": [
+    "rel"
+   ]
+  },
+  {
+   "pair_id": "y85wun",
+   "p_together_3y": 0.2876,
+   "together_3y": false,
+   "breakup_month": 14,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.85,
+   "risk_logit_skeleton": -0.08297,
+   "mismatches": []
+  },
+  {
+   "pair_id": "y88fg7",
+   "p_together_3y": 0.8676,
+   "together_3y": false,
+   "breakup_month": 1,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 15.5,
+   "risk_logit_skeleton": 0.99312,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ycdead",
+   "p_together_3y": 0.9759,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.27,
+   "risk_logit_skeleton": -0.34795,
+   "mismatches": []
+  },
+  {
+   "pair_id": "ydd02e",
+   "p_together_3y": 0.9717,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 21,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 17.22,
+   "risk_logit_skeleton": -0.54866,
+   "mismatches": []
+  },
+  {
+   "pair_id": "yedyuy",
+   "p_together_3y": 0.8942,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 16.82,
+   "risk_logit_skeleton": -0.35656,
+   "mismatches": []
+  },
+  {
+   "pair_id": "zbnz6n",
+   "p_together_3y": 0.2504,
+   "together_3y": false,
+   "breakup_month": 13,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 13.94,
+   "risk_logit_skeleton": 0.40684,
+   "mismatches": []
+  },
+  {
+   "pair_id": "zesxpp",
+   "p_together_3y": 0.3625,
+   "together_3y": false,
+   "breakup_month": 8,
+   "satisfaction_csi4": null,
+   "distress_csi4_below_13_5": null,
+   "satisfaction_expected_csi4": 10.96,
+   "risk_logit_skeleton": 1.44518,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "ziulxx",
+   "p_together_3y": 0.892,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 16,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 16.15,
+   "risk_logit_skeleton": 1.14707,
+   "mismatches": [
+    "kids_hard",
+    "money"
+   ]
+  },
+  {
+   "pair_id": "zjz71c",
+   "p_together_3y": 0.9528,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 13,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 18.48,
+   "risk_logit_skeleton": -0.24166,
+   "mismatches": [
+    "kids_soft"
+   ]
+  },
+  {
+   "pair_id": "zqwmrv",
+   "p_together_3y": 0.9735,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 11,
+   "distress_csi4_below_13_5": true,
+   "satisfaction_expected_csi4": 20.19,
+   "risk_logit_skeleton": 0.57189,
+   "mismatches": [
+    "money"
+   ]
+  },
+  {
+   "pair_id": "zvxg2u",
+   "p_together_3y": 0.983,
+   "together_3y": true,
+   "breakup_month": null,
+   "satisfaction_csi4": 18,
+   "distress_csi4_below_13_5": false,
+   "satisfaction_expected_csi4": 18.64,
+   "risk_logit_skeleton": 0.05326,
+   "mismatches": [
+    "kids_soft"
+   ]
+  }
+ ]
+}

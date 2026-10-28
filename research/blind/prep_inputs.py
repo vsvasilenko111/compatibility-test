@@ -20,6 +20,7 @@ import blindlib as B  # noqa: E402
 
 IN = os.path.join(B.ROOT, "inputs")
 FORBIDDEN_KEYS = {"z", "z_self", "views_z", "id", "partner", "pair", "stage", "outcome", "type", "part", "U"}
+FORBIDDEN_WORDS = ("уровень", "уровня", "уровне", "посередине", "выше среднего по шкале", "шкала")   # ред. 5: новые поля
 LEVEL = ["очень низкая", "ниже среднего", "средняя", "выше среднего", "очень высокая"]
 LEVEL_CUTS = (-1.25, -.5, .5, 1.25)
 INCOME = {1: "в нижней пятой части по своему городу", 2: "ниже среднего по городу", 3: "около среднего по городу",
@@ -69,6 +70,13 @@ def common(r):
         "ревность и контроль": {"ревность как чувство": r["jealousy_feeling"],
                                 "контроль партнёра (просит показать телефон, ограничивает общение)": r["controlling_partner"]},
         "привирает партнёру в мелочах": r["lies_to_partner_small_things"],
+        # ред. 5 (design.md, 17.2): юмор, близость, родители — теми же словами, что и остальные поля
+        "юмор": {"шутит по-доброму, смешит других": r["humor"]["kind_jokes"],
+                 "подкалывает и высмеивает партнёра, шутит обидно": r["humor"]["mocks_partner"],
+                 "шутит над собой, принижая себя": r["humor"]["self_deprecating"]},
+        "близость": {"как часто хотелось бы близости (секса)": r["intimacy"]["desired_frequency"],
+                     "говорить с партнёром о сексе": r["intimacy"]["talking_about_sex"]},
+        "отношения с родителями сейчас": {"насколько считается с мнением родителей": r["parents_opinion_weight"]},
         "никотин": r["nicotine"],
         "родители": {"родился(ась) вне брака родителей": yn(r["parents"]["born_outside_union"]),
                      "родители расстались до его/её 15 лет": yn(r["parents"]["parents_separated_before_15"]),
@@ -144,6 +152,10 @@ def main():
         t, sr = truth_record(p), self_record(s)
         check(t)
         check(sr)
+        for rec in (t["юмор"], t["близость"], t["отношения с родителями сейчас"], sr["юмор"], sr["близость"],
+                    sr["отношения с родителями сейчас"]):
+            body = json.dumps(rec, ensure_ascii=False)
+            assert not any(wd in body for wd in FORBIDDEN_WORDS), f"анкетное слово в новых полях: {body}"
         for sub, rec in (("truth", t), ("self", sr)):
             path = os.path.join(IN, sub, f"{p['id']}.json")
             write(path, rec)

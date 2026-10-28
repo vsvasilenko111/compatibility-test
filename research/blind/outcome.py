@@ -1,10 +1,12 @@
-"""Шаг 5 (design.md, 5): исход каждой пары по заранее записанной формуле. Ответы теста не участвуют.
+"""Шаг 5 (design.md, 5; с ред. 5 — 17.5): исход каждой пары по заранее записанной формуле. Ответы теста не участвуют.
+Формула — ред. 5 (outcome-spec.json + outcome-spec-r5.json, калибровка private/model-r5.json); свойства пары —
+private/pair-vars.json. Предыстория пар (стаж, U) — из pairs.json, по формуле ред. 4.
 
 Запуск из корня проекта (после pairs.py):  python3 research/blind/outcome.py
 Выход (всё закрыто):
   private/outcome.json            — вероятность быть вместе через 3 года, выпавший исход, месяц распада,
                                     удовлетворённость (CSI-4), риск по скелету (центральная формула)
-  private/outcome-ensemble.json   — риск по скелету для 30 формул ансамбля (design.md, 7)
+  private/outcome-ensemble.json   — риск по скелету для 30 формул ансамбля ред. 5 (design.md, 7, 17.7)
   private/benchmarks.json         — та же формула по самоотчёту (потолок самоотчёта) и её части
   private/leak-threshold.json     — порог утечки: потолок самоотчёта + верхняя граница бутстрэпа
 """
@@ -25,8 +27,9 @@ def self_arrays(recs, P):
     S["RISKY"] = np.zeros(len(recs), dtype=bool)
     S["INF"] = np.array([r["admits_cheating_in_past"] for r in recs])
     S["DEBT_PROB"] = np.array([r["money"]["admits_problem_debt"] for r in recs])
-    for k in ("PDIV", "KIDS_N", "REL_LVL", "ISLAM", "ORTH"):
+    for k in ("PDIV", "KIDS_N", "REL_LVL", "ISLAM", "ORTH", "income_q", "age", "sex", "young"):
         S[k] = P[k]
+    B.r5_from_records(recs, "z_self", S)
     return S
 
 
@@ -89,10 +92,17 @@ def main():
     S = self_arrays(selfr, P)
     pj = B.load(os.path.join(B.PRIV, "pairs.json"))
     model = B.load(os.path.join(B.PRIV, "model.json"))
-    spec = B.load(os.path.join(B.PRIV, "outcome-spec.json"))
-    assert B.sha256(os.path.join(B.PRIV, "outcome-spec.json")) == model["outcome_spec_sha256"]
-    assert pj["meta"]["model_sha256"] == B.sha256(os.path.join(B.PRIV, "model.json"))
+    m5 = B.load(os.path.join(B.PRIV, "model-r5.json"))
+    pv = B.load(os.path.join(B.PRIV, "pair-vars.json"))
+    spec4 = B.load(os.path.join(B.PRIV, "outcome-spec.json"))
+    spec5 = B.load(os.path.join(B.PRIV, "outcome-spec-r5.json"))
+    assert B.sha256(os.path.join(B.PRIV, "outcome-spec.json")) == model["outcome_spec_sha256"] == m5["outcome_spec_sha256"]
+    assert B.sha256(os.path.join(B.PRIV, "outcome-spec-r5.json")) == m5["outcome_spec_r5_sha256"]
+    assert pj["meta"]["model_sha256"] == B.sha256(os.path.join(B.PRIV, "model.json")) == m5["model_sha256"]
     assert pj["meta"]["people_sha256"] == B.sha256(os.path.join(B.ROOT, "people.json"))
+    assert pv["meta"]["pairs_sha256"] == B.sha256(os.path.join(B.PRIV, "pairs.json"))
+    assert pv["meta"]["model_r5_sha256"] == B.sha256(os.path.join(B.PRIV, "model-r5.json"))
+    spec = B.merge_spec(spec4, spec5)
     idx = {pid: i for i, pid in enumerate(P["ids"])}
     pairs = pj["pairs"]
     m = np.array([idx[p["man"]] for p in pairs])
@@ -100,31 +110,41 @@ def main():
     stage = np.array([B.STAGES.index(p["stage"]) for p in pairs])
     dur = np.array([p["duration_months"] for p in pairs], dtype=float)
     U = np.array([p["U_pair_specific"] for p in pairs])
-    alpha, k, gamma, sigU = np.array(model["alpha"]), model["k"], model["gamma"], model["sigU"]
-    mu, sd = model["sim_mu"], model["sim_sd"]
+    alpha, k, gamma, sU4, sU5 = np.array(m5["alpha"]), m5["k"], m5["gamma"], m5["sigU4"], m5["sigU5"]
+    mu, sd = m5["sim_mu"], m5["sim_sd"]
+    U5 = sU5 * U / sU4
 
-    IND, MIS, SIM, F = B.components(P, m, w, spec, mu, sd)
-    lin = IND + MIS + SIM
-    p_break = B.p3(alpha, stage, dur, k * lin, U, gamma)
+    # свойства пары: реализованные (pair-vars.json) и ожидание при данных двоих (по «правде» и по самоотчёту)
+    import pair_vars as PVmod
+    V = PVmod.arrays(pv, pairs, m5["pair_cuts"])
+    rx = B.rng_of(tree, "expect_r5")
+    EVt = B.pair_vars_expected(P, m, w, m5["pair_cuts"], rx, m5["expect_draws"], m5["sexsat_U_corr"])
+    EVs = B.pair_vars_expected(S, m, w, m5["pair_cuts"], rx, m5["expect_draws"], m5["sexsat_U_corr"])
 
-    # исход 1: распад за 36 мес. (жребий V)
-    V = B.rng_of(tree, "breakup_V").random(len(m))
-    broke = V < p_break
+    IND, MIS, SIM, PR, F = B.components_r5(P, m, w, spec, V, mu, sd)
+    PE = B.pair_terms(P, m, w, EVt, spec["pair"])
+    lin = IND + MIS + SIM + PR               # реализованный (со свойствами пары)
+    lin_sk = IND + MIS + SIM + PE            # риск по скелету: ожидание свойств пары при данных двоих (17.5)
+    p_break = B.p3(alpha, stage, dur, k * lin, U5, gamma)
 
-    # исход 2: удовлетворённость, время до распада
+    # исход 1: распад за 36 мес. (жребий V — тот же поток, что в ред. 4)
+    Vd = B.rng_of(tree, "breakup_V").random(len(m))
+    broke = Vd < p_break
+
+    # исход 2: удовлетворённость, время до распада (те же потоки)
     rs = B.rng_of(tree, "sat_time")
-    st = model["sat_time"]
-    lin_s = B.lin_pred(P, m, w, spec, mu, sd, which="sat")
+    st = m5["sat_time"]
+    lin_s = sum(B.components_r5(P, m, w, spec, V, mu, sd, "sat")[:4])
     zs = (lin_s - st["lin_s_mu"]) / st["lin_s_sd"]
-    rho = spec["sat_U_corr"]
-    Us = rho * U / sigU + np.sqrt(1 - rho ** 2) * rs.standard_normal(len(m))
-    sh = spec["sat_shares"]
+    rho = spec5["sat_U_corr"]
+    Us = rho * U / sU4 + np.sqrt(1 - rho ** 2) * rs.standard_normal(len(m))
+    sh = spec5["sat_shares"]
     e = rs.standard_normal(len(m))
     Q = -np.sqrt(sh["skeleton"]) * zs - np.sqrt(sh["U"]) * Us + np.sqrt(1 - sh["skeleton"] - sh["U"]) * e
-    Qexp = -np.sqrt(sh["skeleton"]) * zs - np.sqrt(sh["U"]) * rho * U / sigU
+    Qexp = -np.sqrt(sh["skeleton"]) * zs - np.sqrt(sh["U"]) * rho * U / sU4
     csi = lambda q: 16 + 4.7 * (q - st["Q_mu"]) / st["Q_sd"]
     csi_draw = np.clip(np.round(csi(Q)), 0, 21).astype(int)
-    LP = alpha[stage] + gamma * np.log(dur / 12) + k * lin + U
+    LP = alpha[stage] + gamma * np.log(dur / 12) + k * lin + U5
     zlp = (LP - st["LP_mu"]) / st["LP_sd"]
     W = rs.random(len(m))
     month = 1 + np.floor(35 * W ** np.exp(.5 * zlp)).astype(int)
@@ -139,31 +159,38 @@ def main():
             "satisfaction_csi4": int(csi_draw[i]) if not broke[i] else None,
             "distress_csi4_below_13_5": bool(csi_draw[i] < 13.5) if not broke[i] else None,
             "satisfaction_expected_csi4": round(float(csi(Qexp[i])), 2),
-            "risk_logit_skeleton": round(float(k * lin[i]), 5),
+            "risk_logit_skeleton": round(float(k * lin_sk[i]), 5),
+            "risk_logit_with_pair_vars": round(float(k * lin[i]), 5),
             "mismatches": [kk for kk in F if F[kk][i]],
         })
     meta = {"generator": "research/blind/outcome.py", "master_seed": B.MASTER_SEED, "lib_versions": B.lib_versions(),
-            "pairs_sha256": B.sha256(os.path.join(B.PRIV, "pairs.json")),
-            "note": "ЗАКРЫТО. Исход посчитан до появления любого текста. Тест сюда не входит."}
+            "revision": 5, "pairs_sha256": B.sha256(os.path.join(B.PRIV, "pairs.json")),
+            "pair_vars_sha256": B.sha256(os.path.join(B.PRIV, "pair-vars.json")),
+            "model_r5_sha256": B.sha256(os.path.join(B.PRIV, "model-r5.json")),
+            "note": "ЗАКРЫТО. Исход ред. 5 посчитан до появления любого текста с новыми полями. Тест сюда не входит. "
+                    "risk_logit_skeleton — главная метрика (без специфичной для пары части свойств пары и без U)."}
     path = os.path.join(B.PRIV, "outcome.json")
     B.dump({"meta": meta, "outcomes": out}, path)
 
-    # ансамбль формул
+    # основной ансамбль ред. 5 (30 формул)
     ens = []
-    for e_ in model["ensemble"]:
-        sp = dict(spec, ind=e_["ind"], mis=e_["mis"], beta_sim=e_["beta_sim"])
-        ens.append(np.round(k * B.lin_pred(P, m, w, sp, mu, sd), 5))
-    B.dump({"meta": {"note": "риск по скелету (k·lin) для каждого члена ансамбля; строки — члены, столбцы — pair_ids"},
+    for e_ in m5["ensemble"]:
+        a_, b_, c_, _, _ = B.components_r5(P, m, w, e_, EVt, mu, sd)
+        ens.append(np.round(k * (a_ + b_ + c_ + B.pair_terms(P, m, w, EVt, e_["pair"])), 5))
+    B.dump({"meta": {"note": "риск по скелету (k·lin, ред. 5) для каждого члена ансамбля; строки — члены, столбцы — pair_ids",
+                     "outcome_sha256": B.sha256(path)},
             "pair_ids": [p["pair_id"] for p in pairs], "risk_logit_skeleton": np.array(ens)},
            os.path.join(B.PRIV, "outcome-ensemble.json"))
 
     # потолок самоотчёта и порог утечки
-    sIND, sMIS, sSIM, _ = B.components(S, m, w, spec, mu, sd)
-    lin_self = sIND + sMIS + sSIM
+    sIND, sMIS, sSIM, _, _ = B.components_r5(S, m, w, spec, EVs, mu, sd)
+    sPE = B.pair_terms(S, m, w, EVs, spec["pair"])
+    lin_self = sIND + sMIS + sSIM + sPE
     B.dump({"pair_ids": [p["pair_id"] for p in pairs],
             "selfreport_formula": np.round(k * lin_self, 5), "selfreport_IND": np.round(k * sIND, 5),
-            "selfreport_MIS": np.round(k * sMIS, 5), "skeleton_IND": np.round(k * IND, 5),
-            "skeleton_MIS": np.round(k * MIS, 5)}, os.path.join(B.PRIV, "benchmarks.json"))
+            "selfreport_MIS": np.round(k * sMIS, 5), "selfreport_PAIR": np.round(k * sPE, 5),
+            "skeleton_IND": np.round(k * IND, 5), "skeleton_MIS": np.round(k * MIS, 5),
+            "skeleton_PAIR": np.round(k * PE, 5)}, os.path.join(B.PRIV, "benchmarks.json"))
 
     rb = B.rng_of(tree, "bootstrap")
     part = np.array([p["part"] for p in pairs])
@@ -174,7 +201,7 @@ def main():
         pt_auc = wauc_strat(y, x, np.ones(mk.sum()), sg)
         bs = person_boot(m[mk], w[mk], lambda wt: wauc_strat(y, x, wt, sg), rb)
         exp_auc = [B.auc_strat(np.random.default_rng(j).random(mk.sum()) < p_break[mk], x, sg) for j in range(300)]
-        lk = (k * lin)[mk]
+        lk = (k * lin_sk)[mk]
         rho0 = wspear(x, lk, np.ones(mk.sum()))
         bsr = person_boot(m[mk], w[mk], lambda wt: wspear(x, lk, wt), rb)
         thr[pt] = {"n_pairs": int(mk.sum()), "n_breakups": int(y.sum()),
@@ -185,15 +212,13 @@ def main():
                    "boot_97_5": round(float(np.nanpercentile(bs, 97.5)), 4),
                    "leak_threshold_auc": round(float(np.nanpercentile(bs, 97.5)), 4),
                    "selfreport_ceiling_auc_expected_over_V": round(float(np.mean(exp_auc)), 4)}
-    B.dump({"note": "Главная метрика — ранговая корреляция балла теста с риском по скелету (design.md, 7). "
-                    "Порог утечки = верхняя граница 95% бутстрэпа (по людям) у формулы исхода, применённой "
-                    "к самоотчёту (MAIN_leak_threshold_spearman). Для AUC по одному жребию — то же (leak_threshold_auc). "
-                    "Записан до появления первого текста.",
+    B.dump({"note": "Главная метрика — ранговая корреляция балла теста с риском по скелету (design.md, 7; ред. 5 — 17.5). "
+                    "Порог утечки = верхняя граница 95% бутстрэпа (по людям) у формулы исхода ред. 5, применённой "
+                    "к самоотчёту (свойства пары — их ожидание по самоотчёту двоих; MAIN_leak_threshold_spearman). "
+                    "Для AUC по одному жребию — то же (leak_threshold_auc). Записан до появления первого текста с новыми полями.",
             "outcome_sha256": B.sha256(path), "thresholds": thr}, os.path.join(B.PRIV, "leak-threshold.json"))
 
-    print(f"пар {len(m)}; распалось {broke.sum()} ({broke.mean():.3f}); средняя P(вместе) {1 - p_break.mean():.3f}")
-    print("outcome.json sha256:", B.sha256(path))
-    print("порог утечки:", thr)
+    print(f"пар {len(m)}; исход ред. 5 записан; outcome.json sha256: {B.sha256(path)[:16]}")
 
 
 if __name__ == "__main__":

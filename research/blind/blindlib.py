@@ -24,6 +24,8 @@ SEED_NAMES = [
     "alt_select", "alt_stage", "breakup_V", "sat_time", "calibration", "ensemble",
     "answerer_order", "reference", "pair_ids", "bootstrap",
     "skeleton_ext", "selfreport_ext",   # ответ критику 2: новые поля с нулевым весом (после всех прежних)
+    "pilot_pick", "pilot2_pick",        # уже заняты пилотами (spawn(19)[18], spawn(20)[19]) — вписаны, чтобы не занять
+    "skeleton_r5", "selfreport_r5", "reference_r5", "pair_r5", "expect_r5", "ensemble_r5",   # ред. 5 (design.md, 17)
 ]
 
 # Версии, на которых проверен детерминизм (ответ критику 2, п. 9). Потоки Generator могут смениться между версиями.
@@ -551,9 +553,13 @@ def view_from(D):
 
 
 def ind(D, i, c):
-    return (c["COMM"] * -D["COMM"][i] + c["HOST"] * D["HOST"][i] + c["AVO"] * D["AVO"][i]
-            + c["ANX"] * D["ANX"][i] + c["N"] * D["N"][i] + c["RISKY"] * D["RISKY"][i]
-            + c["DEBT_PROB"] * D["DEBT_PROB"][i] + c["INF"] * D["INF"][i] + c["PDIV"] * D["PDIV"][i])
+    out = (c["COMM"] * -D["COMM"][i] + c["HOST"] * D["HOST"][i] + c["AVO"] * D["AVO"][i]
+           + c["ANX"] * D["ANX"][i] + c["N"] * D["N"][i] + c["RISKY"] * D["RISKY"][i]
+           + c["DEBT_PROB"] * D["DEBT_PROB"][i] + c["INF"] * D["INF"][i] + c["PDIV"] * D["PDIV"][i])
+    for k in R5_IND_KEYS:          # ред. 5: члены есть только в спеке ред. 5 (в ред. 4 ключей нет — формула та же)
+        if k in c:
+            out = out + c[k] * D[k][i]
+    return out
 
 
 def mis_flags(D, m, w):
@@ -804,6 +810,7 @@ def person_records(P, ids):
             "life_satisfaction_1_10": int(np.clip(round(6.5 + 1.8 * P["LS"][i]), 1, 10)),
             "secretly_checked_partner_phone_ever": bool(P["JEAL"][i]),
             **ext_record(P, i),
+            **r5_record(P, i),
             "alcohol": {"frequency": DRINK_LEVELS[int(P["DRINK_LVL"][i])], "risky_audit8plus": bool(P["RISKY"][i])},
             "nicotine": P["smoke"][i],
             "money": {"has_consumer_debt": bool(P["DEBT_ANY"][i]), "problem_debt": bool(P["DEBT_PROB"][i]),
@@ -818,7 +825,7 @@ def person_records(P, ids):
             "roles": {"man_is_head_of_family": bool(P["PATERNAL"][i]), "man_must_provide": bool(P["BREADW"][i]),
                       "housework_should_be": P["house_ideal"][i]},
             "views_z": {f"{VIEW_LABELS[v][0]} ↔ {VIEW_LABELS[v][1]}": round(float(P[v][i]), 2) for v in VIEW_LABELS},
-            "z": {k: round(float(P[k][i]), 4) for k in LATENT + [x for x in EXT_LAT if x in P]},
+            "z": {k: round(float(P[k][i]), 4) for k in LATENT + [x for x in EXT_LAT + R5_LAT if x in P]},
         })
     return recs
 
@@ -856,5 +863,299 @@ def arrays_from_people(recs):
     P["CONF"] = np.array([r["religion"]["confession"] for r in recs], dtype=object)
     P["ISLAM"] = P["CONF"] == "ислам"
     P["ORTH"] = P["CONF"] == "православие"
+    P["income_q"] = np.array([r["income_quintile_in_city"] for r in recs])
+    P["young"] = P["age"] <= 24
+    r5_from_records(recs, "z", P)
     P["ids"] = [r["id"] for r in recs]
     return P
+
+
+# ================================================================ редакция 5: юмор, близость, родня (design.md, 17)
+# Жребий — своими зёрнами (skeleton_r5, selfreport_r5, reference_r5, pair_r5, expect_r5) ПОСЛЕ всех прежних:
+# прежние поля людей, пары и предыстория не меняются. Нагрузки и коэффициенты образования свойств пары — [допущение],
+# направления — base-rates «Юмор, близость, родня». Веса исхода здесь НЕ записаны (private/outcome-spec-r5.json).
+R5_IND_KEYS = ("HUM_AGG", "HUM_AFF")
+R5_LAT = ["HUM_AFF", "HUM_AGG", "HUM_SELF", "DESIRE", "SEX_TALK", "FAM_CLOSE"]
+R5_LOAD = {
+    "HUM_AFF": {"N": -.25, "E": .35},                   # дружелюбный юмор (Mendiburo-Seguel 2015 — направление)
+    "HUM_AGG": {"HOST": .40, "AVO": .15, "A": -.15},    # агрессивный юмор к партнёру (Winterheld 2013; ≈ HOST)
+    "HUM_SELF": {"ANX": .25, "N": .20},                 # самоуничижительный (Winterheld 2013; Schneider 2018)
+    "DESIRE": {"AVO": -.15},                            # желаемая частота близости
+    "SEX_TALK": {"AVO": -.30, "ANX": -.10, "REL": -.15},  # легко ли говорить о сексе
+    "FAM_CLOSE": {"TRAD": .30, "REL": .10},             # насколько считается с мнением родителей
+}
+R5_SHIFT = {"HUM_AGG": {"male": .30}, "DESIRE": {"male": .40}, "SEX_TALK": {"male": .25},
+            "FAM_CLOSE": {"islam": .40, "young": .15}}
+R5_SHARES = {"HUM_AFF": (.10, .30, .40, .20), "HUM_AGG": (.35, .35, .20, .10), "HUM_SELF": (.25, .40, .25, .10),
+             "DESIRE": (.20, .30, .35, .15), "SEX_TALK": (.25, .45, .30), "FAM_CLOSE": (.35, .45, .20)}
+DESIRE_LEVELS = ["реже раза в неделю", "примерно раз в неделю", "несколько раз в неделю", "почти каждый день"]
+SEX_TALK_LEVELS = ["трудно, обычно избегает таких разговоров", "смотря о чём", "легко"]
+FAM_CLOSE_LEVELS = ["решения принимает без оглядки на родителей", "советуется с родителями и прислушивается к ним",
+                    "мнение родителей для него (неё) решающее"]
+R5_LEVELS = {"HUM_AFF": FREQ, "HUM_AGG": FREQ, "HUM_SELF": FREQ, "DESIRE": DESIRE_LEVELS,
+             "SEX_TALK": SEX_TALK_LEVELS, "FAM_CLOSE": FAM_CLOSE_LEVELS}
+R5_FIELD = {  # путь в записи человека (одинаково для «правды» и самоотчёта)
+    "HUM_AFF": ("humor", "kind_jokes"), "HUM_AGG": ("humor", "mocks_partner"), "HUM_SELF": ("humor", "self_deprecating"),
+    "DESIRE": ("intimacy", "desired_frequency"), "SEX_TALK": ("intimacy", "talking_about_sex"),
+    "FAM_CLOSE": ("parents_opinion_weight", None),
+}
+
+
+def r5_var(k):
+    """Дисперсия нагруженной части латентной k."""
+    R, ix = corr_matrix(), {n: i for i, n in enumerate(LATENT)}
+    ld = R5_LOAD[k]
+    return sum(ld[a] * ld[b] * R[ix[a], ix[b]] for a in ld for b in ld)
+
+
+def r5_implied_r(k, src):
+    """Заданная корреляция латентной k (без сдвигов) с латентной src из 2.4."""
+    R, ix = corr_matrix(), {n: i for i, n in enumerate(LATENT)}
+    return sum(v * R[ix[a], ix[src]] for a, v in R5_LOAD[k].items())
+
+
+def _r5_shift(P, k):
+    sh = R5_SHIFT.get(k, {})
+    young = P["young"] if "young" in P else P["age"] <= 24
+    return (sh.get("male", 0) * (P["sex"] == 0) + sh.get("islam", 0) * P["ISLAM"]
+            + sh.get("young", 0) * young)
+
+
+def r5_cuts_from(P):
+    """Пороги категорий — квантили латентных (на опорной популяции, design.md 2.2 и 17.2)."""
+    return {k: np.quantile(P[k], np.cumsum(R5_SHARES[k])[:-1]).tolist() for k in R5_LAT}
+
+
+def derive_r5(P, rng, cuts=None):
+    """Новые поля человека (z и категория «_F»). Ничего прежнего не трогает. cuts=None — подобрать и вернуть."""
+    n = len(P["sex"])
+    eps = {k: rng.standard_normal(n) for k in R5_LAT}
+    for k in R5_LAT:
+        ld = R5_LOAD[k]
+        P[k] = sum(v * P[a] for a, v in ld.items()) + np.sqrt(1 - r5_var(k)) * eps[k] + _r5_shift(P, k)
+    cuts = r5_cuts_from(P) if cuts is None else cuts
+    for k in R5_LAT:
+        P[k + "_F"] = np.searchsorted(cuts[k], P[k])
+    return P, cuts
+
+
+R5_SR_NOISE = .50
+
+
+def selfreport_r5(P, S, rng, cuts):
+    """Самоотчёт по новым полям (design.md, 17.4)."""
+    n = len(P["sex"])
+    eta, male = P["ETA"], P["sex"] == 0
+    eps = {k: rng.standard_normal(n) for k in R5_LAT}
+    u_agg = rng.random(n)
+    for k, s in (("HUM_AFF", 1), ("HUM_AGG", -1), ("SEX_TALK", 1)):     # как черты 3.2
+        x = P[k]
+        d = np.maximum(0, SR_BASE + SR_ETA * eta + SR_TRAIT * np.maximum(0, -s * x))
+        S[k] = x + s * d + SR_EPS * eps[k]
+    S["HUM_SELF"] = P["HUM_SELF"] + R5_SR_NOISE * eps["HUM_SELF"]
+    S["DESIRE"] = P["DESIRE"] + np.where(male, .15, -.15) + R5_SR_NOISE * eps["DESIRE"]
+    S["FAM_CLOSE"] = P["FAM_CLOSE"] - np.where(male, .30, .10) + R5_SR_NOISE * eps["FAM_CLOSE"]
+    for k in R5_LAT:
+        S[k + "_F"] = np.searchsorted(cuts[k], S[k])
+    f = S["HUM_AGG_F"]
+    S["HUM_AGG_F"] = f - ((f == 3) & (P["HUM_AGG_F"] == 3) & (u_agg < .5))
+    return S
+
+
+def r5_record(X, i):
+    """Новые поля в словах (одинаково для «правды» и самоотчёта)."""
+    if "HUM_AFF_F" not in X:
+        return {}
+    lv = lambda k: R5_LEVELS[k][int(X[k + "_F"][i])]
+    return {"humor": {"kind_jokes": lv("HUM_AFF"), "mocks_partner": lv("HUM_AGG"), "self_deprecating": lv("HUM_SELF")},
+            "intimacy": {"desired_frequency": lv("DESIRE"), "talking_about_sex": lv("SEX_TALK")},
+            "parents_opinion_weight": lv("FAM_CLOSE")}
+
+
+def r5_from_records(recs, zkey, X):
+    """Новые поля из записей обратно в массивы (z или z_self и категории)."""
+    if "humor" not in recs[0]:
+        return X
+    for k in R5_LAT:
+        X[k] = np.array([r[zkey][k] for r in recs])
+        a, b = R5_FIELD[k]
+        X[k + "_F"] = np.array([R5_LEVELS[k].index(r[a] if b is None else r[a][b]) for r in recs])
+    return X
+
+
+# ---------------------------------------------------------------- свойства пары (design.md, 17.3)
+R5_PAIR = {   # коэффициенты образования свойств пары — [допущение]; направления по base-rates 16.2–16.3
+    "live": {"islam": .50, "inc": -.35},
+    "approve": {"relmis": -.55, "relmis_trad": .30, "heavy": -.35, "host": -.15, "married": .25, "shared": .30},
+    "inlaw": {"host": .25, "n": .10, "close_p": .20, "live": .60, "against": .50, "neutral": .25, "dating": -.30},
+    "sexsat": {"anx": -.20, "avo": -.20, "avo_p": -.10, "anx_p": -.05, "host_p": -.10, "talk": .15, "talk_p": .10,
+               "desire_mean": .10, "want_more": -.20, "w_higher": -.10, "dur": -.10, "pair": .50, "ind": .60},
+    "sexfreq": {"desire_mean": .30, "sexsat": .40, "dur": -.20, "living": .25, "noise": .80},
+}
+R5_PAIR_TARGETS = {"live": {True: .15, False: .05},           # среди живущих вместе; ключ — средний возраст пары < 25
+                   "approve": (.10, .20, .70),                  # против / нейтрально / одобряют
+                   "inlaw": .20,
+                   "sexsat": {True: (.11, .17), False: (.13, .18)},   # недоволен, ни то ни другое; ключ — человеку 20–24
+                   "sexfreq": (.40, .25, .27, .08)}
+APPROVE_LEVELS = ["против", "нейтрально", "одобряют"]
+SEXSAT_LEVELS = ["недоволен", "ни то ни другое", "доволен"]
+R5_DRAWS = ["u_live", "e_fam", "e_app_m", "e_app_w", "e_inl_m", "e_inl_w", "e_sex_pair", "e_sex_m", "e_sex_w", "e_freq"]
+
+
+def r5_pair_draws(rng, shape):
+    """Стандартные жребии свойств пары в фиксированном порядке (u_live — равномерный, остальные — N(0, 1))."""
+    return {k: (rng.random(shape) if k == "u_live" else rng.standard_normal(shape)) for k in R5_DRAWS}
+
+
+def stage_probs(P, m, w):
+    """Вероятности стадий пары (design.md, 4.4) — та же логика, что в draw_stage."""
+    abar = (P["age"][m] + P["age"][w]) / 2
+    out = np.zeros((len(m), 3))
+    for i in range(len(m)):
+        p = np.array(next(pp for lim, pp in STAGE_P if abar[i] < lim), dtype=float)
+        if P["REL_LVL"][m[i]] == 3 and P["REL_LVL"][w[i]] == 3:
+            p[0] += p[1] * .5
+            p[1] *= .5
+        out[i] = p
+    return out
+
+
+def pair_vars_r5(D, m, w, stage, dur, Uz, E, u_corr, cuts=None):
+    """Свойства пары. m, w — индексы (n,); stage, dur, Uz и жребии E — формы (n,) или (n, M); u_corr — связь
+    специфичной для пары части удовлетворённости сексом с U (из спеки ред. 5).
+    cuts=None — подобрать интерсепты и пороги на этих парах (настоящие пары калибровки) и вернуть их."""
+    fit = cuts is None
+    cuts = {} if fit else cuts
+    two = np.ndim(stage) == 2
+    g = (lambda a, i: a[i][:, None]) if two else (lambda a, i: a[i])
+    c = R5_PAIR
+    living = stage >= 1
+    married = stage == 2
+    dating = stage == 0
+    # жизнь с родителями
+    young_pair = (g(D["age"], m) + g(D["age"], w)) / 2 < 25
+    islam_any = g(D["ISLAM"], m) | g(D["ISLAM"], w)
+    inc = (g(D["income_q"] * 1.0, m) + g(D["income_q"] * 1.0, w) - 6) / 2 / 1.41
+    xl = c["live"]["islam"] * islam_any + c["live"]["inc"] * inc
+    if fit:
+        for y in (True, False):
+            mk = living & (young_pair == y)
+            cuts[f"live_{int(y)}"] = brentq(lambda a: expit(a + xl[mk]).mean() - R5_PAIR_TARGETS["live"][y], -30, 30)
+    a_live = np.where(young_pair, cuts["live_1"], cuts["live_0"])
+    live = living & (E["u_live"] < expit(a_live + xl))
+    # одобрение роднёй каждой стороны (side — чья родня; p — партнёр этой стороны)
+    rm, rw = g(D["REL_LVL"], m), g(D["REL_LVL"], w)
+    cross = (g(D["ISLAM"], m) & g(D["ORTH"], w)) | (g(D["ORTH"], m) & g(D["ISLAM"], w))
+    relmis = ((np.abs(rm - rw) >= 2) | (cross & (np.maximum(rm, rw) >= 2))
+              | (g(D["ISLAM"], m) != g(D["ISLAM"], w))).astype(float)
+    heavy = lambda i: ((g(D["DRINK_LVL"], i) == 3) | g(D["RISKY"], i)).astype(float)
+    ca = c["approve"]
+    sh = np.sqrt(ca["shared"])
+    LA = {}
+    for side, own, p in (("m", m, w), ("w", w, m)):
+        LA[side] = (ca["relmis"] * relmis * (1 + ca["relmis_trad"] * np.maximum(g(D["TRAD"], own), 0))
+                    + ca["heavy"] * heavy(p) + ca["host"] * g(D["HOST"], p) + ca["married"] * married
+                    + sh * E["e_fam"] + np.sqrt(1 - ca["shared"]) * E[f"e_app_{side}"])
+    if fit:
+        pool = np.concatenate([LA["m"], LA["w"]])
+        cuts["approve"] = np.quantile(pool, np.cumsum(R5_PAIR_TARGETS["approve"])[:-1]).tolist()
+    app = {s: np.searchsorted(cuts["approve"], LA[s]) for s in LA}       # 0 против, 1 нейтрально, 2 одобряют
+    # конфликт с роднёй партнёра: у человека side — с роднёй партнёра (их отношение — app[p_side])
+    ci = c["inlaw"]
+    LI = {}
+    for side, own, p, ps in (("m", m, w, "w"), ("w", w, m, "m")):
+        LI[side] = (ci["host"] * g(D["HOST"], own) + ci["n"] * g(D["N"], own) + ci["close_p"] * g(D["FAM_CLOSE"], p)
+                    + ci["live"] * live + ci["against"] * (app[ps] == 0) + ci["neutral"] * (app[ps] == 1)
+                    + ci["dating"] * dating + E[f"e_inl_{side}"])
+    if fit:
+        cuts["inlaw"] = float(np.quantile(np.concatenate([LI["m"], LI["w"]]), 1 - R5_PAIR_TARGETS["inlaw"]))
+    inlaw = {s: LI[s] > cuts["inlaw"] for s in LI}
+    # сексуальная удовлетворённость каждого
+    cs = c["sexsat"]
+    dm, dw = g(D["DESIRE"], m), g(D["DESIRE"], w)
+    pair_part = u_corr * Uz + np.sqrt(1 - u_corr ** 2) * E["e_sex_pair"]
+    X = {}
+    for side, own, p, d_own, d_p in (("m", m, w, dm, dw), ("w", w, m, dw, dm)):
+        X[side] = (cs["anx"] * g(D["ANX"], own) + cs["avo"] * g(D["AVO"], own) + cs["avo_p"] * g(D["AVO"], p)
+                   + cs["anx_p"] * g(D["ANX"], p) + cs["host_p"] * g(D["HOST"], p) + cs["talk"] * g(D["SEX_TALK"], own)
+                   + cs["talk_p"] * g(D["SEX_TALK"], p) + cs["desire_mean"] * (dm + dw) / 2
+                   + cs["want_more"] * np.maximum(0, d_own - d_p) + cs["w_higher"] * np.maximum(0, dw - dm)
+                   + cs["dur"] * np.log(dur / 12.0) + cs["pair"] * pair_part + cs["ind"] * E[f"e_sex_{side}"])
+    sat = {}
+    for side, own in (("m", m), ("w", w)):
+        yg = g(D["age"], own) <= 24
+        if fit:
+            for y in (True, False):
+                xs = np.concatenate([X["m"][g(D["age"], m) <= 24 if y else g(D["age"], m) > 24],
+                                     X["w"][g(D["age"], w) <= 24 if y else g(D["age"], w) > 24]])
+                cuts[f"sexsat_{int(y)}"] = np.quantile(xs, np.cumsum(R5_PAIR_TARGETS["sexsat"][y])).tolist()
+        # 0 недоволен, 1 ни то ни другое, 2 доволен (латентная выше — довольнее)
+        sat[side] = np.where(yg, np.searchsorted(cuts["sexsat_1"], X[side]), np.searchsorted(cuts["sexsat_0"], X[side]))
+    sex_raw = (X["m"] + X["w"]) / 2
+    if fit:
+        cuts["sex_mu"], cuts["sex_sd"] = float(sex_raw.mean()), float(sex_raw.std())
+    # фактическая частота
+    cf_ = c["sexfreq"]
+    F = (cf_["desire_mean"] * (dm + dw) / 2 + cf_["sexsat"] * sex_raw + cf_["dur"] * np.log(dur / 12.0)
+         + cf_["living"] * living + cf_["noise"] * E["e_freq"])
+    if fit:
+        cuts["sexfreq"] = np.quantile(F, np.cumsum(R5_PAIR_TARGETS["sexfreq"])[:-1]).tolist()
+    freq = np.searchsorted(cuts["sexfreq"], F)
+    V = {"live": live.astype(float), "app_m": app["m"], "app_w": app["w"],
+         "against_m": (app["m"] == 0).astype(float), "against_w": (app["w"] == 0).astype(float),
+         "neutral_m": (app["m"] == 1).astype(float), "neutral_w": (app["w"] == 1).astype(float),
+         "inlaw_m": inlaw["m"].astype(float), "inlaw_w": inlaw["w"].astype(float),
+         "sexsat_m": sat["m"], "sexsat_w": sat["w"], "sex_raw": sex_raw,
+         "sex_z": (sex_raw - cuts["sex_mu"]) / cuts["sex_sd"], "sexfreq": freq,
+         "wants_more_m": (g(D["DESIRE_F"], m) > freq), "wants_more_w": (g(D["DESIRE_F"], w) > freq)}
+    return V, cuts
+
+
+R5_TERMS = ("sex_z", "against_m", "against_w", "neutral_m", "neutral_w", "inlaw_m", "inlaw_w", "live")
+
+
+def pair_vars_expected(D, m, w, cuts, rng, M, u_corr, chunk=500):
+    """E[члены свойств пары | двое людей]: среднее по M перетяжкам стадии (4.4), стажа, U и шумов (design.md, 17.5).
+    Пары обрабатываются кусками по chunk в порядке m, w (жребий — подряд из rng)."""
+    out = {k: [] for k in R5_TERMS}
+    for s0 in range(0, len(m), chunk):
+        mm, ww = m[s0:s0 + chunk], w[s0:s0 + chunk]
+        n = len(mm)
+        sp = stage_probs(D, mm, ww)
+        us = rng.random((n, M))
+        stage = (us[..., None] > np.cumsum(sp, 1)[:, None, :2]).sum(-1)
+        dur = 6 + np.floor(rng.random((n, M)) * (np.array(DUR_MAX)[stage] - 5))
+        Uz = rng.standard_normal((n, M))
+        E = r5_pair_draws(rng, (n, M))
+        V, _ = pair_vars_r5(D, mm, ww, stage, dur, Uz, E, u_corr, cuts)
+        for k in R5_TERMS:
+            out[k].append(V[k].mean(1))
+    return {k: np.concatenate(v) for k, v in out.items()}
+
+
+def merge_spec(spec4, spec5):
+    """Формула ред. 5 = члены ред. 4 без изменений + новые (design.md, 17.5)."""
+    return {"ind": {**spec4["ind"], **spec5["ind_r5"]}, "ind_sat": {**spec4["ind_sat"], **spec5["ind_sat_r5"]},
+            "mis": dict(spec4["mis"]), "mis_sat_mult": spec4["mis_sat_mult"], "beta_sim": spec4["beta_sim"],
+            "pair": dict(spec5["pair_r5"]), "pair_sat": dict(spec5["pair_sat_r5"])}
+
+
+def pair_terms(D, m, w, V, c):
+    """Вклад свойств пары. V — реализованные значения или их ожидания (R5_TERMS); c — веса pair или pair_sat."""
+    amp_m = 1 + c["close_amp"] * (D["FAM_CLOSE_F"][m] == 2)
+    amp_w = 1 + c["close_amp"] * (D["FAM_CLOSE_F"][w] == 2)
+    return (-c["sex"] * V["sex_z"] + (c["against"] * V["against_m"] + c["neutral"] * V["neutral_m"]) * amp_m
+            + (c["against"] * V["against_w"] + c["neutral"] * V["neutral_w"]) * amp_w
+            + c["inlaw_w"] * V["inlaw_w"] + c["inlaw_m"] * V["inlaw_m"] + c["par_live"] * V["live"])
+
+
+def components_r5(D, m, w, spec, V, sim_mu, sim_sd, which="break"):
+    """IND (с членами ред. 5), MIS, β·SIM, PAIR, флаги несовпадений. spec — merge_spec(...) или член ансамбля."""
+    c = spec["ind"] if which == "break" else spec["ind_sat"]
+    mc = spec["mis"] if which == "break" else {k: v * spec["mis_sat_mult"] for k, v in spec["mis"].items()}
+    IND = ind(D, m, c) + ind(D, w, c)
+    F = mis_flags(D, m, w)
+    MIS = sum(mc[k] * F[k] for k in F)
+    SIM = spec["beta_sim"] * (sim_raw(D, m, w) - sim_mu) / sim_sd
+    PAIR = pair_terms(D, m, w, V, spec["pair"] if which == "break" else spec["pair_sat"])
+    return IND, MIS, SIM, PAIR, F

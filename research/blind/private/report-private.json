@@ -1,142 +1,195 @@
 {
  "note": "ЗАКРЫТО: агрегаты, которых нет в generation-report.md (доли и AUC по семействам, согласие вариантов устройства формулы). Владельцу теста не показывать.",
- "family_shares_sample": {
-  "IND": 0.1582,
-  "MIS": 0.0151,
-  "SIM": 0.00014
+ "family_shares_calibration_r5": {
+  "IND_r4": 0.1359,
+  "IND_r5_humor": 0.0017,
+  "MIS": 0.0155,
+  "SIM": 0.0001,
+  "PAIR_expected": 0.0016,
+  "PAIR_resid": 0.0059
  },
- "family_shares_calibration": {
-  "IND": 0.1688,
-  "MIS": 0.0192,
-  "SIM": 0.0001
+ "family_auc_calibration_r5": {
+  "oracle_IND_only": 0.6818,
+  "oracle_MIS_only": 0.5468,
+  "oracle_PAIR_expected_only": 0.625,
+  "selfreport_MIS_only": 0.5391,
+  "selfreport_PAIR_expected_only": 0.6022
  },
- "family_auc_calibration": {
-  "oracle_IND_only": 0.6739,
-  "oracle_MIS_only": 0.5538,
-  "selfreport_MIS_only": 0.5414
+ "family_shares_sample_r5": {
+  "skeleton_IND": 0.1414,
+  "skeleton_MIS": 0.0121,
+  "skeleton_PAIR": 0.0019
  },
  "structural_agreement": {
   "mis_x2_ind_x0.5": {
-   "spearman_with_central_sample": 0.8961,
-   "spearman_with_central_calibration": 0.8545
+   "spearman_with_central_sample": 0.9194,
+   "spearman_with_central_calibration": 0.874
   },
   "mis_x3_ind_x0.5": {
-   "spearman_with_central_sample": 0.8177,
-   "spearman_with_central_calibration": 0.765
+   "spearman_with_central_sample": 0.8448,
+   "spearman_with_central_calibration": 0.789
   },
   "mis_x4_ind_x0.5": {
-   "spearman_with_central_sample": 0.7617,
-   "spearman_with_central_calibration": 0.6978
+   "spearman_with_central_sample": 0.7888,
+   "spearman_with_central_calibration": 0.7234
   },
   "partner_effect_0.5": {
-   "spearman_with_central_sample": 0.9858,
-   "spearman_with_central_calibration": 0.9814
+   "spearman_with_central_sample": 0.989,
+   "spearman_with_central_calibration": 0.9834
   },
   "drop_IND": {
-   "spearman_with_central_sample": 0.4206,
-   "spearman_with_central_calibration": 0.2919
+   "spearman_with_central_sample": 0.6427,
+   "spearman_with_central_calibration": 0.5252
   },
   "drop_IND_continuous": {
-   "spearman_with_central_sample": 0.6079,
-   "spearman_with_central_calibration": 0.4831
+   "spearman_with_central_sample": 0.709,
+   "spearman_with_central_calibration": 0.5828
   },
   "drop_IND_binary": {
-   "spearman_with_central_sample": 0.9603,
-   "spearman_with_central_calibration": 0.9503
+   "spearman_with_central_sample": 0.9666,
+   "spearman_with_central_calibration": 0.9598
   },
   "drop_MIS": {
-   "spearman_with_central_sample": 0.963,
-   "spearman_with_central_calibration": 0.9454
+   "spearman_with_central_sample": 0.9703,
+   "spearman_with_central_calibration": 0.9554
   },
   "drop_SIM": {
-   "spearman_with_central_sample": 0.9995,
+   "spearman_with_central_sample": 0.9994,
    "spearman_with_central_calibration": 0.9996
   },
   "inter_both_anxious": {
-   "spearman_with_central_sample": 0.9997,
-   "spearman_with_central_calibration": 0.9887
+   "spearman_with_central_sample": 0.9998,
+   "spearman_with_central_calibration": 0.9907
   },
   "inter_anxious_avoidant": {
-   "spearman_with_central_sample": 0.9965,
-   "spearman_with_central_calibration": 0.9831
+   "spearman_with_central_sample": 0.9967,
+   "spearman_with_central_calibration": 0.9861
   },
   "inter_host_max": {
-   "spearman_with_central_sample": 0.9758,
-   "spearman_with_central_calibration": 0.9723
+   "spearman_with_central_sample": 0.9804,
+   "spearman_with_central_calibration": 0.9772
   },
   "inter_all": {
-   "spearman_with_central_sample": 0.9736,
-   "spearman_with_central_calibration": 0.9471
+   "spearman_with_central_sample": 0.9783,
+   "spearman_with_central_calibration": 0.9557
   },
   "inter_strong_anxious_avoidant": {
-   "spearman_with_central_sample": 0.991,
-   "spearman_with_central_calibration": 0.9237
+   "spearman_with_central_sample": 0.9909,
+   "spearman_with_central_calibration": 0.9281
   },
   "inter_strong_dw_continuous": {
-   "spearman_with_central_sample": 0.6958,
-   "spearman_with_central_calibration": 0.7543
+   "spearman_with_central_sample": 0.7236,
+   "spearman_with_central_calibration": 0.7721
   },
   "inter_strong_dw_both_anx_continuous": {
-   "spearman_with_central_sample": 0.6532,
-   "spearman_with_central_calibration": 0.7017
+   "spearman_with_central_sample": 0.6824,
+   "spearman_with_central_calibration": 0.7202
+  },
+  "r5_drop_all": {
+   "spearman_with_central_sample": 0.9916,
+   "spearman_with_central_calibration": 0.9917
+  },
+  "r5_drop_pair": {
+   "spearman_with_central_sample": 0.9969,
+   "spearman_with_central_calibration": 0.997
+  },
+  "r5_drop_humor": {
+   "spearman_with_central_sample": 0.9958,
+   "spearman_with_central_calibration": 0.9954
+  },
+  "r5_drop_intimacy": {
+   "spearman_with_central_sample": 0.9976,
+   "spearman_with_central_calibration": 0.998
+  },
+  "r5_drop_relatives": {
+   "spearman_with_central_sample": 0.9977,
+   "spearman_with_central_calibration": 0.9986
+  },
+  "r5_x2": {
+   "spearman_with_central_sample": 0.9943,
+   "spearman_with_central_calibration": 0.9945
+  },
+  "r5_sex_discrepancy": {
+   "spearman_with_central_sample": 0.9954,
+   "spearman_with_central_calibration": 0.9963
+  },
+  "r5_humor_similarity": {
+   "spearman_with_central_sample": 0.9944,
+   "spearman_with_central_calibration": 0.995
   }
  },
  "avoidance_vs_expected_csi4": {
-  "man": -0.25,
-  "woman": -0.134
+  "man": -0.348,
+  "woman": -0.214
  },
  "power_mis_only_selfreport": {
   "work": {
-   "spearman": 0.164,
+   "spearman": 0.2,
    "boot95": [
-    -0.225,
-    0.468
+    -0.18,
+    0.506
    ]
   },
   "holdout": {
-   "spearman": 0.363,
+   "spearman": 0.33,
    "boot95": [
-    -0.103,
-    0.7
+    -0.135,
+    0.681
    ]
   }
  },
  "power_selfreport_vs_structural": {
   "work": {
-   "mis_x2_ind_x0.5": 0.653,
-   "mis_x3_ind_x0.5": 0.581,
-   "mis_x4_ind_x0.5": 0.529,
-   "partner_effect_0.5": 0.752,
-   "drop_IND": 0.274,
-   "drop_IND_continuous": 0.416,
-   "drop_IND_binary": 0.75,
-   "drop_MIS": 0.753,
-   "drop_SIM": 0.763,
-   "inter_both_anxious": 0.762,
-   "inter_anxious_avoidant": 0.757,
-   "inter_host_max": 0.756,
-   "inter_all": 0.751,
-   "inter_strong_anxious_avoidant": 0.755,
-   "inter_strong_dw_continuous": 0.528,
-   "inter_strong_dw_both_anx_continuous": 0.52
+   "mis_x2_ind_x0.5": 0.677,
+   "mis_x3_ind_x0.5": 0.612,
+   "mis_x4_ind_x0.5": 0.556,
+   "partner_effect_0.5": 0.783,
+   "drop_IND": 0.412,
+   "drop_IND_continuous": 0.49,
+   "drop_IND_binary": 0.772,
+   "drop_MIS": 0.782,
+   "drop_SIM": 0.784,
+   "inter_both_anxious": 0.782,
+   "inter_anxious_avoidant": 0.778,
+   "inter_host_max": 0.783,
+   "inter_all": 0.776,
+   "inter_strong_anxious_avoidant": 0.776,
+   "inter_strong_dw_continuous": 0.579,
+   "inter_strong_dw_both_anx_continuous": 0.559,
+   "r5_drop_all": 0.784,
+   "r5_drop_pair": 0.795,
+   "r5_drop_humor": 0.773,
+   "r5_drop_intimacy": 0.793,
+   "r5_drop_relatives": 0.789,
+   "r5_x2": 0.776,
+   "r5_sex_discrepancy": 0.782,
+   "r5_humor_similarity": 0.778
   },
   "holdout": {
-   "mis_x2_ind_x0.5": 0.725,
-   "mis_x3_ind_x0.5": 0.684,
-   "mis_x4_ind_x0.5": 0.648,
-   "partner_effect_0.5": 0.794,
-   "drop_IND": 0.344,
-   "drop_IND_continuous": 0.365,
-   "drop_IND_binary": 0.77,
-   "drop_MIS": 0.735,
-   "drop_SIM": 0.769,
-   "inter_both_anxious": 0.762,
-   "inter_anxious_avoidant": 0.763,
-   "inter_host_max": 0.723,
-   "inter_all": 0.727,
-   "inter_strong_anxious_avoidant": 0.755,
-   "inter_strong_dw_continuous": 0.655,
-   "inter_strong_dw_both_anx_continuous": 0.548
+   "mis_x2_ind_x0.5": 0.742,
+   "mis_x3_ind_x0.5": 0.692,
+   "mis_x4_ind_x0.5": 0.663,
+   "partner_effect_0.5": 0.801,
+   "drop_IND": 0.505,
+   "drop_IND_continuous": 0.481,
+   "drop_IND_binary": 0.783,
+   "drop_MIS": 0.762,
+   "drop_SIM": 0.787,
+   "inter_both_anxious": 0.78,
+   "inter_anxious_avoidant": 0.782,
+   "inter_host_max": 0.738,
+   "inter_all": 0.743,
+   "inter_strong_anxious_avoidant": 0.776,
+   "inter_strong_dw_continuous": 0.673,
+   "inter_strong_dw_both_anx_continuous": 0.576,
+   "r5_drop_all": 0.778,
+   "r5_drop_pair": 0.78,
+   "r5_drop_humor": 0.776,
+   "r5_drop_intimacy": 0.78,
+   "r5_drop_relatives": 0.781,
+   "r5_x2": 0.774,
+   "r5_sex_discrepancy": 0.783,
+   "r5_humor_similarity": 0.77
   }
  }
 }

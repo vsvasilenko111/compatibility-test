@@ -9,7 +9,7 @@
   "n_real": 50,
   "n_alt": 130,
   "n_alt_candidates": 210,
-  "people_sha256": "d3e30a1349d89ed163c934fffc0b24b143aace77e0c010a52afb5cd08504ac07",
+  "people_sha256": "53853dbbfa27f38f6759fdd34e7b0fa3eaf96a8ce710574e95c3dedb2043a050",
   "model_sha256": "ad3eef4b2c09658d566222734da09a85492181c1d469fe03493461a87ea817a8",
   "note": "ЗАКРЫТО: тип пары, часть, стадия, U. Не показывать ни одной LLM-роли и владельцу теста."
  },

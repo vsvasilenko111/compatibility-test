@@ -15,11 +15,21 @@ import blindlib as B  # noqa: E402
 N_BATCH_REF = 2000   # опорная популяция 200 000 человек — только для порогов и интерсептов
 
 
-def reference_intercepts(tree):
+def reference_population(tree):
     rng = B.rng_of(tree, "reference")
     frame = B.make_frame(N_BATCH_REF, rng)
-    _, icpt = B.derive(frame, rng, None)
-    return icpt
+    return B.derive(frame, rng, None)
+
+
+def reference_intercepts(tree):
+    return reference_population(tree)[1]
+
+
+def reference_r5_cuts(tree):
+    """Пороги новых полей ред. 5 — на той же опорной популяции, своим зерном reference_r5 (design.md, 17.2)."""
+    P, _ = reference_population(tree)
+    _, cuts = B.derive_r5(P, B.rng_of(tree, "reference_r5"), None)
+    return cuts
 
 
 def self_records(S, ids):
@@ -42,6 +52,7 @@ def self_records(S, ids):
             "life_satisfaction_1_10": int(np.clip(round(6.5 + 1.8 * S["LS"][i]), 1, 10)),
             "admits_secretly_checking_partner_phone": bool(S["JEAL"][i]),
             **B.ext_record(S, i),
+            **B.r5_record(S, i),
             "alcohol": {"frequency": B.DRINK_LEVELS[int(S["DRINK_LVL"][i])]},
             "nicotine": S["smoke"][i],
             "money": {"has_consumer_debt": bool(S["DEBT_ANY"][i]), "admits_problem_debt": bool(S["DEBT_PROB"][i]),
@@ -55,7 +66,8 @@ def self_records(S, ids):
             "roles": {"man_is_head_of_family": bool(S["PATERNAL"][i]), "man_must_provide": bool(S["BREADW"][i]),
                       "housework_should_be": S["house_ideal"][i]},
             "views_z": {f"{B.VIEW_LABELS[v][0]} ↔ {B.VIEW_LABELS[v][1]}": round(float(S[v][i]), 2) for v in B.VIEW_LABELS},
-            "z_self": {k: round(float(S[k][i]), 4) for k in list(B.SR_DIR) + ["TRAD"] + list(B.VIEW_LABELS) + B.EXT_LAT},
+            "z_self": {k: round(float(S[k][i]), 4) for k in list(B.SR_DIR) + ["TRAD"] + list(B.VIEW_LABELS) + B.EXT_LAT
+                       + [x for x in B.R5_LAT if x in S]},
         })
     return recs
 
@@ -73,13 +85,17 @@ def main():
     # новые поля с нулевым весом — своими зёрнами, после всех прежних жребиев (design.md, 13.2)
     B.derive_ext(P, B.rng_of(tree, "skeleton_ext"))
     B.selfreport_ext(P, S, B.rng_of(tree, "selfreport_ext"))
+    # ред. 5: юмор, близость, родня — своими зёрнами, после всех прежних (design.md, 17.1–17.4)
+    cuts5 = reference_r5_cuts(tree)
+    B.derive_r5(P, B.rng_of(tree, "skeleton_r5"), cuts5)
+    B.selfreport_r5(P, S, B.rng_of(tree, "selfreport_r5"), cuts5)
 
     order = np.argsort(ids)  # порядок в файле — по случайному id, а не по полу/городу
     people = [B.person_records(P, ids)[i] for i in order]
     selfr = [self_records(S, ids)[i] for i in order]
     meta = {"generator": "research/blind/generate.py", "master_seed": B.MASTER_SEED,
             "n": len(ids), "min_eig_corr": B.min_eig(), "lib_versions": versions,
-            "reference_intercepts": icpt,
+            "reference_intercepts": icpt, "reference_r5_cuts": cuts5,
             "note": "«правда» о человеке. Не показывать владельцу теста и отвечающему (design.md, 6)."}
     B.dump({"meta": meta, "people": people}, os.path.join(B.ROOT, "people.json"))
     B.dump({"meta": {"generator": "research/blind/generate.py", "master_seed": B.MASTER_SEED, "lib_versions": versions,

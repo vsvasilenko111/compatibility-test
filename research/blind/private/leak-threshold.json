@@ -1,48 +1,48 @@
 {
- "note": "Главная метрика — ранговая корреляция балла теста с риском по скелету (design.md, 7). Порог утечки = верхняя граница 95% бутстрэпа (по людям) у формулы исхода, применённой к самоотчёту (MAIN_leak_threshold_spearman). Для AUC по одному жребию — то же (leak_threshold_auc). Записан до появления первого текста.",
- "outcome_sha256": "352746d7f45dca59c4fb2b8684b8011556385fc4250adf75e4b267d13ae7fae9",
+ "note": "Главная метрика — ранговая корреляция балла теста с риском по скелету (design.md, 7; ред. 5 — 17.5). Порог утечки = верхняя граница 95% бутстрэпа (по людям) у формулы исхода ред. 5, применённой к самоотчёту (свойства пары — их ожидание по самоотчёту двоих; MAIN_leak_threshold_spearman). Для AUC по одному жребию — то же (leak_threshold_auc). Записан до появления первого текста с новыми полями.",
+ "outcome_sha256": "6c56ba1db4270fda15d85d52fec95011bdbfbee43e2cf0e93095d4155db8aa1e",
  "thresholds": {
   "work": {
    "n_pairs": 107,
-   "n_breakups": 34,
-   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7642,
-   "MAIN_leak_threshold_spearman": 0.892,
+   "n_breakups": 36,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7856,
+   "MAIN_leak_threshold_spearman": 0.9046,
    "MAIN_spearman_boot_95": [
-    0.5637,
-    0.892
+    0.5958,
+    0.9046
    ],
-   "selfreport_ceiling_auc": 0.5326,
-   "boot_97_5": 0.7974,
-   "leak_threshold_auc": 0.7974,
-   "selfreport_ceiling_auc_expected_over_V": 0.6492
+   "selfreport_ceiling_auc": 0.6117,
+   "boot_97_5": 0.8533,
+   "leak_threshold_auc": 0.8533,
+   "selfreport_ceiling_auc_expected_over_V": 0.672
   },
   "holdout": {
    "n_pairs": 73,
-   "n_breakups": 21,
-   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7666,
-   "MAIN_leak_threshold_spearman": 0.9017,
+   "n_breakups": 19,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7824,
+   "MAIN_leak_threshold_spearman": 0.9116,
    "MAIN_spearman_boot_95": [
-    0.5665,
-    0.9017
+    0.5916,
+    0.9116
    ],
-   "selfreport_ceiling_auc": 0.7586,
-   "boot_97_5": 0.9375,
-   "leak_threshold_auc": 0.9375,
-   "selfreport_ceiling_auc_expected_over_V": 0.6951
+   "selfreport_ceiling_auc": 0.7912,
+   "boot_97_5": 0.9648,
+   "leak_threshold_auc": 0.9648,
+   "selfreport_ceiling_auc_expected_over_V": 0.6941
   },
   "all": {
    "n_pairs": 180,
    "n_breakups": 55,
-   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7851,
-   "MAIN_leak_threshold_spearman": 0.8737,
+   "MAIN_selfreport_ceiling_spearman_vs_skeleton_risk": 0.7987,
+   "MAIN_leak_threshold_spearman": 0.8838,
    "MAIN_spearman_boot_95": [
-    0.6553,
-    0.8737
+    0.6812,
+    0.8838
    ],
-   "selfreport_ceiling_auc": 0.644,
-   "boot_97_5": 0.7917,
-   "leak_threshold_auc": 0.7917,
-   "selfreport_ceiling_auc_expected_over_V": 0.676
+   "selfreport_ceiling_auc": 0.6936,
+   "boot_97_5": 0.8413,
+   "leak_threshold_auc": 0.8413,
+   "selfreport_ceiling_auc_expected_over_V": 0.6885
   }
  }
 }

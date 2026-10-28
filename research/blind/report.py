@@ -12,7 +12,8 @@ from scipy.stats import norm, spearmanr
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import blindlib as B  # noqa: E402
 from calibrate import city_groups  # noqa: E402
-from generate import reference_intercepts  # noqa: E402
+from generate import reference_intercepts, reference_r5_cuts  # noqa: E402
+from calibrate_r5 import self_extend  # noqa: E402
 from outcome import person_boot, self_arrays, wauc_strat, wspear  # noqa: E402
 
 PI2_3 = np.pi ** 2 / 3
@@ -85,6 +86,10 @@ def main():
     CS = B.selfreport(C, B.rng_of(ct, "selfreport"))
     B.derive_ext(C, B.rng_of(ct, "skeleton_ext"))
     B.selfreport_ext(C, CS, B.rng_of(ct, "selfreport_ext"))
+    cuts5 = reference_r5_cuts(tree)
+    B.derive_r5(C, B.rng_of(ct, "skeleton_r5"), cuts5)
+    B.selfreport_r5(C, CS, B.rng_of(ct, "selfreport_r5"), cuts5)
+    self_extend(CS, C)
     C["style"] = B.att_style(C["ANX"], C["AVO"])
 
     def both(f):
@@ -201,6 +206,32 @@ def main():
         add(T, f"{lab}: «почти никогда» (нижняя категория переименована, как и у враждебности)", "10%", "base-rates, разд. 2: нулевой частоты нет ни у кого",
             pc(g), pc(c), tol_ok(c, .07, .13))
 
+    # ред. 5: юмор, близость, родня (design.md, 17.2, 17.9)
+    R5_LAB = {"HUM_AFF": "шутит по-доброму", "HUM_AGG": "подкалывает и высмеивает партнёра", "HUM_SELF": "шутит над собой",
+              "DESIRE": "как часто хотелось бы близости", "SEX_TALK": "говорить о сексе: трудно / смотря / легко",
+              "FAM_CLOSE": "мнение родителей: без оглядки / прислушивается / решающее"}
+    for kk, lab in R5_LAB.items():
+        t = B.R5_SHARES[kk]
+        g, c = both(lambda X: [np.mean(X[kk + "_F"] == L) for L in range(len(t))])
+        add(T, f"{lab}: доли категорий", " / ".join(f"{100 * v:.0f}" for v in t), "17.2 [допущение; ориентиры в 17.2]",
+            " / ".join(f"{100 * v:.0f}" for v in g), " / ".join(f"{100 * v:.0f}" for v in c),
+            tol_ok(max(abs(a - b) for a, b in zip(c, t)), 0, .03))
+    g, c = both(lambda X: (np.mean(X["SEX_TALK_F"][X["sex"] == 0] == 2), np.mean(X["SEX_TALK_F"][X["sex"] == 1] == 2)))
+    add(T, "легко говорить с партнёром о сексе, м / ж", "≈ 35 / 26%", "Natsal-3, 25–34 [межд., пров.: таблица]",
+        f"{100 * g[0]:.0f} / {100 * g[1]:.0f}", f"{100 * c[0]:.0f} / {100 * c[1]:.0f}", tol_ok(abs(c[0] - .35) + abs(c[1] - .26), 0, .08))
+    g, c = both(lambda X: (np.mean(X["DESIRE_F"][X["sex"] == 0] >= 2), np.mean(X["DESIRE_F"][X["sex"] == 1] >= 2)))
+    add(T, "хотели бы близости несколько раз в неделю и чаще, м / ж", "мужчины чаще (сдвиг +0,4 SD)",
+        "ВЦИОМ 2023, Natsal-3 — направление [пров.: таблица]", f"{100 * g[0]:.0f} / {100 * g[1]:.0f}", f"{100 * c[0]:.0f} / {100 * c[1]:.0f}",
+        "да" if c[0] > c[1] else "НЕТ")
+    for kk, src in (("HUM_AGG", "HOST"), ("HUM_AGG", "A"), ("HUM_AGG", "AVO"), ("HUM_AFF", "N"), ("HUM_AFF", "E"),
+                    ("HUM_SELF", "ANX"), ("SEX_TALK", "AVO"), ("FAM_CLOSE", "TRAD"), ("DESIRE", "AVO")):
+        tgt = B.r5_implied_r(kk, src)
+        g, c = both(lambda X: np.corrcoef(X[kk], X[src])[0, 1])
+        add(T, f"r латентных: {R5_LAB[kk].split(':')[0]} ↔ {src}", f"{tgt:+.2f} (без сдвигов по полу и вере)", "17.2 [допущение]",
+            f"{g:+.2f}", f"{c:+.2f}", tol_ok(c, tgt - .05, tgt + .05))
+    g, c = both(lambda X: min(np.std(X[kk]) for kk in B.R5_LAT))
+    add(T, "мин. SD новых латентных (ред. 5)", "≥ 0,9", "Bisbee 2024 [пров.]", f"{g:.2f}", f"{c:.2f}", tol_ok(c, .9, 9))
+
     # корреляции и SD
     R = B.corr_matrix()
     iu = np.triu_indices(len(B.LATENT), 1)
@@ -245,6 +276,24 @@ def main():
         add(T2, f"{lab}: сдвиг самоотчёта в ступенях; ранговая r с «правдой»",
             "к «реже»; контроль и враньё — сильнее" if kk in ("CONTROL", "LIE") else "к «реже», как у черт",
             "правило 13.2 [допущение]", f"{g:+.2f}; {gr:.2f}", f"{c:+.2f}; {cr:.2f}", tol_ok(c, -1.5, -.05))
+
+    for kk, lab, plan in (("HUM_AFF", "шутит по-доброму", "к «чаще» (переоценка своего юмора)"),
+                          ("HUM_AGG", "подкалывает партнёра", "к «реже»"), ("SEX_TALK", "говорить о сексе", "к «легко»"),
+                          ("HUM_SELF", "шутит над собой", "без сдвига")):
+        g = (S[kk + "_F"] - P[kk + "_F"]).mean()
+        c = (CS[kk + "_F"] - C[kk + "_F"]).mean()
+        gr = spearmanr(S[kk + "_F"], P[kk + "_F"]).correlation
+        cr = spearmanr(CS[kk + "_F"], C[kk + "_F"]).correlation
+        okc = {"HUM_AFF": c > .05, "HUM_AGG": c < -.05, "SEX_TALK": c > .05, "HUM_SELF": abs(c) < .05}[kk]
+        add(T2, f"{lab}: сдвиг самоотчёта в ступенях; ранговая r с «правдой»", plan, "17.4 [допущение]",
+            f"{g:+.2f}; {gr:.2f}", f"{c:+.2f}; {cr:.2f}", "да" if okc else "НЕТ")
+    for kk, lab in (("DESIRE", "как часто хотелось бы близости"), ("FAM_CLOSE", "вес мнения родителей")):
+        gd = [(S[kk] - P[kk])[P["sex"] == s_].mean() for s_ in (0, 1)]
+        cd = [(CS[kk] - C[kk])[C["sex"] == s_].mean() for s_ in (0, 1)]
+        plan = "м +0,15 / ж −0,15 SD" if kk == "DESIRE" else "м −0,30 / ж −0,10 SD"
+        tgt = (.15, -.15) if kk == "DESIRE" else (-.30, -.10)
+        add(T2, f"{lab}: сдвиг самоотчёта по полу, м / ж (SD)", plan, "17.4 [допущение; направление — Alexander & Fisher 2003, ВЦИОМ 2025]",
+            f"{gd[0]:+.2f} / {gd[1]:+.2f}", f"{cd[0]:+.2f} / {cd[1]:+.2f}", tol_ok(max(abs(cd[0] - tgt[0]), abs(cd[1] - tgt[1])), 0, .03))
 
     # пары
     pj = B.load(os.path.join(B.PRIV, "pairs.json"))
@@ -297,6 +346,40 @@ def main():
             f"{pc(F[kk][typ == 'real'].mean())} / {pc(F[kk][typ == 'alt'].mean())}",
             f"{pc(cal['mismatch_rates_real'][kk])} / {pc(cal['mismatch_rates_alt'][kk])}")
 
+    # свойства пары ред. 5 (design.md, 17.3, 17.9): выборка — все 180 пар; калибровка — настоящие пары
+    m5 = B.load(os.path.join(B.PRIV, "model-r5.json"))
+    cal5 = m5["calibration"]
+    pk = cal5["pair_checks"]
+    pv = {r["pair_id"]: r for r in B.load(os.path.join(B.PRIV, "pair-vars.json"))["pairs"]}
+    pvr = [pv[p["pair_id"]] for p in pairs]
+    yp = (P["age"][m] + P["age"][w]) / 2 < 25
+    liv = stage >= 1
+    lv = np.array([bool(r["lives_with_parents"]) for r in pvr])
+    add(T3, "живут с родителями одного из партнёров (среди живущих вместе): средний возраст < 25 / ≥ 25", "15 / 5%",
+        "17.3 [допущение; ориентир ВЦИОМ 2025]", f"{pc(lv[liv & yp].mean()) if (liv & yp).any() else '—'} / {pc(lv[liv & ~yp].mean())}",
+        f"{pc(pk['live_young_pair'])} / {pc(pk['live_older_pair'])}", tol_ok(abs(pk["live_young_pair"] - .15) + abs(pk["live_older_pair"] - .05), 0, .03))
+    ap = np.array([B.APPROVE_LEVELS.index(r[f"family_of_{x}_about_pair"]) for r in pvr for x in ("man", "woman")])
+    add(T3, "родня о паре: против / нейтрально / одобряют (обе стороны)", "10 / 20 / 70", "17.3 [допущение]",
+        " / ".join(f"{100 * np.mean(ap == L):.0f}" for L in range(3)), " / ".join(f"{100 * v:.0f}" for v in pk["approve_against_neutral_approve"]),
+        tol_ok(max(abs(a - b) for a, b in zip(pk["approve_against_neutral_approve"], (.1, .2, .7))), 0, .03))
+    il = np.array([r[k_] for r in pvr for k_ in ("man_conflict_with_her_family", "woman_conflict_with_his_family")])
+    add(T3, "заметный конфликт с роднёй партнёра (каждый)", "20%; у живущих с родителями ≈ 40%", "17.3 [допущение]",
+        pc(il.mean()), f"{pc(pk['inlaw'])}; живут с родителями {pc(pk['inlaw_living_with_parents'])}", tol_ok(pk["inlaw"], .17, .23))
+    sx = np.array([B.SEXSAT_LEVELS.index(r[f"sex_satisfaction_{x}"]) for r in pvr for x in ("man", "woman")])
+    ya = np.concatenate([[P["age"][a_] <= 24, P["age"][b_] <= 24] for a_, b_ in zip(m, w)])
+    for y_, lab, t in ((True, "20–24", (.11, .17, .72)), (False, "25–30", (.13, .18, .69))):
+        cv = pk["sexsat_20_24" if y_ else "sexsat_25_30"]
+        add(T3, f"сексуальная жизнь пары: недоволен / ни то ни другое / доволен, {lab}", " / ".join(f"{100 * v:.0f}" for v in t),
+            "Natsal-3 [межд., пров.: таблица]", " / ".join(f"{100 * np.mean(sx[ya == y_] == L):.0f}" for L in range(3)),
+            " / ".join(f"{100 * v:.0f}" for v in cv), tol_ok(max(abs(a - b) for a, b in zip(cv, t)), 0, .03))
+    fq = np.array([B.DESIRE_LEVELS.index(r["sex_frequency"]) for r in pvr])
+    add(T3, "частота секса в паре: раз в неделю и чаще", "60% (в браке 62, без брака 58)", "ВЦИОМ 2023 [пров.: таблица; квотная, заказчик]",
+        pc(np.mean(fq >= 1)), f"{pc(1 - pk['sexfreq'][0])}; по стадиям " + " / ".join(f"{100 * v:.0f}" for v in pk["sexfreq_weekly_plus_by_stage"].values()),
+        tol_ok(1 - pk["sexfreq"][0], .57, .63))
+    wm = np.array([[r["man_wants_more_than_now"], r["woman_wants_more_than_now"]] for r in pvr], float)
+    add(T3, "хотел(а) бы чаще, чем есть: м / ж", "справочно: 57 / 45% (не подгоняется)", "ВЦИОМ 2023 [пров.: таблица]",
+        f"{100 * wm[:, 0].mean():.0f} / {100 * wm[:, 1].mean():.0f}", f"{100 * pk['wants_more_m_w'][0]:.0f} / {100 * pk['wants_more_m_w'][1]:.0f}")
+
     # исходы
     oj = B.load(os.path.join(B.PRIV, "outcome.json"))["outcomes"]
     assert [o["pair_id"] for o in oj] == [p["pair_id"] for p in pairs]
@@ -307,16 +390,16 @@ def main():
     T4 = "Исход"
     tg = {"встречаются": .50, "живут вместе": .30, "в браке": .15}
     add(T4, "доля распадов за 3 года, все пары: ожидаемая / выпавшая", "≈ 0,28–0,30 (смесь стадий)", "5.3 [допущение]",
-        f"{pb.mean():.3f} / {broke.mean():.3f} ({broke.sum()} из {len(broke)})", f"{cal['calib_breakup_real']:.3f} (настоящие)")
+        f"{pb.mean():.3f} / {broke.mean():.3f} ({broke.sum()} из {len(broke)})", f"{cal5['breakup_real']:.3f} (настоящие)")
     for s in range(3):
         mk = stage == s
         add(T4, f"распад, «{B.STAGES[s]}»: ожидаемый / выпавший", f"{tg[B.STAGES[s]]:.2f}", "5.3 [допущение]",
-            f"{pb[mk].mean():.3f} / {broke[mk].mean():.3f} (n={mk.sum()})", f"{cal['calib_breakup_by_stage_real'][B.STAGES[s]]:.3f}")
+            f"{pb[mk].mean():.3f} / {broke[mk].mean():.3f} (n={mk.sum()})", f"{cal5['breakup_by_stage_real'][B.STAGES[s]]:.3f}")
     for t in ("real", "alt"):
         mk = typ == t
         add(T4, f"распад, {'настоящие' if t == 'real' else 'дополнительные'}: ожидаемый / выпавший", "—", "—",
             f"{pb[mk].mean():.3f} / {broke[mk].mean():.3f} (n={mk.sum()})",
-            f"{cal['calib_breakup_real'] if t == 'real' else cal['alt_breakup']:.3f}")
+            f"{cal5['breakup_real'] if t == 'real' else cal5['breakup_alt']:.3f}")
     for p_ in ("work", "holdout"):
         mk = part == p_
         add(T4, f"распад, часть {p_}: ожидаемый / выпавший", "—", "—", f"{pb[mk].mean():.3f} / {broke[mk].mean():.3f} ({broke[mk].sum()} из {mk.sum()})", "—")
@@ -352,43 +435,50 @@ def main():
     exp_sat = np.array([o["satisfaction_expected_csi4"] for o in oj])
     add(T4, "r(ожидаемая удовлетворённость, P(вместе))", "положительная, умеренная", "5.5", f"{np.corrcoef(exp_sat, pt)[0, 1]:.2f}", "—")
 
-    # объяснимая доля разброса — на выборке и на калибровке
+    # объяснимая доля разброса — на выборке и на калибровке (ред. 5: design.md, 17.5–17.6)
     T5 = "Объяснимая доля"
-    k, gamma = model["k"], model["gamma"]
-    spec = B.load(os.path.join(B.PRIV, "outcome-spec.json"))
-    IND, MIS, SIM, _ = B.components(P, m, w, spec, model["sim_mu"], model["sim_sd"])
-    L = B.center_by(k * (IND + MIS + SIM) + U + gamma * np.log(dur / 12), stage)
+    k, gamma = m5["k"], m5["gamma"]
+    U5 = m5["sigU5"] * U / m5["sigU4"]
+    lk_real = np.array([o["risk_logit_with_pair_vars"] for o in oj])      # k5 · (скелет + реализованные свойства пары)
+    L = B.center_by(lk_real + U5 + gamma * np.log(dur / 12), stage)
     tot = L.var() + PI2_3
     v = lambda x: B.center_by(x, stage).var() / tot
-    sh = cal["shares"]
-    add(T5, "скелеты двоих (IND + MIS + SIM)", "≈ 0,13–0,20", "Joel 2020: 12% по самоотчёту к концу", f"{v(k * (IND + MIS + SIM)):.3f}", f"{sh['skeleton']:.3f}")
-    # доли по семействам — закрыто (критик 2, п. 1): в private/report-private.json
-    private["family_shares_sample"] = {"IND": round(float(v(k * IND)), 4), "MIS": round(float(v(k * MIS)), 4), "SIM": round(float(v(k * SIM)), 5)}
-    private["family_shares_calibration"] = {kk: sh[kk] for kk in ("IND", "MIS", "SIM")}
-    add(T5, "специфичное для пары U", "≈ 0,2", "Joel 2017, 2020", f"{v(U):.3f}", f"{sh['U']:.3f}")
+    sh = cal5["shares"]
+    T_ps = U5 + lk_real - lk
+    add(T5, "скелеты двоих (с ожиданием свойств пары при данных двоих)", "≈ 0,13–0,20", "Joel 2020: 12% по самоотчёту к концу",
+        f"{v(lk):.3f}", f"{sh['skeleton']:.3f}")
+    add(T5, "вся специфичная для пары часть (U5 + неожиданная часть свойств пары)", "≈ 0,2 (как U ред. 4)", "Joel 2017, 2020; 17.5",
+        f"{v(T_ps):.3f}", f"{sh['pair_specific_total']:.3f}")
+    add(T5, "скелет + вся специфичная для пары часть", "≤ 0,45 (ред. 4: ≈ 0,40)", "17.6", f"{v(lk + T_ps):.3f}",
+        f"{sh['skeleton_plus_pair_specific']:.3f}", tol_ok(sh["skeleton_plus_pair_specific"], 0, .45))
     add(T5, "чистая случайность (жребий V)", "≈ 0,6", "Joel 2020", f"{PI2_3 / tot:.3f}", f"{sh['noise_V']:.3f}")
-    from blindlib import center_by
+    # доли и AUC по семействам — закрыто (критик 2, п. 1; 17.5): в private/report-private.json
+    private["family_shares_calibration_r5"] = m5["private_family"]["shares"]
+    private["family_auc_calibration_r5"] = m5["private_family"]["auc"]
     bm = B.load(os.path.join(B.PRIV, "benchmarks.json"))
+    private["family_shares_sample_r5"] = {kk: round(float(v(np.array(bm[kk]))), 4)
+                                          for kk in ("skeleton_IND", "skeleton_MIS", "skeleton_PAIR")}
     ls = np.array(bm["selfreport_formula"])
-    lsc = center_by(ls, stage)
+    lsc = B.center_by(ls, stage)
     r2s = np.cov(lsc, L)[0, 1] ** 2 / (lsc.var() * tot)
-    add(T5, "R² формулы по самоотчёту (правило выбора k)", "0,10 ± 0,02", "Joel 2020, 12% (критик п. 8)", f"{r2s:.3f}", f"{sh['R2_selfreport_formula']:.3f}", tol_ok(sh["R2_selfreport_formula"], .08, .12))
-    add(T5, "k (общий множитель сжатия)", "внутри [0,5; 1,5]", "5.4", "—", f"{model['k']:.3f}", tol_ok(model["k"], .5, 1.5))
-    au = cal["auc"]
-    private["family_auc_calibration"] = {kk: au[kk] for kk in ("oracle_IND_only", "oracle_MIS_only", "selfreport_MIS_only")}
-    for kk, lab in (("oracle_skeleton", "оракул по скелету"), ("oracle_skeleton_plus_U", "оракул: скелет + U"),
+    add(T5, "R² формулы по самоотчёту (правило выбора k)", "0,10 ± 0,02", "Joel 2020, 12% (критик п. 8); 17.6", f"{r2s:.3f}",
+        f"{sh['R2_selfreport_formula']:.3f}", tol_ok(sh["R2_selfreport_formula"], .08, .12))
+    add(T5, "k (общий множитель сжатия, ред. 5)", "внутри [0,5; 1,5]", "5.4, 17.6", "—", f"{k:.3f}",
+        "НЕТ" if cal5["k5_at_bound"] else tol_ok(k, .5, 1.5))
+    au = cal5["auc"]
+    for kk, lab in (("oracle_skeleton", "оракул по скелету"), ("oracle_skeleton_plus_pair_specific", "оракул: скелет + специфичная для пары часть"),
                     ("selfreport_formula", "потолок самоотчёта")):
-        add(T5, f"AUC {lab}, с расслоением по стадии", "—", "калибровка, 10 000 чел.", "см. «Мощность»", f"{au[kk]:.3f}")
-    for kk, gg in cal["k_grid"].items():
+        add(T5, f"AUC {lab}, с расслоением по стадии", "рядом с ред. 4 (0,69 / 0,79 / 0,64)", "калибровка, 10 000 чел.", "см. «Мощность»", f"{au[kk]:.3f}")
+    for kk, gg in cal5["k_grid"].items():
         add(T5, f"сетка k = {kk}: доля скелета / R² самоотчёта / AUC оракула / AUC самоотчёта", "отчёт сеткой (критик п. 8)", "калибровка",
             "—", f"{gg['shares']['skeleton']:.3f} / {gg['shares']['R2_selfreport_formula']:.3f} / {gg['auc']['oracle_skeleton']:.3f} / {gg['auc']['selfreport_formula']:.3f}")
-    add(T5, "ансамбль 30 формул: Spearman с центральной (мин / медиана)", "—", "критик п. 3", "—",
-        f"{cal['ensemble_spearman_with_central']['min']:.3f} / {cal['ensemble_spearman_with_central']['median']:.3f}")
+    add(T5, "ансамбль 30 формул ред. 5: Spearman с центральной (мин / медиана)", "—", "критик п. 3; 17.7", "—",
+        f"{cal5['ensemble_spearman_with_central']['min']:.3f} / {cal5['ensemble_spearman_with_central']['median']:.3f}")
     es = B.load(os.path.join(B.PRIV, "outcome-ensemble-structural.json"))
     assert es["meta"]["outcome_sha256"] == B.sha256(os.path.join(B.PRIV, "outcome.json"))
     assert es["pair_ids"] == [p["pair_id"] for p in pairs]
     add(T5, f"ансамбль другого устройства ({len(es['variants'])} вариантов: несовпадения ×2–4, эффект партнёра, выпадение семейства, "
-        "взаимодействия, в том числе сильные — критик 3, п. 3)",
+        "взаимодействия, в том числе сильные — критик 3, п. 3; варианты ред. 5 — 17.7)",
         "правка принимается, только если выигрывает в каждом варианте", "критик 2, п. 1; design.md 13.3",
         "числа закрыты (private/)", f"{len(es['variants'])} вариантов")
     private["structural_agreement"] = es["agreement"]
@@ -480,11 +570,13 @@ def main():
              "(для числа пар).", "",
              f"Хеши: people.json `{B.sha256(os.path.join(B.ROOT, 'people.json'))[:16]}`, selfreport.json "
              f"`{B.sha256(os.path.join(B.ROOT, 'selfreport.json'))[:16]}`, private/pairs.json `{B.sha256(os.path.join(B.PRIV, 'pairs.json'))[:16]}`, "
-             f"private/outcome.json `{B.sha256(os.path.join(B.PRIV, 'outcome.json'))[:16]}`, private/outcome-spec.json `{model['outcome_spec_sha256'][:16]}`. "
+             f"private/outcome.json `{B.sha256(os.path.join(B.PRIV, 'outcome.json'))[:16]}`, private/outcome-spec.json `{model['outcome_spec_sha256'][:16]}`, "
+             f"private/outcome-spec-r5.json `{m5['outcome_spec_r5_sha256'][:16]}`, private/model-r5.json `{B.sha256(os.path.join(B.PRIV, 'model-r5.json'))[:16]}`, "
+             f"private/pair-vars.json `{B.sha256(os.path.join(B.PRIV, 'pair-vars.json'))[:16]}`. Исход — по формуле ред. 5 (design.md, 17); пары и их предыстория — ред. 4. "
              f"private/outcome-ensemble-structural.json `{B.sha256(os.path.join(B.PRIV, 'outcome-ensemble-structural.json'))[:16]}`. "
              f"Версии: numpy {B.lib_versions()['numpy']}, scipy {B.lib_versions()['scipy']} (закреплены, проверяются при запуске). "
-             "Повторный запуск всего конвейера (generate → calibrate → pairs → outcome → ensemble_structural → report → "
-             "prep_inputs → seal) даёт побайтно те же файлы (проверено 2026-10-28, в том числе с нуля на чистой копии).", ""]
+             "Повторный запуск всего конвейера (generate → calibrate → pairs → calibrate_r5 → pair_vars → outcome → "
+             "ensemble_structural → report → prep_inputs → seal) даёт побайтно те же файлы (проверено 2026-10-28, в том числе с нуля на чистой копии).", ""]
     for tbl in dict.fromkeys(r[0] for r in rows):
         lines += [f"## {tbl}", "", "| Показатель | Задумано | Источник | Выборка | Калибровка | Сходится |", "|---|---|---|---|---|---|"]
         for r in rows:

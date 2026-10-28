@@ -37,6 +37,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -94,7 +104,13 @@
     "DEFENS": 0.0312,
     "JEAL_FEEL": -0.5743,
     "CONTROL": 0.2731,
-    "LIE": -0.307
+    "LIE": -0.307,
+    "HUM_AFF": -1.2289,
+    "HUM_AGG": 0.1974,
+    "HUM_SELF": -2.45,
+    "DESIRE": 1.6494,
+    "SEX_TALK": 1.3536,
+    "FAM_CLOSE": 0.2349
    }
   },
   {
@@ -125,6 +141,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -182,7 +208,13 @@
     "DEFENS": -0.6746,
     "JEAL_FEEL": 0.4591,
     "CONTROL": -0.7003,
-    "LIE": -3.0864
+    "LIE": -3.0864,
+    "HUM_AFF": 0.6645,
+    "HUM_AGG": -0.722,
+    "HUM_SELF": -1.1173,
+    "DESIRE": 0.835,
+    "SEX_TALK": 1.1288,
+    "FAM_CLOSE": 0.8909
    }
   },
   {
@@ -213,6 +245,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -270,7 +312,13 @@
     "DEFENS": -2.0735,
     "JEAL_FEEL": -1.15,
     "CONTROL": 1.232,
-    "LIE": -1.1394
+    "LIE": -1.1394,
+    "HUM_AFF": 0.02,
+    "HUM_AGG": -0.6827,
+    "HUM_SELF": 0.4877,
+    "DESIRE": -0.2574,
+    "SEX_TALK": -0.3692,
+    "FAM_CLOSE": -1.8308
    }
   },
   {
@@ -301,6 +349,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -358,7 +416,13 @@
     "DEFENS": 1.3133,
     "JEAL_FEEL": -1.1101,
     "CONTROL": -0.622,
-    "LIE": -1.3171
+    "LIE": -1.3171,
+    "HUM_AFF": 0.6459,
+    "HUM_AGG": -0.4548,
+    "HUM_SELF": 0.1682,
+    "DESIRE": -1.5136,
+    "SEX_TALK": 0.6906,
+    "FAM_CLOSE": 1.0475
    }
   },
   {
@@ -389,6 +453,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "иногда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -446,7 +520,13 @@
     "DEFENS": -0.5508,
     "JEAL_FEEL": 1.1862,
     "CONTROL": 2.0283,
-    "LIE": -0.8322
+    "LIE": -0.8322,
+    "HUM_AFF": 0.0525,
+    "HUM_AGG": -1.4525,
+    "HUM_SELF": -0.6615,
+    "DESIRE": 0.7633,
+    "SEX_TALK": 2.505,
+    "FAM_CLOSE": 0.0386
    }
   },
   {
@@ -477,6 +557,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -534,7 +624,13 @@
     "DEFENS": -0.845,
     "JEAL_FEEL": -2.1476,
     "CONTROL": -0.3959,
-    "LIE": -0.9105
+    "LIE": -0.9105,
+    "HUM_AFF": -0.6395,
+    "HUM_AGG": -0.9826,
+    "HUM_SELF": -0.1766,
+    "DESIRE": 1.6098,
+    "SEX_TALK": 1.7533,
+    "FAM_CLOSE": 1.1324
    }
   },
   {
@@ -565,6 +661,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -622,7 +728,13 @@
     "DEFENS": -0.0158,
     "JEAL_FEEL": -0.0488,
     "CONTROL": -0.9244,
-    "LIE": -1.0498
+    "LIE": -1.0498,
+    "HUM_AFF": -0.4977,
+    "HUM_AGG": -1.5515,
+    "HUM_SELF": -0.301,
+    "DESIRE": 1.2226,
+    "SEX_TALK": 0.4496,
+    "FAM_CLOSE": -0.4476
    }
   },
   {
@@ -653,6 +765,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -710,7 +832,13 @@
     "DEFENS": -0.9631,
     "JEAL_FEEL": -0.7673,
     "CONTROL": -0.6662,
-    "LIE": -0.1165
+    "LIE": -0.1165,
+    "HUM_AFF": 1.0485,
+    "HUM_AGG": 0.6233,
+    "HUM_SELF": 1.2385,
+    "DESIRE": 0.0835,
+    "SEX_TALK": 1.9676,
+    "FAM_CLOSE": 0.0823
    }
   },
   {
@@ -741,6 +869,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -798,7 +936,13 @@
     "DEFENS": -0.1956,
     "JEAL_FEEL": -0.1117,
     "CONTROL": -2.0458,
-    "LIE": -0.2279
+    "LIE": -0.2279,
+    "HUM_AFF": 0.8625,
+    "HUM_AGG": -0.1047,
+    "HUM_SELF": -0.8483,
+    "DESIRE": -0.4697,
+    "SEX_TALK": 0.8367,
+    "FAM_CLOSE": -0.3555
    }
   },
   {
@@ -829,6 +973,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -886,7 +1040,13 @@
     "DEFENS": -1.6737,
     "JEAL_FEEL": -1.2815,
     "CONTROL": -1.7228,
-    "LIE": -0.2509
+    "LIE": -0.2509,
+    "HUM_AFF": 1.252,
+    "HUM_AGG": -1.2893,
+    "HUM_SELF": -0.1705,
+    "DESIRE": 0.1809,
+    "SEX_TALK": 1.7536,
+    "FAM_CLOSE": -0.6525
    }
   },
   {
@@ -917,6 +1077,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -974,7 +1144,13 @@
     "DEFENS": -1.4032,
     "JEAL_FEEL": 0.5384,
     "CONTROL": -0.9712,
-    "LIE": -2.4778
+    "LIE": -2.4778,
+    "HUM_AFF": -0.4824,
+    "HUM_AGG": -2.2833,
+    "HUM_SELF": -1.206,
+    "DESIRE": 0.0534,
+    "SEX_TALK": 0.9478,
+    "FAM_CLOSE": 1.251
    }
   },
   {
@@ -1005,6 +1181,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -1062,7 +1248,13 @@
     "DEFENS": 1.1715,
     "JEAL_FEEL": -0.3706,
     "CONTROL": 0.1184,
-    "LIE": -1.6199
+    "LIE": -1.6199,
+    "HUM_AFF": -0.2657,
+    "HUM_AGG": 0.6501,
+    "HUM_SELF": -0.604,
+    "DESIRE": 1.1314,
+    "SEX_TALK": -0.7619,
+    "FAM_CLOSE": -2.4117
    }
   },
   {
@@ -1093,6 +1285,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "часто",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -1150,7 +1352,13 @@
     "DEFENS": 0.6781,
     "JEAL_FEEL": 0.2752,
     "CONTROL": 0.9425,
-    "LIE": 0.9861
+    "LIE": 0.9861,
+    "HUM_AFF": 0.4864,
+    "HUM_AGG": 2.63,
+    "HUM_SELF": 1.9664,
+    "DESIRE": -1.1598,
+    "SEX_TALK": -1.961,
+    "FAM_CLOSE": -0.9356
    }
   },
   {
@@ -1181,6 +1389,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -1238,7 +1456,13 @@
     "DEFENS": -1.1336,
     "JEAL_FEEL": -0.031,
     "CONTROL": 0.8238,
-    "LIE": -0.0607
+    "LIE": -0.0607,
+    "HUM_AFF": -1.5248,
+    "HUM_AGG": -1.2425,
+    "HUM_SELF": -0.7718,
+    "DESIRE": 1.2698,
+    "SEX_TALK": 1.6345,
+    "FAM_CLOSE": -2.0806
    }
   },
   {
@@ -1269,6 +1493,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -1326,7 +1560,13 @@
     "DEFENS": 0.1201,
     "JEAL_FEEL": -0.9002,
     "CONTROL": -0.4729,
-    "LIE": -2.2683
+    "LIE": -2.2683,
+    "HUM_AFF": 1.5362,
+    "HUM_AGG": 0.8161,
+    "HUM_SELF": -0.551,
+    "DESIRE": 0.9041,
+    "SEX_TALK": 0.9642,
+    "FAM_CLOSE": -0.9757
    }
   },
   {
@@ -1357,6 +1597,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -1414,7 +1664,13 @@
     "DEFENS": -0.8972,
     "JEAL_FEEL": -0.0727,
     "CONTROL": 0.9104,
-    "LIE": -1.7916
+    "LIE": -1.7916,
+    "HUM_AFF": 0.6496,
+    "HUM_AGG": -0.1406,
+    "HUM_SELF": 1.2617,
+    "DESIRE": -1.2734,
+    "SEX_TALK": 0.4851,
+    "FAM_CLOSE": -0.22
    }
   },
   {
@@ -1445,6 +1701,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -1502,7 +1768,13 @@
     "DEFENS": -3.3499,
     "JEAL_FEEL": 0.0064,
     "CONTROL": 0.4926,
-    "LIE": -0.6242
+    "LIE": -0.6242,
+    "HUM_AFF": 0.0708,
+    "HUM_AGG": 0.7534,
+    "HUM_SELF": -0.9679,
+    "DESIRE": 2.5729,
+    "SEX_TALK": 1.5497,
+    "FAM_CLOSE": 0.2871
    }
   },
   {
@@ -1533,6 +1805,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "иногда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -1590,7 +1872,13 @@
     "DEFENS": 1.1002,
     "JEAL_FEEL": 0.7744,
     "CONTROL": 0.4058,
-    "LIE": -0.5865
+    "LIE": -0.5865,
+    "HUM_AFF": -0.9465,
+    "HUM_AGG": 0.8753,
+    "HUM_SELF": -0.8543,
+    "DESIRE": 0.4617,
+    "SEX_TALK": -0.2254,
+    "FAM_CLOSE": -0.6173
    }
   },
   {
@@ -1621,6 +1909,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -1678,7 +1976,13 @@
     "DEFENS": -0.3606,
     "JEAL_FEEL": -0.107,
     "CONTROL": 0.1165,
-    "LIE": 0.5991
+    "LIE": 0.5991,
+    "HUM_AFF": 1.0616,
+    "HUM_AGG": -1.0057,
+    "HUM_SELF": -0.9931,
+    "DESIRE": 1.1064,
+    "SEX_TALK": 1.9795,
+    "FAM_CLOSE": -0.3371
    }
   },
   {
@@ -1709,6 +2013,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "еженедельно и чаще"
    },
@@ -1766,7 +2080,13 @@
     "DEFENS": -3.1748,
     "JEAL_FEEL": -2.1143,
     "CONTROL": -0.427,
-    "LIE": 1.0447
+    "LIE": 1.0447,
+    "HUM_AFF": -1.7426,
+    "HUM_AGG": -0.8533,
+    "HUM_SELF": 0.7146,
+    "DESIRE": 1.0079,
+    "SEX_TALK": -0.5187,
+    "FAM_CLOSE": -2.3329
    }
   },
   {
@@ -1797,6 +2117,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "иногда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "иногда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -1854,7 +2184,13 @@
     "DEFENS": 0.0056,
     "JEAL_FEEL": 1.3587,
     "CONTROL": 2.0685,
-    "LIE": -0.6096
+    "LIE": -0.6096,
+    "HUM_AFF": 1.4314,
+    "HUM_AGG": 0.7109,
+    "HUM_SELF": 2.2622,
+    "DESIRE": -0.4872,
+    "SEX_TALK": -1.8997,
+    "FAM_CLOSE": 0.8021
    }
   },
   {
@@ -1885,6 +2221,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -1942,7 +2288,13 @@
     "DEFENS": -1.4937,
     "JEAL_FEEL": 1.3025,
     "CONTROL": 0.7953,
-    "LIE": -1.7777
+    "LIE": -1.7777,
+    "HUM_AFF": 0.4731,
+    "HUM_AGG": -2.6094,
+    "HUM_SELF": -2.1908,
+    "DESIRE": -0.4181,
+    "SEX_TALK": 0.5513,
+    "FAM_CLOSE": 1.4685
    }
   },
   {
@@ -1973,6 +2325,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -2030,7 +2392,13 @@
     "DEFENS": -1.2622,
     "JEAL_FEEL": 0.7401,
     "CONTROL": -1.3061,
-    "LIE": -1.8659
+    "LIE": -1.8659,
+    "HUM_AFF": 0.8003,
+    "HUM_AGG": -1.073,
+    "HUM_SELF": -1.4925,
+    "DESIRE": 1.1597,
+    "SEX_TALK": 0.9638,
+    "FAM_CLOSE": 1.8452
    }
   },
   {
@@ -2061,6 +2429,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -2118,7 +2496,13 @@
     "DEFENS": 1.9884,
     "JEAL_FEEL": -0.2527,
     "CONTROL": -1.0651,
-    "LIE": 0.782
+    "LIE": 0.782,
+    "HUM_AFF": -0.0795,
+    "HUM_AGG": -1.3701,
+    "HUM_SELF": 0.7495,
+    "DESIRE": 0.1132,
+    "SEX_TALK": -0.4805,
+    "FAM_CLOSE": -2.2033
    }
   },
   {
@@ -2149,6 +2533,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -2206,7 +2600,13 @@
     "DEFENS": -0.0051,
     "JEAL_FEEL": 2.2227,
     "CONTROL": 1.2293,
-    "LIE": 0.8881
+    "LIE": 0.8881,
+    "HUM_AFF": 2.4302,
+    "HUM_AGG": -0.252,
+    "HUM_SELF": 0.1552,
+    "DESIRE": 0.1373,
+    "SEX_TALK": 0.6335,
+    "FAM_CLOSE": 1.2601
    }
   },
   {
@@ -2237,6 +2637,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "иногда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -2294,7 +2704,13 @@
     "DEFENS": -0.1748,
     "JEAL_FEEL": -1.4821,
     "CONTROL": -1.1765,
-    "LIE": 0.3646
+    "LIE": 0.3646,
+    "HUM_AFF": -0.6343,
+    "HUM_AGG": 1.1315,
+    "HUM_SELF": -2.2391,
+    "DESIRE": 1.2256,
+    "SEX_TALK": 0.6939,
+    "FAM_CLOSE": -0.3615
    }
   },
   {
@@ -2325,6 +2741,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -2382,7 +2808,13 @@
     "DEFENS": 0.6416,
     "JEAL_FEEL": 0.299,
     "CONTROL": -1.8525,
-    "LIE": 0.1936
+    "LIE": 0.1936,
+    "HUM_AFF": -1.7184,
+    "HUM_AGG": -0.4696,
+    "HUM_SELF": -0.0233,
+    "DESIRE": -0.5142,
+    "SEX_TALK": 1.8767,
+    "FAM_CLOSE": -0.7152
    }
   },
   {
@@ -2413,6 +2845,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -2470,7 +2912,13 @@
     "DEFENS": -2.1804,
     "JEAL_FEEL": -0.0711,
     "CONTROL": -2.78,
-    "LIE": -0.2127
+    "LIE": -0.2127,
+    "HUM_AFF": -0.9911,
+    "HUM_AGG": -0.9274,
+    "HUM_SELF": -2.4256,
+    "DESIRE": 0.3228,
+    "SEX_TALK": 0.4625,
+    "FAM_CLOSE": 0.5466
    }
   },
   {
@@ -2501,6 +2949,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -2558,7 +3016,13 @@
     "DEFENS": -1.6706,
     "JEAL_FEEL": 0.4648,
     "CONTROL": -1.2124,
-    "LIE": -0.1282
+    "LIE": -0.1282,
+    "HUM_AFF": 0.8465,
+    "HUM_AGG": 0.4614,
+    "HUM_SELF": -2.686,
+    "DESIRE": -0.6063,
+    "SEX_TALK": 1.772,
+    "FAM_CLOSE": 1.7187
    }
   },
   {
@@ -2589,6 +3053,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -2646,7 +3120,13 @@
     "DEFENS": -0.979,
     "JEAL_FEEL": -2.2572,
     "CONTROL": -2.7968,
-    "LIE": -0.7779
+    "LIE": -0.7779,
+    "HUM_AFF": 2.4316,
+    "HUM_AGG": -2.799,
+    "HUM_SELF": -0.0802,
+    "DESIRE": 0.6761,
+    "SEX_TALK": 1.6023,
+    "FAM_CLOSE": -2.2014
    }
   },
   {
@@ -2677,6 +3157,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -2734,7 +3224,13 @@
     "DEFENS": -0.7926,
     "JEAL_FEEL": 0.8865,
     "CONTROL": -0.6105,
-    "LIE": -0.4132
+    "LIE": -0.4132,
+    "HUM_AFF": -0.48,
+    "HUM_AGG": -1.4533,
+    "HUM_SELF": 3.3273,
+    "DESIRE": -0.6173,
+    "SEX_TALK": 1.2135,
+    "FAM_CLOSE": -0.1377
    }
   },
   {
@@ -2765,6 +3261,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -2822,7 +3328,13 @@
     "DEFENS": -2.6588,
     "JEAL_FEEL": 0.5079,
     "CONTROL": 0.6786,
-    "LIE": -0.4665
+    "LIE": -0.4665,
+    "HUM_AFF": 1.5659,
+    "HUM_AGG": -0.9971,
+    "HUM_SELF": 0.8522,
+    "DESIRE": 1.2441,
+    "SEX_TALK": 0.7923,
+    "FAM_CLOSE": 1.5843
    }
   },
   {
@@ -2853,6 +3365,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -2910,7 +3432,13 @@
     "DEFENS": -1.3834,
     "JEAL_FEEL": 0.0999,
     "CONTROL": -0.0335,
-    "LIE": -0.441
+    "LIE": -0.441,
+    "HUM_AFF": -2.6538,
+    "HUM_AGG": -1.2769,
+    "HUM_SELF": -0.3334,
+    "DESIRE": -1.8068,
+    "SEX_TALK": 0.8646,
+    "FAM_CLOSE": 0.1535
    }
   },
   {
@@ -2941,6 +3469,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -2998,7 +3536,13 @@
     "DEFENS": -0.7972,
     "JEAL_FEEL": 0.5287,
     "CONTROL": -0.1216,
-    "LIE": -0.6138
+    "LIE": -0.6138,
+    "HUM_AFF": -0.317,
+    "HUM_AGG": 0.3971,
+    "HUM_SELF": 0.6387,
+    "DESIRE": -0.2658,
+    "SEX_TALK": 0.928,
+    "FAM_CLOSE": 1.4884
    }
   },
   {
@@ -3029,6 +3573,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -3086,7 +3640,13 @@
     "DEFENS": -0.8169,
     "JEAL_FEEL": -0.203,
     "CONTROL": -3.557,
-    "LIE": -2.0906
+    "LIE": -2.0906,
+    "HUM_AFF": 0.4087,
+    "HUM_AGG": -0.6661,
+    "HUM_SELF": -1.2432,
+    "DESIRE": 0.519,
+    "SEX_TALK": -0.8657,
+    "FAM_CLOSE": -0.2272
    }
   },
   {
@@ -3117,6 +3677,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -3174,7 +3744,13 @@
     "DEFENS": -1.4167,
     "JEAL_FEEL": -0.7409,
     "CONTROL": -0.3108,
-    "LIE": -1.2245
+    "LIE": -1.2245,
+    "HUM_AFF": 0.6735,
+    "HUM_AGG": -3.3954,
+    "HUM_SELF": -2.2897,
+    "DESIRE": -1.707,
+    "SEX_TALK": 1.7304,
+    "FAM_CLOSE": -1.9147
    }
   },
   {
@@ -3205,6 +3781,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "еженедельно и чаще"
    },
@@ -3262,7 +3848,13 @@
     "DEFENS": 1.3031,
     "JEAL_FEEL": -1.3442,
     "CONTROL": -2.7873,
-    "LIE": 0.8748
+    "LIE": 0.8748,
+    "HUM_AFF": 0.1028,
+    "HUM_AGG": 0.4623,
+    "HUM_SELF": -0.0516,
+    "DESIRE": 0.9098,
+    "SEX_TALK": -0.0912,
+    "FAM_CLOSE": -0.8471
    }
   },
   {
@@ -3293,6 +3885,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -3350,7 +3952,13 @@
     "DEFENS": 0.7215,
     "JEAL_FEEL": 1.2441,
     "CONTROL": -0.3898,
-    "LIE": -0.0884
+    "LIE": -0.0884,
+    "HUM_AFF": -2.3753,
+    "HUM_AGG": -0.7423,
+    "HUM_SELF": -0.3628,
+    "DESIRE": 0.5647,
+    "SEX_TALK": -0.8183,
+    "FAM_CLOSE": 0.1414
    }
   },
   {
@@ -3381,6 +3989,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "часто",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -3438,7 +4056,13 @@
     "DEFENS": -1.2162,
     "JEAL_FEEL": -0.0091,
     "CONTROL": 0.1269,
-    "LIE": 1.3914
+    "LIE": 1.3914,
+    "HUM_AFF": 1.2491,
+    "HUM_AGG": -0.3109,
+    "HUM_SELF": 1.5837,
+    "DESIRE": -0.8424,
+    "SEX_TALK": 1.4383,
+    "FAM_CLOSE": 2.3121
    }
   },
   {
@@ -3469,6 +4093,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -3526,7 +4160,13 @@
     "DEFENS": -1.938,
     "JEAL_FEEL": 0.3212,
     "CONTROL": 0.2188,
-    "LIE": -0.2889
+    "LIE": -0.2889,
+    "HUM_AFF": 1.3911,
+    "HUM_AGG": -1.7767,
+    "HUM_SELF": -0.3757,
+    "DESIRE": 1.6198,
+    "SEX_TALK": 0.1405,
+    "FAM_CLOSE": 1.5523
    }
   },
   {
@@ -3557,6 +4197,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "иногда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -3614,7 +4264,13 @@
     "DEFENS": 0.0642,
     "JEAL_FEEL": 0.5312,
     "CONTROL": 1.3473,
-    "LIE": 0.2842
+    "LIE": 0.2842,
+    "HUM_AFF": -0.2879,
+    "HUM_AGG": 0.1787,
+    "HUM_SELF": -0.8157,
+    "DESIRE": 1.6279,
+    "SEX_TALK": -0.8356,
+    "FAM_CLOSE": -1.0103
    }
   },
   {
@@ -3645,6 +4301,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -3702,7 +4368,13 @@
     "DEFENS": -0.1319,
     "JEAL_FEEL": -1.8444,
     "CONTROL": 1.1141,
-    "LIE": -0.5914
+    "LIE": -0.5914,
+    "HUM_AFF": -1.126,
+    "HUM_AGG": 1.1791,
+    "HUM_SELF": -0.0112,
+    "DESIRE": 0.1583,
+    "SEX_TALK": -1.6756,
+    "FAM_CLOSE": 0.7849
    }
   },
   {
@@ -3733,6 +4405,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -3790,7 +4472,13 @@
     "DEFENS": 1.4805,
     "JEAL_FEEL": -0.2564,
     "CONTROL": -1.7107,
-    "LIE": 0.4288
+    "LIE": 0.4288,
+    "HUM_AFF": 0.2885,
+    "HUM_AGG": 0.0972,
+    "HUM_SELF": -0.7334,
+    "DESIRE": -1.2224,
+    "SEX_TALK": -0.8805,
+    "FAM_CLOSE": -1.3693
    }
   },
   {
@@ -3821,6 +4509,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "иногда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -3878,7 +4576,13 @@
     "DEFENS": -0.2046,
     "JEAL_FEEL": 0.5456,
     "CONTROL": 1.4346,
-    "LIE": -1.6468
+    "LIE": -1.6468,
+    "HUM_AFF": 0.0376,
+    "HUM_AGG": -0.6913,
+    "HUM_SELF": -0.2803,
+    "DESIRE": -0.2208,
+    "SEX_TALK": -0.2256,
+    "FAM_CLOSE": 0.4309
    }
   },
   {
@@ -3909,6 +4613,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -3966,7 +4680,13 @@
     "DEFENS": -1.2306,
     "JEAL_FEEL": 0.6221,
     "CONTROL": -0.2925,
-    "LIE": -1.3169
+    "LIE": -1.3169,
+    "HUM_AFF": 2.0098,
+    "HUM_AGG": -1.2135,
+    "HUM_SELF": 0.5239,
+    "DESIRE": -1.2585,
+    "SEX_TALK": -0.0955,
+    "FAM_CLOSE": 0.1282
    }
   },
   {
@@ -3997,6 +4717,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4054,7 +4784,13 @@
     "DEFENS": -1.1595,
     "JEAL_FEEL": 0.6557,
     "CONTROL": 0.6488,
-    "LIE": -1.5648
+    "LIE": -1.5648,
+    "HUM_AFF": 0.2196,
+    "HUM_AGG": 0.5884,
+    "HUM_SELF": 2.04,
+    "DESIRE": 0.2809,
+    "SEX_TALK": -0.4857,
+    "FAM_CLOSE": -2.1226
    }
   },
   {
@@ -4085,6 +4821,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4142,7 +4888,13 @@
     "DEFENS": -1.0941,
     "JEAL_FEEL": -0.2342,
     "CONTROL": -0.013,
-    "LIE": -2.0423
+    "LIE": -2.0423,
+    "HUM_AFF": 1.1798,
+    "HUM_AGG": -1.4399,
+    "HUM_SELF": -1.089,
+    "DESIRE": 0.9055,
+    "SEX_TALK": 1.46,
+    "FAM_CLOSE": 0.0993
    }
   },
   {
@@ -4173,6 +4925,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4230,7 +4992,13 @@
     "DEFENS": 2.0508,
     "JEAL_FEEL": 1.6963,
     "CONTROL": -0.549,
-    "LIE": -1.424
+    "LIE": -1.424,
+    "HUM_AFF": 0.0866,
+    "HUM_AGG": -2.2875,
+    "HUM_SELF": 0.8272,
+    "DESIRE": 0.1557,
+    "SEX_TALK": 0.3767,
+    "FAM_CLOSE": 1.0429
    }
   },
   {
@@ -4261,6 +5029,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -4318,7 +5096,13 @@
     "DEFENS": -0.1926,
     "JEAL_FEEL": -1.029,
     "CONTROL": -2.8556,
-    "LIE": -0.5502
+    "LIE": -0.5502,
+    "HUM_AFF": 2.216,
+    "HUM_AGG": -0.1304,
+    "HUM_SELF": -0.5346,
+    "DESIRE": 0.6173,
+    "SEX_TALK": 1.2964,
+    "FAM_CLOSE": 0.0844
    }
   },
   {
@@ -4349,6 +5133,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "иногда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4406,7 +5200,13 @@
     "DEFENS": -0.3074,
     "JEAL_FEEL": 0.4952,
     "CONTROL": 1.7554,
-    "LIE": 0.3597
+    "LIE": 0.3597,
+    "HUM_AFF": 1.7821,
+    "HUM_AGG": 0.9245,
+    "HUM_SELF": 0.1071,
+    "DESIRE": -0.7742,
+    "SEX_TALK": 1.3774,
+    "FAM_CLOSE": -0.0605
    }
   },
   {
@@ -4437,6 +5237,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -4494,7 +5304,13 @@
     "DEFENS": -3.8345,
     "JEAL_FEEL": -0.6718,
     "CONTROL": 0.5529,
-    "LIE": 1.0737
+    "LIE": 1.0737,
+    "HUM_AFF": 0.8958,
+    "HUM_AGG": -1.9677,
+    "HUM_SELF": -1.0772,
+    "DESIRE": 1.5989,
+    "SEX_TALK": 2.1546,
+    "FAM_CLOSE": 0.8089
    }
   },
   {
@@ -4525,6 +5341,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4582,7 +5408,13 @@
     "DEFENS": -2.9984,
     "JEAL_FEEL": -0.3085,
     "CONTROL": -0.8005,
-    "LIE": -0.34
+    "LIE": -0.34,
+    "HUM_AFF": 1.1817,
+    "HUM_AGG": -0.3896,
+    "HUM_SELF": 0.0592,
+    "DESIRE": -2.2906,
+    "SEX_TALK": -0.6184,
+    "FAM_CLOSE": 1.862
    }
   },
   {
@@ -4613,6 +5445,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4670,7 +5512,13 @@
     "DEFENS": -0.6671,
     "JEAL_FEEL": 2.0777,
     "CONTROL": 0.6008,
-    "LIE": 0.1087
+    "LIE": 0.1087,
+    "HUM_AFF": -2.8061,
+    "HUM_AGG": -1.0922,
+    "HUM_SELF": 0.9776,
+    "DESIRE": -1.3943,
+    "SEX_TALK": -0.486,
+    "FAM_CLOSE": 0.6351
    }
   },
   {
@@ -4701,6 +5549,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "иногда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4758,7 +5616,13 @@
     "DEFENS": 0.1725,
     "JEAL_FEEL": -0.4922,
     "CONTROL": -1.3968,
-    "LIE": -1.0561
+    "LIE": -1.0561,
+    "HUM_AFF": 1.8057,
+    "HUM_AGG": 1.0667,
+    "HUM_SELF": -1.2698,
+    "DESIRE": 1.0346,
+    "SEX_TALK": 1.4315,
+    "FAM_CLOSE": -0.6525
    }
   },
   {
@@ -4789,6 +5653,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "почти никогда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4846,7 +5720,13 @@
     "DEFENS": 0.8149,
     "JEAL_FEEL": 1.4497,
     "CONTROL": 0.6225,
-    "LIE": -0.6926
+    "LIE": -0.6926,
+    "HUM_AFF": -2.1353,
+    "HUM_AGG": -0.41,
+    "HUM_SELF": 2.864,
+    "DESIRE": 1.3004,
+    "SEX_TALK": -0.7113,
+    "FAM_CLOSE": -0.9861
    }
   },
   {
@@ -4877,6 +5757,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -4934,7 +5824,13 @@
     "DEFENS": -0.2372,
     "JEAL_FEEL": 1.3866,
     "CONTROL": 0.6199,
-    "LIE": -0.5853
+    "LIE": -0.5853,
+    "HUM_AFF": 0.1255,
+    "HUM_AGG": 0.1758,
+    "HUM_SELF": 1.9109,
+    "DESIRE": -0.1531,
+    "SEX_TALK": -1.3081,
+    "FAM_CLOSE": 0.2253
    }
   },
   {
@@ -4965,6 +5861,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -5022,7 +5928,13 @@
     "DEFENS": 1.3557,
     "JEAL_FEEL": -1.3987,
     "CONTROL": 0.5808,
-    "LIE": -1.4581
+    "LIE": -1.4581,
+    "HUM_AFF": 2.2251,
+    "HUM_AGG": -1.7617,
+    "HUM_SELF": -0.9541,
+    "DESIRE": 1.5571,
+    "SEX_TALK": 1.1965,
+    "FAM_CLOSE": -1.2785
    }
   },
   {
@@ -5053,6 +5965,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -5110,7 +6032,13 @@
     "DEFENS": -1.049,
     "JEAL_FEEL": -0.3873,
     "CONTROL": -0.2387,
-    "LIE": 1.7082
+    "LIE": 1.7082,
+    "HUM_AFF": 1.3623,
+    "HUM_AGG": -0.4801,
+    "HUM_SELF": 1.6719,
+    "DESIRE": -0.2201,
+    "SEX_TALK": 1.4825,
+    "FAM_CLOSE": -0.8993
    }
   },
   {
@@ -5141,6 +6069,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -5198,7 +6136,13 @@
     "DEFENS": -1.372,
     "JEAL_FEEL": -1.2143,
     "CONTROL": -0.5175,
-    "LIE": 0.3844
+    "LIE": 0.3844,
+    "HUM_AFF": -1.0811,
+    "HUM_AGG": -2.1489,
+    "HUM_SELF": -2.1538,
+    "DESIRE": 0.8011,
+    "SEX_TALK": 1.0579,
+    "FAM_CLOSE": 0.012
    }
   },
   {
@@ -5229,6 +6173,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -5286,7 +6240,13 @@
     "DEFENS": 0.6045,
     "JEAL_FEEL": -0.9576,
     "CONTROL": 1.0472,
-    "LIE": 0.758
+    "LIE": 0.758,
+    "HUM_AFF": 0.3859,
+    "HUM_AGG": 0.6847,
+    "HUM_SELF": -0.7909,
+    "DESIRE": -0.325,
+    "SEX_TALK": -0.0139,
+    "FAM_CLOSE": -1.1388
    }
   },
   {
@@ -5317,6 +6277,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -5374,7 +6344,13 @@
     "DEFENS": -1.3019,
     "JEAL_FEEL": -1.8526,
     "CONTROL": -1.2081,
-    "LIE": -1.7247
+    "LIE": -1.7247,
+    "HUM_AFF": -0.2974,
+    "HUM_AGG": -0.0041,
+    "HUM_SELF": -2.2187,
+    "DESIRE": 0.8742,
+    "SEX_TALK": -0.6906,
+    "FAM_CLOSE": -0.3877
    }
   },
   {
@@ -5405,6 +6381,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -5462,7 +6448,13 @@
     "DEFENS": 1.3976,
     "JEAL_FEEL": 2.1615,
     "CONTROL": -0.401,
-    "LIE": -0.2936
+    "LIE": -0.2936,
+    "HUM_AFF": 0.9578,
+    "HUM_AGG": 0.0898,
+    "HUM_SELF": 1.3314,
+    "DESIRE": 2.3239,
+    "SEX_TALK": -0.2515,
+    "FAM_CLOSE": -0.6888
    }
   },
   {
@@ -5493,6 +6485,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -5550,7 +6552,13 @@
     "DEFENS": 0.1656,
     "JEAL_FEEL": -0.852,
     "CONTROL": -0.9772,
-    "LIE": -0.1711
+    "LIE": -0.1711,
+    "HUM_AFF": 1.0166,
+    "HUM_AGG": -2.4992,
+    "HUM_SELF": 0.6274,
+    "DESIRE": 1.4203,
+    "SEX_TALK": 0.1419,
+    "FAM_CLOSE": 2.7177
    }
   },
   {
@@ -5581,6 +6589,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -5638,7 +6656,13 @@
     "DEFENS": -0.2118,
     "JEAL_FEEL": 0.9615,
     "CONTROL": -0.5899,
-    "LIE": 0.2254
+    "LIE": 0.2254,
+    "HUM_AFF": 0.8615,
+    "HUM_AGG": 0.2847,
+    "HUM_SELF": -0.7112,
+    "DESIRE": 2.6785,
+    "SEX_TALK": 1.3452,
+    "FAM_CLOSE": 0.9022
    }
   },
   {
@@ -5669,6 +6693,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -5726,7 +6760,13 @@
     "DEFENS": -1.2739,
     "JEAL_FEEL": -1.0219,
     "CONTROL": -1.2331,
-    "LIE": -1.2526
+    "LIE": -1.2526,
+    "HUM_AFF": 0.5498,
+    "HUM_AGG": -0.3215,
+    "HUM_SELF": -1.2204,
+    "DESIRE": 0.0245,
+    "SEX_TALK": 0.6001,
+    "FAM_CLOSE": 1.2397
    }
   },
   {
@@ -5757,6 +6797,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -5814,7 +6864,13 @@
     "DEFENS": 1.4743,
     "JEAL_FEEL": -1.028,
     "CONTROL": -2.8466,
-    "LIE": -1.7886
+    "LIE": -1.7886,
+    "HUM_AFF": 1.2681,
+    "HUM_AGG": -1.4773,
+    "HUM_SELF": -0.8149,
+    "DESIRE": 0.8326,
+    "SEX_TALK": 1.99,
+    "FAM_CLOSE": 0.2253
    }
   },
   {
@@ -5845,6 +6901,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "часто",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -5902,7 +6968,13 @@
     "DEFENS": -0.7698,
     "JEAL_FEEL": 0.4354,
     "CONTROL": 1.8483,
-    "LIE": -0.5085
+    "LIE": -0.5085,
+    "HUM_AFF": 0.2107,
+    "HUM_AGG": 0.0484,
+    "HUM_SELF": -1.5586,
+    "DESIRE": 2.3714,
+    "SEX_TALK": 1.5059,
+    "FAM_CLOSE": -0.9735
    }
   },
   {
@@ -5933,6 +7005,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -5990,7 +7072,13 @@
     "DEFENS": 0.1217,
     "JEAL_FEEL": -0.5151,
     "CONTROL": -1.7406,
-    "LIE": 1.0445
+    "LIE": 1.0445,
+    "HUM_AFF": 0.4373,
+    "HUM_AGG": -1.3162,
+    "HUM_SELF": -0.5333,
+    "DESIRE": -2.9703,
+    "SEX_TALK": -0.4092,
+    "FAM_CLOSE": -1.0528
    }
   },
   {
@@ -6021,6 +7109,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -6078,7 +7176,13 @@
     "DEFENS": 2.1094,
     "JEAL_FEEL": 0.8014,
     "CONTROL": 0.3891,
-    "LIE": -1.8464
+    "LIE": -1.8464,
+    "HUM_AFF": -1.159,
+    "HUM_AGG": -0.7073,
+    "HUM_SELF": -0.2744,
+    "DESIRE": -0.2097,
+    "SEX_TALK": 1.4181,
+    "FAM_CLOSE": 1.1641
    }
   },
   {
@@ -6109,6 +7213,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6166,7 +7280,13 @@
     "DEFENS": -0.3993,
     "JEAL_FEEL": 0.7818,
     "CONTROL": -0.3551,
-    "LIE": -1.0149
+    "LIE": -1.0149,
+    "HUM_AFF": 1.481,
+    "HUM_AGG": -1.1903,
+    "HUM_SELF": -0.8762,
+    "DESIRE": -1.9628,
+    "SEX_TALK": 0.72,
+    "FAM_CLOSE": -0.6764
    }
   },
   {
@@ -6197,6 +7317,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "часто",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "часто",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6254,7 +7384,13 @@
     "DEFENS": 0.5395,
     "JEAL_FEEL": -1.0752,
     "CONTROL": 2.145,
-    "LIE": 1.2138
+    "LIE": 1.2138,
+    "HUM_AFF": 0.8097,
+    "HUM_AGG": 1.4753,
+    "HUM_SELF": 0.6668,
+    "DESIRE": -1.758,
+    "SEX_TALK": 0.702,
+    "FAM_CLOSE": -0.4858
    }
   },
   {
@@ -6285,6 +7421,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "иногда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "часто",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6342,7 +7488,13 @@
     "DEFENS": 0.5689,
     "JEAL_FEEL": -0.5708,
     "CONTROL": 1.3963,
-    "LIE": -0.177
+    "LIE": -0.177,
+    "HUM_AFF": 0.965,
+    "HUM_AGG": 1.5329,
+    "HUM_SELF": -1.2781,
+    "DESIRE": -2.7461,
+    "SEX_TALK": 0.8156,
+    "FAM_CLOSE": -0.8119
    }
   },
   {
@@ -6373,6 +7525,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "часто",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6430,7 +7592,13 @@
     "DEFENS": -0.9342,
     "JEAL_FEEL": -0.6185,
     "CONTROL": -0.1276,
-    "LIE": 1.6177
+    "LIE": 1.6177,
+    "HUM_AFF": 0.5991,
+    "HUM_AGG": -0.4619,
+    "HUM_SELF": 0.0533,
+    "DESIRE": -0.6439,
+    "SEX_TALK": 1.6687,
+    "FAM_CLOSE": 0.1784
    }
   },
   {
@@ -6461,6 +7629,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6518,7 +7696,13 @@
     "DEFENS": 0.8834,
     "JEAL_FEEL": 1.4698,
     "CONTROL": -0.6509,
-    "LIE": -0.9447
+    "LIE": -0.9447,
+    "HUM_AFF": -0.1055,
+    "HUM_AGG": 0.1195,
+    "HUM_SELF": -1.4867,
+    "DESIRE": 0.1761,
+    "SEX_TALK": 0.3775,
+    "FAM_CLOSE": 0.2619
    }
   },
   {
@@ -6549,6 +7733,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -6606,7 +7800,13 @@
     "DEFENS": -0.1461,
     "JEAL_FEEL": -0.0414,
     "CONTROL": -0.8895,
-    "LIE": -1.3741
+    "LIE": -1.3741,
+    "HUM_AFF": 1.0147,
+    "HUM_AGG": 0.2013,
+    "HUM_SELF": -0.6831,
+    "DESIRE": -2.1166,
+    "SEX_TALK": 0.0521,
+    "FAM_CLOSE": -0.7071
    }
   },
   {
@@ -6637,6 +7837,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6694,7 +7904,13 @@
     "DEFENS": 0.0425,
     "JEAL_FEEL": -0.173,
     "CONTROL": 0.1311,
-    "LIE": 0.0051
+    "LIE": 0.0051,
+    "HUM_AFF": 1.4277,
+    "HUM_AGG": -1.0654,
+    "HUM_SELF": -0.0511,
+    "DESIRE": -1.3607,
+    "SEX_TALK": -0.8423,
+    "FAM_CLOSE": -1.8623
    }
   },
   {
@@ -6725,6 +7941,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6782,7 +8008,13 @@
     "DEFENS": 1.806,
     "JEAL_FEEL": 2.0843,
     "CONTROL": -0.0488,
-    "LIE": -0.7627
+    "LIE": -0.7627,
+    "HUM_AFF": 0.2815,
+    "HUM_AGG": -1.0127,
+    "HUM_SELF": -0.1108,
+    "DESIRE": -0.3113,
+    "SEX_TALK": 1.4401,
+    "FAM_CLOSE": -1.4463
    }
   },
   {
@@ -6813,6 +8045,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6870,7 +8112,13 @@
     "DEFENS": -2.343,
     "JEAL_FEEL": -0.9694,
     "CONTROL": -2.3737,
-    "LIE": -0.0369
+    "LIE": -0.0369,
+    "HUM_AFF": -0.0323,
+    "HUM_AGG": 0.9891,
+    "HUM_SELF": -0.2527,
+    "DESIRE": 2.2041,
+    "SEX_TALK": -0.7546,
+    "FAM_CLOSE": 2.3478
    }
   },
   {
@@ -6901,6 +8149,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -6958,7 +8216,13 @@
     "DEFENS": -1.7623,
     "JEAL_FEEL": 0.1179,
     "CONTROL": -1.4711,
-    "LIE": -1.0308
+    "LIE": -1.0308,
+    "HUM_AFF": 1.8694,
+    "HUM_AGG": -2.1131,
+    "HUM_SELF": 0.8477,
+    "DESIRE": 0.4325,
+    "SEX_TALK": 0.8392,
+    "FAM_CLOSE": -0.582
    }
   },
   {
@@ -6989,6 +8253,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "иногда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -7046,7 +8320,13 @@
     "DEFENS": -0.5438,
     "JEAL_FEEL": 0.8801,
     "CONTROL": 1.5128,
-    "LIE": -0.0034
+    "LIE": -0.0034,
+    "HUM_AFF": -0.8528,
+    "HUM_AGG": 1.0462,
+    "HUM_SELF": 0.6616,
+    "DESIRE": 0.7517,
+    "SEX_TALK": 0.1734,
+    "FAM_CLOSE": 0.2119
    }
   },
   {
@@ -7077,6 +8357,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -7134,7 +8424,13 @@
     "DEFENS": -0.6737,
     "JEAL_FEEL": -1.8635,
     "CONTROL": -1.4507,
-    "LIE": 0.8108
+    "LIE": 0.8108,
+    "HUM_AFF": -0.4176,
+    "HUM_AGG": -1.3912,
+    "HUM_SELF": -0.9326,
+    "DESIRE": 0.6366,
+    "SEX_TALK": 1.4342,
+    "FAM_CLOSE": -1.3678
    }
   },
   {
@@ -7165,6 +8461,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "часто",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -7222,7 +8528,13 @@
     "DEFENS": 0.8267,
     "JEAL_FEEL": 0.5839,
     "CONTROL": -0.2112,
-    "LIE": -1.2735
+    "LIE": -1.2735,
+    "HUM_AFF": -0.7474,
+    "HUM_AGG": 1.7286,
+    "HUM_SELF": 0.7179,
+    "DESIRE": -1.2944,
+    "SEX_TALK": -0.4824,
+    "FAM_CLOSE": 0.3313
    }
   },
   {
@@ -7253,6 +8565,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -7310,7 +8632,13 @@
     "DEFENS": 1.1774,
     "JEAL_FEEL": 1.2862,
     "CONTROL": 1.6197,
-    "LIE": 0.2644
+    "LIE": 0.2644,
+    "HUM_AFF": 0.2696,
+    "HUM_AGG": 1.3043,
+    "HUM_SELF": -1.6212,
+    "DESIRE": 0.9762,
+    "SEX_TALK": 1.3755,
+    "FAM_CLOSE": -0.2621
    }
   },
   {
@@ -7341,6 +8669,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -7398,7 +8736,13 @@
     "DEFENS": 0.4175,
     "JEAL_FEEL": -0.153,
     "CONTROL": -1.9161,
-    "LIE": -1.0854
+    "LIE": -1.0854,
+    "HUM_AFF": 0.2267,
+    "HUM_AGG": 1.1619,
+    "HUM_SELF": -0.1399,
+    "DESIRE": 1.7133,
+    "SEX_TALK": 0.3714,
+    "FAM_CLOSE": 0.4605
    }
   },
   {
@@ -7429,6 +8773,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -7486,7 +8840,13 @@
     "DEFENS": -0.9249,
     "JEAL_FEEL": -0.8198,
     "CONTROL": 0.2978,
-    "LIE": -0.6522
+    "LIE": -0.6522,
+    "HUM_AFF": -0.3384,
+    "HUM_AGG": -0.2768,
+    "HUM_SELF": 0.1905,
+    "DESIRE": 1.6313,
+    "SEX_TALK": 1.6814,
+    "FAM_CLOSE": -1.4695
    }
   },
   {
@@ -7517,6 +8877,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -7574,7 +8944,13 @@
     "DEFENS": -0.9054,
     "JEAL_FEEL": -1.0469,
     "CONTROL": 0.4523,
-    "LIE": -1.446
+    "LIE": -1.446,
+    "HUM_AFF": 1.6326,
+    "HUM_AGG": -0.3529,
+    "HUM_SELF": 1.8307,
+    "DESIRE": 1.2036,
+    "SEX_TALK": -0.7835,
+    "FAM_CLOSE": 0.5411
    }
   },
   {
@@ -7605,6 +8981,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "иногда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "еженедельно и чаще"
    },
@@ -7662,7 +9048,13 @@
     "DEFENS": 2.1549,
     "JEAL_FEEL": 0.8524,
     "CONTROL": 2.1005,
-    "LIE": -0.8409
+    "LIE": -0.8409,
+    "HUM_AFF": -1.031,
+    "HUM_AGG": 0.5947,
+    "HUM_SELF": 0.288,
+    "DESIRE": -0.8567,
+    "SEX_TALK": 1.5264,
+    "FAM_CLOSE": -0.4384
    }
   },
   {
@@ -7693,6 +9085,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -7750,7 +9152,13 @@
     "DEFENS": 1.1185,
     "JEAL_FEEL": -0.4023,
     "CONTROL": 0.564,
-    "LIE": 0.7856
+    "LIE": 0.7856,
+    "HUM_AFF": 0.1386,
+    "HUM_AGG": 0.9821,
+    "HUM_SELF": 0.3522,
+    "DESIRE": 1.0917,
+    "SEX_TALK": -0.3407,
+    "FAM_CLOSE": 0.5809
    }
   },
   {
@@ -7781,6 +9189,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "иногда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -7838,7 +9256,13 @@
     "DEFENS": -2.2513,
     "JEAL_FEEL": -0.2486,
     "CONTROL": 1.5162,
-    "LIE": -0.6064
+    "LIE": -0.6064,
+    "HUM_AFF": 0.8409,
+    "HUM_AGG": -2.8786,
+    "HUM_SELF": -0.5758,
+    "DESIRE": 0.8338,
+    "SEX_TALK": 1.4255,
+    "FAM_CLOSE": -0.1691
    }
   },
   {
@@ -7869,6 +9293,16 @@
    "jealousy_feeling": "иногда",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -7926,7 +9360,13 @@
     "DEFENS": -2.1432,
     "JEAL_FEEL": 0.2427,
     "CONTROL": 0.6023,
-    "LIE": -1.1251
+    "LIE": -1.1251,
+    "HUM_AFF": 1.8577,
+    "HUM_AGG": -1.7008,
+    "HUM_SELF": -1.8744,
+    "DESIRE": 1.8765,
+    "SEX_TALK": 1.2782,
+    "FAM_CLOSE": -1.1237
    }
   },
   {
@@ -7957,6 +9397,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "ежемесячно"
    },
@@ -8014,7 +9464,13 @@
     "DEFENS": 0.1387,
     "JEAL_FEEL": -0.4809,
     "CONTROL": -0.348,
-    "LIE": -0.024
+    "LIE": -0.024,
+    "HUM_AFF": -0.2913,
+    "HUM_AGG": -2.0537,
+    "HUM_SELF": 1.6005,
+    "DESIRE": 2.2952,
+    "SEX_TALK": -0.0455,
+    "FAM_CLOSE": -2.1111
    }
   },
   {
@@ -8045,6 +9501,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "редко",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -8102,7 +9568,13 @@
     "DEFENS": 0.2342,
     "JEAL_FEEL": -1.7389,
     "CONTROL": 0.1547,
-    "LIE": -2.7416
+    "LIE": -2.7416,
+    "HUM_AFF": -0.1658,
+    "HUM_AGG": -0.0823,
+    "HUM_SELF": -1.5796,
+    "DESIRE": -0.0774,
+    "SEX_TALK": 2.0627,
+    "FAM_CLOSE": 2.6908
    }
   },
   {
@@ -8133,6 +9605,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "часто"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -8190,7 +9672,13 @@
     "DEFENS": -2.1488,
     "JEAL_FEEL": -0.6702,
     "CONTROL": -0.0292,
-    "LIE": -0.7876
+    "LIE": -0.7876,
+    "HUM_AFF": -0.2767,
+    "HUM_AGG": -0.7163,
+    "HUM_SELF": 1.3013,
+    "DESIRE": 0.7373,
+    "SEX_TALK": 0.8493,
+    "FAM_CLOSE": -0.3689
    }
   },
   {
@@ -8221,6 +9709,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "часто",
+    "mocks_partner": "иногда",
+    "self_deprecating": "редко"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "легко"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "реже раза в месяц"
    },
@@ -8278,7 +9776,13 @@
     "DEFENS": -0.3238,
     "JEAL_FEEL": -2.0328,
     "CONTROL": -0.6272,
-    "LIE": -0.754
+    "LIE": -0.754,
+    "HUM_AFF": 1.139,
+    "HUM_AGG": 1.226,
+    "HUM_SELF": -0.3294,
+    "DESIRE": 1.6358,
+    "SEX_TALK": 1.0585,
+    "FAM_CLOSE": 2.1241
    }
   },
   {
@@ -8309,6 +9813,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "примерно раз в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -8366,7 +9880,13 @@
     "DEFENS": 0.5429,
     "JEAL_FEEL": -1.4461,
     "CONTROL": 1.1185,
-    "LIE": -0.2775
+    "LIE": -0.2775,
+    "HUM_AFF": -0.9024,
+    "HUM_AGG": -1.0114,
+    "HUM_SELF": 0.9398,
+    "DESIRE": -0.5688,
+    "SEX_TALK": -0.6364,
+    "FAM_CLOSE": 1.6103
    }
   },
   {
@@ -8397,6 +9917,16 @@
    "jealousy_feeling": "часто",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "редко",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "советуется с родителями и прислушивается к ним",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -8454,7 +9984,13 @@
     "DEFENS": 1.9904,
     "JEAL_FEEL": 1.3771,
     "CONTROL": 0.1655,
-    "LIE": -0.1915
+    "LIE": -0.1915,
+    "HUM_AFF": -1.0768,
+    "HUM_AGG": -0.0292,
+    "HUM_SELF": 0.5244,
+    "DESIRE": -1.3416,
+    "SEX_TALK": -1.5845,
+    "FAM_CLOSE": -0.0995
    }
   },
   {
@@ -8485,6 +10021,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "иногда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "иногда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "несколько раз в неделю",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -8542,7 +10088,13 @@
     "DEFENS": -0.8409,
     "JEAL_FEEL": -1.2359,
     "CONTROL": -3.1053,
-    "LIE": 1.4144
+    "LIE": 1.4144,
+    "HUM_AFF": -0.0903,
+    "HUM_AGG": 1.2516,
+    "HUM_SELF": -0.7004,
+    "DESIRE": 0.3603,
+    "SEX_TALK": -0.0467,
+    "FAM_CLOSE": 1.0148
    }
   },
   {
@@ -8573,6 +10125,16 @@
    "jealousy_feeling": "почти никогда",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "иногда",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "реже раза в неделю",
+    "talking_about_sex": "трудно, обычно избегает таких разговоров"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -8630,7 +10192,13 @@
     "DEFENS": -0.1123,
     "JEAL_FEEL": -1.0777,
     "CONTROL": -0.5636,
-    "LIE": -0.9281
+    "LIE": -0.9281,
+    "HUM_AFF": 0.4934,
+    "HUM_AGG": -2.4509,
+    "HUM_SELF": -1.3715,
+    "DESIRE": -2.0242,
+    "SEX_TALK": -1.2442,
+    "FAM_CLOSE": 1.9385
    }
   },
   {
@@ -8661,6 +10229,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "почти никогда",
    "lies_to_partner_small_things": "редко",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "почти никогда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "мнение родителей для него (неё) решающее",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -8718,7 +10296,13 @@
     "DEFENS": 0.6648,
     "JEAL_FEEL": 0.0474,
     "CONTROL": -1.7634,
-    "LIE": -0.2759
+    "LIE": -0.2759,
+    "HUM_AFF": -1.2532,
+    "HUM_AGG": -0.8303,
+    "HUM_SELF": -0.916,
+    "DESIRE": 2.1448,
+    "SEX_TALK": 0.5031,
+    "FAM_CLOSE": 1.0609
    }
   },
   {
@@ -8749,6 +10333,16 @@
    "jealousy_feeling": "редко",
    "controlling_partner": "редко",
    "lies_to_partner_small_things": "почти никогда",
+   "humor": {
+    "kind_jokes": "редко",
+    "mocks_partner": "почти никогда",
+    "self_deprecating": "иногда"
+   },
+   "intimacy": {
+    "desired_frequency": "почти каждый день",
+    "talking_about_sex": "смотря о чём"
+   },
+   "parents_opinion_weight": "решения принимает без оглядки на родителей",
    "alcohol": {
     "frequency": "не пьёт"
    },
@@ -8806,7 +10400,13 @@
     "DEFENS": -1.7463,
     "JEAL_FEEL": -0.3115,
     "CONTROL": 1.5471,
-    "LIE": -1.0422
+    "LIE": -1.0422,
+    "HUM_AFF": -0.5469,
+    "HUM_AGG": -1.4239,
+    "HUM_SELF": 0.4863,
+    "DESIRE": 3.5705,
+    "SEX_TALK": -0.2633,
+    "FAM_CLOSE": -0.6247
    }
   }
  ]
