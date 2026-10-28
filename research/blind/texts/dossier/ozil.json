@@ -1,0 +1,20 @@
+{
+ "id": "ozil",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "063d1eb92ae4ef1f346dd2f5b5d281db752fc08b7335adb1064d53ac9866865c",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "063d1eb92ae4ef1f346dd2f5b5d281db752fc08b7335adb1064d53ac9866865c",
+   "words": 508,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/ozil/text0-1b22f1680cf9cc5d1050.jsonl",
+   "raw_restorer": "raw/C/ozil/truth0-6d52abf88bbd53ac747f.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

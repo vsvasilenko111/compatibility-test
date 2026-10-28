@@ -1,0 +1,177 @@
+{
+ "finished": "2026-10-28T21:35:27+00:00",
+ "wall_seconds": 168.6,
+ "ids": [
+  "ae49",
+  "cfrd",
+  "cgel",
+  "cuif",
+  "cy7c",
+  "d861",
+  "h0kv",
+  "hfcr",
+  "hhkp",
+  "hwuk",
+  "jp5s",
+  "jypf",
+  "kwje",
+  "mjd9",
+  "nk95",
+  "nrjt",
+  "ozil"
+ ],
+ "roles": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "models": {
+  "A": [
+   "claude-opus-5-5",
+   "high"
+  ],
+  "B": [
+   "claude-sonnet-5-5",
+   "high"
+  ],
+  "C": [
+   "claude-opus-5",
+   "medium"
+  ],
+  "D": [
+   "claude-opus-5-5",
+   "medium"
+  ]
+ },
+ "stats": {
+  "calls": 72,
+  "cached": 286,
+  "rejected_fabricated": 0,
+  "rejected_unparsable": 0,
+  "api_errors": 0,
+  "cost_usd": 2.276272,
+  "call_seconds": 647.5770964622498
+ },
+ "people": [
+  {
+   "id": "cfrd",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 0.2
+  },
+  {
+   "id": "cy7c",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 60.3
+  },
+  {
+   "id": "jypf",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 64.0
+  },
+  {
+   "id": "jp5s",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "h0kv",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "mjd9",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "ae49",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "cgel",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "hhkp",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "d861",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "hwuk",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "cuif",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 70.7
+  },
+  {
+   "id": "kwje",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 86.5
+  },
+  {
+   "id": "nrjt",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 147.8
+  },
+  {
+   "id": "hfcr",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 160.3
+  },
+  {
+   "id": "ozil",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 160.8
+  },
+  {
+   "id": "nk95",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 168.6
+  }
+ ]
+}

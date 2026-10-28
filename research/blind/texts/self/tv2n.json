@@ -1,0 +1,22 @@
+{
+ "id": "tv2n",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "b68fe8ca547e6fcd1bbb82ea5d7bb03172ec9798c8cc92105a4eb527a3035d51",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "b68fe8ca547e6fcd1bbb82ea5d7bb03172ec9798c8cc92105a4eb527a3035d51",
+   "words": 423,
+   "bad": false,
+   "misses": [
+    "избегание"
+   ],
+   "raw_author": "raw/B/tv2n/text0-6f6d873005721f1fe0e5.jsonl",
+   "raw_restorer": "raw/C/tv2n/self0-ccd279a288020a141927.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

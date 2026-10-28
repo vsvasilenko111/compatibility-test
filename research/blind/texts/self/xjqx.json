@@ -1,0 +1,31 @@
+{
+ "id": "xjqx",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "7931e487a9baad18457ef08ce98fce77ca8828493a23b5463af1d825ac665370",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "f434b72208f250da0c2faa708d789727f3c381723a22aa3a065fb20e7232d69f",
+   "words": 412,
+   "bad": true,
+   "misses": [
+    "конфессия"
+   ],
+   "raw_author": "raw/B/xjqx/text0-d987897db47c7972b36f.jsonl",
+   "raw_restorer": "raw/C/xjqx/self0-75b9f8d10c2c6c5dee98.jsonl"
+  },
+  {
+   "attempt": 2,
+   "text_sha256": "7931e487a9baad18457ef08ce98fce77ca8828493a23b5463af1d825ac665370",
+   "words": 397,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/xjqx/text1-2c86151c30c1ef033062.jsonl",
+   "raw_restorer": "raw/C/xjqx/self1-5b6d94b0231478c811ca.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

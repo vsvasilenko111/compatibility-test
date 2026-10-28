@@ -1,0 +1,20 @@
+{
+ "id": "sypl",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "9bda16e33fabe21f24f43515aca922de5c7afc7b5d5119834e03962f6aa8eff7",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "9bda16e33fabe21f24f43515aca922de5c7afc7b5d5119834e03962f6aa8eff7",
+   "words": 379,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/sypl/text0-627298a9f9606d296cfa.jsonl",
+   "raw_restorer": "raw/C/sypl/self0-276f9dd1bf73e0712b12.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

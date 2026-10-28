@@ -1,0 +1,20 @@
+{
+ "id": "kwje",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "6f383fd050fae22a8b7cb17d0619387bb661c67fc72c82dca55a4ea8eb4b69ed",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "6f383fd050fae22a8b7cb17d0619387bb661c67fc72c82dca55a4ea8eb4b69ed",
+   "words": 437,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/kwje/text0-fa67b540cd0092572c08.jsonl",
+   "raw_restorer": "raw/C/kwje/self0-58feb50b1fd09974457e.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

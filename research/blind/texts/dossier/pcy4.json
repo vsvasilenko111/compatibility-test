@@ -1,0 +1,20 @@
+{
+ "id": "pcy4",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "f55463f7bc41453a3674d0e52d59fe647431365cc6a7eb825dec5cff162436e7",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "f55463f7bc41453a3674d0e52d59fe647431365cc6a7eb825dec5cff162436e7",
+   "words": 494,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/pcy4/text0-80155ddcda7dc7f07aed.jsonl",
+   "raw_restorer": "raw/C/pcy4/truth0-8904f5e9b2e9fe4ff7d6.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

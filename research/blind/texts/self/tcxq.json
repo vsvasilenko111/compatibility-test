@@ -1,0 +1,20 @@
+{
+ "id": "tcxq",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "17bd36f4b5accdb51192f6dd96749c1f774862281f7f34c0671d03f8830c7864",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "17bd36f4b5accdb51192f6dd96749c1f774862281f7f34c0671d03f8830c7864",
+   "words": 429,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/tcxq/text0-4e1366000dcdd02f6adf.jsonl",
+   "raw_restorer": "raw/C/tcxq/self0-b42578536b97d3479490.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

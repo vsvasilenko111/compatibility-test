@@ -1,0 +1,20 @@
+{
+ "id": "mjd9",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "265204175ca2325a53d0ca4a8f3033bd1b6ad81ca2de1f5a8d533e40c9963457",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "265204175ca2325a53d0ca4a8f3033bd1b6ad81ca2de1f5a8d533e40c9963457",
+   "words": 454,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/mjd9/text0-9388ccf66778daa04333.jsonl",
+   "raw_restorer": "raw/C/mjd9/self0-0e87a7e13af467bead56.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

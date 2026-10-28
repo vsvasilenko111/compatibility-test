@@ -1,0 +1,20 @@
+{
+ "id": "ufy2",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "5cb5952ed499b32e60c6e58e5ee1011429c46d9abfc4ee7206e8add4dd2d3aac",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "5cb5952ed499b32e60c6e58e5ee1011429c46d9abfc4ee7206e8add4dd2d3aac",
+   "words": 473,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/ufy2/text0-82a0c019c53cb1f7e0f6.jsonl",
+   "raw_restorer": "raw/C/ufy2/truth0-79a9a96b6e6e3e3dda14.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

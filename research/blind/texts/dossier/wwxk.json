@@ -1,0 +1,20 @@
+{
+ "id": "wwxk",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "537a1469edb25459c13bbb44cf1c9ce7350df6b80441ef8a65ddf23f804f5a25",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "537a1469edb25459c13bbb44cf1c9ce7350df6b80441ef8a65ddf23f804f5a25",
+   "words": 493,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/wwxk/text0-aed90f21cba594a7c131.jsonl",
+   "raw_restorer": "raw/C/wwxk/truth0-f542e996cc0069bd6ea5.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

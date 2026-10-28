@@ -1,0 +1,20 @@
+{
+ "id": "p81v",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "8cc11860c4e79316be7baf41e42c51822c95449c64cccddedfdea3e9069dfc1d",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "8cc11860c4e79316be7baf41e42c51822c95449c64cccddedfdea3e9069dfc1d",
+   "words": 419,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/p81v/text0-30fb717e5b842d7bf121.jsonl",
+   "raw_restorer": "raw/C/p81v/self0-bca6b40594044e270fab.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

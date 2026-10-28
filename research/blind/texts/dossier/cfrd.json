@@ -1,0 +1,20 @@
+{
+ "id": "cfrd",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "1f9ee28c747f1b5ca7b9064748e4f3349ae815207b00a8803363f3d7b00213a2",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "1f9ee28c747f1b5ca7b9064748e4f3349ae815207b00a8803363f3d7b00213a2",
+   "words": 520,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/cfrd/text0-697b5c8daeb79ce31829.jsonl",
+   "raw_restorer": "raw/C/cfrd/truth0-5de872da4312b813cc49.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

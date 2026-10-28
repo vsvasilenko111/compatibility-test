@@ -1,0 +1,20 @@
+{
+ "id": "sypl",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "1ab6dc27ac3332b4ee7c4745895f0de98ce358ed8cb1adcbc9666962453c34b7",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "1ab6dc27ac3332b4ee7c4745895f0de98ce358ed8cb1adcbc9666962453c34b7",
+   "words": 482,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/sypl/text0-a1133083ef1c287fafa9.jsonl",
+   "raw_restorer": "raw/C/sypl/truth0-a6e5c5934019fb7fb514.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

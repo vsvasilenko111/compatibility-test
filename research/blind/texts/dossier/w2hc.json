@@ -1,0 +1,20 @@
+{
+ "id": "w2hc",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "e2fcd6d6ffeded3c08695d288c524f32378a5b336aa273da1d4495c84e5901f6",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "e2fcd6d6ffeded3c08695d288c524f32378a5b336aa273da1d4495c84e5901f6",
+   "words": 519,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/w2hc/text0-7579ca5c24a4d8510272.jsonl",
+   "raw_restorer": "raw/C/w2hc/truth0-cab4003e941c8b644c2a.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

@@ -1,0 +1,305 @@
+{
+ "checked": "2026-10-28T21:46:31+00:00",
+ "design": "design.md, 17.11–17.12, 17.14",
+ "thresholds_file": "research/blind/batch-thresholds.json",
+ "thresholds_sha256": "372e304688921d993b56a0faa0e09fc92c9a99a5745cdfc0d32fb59315968acd",
+ "population_thresholds": {
+  "sd_ratio": 0.8,
+  "spearman_strong": 0.5,
+  "spearman_weak": 0.3,
+  "shift_mean_sd": 0.4,
+  "shift_sphere_sd": 0.6,
+  "item_rules_min_n": 40
+ },
+ "portion": {
+  "label": "порция",
+  "ids": [
+   "p7j1",
+   "p81v",
+   "pgc6",
+   "rbzb",
+   "t8nv",
+   "tcxq",
+   "tv2n",
+   "u2un",
+   "vrfe",
+   "vsic",
+   "xjqx",
+   "yfvk",
+   "ypew",
+   "akgk",
+   "dmt7",
+   "eunh",
+   "itzt"
+  ],
+  "n": 17,
+  "people": {
+   "p7j1": [],
+   "p81v": [],
+   "pgc6": [],
+   "rbzb": [],
+   "t8nv": [],
+   "tcxq": [],
+   "tv2n": [],
+   "u2un": [],
+   "vrfe": [],
+   "vsic": [],
+   "xjqx": [],
+   "yfvk": [],
+   "ypew": [],
+   "akgk": [],
+   "dmt7": [],
+   "eunh": [],
+   "itzt": []
+  },
+  "items": {
+   "leisure-11": {
+    "field": "частота алкоголя",
+    "sphere": "habits",
+    "n": 17,
+    "directed": true,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 0.75,
+    "spearman_self": 1.0,
+    "spearman_truth": 0.992,
+    "shift_vs_self_sd": 0.145,
+    "shift_vs_truth_sd": 0.234
+   },
+   "conflicts-02": {
+    "field": "критика и враждебность (громкость — неточный аналог)",
+    "sphere": "conflicts",
+    "n": 17,
+    "directed": true,
+    "class": "shift",
+    "binary": false,
+    "sd_ratio": 0.581,
+    "spearman_self": 0.768,
+    "spearman_truth": 0.678,
+    "shift_vs_self_sd": 0.159,
+    "shift_vs_truth_sd": 0.392
+   },
+   "conflicts-07": {
+    "field": "уход от разговора",
+    "sphere": "conflicts",
+    "n": 17,
+    "directed": true,
+    "class": "weak",
+    "binary": false,
+    "sd_ratio": 1.016,
+    "spearman_self": 0.169,
+    "spearman_truth": -0.019,
+    "shift_vs_self_sd": -0.647,
+    "shift_vs_truth_sd": 0.076
+   },
+   "conflicts-01": {
+    "field": "уход от разговора",
+    "sphere": "conflicts",
+    "n": 17,
+    "directed": true,
+    "class": "weak",
+    "binary": false,
+    "sd_ratio": 0.809,
+    "spearman_self": 0.242,
+    "spearman_truth": 0.259,
+    "shift_vs_self_sd": -0.231,
+    "shift_vs_truth_sd": 0.419
+   },
+   "regul-08": {
+    "field": "оборона в ссорах",
+    "sphere": "regulation",
+    "n": 17,
+    "directed": true,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 1.102,
+    "spearman_self": 0.198,
+    "spearman_truth": 0.362,
+    "shift_vs_self_sd": -0.0,
+    "shift_vs_truth_sd": 0.3
+   },
+   "attach-01": {
+    "field": "тревожность в отношениях",
+    "sphere": "attachment",
+    "n": 17,
+    "directed": false,
+    "class": "weak",
+    "binary": false,
+    "sd_ratio": 0.862,
+    "spearman_self": 0.358,
+    "spearman_truth": 0.36
+   },
+   "trauma-06": {
+    "field": "тревожность в отношениях",
+    "sphere": "past",
+    "n": 17,
+    "directed": true,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 0.504,
+    "spearman_self": 0.801,
+    "spearman_truth": 0.426,
+    "shift_vs_self_sd": 0.206,
+    "shift_vs_truth_sd": 0.68
+   },
+   "attach-03": {
+    "field": "избегание близости",
+    "sphere": "attachment",
+    "n": 17,
+    "directed": true,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 0.985,
+    "spearman_self": 0.347,
+    "spearman_truth": 0.131,
+    "shift_vs_self_sd": -0.262,
+    "shift_vs_truth_sd": 0.533
+   },
+   "budget-09": {
+    "field": "есть свой кредит",
+    "sphere": "budget",
+    "n": 17,
+    "directed": false,
+    "class": "strong",
+    "binary": true,
+    "sd_ratio": null,
+    "spearman_self": 0.993,
+    "spearman_truth": 0.993
+   },
+   "kids-02": {
+    "field": "сколько детей хочет",
+    "sphere": "kids",
+    "n": 16,
+    "directed": false,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 1.0,
+    "spearman_self": 1.0,
+    "spearman_truth": 1.0
+   },
+   "humor-11": {
+    "field": "подкалывает и высмеивает партнёра",
+    "sphere": "humor",
+    "n": 17,
+    "directed": true,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 0.811,
+    "spearman_self": 0.501,
+    "spearman_truth": 0.254,
+    "shift_vs_self_sd": 0.257,
+    "shift_vs_truth_sd": 0.386,
+    "spearman_self_hostility": 0.507,
+    "measures_hostility_rather_than_humor": true
+   },
+   "humor-06": {
+    "field": "шутит по-доброму",
+    "sphere": "humor",
+    "n": 17,
+    "directed": false,
+    "class": "weak",
+    "binary": false,
+    "sd_ratio": 1.151,
+    "spearman_self": 0.401,
+    "spearman_truth": 0.594
+   },
+   "intimacy-02": {
+    "field": "как часто хотелось бы близости",
+    "sphere": "intimacy",
+    "n": 17,
+    "directed": false,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 0.931,
+    "spearman_self": 0.996,
+    "spearman_truth": 0.941
+   },
+   "intimacy-03": {
+    "field": "легко говорить о сексе",
+    "sphere": "intimacy",
+    "n": 17,
+    "directed": true,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 0.903,
+    "spearman_self": 0.971,
+    "spearman_truth": 0.652,
+    "shift_vs_self_sd": 0.264,
+    "shift_vs_truth_sd": 0.374
+   },
+   "relatives-04": {
+    "field": "считается с мнением родителей",
+    "sphere": "relatives",
+    "n": 17,
+    "directed": true,
+    "class": "strong",
+    "binary": false,
+    "sd_ratio": 0.656,
+    "spearman_self": 0.973,
+    "spearman_truth": 0.81,
+    "shift_vs_self_sd": -0.218,
+    "shift_vs_truth_sd": -0.151
+   },
+   "relatives-05": {
+    "field": "считается с мнением родителей",
+    "sphere": "relatives",
+    "n": 17,
+    "directed": true,
+    "class": "weak",
+    "binary": false,
+    "sd_ratio": 0.75,
+    "spearman_self": 0.835,
+    "spearman_truth": 0.814,
+    "shift_vs_self_sd": -0.036,
+    "shift_vs_truth_sd": 0.038
+   }
+  },
+  "reject_reasons": [],
+  "stop_reasons": [],
+  "warnings": [
+   "humor-11: ρ с враждебностью 0.51 ≥ ρ с «подкалывает» 0.50 — вопрос мерит враждебность, а не юмор"
+  ],
+  "critical_used": {
+   "median_spearman_strong": {
+    "critical": 0.253,
+    "n_grid": 15
+   },
+   "median_sd_ratio_strong": {
+    "critical": 0.611,
+    "n_grid": 15
+   },
+   "shift_mean": {
+    "critical": 0.632,
+    "n_grid": 15
+   },
+   "shift_sphere": {
+    "critical": {
+     "attachment": 1.752,
+     "conflicts": 1.38,
+     "habits": 0.9,
+     "humor": 1.164,
+     "intimacy": 1.301,
+     "past": 1.728,
+     "regulation": 1.653,
+     "relatives": 1.706
+    },
+    "n_grid": 15
+   }
+  },
+  "median_sd_ratio": 0.903,
+  "median_spearman_self": 0.972,
+  "mean_shift_vs_self_sd": -0.033,
+  "shift_by_sphere": {
+   "habits": 0.145,
+   "conflicts": -0.24,
+   "regulation": 0.0,
+   "past": 0.206,
+   "attachment": -0.262,
+   "humor": 0.257,
+   "intimacy": 0.264,
+   "relatives": -0.127
+  },
+  "verdict": "принять",
+  "stop": false
+ }
+}

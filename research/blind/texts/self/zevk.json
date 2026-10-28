@@ -1,0 +1,20 @@
+{
+ "id": "zevk",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "919d453db8445261017a33aeebb60caa1ac33fa1b438780ea4e892b09805d423",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "919d453db8445261017a33aeebb60caa1ac33fa1b438780ea4e892b09805d423",
+   "words": 434,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/zevk/text0-3bf4de109802bdaf222a.jsonl",
+   "raw_restorer": "raw/C/zevk/self0-a27478b6f0a3833fdbeb.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

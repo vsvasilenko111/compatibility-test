@@ -1,0 +1,20 @@
+{
+ "id": "dmt7",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "d2aec93087cbf9ebd5efb68d4cc97a68c34a41bc5bc9e50131802a21eaf2302a",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "d2aec93087cbf9ebd5efb68d4cc97a68c34a41bc5bc9e50131802a21eaf2302a",
+   "words": 464,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/dmt7/text0-7d8426a9a8cb26b7e0b8.jsonl",
+   "raw_restorer": "raw/C/dmt7/truth0-e36fd7604c56d290469a.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

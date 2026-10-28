@@ -1,0 +1,20 @@
+{
+ "id": "itzt",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "62494d9a6ea52cff991b20081d6d47a8158e5bb75e749c995f16512e98499673",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "62494d9a6ea52cff991b20081d6d47a8158e5bb75e749c995f16512e98499673",
+   "words": 510,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/itzt/text0-fcea8e858e9e0ff43460.jsonl",
+   "raw_restorer": "raw/C/itzt/truth0-1bcacc1539106b7b91c6.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

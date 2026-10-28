@@ -1,0 +1,20 @@
+{
+ "id": "eunh",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "9cb3075e0979a4a42beff092881e2ca912fbcba40c44ec992e38df9c20583fff",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "9cb3075e0979a4a42beff092881e2ca912fbcba40c44ec992e38df9c20583fff",
+   "words": 444,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/eunh/text0-ab64781994dc56bb9593.jsonl",
+   "raw_restorer": "raw/C/eunh/truth0-88009e30c7349636b304.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

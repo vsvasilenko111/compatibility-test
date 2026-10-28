@@ -1,0 +1,20 @@
+{
+ "id": "jp5s",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "bcf3946a54d8c005740c593ccc0066fab4d76192f18602e4f31805e14d6e1494",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "bcf3946a54d8c005740c593ccc0066fab4d76192f18602e4f31805e14d6e1494",
+   "words": 403,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/jp5s/text0-c9c3e18a71d7aa42b751.jsonl",
+   "raw_restorer": "raw/C/jp5s/self0-295b0c4cf533b8bc9a9d.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

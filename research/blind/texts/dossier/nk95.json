@@ -1,0 +1,20 @@
+{
+ "id": "nk95",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "c7c4fba0356945a7faca61dcd8b43ca5523772e4cac633eaff9d52aa0596ffca",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "c7c4fba0356945a7faca61dcd8b43ca5523772e4cac633eaff9d52aa0596ffca",
+   "words": 499,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/nk95/text0-c04312c2d8166ff4e3cc.jsonl",
+   "raw_restorer": "raw/C/nk95/truth0-65bd5be4af69200228ae.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

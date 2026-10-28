@@ -1,0 +1,20 @@
+{
+ "id": "qoa1",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "5ff64e47e7fd5ecf8a88c00a231d75f791099b7fcd5bd02875da736cb7b21711",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "5ff64e47e7fd5ecf8a88c00a231d75f791099b7fcd5bd02875da736cb7b21711",
+   "words": 466,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/qoa1/text0-a5141f89208e4d5cdbcc.jsonl",
+   "raw_restorer": "raw/C/qoa1/truth0-d848a3f7315384b650b0.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

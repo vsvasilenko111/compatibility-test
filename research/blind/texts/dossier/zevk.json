@@ -1,0 +1,20 @@
+{
+ "id": "zevk",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "7adadbd5801db5de8632779335229cba4a820e7c3d8864ca0af31bf0b5f5a980",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "7adadbd5801db5de8632779335229cba4a820e7c3d8864ca0af31bf0b5f5a980",
+   "words": 451,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/zevk/text0-bc2de770415d5ce32f2d.jsonl",
+   "raw_restorer": "raw/C/zevk/truth0-5d0d7c443d045a26f81c.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

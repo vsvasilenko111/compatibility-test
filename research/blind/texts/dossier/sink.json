@@ -1,0 +1,20 @@
+{
+ "id": "sink",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "9a4ba7f9d9df5313fb5153658db5c340605683a665e034e5c38f6c7b6a6bf89a",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "9a4ba7f9d9df5313fb5153658db5c340605683a665e034e5c38f6c7b6a6bf89a",
+   "words": 496,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/sink/text0-dc574b914095f4a83f20.jsonl",
+   "raw_restorer": "raw/C/sink/truth0-3b09fd839fe9c51ce0c7.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

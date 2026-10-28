@@ -1,0 +1,162 @@
+{
+ "finished": "2026-10-28T17:29:01+00:00",
+ "wall_seconds": 804.8,
+ "ids": [
+  "ae49",
+  "cfrd",
+  "cgel",
+  "cuif",
+  "cy7c",
+  "d861",
+  "h0kv",
+  "hfcr",
+  "hhkp",
+  "hwuk",
+  "jp5s",
+  "jypf",
+  "kwje",
+  "mjd9",
+  "nk95",
+  "nrjt",
+  "ozil"
+ ],
+ "roles": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "models": {
+  "A": [
+   "claude-opus-5-5",
+   "high"
+  ],
+  "B": [
+   "claude-sonnet-5-5",
+   "high"
+  ],
+  "C": [
+   "claude-opus-5",
+   "medium"
+  ],
+  "D": [
+   "claude-opus-5-5",
+   "medium"
+  ]
+ },
+ "stats": {
+  "calls": 574,
+  "cached": 0,
+  "rejected_fabricated": 0,
+  "rejected_unparsable": 1,
+  "api_errors": 288,
+  "cost_usd": 9.793879100000002,
+  "call_seconds": 2767.1826951503754
+ },
+ "people": [
+  {
+   "id": "cuif",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 265.4
+  },
+  {
+   "id": "jypf",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 295.6
+  },
+  {
+   "id": "ae49",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 320.5
+  },
+  {
+   "id": "cgel",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 348.9
+  },
+  {
+   "id": "d861",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 372.4
+  },
+  {
+   "id": "h0kv",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 396.7
+  },
+  {
+   "id": "cfrd",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 421.8
+  },
+  {
+   "id": "hhkp",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 445.8
+  },
+  {
+   "id": "hwuk",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 470.1
+  },
+  {
+   "id": "cy7c",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 496.8
+  },
+  {
+   "id": "mjd9",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 526.4
+  },
+  {
+   "id": "jp5s",
+   "self_text_wrong": false,
+   "answers": true,
+   "dossier_text_wrong": false,
+   "seconds": 548.5
+  },
+  {
+   "id": "nrjt",
+   "error": "RuntimeError('D/nrjt/batch13: вызов не удался:  | illed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":429,\"api_error_origin\":\"first_party\",\"api_error\":\"usage_limit_reached\",\"result\":\"You\\'ve hit your 5-hour limit · resets 10:30pm (Europe/Moscow)\",\"type\":\"result\",\"duration_ms\":704,\"uuid\":\"21680d0a-0b7a-4b67-aa76-2e875de140cf\",\"queued_turn_count\":0,\"result_index\":0,\"model_usage_since_last_result\":{}}\\n')"
+  },
+  {
+   "id": "kwje",
+   "error": "RuntimeError('D/kwje/batch00: вызов не удался:  | illed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":429,\"api_error_origin\":\"first_party\",\"api_error\":\"usage_limit_reached\",\"result\":\"You\\'ve hit your 5-hour limit · resets 10:30pm (Europe/Moscow)\",\"type\":\"result\",\"duration_ms\":689,\"uuid\":\"7f0141c0-c86b-43b4-9c5e-3526a0396cc6\",\"queued_turn_count\":0,\"result_index\":0,\"model_usage_since_last_result\":{}}\\n')"
+  },
+  {
+   "id": "nk95",
+   "error": "RuntimeError('D/nk95/batch00: вызов не удался:  | illed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":429,\"api_error_origin\":\"first_party\",\"api_error\":\"usage_limit_reached\",\"result\":\"You\\'ve hit your 5-hour limit · resets 10:30pm (Europe/Moscow)\",\"type\":\"result\",\"duration_ms\":754,\"uuid\":\"f7841016-2023-469b-b4d1-72b08787ffc9\",\"queued_turn_count\":0,\"result_index\":0,\"model_usage_since_last_result\":{}}\\n')"
+  },
+  {
+   "id": "ozil",
+   "error": "RuntimeError('D/ozil/batch00: вызов не удался:  | illed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":429,\"api_error_origin\":\"first_party\",\"api_error\":\"usage_limit_reached\",\"result\":\"You\\'ve hit your 5-hour limit · resets 10:30pm (Europe/Moscow)\",\"type\":\"result\",\"duration_ms\":894,\"uuid\":\"98275966-cd24-4c18-a6f9-3c75701158b2\",\"queued_turn_count\":0,\"result_index\":0,\"model_usage_since_last_result\":{}}\\n')"
+  },
+  {
+   "id": "hfcr",
+   "error": "RuntimeError('D/hfcr/batch00: вызов не удался:  | illed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":429,\"api_error_origin\":\"first_party\",\"api_error\":\"usage_limit_reached\",\"result\":\"You\\'ve hit your 5-hour limit · resets 10:30pm (Europe/Moscow)\",\"type\":\"result\",\"duration_ms\":773,\"uuid\":\"4a90ce3c-e08e-4d45-8c74-23a9454bc7f7\",\"queued_turn_count\":0,\"result_index\":0,\"model_usage_since_last_result\":{}}\\n')"
+  }
+ ]
+}

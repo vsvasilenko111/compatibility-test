@@ -1,0 +1,20 @@
+{
+ "id": "t8nv",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "42e2f4128974af786fd7b8ce0358d705ea760d4020116781b48376ff300d8b7e",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "42e2f4128974af786fd7b8ce0358d705ea760d4020116781b48376ff300d8b7e",
+   "words": 440,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/t8nv/text0-bcccbb9037a2ac460e07.jsonl",
+   "raw_restorer": "raw/C/t8nv/self0-385216e117e6e370baa5.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

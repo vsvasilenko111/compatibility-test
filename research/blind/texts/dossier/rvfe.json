@@ -1,0 +1,20 @@
+{
+ "id": "rvfe",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "ac5fb526d29c7f9eb2755c544702fee21cd61c8a90ba0561ff670c0cc36b882a",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "ac5fb526d29c7f9eb2755c544702fee21cd61c8a90ba0561ff670c0cc36b882a",
+   "words": 451,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/rvfe/text0-b81eb02aa7dfac0be873.jsonl",
+   "raw_restorer": "raw/C/rvfe/truth0-ce5413f994fdcf9852e3.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

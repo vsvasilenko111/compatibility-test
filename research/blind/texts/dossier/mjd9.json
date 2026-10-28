@@ -1,0 +1,20 @@
+{
+ "id": "mjd9",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "0603d6479ae672ab1a39d4e939fab7a560816f4e984c890c632dc0b05a6b3a81",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "0603d6479ae672ab1a39d4e939fab7a560816f4e984c890c632dc0b05a6b3a81",
+   "words": 499,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/mjd9/text0-b40db28212a4a83aa4e1.jsonl",
+   "raw_restorer": "raw/C/mjd9/truth0-0f7c0deb40539b2339b9.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

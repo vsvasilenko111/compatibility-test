@@ -1,0 +1,20 @@
+{
+ "id": "ko4h",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "2525fb468489220eebd32c97b581c9d5162e1b6a48571c83048db53d9b5298e7",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "2525fb468489220eebd32c97b581c9d5162e1b6a48571c83048db53d9b5298e7",
+   "words": 479,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/ko4h/text0-ad3b580f6a39302d2ab7.jsonl",
+   "raw_restorer": "raw/C/ko4h/truth0-41702007ee0118e15a5a.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

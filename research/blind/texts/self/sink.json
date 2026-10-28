@@ -1,0 +1,32 @@
+{
+ "id": "sink",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "59f9987798e80a9a270cd13f71f69142bca1f0955e3aef8fbeea4f12612196c1",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "eaf6ffc41c50813e95e7dd21bfef657d10cdec5a102426fde399f2661fbfd480",
+   "words": 446,
+   "bad": true,
+   "misses": [
+    "тревожность",
+    "избегание"
+   ],
+   "raw_author": "raw/B/sink/text0-656ce63da2f94b7735e1.jsonl",
+   "raw_restorer": "raw/C/sink/self0-7509e69c5b4754e3c5d0.jsonl"
+  },
+  {
+   "attempt": 2,
+   "text_sha256": "59f9987798e80a9a270cd13f71f69142bca1f0955e3aef8fbeea4f12612196c1",
+   "words": 477,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/sink/text1-27181afba3627fd0a67f.jsonl",
+   "raw_restorer": "raw/C/sink/self1-4f1cd44d71f5dbee64d7.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

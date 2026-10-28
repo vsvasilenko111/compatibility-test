@@ -1,0 +1,22 @@
+{
+ "id": "cuif",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "7993884a8a9d1db97c8045ccf658f614346fdd6163855d276a2cb8027721a0f7",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "7993884a8a9d1db97c8045ccf658f614346fdd6163855d276a2cb8027721a0f7",
+   "words": 412,
+   "bad": false,
+   "misses": [
+    "избегание"
+   ],
+   "raw_author": "raw/B/cuif/text0-1e03a7a89a7cab6d4d94.jsonl",
+   "raw_restorer": "raw/C/cuif/self0-a1b9a60922f4ea17e741.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

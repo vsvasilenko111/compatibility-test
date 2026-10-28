@@ -1,0 +1,20 @@
+{
+ "id": "mh4k",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "8cfca9964856720c5bde34a642578ac3e446e8b32b89674776dc2862a5b57cab",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "8cfca9964856720c5bde34a642578ac3e446e8b32b89674776dc2862a5b57cab",
+   "words": 476,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/mh4k/text0-aa121c8fd8bf43c5e6d3.jsonl",
+   "raw_restorer": "raw/C/mh4k/self0-97b188e757568f29aec3.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

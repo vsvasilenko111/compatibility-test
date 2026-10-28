@@ -1,0 +1,20 @@
+{
+ "id": "ae49",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "b01098b9803ab70626779e5e23ab3ad0ad3d2bd501c6f529e4bd838b901800a1",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "b01098b9803ab70626779e5e23ab3ad0ad3d2bd501c6f529e4bd838b901800a1",
+   "words": 520,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/ae49/text0-023d6442dd9c5ddd2ed0.jsonl",
+   "raw_restorer": "raw/C/ae49/truth0-e5a60820f994438486d1.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

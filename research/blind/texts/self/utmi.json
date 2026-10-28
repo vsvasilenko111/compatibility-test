@@ -1,0 +1,20 @@
+{
+ "id": "utmi",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "55072ae343871049d859fee0e27b16688fc980a5eaf51720b49e128db476a20d",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "55072ae343871049d859fee0e27b16688fc980a5eaf51720b49e128db476a20d",
+   "words": 402,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/utmi/text0-117f349017442de27247.jsonl",
+   "raw_restorer": "raw/C/utmi/self0-be7a8f7337bb7618dfa7.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}
