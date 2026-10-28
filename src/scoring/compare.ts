@@ -2,6 +2,7 @@ import type { Answer, Priority, Profile, Question } from '../types';
 import { maturity, type MaturityResult } from './maturity';
 import { resources, type Resource } from './resources';
 import { fit, steps, strength } from './primitives';
+import { optionIndex } from '../answer';
 
 export interface ItemRef { id: string; topic: string; sphere: string }
 /** Тема вопроса и степень совпадения 0..1 — без самих ответов. */
@@ -22,6 +23,7 @@ export interface CompareResult { relationship: ModeResult; friendship: ModeResul
 /**
  * Красный флаг — только по явной отметке «Для меня это не обсуждается»: кто-то из пары её поставил, а ответы расходятся
  * через вариант и дальше (FIRM_STEPS). Раньше флаг ставился по крайнему ответу — и выпадал у 82% случайных пар.
+ * У вопроса с firmSides — только если ответы по разные стороны от середины; с cross — если привычка другого задевает отношение.
  */
 export const FIRM_STEPS = 2;
 /**
@@ -50,22 +52,58 @@ const TALK_STEPS = 2;
 
 interface Pair {
   q: Question; a: Answer; b: Answer;
-  /** Совпадение по таблице MATCH и расстояние в вариантах. */
-  match: number; steps: number; s: number;
+  /**
+   * Совпадение для каждого из двоих (matchA — насколько партнёр подходит A) и общее — меньшее из них.
+   * Обычно оба равны значению таблицы MATCH; у вопросов с cross они свои.
+   */
+  matchA: number; matchB: number; match: number;
+  /** Расстояние в вариантах и сила совпадения для наград. */
+  steps: number; s: number;
+  red: boolean;
   /** Личная важность сферы для каждого (PRIORITY_FACTOR). */
   mA: number; mB: number;
+}
+
+const answered = (p: Profile, id: string): Answer | null => {
+  const r = p.responses[id];
+  return r && r !== 'skipped' ? r : null;
+};
+const marked = (a: Answer, b: Answer) => a.firm === true || b.firm === true;
+/** Насколько отношение (вариант 0–4: «Нормально» … «Против») мирится с привычкой силы lvl (0..1). */
+const tolerate = (tol: number, lvl: number) => 1 - (tol / 4) * lvl;
+/** Привычка задевает принцип: «Скорее против» или «Против» — при сильной привычке, «Против» — уже при средней. */
+const clash = (tol: number, lvl: number) => (tol >= 3 && lvl >= 0.75) || (tol === 4 && lvl >= 0.5);
+/** Общий риск — совпадение не выше, чем через вариант (MATCH[0][2]), и это тема для разговора. */
+const SHARED_RISK_MATCH = 0.35;
+
+function pair(q: Question, a: Answer, b: Answer, pa: Profile, pb: Profile): Pair | null {
+  const ia = optionIndex(a.value), ib = optionIndex(b.value);
+  const base = { q, a, b, mA: priorityOf(pa, q.sphere), mB: priorityOf(pb, q.sphere) };
+  if (q.cross) {
+    // Отношение каждого сравнивается с тем, что делает другой: двое некурящих совпадают, что бы ни думали о курении.
+    const ha = answered(pa, q.cross.id), hb = answered(pb, q.cross.id);
+    if (!ha || !hb) return null;
+    const la = q.cross.level[optionIndex(ha.value)], lb = q.cross.level[optionIndex(hb.value)];
+    const matchA = tolerate(ia, lb), matchB = tolerate(ib, la);
+    const match = Math.min(matchA, matchB);
+    const red = q.firm === true && ((a.firm === true && clash(ia, lb)) || (b.firm === true && clash(ib, la)));
+    return { ...base, matchA, matchB, match, steps: Math.round((1 - match) * 4), s: 0, red };
+  }
+  let match = fit(a, b), st = steps(a, b), s = strength(a, b);
+  if (q.sharedRisk && Math.min(ia, ib) >= q.sharedRisk - 1) {
+    match = Math.min(match, SHARED_RISK_MATCH); st = Math.max(st, 2); s = 0;
+  }
+  const apart = q.firmSides ? (ia <= 1 && ib >= 3) || (ib <= 1 && ia >= 3) : st >= FIRM_STEPS;
+  const red = q.firm === true && marked(a, b) && apart;
+  return { ...base, matchA: match, matchB: match, match, steps: st, s, red };
 }
 
 function pairs(questions: Question[], pa: Profile, pb: Profile): Pair[] {
   const out: Pair[] = [];
   for (const q of questions) {
-    const a = pa.responses[q.id];
-    const b = pb.responses[q.id];
-    if (!a || !b || a === 'skipped' || b === 'skipped') continue;
-    out.push({
-      q, a, b, match: fit(a, b), steps: steps(a, b), s: strength(a, b),
-      mA: priorityOf(pa, q.sphere), mB: priorityOf(pb, q.sphere),
-    });
+    const a = answered(pa, q.id), b = answered(pb, q.id);
+    const p = a && b ? pair(q, a, b, pa, pb) : null;
+    if (p) out.push(p);
   }
   return out;
 }
@@ -74,8 +112,8 @@ function percent(ps: Pair[], k: SphereWeight = EQUAL): number | null {
   let numA = 0, sumA = 0, numB = 0, sumB = 0;
   for (const p of ps) {
     const m = k(p.q.sphere);
-    numA += m * p.mA * p.match; sumA += m * p.mA;
-    numB += m * p.mB * p.match; sumB += m * p.mB;
+    numA += m * p.mA * p.matchA; sumA += m * p.mA;
+    numB += m * p.mB * p.matchB; sumB += m * p.mB;
   }
   if (sumA === 0 && sumB === 0) return null;
   const sA = sumA === 0 ? 1 : numA / sumA;
@@ -87,8 +125,7 @@ const ref = (p: Pair): ItemRef => ({ id: p.q.id, topic: p.q.topic, sphere: p.q.s
 const desc = (key: (p: Pair) => number) => (x: Pair, y: Pair) => key(y) - key(x);
 const award = (p: Pair) => p.s * (p.mA + p.mB);
 
-const isRed = (p: Pair) => p.q.firm === true && (p.a.firm === true || p.b.firm === true)
-  && p.steps >= FIRM_STEPS;
+const isRed = (p: Pair) => p.red;
 
 /** firmPenalty — снижать ли процент за красные флаги (только «совместимость в отношениях»). */
 function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeResult {

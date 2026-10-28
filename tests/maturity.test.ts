@@ -91,3 +91,10 @@ describe('блок «Эмоциональная зрелость»', () => {
     expect(r.softTopics).toEqual(['признать, что перегнули']);
   });
 });
+
+describe('громкие споры', () => {
+  it('оба отвечают громко или криком (conflicts-02) — тема «Громкие споры»; один — нет', () => {
+    expect(keys(person({ 'conflicts-02': 7 }), person({ 'conflicts-02': 10 }))).toContain('loud');
+    expect(keys(person({ 'conflicts-02': 10 }), person({ 'conflicts-02': 3 }))).not.toContain('loud');
+  });
+});

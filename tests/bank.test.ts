@@ -35,10 +35,10 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('143 вопроса: 51 о партнёре как друге, 80 отношений и 12 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(143);
-    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(51);
-    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(80);
+  it('139 вопросов: 49 о партнёре как друге, 78 отношений и 12 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(139);
+    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(49);
+    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(78);
     expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(12);
   });
 
@@ -127,5 +127,19 @@ describe('validateBank ловит ошибки', () => {
   });
   it('манифест не совпадает с порядком', () => {
     expect(validateBank(ok, ['b', 'a']).join()).toMatch(/манифест/);
+  });
+});
+
+describe('перекрёстные вопросы (v17)', () => {
+  const byId = new Map(QUESTIONS.map((x) => [x.id, x]));
+  it('отношение к привычке ссылается на вопрос о себе из банка', () => {
+    const cross = QUESTIONS.filter((x) => x.cross);
+    expect(cross.map((x) => x.id).sort()).toEqual(['budget-12', 'home-07', 'home-08', 'home-09', 'life-02']);
+    for (const x of cross) {
+      const habit = byId.get(x.cross!.id);
+      expect(habit, x.id).toBeDefined();
+      expect(x.cross!.level, x.id).toHaveLength(5);
+      expect(x.cross!.level[0], x.id).toBe(0);
+    }
   });
 });

@@ -21,8 +21,8 @@ describe('ресурсы пары', () => {
     expect([level(0), level(7)]).toEqual(['strong', 'grow']);
   });
   it('измерение без ответов у одного из двоих пропускается', () => {
-    const a = p({ 'conflicts-02': 1, 'conflicts-03': 'skipped', 'attach-01': 1 });
-    const b = p({ 'conflicts-02': 1, 'conflicts-03': 3, 'attach-01': 1 });
+    const a = p({ 'conflicts-02': 1, 'conflicts-03': 'skipped', 'attach-03': 1 });
+    const b = p({ 'conflicts-02': 1, 'conflicts-03': 3, 'attach-03': 1 });
     expect(resources(QS, a, b)!.map((r) => r.key)).toEqual(['argue', 'support']);
   });
   it('без ответов на вопросы об эмоциях (старая ссылка) — null, даже если есть вопрос о ссорах', () => {

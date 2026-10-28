@@ -183,3 +183,57 @@ describe('compare — личная важность сфер', () => {
     expect(r.relationship.spheres.map((x) => x.percent)).toEqual(compare(qs, a(), b()).relationship.spheres.map((x) => x.percent));
   });
 });
+
+describe('compare — отношение к привычке партнёра (cross)', () => {
+  // smoke — «Партнёр курит. Для вас это: Нормально … Против», habit — «Курите ли вы?» (не помечен для процента).
+  const HABIT = [0, 0, 0.5, 0.75, 1];
+  const qs: Question[] = [
+    { ...q('smoke', 'relationship', 'habits'), firm: true, cross: { id: 'habit', level: HABIT } },
+    { ...q('habit', 'relationship', 'habits'), scored: false },
+  ];
+  const p = (tol: number, habit: number, firm = false) => profile({ smoke: { ...o(tol), firm }, habit: o(habit) });
+
+  it('двое некурящих совпадают полностью, даже если один против, а другой нет — и флага нет', () => {
+    const r = compare(qs, p(5, 1, true), p(1, 1));
+    expect(r.relationship.percent).toBeCloseTo(100, 6);
+    expect(r.relationship.redFlags).toEqual([]);
+  });
+  it('один против и отметил, другой курит каждый день — флаг; совпадение у каждого своё', () => {
+    const r = compare(qs, p(5, 1, true), p(1, 5));
+    expect(ids(r.relationship.redFlags)).toEqual(['smoke']);
+    // A против (1 − 1·1 = 0), B ничего не имеет против некурящего A (1) → √(0 · 1) = 0.
+    expect(r.relationship.percent).toBeCloseTo(0, 6);
+  });
+  it('«Скорее против» при курении иногда — не флаг, а тема; «Против» при курении иногда — флаг', () => {
+    const r = compare(qs, p(4, 1, true), p(1, 3));
+    expect(r.relationship.redFlags).toEqual([]);
+    expect(ids(r.relationship.talkZones)).toEqual(['smoke']);
+    expect(ids(compare(qs, p(5, 1, true), p(1, 3)).relationship.redFlags)).toEqual(['smoke']);
+  });
+  it('оба курят и обоим нормально — полное совпадение', () => {
+    expect(compare(qs, p(1, 5), p(2, 4)).relationship.percent).toBeCloseTo(Math.sqrt(1 * (1 - 0.25 * 1)) * 100, 6);
+  });
+  it('без ответа о привычке у кого-то из двоих вопрос не считается', () => {
+    const b = profile({ smoke: o(1) });
+    expect(compare(qs, p(5, 1), b).relationship.percent).toBeNull();
+  });
+});
+
+describe('compare — флаг только через середину (firmSides) и общий риск (sharedRisk)', () => {
+  const sides: Question[] = [{ ...q('wed', 'relationship', 'kids'), firm: true, firmSides: true }];
+  it('«Обязательно» и «Хорошо бы, но не принципиально» — не флаг; «Обязательно» и «Не важно» — флаг', () => {
+    expect(compare(sides, profile({ wed: { ...o(1), firm: true } }), profile({ wed: o(3) })).relationship.redFlags).toEqual([]);
+    expect(ids(compare(sides, profile({ wed: { ...o(1), firm: true } }), profile({ wed: o(4) })).relationship.redFlags)).toEqual(['wed']);
+  });
+
+  const loud: Question[] = [{ ...q('shout', 'friendship', 'conflicts'), sharedRisk: 4 }];
+  it('оба отвечают громко или криком — не совпадение, а тема для разговора', () => {
+    const r = compare(loud, profile({ shout: o(5) }), profile({ shout: o(5) }));
+    expect(r.relationship.percent).toBeCloseTo(35, 6);
+    expect(ids(r.relationship.talkZones)).toEqual(['shout']);
+    expect(r.relationship.superMatches).toEqual([]);
+  });
+  it('оба отвечают спокойно — обычное совпадение', () => {
+    expect(compare(loud, profile({ shout: o(2) }), profile({ shout: o(2) })).relationship.percent).toBeCloseTo(95, 6);
+  });
+});
