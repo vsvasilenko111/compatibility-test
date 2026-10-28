@@ -1,0 +1,20 @@
+{
+ "id": "kyuz",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "0f9ae1e327aab6ae34bd805ac677c739eeb0b5294a557fdbfe1c3b554336fee7",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "0f9ae1e327aab6ae34bd805ac677c739eeb0b5294a557fdbfe1c3b554336fee7",
+   "words": 419,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/kyuz/text0-c5346b31b2eec7547669.jsonl",
+   "raw_restorer": "raw/C/kyuz/truth0-88351d1293a56a410ff9.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

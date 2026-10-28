@@ -1,0 +1,91 @@
+{
+ "design": "reviews/03-pilot.md, critique п. 1",
+ "master_seed": 20261028,
+ "seed": "SeedSequence(20261028).spawn(20)[19]",
+ "seed_name": "pilot2_pick",
+ "part": "work",
+ "n_real_work_pairs": 29,
+ "pairs": [
+  {
+   "stratum": "cheated",
+   "pair_id": "w6ecqf",
+   "n_candidates": 9
+  },
+  {
+   "stratum": "debt",
+   "pair_id": "iqwe0g",
+   "n_candidates": 2
+  },
+  {
+   "stratum": "avoidant",
+   "pair_id": "ba2qsn",
+   "n_candidates": 10
+  },
+  {
+   "stratum": "stonewalls",
+   "pair_id": "xiub1w",
+   "n_candidates": 20
+  },
+  {
+   "stratum": "traditional",
+   "pair_id": "dyzpba",
+   "n_candidates": 7
+  },
+  {
+   "stratum": "yaroslavl",
+   "pair_id": "w3mo3u",
+   "n_candidates": 7
+  },
+  {
+   "stratum": "school",
+   "pair_id": "u29xj8",
+   "n_candidates": 4
+  },
+  {
+   "stratum": "жребий",
+   "pair_id": "k0a4pn",
+   "n_candidates": 22
+  },
+  {
+   "stratum": "жребий",
+   "pair_id": "t3gbf6",
+   "n_candidates": 21
+  },
+  {
+   "stratum": "жребий",
+   "pair_id": "izzglx",
+   "n_candidates": 20
+  }
+ ],
+ "people": [
+  "ma9y",
+  "ketf",
+  "q38a",
+  "ooav",
+  "wc1b",
+  "td2k",
+  "kpvl",
+  "wazz",
+  "ufav",
+  "gdmi",
+  "svba",
+  "lr7i",
+  "vn5k",
+  "p9b0",
+  "a6zt",
+  "kyuz",
+  "u867",
+  "tfzo",
+  "jmsb",
+  "onx6"
+ ],
+ "coverage_people": {
+  "cheated": 6,
+  "debt": 2,
+  "avoidant": 9,
+  "stonewalls": 11,
+  "traditional": 3,
+  "yaroslavl": 8,
+  "school": 1
+ }
+}

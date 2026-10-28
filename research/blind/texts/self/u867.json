@@ -1,0 +1,20 @@
+{
+ "id": "u867",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "a2f6c2670d1a1ce646feacb1207aa3fa9f3dc98c7fc209d4132ead86c313b1af",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "a2f6c2670d1a1ce646feacb1207aa3fa9f3dc98c7fc209d4132ead86c313b1af",
+   "words": 321,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/u867/text0-7d133677c3599a550f90.jsonl",
+   "raw_restorer": "raw/C/u867/self0-d7e2ad5b3c0005958448.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

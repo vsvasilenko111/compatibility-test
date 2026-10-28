@@ -1,0 +1,20 @@
+{
+ "id": "gdmi",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "624623a77474e74116f8d2f6efb37ed480c4464e494483f2175bb8219670b40d",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "624623a77474e74116f8d2f6efb37ed480c4464e494483f2175bb8219670b40d",
+   "words": 446,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/gdmi/text0-519cb3f088bd5ed2e477.jsonl",
+   "raw_restorer": "raw/C/gdmi/truth0-2bbc545e1e99eb12a2dd.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

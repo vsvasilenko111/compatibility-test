@@ -1,6 +1,6 @@
 """Проверка пилота ролей по порогу design.md, 16.7–16.8.
 
-  python3 research/blind/pilot_check.py        → stdout и pilot/check-<время>.json
+  python3 research/blind/pilot_check.py [pilot/pilot2.json]   → stdout и pilot/check-<время>.json
 
 Читает: pilot/pilot.json, texts/, answers/, raw/, raw_rejected/, inputs/truth, inputs/self, src/questions/bank.json.
 private/ и sealed/ не читает.
@@ -46,7 +46,8 @@ def kids_opt(v):
 
 def main():
     bank = {q["id"]: q for q in j(os.path.join(PROJECT, "src", "questions", "bank.json"))["questions"]}
-    pilot = j(os.path.join(ROOT, "pilot", "pilot.json"))["pilot"]
+    src = j(sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "pilot", "pilot.json"))
+    pilot = src["pilot"] if "pilot" in src else [{"id": x, "stratum": "pilot2"} for x in src["people"]]
     out = {"checked": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "people": []}
 
     ct = subprocess.run([sys.executable, os.path.join(ROOT, "check_transcripts.py"), os.path.join(ROOT, "raw")],

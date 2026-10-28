@@ -1,0 +1,20 @@
+{
+ "id": "onx6",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "3fb72de6f3bbe10e249e4e4d7caf02f6aec105a8ee7ad3c3c77fe045796ef19a",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "3fb72de6f3bbe10e249e4e4d7caf02f6aec105a8ee7ad3c3c77fe045796ef19a",
+   "words": 490,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/onx6/text0-47e7ccbed298d2894b85.jsonl",
+   "raw_restorer": "raw/C/onx6/truth0-b17aeadddeb91036c666.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

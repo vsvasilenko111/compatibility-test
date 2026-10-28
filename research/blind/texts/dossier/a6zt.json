@@ -1,0 +1,20 @@
+{
+ "id": "a6zt",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "551dcf335ee517cd3ec9eaf71d5485b79deef893f58fabce358490f868cb681e",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "551dcf335ee517cd3ec9eaf71d5485b79deef893f58fabce358490f868cb681e",
+   "words": 497,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/a6zt/text0-ddf053c81ff8488efb3f.jsonl",
+   "raw_restorer": "raw/C/a6zt/truth0-5efcf1cc251525b0b0e8.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

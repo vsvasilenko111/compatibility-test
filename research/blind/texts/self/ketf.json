@@ -1,0 +1,20 @@
+{
+ "id": "ketf",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "394aaea6217da7171cbad0d72345af9f9b87366656683429974813467c45bd6a",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "394aaea6217da7171cbad0d72345af9f9b87366656683429974813467c45bd6a",
+   "words": 315,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/ketf/text0-c3fc54053ce62e2a9e7d.jsonl",
+   "raw_restorer": "raw/C/ketf/self0-fe9c0d5d6219439cdde0.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

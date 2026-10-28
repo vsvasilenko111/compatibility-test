@@ -1,0 +1,20 @@
+{
+ "id": "vn5k",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "32ffd7eb394cb9157e38c0be2fc45bb1dc6a985054a8e2cd08c411890229ca6f",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "32ffd7eb394cb9157e38c0be2fc45bb1dc6a985054a8e2cd08c411890229ca6f",
+   "words": 385,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/vn5k/text0-f4c555413d1cd51b7ed0.jsonl",
+   "raw_restorer": "raw/C/vn5k/self0-5e4ab142d3bbb62955f8.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

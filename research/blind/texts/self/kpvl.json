@@ -1,0 +1,20 @@
+{
+ "id": "kpvl",
+ "role": "B",
+ "model": "claude-sonnet-5-5",
+ "effort": "high",
+ "text_sha256": "6affe2cefe01eadb1bd694b19d6a789b4ef7d5035e0da5d7f0f972991f768446",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "6affe2cefe01eadb1bd694b19d6a789b4ef7d5035e0da5d7f0f972991f768446",
+   "words": 449,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/B/kpvl/text0-02cb780c8ef3cf4d6a12.jsonl",
+   "raw_restorer": "raw/C/kpvl/self0-40a237a88f99bbd7044e.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

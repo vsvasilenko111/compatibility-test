@@ -1,5 +1,5 @@
 {
- "text_sha256": "b495b49ba68f7edb8f0450e8a67387c854ad570ed066b0eda3b52f5fcd14bacb",
+ "text_sha256": "158dca8b83be46d052e1d1cf33fefa513bb7edc43ec5c373bb41960ccbd92eb5",
  "bad": false,
  "misses": [
   "избегание"
@@ -7,7 +7,7 @@
  "fields": {
   "тревожность": {
    "эталон": "очень низкая",
-   "восстановлено": "ниже среднего",
+   "восстановлено": "очень низкая",
    "мимо": false
   },
   "избегание": {
@@ -66,5 +66,5 @@
    "мимо": false
   }
  },
- "raw_restorer": "raw/C/jmsb/truth0-407b405001da27920807.jsonl"
+ "raw_restorer": "raw/C/jmsb/truth0-d9103493e54652efb997.jsonl"
 }

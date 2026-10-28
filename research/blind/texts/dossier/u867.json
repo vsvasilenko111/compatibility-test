@@ -1,0 +1,31 @@
+{
+ "id": "u867",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "148a587e6d317efe62c67dab6a1ee811b5940521e0bc753a5a1d1c2962a97034",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "b135d836a5159a56b78762735344f18faf893b1fcb26c97ef319838c6f62b901",
+   "words": 439,
+   "bad": true,
+   "misses": [
+    "дети"
+   ],
+   "raw_author": "raw/A/u867/text0-83e2d987286c3b77cdf1.jsonl",
+   "raw_restorer": "raw/C/u867/truth0-fa112016640bd8bc13a4.jsonl"
+  },
+  {
+   "attempt": 2,
+   "text_sha256": "148a587e6d317efe62c67dab6a1ee811b5940521e0bc753a5a1d1c2962a97034",
+   "words": 473,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/u867/text1-d7bc94c9c31ed0bf213a.jsonl",
+   "raw_restorer": "raw/C/u867/truth1-0850f1d0adbfcf38676b.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}

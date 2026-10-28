@@ -1,0 +1,20 @@
+{
+ "id": "ma9y",
+ "role": "A",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "text_sha256": "4f3df95a12e4b47164823c1d664583e7ad264e0ac7f19f578a7c3f21abd38acb",
+ "text_wrong": false,
+ "attempts": [
+  {
+   "attempt": 1,
+   "text_sha256": "4f3df95a12e4b47164823c1d664583e7ad264e0ac7f19f578a7c3f21abd38acb",
+   "words": 467,
+   "bad": false,
+   "misses": [],
+   "raw_author": "raw/A/ma9y/text0-796cd97824d16686734d.jsonl",
+   "raw_restorer": "raw/C/ma9y/truth0-6485dd081cae4e37dc46.jsonl"
+  }
+ ],
+ "restorer_model": "claude-opus-5"
+}
