@@ -3,6 +3,7 @@
 @import './styles/pair-results.css';
 @import './styles/sphere-explorer.css';
 @import './styles/person-summary-compact.css';
+@import './styles/answer-comparison.css';
 
 :root {
   color-scheme: light;

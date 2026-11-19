@@ -10,6 +10,7 @@ import { h } from '../dom';
 import { personSummarySection } from '../person-summary-view';
 import { flagsLine, sphereTiles, supportTopics } from '../result-view';
 import { sphereExplorer } from '../sphere-explorer';
+import { answerComparison } from '../answer-comparison';
 import { plural } from '../plural';
 import { shareBlock } from '../share';
 import { level, verdict } from '../verdict';
@@ -111,7 +112,12 @@ function resourcesSection(rs: Resource[] | null, m: MaturityResult | null): HTML
     h('p', { class: 'hint' }, 'Это подсказки для разговора, а не диагноз. Если какая-то тема отзывается сильно, с этим можно прийти к психологу — вдвоём или по отдельности.'));
 }
 
-function answerItem(r: AnswerRow, na: string, nb: string): HTMLElement {
+function answerItem(r: AnswerRow, a: Profile, b: Profile, question?: Question): HTMLElement {
+  if (question?.options) return h('li', { class: 'answer', 'data-question-id': question.id },
+    h('details', { class: 'answer-details' },
+      h('summary', {}, h('span', { class: 'answer-q' }, r.text)),
+      answerComparison(question, a, b)));
+  const na = a.name || 'Первый', nb = b.name || 'Второй';
   return h('li', { class: r.opposite && r.diff >= 6 ? 'answer far' : 'answer' },
     h('div', { class: 'answer-q' }, r.text),
     h('div', { class: 'answer-vals' },
@@ -122,18 +128,18 @@ function answerItem(r: AnswerRow, na: string, nb: string): HTMLElement {
 /** Ответы друг друга: расхождения по группам и все ответы. Пропущенные не показываются. */
 function answersSection(a: Profile, b: Profile, questions: Question[] | undefined): HTMLElement | null {
   if (!questions) return null;
-  const na = a.name || 'Первый', nb = b.name || 'Второй';
+  const byId = new Map(questions.map(q => [q.id, q]));
   const groups = divergences(questions, a, b);
   const all = bothAnswered(questions, a, b);
   return h('section', { class: 'answers' },
     sectionHeading('Больше понимания', 'Ответы друг друга'),
     ...groups.map((g) => h('details', { class: 'answer-group explain' },
       h('summary', {}, h('h4', {}, `${g.title} — ${g.rows.length}`)),
-      h('ul', {}, ...g.rows.map((r) => answerItem(r, na, nb))))),
+      h('ul', {}, ...g.rows.map((r) => answerItem(r, a, b, byId.get(r.id)))))),
     groups.length ? null : h('p', {}, 'Заметных расхождений нет.'),
     h('details', { class: 'explain' },
       h('summary', {}, `Все ответы — ${all.length}`),
-      h('ul', {}, ...all.map((r) => answerItem(r, na, nb)))));
+      h('ul', {}, ...all.map((r) => answerItem(r, a, b, byId.get(r.id))))));
 }
 
 /** Кто прошёл прежнюю версию теста и может ответить только на новые вопросы и (или) выбрать важные сферы. */

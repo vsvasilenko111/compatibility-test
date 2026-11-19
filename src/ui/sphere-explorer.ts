@@ -1,36 +1,15 @@
-import { optionIndex, OPTION_VALUES } from '../answer';
 import type { Profile, Question } from '../types';
 import type { SphereItem } from '../scoring/compare';
 import { h } from './dom';
 import { plural } from './plural';
 import { sphereDetail, tileTone, type SphereTile } from './result-view';
-
-function answerLabel(q: Question, p: Profile): { label: string; known: boolean } {
-  const response = p.responses[q.id];
-  if (!response) return { label: 'Нет ответа', known: false };
-  if (response === 'skipped') return { label: 'Вопрос пропущен', known: false };
-  const value = response.value;
-  if (!Number.isFinite(value) || value < 0 || value > 10) return { label: 'Ответ недоступен', known: false };
-  const index = optionIndex(value);
-  if (q.answerKind === 'categorical' && (!q.options?.[index] || value !== OPTION_VALUES[index])) return { label: 'Ответ недоступен', known: false };
-  const label = q.options ? q.options[index] : `${value} из 10 · ${q.left} — ${q.right}`;
-  if (!label) return { label: 'Ответ недоступен', known: false };
-  const uncertain = q.uncertainOptions?.includes(index + 1);
-  return { label: uncertain ? `${label} · пока не определились` : label, known: !uncertain };
-}
-
-function answers(q: Question, a: Profile, b: Profile): HTMLElement {
-  return h('div', { class: 'sphere-question-answers' }, ...([a, b] as const).map((person, i) =>
-    h('div', { class: 'sphere-person-answer', 'data-participant': i === 0 ? 'a' : 'b' },
-      h('b', {}, person.name || (i === 0 ? 'Первый' : 'Второй')),
-      h('p', {}, answerLabel(q, person).label))));
-}
+import { answerComparison, answerSelection } from './answer-comparison';
 
 function questionRow(q: Question, item: SphereItem | undefined, questions: Question[], a: Profile, b: Profile): HTMLElement {
   const sourceId = q.relationshipRule?.kind === 'closeness_cross' ? q.relationshipRule.sourceId : q.cross?.id;
   const source = questions.find(other => other.id === sourceId);
-  const known = answerLabel(q, a).known && answerLabel(q, b).known;
-  const sourceKnown = !sourceId || !!source && answerLabel(source, a).known && answerLabel(source, b).known;
+  const known = answerSelection(q, a).known && answerSelection(q, b).known;
+  const sourceKnown = !sourceId || !!source && answerSelection(source, a).known && answerSelection(source, b).known;
   const scored = q.scored !== false && q.answerKind !== 'categorical' && q.relationshipRule?.kind !== 'input_only';
   const detail = item && scored && known && sourceKnown ? sphereDetail([item])[0] : null;
   // Cross questions measure expectation against the other person's actual response, never equal choices.
@@ -44,7 +23,7 @@ function questionRow(q: Question, item: SphereItem | undefined, questions: Quest
     h('summary', {}, h('span', { class: 'topic' }, q.topic), h('span', { class: 'lvl' }, label)),
     h('div', { class: 'sphere-question-body' },
       h('p', { class: 'sphere-question-wording' }, q.text),
-      answers(q, a, b),
+      answerComparison(q, a, b),
       !scored ? h('p', { class: 'hint sphere-question-explanation' }, usedAsSource
         ? 'Этот ответ учитывается при сравнении с ожиданиями партнёра.'
         : 'Этот ответ оставлен для обсуждения и не меняет процент.') : null,
@@ -52,7 +31,7 @@ function questionRow(q: Question, item: SphereItem | undefined, questions: Quest
         h('p', { class: 'hint' }, q.relationshipRule?.kind === 'closeness_cross'
           ? 'Сочетание реакций: ответ каждого рассматривается вместе с реакцией другого.'
           : 'Приемлемость: ожидание каждого сопоставляется с привычкой другого. Одинаковые ожидания сами по себе не означают совпадение.'),
-        source ? h('div', {}, h('p', { class: 'sphere-question-wording' }, source.text), answers(source, a, b))
+        source ? h('div', {}, h('p', { class: 'sphere-question-wording' }, source.text), answerComparison(source, a, b))
           : h('p', {}, 'Связанный вопрос недоступен.')) : null));
 }
 
