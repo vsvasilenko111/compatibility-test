@@ -111,7 +111,7 @@ describe('personal index graphs', () => {
     expect(highlights.textContent).toContain('Общение в паре');
     expect(highlights.querySelector('[data-highlight="attention"]')).toBeNull();
     expect(root.querySelector('.personal-index-attention')).toBeNull();
-    expect(root.querySelector('[data-index-group="preferences"]')?.textContent).toContain('не лучше и не хуже');
+    expect(root.querySelector('[data-index-group="preferences"]')?.textContent).toContain('подписи у 0 и 100');
   });
 
   it('omits the empty resources group and its stale highlights', () => {

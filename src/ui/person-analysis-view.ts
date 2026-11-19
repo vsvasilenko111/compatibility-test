@@ -18,9 +18,9 @@ export function personAnalysisView(analysis: ReturnType<typeof personAnalysis>):
       h('p', { class: 'person-insight-text' }, insight.text),
       insight.implication ? h('p', { class: 'person-insight-implication' }, insight.implication) : null,
       h('details', { class: 'person-insight-evidence' },
-        h('summary', {}, 'На каких ответах основано'),
+        h('summary', {}, 'Из каких ответов сделан вывод'),
         h('ul', {}, ...insight.evidence.map(source))))),
-    insights.length ? null : h('p', { class: 'hint person-analysis-empty' }, 'Пока недостаточно связанных ответов для личного разбора.'));
+    insights.length ? null : h('p', { class: 'hint person-analysis-empty' }, 'Для личного разбора пока недостаточно ответов на связанные вопросы.'));
 }
 
 /** Uses only the supplied participant's answers and question metadata. */

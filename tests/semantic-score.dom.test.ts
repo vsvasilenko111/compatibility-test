@@ -81,14 +81,14 @@ describe('semantic main score presentation', () => {
     expect(caps.textContent).toContain('Не хочу детей');
     expect(caps.textContent).toContain('Трое');
     expect(caps.textContent).toContain('50');
-    expect(caps.textContent).toContain('не личный запрет');
+    expect(caps.textContent).toContain('не означает, что вы не сможете договориться');
     expect(root.querySelector('.goal-conflicts')).toBeNull();
   });
   it('keeps no-metadata rendering explicitly raw with old numeric rounding and verdict', () => {
     const root = render({}, false);
     expect(semanticRelationship).not.toHaveBeenCalled();
     expect(root.querySelector('.score.main .num')!.textContent).toBe('95%');
-    expect(root.querySelector('.score.main .cap')!.textContent).toContain('исходный индекс');
+    expect(root.querySelector('.score.main .cap')!.textContent).toContain('совпадение ответов');
     expect(root.querySelector('.score.main .lvl')!.textContent).toBe('много совпадений');
     expect(root.querySelector('.semantic-details')).toBeNull();
     expect(root.querySelector('.poster-verdict')!.textContent).not.toContain('Отлично подходите');
