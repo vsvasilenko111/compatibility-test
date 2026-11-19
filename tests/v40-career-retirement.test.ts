@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import * as old from '../research/blind/target-v20/legacy-questions-v39';
-import { BANK_VERSION, QUESTIONS, CURRENT_IDS, CURRENT_FIRM, MANIFEST, FIRM } from '../src/questions';
+import { BANK_VERSION, QUESTIONS, CURRENT_IDS, CURRENT_FIRM, MANIFEST, FIRM } from '../research/blind/target-v20/legacy-questions-v40';
 import { answerFor, OPTION_VALUES } from '../src/answer';
 import { encode, decode } from '../src/codec/codec';
 import { unansweredIds } from '../src/ui/flow';
