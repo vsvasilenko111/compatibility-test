@@ -103,3 +103,33 @@ describe('дозаполнение после обновления теста', 
     expect(filled).toBe('Аня');
   });
 });
+
+describe('устойчивое отображение общего балла', () => {
+  const a = p('Аня', [10, 0, 10]), b = p('Миша', [10, 10, 9]);
+  const rootWith = (rel: number | null, fr: number | null) => {
+    const r = compare(qs, a, b);
+    r.relationship.percent = rel;
+    r.friendship.percent = fr;
+    return resultScreen(a, b, r, 'https://x/#r.a.b');
+  };
+  const shown = (root: HTMLElement, selector: string) => root.querySelector(selector)!.textContent;
+
+  it('показывает исходный индекс без усиления: изменение 71 → 72 остаётся одним пунктом', () => {
+    const first = rootWith(71, 65), second = rootWith(72, 66);
+    expect(shown(first, '.score.main .num')).toBe('71%');
+    expect(shown(second, '.score.main .num')).toBe('72%');
+    expect(shown(first, '.score.second .num')).toBe('65%');
+    expect(shown(second, '.score.second .num')).toBe('66%');
+  });
+
+  it('не превращает результат выше максимума синтетической выборки в 100', () => {
+    expect(shown(rootWith(90, 88), '.score.main .num')).toBe('90%');
+    expect(shown(rootWith(90, 88), '.score.second .num')).toBe('88%');
+  });
+
+  it('сохраняет отсутствие данных и округляет только на последнем шаге', () => {
+    expect(shown(rootWith(null, null), '.score.main .num')).toBe('—');
+    expect(shown(rootWith(71.49, 71.5), '.score.main .num')).toBe('71%');
+    expect(shown(rootWith(71.49, 71.5), '.score.second .num')).toBe('72%');
+  });
+});

@@ -56,3 +56,22 @@ describe('sphereDetail', () => {
     expect(d.map((x) => x.label)).toEqual(['противоположно', 'по-разному', 'совпадаете']);
   });
 });
+
+
+describe('семантические подписи действий', () => {
+  it.each([
+    ['space-07', 'приватность переписки'],
+    ['intimacy-03', 'сообщение о желаниях'],
+    ['conflicts-10', 'повторяющееся раздражение'],
+    ['relatives-08', 'встречи с друзьями'],
+  ])('не сводит действия к конфликту или диалогу: %s', (id, topic) => {
+    const detail = sphereDetail([
+      { id, topic, match: 1, kind: 'behavior' },
+      { id, topic, match: 0.5, kind: 'behavior' },
+      { id, topic, match: 0, kind: 'behavior' },
+    ]);
+    expect(detail.map(item => item.label)).toEqual([
+      'стоит обсудить поведение', 'требует внимания', 'конструктивный подход',
+    ]);
+  });
+});

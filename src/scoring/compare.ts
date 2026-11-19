@@ -3,10 +3,11 @@ import { maturity, type MaturityResult } from './maturity';
 import { resources, type Resource } from './resources';
 import { fit, steps, strength } from './primitives';
 import { optionIndex } from '../answer';
+import { relationshipQuestions } from './relationship-view';
 
 export interface ItemRef { id: string; topic: string; sphere: string }
 /** Тема вопроса и степень совпадения 0..1 — без самих ответов. */
-export interface SphereItem { id: string; topic: string; match: number }
+export interface SphereItem { id: string; topic: string; match: number; kind?: 'behavior' | 'formats' | 'goals' | 'interaction' }
 export interface SphereScore { sphere: string; percent: number | null; items: SphereItem[] }
 export interface ModeResult {
   percent: number | null;
@@ -17,6 +18,8 @@ export interface ModeResult {
   talkZones: ItemRef[];
   superCount: number;
   flexibleCount: number;
+  /** Ответы есть, но цель или позиция пока не определена. */
+  uncertain?: ItemRef[];
 }
 export interface CompareResult { relationship: ModeResult; friendship: ModeResult; maturity: MaturityResult | null; resources: Resource[] | null }
 
@@ -77,12 +80,26 @@ const tolerate = (tol: number, lvl: number) => 1 - (tol / 4) * lvl;
  * С v18 «Против» при средней привычке («иногда, в компании») флага не даёт: человек оценивал полпачки в день, а не это.
  */
 const clash = (tol: number, lvl: number) => tol >= 3 && lvl >= 0.75;
-/** Общий риск и ответы по разные стороны split — совпадение не выше, чем через вариант (MATCH[0][2]), и это тема для разговора. */
+/** Общий риск и ответы по разные стороны split — отдельный смысловой предел 35% и тема для разговора. */
 const SHARED_RISK_MATCH = 0.35;
 
 function pair(q: Question, a: Answer, b: Answer, pa: Profile, pb: Profile): Pair | null {
   const ia = optionIndex(a.value), ib = optionIndex(b.value);
   const base = { q, a, b, mA: priorityOf(pa, q.sphere), mB: priorityOf(pb, q.sphere) };
+  if (q.uncertainOptions?.some(n => n === ia + 1 || n === ib + 1)) return null;
+  if (q.behaviorLevels) {
+    const levelA = q.behaviorLevels[ia], levelB = q.behaviorLevels[ib];
+    const match = Math.min(levelA, levelB);
+    return { ...base, matchA: levelB, matchB: levelA, match, steps: Math.round((1 - match) * 4), s: 0, red: false };
+  }
+  if (q.formats) {
+    const fa = q.formats[ia], fb = q.formats[ib];
+    const common = fa.accepted.some(format => fb.accepted.includes(format));
+    const differentPreference = fa.preferred !== null && fb.preferred !== null && fa.preferred !== fb.preferred;
+    const match = !common ? 0 : differentPreference ? 0.75 : 1;
+    return { ...base, matchA: match, matchB: match, match, steps: !common ? 4 : differentPreference ? 2 : 0,
+      s: common && !differentPreference ? strength(a, b) : 0, red: false };
+  }
   if (q.cross) {
     // Отношение каждого сравнивается с тем, что делает другой: двое некурящих совпадают, что бы ни думали о курении.
     const ha = answered(pa, q.cross.id), hb = answered(pb, q.cross.id);
@@ -145,7 +162,7 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeRes
     .sort(desc((p) => k(p.q.sphere) * (p.mA + p.mB) * (1 - p.match)));
   const reds = ps.filter(isRed).sort(desc((p) => p.steps + k(p.q.sphere)));
   const flexible = ps.filter(
-    (p) => Math.abs(p.a.value - 5) <= 1 && Math.abs(p.b.value - 5) <= 1,
+    (p) => !p.q.behaviorLevels && Math.abs(p.a.value - 5) <= 1 && Math.abs(p.b.value - 5) <= 1,
   );
   const sphereIds = [...new Set(ps.map((p) => p.q.sphere))];
   const base = percent(ps, k);
@@ -157,7 +174,10 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeRes
       return {
         sphere,
         percent: percent(inSphere),
-        items: inSphere.map((p) => ({ id: p.q.id, topic: p.q.topic, match: p.match })),
+        items: inSphere.map((p) => ({ id: p.q.id, topic: p.q.topic, match: p.match,
+          ...(firmPenalty && p.q.relationshipRule?.kind === 'goal_direction' && p.q.behaviorLevels ? { kind: 'goals' as const }
+            : firmPenalty && p.q.relationshipRule?.kind === 'closeness_cross' && p.q.cross ? { kind: 'interaction' as const }
+            : p.q.behaviorLevels ? { kind: 'behavior' as const } : p.q.formats ? { kind: 'formats' as const } : {}) })),
       };
     }),
     redFlags: reds.map(ref),
@@ -175,12 +195,25 @@ function mode(ps: Pair[], k: SphereWeight = EQUAL, firmPenalty = false): ModeRes
  * По умолчанию: отношения — все сферы поровну, дружба — только блок дружбы поровну.
  */
 export function compare(questions: Question[], a: Profile, b: Profile, relationshipWeight: SphereWeight = EQUAL, friendshipWeight?: SphereWeight): CompareResult {
-  const all = pairs(questions.filter((q) => q.block !== 'maturity' && q.scored !== false), a, b);
+  const scored = questions.filter((q) => q.block !== 'maturity' && q.scored !== false);
+  const all = pairs(scored, a, b);
+  const mainQuestions = relationshipQuestions(questions);
+  const relationship = mode(pairs(mainQuestions, a, b), relationshipWeight, true);
+  const friendship = friendshipWeight
+    ? mode(all.filter((p) => friendshipWeight(p.q.sphere) > 0), friendshipWeight)
+    : mode(all.filter((p) => p.q.block === 'friendship'));
+  const unresolvedQuestions = (qs: Question[]) => qs.filter(q => q.uncertainOptions?.some(n => [a, b].some(person => {
+    const r = answered(person, q.id);
+    return r !== null && optionIndex(r.value) + 1 === n;
+  })));
+  const refs = (qs: Question[]): ItemRef[] => qs.map(q => ({ id: q.id, sphere: q.sphere, topic: q.topic }));
+  const relUncertain = unresolvedQuestions(mainQuestions).filter(q => relationshipWeight(q.sphere) > 0);
+  const frUncertain = unresolvedQuestions(scored).filter(q => friendshipWeight ? friendshipWeight(q.sphere) > 0 : q.block === 'friendship');
+  if (relUncertain.length) relationship.uncertain = refs(relUncertain);
+  if (frUncertain.length) friendship.uncertain = refs(frUncertain);
   return {
-    relationship: mode(all, relationshipWeight, true),
-    friendship: friendshipWeight
-      ? mode(all.filter((p) => friendshipWeight(p.q.sphere) > 0), friendshipWeight)
-      : mode(all.filter((p) => p.q.block === 'friendship')),
+    relationship,
+    friendship,
     maturity: maturity(questions, a, b),
     resources: resources(questions, a, b),
   };

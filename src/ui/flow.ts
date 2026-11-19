@@ -1,9 +1,16 @@
 import type { Progress } from '../storage';
 import type { Response } from '../types';
 
-/** Индекс первого вопроса без ответа (пропуск считается ответом); ids.length, если отвечено всё. */
+const hasAnswer = (r: Response | undefined) => r !== undefined && r !== 'skipped';
+
+/** Для дозаполнения старых ссылок: пропуски и отсутствующие ответы обязательны. */
+export function unansweredIds(ids: string[], responses: Record<string, Response>): string[] {
+  return ids.filter((id) => !hasAnswer(responses[id]));
+}
+
+/** Индекс первого обязательного ответа; старый пропуск требует заполнения. */
 export function firstUnanswered(ids: string[], responses: Record<string, Response>): number {
-  const i = ids.findIndex((id) => !(id in responses));
+  const i = ids.findIndex((id) => !hasAnswer(responses[id]));
   return i === -1 ? ids.length : i;
 }
 

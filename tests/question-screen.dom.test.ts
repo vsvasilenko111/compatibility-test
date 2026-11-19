@@ -1,10 +1,11 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { questionScreen } from '../src/ui/screens/question';
 import { answerFor } from '../src/answer';
 import type { Question, Response } from '../src/types';
 
 const base: Question = { id: 'k', block: 'relationship', sphere: 'kids', text: 't', left: 'l', right: 'r', topic: 'дети', optional: false };
+afterEach(() => vi.useRealTimers());
 const screen = (question: Question, response?: Response) => {
   const onSubmit = vi.fn();
   const el = questionScreen({ question, index: 0, total: 1, response, onBack: null, onSubmit });
@@ -13,7 +14,18 @@ const screen = (question: Question, response?: Response) => {
   return { el, onSubmit, cell, next };
 };
 
-describe('экран вопроса — отметка «Для меня это не обсуждается»', () => {
+describe('экран вопроса — обязательный ответ без дополнительных отметок', () => {
+  it('при изменении ответа навигация ждёт отправки нового значения и не отправляет старое', () => {
+    vi.useFakeTimers();
+    const s = screen(base, answerFor(1));
+    s.cell(9).click();
+    expect(s.next()!.disabled).toBe(true);
+    s.next()!.click();
+    expect(s.onSubmit).not.toHaveBeenCalled();
+    vi.runAllTimers();
+    expect(s.onSubmit).toHaveBeenCalledTimes(1);
+    expect(s.onSubmit).toHaveBeenCalledWith(answerFor(9));
+  });
   it('у обычного вопроса отметки нет, тап по числу сразу отправляет ответ', () => {
     vi.useFakeTimers();
     const s = screen(base);
@@ -24,22 +36,28 @@ describe('экран вопроса — отметка «Для меня это 
     vi.useRealTimers();
   });
 
-  it('у вопроса с firm тап не переходит дальше; отметка уходит вместе с ответом', () => {
+  it('старое поле firm не показывает отметку и не задерживает отправку выбранного ответа', () => {
+    vi.useFakeTimers();
     const s = screen({ ...base, firm: true });
+    expect(s.el.querySelector('input[type="checkbox"]')).toBeNull();
     s.cell(9).click();
-    expect(s.onSubmit).not.toHaveBeenCalled();
-    const box = s.el.querySelector<HTMLInputElement>('.firm input')!;
-    box.checked = true;
-    box.dispatchEvent(new Event('change'));
-    s.next()!.click();
-    expect(s.onSubmit).toHaveBeenCalledWith({ ...answerFor(9), firm: true });
+    vi.runAllTimers();
+    expect(s.onSubmit).toHaveBeenCalledWith(answerFor(9));
+    vi.useRealTimers();
   });
 
-  it('при возврате отметка показана и сохраняется', () => {
+  it('при возврате к старому ответу сохраняется значение без отметки firm', () => {
     const s = screen({ ...base, firm: true }, { ...answerFor(1), firm: true });
-    expect(s.el.querySelector<HTMLInputElement>('.firm input')!.checked).toBe(true);
+    expect(s.el.querySelector('input[type="checkbox"]')).toBeNull();
     s.next()!.click();
-    expect(s.onSubmit).toHaveBeenCalledWith({ ...answerFor(1), firm: true });
+    expect(s.onSubmit).toHaveBeenCalledWith(answerFor(1));
+  });
+
+  it('даже старый optional-вопрос нельзя пропустить или отправить без выбранного варианта', () => {
+    const s = screen({ ...base, optional: true }, 'skipped');
+    expect(s.el.textContent).not.toContain('Пропустить');
+    expect(s.next()).toBeUndefined();
+    expect(s.onSubmit).not.toHaveBeenCalled();
   });
 });
 

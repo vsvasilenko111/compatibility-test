@@ -1,18 +1,19 @@
 import { CodecError, decode, encode } from '../codec/codec';
 import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, COMPATIBLE_SINCE, QUESTIONS } from '../questions';
 import { friendshipWeight, relationshipWeight } from '../questions/spheres';
-import { classifyInvite, inviteUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
+import { classifyInvite, inviteUrl, personalHash, personalUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
 import { compare } from '../scoring/compare';
 import { browserStorage, createStore, type Progress } from '../storage';
-import { firstUnanswered, resumeFor } from './flow';
-import { finishScreen } from './screens/finish';
+import { firstUnanswered, unansweredIds, resumeFor } from './flow';
+import { personalResultScreen } from './screens/personal-result';
 import { introScreen } from './screens/intro';
 import { messageScreen } from './screens/message';
 import { prioritiesScreen } from './screens/priorities';
 import { questionScreen } from './screens/question';
 import { resultScreen } from './screens/result';
+import { resultPendingScreen } from './screens/result-pending';
 
-/** Быстрый режим (`#q…` или `?quick`) — первые 5 вопросов для проверки подсчёта (в них есть оба блока). Кодируется всё как обычно. */
+/** Быстрый режим — первые 5 вопросов для проверки анкеты. Общий результат требует полного прохождения обоими. */
 const QUICK_COUNT = 5;
 const QUICK_BY_QUERY = new URLSearchParams(location.search).has('quick');
 
@@ -44,6 +45,7 @@ export function startApp(root: HTMLElement): void {
     ASKED = quick ? QUESTIONS.slice(0, QUICK_COUNT) : QUESTIONS;
     ASKED_IDS = ASKED.map((q) => q.id);
     if (r.kind === 'result') return showResult(r.a, r.b, r.open ?? []);
+    if (r.kind === 'personal') return showPersonal(r.a);
     if (r.kind === 'invite') return showInvite(r.a);
     return showIntro(null);
   }
@@ -97,6 +99,7 @@ export function startApp(root: HTMLElement): void {
       resumeAt: resumable ? Math.max(1, Math.min(resumable.index, resumeList.length - 1) + 1) : null,
       storageAvailable: store.available,
       ownUrl: own ? inviteUrl(base, own, quick) : null,
+      ownResultUrl: own ? personalUrl(base, own, quick) : null,
       history: store.loadHistory().map((r) => ({ names: r.names, at: r.at, url: `#${resultHash(r.a, r.b, quick)}`, forget: () => store.forgetResult(r.a, r.b) })),
       onStart: (name) => runTest({ name, index: 0, responses: {}, inviterCode }),
       onResume: () => { if (resumable) runTest(resumable); },
@@ -138,14 +141,39 @@ export function startApp(root: HTMLElement): void {
     // Дозаполнил или перепрошёл свою старую ссылку — новая ссылка заменяет прежнюю «вашу ссылку».
     if (p.ownCode !== undefined && p.ownCode === store.loadOwnCode()) store.saveOwnCode(code);
     if (p.inviterCode) {
+      // New device: retain this participant's own result. Shared device: keep its existing owner.
+      if (!store.loadOwnCode()) store.saveOwnCode(code);
       store.saveResultFor(p.inviterCode, code);
       location.hash = p.selfFirst ? resultHash(code, p.inviterCode, quick) : resultHash(p.inviterCode, code, quick); // hashchange откроет результат
       return;
     }
-    store.saveOwnCode(code);
-    show(finishScreen(inviteUrl(base, code, quick), () => introFor(code)));
+    if (!p.ownCode || !store.loadOwnCode() || p.ownCode === store.loadOwnCode()) store.saveOwnCode(code);
+    const target = personalHash(code, quick);
+    if (location.hash === '#' + target) return showPersonal(code);
+    location.hash = target;
   }
 
+  function showPersonal(code: string) {
+    try {
+      const profile = decode(code, MANIFEST, FIRM);
+      if (profile.bankVersion < COMPATIBLE_SINCE) {
+        return show(messageScreen('Тест обновился', 'Для личного результата нужно пройти текущую версию: смысл старых вопросов изменился.', null, [{
+          label: 'Пройти обновлённый тест', primary: true,
+          onClick: () => runTest({name:profile.name,index:0,responses:{},inviterCode:null,ownCode:code}),
+        }]));
+      }
+      const only = unansweredIds(CURRENT_IDS, profile.responses);
+      if (only.length || !profile.priorities) {
+        return show(messageScreen('Завершите свой тест', 'Личный результат доступен без партнёра. Сохранённые ответы перенесены — осталось заполнить новые вопросы или выбрать важные сферы.', null, [{
+          label: 'Продолжить мой тест', primary: true,
+          onClick: () => runTest({name:profile.name,index:0,responses:profile.responses,priorities:profile.priorities,inviterCode:null,only,ownCode:code}),
+        }]));
+      }
+      show(personalResultScreen(profile, QUESTIONS, inviteUrl(base, code, quick), () => introFor(code)));
+    } catch (e) {
+      show(messageScreen('Не получилось открыть личный результат', codecMessage(e)));
+    }
+  }
 
   function showResult(a: string, b: string, open: string[]) {
     try {
@@ -168,7 +196,7 @@ export function startApp(root: HTMLElement): void {
       // Ссылка от прежней версии теста: можно ответить только на новые вопросы — остальные ответы переносятся.
       // Ссылка до выбора важных сфер — их тоже можно выбрать, не отвечая заново.
       const fill = ([[pa, a, b], [pb, b, a]] as const).flatMap(([p, own, other]) => {
-        const only = CURRENT_IDS.filter((id) => !(id in p.responses));
+        const only = unansweredIds(CURRENT_IDS, p.responses);
         return only.length || !p.priorities ? [{
           name: p.name || (p === pa ? 'Первый' : 'Второй'),
           count: only.length,
@@ -176,7 +204,13 @@ export function startApp(root: HTMLElement): void {
           onFill: () => runTest({ name: p.name, index: 0, responses: p.responses, inviterCode: other, only, ownCode: own, selfFirst: p === pa, priorities: p.priorities }),
         }] : [];
       });
-      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), QUESTIONS, fill));
+      if (fill.length) {
+        const personal = ([[pa,a],[pb,b]] as const)
+          .filter(([p]) => !unansweredIds(CURRENT_IDS,p.responses).length && p.priorities)
+          .map(([p,code]) => ({name:p.name || (p===pa?'Первый':'Второй'),url:personalUrl(base,code,quick)}));
+        return show(resultPendingScreen(pa, pb, fill, resultUrl(base, a, b, quick, open), personal));
+      }
+      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), QUESTIONS, fill, [personalUrl(base,a,quick),personalUrl(base,b,quick)]));
     } catch (e) {
       show(messageScreen('Не получилось открыть результат', codecMessage(e)));
     }

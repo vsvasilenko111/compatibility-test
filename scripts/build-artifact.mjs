@@ -17,15 +17,24 @@ const asset = (re) => {
 const js = asset(/<script[^>]+src="([^"]+\.js)"/).replace(/<\/script/gi, '<\\/script');
 const css = asset(/<link[^>]+href="([^"]+\.css)"/);
 
-const page = `<title>Тест совместимости</title>
+const page = `<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тест совместимости</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 ${css}
 </style>
+</head>
+<body>
 <div id="app"></div>
 <script type="module">
 ${js}
 </script>
+</body>
+</html>
 `;
 fs.writeFileSync(path.join(outDir, 'compatibility-test.html'), page);
 console.log(`готово: ${outDir}/compatibility-test.html (${(page.length / 1024).toFixed(1)} КБ)`);

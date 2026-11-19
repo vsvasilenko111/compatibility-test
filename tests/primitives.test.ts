@@ -9,18 +9,23 @@ const ans = (value: number, lo = 0, hi = 10, importance: ImportanceLevel = 2): A
 const opt = (n: number) => answerFor(OPTION_VALUES[n - 1]);
 
 describe('fit — таблица совпадения 5×5', () => {
-  it('строка первого варианта: 100 / 75 / 35 / 10 / 0', () => {
-    expect([1, 2, 3, 4, 5].map((n) => fit(opt(1), opt(n)))).toEqual([1, 0.75, 0.35, 0.1, 0]);
+  it('строка первого варианта: 100 / 75 / 50 / 25 / 0', () => {
+    expect([1, 2, 3, 4, 5].map((n) => fit(opt(1), opt(n)))).toEqual([1, 0.75, 0.5, 0.25, 0]);
   });
-  it('одинаковые ответы: в крае 100, во втором и четвёртом 95, в середине 90', () => {
-    expect([1, 2, 3, 4, 5].map((n) => fit(opt(n), opt(n)))).toEqual([1, 0.95, 0.9, 0.95, 1]);
+  it('любой одинаковый вариант даёт полное совпадение', () => {
+    expect([1, 2, 3, 4, 5].map((n) => fit(opt(n), opt(n)))).toEqual([1, 1, 1, 1, 1]);
   });
+  it.each([[1, 1, 1], [4, 5, .75], [2, 4, .5], [1, 4, .25], [1, 5, 0]])(
+    'варианты %i и %i дают %f', (a, b, expected) => {
+      expect(fit(opt(a), opt(b))).toBe(expected);
+      expect(fit(opt(b), opt(a))).toBe(expected);
+    });
   it('таблица симметрична', () => {
     for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) expect(MATCH[i][j]).toBe(MATCH[j][i]);
   });
   it('ответ прежней шкалы 0–10 берётся по ближайшему варианту', () => {
     expect(fit(answerFor(9), answerFor(10))).toBe(1);
-    expect(fit(answerFor(2), answerFor(3))).toBe(0.95);
+    expect(fit(answerFor(2), answerFor(3))).toBe(1);
   });
 });
 

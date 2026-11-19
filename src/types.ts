@@ -1,7 +1,14 @@
-/** maturity — вопросы об эмоциях и прошлом опыте: на проценты не влияют, дают только опоры и темы для разговора. */
+/** maturity — эмоции и прошлый опыт; только явное relationshipRule может включить сочетание реакций в основной индекс. */
 export type Block = 'friendship' | 'relationship' | 'maturity';
 
+/** Interpretations applied only when calculating the main relationship result. */
+export type RelationshipRule =
+  | { kind: 'input_only' }
+  | { kind: 'goal_direction'; levels: number[] }
+  | { kind: 'closeness_cross'; sourceId: string; sourceLevels: number[]; sphere: string };
+
 export interface Question {
+  relationshipRule?: RelationshipRule;
   id: string;
   block: Block;
   sphere: string;
@@ -10,11 +17,21 @@ export interface Question {
   right: string;
   topic: string;
   optional: boolean;
-  /** 5 вариантов по одной оси, от left к right (с банка v14). Без них — прежняя шкала 0–10. */
+  /** Обычно5 вариантов по оси; categorical задаёт4 или5 неупорядоченных категорий без числового сравнения. */
   options?: string[];
+  /** Неупорядоченный ответ: scored:false обязателен, положение варианта не означает степень признака. */
+  answerKind?: 'categorical';
+  /** Варианты неопределённости (номера 1–5): ответ сохранён, но совпадение пока неизвестно. */
+  uncertainOptions?: number[];
+  /** Качество действия по пяти вариантам, 0..1; оценивается поведение каждого, а не сходство. */
+  behaviorLevels?: number[];
+  /** Приемлемые форматы и предпочтение для каждого из пяти вариантов. */
+  formats?: { accepted: string[]; preferred: string | null }[];
+  /** Стабильный ключ темы блока чувств при замене формулировки и ID вопроса. */
+  maturityKey?: 'trauma-05' | 'trauma-06';
   /** false — ответ показывается, но в проценты и темы не идёт: разница здесь не минус (например, амбиции у мужчины и женщины). */
   scored?: boolean;
-  /** Под шкалой — отметка «Для меня это не обсуждается»: красный флаг ставится только по ней. */
+  /** Метаданные старых банков до v19; в текущем прохождении отметок нет. */
   firm?: boolean;
   /**
    * Отношение к привычке партнёра (курение, алкоголь, спорт): ответ сравнивается не с тем же вопросом у другого,
@@ -42,7 +59,7 @@ export interface Answer {
   lo: number; // 0..10, lo <= hi
   hi: number;
   importance: ImportanceLevel;
-  /** Отметка «Для меня это не обсуждается» — только у вопросов с firm. */
+  /** Отметка старых ссылок до v19; новые ответы её не передают. */
   firm?: boolean;
 }
 

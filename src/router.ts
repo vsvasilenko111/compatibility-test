@@ -1,6 +1,7 @@
 export type Route =
   | { kind: 'start'; quick: boolean }
   | { kind: 'invite'; a: string; quick: boolean }
+  | { kind: 'personal'; a: string; quick: boolean }
   | { kind: 'result'; a: string; b: string; quick: boolean; open?: string[] };
 
 /** Мессенджеры добавляют к ссылке точки, скобки и переносы — оставляем только алфавит base64url. */
@@ -15,9 +16,9 @@ function decode(hash: string): string {
 }
 
 /**
- * Формат ссылок: `#i.<код>` — приглашение, `#r.<код A>.<код B>` — результат, `#q` — быстрый режим (5 вопросов);
+ * Формат ссылок: `#i.<код>` — приглашение, `#p.<код>` — личный результат, `#r.<код A>.<код B>` — результат пары;
  * после кодов результата — метки согласия открыть ответы (`.o…`, см. consent.ts);
- * приставка `q` у i/r сохраняет быстрый режим. Только [A-Za-z0-9._-]: иначе метка не доходит до страницы Artifact.
+ * приставка `q` у i/p/r сохраняет быстрый режим. Только [A-Za-z0-9._-]: иначе метка не доходит до страницы Artifact.
  * Старый формат `#a=…&b=…` тоже разбирается.
  */
 export function parseHash(hash: string): Route {
@@ -34,6 +35,7 @@ export function parseHash(hash: string): Route {
   const parts = rest.map(clean).filter(Boolean);
   const quick = head.startsWith('q');
   const tag = quick ? head.slice(1) : head;
+  if (tag === 'p' && parts.length >= 1) return { kind: 'personal', a: parts[0], quick };
   if (tag === 'r' && parts.length >= 2) {
     const open = parts.slice(2);
     return open.length ? { kind: 'result', a: parts[0], b: parts[1], quick, open } : { kind: 'result', a: parts[0], b: parts[1], quick };
@@ -44,6 +46,8 @@ export function parseHash(hash: string): Route {
 
 const prefix = (quick: boolean) => (quick ? 'q' : '');
 export const inviteHash = (a: string, quick: boolean) => `${prefix(quick)}i.${a}`;
+export const personalHash = (a: string, quick: boolean) => `${prefix(quick)}p.${a}`;
+export const personalUrl = (base: string, a: string, quick: boolean) => `${base}#${personalHash(a, quick)}`;
 export const resultHash = (a: string, b: string, quick: boolean, open: readonly string[] = []) => [`${prefix(quick)}r`, a, b, ...open].join('.');
 export const inviteUrl = (base: string, a: string, quick: boolean) => `${base}#${inviteHash(a, quick)}`;
 export const resultUrl = (base: string, a: string, b: string, quick: boolean, open: readonly string[] = []) => `${base}#${resultHash(a, b, quick, open)}`;

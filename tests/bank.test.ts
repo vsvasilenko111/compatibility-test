@@ -16,10 +16,14 @@ describe('банк вопросов', () => {
   it('манифест содержит текущую версию', () => {
     expect(MANIFEST[BANK_VERSION]).toBe(CURRENT_IDS);
   });
-  it('у каждого вопроса 5 вариантов; крайние совпадают с left и right', () => {
+  it('ordered questions retain five choices; only the unscored budget arrangement has five unordered choices', () => {
+    const categorical = QUESTIONS.filter(x => x.answerKind === 'categorical');
+    expect(categorical.map(x => x.id)).toEqual(['budget-arrangement-r36']);
+    expect(categorical[0].scored).toBe(false);
     for (const x of QUESTIONS) {
-      expect(x.options, x.id).toHaveLength(5);
-      expect([x.options![0], x.options![4]], x.id).toEqual([x.left, x.right]);
+      const count = 5;
+      expect(x.options, x.id).toHaveLength(count);
+      expect([x.options![0], x.options![count - 1]], x.id).toEqual([x.left, x.right]);
     }
   });
   it('в банке есть все три блока', () => {
@@ -35,21 +39,21 @@ describe('банк вопросов', () => {
 describe('полный банк', () => {
   const count = (sphere: string) => QUESTIONS.filter((x) => x.sphere === sphere).length;
 
-  it('136 вопросов: 49 о партнёре как друге, 78 отношений и 9 зрелости', () => {
-    expect(QUESTIONS).toHaveLength(136);
-    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(49);
-    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(78);
-    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(9);
+  it('115 вопросов: 42 о партнёре как друге, 65 отношений и 8 зрелости', () => {
+    expect(QUESTIONS).toHaveLength(115);
+    expect(QUESTIONS.filter((x) => x.block === 'friendship')).toHaveLength(42);
+    expect(QUESTIONS.filter((x) => x.block === 'relationship')).toHaveLength(65);
+    expect(QUESTIONS.filter((x) => x.block === 'maturity')).toHaveLength(8);
   });
 
   it('блок зрелости — в конце, вопросы о прошлом — последними и подряд', () => {
-    expect(QUESTIONS.slice(-9).every((x) => x.block === 'maturity')).toBe(true);
+    expect(QUESTIONS.slice(-8).every((x) => x.block === 'maturity')).toBe(true);
     expect(QUESTIONS.slice(-2).every((x) => x.sphere === 'past')).toBe(true);
   });
 
-  it('в каждой сфере 4–12 вопросов, в «Проявлениях любви» — от 3', () => {
+  it('в сферах 4–12 вопросов, в любви и месте жизни от 3, в работе осталось 2', () => {
     for (const s of SPHERES.filter((x) => x.block !== 'maturity')) {
-      const [min, max] = [s.id === 'love' ? 3 : 4, 12];
+      const [min, max] = [s.id === 'career' ? 2 : ['love', 'living'].includes(s.id) ? 3 : 4, 12];
       expect(count(s.id), s.id).toBeGreaterThanOrEqual(min);
       expect(count(s.id), s.id).toBeLessThanOrEqual(max);
     }
@@ -59,10 +63,11 @@ describe('полный банк', () => {
     for (const x of QUESTIONS) expect(x.optional, x.id).toBe(false);
   });
 
-  it('отметка «не обсуждается» — у 12 вопросов, список в коде ссылки совпадает с банком', () => {
+  it('текущий банк не предлагает отметок firm; списки старых версий сохранены', () => {
     const firm = QUESTIONS.filter((x) => x.firm).map((x) => x.id);
-    expect(firm).toHaveLength(12);
+    expect(firm).toHaveLength(0);
     expect(CURRENT_FIRM).toEqual(firm);
+    expect(FIRM[18]).toHaveLength(12);
     expect(FIRM[8]).toBeUndefined();
   });
 

@@ -1,84 +1,89 @@
-import { calibrate, FRIENDSHIP_TABLE, RELATIONSHIP_TABLE } from '../../scoring/calibration';
 import type { CompareResult } from '../../scoring/compare';
 import type { MaturityResult } from '../../scoring/maturity';
 import type { Resource } from '../../scoring/resources';
+import { semanticRelationship, type SemanticRelationshipResult } from '../../scoring/semantic-relationship';
 import { PRIORITY_SPHERES } from '../../questions/spheres';
 import type { Priority, Question } from '../../types';
 import { bothAnswered, divergences, type AnswerRow } from '../answers-view';
 import type { Profile } from '../../types';
 import { h } from '../dom';
-import { flagsLine, sphereDetail, sphereTiles, supportTopics, tileTone, type SphereTile } from '../result-view';
+import { personSummarySection } from '../person-summary-view';
+import { flagsLine, sphereTiles, supportTopics } from '../result-view';
+import { sphereExplorer } from '../sphere-explorer';
 import { plural } from '../plural';
 import { shareBlock } from '../share';
 import { level, verdict } from '../verdict';
 
 const num = (p: number | null) => (p === null ? '—' : String(Math.round(p)));
 
-function score(p: number | null, caption: string, cls: string): HTMLElement {
-  return h('div', { class: `score ${cls}` },
-    h('div', { class: 'num' }, num(p), p === null ? null : h('span', { class: 'unit' }, '%')),
+function score(p: number | null, caption: string, cls: string, label = level(p)): HTMLElement {
+  return h('div', { class: `score ${cls}${p === null ? ' no-score' : ''}`, ...(p === null ? {} : { style: `--score:${Math.max(0, Math.min(100, p))}%` }) },
+    h('div', { class: 'score-visual' },
+      h('div', { class: 'num' }, num(p), p === null ? null : h('span', { class: 'unit' }, '%'))),
     h('div', { class: 'cap' }, caption),
-    level(p) ? h('div', { class: 'lvl' }, level(p)) : null);
+    label ? h('div', { class: 'lvl' }, label) : null);
+}
+
+/** Display-only rounding: an incomplete or merely near-perfect result cannot claim 100. */
+function semanticDisplay(s: SemanticRelationshipResult): number | null {
+  return s.percent === null ? null : s.percent === 100 && !s.provisional ? 100 : Math.min(99, Math.round(s.percent));
+}
+
+function semanticLabel(p: number | null): string {
+  if (p === null) return 'Недостаточно данных для индекса отношений';
+  if (p === 100) return 'Ваша судьба';
+  if (p >= 80) return 'Отлично подходите по ответам';
+  if (p >= 70) return 'Хорошая база';
+  if (p >= 50) return 'Не особо друг другу подходите по ответам';
+  return 'Слабая база для длительных отношений';
+}
+
+const outOf100 = (p: number | null) => `${p === null ? '—' : p.toLocaleString('ru-RU', { maximumFractionDigits: 2 })} / 100`;
+
+function semanticDetails(s: SemanticRelationshipResult): HTMLElement {
+  return h('div', { class: 'semantic-details', 'data-scoring-version': s.version },
+    h('p', {}, 'Баллы показывают соответствие ваших ответов для длительных отношений.'),
+    h('ul', {},
+      h('li', {}, `Предпочтения и планы: ${outOf100(s.components.plans)}`),
+      h('li', {}, `Действия в трудных ситуациях: ${outOf100(s.components.actions)}`),
+      h('li', {}, `Настрой на длительные отношения: ${outOf100(s.components.orientation)}`),
+      h('li', {}, `Сочетание реакций: ${outOf100(s.components.reactions)}`),
+      h('li', {}, `Исходный индекс v28: ${outOf100(s.rawPercent)}`)),
+    h('p', {}, 'Основа — среднее геометрическое предпочтений и действий. Настрой на длительные отношения и сочетание реакций применяются как отдельные множители. Известное расхождение по категории планов ограничивает результат 50; несколько таких расхождений не снижают границу повторно.'),
+    h('p', {}, 'Карта сфер и «партнёр как друг» сохраняют исходный расчёт v28. Их числа показывают совпадение ответов на исходной шкале; уровни нового индекса к ним не применяются.'),
+    h('p', {}, '100 — максимальное соответствие ответов при известных данных. «Ваша судьба» — игровое название этого результата, не гарантия счастливых отношений. Прочие близкие к максимуму и предварительные результаты отображаются не выше 99.'));
+}
+
+function planCaps(s: SemanticRelationshipResult | null, questions: Question[] | undefined): HTMLElement | null {
+  if (!s?.caps.length) return null;
+  return h('section', { class: 'plan-conflict-caps' },
+    sectionHeading('О чём договориться', 'Расхождения в текущих планах'),
+    h('p', { class: 'hint' }, 'Это расхождение в текущих планах, не личный запрет и не вывод о том, что вы никогда не договоритесь. Оно ограничивает индекс отношений 50.'),
+    ...s.caps.map(cap => {
+      const q = questions?.find(q => q.id === cap.id);
+      const choice = (n: number) => `${n}. ${q?.options?.[n - 1] ?? `Вариант ${n}`}`;
+      return h('div', { class: 'note talk' },
+        h('div', { class: 'note-label' }, cap.topic),
+        h('p', {}, cap.reason === 'formats' ? 'Нет общего приемлемого формата.' : 'Ответы по разные стороны категории планов.'),
+        h('p', {}, `Ответы: «${choice(cap.optionA)}» и «${choice(cap.optionB)}».`));
+    }));
 }
 
 function note(kind: string, label: string, topics: string[]): HTMLElement | null {
   if (!topics.length) return null;
-  return h('div', { class: `note ${kind}` }, h('div', { class: 'note-label' }, label), h('div', {}, topics.join(' · ')));
+  const chips = (items: string[]) => h('div', { class: 'topic-chips' }, ...items.map(topic => h('span', { class: 'topic-chip' }, topic)));
+  return h('div', { class: `note ${kind}` },
+    h('div', { class: 'note-heading' },
+      h('span', { class: 'note-symbol', 'aria-hidden': 'true' }, kind === 'support' ? '✳' : kind === 'red' ? '!' : '↗'),
+      h('div', { class: 'note-label' }, label), h('span', { class: 'note-count' }, String(topics.length))),
+    chips(topics.slice(0, 5)),
+    topics.length > 5 ? h('details', { class: 'more-topics' },
+      h('summary', {}, `Ещё ${plural(topics.length - 5, ['тема', 'темы', 'тем'])}`), chips(topics.slice(5))) : null);
 }
 
-/** Карта сфер: нажатие (или наведение мышью) раскрывает под картой темы вопросов сферы со степенью совпадения. */
-function sphereMap(tiles: SphereTile[]): HTMLElement {
-  const panel = h('div', { class: 'sphere-detail', 'aria-live': 'polite', onclick: () => { pinned = null; open(null); } });
-  panel.hidden = true;
-  const buttons: HTMLButtonElement[] = [];
-  let pinned: string | null = null;
-  const canHover = typeof matchMedia === 'function' && matchMedia('(hover: hover)').matches;
-
-  function open(t: SphereTile | null, anchor?: HTMLElement) {
-    buttons.forEach((b) => b.setAttribute('aria-expanded', String(b.dataset.id === t?.id)));
-    if (!t) {
-      panel.hidden = true;
-      return;
-    }
-    const rows = sphereDetail(t.items);
-    panel.replaceChildren(
-      h('div', { class: 'detail-head' },
-        h('b', {}, t.label),
-        h('span', {}, plural(rows.length, ['вопрос', 'вопроса', 'вопросов']))),
-      h('ul', {}, ...rows.map((r) =>
-        h('li', { class: `lvl-${r.level}` }, h('span', { class: 'dot' }), h('span', { class: 'topic' }, r.topic), h('span', { class: 'lvl' }, r.label)))),
-    );
-    panel.hidden = false;
-    // Панель всплывает прямо под плиткой, поверх нижних плиток — без сдвига раскладки и всегда в поле зрения.
-    if (anchor) panel.style.top = `${anchor.offsetTop + anchor.offsetHeight + 8}px`;
-  }
-
-  const grid = h('div', { class: 'tiles' },
-    ...tiles.map((t) => {
-      const b = h('button', {
-        type: 'button',
-        class: `tile tone-${tileTone(t.percent)}`,
-        'aria-expanded': 'false',
-        title: t.percent === null ? 'Для вас обоих не принципиально' : '',
-        onclick: () => {
-          pinned = pinned === t.id ? null : t.id;
-          open(pinned ? t : null, b);
-        },
-        onmouseenter: () => { if (canHover && !pinned) open(t, b); },
-      }, h('b', {}, num(t.percent)), h('span', {}, t.label));
-      b.dataset.id = t.id;
-      buttons.push(b);
-      return b;
-    }));
-
-  return h('section', {
-    class: 'map',
-    onmouseleave: () => { if (canHover && !pinned) open(null); },
-  },
-    h('h3', { class: 'eyebrow' }, 'Карта сфер'),
-    h('p', { class: 'hint' }, canHover ? 'Наведите или нажмите на сферу, чтобы увидеть темы вопросов' : 'Нажмите на сферу, чтобы увидеть темы вопросов'),
-    grid,
-    panel);
+function sectionHeading(kicker: string, title: string): HTMLElement {
+  return h('div', { class: 'section-heading' },
+    h('p', { class: 'eyebrow' }, kicker), h('h2', {}, title));
 }
 
 const LEVEL_LABEL: Record<Resource['level'], string> = { strong: 'получается', ok: 'в целом получается', grow: 'зона роста' };
@@ -91,8 +96,8 @@ function resourcesSection(rs: Resource[] | null, m: MaturityResult | null): HTML
   const talks = m?.talks ?? [];
   if (!rs && !talks.length) return null;
   return h('section', { class: 'resources' },
-    h('h3', { class: 'eyebrow' }, 'Ресурсы пары'),
-    h('p', { class: 'hint' }, 'Не сходство, а то, как вы вдвоём справляетесь с трудным. На проценты не влияет; чьи это ответы, не показываем.'),
+    sectionHeading('Забота о вашем «мы»', 'Ресурсы пары'),
+    h('p', { class: 'hint' }, 'Как вы вдвоём справляетесь с трудным. Действия в конфликте и сочетание тревоги с дистанцией учитываются и в общем индексе; здесь ваши реакции объяснены подробнее, без указания, чьи это ответы.'),
     rs ? h('ul', { class: 'res-list' }, ...rs.map((r) =>
       h('li', { class: `res lvl-${r.level}` },
         h('div', { class: 'res-head' }, h('b', {}, r.title), h('span', { class: 'res-lvl' }, LEVEL_LABEL[r.level])),
@@ -106,8 +111,8 @@ function answerItem(r: AnswerRow, na: string, nb: string): HTMLElement {
   return h('li', { class: r.opposite && r.diff >= 6 ? 'answer far' : 'answer' },
     h('div', { class: 'answer-q' }, r.text),
     h('div', { class: 'answer-vals' },
-      h('span', {}, `${na}: `, h('b', {}, r.labelA), r.firmA ? ' · не обсуждается' : null),
-      h('span', {}, `${nb}: `, h('b', {}, r.labelB), r.firmB ? ' · не обсуждается' : null)));
+      h('span', {}, `${na}: `, h('b', {}, r.labelA)),
+      h('span', {}, `${nb}: `, h('b', {}, r.labelB))));
 }
 
 /** Ответы друг друга: расхождения по группам и все ответы. Пропущенные не показываются. */
@@ -117,9 +122,9 @@ function answersSection(a: Profile, b: Profile, questions: Question[] | undefine
   const groups = divergences(questions, a, b);
   const all = bothAnswered(questions, a, b);
   return h('section', { class: 'answers' },
-    h('h3', { class: 'eyebrow' }, 'Ответы друг друга'),
-    ...groups.map((g) => h('div', { class: 'answer-group' },
-      h('h4', {}, `${g.title} — ${g.rows.length}`),
+    sectionHeading('Больше понимания', 'Ответы друг друга'),
+    ...groups.map((g) => h('details', { class: 'answer-group explain' },
+      h('summary', {}, h('h4', {}, `${g.title} — ${g.rows.length}`)),
       h('ul', {}, ...g.rows.map((r) => answerItem(r, na, nb))))),
     groups.length ? null : h('p', {}, 'Заметных расхождений нет.'),
     h('details', { class: 'explain' },
@@ -162,7 +167,7 @@ function prioritiesSection(a: Profile, b: Profile): HTMLElement | null {
       h('p', {}, sphereLabels(pr, 'top').join(' · ')))
     : h('div', { class: 'note soft' }, h('div', { class: 'note-label' }, name), h('p', {}, 'Пока не выбрано — проценты считаются по обычным весам.'));
   return h('section', { class: 'priorities-result' },
-    h('h3', { class: 'eyebrow' }, 'Что важнее каждому'),
+    sectionHeading('Личные ориентиры', 'Что важнее каждому'),
     h('p', { class: 'hint' }, 'Каждый выбрал 5 самых важных для себя сфер — совпадение в них весит для него втрое больше.'),
     h('div', { class: 'notes' },
       both.length ? note('support', 'Важно обоим', both) : null,
@@ -170,51 +175,67 @@ function prioritiesSection(a: Profile, b: Profile): HTMLElement | null {
       person(nb, b.priorities)));
 }
 
-export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string, questions?: Question[], fill: FillOffer[] = []): HTMLElement {
+function foldout(label: string, content: HTMLElement | null): HTMLElement | null {
+  return content ? h('details', { class: 'result-foldout' }, h('summary', {}, label), content) : null;
+}
+
+export function resultScreen(a: Profile, b: Profile, result: CompareResult, shareUrl: string, questions?: Question[], fill: FillOffer[] = [], personalUrls?: [string, string]): HTMLElement {
   const rel = result.relationship;
-  // На постере и в вердикте — откалиброванные проценты (50% — типичная случайная пара); карта сфер — по сырым.
+  const semantic = questions ? semanticRelationship(questions, a, b) : null;
+  const mainPercent = semantic ? semanticDisplay(semantic) : rel.percent;
   const shown = {
-    relationship: { ...rel, percent: calibrate(rel.percent, RELATIONSHIP_TABLE) },
-    friendship: { ...result.friendship, percent: calibrate(result.friendship.percent, FRIENDSHIP_TABLE) },
+    relationship: rel,
+    friendship: result.friendship,
   };
   const flags = flagsLine(rel);
   const reds = rel.redFlags.map((i) => i.topic);
 
   return h('section', { class: 'screen result' },
-    h('div', { class: 'poster' },
-      h('p', { class: 'poster-names' }, `${a.name || 'Первый'} × ${b.name || 'Второй'}`),
+    h('div', { class: 'result-intro' },
+      h('p', { class: 'eyebrow' }, 'Ваш результат · только для двоих'),
+      h('h1', {}, 'Ваше «мы» — в деталях.'),
+      h('p', {}, 'Посмотрите, что вас объединяет и о чём хочется поговорить.')),
+    h('div', { class: `poster${semantic ? ' semantic-poster' : ''}` },
+      h('div', { class: 'poster-top' },
+        h('p', { class: 'poster-names' }, h('span', {}, a.name || 'Первый'), h('span', { class: 'names-plus', 'aria-hidden': 'true' }, '+'), h('span', {}, b.name || 'Второй')),
+        h('span', { class: 'poster-caption' }, 'У каждой пары свой ритм')),
       h('div', { class: 'poster-scores' },
-        score(shown.relationship.percent, 'совместимость в отношениях', 'main'),
-        score(shown.friendship.percent, 'партнёр как друг', 'second')),
-      h('p', { class: 'poster-verdict' }, verdict(shown)),
-      flags ? h('p', { class: 'poster-flags' }, flags) : null),
+        score(mainPercent, semantic ? 'совместимость в длительных отношениях' : 'исходный индекс отношений (без метаданных вопросов)', 'main', semantic ? semanticLabel(mainPercent) : level(mainPercent)),
+        h('div', { class: 'poster-story' },
+          h('p', { class: 'eyebrow' }, 'О вас двоих'),
+          h('h2', { class: 'poster-verdict' }, semantic ? semanticLabel(mainPercent) : verdict(shown)),
+          flags ? h('p', { class: 'poster-flags' }, flags) : null,
+          score(shown.friendship.percent, 'партнёр как друг', 'second'))),
+      h('p', { class: 'poster-footnote' }, 'Совпадение ответов — только часть вашей истории. Важнее то, как вы слышите друг друга.')),
     fillBlock(fill),
+    semantic?.provisional ? h('p', { class: 'hint semantic-provisional' }, 'Это предварительный результат: часть данных неизвестна. Пропуски и неопределённость не считаются плохими ответами; неизвестные части не подтверждают максимальное соответствие.') : null,
+    sphereExplorer(sphereTiles(rel.spheres), questions, a, b),
+    personSummarySection(questions, a, b, personalUrls),
     h('details', { class: 'explain' },
       h('summary', {}, 'Что значат проценты?'),
+      semantic ? semanticDetails(semantic) : h('p', {}, 'Без метаданных вопросов показан исходный индекс совпадения ответов, без смысловой шкалы индекса отношений.'),
       h('p', {}, 'Партнёр как друг — каково вам друг с другом каждый день: юмор, досуг, увлечения, доверие, ссоры, ценности, быт, ревность, родные. Насколько вам легко вместе.'),
-      h('p', {}, 'Совместимость в отношениях — по всем вопросам, кроме эмоций и прошлого опыта: к этому добавляются дети, быт, деньги, близость, родные. Получится ли общая жизнь.'),
-      h('p', {}, 'Вопросы об эмоциях и прошлом опыте на проценты не влияют — по ним считаются ресурсы пары: как вы спорите, отходите, миритесь и поддерживаете друг друга.'),
-      h('p', {}, 'Процент — насколько вы совпадаете по сравнению с двумя случайными людьми: 50% — как у случайной пары незнакомцев. У крепких пар обычно 75–90%.'),
-      h('ul', {},
-        h('li', {}, '80–100% — очень высокая: как у типичной крепкой пары.'),
-        h('li', {}, '70–79% — высокая: с этого уровня начинаются крепкие пары, расхождения решаемы.'),
-        h('li', {}, '55–69% — средняя: многое зависит от того, договоритесь ли вы по темам из «Стоит обсудить».'),
-        h('li', {}, '40–54% — ниже средней: расхождений больше, обычно в одной-двух важных сферах.'),
-        h('li', {}, 'до 40% — низкая: расходятся жизненные планы — дети, где жить, деньги.')),
-      h('p', {}, 'Если «партнёр как друг» заметно выше отношений — вам легко вместе, но во взглядах на совместную жизнь есть что обсудить.')),
-    h('section', { class: 'plans' },
-      h('h3', { class: 'eyebrow' }, 'Совпадение планов'),
-      h('p', { class: 'hint' }, 'Насколько совпадают ваши взгляды на общую жизнь: дети, деньги, где жить, быт, вера, родные.'),
-      h('div', { class: 'notes' },
+      h('p', {}, 'Совместимость в длительных отношениях — ваши взгляды на совместную жизнь, приемлемые предпочтения и действия в конфликте. Настрой на длительные отношения — отдельная часть индекса: это контекст планов, не оценка человека или его выбора.'),
+      h('p', {}, 'Одно сочетание реакций тоже входит в общий индекс: тревога одного при дистанции другого. Сама тревожность не считается недостатком. Остальные вопросы об эмоциях и прошлом опыте не оцениваются в процентах; все они сохраняются в ресурсах пары.'),
+      h('p', {}, 'Спорт учитывается через приемлемость привычки партнёра, без отдельного балла за сходство увлечения спортом. Важные для каждого сферы влияют сильнее. Неопределённые цели не считаются подтверждённым совпадением. Отдельные существенные расхождения могут сохраняться — смотрите темы для обсуждения ниже.'),
+      h('p', {}, 'Это подсказка для обсуждения отношений, а не вероятность того, что они будут счастливыми или сохранятся.'),
+      semantic ? null : h('p', {}, 'Если «партнёр как друг» заметно выше отношений — вам легко вместе, но во взглядах на совместную жизнь есть что обсудить.')),
+    planCaps(semantic, questions),
+    foldout('Совпадение планов', h('section', { class: 'plans' },
+      sectionHeading('Общая картина', 'Совпадение планов'),
+      h('p', { class: 'hint' }, 'Ваши взгляды на общую жизнь: дети, деньги, где жить, быт, вера, родные. Настрой на длительные отношения учитывается отдельно: даже общий выбор коротких отношений означает другой ориентир, а не спор между вами.'),
+      h('div', { class: 'notes plan-notes' },
         note('red', reds.length > 1 ? 'Красные флаги' : 'Красный флаг', reds),
+        note('talk', 'Пока не определились', (rel.uncertain ?? []).map(i => i.topic)),
         note('talk', 'Стоит обсудить', rel.talkZones.map((i) => i.topic)),
-        note('support', 'Ваша опора', supportTopics(rel)))),
-    prioritiesSection(a, b),
-    resourcesSection(result.resources, result.maturity),
-    answersSection(a, b, questions),
-    sphereMap(sphereTiles(rel.spheres)),
-    h('h3', {}, 'Отправить результат партнёру'),
-    h('p', { class: 'hint' }, 'По этой ссылке результат откроется в любой момент и на любом устройстве — сохраните её. На этом устройстве он есть и на главной в «Ваших результатах».'),
-    shareBlock(shareUrl, 'Наш результат совместимости'),
+        note('support', 'Ваша опора', supportTopics(rel))))),
+    foldout('Что важнее каждому', prioritiesSection(a, b)),
+    foldout('Ресурсы пары', resourcesSection(result.resources, result.maturity)),
+    foldout('Ответы друг друга', answersSection(a, b, questions)),
+    h('section', { class: 'result-share' },
+      h('span', { class: 'share-flower', 'aria-hidden': 'true' }, '✳'),
+      h('h2', {}, 'Отправить результат партнёру'),
+      h('p', { class: 'hint' }, 'По этой ссылке результат откроется в любой момент и на любом устройстве — сохраните её. На этом устройстве он есть и на главной в «Ваших результатах».'),
+      shareBlock(shareUrl, 'Наш результат совместимости')),
   );
 }

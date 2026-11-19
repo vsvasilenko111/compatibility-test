@@ -1,4 +1,5 @@
 import type { Profile, Question } from '../types';
+import { optionIndex } from '../answer';
 
 /**
  * «Ресурсы пары» — уровень, а не сходство: как вы вдвоём спорите, отходите, миритесь и опираетесь друг на друга.
@@ -62,23 +63,44 @@ const STRONG = 0.7;
 const OK = 0.5;
 
 /** Уровень человека 0..1 по вопросам измерения; null — не ответил ни на один. */
-function personLevel(p: Profile, ids: string[]): number | null {
+function personLevel(p: Profile, ids: string[], questions: Map<string, Question>): number | null {
   const xs = ids.flatMap((id) => {
     const r = p.responses[id];
-    return r && r !== 'skipped' ? [r.value] : [];
+    if (!r || r === 'skipped') return [];
+    const levels = questions.get(id)?.behaviorLevels;
+    return [levels ? levels[optionIndex(r.value)] : 1 - r.value / 10];
   });
-  return xs.length ? 1 - xs.reduce((s, x) => s + x, 0) / xs.length / 10 : null;
+  return xs.length ? xs.reduce((s, x) => s + x, 0) / xs.length : null;
 }
 
 /** null — если хотя бы один не отвечал на эти вопросы (ссылка от версии теста без блока об эмоциях). */
 export function resources(questions: Question[], pa: Profile, pb: Profile): Resource[] | null {
   const known = new Set(questions.map((q) => q.id));
+  const byId = new Map(questions.map(q => [q.id, q]));
   const maturityIds = questions.filter((q) => q.block === 'maturity').map((q) => q.id);
-  if (personLevel(pa, maturityIds) === null || personLevel(pb, maturityIds) === null) return null;
+  if (personLevel(pa, maturityIds, byId) === null || personLevel(pb, maturityIds, byId) === null) return null;
   const out: Resource[] = [];
-  for (const d of DIMENSIONS) {
+  for (const original of DIMENSIONS) {
+    let d = original;
+    if (d.key === 'argue' && known.has('conflict-response-01')) d = { ...d, ids: ['conflict-response-01'] };
+    if (d.key === 'cool' && known.has('conflict-repair-01')) d = {
+      ...d, ids: ['conflict-repair-01'], title: 'Возвращаться к разговору',
+      texts: {
+        strong: 'Даже если обида ещё остаётся, вы можете обсудить произошедшее или договориться о паузе и вернуться к разговору.',
+        ok: 'Вернуться к общению получается, хотя иногда трудно сделать первый шаг. Помогает договорённость, когда вы продолжите разговор.',
+        grow: 'После ссоры общение может надолго прерываться. Обсудите, как просить о времени на паузу и возвращаться к разговору без упрёков и наказания молчанием.',
+      },
+    };
+    if (d.key === 'repair' && known.has('conflict-response-01')) d = {
+      ...d, ids: ['regul-08', 'reflect-01'],
+      texts: {
+        strong: 'Вы умеете признавать свою часть проблемы и извиняться за резкость.',
+        ok: 'Признавать свою часть и извиняться получается, хотя иногда это непросто.',
+        grow: 'Признать свою часть и извиниться бывает трудно. Попробуйте по очереди сказать, что каждый сделал бы иначе, без встречных обвинений.',
+      },
+    };
     const ids = d.ids.filter((id) => known.has(id));
-    const a = personLevel(pa, ids), b = personLevel(pb, ids);
+    const a = personLevel(pa, ids, byId), b = personLevel(pb, ids, byId);
     if (a === null || b === null) continue;
     const pair = (a + b) / 2;
     const [strong, ok] = d.levels ?? [STRONG, OK];

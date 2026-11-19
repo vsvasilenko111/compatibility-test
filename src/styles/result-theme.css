@@ -1,0 +1,60 @@
+/* Results have their own canvas; the questionnaire keeps its compact layout. */
+#app:has(> .personal-result),
+#app:has(> .result) {
+  max-width: 1080px;
+  padding-top: 36px;
+  padding-bottom: 56px;
+  padding-left: max(28px, env(safe-area-inset-left, 0px));
+  padding-right: max(28px, env(safe-area-inset-right, 0px));
+}
+
+.personal-result,
+.result {
+  --report-surface: var(--card);
+  --report-soft: color-mix(in srgb, var(--cell) 44%, var(--card));
+  --report-border: color-mix(in srgb, var(--fg) 11%, transparent);
+  --report-shadow: var(--shadow);
+  --report-radius: 22px;
+  --report-teal: var(--sage);
+  --report-slate: var(--accent);
+  min-width: 0;
+}
+
+.personal-result *,
+.result * { min-width: 0; }
+
+.personal-result a,
+.result a { text-underline-offset: .2em; }
+.personal-result :is(button, a, summary):focus-visible,
+.result :is(button, a, summary):focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) :is(.personal-result,.result) {
+    --report-teal: var(--sage);
+    --report-slate: var(--accent);
+    --report-shadow: 0 8px 30px rgb(0 0 0 / 14%);
+  }
+}
+:root[data-theme="dark"] :is(.personal-result,.result) {
+  --report-teal: var(--sage);
+  --report-slate: var(--accent);
+  --report-shadow: 0 8px 30px rgb(0 0 0 / 14%);
+}
+
+@media (max-width: 640px) {
+  #app:has(> .personal-result),
+  #app:has(> .result) {
+    padding-top: 22px;
+    padding-bottom: 32px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .personal-result *,
+  .result * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

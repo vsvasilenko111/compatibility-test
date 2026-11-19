@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "bank_version": 19,
+  "source": "User judgments in this conversation; product intent, not observed relationship outcomes",
+  "cases": [
+    {"id":"kids-one-two","question_id":"kids-02","answers":["Один","Двое"],"severity":"minor","user_wording":"это различие, но не существенное"},
+    {"id":"kids-one-three-plus","question_id":"kids-02","answers":["Один","Трое и больше"],"severity":"substantial","user_wording":"Ну, уже существенная"},
+    {"id":"kids-reluctant-one","question_id":"kids-02","answers":["Скорее не хочу","Один"],"severity":"serious","user_wording":"серьезный"}
+  ],
+  "constraints": [
+    {"higher_fit":"kids-one-two","lower_fit":"kids-one-three-plus"},
+    {"higher_fit":"kids-one-two","lower_fit":"kids-reluctant-one"}
+  ],
+  "numeric_targets_assigned": false,
+  "relative_severity_of_the_two_serious_cases_defined": false
+}

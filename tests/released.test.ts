@@ -19,6 +19,6 @@ describe('выпущенные версии банка не меняются', (
 
   it('текущая версия выпущена, и её вопросы не правились после выпуска', () => {
     expect(r.manifests[BANK_VERSION], `v${BANK_VERSION} не записана в released.json — npx vite-node scripts/release-bank.ts`).toBeDefined();
-    expect(bankPrint(QUESTIONS), `вопросы v${BANK_VERSION} изменены без новой версии — поднимите version в bank.json`).toBe(r.bank[BANK_VERSION]);
+    expect(bankPrint(QUESTIONS, BANK_VERSION), `вопросы v${BANK_VERSION} изменены без новой версии — поднимите version в bank.json`).toBe(r.bank[BANK_VERSION]);
   });
 });

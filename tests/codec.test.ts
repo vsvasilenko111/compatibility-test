@@ -4,7 +4,7 @@ import { BitWriter } from '../src/codec/bits';
 import { PRIORITY_SPHERES } from '../src/questions/spheres';
 import type { Profile } from '../src/types';
 import { answerFor } from '../src/answer';
-import { MANIFEST as REAL_MANIFEST } from '../src/questions';
+import { MANIFEST as REAL_MANIFEST, FIRM, BANK_VERSION, CURRENT_IDS, CURRENT_FIRM } from '../src/questions';
 
 const IDS = Array.from({ length: 116 }, (_, i) => `q${i}`);
 const MANIFEST = { 1: IDS };
@@ -32,6 +32,23 @@ const kindOf = (fn: () => unknown) => {
 };
 
 describe('codec', () => {
+  it('читает отметки v18, но новые ссылки передают только ответы без firm', () => {
+    const p: Profile = { name: 'Аня', bankVersion: 18,
+      responses: Object.fromEntries(REAL_MANIFEST[18].map((id) => [id, answerFor(7)])),
+      priorities: { kids: 'top', conflicts: 'top', budget: 'top', loyalty: 'top', space: 'top' } };
+    const id = FIRM[18][0];
+    p.responses[id] = { ...answerFor(7), firm: true };
+    const old = decode(encode(p, REAL_MANIFEST[18], FIRM[18]), REAL_MANIFEST, FIRM);
+    expect(old.responses[id]).toMatchObject({ value: 7, firm: true });
+    const completed = { ...old, bankVersion: BANK_VERSION, responses: Object.fromEntries(CURRENT_IDS.map(id => [id, old.responses[id] ?? answerFor(5)])) };
+    const current = decode(encode(completed, CURRENT_IDS, CURRENT_FIRM), REAL_MANIFEST, FIRM);
+    expect(current.bankVersion).toBe(BANK_VERSION);
+    expect(current.priorities).toEqual(p.priorities);
+    for (const r of Object.values(current.responses)) {
+      expect(r).not.toBe('skipped');
+      if (r !== 'skipped') expect(r.firm).not.toBe(true);
+    }
+  });
   it('прямой и обратный проход на 20 случайных профилях', () => {
     for (let seed = 1; seed <= 20; seed++) {
       const p = randomProfile(seed);

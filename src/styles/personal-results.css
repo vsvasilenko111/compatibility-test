@@ -1,0 +1,333 @@
+/* A personal report in warm ivory, rose and sage; preference scales remain neutral. */
+.screen.personal-result {
+  --personal-teal: var(--sage);
+  --personal-plum: var(--accent);
+  --personal-slate: var(--muted);
+  --personal-track: color-mix(in srgb, var(--muted) 14%, var(--report-surface, var(--card)));
+}
+.screen.personal-result { gap: 24px; }
+.screen.personal-result .personal-cover {
+  padding: 38px 40px;
+  margin: 0 0 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 15%, var(--line));
+  border-radius: 26px;
+  background: var(--hero, var(--accent-soft));
+}
+.screen.personal-result .personal-cover > .eyebrow { color: var(--accent); }
+.screen.personal-result .personal-cover-description {
+  max-width: 55ch;
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.screen.personal-result .personal-partner-here {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: 0 2px;
+}
+.screen.personal-result .personal-partner-here h3 { margin: 0; }
+.screen.personal-result .personal-partner-here p { margin: 0; }
+.screen.personal-result .personal-partner-here button { margin-top: 4px; }
+.screen.personal-result .personal-home { margin: 8px 0 0; font-size: .82rem; }
+.screen.personal-result .personal-cover h1 {
+  max-width: 24ch;
+  margin: 16px 0 20px;
+  font-size: clamp(2.3rem, 5vw, 3.5rem);
+  font-family: var(--display);
+  line-height: 1.12;
+  letter-spacing: -.045em;
+  font-weight: 400;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.personal-result .personal-indices {
+  gap: 32px;
+  margin: 0 0 44px;
+}
+.personal-result .personal-indices .personal-indices-intro h2 {
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--report-border, var(--cell));
+  font-size: clamp(1.8rem, 3vw, 2.1rem);
+  font-family: var(--display);
+  letter-spacing: -.035em;
+  font-weight: 400;
+}
+.personal-result .personal-indices .personal-index-group > h2 {
+  margin: 0 0 7px;
+  font-size: 1.65rem;
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -.025em;
+}
+.personal-result .personal-indices .personal-index-group-note {
+  margin: 0 0 20px;
+  font-size: .875rem;
+  line-height: 1.6;
+}
+.personal-result .personal-indices .personal-index-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+.personal-result .personal-indices .personal-index-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 25px 26px 18px;
+  border: 1px solid var(--report-border, var(--cell));
+  border-radius: 20px;
+  background: var(--report-surface, var(--card));
+  box-shadow: var(--report-shadow, 0 5px 20px #30202b04);
+}
+.personal-result .personal-indices .personal-index-card:only-child {
+  grid-column: 1 / -1;
+}
+.personal-result .personal-indices .personal-index-heading {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 18px;
+  min-height: 64px;
+  margin-bottom: 22px;
+}
+.personal-result .personal-indices .personal-index-heading h3 {
+  flex: 1 1 auto;
+  padding-top: 5px;
+  font-size: 1.025rem;
+  font-weight: 620;
+  line-height: 1.4;
+  letter-spacing: -.015em;
+}
+.personal-result .personal-indices .personal-index-value {
+  flex: 0 0 auto;
+  font-size: 3rem;
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.055em;
+  color: var(--personal-teal);
+  font-variant-numeric: tabular-nums;
+}
+.personal-result .personal-indices .personal-index-value span {
+  display: block;
+  margin-top: 6px;
+  text-align: right;
+  font-size: .7rem;
+  font-family: system-ui, sans-serif;
+  font-weight: 450;
+  letter-spacing: .015em;
+}
+.personal-result .personal-indices .personal-index-track {
+  flex: 0 0 auto;
+  height: 9px;
+  background: var(--personal-track);
+  border-radius: 4px;
+}
+.personal-result .personal-indices .personal-index-fill {
+  background: var(--personal-teal);
+  border-radius: inherit;
+}
+.personal-result .personal-indices [data-kind="preference"] .personal-index-fill {
+  background: var(--personal-slate);
+}
+.personal-result .personal-indices [data-kind="preference"] .personal-index-value {
+  color: var(--fg);
+}
+.personal-result .personal-indices .personal-index-attention {
+  border-color: color-mix(in srgb, var(--personal-plum) 30%, var(--report-border, var(--cell)));
+}
+.personal-result .personal-indices .personal-index-poles {
+  gap: 20px;
+  min-height: 34px;
+  margin-top: 10px;
+  font-size: .72rem;
+  line-height: 1.5;
+}
+.personal-result .personal-indices .personal-index-count {
+  margin: 14px 0 0;
+  font-size: .72rem;
+  letter-spacing: .015em;
+}
+.personal-result .personal-indices .personal-index-mixed {
+  align-self: flex-start;
+  margin: 10px 0 0;
+  padding: 4px 9px;
+  background: var(--report-soft, var(--cell));
+  color: var(--muted);
+  font-size: .72rem;
+  border-radius: 6px;
+}
+.personal-result .personal-indices .personal-index-evidence {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-color: var(--report-border, var(--cell));
+  font-size: .8rem;
+}
+.personal-result .personal-indices .personal-index-evidence summary {
+  font-size: .76rem;
+}
+.personal-result .personal-indices .personal-index-evidence[open] > summary {
+  color: var(--fg);
+}
+.personal-result .personal-indices .personal-index-evidence li + li {
+  border-top: 1px solid var(--report-border, var(--cell));
+  margin-top: 16px;
+  padding-top: 14px;
+}
+.personal-result .personal-indices .personal-index-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.personal-result .personal-indices .personal-index-highlight {
+  min-width: 0;
+  padding: 22px 24px;
+  border: 1px solid color-mix(in srgb, var(--personal-teal) 20%, var(--report-border, var(--cell)));
+  border-radius: 16px;
+  background: var(--sage-soft);
+}
+.personal-result .personal-indices .personal-index-highlight[data-highlight="attention"] {
+  border-color: color-mix(in srgb, var(--personal-plum) 20%, var(--report-border, var(--cell)));
+  background: var(--accent-soft);
+}
+.personal-result .personal-indices .personal-index-highlights h3 {
+  margin: 0;
+  font-size: .95rem;
+  font-weight: 650;
+  color: var(--personal-teal);
+}
+.personal-result .personal-indices [data-highlight="attention"] h3 {
+  color: var(--personal-plum);
+}
+.personal-result .personal-indices .personal-index-highlights ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  font-size: .875rem;
+  line-height: 1.65;
+}
+.personal-result .personal-indices .personal-index-highlights li + li { margin-top: 5px; }
+.personal-result .personal-indices .personal-index-method {
+  padding: 18px 22px;
+  border: 1px solid var(--report-border, var(--cell));
+  border-radius: 14px;
+  background: var(--report-soft, var(--card));
+  font-size: .82rem;
+}
+.personal-result .personal-indices .personal-index-method p { max-width: 82ch; }
+.screen.personal-result .person-analysis {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 20px;
+  margin: 0 0 36px;
+}
+.screen.personal-result .person-insight {
+  padding: 28px;
+  border: 1px solid var(--report-border, var(--cell));
+  border-radius: 20px;
+  background: var(--report-surface, var(--card));
+  box-shadow: var(--report-shadow, 0 5px 20px #30202b04);
+}
+.screen.personal-result .person-insight h2 {
+  margin: 0 0 16px;
+  font-size: 1.65rem;
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -.025em;
+}
+.screen.personal-result .person-insight-text,
+.screen.personal-result .person-insight-implication {
+  font-size: .93rem;
+  line-height: 1.75;
+  max-width: 68ch;
+}
+.screen.personal-result .person-insight-implication {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--report-border, var(--cell));
+  color: var(--muted);
+}
+.screen.personal-result .person-insight-evidence {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-color: var(--report-border, var(--cell));
+  font-size: .79rem;
+}
+.screen.personal-result .person-insight-evidence summary { font-size: .76rem; }
+.screen.personal-result .personal-topic-answers {
+  padding: 20px 24px;
+  border: 1px solid var(--report-border, var(--cell));
+  border-radius: 16px;
+  background: var(--report-surface, var(--card));
+}
+.screen.personal-result .personal-topic-answers > summary { font-size: .9rem; }
+.screen.personal-result .personal-topic-answers > .person-summary-card { padding: 18px 0 0; }
+.screen.personal-result .personal-topic-answers .person-summary-traits {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 30px;
+}
+.screen.personal-result .personal-topic-answers .person-summary-trait dd { line-height: 1.65; }
+.screen.personal-result .personal-priorities { margin: 30px 0; padding: 26px 0 0; border-top: 1px solid var(--line); }
+.screen.personal-result .personal-priorities ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.screen.personal-result .personal-priorities li {
+  padding: 7px 13px;
+  border: 1px solid var(--report-border, var(--cell));
+  border-radius: 999px;
+  background: var(--sage-soft);
+  font-size: .82rem;
+  line-height: 1.45;
+}
+.screen.personal-result .personal-invite {
+  margin: 32px 0;
+  padding: 28px;
+  border: 1px solid var(--report-border, var(--cell));
+  border-radius: 20px;
+  background: var(--sage-soft);
+}
+.screen.personal-result .personal-invite h3 { margin-top: 0; font-size: 1.8rem; font-family: var(--display); font-weight: 400; letter-spacing: -.03em; }
+.screen.personal-result .personal-invite p { max-width: 78ch; line-height: 1.7; }
+.screen.personal-result .personal-invite .share { margin-top: 22px; }
+.screen.personal-result summary:focus-visible {
+  outline: 2px solid var(--personal-teal);
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+@media (max-width: 680px) {
+  .screen.personal-result .personal-cover { padding: 28px 22px; margin-bottom: 10px; border-radius: 20px; }
+  .screen.personal-result .personal-cover h1 { margin: 14px 0 18px; font-size: clamp(2rem, 8vw, 2.6rem); }
+  .personal-result .personal-indices { gap: 26px; margin-bottom: 30px; }
+  .personal-result .personal-indices .personal-index-grid,
+  .personal-result .personal-indices .personal-index-highlights,
+  .screen.personal-result .person-analysis,
+  .screen.personal-result .personal-topic-answers .person-summary-traits { grid-template-columns: minmax(0, 1fr); }
+  .personal-result .personal-indices .personal-index-grid { gap: 14px; }
+  .personal-result .personal-indices .personal-index-card { padding: 22px 20px 16px; border-radius: 16px; }
+  .personal-result .personal-indices .personal-index-heading { min-height: 58px; margin-bottom: 18px; }
+  .personal-result .personal-indices .personal-index-heading h3 { flex-basis: auto; }
+  .personal-result .personal-indices .personal-index-value { font-size: 2.5rem; }
+  .personal-result .personal-indices .personal-index-highlight { padding: 20px; }
+  .personal-result .personal-indices .personal-index-method { padding: 16px 18px; }
+  .screen.personal-result .person-analysis { gap: 16px; }
+  .screen.personal-result .person-insight { padding: 22px 20px; border-radius: 16px; }
+  .screen.personal-result .personal-topic-answers { padding: 18px 20px; }
+  .screen.personal-result .personal-invite { padding: 22px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .screen.personal-result *, .screen.personal-result *::before, .screen.personal-result *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

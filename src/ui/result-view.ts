@@ -60,6 +60,15 @@ export function sphereDetail(items: SphereItem[]): { topic: string; level: Match
     .sort((x, y) => x.match - y.match)
     .map((i) => {
       const level = matchLevel(i.match);
-      return { topic: i.topic, level, label: LEVEL_LABELS[level] };
+      const label = i.kind === 'goals'
+        ? i.match >= 0.75 ? 'есть настрой на длительные отношения' : i.match > 0 ? 'долгосрочные ожидания стоит обсудить' : 'нет общего долгосрочного ориентира'
+        : i.kind === 'interaction'
+          ? i.match >= 0.75 ? 'реакции сочетаются' : i.match >= 0.5 ? 'нужна договорённость о контакте' : 'стоит обсудить дистанцию и контакт'
+        : i.kind === 'behavior'
+        ? i.match >= 0.75 ? 'конструктивный подход' : i.match >= 0.5 ? 'требует внимания' : 'стоит обсудить поведение'
+        : i.kind === 'formats'
+          ? i.match === 0 ? 'общего формата нет' : i.match === 1 ? 'приемлемый формат есть' : 'разные предпочтения'
+          : LEVEL_LABELS[level];
+      return { topic: i.topic, level, label };
     });
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { firstUnanswered, resumeFor } from '../src/ui/flow';
+import { firstUnanswered, unansweredIds, resumeFor } from '../src/ui/flow';
 import type { Progress } from '../src/storage';
 
 const IDS = ['a', 'b', 'c', 'd'];
@@ -7,12 +7,17 @@ const answer = { value: 5, lo: 3, hi: 7, importance: 2 } as const;
 const saved: Progress = { name: 'Аня', index: 1, inviterCode: 'old', responses: { a: answer } };
 
 describe('firstUnanswered', () => {
-  it('первый вопрос без ответа; пропущенный считается отвеченным', () => {
+  it('дозаполнение включает старые пропуски и отсутствующие ответы', () => {
+    expect(unansweredIds(IDS, { a: answer, b: 'skipped', removed: answer })).toEqual(['b', 'c', 'd']);
+    expect(unansweredIds(IDS, { a: answer, b: answer, c: answer, d: answer })).toEqual([]);
+  });
+  it('первый вопрос без ответа; старый пропуск требует ответа', () => {
     expect(firstUnanswered(IDS, {})).toBe(0);
-    expect(firstUnanswered(IDS, { a: answer, b: 'skipped' })).toBe(2);
+    expect(firstUnanswered(IDS, { a: answer, b: 'skipped' })).toBe(1);
   });
   it('все отвечены → длина списка', () => {
-    expect(firstUnanswered(IDS, { a: answer, b: answer, c: answer, d: 'skipped' })).toBe(4);
+    expect(firstUnanswered(IDS, { a: answer, b: answer, c: answer, d: answer })).toBe(4);
+    expect(firstUnanswered(IDS, { a: answer, b: answer, c: answer, d: 'skipped' })).toBe(3);
   });
   it('новый вопрос в середине банка находится, ответы на удалённые вопросы игнорируются', () => {
     expect(firstUnanswered(['a', 'new', 'b'], { a: answer, b: answer, removed: answer })).toBe(1);

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { QUESTIONS } from '../src/questions';
+import { QUESTIONS, BANK_VERSION } from '../src/questions';
 import { relationshipWeight } from '../src/questions/spheres';
 import { answerFor } from '../src/answer';
 import { compare } from '../src/scoring/compare';
@@ -12,20 +12,25 @@ const BASE = QUESTIONS.filter((q) => q.block !== 'maturity').map((q) => q.id);
 /** Профиль: все вопросы блока — `fill`, кроме перечисленных; null — пропуск. */
 function person(over: Record<string, number | null> = {}, fill = 2, withBase = true): Profile {
   const responses: Record<string, Response> = {};
-  if (withBase) BASE.forEach((id, i) => { responses[id] = answerFor(i % 11); });
+  if (withBase) {
+    BASE.forEach((id, i) => { responses[id] = answerFor(i % 11); });
+    // Условия проверяемых сочетаний должны зависеть от сценария, а не от позиции вопроса в банке.
+    responses['conflict-response-01'] = answerFor(0);
+    responses['space-06'] = answerFor(5);
+  }
   for (const id of MAT) {
     const v = id in over ? over[id] : fill;
     responses[id] = v === null ? 'skipped' : answerFor(v);
   }
-  // Вопросы других блоков, которые участвуют в сочетаниях (conflicts-02, space-06).
+  // Вопросы других блоков, которые участвуют в сочетаниях (conflict-response-01, space-06).
   for (const [id, v] of Object.entries(over)) if (!MAT.includes(id)) responses[id] = v === null ? 'skipped' : answerFor(v);
-  return { name: '', bankVersion: 4, responses };
+  return { name: '', bankVersion: BANK_VERSION, responses };
 }
 const keys = (a: Profile, b: Profile) => maturity(QUESTIONS, a, b)!.talks.map((t) => t.key);
 
 describe('блок «Эмоциональная зрелость»', () => {
-  it('на проценты не влияет', () => {
-    const calm = person({}, 1), stormy = person({}, 9);
+  it('остальные эмоции и прошлый опыт не меняют индекс при фиксированном сочетании реакций', () => {
+    const calm = person({}, 1), stormy = person({ 'attach-01': 1, 'attach-03': 1 }, 9);
     const r1 = compare(QUESTIONS, calm, calm, relationshipWeight);
     const r2 = compare(QUESTIONS, calm, stormy, relationshipWeight);
     expect(r2.relationship.percent).toBe(r1.relationship.percent);
@@ -53,18 +58,18 @@ describe('блок «Эмоциональная зрелость»', () => {
   });
 
   it('внезапная тишина: чувствительность к отдалению у одного и частая нужда побыть одному у другого', () => {
-    expect(keys(person({ 'trauma-06': 9 }), person({ 'space-06': 9 }))).toContain('silence');
+    expect(keys(person({ 'trauma-06-r22': 9 }), person({ 'space-06': 9 }))).toContain('silence');
     // привычка не грузить партнёра (attach-03) — не то же, что нужда в тишине
-    expect(keys(person({ 'trauma-06': 9 }), person({ 'attach-03': 8, 'space-06': 0 }))).not.toContain('silence');
+    expect(keys(person({ 'trauma-06-r22': 9 }), person({ 'attach-03': 8, 'space-06': 0 }))).not.toContain('silence');
   });
 
   it('при «Когда один замолкает» тишина и тяжёлые периоды не повторяются, а разное время для себя — только без тишины', () => {
-    const k = keys(person({ 'attach-01': 9, 'trauma-06': 9, 'attach-03': 0, 'space-06': 0 }), person({ 'attach-03': 10, 'space-06': 10 }));
+    const k = keys(person({ 'attach-01': 9, 'trauma-06-r22': 9, 'attach-03': 0, 'space-06': 0 }), person({ 'attach-03': 10, 'space-06': 10 }));
     expect(k).toContain('closeness');
     expect(k).not.toContain('silence');
     expect(k).not.toContain('stress');
     expect(k).toContain('dosage');
-    expect(keys(person({ 'trauma-06': 9, 'space-06': 0 }), person({ 'space-06': 10 }))).not.toContain('dosage');
+    expect(keys(person({ 'trauma-06-r22': 9, 'space-06': 0 }), person({ 'space-06': 10 }))).not.toContain('dosage');
   });
 
   it('«Когда один замолкает» — только при крайнем «справлюсь сам(а)»', () => {
@@ -72,12 +77,12 @@ describe('блок «Эмоциональная зрелость»', () => {
   });
 
   it('когда задели больное: у одного болезненные темы, другой в споре отвечает громко', () => {
-    expect(keys(person({ 'trauma-05': 9 }), person({ 'conflicts-02': 9 }))).toContain('escalation');
-    expect(keys(person({ 'trauma-05': 9, 'conflicts-02': 0 }), person({ 'conflicts-02': 3 }))).not.toContain('escalation');
+    expect(keys(person({ 'trauma-05': 9 }), person({ 'conflict-response-01': 9 }))).toContain('escalation');
+    expect(keys(person({ 'trauma-05': 9, 'conflict-response-01': 0 }), person({ 'conflict-response-01': 3 }))).not.toContain('escalation');
   });
 
   it('вопросы о прошлом не учитываются, если человек пропустил больше половины', () => {
-    const skipped = { 'trauma-05': null, 'trauma-06': null };
+    const skipped = { 'trauma-05': null, 'trauma-06-r22': null };
     expect(keys(person(skipped), person({ 'space-06': 9 }))).not.toContain('silence');
   });
 
@@ -97,7 +102,7 @@ describe('блок «Эмоциональная зрелость»', () => {
     const a = person({ 'attach-01': 9, 'attach-03': 0, 'reflect-04': 0, 'space-06': 5 });
     const b = person({ 'attach-03': 10, 'reflect-04': 10, 'space-06': 5 });
     expect(keys(a, b)).toEqual(['closeness', 'help']);
-    expect(keys(person({ 'trauma-05': 9, 'attach-03': 0, 'reflect-04': 0 }), person({ 'conflicts-02': 10, 'attach-03': 9, 'reflect-04': 10 })))
+    expect(keys(person({ 'trauma-05': 9, 'attach-03': 0, 'reflect-04': 0 }), person({ 'conflict-response-01': 10, 'attach-03': 9, 'reflect-04': 10 })))
       .toEqual(['escalation', 'stress', 'help']);
   });
 
@@ -109,8 +114,8 @@ describe('блок «Эмоциональная зрелость»', () => {
 });
 
 describe('громкие споры', () => {
-  it('оба отвечают громко или криком (conflicts-02) — тема «Громкие споры»; один — нет', () => {
-    expect(keys(person({ 'conflicts-02': 7 }), person({ 'conflicts-02': 10 }))).toContain('loud');
-    expect(keys(person({ 'conflicts-02': 10 }), person({ 'conflicts-02': 3 }))).not.toContain('loud');
+  it('оба отвечают резко или криком (conflict-response-01) — тема «Громкие споры»; один — нет', () => {
+    expect(keys(person({ 'conflict-response-01': 7 }), person({ 'conflict-response-01': 10 }))).toContain('loud');
+    expect(keys(person({ 'conflict-response-01': 10 }), person({ 'conflict-response-01': 3 }))).not.toContain('loud');
   });
 });

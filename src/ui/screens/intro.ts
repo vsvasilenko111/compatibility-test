@@ -8,6 +8,7 @@ export interface IntroProps {
   resumeAt: number | null; // номер вопроса, с которого продолжить (с 1)
   storageAvailable: boolean;
   ownUrl: string | null;
+  ownResultUrl?: string | null;
   history: { names: string; url: string; at: number; forget(): void }[];
   onStart(name: string): void;
   onResume(): void;
@@ -23,8 +24,9 @@ export function introScreen(p: IntroProps): HTMLElement {
 
   return h('section', { class: 'screen intro' },
     h('h1', {}, title),
-    h('p', {}, `${plural(p.total, ['вопрос', 'вопроса', 'вопросов'])}, около ${plural(minutes, ['минуты', 'минут', 'минут'])}. Вы узнаете совместимость в отношениях и то, насколько вы друзья друг другу.`),
+    h('p', {}, `${plural(p.total, ['вопрос', 'вопроса', 'вопросов'])}, около ${plural(minutes, ['минуты', 'минут', 'минут'])}. После полного прохождения вы сразу увидите свой личный результат по ответам. Когда партнёр тоже полностью пройдёт тест, вы увидите совместимость в отношениях и насколько вы друзья друг другу.`),
     h('p', {}, 'Отвечайте честно. Если вопрос о том, как вы поступаете, — отвечайте, как обычно бывает на самом деле. Если о том, какой должна быть жизнь вдвоём, — как вам хотелось бы. Если чего-то с вами не было или вы пока не живёте вместе, представьте, что это происходит.'),
+    h('p', { class: 'hint' }, 'В общем результате будут видны ответы обоих участников и краткие описания по ним.'),
     p.storageAvailable ? null : h('p', { class: 'warn' }, 'Браузер не сохраняет прогресс — пройдите тест за один раз.'),
     p.resumeAt !== null
       ? h('button', { type: 'button', class: 'primary', onclick: () => p.onResume() }, `Продолжить с вопроса ${p.resumeAt}`)
@@ -32,6 +34,9 @@ export function introScreen(p: IntroProps): HTMLElement {
     input,
     h('button', { type: 'button', class: p.resumeAt !== null ? 'secondary' : 'primary', onclick: () => p.onStart(input.value.trim()) },
       p.resumeAt !== null ? 'Начать заново' : 'Начать'),
+    p.ownResultUrl && p.inviterName === null
+      ? h('p', {}, h('a', { href: p.ownResultUrl }, 'Мой результат'))
+      : null,
     p.ownUrl && p.inviterName === null
       ? h('div', { class: 'block' }, h('h3', {}, 'Ваша ссылка для партнёра'), shareBlock(p.ownUrl, 'Тест совместимости'))
       : null,

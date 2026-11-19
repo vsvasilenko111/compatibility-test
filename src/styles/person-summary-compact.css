@@ -1,0 +1,42 @@
+/* Personal answers stay available as a compact, optional layer of the pair report. */
+.result details.person-summaries {
+  margin: 0;
+  border-top: 1px solid var(--report-border, var(--cell));
+  padding-top: 18px;
+}
+.result details.person-summaries > summary {
+  color: var(--fg);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.result details.person-summaries[open] > summary { margin-bottom: 18px; }
+.result .person-summaries .person-summary-grid { gap: 18px; }
+.result .person-summaries .person-summary-card {
+  padding: 22px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--sage) 5%, var(--report-surface, var(--card)));
+}
+.result .person-summaries .person-summary-card:nth-child(2) {
+  background: color-mix(in srgb, var(--accent) 4%, var(--report-surface, var(--card)));
+}
+.result .person-summaries h4 { margin: 0 0 20px; font-size: 1.1rem; }
+.result .person-summaries .person-summary-traits { gap: 13px; }
+.result .person-summaries .person-summary-trait + .person-summary-trait { padding-top: 13px; }
+.result .person-summaries dt { font-size: .72rem; color: var(--sage); line-height: 1.4; }
+.result .person-summaries dd { margin: 5px 0 0; font-size: .86rem; line-height: 1.5; }
+.person-summary-fact { display: block; }
+.person-summary-fact + .person-summary-fact { margin-top: 5px; }
+.result .person-summaries .person-summary-evidence {
+  margin-top: 18px;
+  padding-top: 12px;
+  font-size: .77rem;
+}
+.result .person-summaries .person-summary-evidence > summary { line-height: 1.5; }
+.result .person-summaries .person-summary-card > p:last-child { margin-top: 16px; font-size: .84rem; }
+@media (max-width: 700px) {
+  .result .person-summaries .person-summary-grid { grid-template-columns: minmax(0, 1fr); }
+  .result .person-summaries .person-summary-card { padding: 18px; }
+}

@@ -46,13 +46,13 @@ describe('процент совместимости по одному вопро
   const qs: Question[] = [{ id: 'q', block: 'friendship', sphere: 'humor', text: 't', left: 'l', right: 'r', topic: 'юмор', optional: false }];
   const p = (v: number): Profile => ({ name: '', bankVersion: 1, responses: { q: answerFor(v) } });
 
-  // Строка первого варианта таблицы MATCH: 100 / 75 / 35 / 10 / 0.
-  it.each([[10, 100], [7, 75], [5, 35], [3, 10], [0, 0]])('10 и %i → %f%%', (v, pct) => {
+  // Строка первого варианта таблицы MATCH: 100 / 75 / 50 / 25 / 0.
+  it.each([[10, 100], [7, 75], [5, 50], [3, 25], [0, 0]])('10 и %i → %f%%', (v, pct) => {
     expect(compare(qs, p(10), p(v)).relationship.percent).toBeCloseTo(pct, 6);
   });
-  it('оба в середине — 90%, оба во втором варианте — 95%', () => {
-    expect(compare(qs, p(5), p(5)).relationship.percent).toBeCloseTo(90, 6);
-    expect(compare(qs, p(3), p(3)).relationship.percent).toBeCloseTo(95, 6);
+  it('одинаковые ответы в середине и во втором варианте дают 100%', () => {
+    expect(compare(qs, p(5), p(5)).relationship.percent).toBeCloseTo(100, 6);
+    expect(compare(qs, p(3), p(3)).relationship.percent).toBeCloseTo(100, 6);
   });
   it('10 и 5 — через вариант — тема для разговора', () => {
     expect(compare(qs, p(10), p(5)).relationship.talkZones.map((i) => i.id)).toEqual(['q']);

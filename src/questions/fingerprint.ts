@@ -18,5 +18,14 @@ function hash(s: string): string {
 export const manifestPrint = (manifest: Manifest, firm: Manifest, v: number) => hash(JSON.stringify({ ids: manifest[v], firm: firm[v] ?? [] }));
 
 /** Отпечаток содержимого вопросов: текст, варианты, сфера, отметки. */
-export const bankPrint = (questions: Question[]) =>
-  hash(JSON.stringify(questions.map((q) => [q.id, q.block, q.sphere, q.text, q.options, q.optional, q.firm ?? false, q.scored ?? true])));
+export const bankPrint = (questions: Question[], version: number) =>
+  hash(JSON.stringify(questions.map((q) => {
+    const old = [q.id, q.block, q.sphere, q.text, q.options, q.optional, q.firm ?? false, q.scored ?? true];
+    return version < 21 ? old : [...old, {
+      uncertainOptions: q.uncertainOptions, behaviorLevels: q.behaviorLevels, formats: q.formats,
+      cross: q.cross, sharedRisk: q.sharedRisk, split: q.split, firmSides: q.firmSides, flagCoveredBy: q.flagCoveredBy,
+      maturityKey: q.maturityKey,
+      relationshipRule: q.relationshipRule,
+      answerKind: q.answerKind,
+    }];
+  })));

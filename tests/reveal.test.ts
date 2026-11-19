@@ -65,3 +65,19 @@ describe('расхождения: отношение к привычке пар�
     expect(divergences(cq, x, y)).toEqual([]);
   });
 });
+
+
+describe('расхождения: действия вне конфликта', () => {
+  it('сохраняет семантическую группу и не называет действия противоположными мнениями', () => {
+    const q: Question = {
+      id: 'privacy-actions', block: 'relationship', sphere: 'space', text: 'Переписка',
+      left: 'Смотрю', right: 'Спрашиваю', topic: 'приватность', optional: false,
+      behaviorLevels: [1, 0.75, 0.5, 0.25, 0],
+    };
+    const a: Profile = { name: 'А', bankVersion: 4, responses: { [q.id]: answerFor(0) } };
+    const b: Profile = { name: 'Б', bankVersion: 4, responses: { [q.id]: answerFor(10) } };
+    const groups = divergences([q], a, b);
+    expect(groups.map(group => group.title)).toEqual(['Действия в отношениях']);
+    expect(groups[0].rows.map(row => [row.id, row.opposite])).toEqual([[q.id, false]]);
+  });
+});

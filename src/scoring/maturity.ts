@@ -1,8 +1,8 @@
 import type { Profile, Question } from '../types';
 
 /**
- * Блок «Эмоциональная зрелость» (docs/maturity-draft.md). На проценты совместимости не влияет: на синтетике
- * добавка к проценту согласие с экспертами не подняла. Даёт только опоры пары и бережные темы для разговора —
+ * Блок «Эмоциональная зрелость» (docs/maturity-draft.md). Этот вывод не меняет численные проценты.
+ * Одно сочетание ответов отдельно учитывается relationshipRule в основном индексе. Здесь — опоры пары и темы для разговора —
  * без ярлыков, без чьих-либо баллов и без указания, к кому из двоих относится тема.
  */
 export interface MaturityTopic { key: string; title: string; text: string }
@@ -69,10 +69,11 @@ const TEXTS: Record<string, Omit<MaturityTopic, 'key'>> = {
 const COVERS: Record<string, string[]> = { closeness: ['attach-01', 'attach-03'], feelings: ['reflect-03'] };
 
 /** Ответы человека на вопросы блока; пропуски не попадают. */
-function values(p: Profile, ids: string[]): Values {
+function values(p: Profile, ids: string[], modern = false, aliases = new Map<string, string>()): Values {
   const out: Values = {};
   for (const id of ids) {
-    const r = p.responses[id];
+    const actual = aliases.get(id) ?? (modern && id === 'conflicts-02' ? 'conflict-response-01' : id);
+    const r = p.responses[actual];
     if (r && r !== 'skipped') out[id] = r.value;
   }
   return out;
@@ -87,12 +88,12 @@ const avoidance = (v: Values) => {
 const pastUsable = (v: Values) => PAST.filter((id) => id in v).length >= PAST.length / 2;
 
 /** Опасные сочетания: у одного — x, у другого — y; проверяются в обе стороны. */
-function riskyPairs(x: Values, y: Values, xPast: boolean): string[] {
+function riskyPairs(x: Values, y: Values, xPast: boolean, modern = false): string[] {
   const out: string[] = [];
   // Справляться в одиночку — только крайний ответ attach-03: «расскажу, если спросит» ещё не отдаление.
   if (high(x, 'attach-01') && avoidance(y) >= SOFT) out.push('closeness');
   if (xPast && high(x, 'trauma-06') && high(y, 'space-06')) out.push('silence');
-  if (xPast && high(x, 'trauma-05') && high(y, 'conflicts-02', SOFT)) out.push('escalation');
+  if (xPast && high(x, 'trauma-05') && high(y, 'conflicts-02', modern ? HIGH : SOFT)) out.push('escalation');
   return out;
 }
 
@@ -103,14 +104,16 @@ const polar = (a: Values, b: Values, id: string, lo: number, hi: number) =>
 /** null — если хотя бы один не отвечал на блок (ссылка от прошлой версии теста). */
 export function maturity(questions: Question[], pa: Profile, pb: Profile): MaturityResult | null {
   const qs = questions.filter((q) => q.block === 'maturity');
-  const ids = qs.map((q) => q.id);
-  const a = values(pa, [...ids, ...EXTRA]), b = values(pb, [...ids, ...EXTRA]);
+  const ids = qs.map((q) => q.maturityKey ?? q.id);
+  const aliases = new Map(questions.filter(q => q.maturityKey).map(q => [q.maturityKey!, q.id]));
+  const modern = questions.some(q => q.id === 'conflict-response-01');
+  const a = values(pa, [...ids, ...EXTRA], modern, aliases), b = values(pb, [...ids, ...EXTRA], modern, aliases);
   const core = ids.filter((id) => !PAST.includes(id));
   if (!core.some((id) => id in a) || !core.some((id) => id in b)) return null;
-  const topic = new Map(qs.map((q) => [q.id, q.topic]));
+  const topic = new Map(qs.map((q) => [q.maturityKey ?? q.id, q.topic]));
   const aPast = pastUsable(a), bPast = pastUsable(b);
 
-  const keys = new Set([...riskyPairs(a, b, aPast), ...riskyPairs(b, a, bPast)]);
+  const keys = new Set([...riskyPairs(a, b, aPast, modern), ...riskyPairs(b, a, bPast, modern)]);
   // Оба отвечают громко или криком (conflicts-02): одинаковый ответ здесь не согласие, а общий риск.
   if (high(a, 'conflicts-02') && high(b, 'conflicts-02')) keys.add('loud');
   // «Когда один замолкает» уже говорит и об этом: тишина и тяжёлые периоды при нём не повторяются.
@@ -121,7 +124,9 @@ export function maturity(questions: Question[], pa: Profile, pb: Profile): Matur
   // Разное время для себя уже названо во «внезапной тишине».
   if (!keys.has('silence') && polar(a, b, 'space-06', 3, 8)) keys.add('dosage');
   // Порядок TEXTS — порядок важности.
-  const talks = Object.keys(TEXTS).filter((k) => keys.has(k)).map((key) => ({ key, ...TEXTS[key] }));
+  const talks = Object.keys(TEXTS).filter((k) => keys.has(k)).map((key) => key === 'loud' && modern
+    ? { key, title: 'Резкие ответы в споре', text: 'В напряжённом разговоре вы оба можете отвечать упрёками или переходить на крик. Обсудите, как обозначить, что вас задело, попросить паузу и вернуться к сути разговора.' }
+    : { key, ...TEXTS[key] });
 
   // Темы, уже раскрытые в «стоит обсудить», не повторяем.
   const covered = new Set(talks.flatMap((t) => COVERS[t.key] ?? []));

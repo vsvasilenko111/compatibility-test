@@ -1,26 +1,26 @@
 import type { CompareResult } from '../scoring/compare';
 
-/** Ожидает откалиброванные проценты: 50 — типичная случайная пара. */
+/** Описывает совпадение ответов на исходной шкале 0–100. */
 export function verdict(r: Pick<CompareResult, 'relationship' | 'friendship'>): string {
+  if (r.relationship.redFlags.length > 0) return 'Есть принципиальные расхождения — начните разговор с красных флагов.';
+  if (r.relationship.uncertain?.length || r.friendship.uncertain?.length) return 'Часть планов пока не определена — обсудите их вместе.';
   if (r.relationship.percent === null && r.friendship.percent === null) return 'Для вас обоих эти темы не принципиальны.';
   const rel = r.relationship.percent ?? 100;
   const fr = r.friendship.percent ?? 100;
-  if (r.relationship.redFlags.length > 0) return 'Есть принципиальные расхождения — начните разговор с красных флагов.';
-  if (rel >= 70 && fr >= 70) return 'Вы совпадаете и как пара, и как друзья.';
-  if (fr - rel >= 25) return 'Вам легко вместе, но во взглядах на отношения есть что обсудить.';
-  if (rel >= 55) return 'Хорошая основа — несколько тем стоит обсудить.';
+  if (rel >= 70 && fr >= 70) return 'В ваших ответах много совпадений — и об отношениях, и о дружбе.';
+  if (fr - rel >= 25) return 'В повседневных вопросах больше совпадений, чем во взглядах на совместную жизнь.';
+  if (rel >= 55) return 'В ответах есть совпадения — несколько тем стоит обсудить.';
   return 'Вы во многом разные — результат подскажет, с чего начать разговор.';
 }
 
 /**
- * Уровень по откалиброванному проценту. Границы — по синтетике (research/review/bands.txt): у задуманных крепких пар медиана 79–84%
- * и почти все выше 70%; ниже 70% исход в симуляции трёх лет почти одинаково слабый, у пар с расходящимися планами — меньше 25%.
+ * Описательные уровни совпадения ответов. Пороги не являются прогнозом исходов отношений.
  */
 export function level(percent: number | null): string | null {
   if (percent === null) return null;
-  if (percent >= 80) return 'очень высокая';
-  if (percent >= 70) return 'высокая';
-  if (percent >= 55) return 'средняя';
-  if (percent >= 40) return 'ниже средней';
-  return 'низкая';
+  if (percent >= 80) return 'много совпадений';
+  if (percent >= 70) return 'заметное совпадение';
+  if (percent >= 55) return 'частичное совпадение';
+  if (percent >= 40) return 'много различий';
+  return 'сильные различия';
 }

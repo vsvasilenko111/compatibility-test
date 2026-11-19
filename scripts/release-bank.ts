@@ -12,6 +12,6 @@ for (const v of Object.keys(MANIFEST).map(Number)) {
   r.manifests[v] = print;
 }
 if (r.bank[BANK_VERSION]) throw new Error(`v${BANK_VERSION} уже выпущена — поднимите version в bank.json`);
-r.bank[BANK_VERSION] = bankPrint(QUESTIONS);
+r.bank[BANK_VERSION] = bankPrint(QUESTIONS, BANK_VERSION);
 fs.writeFileSync(P, JSON.stringify(r, null, 1) + '\n');
 console.log(`записано: v${BANK_VERSION}, манифестов ${Object.keys(r.manifests).length}`);

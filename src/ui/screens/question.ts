@@ -18,20 +18,22 @@ export interface QuestionProps {
 
 export function questionScreen(p: QuestionProps): HTMLElement {
   let value: number | null = p.response && p.response !== 'skipped' ? p.response.value : null;
-  let firm = p.response !== undefined && p.response !== 'skipped' && p.response.firm === true;
   const answered = value;
   let locked = false;
+  let submitted = false;
   const root = h('section', { class: 'screen question' });
-  const submit = (i: number) => p.onSubmit(firm ? { ...answerFor(i), firm: true } : answerFor(i));
+  const submit = (i: number) => {
+    if (submitted) return;
+    submitted = true;
+    p.onSubmit(answerFor(i));
+  };
 
   /**
    * Тап по числу сразу переходит дальше; короткая пауза показывает выбранное число.
-   * У вопроса с отметкой «не обсуждается» — не переходит: сначала можно поставить отметку, потом «Дальше».
    */
   function choose(i: number) {
     if (locked) return;
     value = i;
-    if (p.question.firm) return draw();
     locked = true;
     draw();
     setTimeout(() => submit(i), 180);
@@ -48,23 +50,17 @@ export function questionScreen(p: QuestionProps): HTMLElement {
       h('p', { class: 'tag' }, BLOCK_TAG[q.block]),
       h('h2', {}, q.text),
       ...(q.options ? [optionList(q.options)] : legacyScale(q)),
-      q.firm
-        ? h('label', { class: 'firm' },
-          h('input', { type: 'checkbox', checked: firm, onchange: (e: Event) => { firm = (e.target as HTMLInputElement).checked; } }),
-          h('span', {}, 'Для меня это не обсуждается'))
-        : null,
       h('div', { class: 'nav' },
-        p.onBack ? h('button', { type: 'button', class: 'secondary', onclick: p.onBack }, 'Назад') : null,
-        q.optional ? h('button', { type: 'button', class: 'secondary', onclick: () => p.onSubmit('skipped') }, 'Пропустить') : null,
+        p.onBack ? h('button', { type: 'button', class: 'secondary', disabled: locked, onclick: p.onBack }, 'Назад') : null,
         // «Дальше» нужна только при возврате к уже отвеченному вопросу — чтобы оставить ответ как есть.
-        (q.firm ? value : answered) !== null
-          ? h('button', { type: 'button', class: 'primary', onclick: () => submit((q.firm ? value : answered)!) }, 'Дальше')
+        answered !== null
+          ? h('button', { type: 'button', class: 'primary', disabled: locked, onclick: () => submit(answered!) }, 'Дальше')
           : null),
     ];
     root.replaceChildren(...nodes.filter((n): n is Node => n !== null));
   }
 
-  /** 5 вариантов словами — по одной оси, сверху вниз от левого края к правому. */
+  /** Показывает варианты в исходном порядке; категориальные ответы не образуют числовую ось. */
   function optionList(options: string[]): HTMLElement {
     return h('div', { class: 'options mine', role: 'group' },
       ...options.map((label, i) => {

@@ -24,12 +24,12 @@ const misha = () => profile({ kids: o(5), money: o(4), conf: o(2), home: o(3), s
 describe('compare — пример Ани и Миши', () => {
   const r = compare(QS, anya(), misha());
 
-  // По таблице MATCH: дети 5/5 → 1, деньги 1/4 → 0,1, ссоры 5/2 → 0,1, быт 3/3 → 0,9, пространство 4/4 → 0,95.
-  it('отношения = (1 + 0,1 + 0,1 + 0,9 + 0,95) / 5 = 61%', () => {
-    expect(r.relationship.percent).toBeCloseTo(61, 6);
+  // По таблице MATCH: дети 5/5 → 1, деньги 1/4 → 0,25, ссоры 5/2 → 0,25, быт 3/3 → 1, пространство 4/4 → 1.
+  it('отношения = (1 + 0,25 + 0,25 + 1 + 1) / 5 = 70%', () => {
+    expect(r.relationship.percent).toBeCloseTo(70, 6);
   });
-  it('дружба считается только по блоку friendship → (0,1 + 0,1) / 2 = 10%', () => {
-    expect(r.friendship.percent).toBeCloseTo(10, 6);
+  it('дружба считается только по блоку friendship → (0,25 + 0,25) / 2 = 25%', () => {
+    expect(r.friendship.percent).toBeCloseTo(25, 6);
     expect(r.friendship.spheres.map((s) => s.sphere)).toEqual(['money', 'conflicts']);
   });
   it('зоны для разговора — деньги и ссоры (через три варианта), флагов нет', () => {
@@ -49,7 +49,7 @@ describe('compare — пример Ани и Миши', () => {
     expect(fr.items).toHaveLength(1);
     expect(fr.items[0].id).toBe('home');
     expect(fr.items[0].topic).toBe('topic-home');
-    expect(fr.items[0].match).toBeCloseTo(0.9, 10);
+    expect(fr.items[0].match).toBeCloseTo(1, 10);
     expect(Object.keys(fr.items[0]).sort()).toEqual(['id', 'match', 'topic']);
   });
   it('ItemRef несёт topic и сферу, а не ответы', () => {
@@ -58,12 +58,12 @@ describe('compare — пример Ани и Миши', () => {
 });
 
 describe('compare — граничные случаи', () => {
-  it('противоположные края без отметки → тема для разговора, не флаг; (0 + 0,1 + 0,1 + 0,9 + 0,95) / 5 = 41%', () => {
+  it('противоположные края без отметки → тема для разговора, не флаг; (0 + 0,25 + 0,25 + 1 + 1) / 5 = 50%', () => {
     const m = misha();
     m.responses.kids = o(1);
     const r = compare(QS, anya(), m);
     expect(r.relationship.redFlags).toEqual([]);
-    expect(r.relationship.percent).toBeCloseTo(41, 6);
+    expect(r.relationship.percent).toBeCloseTo(50, 6);
     expect(ids(r.relationship.talkZones)).toContain('kids');
   });
 
@@ -73,7 +73,7 @@ describe('compare — граничные случаи', () => {
     m.responses.kids = { ...o(1), firm: true };
     const r = compare(qs, anya(), m);
     expect(ids(r.relationship.redFlags)).toEqual(['kids']);
-    expect(r.relationship.percent).toBeCloseTo(41 * FIRM_FACTOR, 6);
+    expect(r.relationship.percent).toBeCloseTo(50 * FIRM_FACTOR, 6);
     expect(ids(r.relationship.talkZones)).not.toContain('kids');
     expect(r.friendship.percent).toBeCloseTo(compare(QS, anya(), misha()).friendship.percent!, 6);
   });
@@ -91,16 +91,16 @@ describe('compare — граничные случаи', () => {
     expect(compare(QS, anya(), m).relationship.redFlags).toEqual([]);
   });
 
-  it('пропущенный одним вопрос исключается для обоих: (1 + 0,1 + 0,9 + 0,95) / 4', () => {
+  it('пропущенный одним вопрос исключается для обоих: (1 + 0,25 + 1 + 1) / 4', () => {
     const m = misha();
     m.responses.money = 'skipped';
-    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(73.75, 6);
+    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(81.25, 6);
   });
 
-  it('вопрос, которого нет в коде другого (старая версия банка), исключается: (1 + 0,1 + 0,1 + 0,9) / 4', () => {
+  it('вопрос, которого нет в коде другого (старая версия банка), исключается: (1 + 0,25 + 0,25 + 1) / 4', () => {
     const m = misha();
     delete m.responses.space;
-    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(52.5, 6);
+    expect(compare(QS, anya(), m).relationship.percent).toBeCloseTo(62.5, 6);
   });
 
   it('нет общих ответов → null', () => {
@@ -235,7 +235,7 @@ describe('compare — флаг только через середину (firmSid
     expect(r.relationship.superMatches).toEqual([]);
   });
   it('оба отвечают спокойно — обычное совпадение', () => {
-    expect(compare(loud, profile({ shout: o(2) }), profile({ shout: o(2) })).relationship.percent).toBeCloseTo(95, 6);
+    expect(compare(loud, profile({ shout: o(2) }), profile({ shout: o(2) })).relationship.percent).toBeCloseTo(100, 6);
   });
 });
 
