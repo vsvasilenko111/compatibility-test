@@ -10,7 +10,7 @@ import { h } from '../dom';
 import { personSummarySection } from '../person-summary-view';
 import { flagsLine, sphereTiles, supportTopics } from '../result-view';
 import { sphereExplorer } from '../sphere-explorer';
-import { answerComparison } from '../answer-comparison';
+import { answerComparison, answerSelection } from '../answer-comparison';
 import { plural } from '../plural';
 import { shareBlock } from '../share';
 import { level, verdict } from '../verdict';
@@ -113,10 +113,16 @@ function resourcesSection(rs: Resource[] | null, m: MaturityResult | null): HTML
 }
 
 function answerItem(r: AnswerRow, a: Profile, b: Profile, question?: Question): HTMLElement {
-  if (question?.options) return h('li', { class: 'answer', 'data-question-id': question.id },
-    h('details', { class: 'answer-details' },
-      h('summary', {}, h('span', { class: 'answer-q' }, r.text)),
-      answerComparison(question, a, b)));
+  if (question?.options) {
+    const sa = answerSelection(question, a), sb = answerSelection(question, b);
+    // Literal choice agreement only; cross questions and nominal options retain their scoring rules.
+    const agreement = !sa.known || !sb.known ? 'unknown' : sa.index === sb.index ? 'same' : 'different';
+    const label = agreement === 'same' ? 'Ответы совпали' : agreement === 'different' ? 'Ответы различаются' : 'Пока не определились';
+    return h('li', { class: 'answer', 'data-question-id': question.id, 'data-answer-agreement': agreement },
+      h('details', { class: 'answer-details' },
+        h('summary', {}, h('span', { class: 'answer-q' }, r.text), h('span', { class: 'answer-agreement' }, label)),
+        answerComparison(question, a, b)));
+  }
   const na = a.name || 'Первый', nb = b.name || 'Второй';
   return h('li', { class: r.opposite && r.diff >= 6 ? 'answer far' : 'answer' },
     h('div', { class: 'answer-q' }, r.text),

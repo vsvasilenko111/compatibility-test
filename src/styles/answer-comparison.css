@@ -12,13 +12,13 @@
 .answer-comparison .comparison-selected-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .answer-comparison .comparison-answer-status { grid-column: 2; margin: 0; font-size: 11px; line-height: 1.5; color: var(--muted); }
 .answer-comparison .answer-choice-list,
-.result .answers .answer-comparison .answer-choice-list { display: grid; gap: 8px; list-style: none; margin: 0; padding: 0; }
-.answer-comparison .answer-choice-list > .answer-choice { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; margin: 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--fg); font-size: 13px; line-height: 1.6; }
+.result .answers .answer-comparison .answer-choice-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; list-style: none; margin: 0; padding: 0; }
+.answer-comparison .answer-choice-list > .answer-choice { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 1fr auto; gap: 18px; align-items: start; text-align: center; margin: 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--fg); font-size: 13px; line-height: 1.6; }
 .answer-comparison .answer-choice[data-selected-by='a'] { border-color: color-mix(in srgb, var(--participant-a) 50%, var(--line)); background: color-mix(in srgb, var(--participant-a) 6%, var(--card)); }
 .answer-comparison .answer-choice[data-selected-by='b'] { border-color: color-mix(in srgb, var(--participant-b) 50%, var(--line)); background: color-mix(in srgb, var(--participant-b) 6%, var(--card)); }
 .answer-comparison .answer-choice[data-selected-by='a b'] { border-color: color-mix(in srgb, var(--fg) 40%, var(--line)); background: var(--bg); }
 .answer-choice-label { min-width: 0; overflow-wrap: anywhere; }
-.answer-choice-marks { display: grid; grid-template-columns: repeat(2, 24px); gap: 8px; align-items: center; }
+.answer-choice-marks { justify-self: center; display: grid; grid-template-columns: repeat(2, 24px); gap: 8px; align-items: center; }
 .answer-choice-mark { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--participant-colour) 30%, var(--line)); }
 .answer-choice-mark.is-selected { border: 2px solid var(--participant-colour); }
 .answer-choice-mark.is-selected::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--participant-colour); }
@@ -32,4 +32,22 @@
   .answer-comparison .answer-choice-list > .answer-choice { padding: 12px; gap: 10px; font-size: 12px; }
   .answer-choice-marks { grid-template-columns: repeat(2, 22px); gap: 6px; }
   .answer-comparison .comparison-participant { padding: 9px; gap: 6px; }
+}
+
+/* Card colour compares literal answers; participant dots continue to identify people. */
+.result .answers .answer[data-answer-agreement] {
+  --agreement-colour: light-dark(#64716a, #b4bdb6);
+  border: 1px solid color-mix(in srgb, var(--agreement-colour) 24%, var(--line));
+  border-left: 4px solid var(--agreement-colour);
+  background: color-mix(in srgb, var(--agreement-colour) 5%, var(--card));
+}
+.result .answers .answer[data-answer-agreement='same'] { --agreement-colour: light-dark(#387151, #a2d4b1); }
+.result .answers .answer[data-answer-agreement='different'] { --agreement-colour: light-dark(#995918, #edbb7c); }
+.result .answer-details > summary { display: grid; gap: 10px; padding-right: 28px; }
+.result .answer-details > summary::after { top: 50%; transform: translateY(-50%); }
+.result .answer-agreement { justify-self: start; display: inline-flex; align-items: center; gap: 7px; color: var(--agreement-colour); font-size: 12px; font-weight: 600; line-height: 1.5; }
+.result .answer-agreement::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+@media (max-width: 640px) {
+  .answer-comparison .answer-choice-list,
+  .result .answers .answer-comparison .answer-choice-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

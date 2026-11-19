@@ -66,6 +66,25 @@ describe('visual comparison of participant answer choices', () => {
     expect(detail.textContent).toContain(text);
     expect(detail.querySelector('img,script')).toBeNull();
   });
+  it('labels literal answer agreement in the collapsed All answers list, including nominal categories', () => {
+    for (const q of [question, { ...question, scored: false, answerKind: 'categorical' as const }]) {
+      for (const [aChoice, bChoice, status, label] of [[1, 1, 'same', 'Ответы совпали'], [1, 2, 'different', 'Ответы различаются']] as const) {
+        const a = person('Аня', aChoice), b = person('Борис', bChoice);
+        const root = resultScreen(a, b, compare([q], a, b), 'https://example.test/', [q]);
+        const all = [...root.querySelectorAll<HTMLDetailsElement>('.answers > details')].find(d => d.querySelector('summary')!.textContent!.startsWith('Все ответы'))!;
+        const item = all.querySelector<HTMLElement>('.answer')!;
+        expect(item.dataset.answerAgreement).toBe(status);
+        expect(item.querySelector('.answer-details > summary .answer-agreement')!.textContent).toBe(label);
+      }
+    }
+  });
+  it('keeps uncertainty neutral even when both picked the same uncertain option', () => {
+    const q = { ...question, uncertainOptions: [3] };
+    const a = person('Аня', 2), b = person('Борис', 2);
+    const root = resultScreen(a, b, compare([q], a, b), 'https://example.test/', [q]);
+    expect(root.querySelector<HTMLElement>('.answers .answer')!.dataset.answerAgreement).toBe('unknown');
+    expect(root.querySelector('.answer-agreement')!.textContent).toBe('Пока не определились');
+  });
   it('uses the same complete choice view when a question is expanded in All answers', () => {
     const a = person('Аня', 1), b = person('Борис', 4);
     const root = resultScreen(a, b, compare([question], a, b), 'https://example.test/', [question]);
