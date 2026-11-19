@@ -2,6 +2,7 @@ import { CodecError, decode, encode } from '../codec/codec';
 import { BANK_VERSION, CURRENT_FIRM, CURRENT_IDS, FIRM, MANIFEST, COMPATIBLE_SINCE, QUESTIONS } from '../questions';
 import { friendshipWeight, relationshipWeight } from '../questions/spheres';
 import { classifyInvite, inviteUrl, personalHash, personalUrl, parseHash, resultHash, resultUrl, type Route } from '../router';
+import { currentShareCode } from './share-profile';
 import { compare } from '../scoring/compare';
 import { browserStorage, createStore, type Progress } from '../storage';
 import { firstUnanswered, unansweredIds, resumeFor } from './flow';
@@ -51,9 +52,13 @@ export function startApp(root: HTMLElement): void {
   }
 
   function showInvite(code: string) {
-    if (classifyInvite(code, store.loadOwnCode()) === 'own') {
-      return show(messageScreen('Это ваша ссылка', 'Отправьте её партнёру — он пройдёт тест и увидит результат. Если партнёр рядом, он может пройти тест прямо здесь.', inviteUrl(base, code, quick), [
-        { label: 'Пройти тест партнёру здесь', onClick: () => introFor(code) },
+    const storedOwn=store.loadOwnCode();
+    const shareOwn=storedOwn?currentShareCode(storedOwn):null;
+    const shared=currentShareCode(code);
+    if (classifyInvite(code, storedOwn) === 'own' || shared!==null && shared===shareOwn) {
+      if(!shareOwn)return showPersonal(code);
+      return show(messageScreen('Это ваша ссылка', 'Отправьте её партнёру — он пройдёт тест и увидит результат. Если партнёр рядом, он может пройти тест прямо здесь.', inviteUrl(base, shareOwn, quick), [
+        { label: 'Пройти тест партнёру здесь', onClick: () => introFor(shareOwn) },
         { label: 'На главную', onClick: () => { location.hash = ''; } },
       ]));
     }
@@ -65,7 +70,7 @@ export function startApp(root: HTMLElement): void {
       ]));
     }
     // Оба прошли тест по общей ссылке: открывший чужое приглашение уже имеет свои ответы — проходить заново не нужно.
-    const own = store.loadOwnCode();
+    const own = shareOwn;
     if (own) {
       return show(messageScreen('Вы уже прошли тест', 'Можно сразу посмотреть общий результат с вашими ответами или пройти тест заново.', null, [
         { label: 'Посмотреть результат', primary: true, onClick: () => { store.saveResultFor(code, own); location.hash = resultHash(code, own, quick); } },
@@ -92,13 +97,14 @@ export function startApp(root: HTMLElement): void {
     const resumable = saved?.only ? { ...saved, index: firstUnanswered(saved.only, saved.responses) } : resumeFor(saved, inviterCode, ASKED_IDS);
     const resumeList = resumable?.only ?? ASKED_IDS;
     const own = store.loadOwnCode();
+    const shareOwn=own?currentShareCode(own):null;
     show(introScreen({
       inviterName: inviter ? inviter.name : null,
       total: ASKED.length,
       // Дозаполнение только важных сфер — вопросов нет, продолжать «с вопроса» нечего: продолжаем с первого шага.
       resumeAt: resumable ? Math.max(1, Math.min(resumable.index, resumeList.length - 1) + 1) : null,
       storageAvailable: store.available,
-      ownUrl: own ? inviteUrl(base, own, quick) : null,
+      ownUrl: shareOwn ? inviteUrl(base, shareOwn, quick) : null,
       ownResultUrl: own ? personalUrl(base, own, quick) : null,
       history: store.loadHistory().map((r) => ({ names: r.names, at: r.at, url: `#${resultHash(r.a, r.b, quick)}`, forget: () => store.forgetResult(r.a, r.b) })),
       onStart: (name) => runTest({ name, index: 0, responses: {}, inviterCode }),
@@ -169,7 +175,8 @@ export function startApp(root: HTMLElement): void {
           onClick: () => runTest({name:profile.name,index:0,responses:profile.responses,priorities:profile.priorities,inviterCode:null,only,ownCode:code}),
         }]));
       }
-      show(personalResultScreen(profile, QUESTIONS, inviteUrl(base, code, quick), () => introFor(code)));
+      const shareCode=currentShareCode(code)!;
+      show(personalResultScreen(profile, QUESTIONS, inviteUrl(base, shareCode, quick), () => introFor(shareCode)));
     } catch (e) {
       show(messageScreen('Не получилось открыть личный результат', codecMessage(e)));
     }
@@ -210,7 +217,8 @@ export function startApp(root: HTMLElement): void {
           .map(([p,code]) => ({name:p.name || (p===pa?'Первый':'Второй'),url:personalUrl(base,code,quick)}));
         return show(resultPendingScreen(pa, pb, fill, resultUrl(base, a, b, quick, open), personal));
       }
-      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, a, b, quick, open), QUESTIONS, fill, [personalUrl(base,a,quick),personalUrl(base,b,quick)]));
+      const shareA=currentShareCode(a)!,shareB=currentShareCode(b)!;
+      show(resultScreen(pa, pb, compare(QUESTIONS, pa, pb, relationshipWeight, friendshipWeight), resultUrl(base, shareA, shareB, quick, open), QUESTIONS, fill, [personalUrl(base,shareA,quick),personalUrl(base,shareB,quick)]));
     } catch (e) {
       show(messageScreen('Не получилось открыть результат', codecMessage(e)));
     }
